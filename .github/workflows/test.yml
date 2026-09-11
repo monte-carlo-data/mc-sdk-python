@@ -1,0 +1,78 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Read-only: the job lints, type-checks and tests the package and never writes back to the
+# repository, so the default (often broader) GITHUB_TOKEN permissions are not needed.
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "0.6.x"
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Format check
+        run: uv run ruff format --check .
+
+      - name: Type check
+        run: uv run pyright
+
+      - name: Test
+        run: uv run pytest
+
+      # The generator writes at the repository root, so the root ignore file is the only thing
+      # protecting the hand-written files from the next generation run. Every hand-written
+      # path it must cover is asserted here, whole line for whole line, the same way
+      # api-codegen's generate-python-sdk.sh checks it before generating.
+      - name: Every hand-written file stays protected from the generator
+        run: |
+          test -s .openapi-generator-ignore
+          for p in pyproject.toml README.md .gitignore; do
+            grep -qxF "$p" .openapi-generator-ignore || { echo "$p is hand-written but not protected"; exit 1; }
+          done
+          for f in montecarlo/*.py; do
+            b=$(basename "$f")
+            case "$b" in __init__.py|api_client.py|api_response.py|configuration.py|exceptions.py|rest.py) continue ;; esac
+            grep -qxF "montecarlo/$b" .openapi-generator-ignore || { echo "montecarlo/$b is hand-written but not protected"; exit 1; }
+          done
+
+      # Nine root paths the generator would emit are suppressed via the ignore file. Drop an
+      # entry and the file comes back, so guard their absence and the entries both.
+      - name: The generator's suppressed scaffold stays absent
+        run: |
+          for p in .github/workflows/python.yml setup.py setup.cfg requirements.txt test-requirements.txt tox.ini .gitlab-ci.yml .travis.yml git_push.sh; do
+            grep -qxF "$p" .openapi-generator-ignore || { echo "$p is not suppressed in .openapi-generator-ignore"; exit 1; }
+            test ! -e "$p" || { echo "$p should be suppressed"; exit 1; }
+          done
+
+      # The package is the only Python at the root; a generator pointed at the wrong directory
+      # would land a second copy of it somewhere else.
+      - name: Only the package holds Python
+        run: test -z "$(find . -maxdepth 1 -name '*.py')"
+
+      # Hand-written modules announce themselves, so a reviewer can tell them from output.
+      - name: Hand-written modules carry the marker
+        run: |
+          for f in montecarlo/auth.py montecarlo/oauth.py montecarlo/profile.py; do
+            head -n1 "$f" | grep -qF "Hand-written, not generator output." || { echo "$f lacks the hand-written marker"; exit 1; }
+          done

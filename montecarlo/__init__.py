@@ -157,6 +157,6 @@ from montecarlo.models.storage_service_principal_credentials_in import StorageSe
 from montecarlo.models.storage_type import StorageType as StorageType
 
 
-# Hand-written client construction and credentials; see auth.py in this package.
+# Hand-written client construction and credentials; auth.py is not generator output.
 from montecarlo.auth import Options as Options
 from montecarlo.auth import new_client as new_client

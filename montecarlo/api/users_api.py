@@ -17,8 +17,6 @@ from typing_extensions import Annotated
 from montecarlo.models.current_user_out import CurrentUserOut
 
 from montecarlo.api_client import ApiClient, RequestSerialized
-from montecarlo.api_response import ApiResponse
-from montecarlo.rest import RESTResponseType
 
 
 class UsersApi:

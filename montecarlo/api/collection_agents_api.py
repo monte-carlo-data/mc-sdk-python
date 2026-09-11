@@ -40,8 +40,6 @@ from montecarlo.models.generic_collection_agent_token_in import GenericCollectio
 from montecarlo.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut
 
 from montecarlo.api_client import ApiClient, RequestSerialized
-from montecarlo.api_response import ApiResponse
-from montecarlo.rest import RESTResponseType
 
 
 class CollectionAgentsApi:

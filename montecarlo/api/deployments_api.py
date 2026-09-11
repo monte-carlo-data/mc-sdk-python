@@ -22,8 +22,6 @@ from montecarlo.models.deployment_patch import DeploymentPatch
 from montecarlo.models.deployment_summary_out import DeploymentSummaryOut
 
 from montecarlo.api_client import ApiClient, RequestSerialized
-from montecarlo.api_response import ApiResponse
-from montecarlo.rest import RESTResponseType
 
 
 class DeploymentsApi:

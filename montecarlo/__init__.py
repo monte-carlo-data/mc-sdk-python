@@ -33,6 +33,7 @@ __all__ = [
     "ApiException",
     "Options",
     "new_client",
+    "CredentialsError",
     "AuthHeadersCredentialsIn",
     "AuthenticationType",
     "AwsCollectionAgentIn",
@@ -160,3 +161,4 @@ from montecarlo.models.storage_type import StorageType as StorageType
 # Hand-written client construction and credentials; auth.py is not generator output.
 from montecarlo.auth import Options as Options
 from montecarlo.auth import new_client as new_client
+from montecarlo.auth import CredentialsError as CredentialsError

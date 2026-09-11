@@ -1,0 +1,37 @@
+# openapi-generator reads this file from its output directory, the repository root, and
+# overwrites every file it emits under it, never deleting anything it does not. Unlike the Go
+# generator, the Python one writes its packaging scaffold here beside the package, so this
+# file is the only thing standing between a generation run and the hand-written files.
+#
+# Verified by running the generator into an empty directory with no ignore file: it writes the
+# twelve root paths below. Three of them are hand-written in this repository; the other nine
+# are scaffolding it never wants, kept out by the entry alone. All twelve are load-bearing.
+#
+# This file is what api-codegen's generate-python-sdk.sh compares its PROTECTED array against,
+# whole line for whole line; AGENTS.md documents this list entry for entry. A variant spelling
+# still protects the file but fails that check.
+
+# Hand-written at the root: packaging, the repository README and the ignore rules.
+pyproject.toml
+README.md
+.gitignore
+
+# Suppressed rather than protected: the generator's setuptools/poetry/tox/CI scaffolding,
+# which a uv project has no use for (this repository's workflow is test.yml). None of these
+# exists in the tree, and CI asserts that.
+.github/workflows/python.yml
+setup.py
+setup.cfg
+requirements.txt
+test-requirements.txt
+tox.ini
+.gitlab-ci.yml
+.travis.yml
+git_push.sh
+
+# Hand-written inside the package: client construction and credentials. Defensive: the
+# generator names its package files api_client.py, api_response.py, configuration.py,
+# exceptions.py, rest.py, __init__.py and py.typed, and writes under api/ and models/.
+montecarlo/auth.py
+montecarlo/oauth.py
+montecarlo/profile.py

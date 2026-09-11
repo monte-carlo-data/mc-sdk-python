@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [],
+    "deny": []
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "filesystem": {
+      "allowWrite": [
+        ".",
+        "/tmp"
+      ],
+      "denyRead": [
+        "~/.aws/credentials",
+        "~/.ssh",
+        "./.env",
+        "./.env.*"
+      ]
+    },
+    "network": {
+      "allowedDomains": [
+        "github.com",
+        "api.github.com",
+        "pypi.org",
+        "files.pythonhosted.org"
+      ]
+    }
+  }
+}

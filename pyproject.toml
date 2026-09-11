@@ -1,0 +1,51 @@
+[project]
+# Both names are provisional until the team settles the SDK's name. They are spelled here, in
+# the package directory, and in api-codegen's generate-python-sdk.sh, and nowhere else.
+name = "montecarlo-sdk"
+version = "0.0.0"
+description = "Official Python SDK for the Monte Carlo REST API."
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+# The runtime dependencies of the generated client, as the generator's own scaffold declares
+# them. Nothing hand-written adds one.
+dependencies = [
+  "urllib3>=2.1.0,<3",
+  "python-dateutil>=2.8.2",
+  "pydantic>=2.11",
+  "typing-extensions>=4.7.1",
+]
+
+[project.urls]
+Repository = "https://github.com/monte-carlo-data/mc-sdk-python"
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.6", "pyright>=1.1"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["montecarlo"]
+
+# Lint and type-check the hand-written surface only. Generated code is not ours to fix: a
+# finding there belongs in the API or in the generator.
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+include = ["montecarlo/auth.py", "montecarlo/oauth.py", "montecarlo/profile.py", "tests/**/*.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pyright]
+include = ["montecarlo/auth.py", "montecarlo/oauth.py", "montecarlo/profile.py", "tests"]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.10"
+typeCheckingMode = "standard"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

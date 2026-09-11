@@ -133,8 +133,8 @@ class Options:
         the caller never asked for. `instance` is filled from the environment unconditionally:
         it is a routing hint, not a credential.
 
-        A half-set pair supplied here is an error before any fallback is consulted: it is never
-        silently replaced by the profile's credentials.
+        A half-set pair supplied here is an error before the environment or a profile is
+        consulted; neither ever completes one.
 
         A profile is consulted when one is named, when no mechanism was found by then, or when
         the endpoint is still empty. `MCD_DEFAULT_PROFILE`, if set, only selects which section a
@@ -143,6 +143,7 @@ class Options:
         supplied stands on its own. A file that exists but cannot be read is always an error. A
         profile supplies `instance` and `token_url` only when OAuth is the selected mechanism.
         """
+        self._check_pairs()
         out = dataclasses.replace(self)
 
         if not out.has_credentials():
@@ -155,7 +156,6 @@ class Options:
             elif token_id and token_secret:
                 out.token_id, out.token_secret = token_id, token_secret
         out.instance = out.instance or os.environ.get(profiles.ENV_INSTANCE, "")
-        out._check_pairs()
 
         named = bool(out.profile)
         has_credentials = out.has_credentials()

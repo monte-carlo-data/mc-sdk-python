@@ -84,6 +84,9 @@ Otherwise: `MCD_DEFAULT_OAUTH_CLIENT_ID` and `MCD_DEFAULT_OAUTH_CLIENT_SECRET` (
 profile supplies `instance` and the token endpoint only when it also supplied the OAuth
 credentials; an endpoint left empty is always filled from the profile.
 
+A pair is all or nothing. If you pass one half of an API token or of OAuth client credentials,
+that is an error; the other half is never filled in from the environment or a profile.
+
 This SDK does not read `MCD_API_ENDPOINT`, even though the CLI and pycarlo both do. That
 variable carries the GraphQL endpoint, and `endpoint` here is the REST base URL.
 

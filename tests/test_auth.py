@@ -383,29 +383,59 @@ def test_a_profile_supplies_the_instance_and_token_url_only_for_oauth(isolate: P
 
 
 @pytest.mark.parametrize(
-    ("profile_contents", "explicit", "match"),
+    ("profile_contents", "env", "explicit", "match"),
     [
         (
             "[default]\nmcd_oauth_client_id = c\nmcd_oauth_client_secret = s\n"
             "mcd_instance_id = us1\n",
+            {},
             {"token_id": "explicit-id"},
             "token id and token secret are both required",
         ),
         (
             "[default]\nmcd_id = id\nmcd_token = secret\n",
+            {},
+            {"client_id": "explicit"},
+            "client id and client secret are both required",
+        ),
+        (
+            None,
+            {"MCD_DEFAULT_API_ID": "env-id", "MCD_DEFAULT_API_TOKEN": "env-secret"},
+            {"token_id": "explicit-id"},
+            "token id and token secret are both required",
+        ),
+        (
+            None,
+            {
+                "MCD_DEFAULT_OAUTH_CLIENT_ID": "env-client",
+                "MCD_DEFAULT_OAUTH_CLIENT_SECRET": "env-secret",
+            },
             {"client_id": "explicit"},
             "client id and client secret are both required",
         ),
     ],
+    ids=[
+        "profile oauth pair does not complete a half api token",
+        "profile api token does not complete a half oauth pair",
+        "environment api token does not complete a half api token",
+        "environment oauth pair does not complete a half oauth pair",
+    ],
 )
-def test_half_an_explicit_credential_pair_is_not_replaced_by_the_profile(
-    isolate: Path, profile_contents: str, explicit: dict[str, str], match: str
+def test_half_an_explicit_credential_pair_is_never_completed_by_a_fallback(
+    isolate: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    profile_contents: str | None,
+    env: dict[str, str],
+    explicit: dict[str, str],
+    match: str,
 ) -> None:
-    """`resolve` must treat a half-set explicit pair as a mechanism already chosen, not as
-    `has_credentials() is False`; today it is silently overwritten by the profile instead."""
-    write_profiles(isolate, profile_contents)
+    """A half pair is refused before the environment or the profile can complete it."""
+    if profile_contents is not None:
+        write_profiles(isolate, profile_contents)
+    for key, value in env.items():
+        monkeypatch.setenv(key, value)
     with pytest.raises(CredentialsError, match=match):
-        Options(endpoint="https://api.example.com", config_dir=isolate, **explicit).resolve()
+        Options(endpoint=HTTPS, config_dir=isolate, **explicit).resolve()
 
 
 def test_an_unreadable_profiles_file_is_a_credentials_error(isolate: Path) -> None:

@@ -1,0 +1,52 @@
+[project]
+# Both names are provisional until the team settles the SDK's name. The package name is also
+# api-codegen's generate-python-sdk.sh PACKAGE_NAME; the distribution name is also in uv.lock.
+name = "montecarlo-sdk"
+version = "0.0.0"
+description = "Official Python SDK for the Monte Carlo REST API."
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+# The runtime dependencies of the generated client, as the generator's own scaffold declares
+# them. Nothing hand-written adds one.
+dependencies = [
+  "urllib3>=2.1.0,<3",
+  "python-dateutil>=2.8.2",
+  "pydantic>=2.11",
+  "typing-extensions>=4.7.1",
+]
+
+[project.urls]
+Repository = "https://github.com/monte-carlo-data/mc-sdk-python"
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.6", "pyright>=1.1"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["montecarlo"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+# Everything but the generator's own files: a new hand-written module is linted by default,
+# and a finding in generated code belongs in the API or the generator, not here.
+extend-exclude = ["montecarlo/api", "montecarlo/models", "montecarlo/__init__.py", "montecarlo/api_client.py", "montecarlo/api_response.py", "montecarlo/configuration.py", "montecarlo/exceptions.py", "montecarlo/rest.py", "docs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pyright]
+include = ["montecarlo", "tests"]
+exclude = ["montecarlo/api", "montecarlo/models", "montecarlo/__init__.py", "montecarlo/api_client.py", "montecarlo/api_response.py", "montecarlo/configuration.py", "montecarlo/exceptions.py", "montecarlo/rest.py"]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.10"
+typeCheckingMode = "standard"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

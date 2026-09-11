@@ -1,0 +1,86 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# Read-only: the job lints, type-checks and tests the package and never writes back to the
+# repository, so the default (often broader) GITHUB_TOKEN permissions are not needed.
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      UV_PYTHON: ${{ matrix.python-version }}
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "0.6.x"
+
+      - name: Install dependencies
+        # The committed lockfile is what CI tests; a stale one fails here instead of being
+        # silently re-resolved.
+        run: uv sync --locked
+
+      - name: Python version matches the matrix
+        run: uv run python -c "import sys; assert sys.version_info[:2] == tuple(map(int, '${{ matrix.python-version }}'.split('.'))), sys.version"
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Format check
+        run: uv run ruff format --check .
+
+      - name: Type check
+        run: uv run pyright
+
+      - name: Test
+        run: uv run pytest
+
+      # The marker line is what tells a hand-written module from generator output, so both
+      # directions derive from it: every marked module under the package is listed in the
+      # ignore file, and every package entry in the ignore file is a marked module. No list of
+      # generated names to maintain, so a generator upgrade that adds a module cannot fail this
+      # with a misleading message.
+      - name: Hand-written and generated files stay told apart
+        run: |
+          test -s .openapi-generator-ignore
+          for p in pyproject.toml README.md .gitignore; do
+            grep -qxF "$p" .openapi-generator-ignore || { echo "$p is hand-written but not protected"; exit 1; }
+          done
+          for f in $(find montecarlo -name '*.py'); do
+            [ "$(head -n1 "$f")" = "# Hand-written, not generator output." ] || continue
+            grep -qxF "$f" .openapi-generator-ignore || { echo "$f is hand-written but not protected"; exit 1; }
+          done
+          while IFS= read -r f; do
+            head -n1 "$f" | grep -qxF '# Hand-written, not generator output.' || { echo "$f is protected but not marked hand-written"; exit 1; }
+          done < <(grep -E '^montecarlo/' .openapi-generator-ignore)
+
+      # Nine root paths the generator would emit are suppressed via the ignore file. Drop an
+      # entry and the file comes back, so guard their absence and the entries both.
+      - name: The generator's suppressed scaffold stays absent
+        run: |
+          for p in .github/workflows/python.yml setup.py setup.cfg requirements.txt test-requirements.txt tox.ini .gitlab-ci.yml .travis.yml git_push.sh; do
+            grep -qxF "$p" .openapi-generator-ignore || { echo "$p is not suppressed in .openapi-generator-ignore"; exit 1; }
+            test ! -e "$p" || { echo "$p should be suppressed"; exit 1; }
+          done
+
+      # The generator's only root .py is setup.py, suppressed above. Any other .py at the root
+      # means it wrote something the suppression list does not cover. A generator pointed at
+      # the package directory instead of the repository root is caught upstream, by
+      # generate-python-sdk.sh's basename and pyproject.toml checks.
+      - name: Only the package holds Python
+        run: test -z "$(find . -maxdepth 1 -name '*.py')"

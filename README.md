@@ -59,7 +59,7 @@ Tokens are fetched and renewed as needed, so a long-lived client does not go sta
 The operations and the request and response models they take are all importable from the
 package, so one import covers everything: `montecarlo.DeploymentIn`, `montecarlo.ProblemOut`,
 and so on. Errors from the API raise `montecarlo.ApiException`; a misconfiguration raises
-`montecarlo.auth.CredentialsError` when the client is built.
+`montecarlo.CredentialsError` when the client is built.
 
 ### Using credentials you have already configured
 

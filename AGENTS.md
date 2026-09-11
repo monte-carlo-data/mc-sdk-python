@@ -45,7 +45,7 @@ Twelve root paths verified by running the generator into an empty directory with
 
 A hand-written file must never take one of the generator's names. Every hand-written module under `montecarlo/` starts with `# Hand-written, not generator output.`; CI derives the ignore-file check from that marker in both directions. The same goes for identifiers: the generator emits a class per schema in the spec, a `*Api` class per tag, and the fixed names `ApiClient`, `ApiResponse`, `Configuration`, `OpenApiException`, `ApiException` and their siblings. `Options`, `new_client` and `CredentialsError` are reserved against future schemas of those names; a collision surfaces at regeneration time and its only fix is renaming the SDK's public API.
 
-`montecarlo/__init__.py` is generated from api-codegen's `__init__package.mustache` override, which adds `Options` and `new_client` to the generated `__all__` and imports them after the generated exports. Hand-writing the file instead would lose the automatic listing of new API classes and models.
+`montecarlo/__init__.py` is generated from api-codegen's `__init__package.mustache` override, which adds `Options`, `new_client` and `CredentialsError` to the generated `__all__` and imports them after the generated exports. Hand-writing the file instead would lose the automatic listing of new API classes and models.
 
 The version is spelled once, in `pyproject.toml`. The generation script reads it from there and stamps it into `__version__` and the generated debug report.
 

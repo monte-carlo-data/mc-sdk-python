@@ -17,7 +17,7 @@ uv run ruff check . && uv run ruff format .
 uv run pyright
 ```
 
-Ruff and pyright are scoped to the hand-written files in `pyproject.toml`. Generated code is not linted: a finding there belongs in the API or in the generator.
+Ruff and pyright cover the whole package except the generator's own files, listed in `pyproject.toml`, so a new hand-written module is checked by default. A finding in generated code belongs in the API or in the generator.
 
 ## Key Directories
 
@@ -29,7 +29,7 @@ Ruff and pyright are scoped to the hand-written files in `pyproject.toml`. Gener
 | `montecarlo/__init__.py`, `api_client.py`, `api_response.py`, `configuration.py`, `exceptions.py`, `rest.py`, `py.typed` | Generated client plumbing. `__init__.py` comes from a template override that re-exports the hand-written names |
 | `docs/` | Generated API reference |
 | `.openapi-generator/` | Generator bookkeeping |
-| `tests/` | **Hand-written.** Tests for the hand-written surface, one module each, plus `conftest.py` |
+| `tests/` | **Hand-written.** Tests for the hand-written surface, one module each, plus `conftest.py` and `test_public_surface.py`, which pins the generated `__init__.py`'s re-export of the hand-written names |
 
 ## What is generated
 
@@ -43,7 +43,7 @@ Everything under `montecarlo/` and `docs/` except the three auth modules. The ge
 
 Twelve root paths verified by running the generator into an empty directory with no ignore file. `generateSourceCodeOnly=true` would suppress them natively but drops `py.typed`, nests `docs/` in the package and emits a `montecarlo_README.md`, so the ignore file is used instead.
 
-A hand-written file must never take one of the generator's names. The same goes for identifiers: the generator emits a class per schema in the spec, a `*Api` class per tag, and the fixed names `ApiClient`, `ApiResponse`, `Configuration`, `OpenApiException`, `ApiException` and their siblings. `Options`, `new_client` and `CredentialsError` are reserved against future schemas of those names; a collision surfaces at regeneration time and its only fix is renaming the SDK's public API.
+A hand-written file must never take one of the generator's names. Every hand-written module under `montecarlo/` starts with `# Hand-written, not generator output.`; CI derives the ignore-file check from that marker in both directions. The same goes for identifiers: the generator emits a class per schema in the spec, a `*Api` class per tag, and the fixed names `ApiClient`, `ApiResponse`, `Configuration`, `OpenApiException`, `ApiException` and their siblings. `Options`, `new_client` and `CredentialsError` are reserved against future schemas of those names; a collision surfaces at regeneration time and its only fix is renaming the SDK's public API.
 
 `montecarlo/__init__.py` is generated from api-codegen's `__init__package.mustache` override, which adds `Options` and `new_client` to the generated `__all__` and imports them after the generated exports. Hand-writing the file instead would lose the automatic listing of new API classes and models.
 
@@ -61,7 +61,7 @@ OAuth client credentials are exchanged in the token request's form body, as mc-s
 
 Credentials are attached to each request as it goes out, by an `ApiClient` subclass, rather than stored on the generated `Configuration`. `Configuration.access_token` stays `None`, so nothing that logs the configuration can leak a credential, and a per-request credential passed through an operation's `_request_auth` wins instead of stacking into a second header.
 
-**`endpoint` is always required**, though it can come from a profile rather than the caller. The spec declares no server, so the generated client's default host is empty and a client built without one sends every request nowhere; `new_client` refuses to build it.
+**`endpoint` is always required**, though it can come from a profile rather than the caller. The spec declares no server, so the generated client's default host is empty and the first call fails inside urllib3 with `No host specified`; `new_client` refuses to build such a client.
 
 ## Credentials are shared with the other tools
 

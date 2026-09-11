@@ -1,5 +1,3 @@
-**/tmp/
-
 # Working notes, plans and code-review docs stay local to whoever ran the workflow.
 *
 !.gitignore

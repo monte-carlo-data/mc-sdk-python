@@ -6,23 +6,27 @@ globs: "**/*"
 # General Standards
 
 Almost everything under `montecarlo/` is `openapi-generator` output. The hand-written surface
-is `montecarlo/auth.py`, `oauth.py`, `profile.py`, the tests under `tests/`, `pyproject.toml`
-and the repository documentation; see AGENTS.md for the exact list. These rules apply to that
-surface. Do not hand-edit generated files: the next generation run overwrites them.
+is `montecarlo/auth.py`, `oauth.py`, `profile.py`, the tests under `tests/`, `pyproject.toml`,
+`.openapi-generator-ignore`, and the repository documentation; see AGENTS.md for the exact
+list. These rules apply to that surface. Do not hand-edit generated files: the next generation
+run overwrites them.
 
 ## Code Style
 
 - Keep functions small and focused on a single responsibility
 - Prefer explicit over implicit; name things clearly
 - Write code that reads like a specification
-- Every hand-written module starts with `# Hand-written, not generator output.`
+- Every hand-written module under `montecarlo/` starts with `# Hand-written, not generator
+  output.`; CI asserts it, and derives the generator-protection check from it.
 - A hand-written identifier must never take a name the generator could emit: `<Schema>` for
   every schema in the spec, the `*Api` classes, `ApiClient`, `ApiResponse`, `Configuration`,
   and the exception classes
 
 ## Testing
 
-- Tests live in `tests/`, one module per hand-written module
+- Tests live in `tests/`, one module per hand-written module, plus `test_public_surface.py`,
+  which pins the generated `__init__.py`'s re-export of the hand-written names, and
+  `conftest.py`
 - The hand-written code's boundaries are the filesystem and an OAuth endpoint. Use `tmp_path`
   and the loopback HTTP server fixture rather than mocks
 - Any test that builds a client or resolves options must use the `isolate` fixture and pass the

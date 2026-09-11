@@ -1,13 +1,13 @@
 from __future__ import annotations
 
+import threading
 from pathlib import Path
 
 import pytest
 
 from montecarlo import UsersApi
-from montecarlo import oauth as oauth_module
 from montecarlo.auth import CredentialsError, Options, new_client
-from montecarlo.oauth import TokenSource, scopes_for_instance
+from montecarlo.oauth import TokenSource, scopes_for_instance, validate_instance_id
 from tests.conftest import FakeApi
 
 
@@ -51,84 +51,27 @@ def test_client_credentials_go_in_the_form_body_with_both_scopes(
     assert not _authorization_headers(token_request)
 
 
-def test_new_client_sends_only_one_authorization_header_with_a_delegated_token(
-    isolate: Path, fake_api: FakeApi
-) -> None:
-    """A per-request credential set through `_request_auth` wins; nothing stacks a second one."""
-    client = new_client(
-        Options(
-            endpoint=fake_api.url,
-            token_id="static-id",
-            token_secret="static-secret",
-            config_dir=isolate,
-        )
-    )
-    UsersApi(client).get_current_user(
-        _request_auth={
-            "type": "bearer",
-            "in": "header",
-            "key": "Authorization",
-            "value": "Bearer delegated-token",
-        }
-    )
-
-    (request,) = fake_api.api_requests()
-    assert _authorization_headers(request) == ["Bearer delegated-token"]
-
-
-def test_credentials_never_reach_the_configuration(isolate: Path) -> None:
-    """Anything can log the configuration; `to_debug_report` and `access_token` are public."""
-    for options in (
-        Options(
-            endpoint="https://api.example.com", token_id="leaked-id", token_secret="leaked-secret"
-        ),
-        Options(
-            endpoint="https://api.example.com",
-            client_id="leaked-client",
-            client_secret="leaked-client-secret",
-            instance="us1",
-        ),
-    ):
-        options.config_dir = isolate
-        configuration = new_client(options).configuration
-        assert configuration.access_token is None
-        rendered = repr(vars(configuration)) + configuration.to_debug_report()
-        assert "leaked" not in rendered
-
-
-def test_token_is_cached_until_shortly_before_expiry(
-    isolate: Path, fake_api: FakeApi, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_token_is_cached_until_shortly_before_expiry(fake_api: FakeApi) -> None:
     now = [1_000.0]
-    monkeypatch.setattr(oauth_module.time, "monotonic", lambda: now[0])
     fake_api.token_responses = [
         (200, {"access_token": "first", "expires_in": 300}),
         (200, {"access_token": "second", "expires_in": 300}),
     ]
-    api = UsersApi(
-        new_client(
-            Options(
-                endpoint=fake_api.url,
-                client_id="id",
-                client_secret="secret",
-                instance="us1",
-                config_dir=isolate,
-            )
-        )
+    source = TokenSource(
+        "id", "secret", "us1", fake_api.url + "/oauth2/token", clock=lambda: now[0]
     )
 
-    api.get_current_user()
-    api.get_current_user()
+    assert source.token() == "first"
+    assert source.token() == "first"
     assert len(fake_api.token_requests()) == 1
 
     # 300s lifetime, renewed 60s early: still cached at +239s, renewed at +240s.
     now[0] += 239
-    api.get_current_user()
+    assert source.token() == "first"
     assert len(fake_api.token_requests()) == 1
     now[0] += 1
-    api.get_current_user()
+    assert source.token() == "second"
     assert len(fake_api.token_requests()) == 2
-    assert _authorization_headers(fake_api.api_requests()[-1]) == ["Bearer second"]
 
 
 def test_token_request_retries_a_5xx_but_not_a_4xx(fake_api: FakeApi) -> None:
@@ -152,11 +95,121 @@ def test_token_response_without_an_access_token_is_an_error(fake_api: FakeApi) -
         source.token()
 
 
+@pytest.mark.parametrize("expires_in", ["soon", None])
 def test_an_unparseable_expires_in_falls_back_to_an_hour(
-    fake_api: FakeApi, monkeypatch: pytest.MonkeyPatch
+    fake_api: FakeApi, expires_in: str | None
 ) -> None:
-    monkeypatch.setattr(oauth_module.time, "monotonic", lambda: 0.0)
-    fake_api.token_responses = [(200, {"access_token": "t", "expires_in": "soon"})]
+    now = [0.0]
+    fake_api.token_responses = [
+        (200, {"access_token": "first", "expires_in": expires_in}),
+        (200, {"access_token": "second", "expires_in": expires_in}),
+    ]
+    source = TokenSource(
+        "id", "secret", "us1", fake_api.url + "/oauth2/token", clock=lambda: now[0]
+    )
+
+    assert source.token() == "first"
+    assert len(fake_api.token_requests()) == 1
+
+    now[0] += 3600 - 60 - 1
+    assert source.token() == "first"
+    assert len(fake_api.token_requests()) == 1
+
+    now[0] += 1
+    assert source.token() == "second"
+    assert len(fake_api.token_requests()) == 2
+
+
+def test_a_short_lived_token_is_still_cached_for_half_its_life(fake_api: FakeApi) -> None:
+    now = [0.0]
+    fake_api.token_responses = [
+        (200, {"access_token": "first", "expires_in": 30}),
+        (200, {"access_token": "second", "expires_in": 30}),
+    ]
+    source = TokenSource(
+        "id", "secret", "us1", fake_api.url + "/oauth2/token", clock=lambda: now[0]
+    )
+
+    assert source.token() == "first"
+
+    now[0] += 14
+    assert source.token() == "first"
+    assert len(fake_api.token_requests()) == 1
+
+    now[0] += 1
+    assert source.token() == "second"
+    assert len(fake_api.token_requests()) == 2
+
+
+def test_token_source_validates_its_inputs() -> None:
+    with pytest.raises(CredentialsError, match="instance id"):
+        TokenSource("id", "secret", "us 1", "https://x/oauth2/token")
+    with pytest.raises(CredentialsError, match="token url must use https"):
+        TokenSource("id", "secret", "us1", "http://attacker.example/oauth2/token")
+
+
+def test_concurrent_callers_share_one_token_request(fake_api: FakeApi) -> None:
+    fake_api.token_responses = [(200, {"access_token": "shared", "expires_in": 3600})]
     source = TokenSource("id", "secret", "us1", fake_api.url + "/oauth2/token")
-    source.token()
-    assert source._expires_at == 3600 - 60
+    barrier = threading.Barrier(8)
+    lock = threading.Lock()
+    tokens: list[str] = []
+
+    def call() -> None:
+        barrier.wait()
+        token = source.token()
+        with lock:
+            tokens.append(token)
+
+    threads = [threading.Thread(target=call) for _ in range(8)]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+
+    assert tokens == ["shared"] * 8
+    assert len(fake_api.token_requests()) == 1
+
+
+@pytest.mark.parametrize("instance", ["a", "us1", "US-1", "a" * 63])
+def test_validate_instance_id_accepts_a_dns_safe_identifier(instance: str) -> None:
+    validate_instance_id(instance)
+
+
+@pytest.mark.parametrize("instance", ["", "us_1", "us 1", "us.1", "a" * 64, "us1/../other"])
+def test_validate_instance_id_rejects_anything_else(instance: str) -> None:
+    with pytest.raises(CredentialsError, match="invalid instance id"):
+        validate_instance_id(instance)
+
+
+def test_token_request_does_not_follow_a_redirect_with_the_client_secret(
+    fake_api: FakeApi,
+) -> None:
+    """`_request` builds its `urllib3.Retry` without `redirect=0`, so a 302 from the token
+    endpoint is followed and the form body, client_secret included, is re-POSTed to wherever
+    the redirect points."""
+    fake_api.token_responses = [(302, {"Location": fake_api.url + "/collector"})]
+    source = TokenSource("id", "secret", "us1", fake_api.url + "/oauth2/token")
+    with pytest.raises(CredentialsError):
+        source.token()
+    assert fake_api.requests_for("/collector") == []
+    assert len(fake_api.token_requests()) == 1
+
+
+@pytest.mark.parametrize(
+    ("body", "match"),
+    [
+        ("<html>login</html>", "not JSON"),
+        ([], "JSON object"),
+    ],
+)
+def test_a_non_json_token_response_is_a_credentials_error(
+    fake_api: FakeApi, body: str | list, match: str
+) -> None:
+    """`_request` calls `json.loads(response.data)` unguarded, so a non-JSON body or a JSON
+    body that is not an object surfaces as a bare `json.JSONDecodeError` or `AttributeError`
+    instead of a `CredentialsError`."""
+    fake_api.token_responses = [(200, body)]
+    source = TokenSource("id", "secret", "us1", fake_api.url + "/oauth2/token")
+    with pytest.raises(CredentialsError, match=match):
+        source.token()

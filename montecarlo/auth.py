@@ -5,7 +5,8 @@ Build a client with `new_client`. Credentials resolve from the `Options` passed 
 the environment, then from the credentials file the Monte Carlo CLI writes, so a caller with
 the CLI already configured can often pass an endpoint alone and get a working client. Do not
 build one from the generated `ApiClient` or `Configuration` directly: the spec declares no
-server, so their default host is empty and a client built from them sends every request nowhere.
+server, so their default host is empty and the first call fails inside urllib3 with
+`No host specified` rather than reaching the API.
 
 The API accepts exactly one credential mechanism per request, as an Authorization bearer
 header: an OAuth 2.0 client-credentials access token, or a Monte Carlo API token.
@@ -18,12 +19,11 @@ import os
 import platform
 from collections.abc import Callable
 from dataclasses import dataclass, field
-from urllib.parse import urlparse
 
 from montecarlo import profile as profiles
 from montecarlo.api_client import ApiClient
 from montecarlo.configuration import Configuration
-from montecarlo.oauth import TokenSource, validate_instance_id
+from montecarlo.oauth import TokenSource, validate_instance_id, validate_url
 from montecarlo.profile import CredentialsError
 
 __all__ = ["CredentialsError", "Options", "new_client"]
@@ -81,23 +81,27 @@ class Options:
     def has_credentials(self) -> bool:
         return self.uses_oauth() or self.uses_api_token() or bool(self.token)
 
+    def _check_pairs(self) -> None:
+        """A half-set credential pair is a configuration error, never a fall-through."""
+        if bool(self.client_id) != bool(self.client_secret):
+            raise CredentialsError("client id and client secret are both required for OAuth")
+        if bool(self.token_id) != bool(self.token_secret):
+            raise CredentialsError("token id and token secret are both required for an API token")
+
     def validate(self) -> None:
         """Enforce each mechanism's contract, so a misconfiguration fails at construction."""
         if not self.endpoint:
             raise CredentialsError("endpoint is required")
-        _validate_url(self.endpoint, "endpoint")
+        validate_url(self.endpoint, "endpoint")
         if self.token_url:
-            _validate_url(self.token_url, "token url")
-        if self.client_id or self.client_secret:
-            if not (self.client_id and self.client_secret):
-                raise CredentialsError("client id and client secret are both required for OAuth")
+            validate_url(self.token_url, "token url")
+        self._check_pairs()
+        if self.uses_oauth():
             if not self.instance:
                 raise CredentialsError(
                     "instance is required with OAuth client credentials, e.g. us1"
                 )
             validate_instance_id(self.instance)
-        if bool(self.token_id) != bool(self.token_secret):
-            raise CredentialsError("token id and token secret are both required for an API token")
         if not self.has_credentials():
             raise CredentialsError(
                 "no credentials: set client id and secret, token id and secret, or a token"
@@ -129,9 +133,15 @@ class Options:
         the caller never asked for. `instance` is filled from the environment unconditionally:
         it is a routing hint, not a credential.
 
-        A profile is consulted only when one is named, or no mechanism was found by then. A
+        A half-set pair supplied here is an error before any fallback is consulted: it is never
+        silently replaced by the profile's credentials.
+
+        A profile is consulted when one is named, when no mechanism was found by then, or when
+        the endpoint is still empty. `MCD_DEFAULT_PROFILE`, if set, only selects which section a
+        consulted profile reads from; it does not by itself make a missing file an error. A
         profile named explicitly has to exist; otherwise a missing file means whatever was
-        supplied stands on its own. A file that exists but cannot be read is always an error.
+        supplied stands on its own. A file that exists but cannot be read is always an error. A
+        profile supplies `instance` and `token_url` only when OAuth is the selected mechanism.
         """
         out = dataclasses.replace(self)
 
@@ -145,6 +155,7 @@ class Options:
             elif token_id and token_secret:
                 out.token_id, out.token_secret = token_id, token_secret
         out.instance = out.instance or os.environ.get(profiles.ENV_INSTANCE, "")
+        out._check_pairs()
 
         named = bool(out.profile)
         has_credentials = out.has_credentials()
@@ -153,10 +164,10 @@ class Options:
 
         try:
             loaded = profiles.load_profile(out.profile, out.config_dir)
-        except FileNotFoundError:
+        except FileNotFoundError as exc:
             if named:
                 raise CredentialsError(
-                    f"profile {out.profile!r} not found: no profiles file"
+                    f"profile {out.profile!r} not found: no profiles file at {exc.filename}"
                 ) from None
             return out
 
@@ -170,21 +181,9 @@ class Options:
         return out
 
 
-def _validate_url(raw: str, name: str) -> None:
-    """Require an absolute https URL; http is allowed only for a loopback host, for tests."""
-    parsed = urlparse(raw)
-    if not parsed.scheme or not parsed.netloc:
-        raise CredentialsError(f"{name} must be an absolute URL: {raw!r}")
-    if parsed.scheme == "https":
-        return
-    if parsed.scheme == "http" and parsed.hostname in ("localhost", "127.0.0.1", "::1"):
-        return
-    raise CredentialsError(
-        f"{name} must use https (http is allowed only for a loopback host): {raw!r}"
-    )
-
-
 def default_user_agent() -> str:
+    # Deferred: montecarlo/__init__.py imports this module, so a module-level import would be a
+    # cycle.
     from montecarlo import __version__
 
     return f"mc-sdk-python/{__version__} (python/{platform.python_version()})"
@@ -204,19 +203,13 @@ class _AuthenticatedClient(ApiClient):
         super().__init__(configuration)
         self._credential = credential
 
-    def call_api(
-        self,
-        method,
-        url,
-        header_params=None,
-        body=None,
-        post_params=None,
-        _request_timeout=None,
-    ):
+    def call_api(self, method, url, header_params=None, *args, **kwargs):
+        # The generated operations pass `param_serialize`'s tuple positionally; only the header
+        # dict is touched here, so a changed tuple shape past it is forwarded unchanged.
         headers = dict(header_params or {})
         if not any(name.lower() == "authorization" for name in headers):
             headers["Authorization"] = f"Bearer {self._credential()}"
-        return super().call_api(method, url, headers, body, post_params, _request_timeout)
+        return super().call_api(method, url, headers, *args, **kwargs)
 
 
 def new_client(options: Options | None = None) -> ApiClient:

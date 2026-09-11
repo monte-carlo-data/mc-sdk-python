@@ -5,6 +5,10 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 # Read-only: the job lints, type-checks and tests the package and never writes back to the
 # repository, so the default (often broader) GITHUB_TOKEN permissions are not needed.
 permissions:
@@ -13,9 +17,11 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      UV_PYTHON: ${{ matrix.python-version }}
     strategy:
       matrix:
-        python-version: ["3.10", "3.12"]
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
     steps:
       - uses: actions/checkout@v4
 
@@ -23,10 +29,14 @@ jobs:
         uses: astral-sh/setup-uv@v3
         with:
           version: "0.6.x"
-          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: uv sync
+        # The committed lockfile is what CI tests; a stale one fails here instead of being
+        # silently re-resolved.
+        run: uv sync --locked
+
+      - name: Python version matches the matrix
+        run: uv run python -c "import sys; assert sys.version_info[:2] == tuple(map(int, '${{ matrix.python-version }}'.split('.'))), sys.version"
 
       - name: Lint
         run: uv run ruff check .
@@ -40,21 +50,24 @@ jobs:
       - name: Test
         run: uv run pytest
 
-      # The generator writes at the repository root, so the root ignore file is the only thing
-      # protecting the hand-written files from the next generation run. Every hand-written
-      # path it must cover is asserted here, whole line for whole line, the same way
-      # api-codegen's generate-python-sdk.sh checks it before generating.
-      - name: Every hand-written file stays protected from the generator
+      # The marker line is what tells a hand-written module from generator output, so both
+      # directions derive from it: every marked module under the package is listed in the
+      # ignore file, and every package entry in the ignore file is a marked module. No list of
+      # generated names to maintain, so a generator upgrade that adds a module cannot fail this
+      # with a misleading message.
+      - name: Hand-written and generated files stay told apart
         run: |
           test -s .openapi-generator-ignore
           for p in pyproject.toml README.md .gitignore; do
             grep -qxF "$p" .openapi-generator-ignore || { echo "$p is hand-written but not protected"; exit 1; }
           done
-          for f in montecarlo/*.py; do
-            b=$(basename "$f")
-            case "$b" in __init__.py|api_client.py|api_response.py|configuration.py|exceptions.py|rest.py) continue ;; esac
-            grep -qxF "montecarlo/$b" .openapi-generator-ignore || { echo "montecarlo/$b is hand-written but not protected"; exit 1; }
+          for f in $(find montecarlo -name '*.py'); do
+            [ "$(head -n1 "$f")" = "# Hand-written, not generator output." ] || continue
+            grep -qxF "$f" .openapi-generator-ignore || { echo "$f is hand-written but not protected"; exit 1; }
           done
+          while IFS= read -r f; do
+            head -n1 "$f" | grep -qxF '# Hand-written, not generator output.' || { echo "$f is protected but not marked hand-written"; exit 1; }
+          done < <(grep -E '^montecarlo/' .openapi-generator-ignore)
 
       # Nine root paths the generator would emit are suppressed via the ignore file. Drop an
       # entry and the file comes back, so guard their absence and the entries both.
@@ -65,14 +78,9 @@ jobs:
             test ! -e "$p" || { echo "$p should be suppressed"; exit 1; }
           done
 
-      # The package is the only Python at the root; a generator pointed at the wrong directory
-      # would land a second copy of it somewhere else.
+      # The generator's only root .py is setup.py, suppressed above. Any other .py at the root
+      # means it wrote something the suppression list does not cover. A generator pointed at
+      # the package directory instead of the repository root is caught upstream, by
+      # generate-python-sdk.sh's basename and pyproject.toml checks.
       - name: Only the package holds Python
         run: test -z "$(find . -maxdepth 1 -name '*.py')"
-
-      # Hand-written modules announce themselves, so a reviewer can tell them from output.
-      - name: Hand-written modules carry the marker
-        run: |
-          for f in montecarlo/auth.py montecarlo/oauth.py montecarlo/profile.py; do
-            head -n1 "$f" | grep -qF "Hand-written, not generator output." || { echo "$f lacks the hand-written marker"; exit 1; }
-          done

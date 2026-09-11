@@ -76,19 +76,21 @@ non-default deployment, this SDK reads it too but reinterprets it: there it hold
 endpoint (`.../graphql`), and this SDK strips the trailing `/graphql` before using it as the
 REST base URL.
 
-Anything you leave unset is filled in, in this order:
-
-1. What you pass in `Options`.
-2. `MCD_DEFAULT_API_ID` and `MCD_DEFAULT_API_TOKEN`, or `MCD_DEFAULT_OAUTH_CLIENT_ID` and
-   `MCD_DEFAULT_OAUTH_CLIENT_SECRET`, and `MCD_DEFAULT_INSTANCE_ID`.
-3. A profile from `~/.mcd/profiles.ini`, which the CLI writes.
+Resolution picks a whole credential mechanism, not individual fields. If `Options` supplies a
+complete mechanism, the environment and the profile are not consulted for credentials.
+Otherwise: `MCD_DEFAULT_OAUTH_CLIENT_ID` and `MCD_DEFAULT_OAUTH_CLIENT_SECRET` (with
+`MCD_DEFAULT_INSTANCE_ID`) are tried first, then `MCD_DEFAULT_API_ID` and
+`MCD_DEFAULT_API_TOKEN`, then a profile from `~/.mcd/profiles.ini`, which the CLI writes. A
+profile supplies `instance` and the token endpoint only when it also supplied the OAuth
+credentials; an endpoint left empty is always filled from the profile.
 
 This SDK does not read `MCD_API_ENDPOINT`, even though the CLI and pycarlo both do. That
 variable carries the GraphQL endpoint, and `endpoint` here is the REST base URL.
 
 To pick a profile other than `default`, set `profile`, or the `MCD_DEFAULT_PROFILE`
-environment variable. A profile you name explicitly has to exist; the SDK reports that rather
-than quietly falling back to different credentials.
+environment variable. A profile you name in `profile` has to exist; the SDK reports that rather
+than quietly falling back to different credentials. `MCD_DEFAULT_PROFILE` only selects which
+section is read when a profile is consulted at all.
 
 ## What is generated and what is not
 
@@ -100,9 +102,12 @@ than quietly falling back to different credentials.
 | `montecarlo/auth.py`, `oauth.py`, `profile.py` | Hand-written. `new_client`, `Options`, and the credential resolution behind them. |
 | `tests/` | Hand-written tests for the hand-written surface. |
 
-The generator writes at the repository root and overwrites every file it emits there on every
-run. The hand-written files are listed in `.openapi-generator-ignore`; adding a file outside
-that list risks having it silently overwritten the next time the tree regenerates.
+The generator writes at the repository root, replacing any path it emits and deleting nothing.
+Every hand-written file it would otherwise emit (`pyproject.toml`, `README.md`, `.gitignore`,
+and the three modules inside the package) is listed in `.openapi-generator-ignore`; other
+hand-written files (`tests/`, `AGENTS.md`, `LICENSE`, the CI workflow) are names the generator
+never emits and need no entry. Adding a file that shares a generated path without listing it
+risks a silent overwrite.
 
 ## API reference
 
@@ -113,9 +118,11 @@ that list risks having it silently overwritten the next time the tree regenerate
 - [`DeploymentsApi`](docs/DeploymentsApi.md)
 - [`UsersApi`](docs/UsersApi.md)
 
-Each generated page's "All URIs are relative to *http://localhost*" line is a placeholder left
-by the spec's empty default server URL, not a real base URL. The real one is whatever
-`endpoint` you pass to `montecarlo.new_client`.
+Each generated page's "All URIs are relative to *http://localhost*" line and its example block
+are generator boilerplate: the example builds `Configuration` and `ApiClient` directly and sets
+`access_token` on the configuration, which `to_debug_report()` then renders. Ignore both and
+build the client with `montecarlo.new_client` as shown under [Usage](#usage); the real base URL
+is whatever `endpoint` you pass.
 
 ## Contributing
 

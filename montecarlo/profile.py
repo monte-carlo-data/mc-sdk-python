@@ -1,9 +1,12 @@
 # Hand-written, not generator output.
-"""The credentials file every Monte Carlo tool shares, and the environment that overrides it.
+"""The credentials file every Monte Carlo tool shares, and the environment variable names that
+can stand in for it.
 
-`~/.mcd/profiles.ini` is written by the Monte Carlo CLI and read by pycarlo and mc-sdk-go, so
-this module reads the same file, the same section names and the same keys. Most keys mean the
-same thing here; `mcd_api_endpoint` is reinterpreted, see `strip_graphql_path`.
+This module owns the credentials file and the names of the environment variables; the
+three-tier resolution itself — options, then environment, then this file — is `Options.resolve`
+in `auth.py`. `~/.mcd/profiles.ini` is written by the Monte Carlo CLI and read by pycarlo and
+mc-sdk-go, so this module reads the same file, the same section names and the same keys. Most
+keys mean the same thing here; `mcd_api_endpoint` is reinterpreted, see `strip_graphql_path`.
 """
 
 from __future__ import annotations
@@ -69,7 +72,11 @@ class Profile:
 
 def config_dir() -> Path:
     """The default directory holding the credentials file, `~/.mcd`."""
-    return Path.home() / CONFIG_DIR_NAME
+    try:
+        home = Path.home()
+    except RuntimeError:
+        raise CredentialsError("no home directory to look for .mcd under") from None
+    return home / CONFIG_DIR_NAME
 
 
 def strip_graphql_path(endpoint: str) -> str:
@@ -85,12 +92,17 @@ def strip_graphql_path(endpoint: str) -> str:
 def parse_ini(path: Path) -> dict[str, dict[str, str]]:
     """Read the credentials file into `{section: {key: value}}`, keys lower-cased.
 
-    An unparseable file is a `CredentialsError` naming the path and nothing else: the file is
-    machine-written, so a line this parser cannot read means the file is not what this code
-    thinks it is, and the offending line is often the one holding the token. A missing file
-    propagates as `FileNotFoundError` so a caller can tell absence from damage.
+    A missing file propagates as `FileNotFoundError` so a caller can tell absence from damage;
+    any other read failure, or an unparseable file, is a `CredentialsError` naming the path and
+    nothing else.
     """
-    text = path.read_text()
+    try:
+        text = path.read_text()
+    except FileNotFoundError:
+        raise
+    except (OSError, UnicodeDecodeError):
+        # `from None`: the chained message could carry the path's internals or a line of the file.
+        raise CredentialsError(f"{path}: cannot be read") from None
     parser = configparser.ConfigParser(interpolation=None)
     try:
         parser.read_string(text, source=str(path))
@@ -103,16 +115,19 @@ def parse_ini(path: Path) -> dict[str, dict[str, str]]:
 def load_profile(name: str = "", directory: str | os.PathLike[str] | None = None) -> Profile:
     """Read one profile's credentials.
 
-    An empty name resolves to `MCD_DEFAULT_PROFILE`, then to `default`. An empty directory
-    resolves to `~/.mcd`. A named profile missing from the file is an error: a caller that asked
-    for specific credentials should hear that they are missing rather than silently get someone
-    else's.
+    An empty name resolves to `MCD_DEFAULT_PROFILE`, then to `default`. A `None` or empty-string
+    directory resolves to `~/.mcd`. A named profile missing from the file is an error: a caller
+    that asked for specific credentials should hear that they are missing rather than silently get
+    someone else's.
 
     Within a profile, OAuth client credentials take precedence over an API token, as in pycarlo.
     Half of either pair is a configuration error, not a fall-through to the other mechanism.
     """
     name = name or os.environ.get(ENV_PROFILE, "") or DEFAULT_PROFILE_NAME
-    path = Path(directory) / PROFILE_FILE_NAME if directory else config_dir() / PROFILE_FILE_NAME
+    if directory is None or os.fspath(directory) == "":
+        path = config_dir() / PROFILE_FILE_NAME
+    else:
+        path = Path(directory) / PROFILE_FILE_NAME
     sections = parse_ini(path)
     values = sections.get(name)
     if values is None:

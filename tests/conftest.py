@@ -18,7 +18,7 @@ from urllib.parse import parse_qs
 
 import pytest
 
-from montecarlo.profile import ENVIRONMENT_KEYS
+from montecarlo.profile import ENVIRONMENT_KEYS, PROFILE_FILE_NAME
 
 CURRENT_USER = {
     "account_frozen": False,
@@ -27,6 +27,47 @@ CURRENT_USER = {
     "identity_type": "user",
     "user_id": "u1",
 }
+
+DEPLOYMENT = {
+    "aws_external_id": None,
+    "created_time": None,
+    "enabled": True,
+    "id": "00000000-0000-4000-8000-000000000002",
+    "last_updated_time": None,
+    "name": "prod",
+    "runtime_platform": "AWS",
+    "type": "COLLECTION_AGENT",
+}
+
+# The file is written by the CLI and read by every Monte Carlo tool, so this is the layout it
+# produces, including keys this SDK does not use.
+SAMPLE_PROFILES = """
+[default]
+mcd_id = default-id
+mcd_token = default-secret
+mcd_api_endpoint = https://api.example.com
+aws_profile = something-this-sdk-ignores
+
+; a comment
+[oauth-profile]
+mcd_oauth_client_id = client-id
+mcd_oauth_client_secret = client-secret
+mcd_instance_id = eu1
+mcd_id = ignored-when-oauth-is-present
+mcd_token = also-ignored
+
+[both-endpoints]
+mcd_id = id
+mcd_token = secret
+mcd_api_endpoint = https://api.example.com
+mcd_token_endpoint = https://login.example.com/token
+"""
+
+
+def write_profiles(directory: Path, contents: str = SAMPLE_PROFILES) -> Path:
+    path = directory / PROFILE_FILE_NAME
+    path.write_text(contents)
+    return path
 
 
 @pytest.fixture
@@ -51,25 +92,35 @@ class Request:
     path: str
     headers: list[tuple[str, str]]
     form: dict[str, list[str]]
+    body: str
 
 
 @dataclass
 class FakeApi:
-    """A loopback server answering `GET /api/v2/users/me` and `POST /oauth2/token`.
+    """A loopback server. `/oauth2/token` answers with the next `token_responses` entry (or a
+    fresh token); every other path answers 200 with `api_response`, `CURRENT_USER` by default.
+    Every request is recorded, body included.
 
     `token_responses` is consumed one per token request as `(status, body)`; when it runs
-    out, the server answers with a fresh `oauth-access-token`.
+    out, the server answers with a fresh `oauth-access-token`. `body` is usually a dict or
+    list, sent as JSON; a `(301|302|307|308, {"Location": url})` pair sends that status with a
+    `Location` header and an empty body instead, and a `str` body is sent verbatim with a
+    `text/html` content type, to exercise a redirect or a non-JSON response.
     """
 
     url: str
     requests: list[Request] = field(default_factory=list)
-    token_responses: list[tuple[int, dict]] = field(default_factory=list)
+    token_responses: list[tuple[int, dict | list | str]] = field(default_factory=list)
+    api_response: dict | list = field(default_factory=lambda: CURRENT_USER)
 
     def token_requests(self) -> list[Request]:
         return [r for r in self.requests if r.path == "/oauth2/token"]
 
     def api_requests(self) -> list[Request]:
         return [r for r in self.requests if r.path != "/oauth2/token"]
+
+    def requests_for(self, path: str) -> list[Request]:
+        return [r for r in self.requests if r.path == path]
 
 
 @pytest.fixture
@@ -88,11 +139,12 @@ def fake_api() -> Iterator[FakeApi]:
                 path=self.path,
                 headers=[(k, v) for k, v in self.headers.items()],
                 form=parse_qs(body),
+                body=body,
             )
             state.requests.append(request)
             return request
 
-        def _reply(self, status: int, payload: dict) -> None:
+        def _reply(self, status: int, payload: dict | list) -> None:
             data = json.dumps(payload).encode()
             self.send_response(status)
             self.send_header("Content-Type", "application/json")
@@ -100,17 +152,56 @@ def fake_api() -> Iterator[FakeApi]:
             self.end_headers()
             self.wfile.write(data)
 
-        def do_GET(self) -> None:
-            self._record()
-            self._reply(200, CURRENT_USER)
+        def _redirect(self, status: int, location: str) -> None:
+            self.send_response(status)
+            self.send_header("Location", location)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
 
-        def do_POST(self) -> None:
-            self._record()
+        def _reply_raw(self, status: int, text: str) -> None:
+            data = text.encode()
+            self.send_response(status)
+            self.send_header("Content-Type", "text/html")
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
+
+        def _reply_token(self) -> None:
             if state.token_responses:
                 status, payload = state.token_responses.pop(0)
             else:
                 status, payload = 200, {"access_token": "oauth-access-token", "expires_in": 3600}
-            self._reply(status, payload)
+            if isinstance(payload, str):
+                self._reply_raw(status, payload)
+            elif (
+                isinstance(payload, dict)
+                and "Location" in payload
+                and status
+                in (
+                    301,
+                    302,
+                    307,
+                    308,
+                )
+            ):
+                self._redirect(status, payload["Location"])
+            else:
+                self._reply(status, payload)
+
+        def do_GET(self) -> None:
+            self._record()
+            self._reply(200, state.api_response)
+
+        def do_POST(self) -> None:
+            request = self._record()
+            if request.path == "/oauth2/token":
+                self._reply_token()
+            else:
+                self._reply(200, state.api_response)
+
+        def do_PATCH(self) -> None:
+            self._record()
+            self._reply(200, state.api_response)
 
     server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
     state.url = f"http://127.0.0.1:{server.server_port}"

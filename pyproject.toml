@@ -1,6 +1,6 @@
 [project]
-# Both names are provisional until the team settles the SDK's name. They are spelled here, in
-# the package directory, and in api-codegen's generate-python-sdk.sh, and nowhere else.
+# Both names are provisional until the team settles the SDK's name. The package name is also
+# api-codegen's generate-python-sdk.sh PACKAGE_NAME; the distribution name is also in uv.lock.
 name = "montecarlo-sdk"
 version = "0.0.0"
 description = "Official Python SDK for the Monte Carlo REST API."
@@ -29,18 +29,19 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["montecarlo"]
 
-# Lint and type-check the hand-written surface only. Generated code is not ours to fix: a
-# finding there belongs in the API or in the generator.
 [tool.ruff]
 line-length = 100
 target-version = "py310"
-include = ["montecarlo/auth.py", "montecarlo/oauth.py", "montecarlo/profile.py", "tests/**/*.py"]
+# Everything but the generator's own files: a new hand-written module is linted by default,
+# and a finding in generated code belongs in the API or the generator, not here.
+extend-exclude = ["montecarlo/api", "montecarlo/models", "montecarlo/__init__.py", "montecarlo/api_client.py", "montecarlo/api_response.py", "montecarlo/configuration.py", "montecarlo/exceptions.py", "montecarlo/rest.py", "docs"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
 
 [tool.pyright]
-include = ["montecarlo/auth.py", "montecarlo/oauth.py", "montecarlo/profile.py", "tests"]
+include = ["montecarlo", "tests"]
+exclude = ["montecarlo/api", "montecarlo/models", "montecarlo/__init__.py", "montecarlo/api_client.py", "montecarlo/api_response.py", "montecarlo/configuration.py", "montecarlo/exceptions.py", "montecarlo/rest.py"]
 venvPath = "."
 venv = ".venv"
 pythonVersion = "3.10"

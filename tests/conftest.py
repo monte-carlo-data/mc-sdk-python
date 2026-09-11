@@ -106,12 +106,17 @@ class FakeApi:
     list, sent as JSON; a `(301|302|307|308, {"Location": url})` pair sends that status with a
     `Location` header and an empty body instead, and a `str` body is sent verbatim with a
     `text/html` content type, to exercise a redirect or a non-JSON response.
+
+    When `redirect_api_to` is set, every API path other than `/collector` answers 307 with
+    that Location; `/collector` answers 200 with `api_response`, so a test can assert whether
+    the client followed the redirect there.
     """
 
     url: str
     requests: list[Request] = field(default_factory=list)
     token_responses: list[tuple[int, dict | list | str]] = field(default_factory=list)
     api_response: dict | list = field(default_factory=lambda: CURRENT_USER)
+    redirect_api_to: str = ""
 
     def token_requests(self) -> list[Request]:
         return [r for r in self.requests if r.path == "/oauth2/token"]
@@ -190,18 +195,26 @@ def fake_api() -> Iterator[FakeApi]:
 
         def do_GET(self) -> None:
             self._record()
-            self._reply(200, state.api_response)
+            if state.redirect_api_to and self.path != "/collector":
+                self._redirect(307, state.redirect_api_to)
+            else:
+                self._reply(200, state.api_response)
 
         def do_POST(self) -> None:
             request = self._record()
             if request.path == "/oauth2/token":
                 self._reply_token()
+            elif state.redirect_api_to and self.path != "/collector":
+                self._redirect(307, state.redirect_api_to)
             else:
                 self._reply(200, state.api_response)
 
         def do_PATCH(self) -> None:
             self._record()
-            self._reply(200, state.api_response)
+            if state.redirect_api_to and self.path != "/collector":
+                self._redirect(307, state.redirect_api_to)
+            else:
+                self._reply(200, state.api_response)
 
     server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
     state.url = f"http://127.0.0.1:{server.server_port}"

@@ -6,7 +6,7 @@ from uuid import UUID
 
 import pytest
 
-from montecarlo import DeploymentsApi, UsersApi, __version__
+from montecarlo import ApiException, DeploymentsApi, UsersApi, __version__
 from montecarlo.auth import CredentialsError, Options, new_client
 from montecarlo.models.deployment_patch import DeploymentPatch
 from montecarlo.profile import PROFILE_FILE_NAME, config_dir
@@ -486,3 +486,17 @@ def test_a_body_carrying_request_is_forwarded_intact(isolate: Path, fake_api: Fa
     assert json.loads(request.body) == {"name": "renamed"}
     authorization = [v for k, v in request.headers if k.lower() == "authorization"]
     assert len(authorization) == 1
+
+
+def test_the_api_client_does_not_follow_a_redirect_with_the_credential(
+    isolate: Path, fake_api: FakeApi
+) -> None:
+    """A 3xx from the API is the response, not a hop that carries the bearer to another host."""
+    fake_api.redirect_api_to = fake_api.url + "/collector"
+    client = new_client(
+        Options(endpoint=fake_api.url, token_id="id", token_secret="secret", config_dir=isolate)
+    )
+    with pytest.raises(ApiException) as info:
+        UsersApi(client).get_current_user()
+    assert info.value.status == 307
+    assert fake_api.requests_for("/collector") == []

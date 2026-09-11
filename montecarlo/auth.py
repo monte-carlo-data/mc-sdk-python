@@ -9,7 +9,8 @@ server, so their default host is empty and the first call fails inside urllib3 w
 `No host specified` rather than reaching the API.
 
 The API accepts exactly one credential mechanism per request, as an Authorization bearer
-header: an OAuth 2.0 client-credentials access token, or a Monte Carlo API token.
+header: an OAuth 2.0 client-credentials access token, or a Monte Carlo API token. Neither the
+API client nor the token exchange follows a redirect.
 """
 
 from __future__ import annotations
@@ -20,6 +21,8 @@ import platform
 from collections.abc import Callable
 from dataclasses import dataclass, field
 
+import urllib3
+
 from montecarlo import profile as profiles
 from montecarlo.api_client import ApiClient
 from montecarlo.configuration import Configuration
@@ -27,6 +30,11 @@ from montecarlo.oauth import TokenSource, validate_instance_id, validate_url
 from montecarlo.profile import CredentialsError
 
 __all__ = ["CredentialsError", "Options", "new_client"]
+
+# The API has one host, so a redirect is returned as the response rather than followed: the
+# credential is attached to every request, and a 307 or 308 would carry it and the body to
+# whatever host the Location header names. total=3 keeps urllib3's default connection retries.
+API_REQUEST_RETRIES = urllib3.Retry(total=3, redirect=0, raise_on_redirect=False)
 
 
 @dataclass
@@ -233,7 +241,7 @@ def new_client(options: Options | None = None) -> ApiClient:
         bearer = resolved.bearer()
         credential = lambda: bearer  # noqa: E731
 
-    configuration = Configuration(host=resolved.base_url())
+    configuration = Configuration(host=resolved.base_url(), retries=API_REQUEST_RETRIES)
     client = _AuthenticatedClient(configuration, credential)
     client.user_agent = resolved.user_agent or default_user_agent()
     return client

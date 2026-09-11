@@ -54,7 +54,7 @@ client = montecarlo.new_client(
 )
 ```
 
-Tokens are fetched and renewed as needed, so a long-lived client does not go stale.
+Tokens are fetched and renewed as needed, so a long-lived client does not go stale. Neither the token exchange nor the API client follows a redirect.
 
 The operations and the request and response models they take are all importable from the
 package, so one import covers everything: `montecarlo.DeploymentIn`, `montecarlo.ProblemOut`,

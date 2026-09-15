@@ -28,15 +28,15 @@ class ProblemOut(BaseModel):
     """
     The error body returned by every failed request.  Every response with a status of 400 or higher has this shape, so a client only has one error contract to handle no matter which endpoint or which failure produced it.
     """ # noqa: E501
+    type: StrictStr = Field(description="URI identifying the category of error. The same category always uses the same URI.")
+    title: StrictStr = Field(description="Short, human-readable summary of the category of error.")
+    status: StrictInt = Field(description="HTTP status code, repeated here for clients that only see the body.")
     code: StrictStr = Field(description="Machine-readable code identifying the category of error. Branch on this rather than on `status`, because several codes can share one status.")
     detail: StrictStr = Field(description="Human-readable explanation of this particular occurrence of the error.")
+    request_id: StrictStr = Field(description="Identifier for this request, also returned in the `X-Request-Id` header. Quote it when reporting the error to support.")
     errors: Optional[List[FieldErrorOut]] = Field(default=None, description="The fields that failed validation. Empty unless this is a validation error.")
     extra: Optional[Dict[str, StrictStr]] = Field(default=None, description="Values that parameterize `message`, for a client that renders its own text instead of showing `message` directly. Absent when there is nothing to report.")
-    request_id: StrictStr = Field(description="Identifier for this request, also returned in the `X-Request-Id` header. Quote it when reporting the error to support.")
-    status: StrictInt = Field(description="HTTP status code, repeated here for clients that only see the body.")
-    title: StrictStr = Field(description="Short, human-readable summary of the category of error.")
-    type: StrictStr = Field(description="URI identifying the category of error. The same category always uses the same URI.")
-    __properties: ClassVar[List[str]] = ["code", "detail", "errors", "extra", "request_id", "status", "title", "type"]
+    __properties: ClassVar[List[str]] = ["type", "title", "status", "code", "detail", "request_id", "errors", "extra"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -101,14 +101,14 @@ class ProblemOut(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "type": obj.get("type"),
+            "title": obj.get("title"),
+            "status": obj.get("status"),
             "code": obj.get("code"),
             "detail": obj.get("detail"),
-            "errors": [FieldErrorOut.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
-            "extra": obj.get("extra"),
             "request_id": obj.get("request_id"),
-            "status": obj.get("status"),
-            "title": obj.get("title"),
-            "type": obj.get("type")
+            "errors": [FieldErrorOut.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
+            "extra": obj.get("extra")
         })
         return _obj
 

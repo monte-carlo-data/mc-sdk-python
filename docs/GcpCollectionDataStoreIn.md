@@ -6,10 +6,10 @@ Details Monte Carlo needs to access a data store you keep in a Google Cloud Stor
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bucket_name** | **str** | Name of the Cloud Storage bucket Monte Carlo should use. | 
 **deployment_id** | **UUID** | Deployment to register the data store on. It must already hold an unregistered Cloud Storage data store. | 
-**name** | **str** | Display name for the data store. Replaces the name its deployment gave it. | [optional] 
+**bucket_name** | **str** | Name of the Cloud Storage bucket Monte Carlo should use. | 
 **service_account_key** | **str** | Service account key Monte Carlo reaches the bucket with, as the contents of the JSON key file Google issued for it. It replaces the stored key rather than merging into it. | 
+**name** | **str** | Display name for the data store. Replaces the name its deployment gave it. | [optional] 
 
 ## Example
 

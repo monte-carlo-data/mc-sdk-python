@@ -6,10 +6,10 @@ The service principal Monte Carlo authenticates as.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**audience** | **str** | Audience the issued token is for, usually the function app&#39;s application id. | 
+**tenant_id** | **str** | Directory (tenant) id the service principal lives in. | 
 **client_id** | **str** | Application (client) id of the service principal. | 
 **client_secret** | **str** | Client secret of the service principal. | 
-**tenant_id** | **str** | Directory (tenant) id the service principal lives in. | 
+**audience** | **str** | Audience the issued token is for, usually the function app&#39;s application id. | 
 
 ## Example
 

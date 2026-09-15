@@ -29,9 +29,9 @@ class AwsCollectionDataStorePatch(BaseModel):
     Details to change on an S3 data store. Only what you send is changed.  Sending only `name` skips the bucket checks, since a name is not validated against your storage.
     """ # noqa: E501
     bucket_name: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="Name of the S3 bucket Monte Carlo should use.")
-    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the data store. Replaces the name its deployment gave it.")
     role_arn: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="ARN of the role Monte Carlo assumes to access the bucket. Its trust policy must already carry the deployment's external id.")
-    __properties: ClassVar[List[str]] = ["bucket_name", "name", "role_arn"]
+    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the data store. Replaces the name its deployment gave it.")
+    __properties: ClassVar[List[str]] = ["bucket_name", "role_arn", "name"]
 
     @field_validator('bucket_name')
     def bucket_name_validate_regular_expression(cls, value):
@@ -103,15 +103,15 @@ class AwsCollectionDataStorePatch(BaseModel):
         if self.bucket_name is None and "bucket_name" in self.model_fields_set:
             _dict['bucket_name'] = None
 
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
-
         # set to None if role_arn (nullable) is None
         # and model_fields_set contains the field
         if self.role_arn is None and "role_arn" in self.model_fields_set:
             _dict['role_arn'] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
 
         return _dict
 
@@ -126,8 +126,8 @@ class AwsCollectionDataStorePatch(BaseModel):
 
         _obj = cls.model_validate({
             "bucket_name": obj.get("bucket_name"),
-            "name": obj.get("name"),
-            "role_arn": obj.get("role_arn")
+            "role_arn": obj.get("role_arn"),
+            "name": obj.get("name")
         })
         return _obj
 

@@ -30,19 +30,19 @@ class AwsCollectionAgentOut(BaseModel):
     """
     A collection agent running on AWS.
     """ # noqa: E501
-    authentication_type: Optional[AuthenticationType] = Field(description="How Monte Carlo authenticates when it calls the collection agent. Null for an agent that connects out instead, such as a generic one.")
-    created_time: Optional[datetime] = Field(default=None, description="When the collection agent was created. That is when its deployment was provisioned, which is before you register the agent.")
-    deployment_id: UUID = Field(description="Identifier of the deployment this collection agent runs on.")
-    enabled: StrictBool = Field(description="Whether Monte Carlo is using this collection agent. An agent Monte Carlo has not validated is not enabled, either because it has not been registered yet or because validation failed.")
-    external_id: Optional[StrictStr] = Field(default=None, description="Value to supply in the trust policy of the role Monte Carlo assumes to invoke the function. Null until Monte Carlo has generated one, for a caller who is not permitted to register an agent, and if the value could not be read just now. Retry the request in that last case.")
     id: UUID = Field(description="Unique identifier of the collection agent.")
+    name: Optional[StrictStr] = Field(default=None, description="Display name of the collection agent. Null when it has no name.")
+    deployment_id: UUID = Field(description="Identifier of the deployment this collection agent runs on.")
+    authentication_type: Optional[AuthenticationType] = Field(description="How Monte Carlo authenticates when it calls the collection agent. Null for an agent that connects out instead, such as a generic one.")
+    enabled: StrictBool = Field(description="Whether Monte Carlo is using this collection agent. An agent Monte Carlo has not validated is not enabled, either because it has not been registered yet or because validation failed.")
+    created_time: Optional[datetime] = Field(default=None, description="When the collection agent was created. That is when its deployment was provisioned, which is before you register the agent.")
+    last_updated_time: Optional[datetime] = Field(default=None, description="When the collection agent was last changed. Registering it, renaming it, changing how Monte Carlo reaches it, and Monte Carlo picking up a new image version all update this. Null until any of those has happened.")
     image_build: Optional[StrictStr] = Field(default=None, description="Build of the image the collection agent is running. Null until Monte Carlo has contacted the agent.")
     image_version: Optional[StrictStr] = Field(default=None, description="Version of the image the collection agent is running. Null until Monte Carlo has contacted the agent.")
     is_remote_upgradeable: StrictBool = Field(description="Whether Monte Carlo can update the collection agent's image for you.")
     lambda_function_arn: StrictStr = Field(description="ARN of the Lambda function Monte Carlo invokes. Empty until the agent has been registered.")
-    last_updated_time: Optional[datetime] = Field(default=None, description="When the collection agent was last changed. Registering it, renaming it, changing how Monte Carlo reaches it, and Monte Carlo picking up a new image version all update this. Null until any of those has happened.")
-    name: Optional[StrictStr] = Field(default=None, description="Display name of the collection agent. Null when it has no name.")
-    __properties: ClassVar[List[str]] = ["authentication_type", "created_time", "deployment_id", "enabled", "external_id", "id", "image_build", "image_version", "is_remote_upgradeable", "lambda_function_arn", "last_updated_time", "name"]
+    external_id: Optional[StrictStr] = Field(default=None, description="Value to supply in the trust policy of the role Monte Carlo assumes to invoke the function. Null until Monte Carlo has generated one, for a caller who is not permitted to register an agent, and if the value could not be read just now. Retry the request in that last case.")
+    __properties: ClassVar[List[str]] = ["id", "name", "deployment_id", "authentication_type", "enabled", "created_time", "last_updated_time", "image_build", "image_version", "is_remote_upgradeable", "lambda_function_arn", "external_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -83,6 +83,11 @@ class AwsCollectionAgentOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
         # set to None if authentication_type (nullable) is None
         # and model_fields_set contains the field
         if self.authentication_type is None and "authentication_type" in self.model_fields_set:
@@ -93,10 +98,10 @@ class AwsCollectionAgentOut(BaseModel):
         if self.created_time is None and "created_time" in self.model_fields_set:
             _dict['created_time'] = None
 
-        # set to None if external_id (nullable) is None
+        # set to None if last_updated_time (nullable) is None
         # and model_fields_set contains the field
-        if self.external_id is None and "external_id" in self.model_fields_set:
-            _dict['external_id'] = None
+        if self.last_updated_time is None and "last_updated_time" in self.model_fields_set:
+            _dict['last_updated_time'] = None
 
         # set to None if image_build (nullable) is None
         # and model_fields_set contains the field
@@ -108,15 +113,10 @@ class AwsCollectionAgentOut(BaseModel):
         if self.image_version is None and "image_version" in self.model_fields_set:
             _dict['image_version'] = None
 
-        # set to None if last_updated_time (nullable) is None
+        # set to None if external_id (nullable) is None
         # and model_fields_set contains the field
-        if self.last_updated_time is None and "last_updated_time" in self.model_fields_set:
-            _dict['last_updated_time'] = None
-
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
+        if self.external_id is None and "external_id" in self.model_fields_set:
+            _dict['external_id'] = None
 
         return _dict
 
@@ -130,18 +130,18 @@ class AwsCollectionAgentOut(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "authentication_type": obj.get("authentication_type"),
-            "created_time": obj.get("created_time"),
-            "deployment_id": obj.get("deployment_id"),
-            "enabled": obj.get("enabled"),
-            "external_id": obj.get("external_id"),
             "id": obj.get("id"),
+            "name": obj.get("name"),
+            "deployment_id": obj.get("deployment_id"),
+            "authentication_type": obj.get("authentication_type"),
+            "enabled": obj.get("enabled"),
+            "created_time": obj.get("created_time"),
+            "last_updated_time": obj.get("last_updated_time"),
             "image_build": obj.get("image_build"),
             "image_version": obj.get("image_version"),
             "is_remote_upgradeable": obj.get("is_remote_upgradeable"),
             "lambda_function_arn": obj.get("lambda_function_arn"),
-            "last_updated_time": obj.get("last_updated_time"),
-            "name": obj.get("name")
+            "external_id": obj.get("external_id")
         })
         return _obj
 

@@ -6,11 +6,11 @@ Details to change on an Azure collection agent. Only what you send is changed.  
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**authentication_type** | [**AzureAgentAuthenticationType**](AzureAgentAuthenticationType.md) | How Monte Carlo authenticates when it calls the agent. Send it together with the matching credentials object. | [optional] 
 **function_app_key** | [**FunctionAppKeyCredentialsIn**](FunctionAppKeyCredentialsIn.md) | Credentials for &#x60;AZURE_FUNCTION_APP_KEY&#x60;. Send this or &#x60;service_principal&#x60;, never both. | [optional] 
+**service_principal** | [**ServicePrincipalCredentialsIn**](ServicePrincipalCredentialsIn.md) | Credentials for &#x60;AZURE_FUNCTION_SERVICE_PRINCIPAL&#x60;. Send this or &#x60;function_app_key&#x60;, never both. | [optional] 
 **function_app_url** | **str** | URL of the function app Monte Carlo should call. | [optional] 
 **name** | **str** | Display name for the collection agent. Replaces the name it currently has. | [optional] 
-**service_principal** | [**ServicePrincipalCredentialsIn**](ServicePrincipalCredentialsIn.md) | Credentials for &#x60;AZURE_FUNCTION_SERVICE_PRINCIPAL&#x60;. Send this or &#x60;function_app_key&#x60;, never both. | [optional] 
+**authentication_type** | [**AzureAgentAuthenticationType**](AzureAgentAuthenticationType.md) | How Monte Carlo authenticates when it calls the agent. Send it together with the matching credentials object. | [optional] 
 
 ## Example
 

@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **deployment_id** | **UUID** | Deployment to register the collection agent on. It must already hold an unregistered AWS collection agent. | 
 **lambda_function_arn** | **str** | ARN of the Lambda function Monte Carlo should invoke. | 
-**name** | **str** | Display name for the collection agent. Replaces the name it currently has. | [optional] 
 **role_arn** | **str** | ARN of the role Monte Carlo assumes to invoke the function. Its trust policy must already carry the deployment&#39;s external id. | 
+**name** | **str** | Display name for the collection agent. Replaces the name it currently has. | [optional] 
 
 ## Example
 

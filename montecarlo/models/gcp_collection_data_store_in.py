@@ -29,11 +29,11 @@ class GcpCollectionDataStoreIn(BaseModel):
     """
     Details Monte Carlo needs to access a data store you keep in a Google Cloud Storage bucket.  Registering through this API always authenticates with a service account key. There is no authentication type to choose.
     """ # noqa: E501
-    bucket_name: Annotated[str, Field(strict=True)] = Field(description="Name of the Cloud Storage bucket Monte Carlo should use.")
     deployment_id: UUID = Field(description="Deployment to register the data store on. It must already hold an unregistered Cloud Storage data store.")
-    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the data store. Replaces the name its deployment gave it.")
+    bucket_name: Annotated[str, Field(strict=True)] = Field(description="Name of the Cloud Storage bucket Monte Carlo should use.")
     service_account_key: Annotated[str, Field(strict=True, max_length=16384)] = Field(description="Service account key Monte Carlo reaches the bucket with, as the contents of the JSON key file Google issued for it. It replaces the stored key rather than merging into it.")
-    __properties: ClassVar[List[str]] = ["bucket_name", "deployment_id", "name", "service_account_key"]
+    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the data store. Replaces the name its deployment gave it.")
+    __properties: ClassVar[List[str]] = ["deployment_id", "bucket_name", "service_account_key", "name"]
 
     @field_validator('bucket_name')
     def bucket_name_validate_regular_expression(cls, value):
@@ -101,10 +101,10 @@ class GcpCollectionDataStoreIn(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "bucket_name": obj.get("bucket_name"),
             "deployment_id": obj.get("deployment_id"),
-            "name": obj.get("name"),
-            "service_account_key": obj.get("service_account_key")
+            "bucket_name": obj.get("bucket_name"),
+            "service_account_key": obj.get("service_account_key"),
+            "name": obj.get("name")
         })
         return _obj
 

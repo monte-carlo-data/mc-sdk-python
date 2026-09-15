@@ -27,11 +27,11 @@ class FieldErrorOut(BaseModel):
     """
     One field of a request that failed validation.
     """ # noqa: E501
-    code: StrictStr = Field(description="Machine-readable code identifying the kind of validation failure.")
-    extra: Optional[Dict[str, StrictStr]] = Field(default=None, description="Values that parameterize `message`, for a client that renders its own text instead of showing `message` directly. Absent when there is nothing to report.")
     var_field: List[StrictStr] = Field(description="Where the invalid field sits, as the path to it from the top of the request body. For example `['port']`, or `['settings', 'timeout']` for a field nested inside an object.", alias="field")
+    code: StrictStr = Field(description="Machine-readable code identifying the kind of validation failure.")
     message: StrictStr = Field(description="Human-readable explanation of why this field failed validation.")
-    __properties: ClassVar[List[str]] = ["code", "extra", "field", "message"]
+    extra: Optional[Dict[str, StrictStr]] = Field(default=None, description="Values that parameterize `message`, for a client that renders its own text instead of showing `message` directly. Absent when there is nothing to report.")
+    __properties: ClassVar[List[str]] = ["field", "code", "message", "extra"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -89,10 +89,10 @@ class FieldErrorOut(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "code": obj.get("code"),
-            "extra": obj.get("extra"),
             "field": obj.get("field"),
-            "message": obj.get("message")
+            "code": obj.get("code"),
+            "message": obj.get("message"),
+            "extra": obj.get("extra")
         })
         return _obj
 

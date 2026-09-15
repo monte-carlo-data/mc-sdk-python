@@ -6,12 +6,12 @@ A key and secret a generic collection agent sends as headers on every request.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_time** | **datetime** | When the credential was created. | 
-**deployment_id** | **UUID** | Identifier of the deployment whose agent presents this credential. | 
-**description** | **str** | What this credential is for. | 
 **id** | **str** | Unique identifier of the credential. For a token this is also its key id; for an OAuth client, its client id. | 
-**mcd_id** | **str** | Key id the agent presents, as &#x60;mcd_id&#x60; in its configuration. The same value as &#x60;id&#x60;. | 
+**deployment_id** | **UUID** | Identifier of the deployment whose agent presents this credential. | 
 **type** | [**CredentialType**](CredentialType.md) | Which kind of credential this is. | 
+**description** | **str** | What this credential is for. | 
+**created_time** | **datetime** | When the credential was created. | 
+**mcd_id** | **str** | Key id the agent presents, as &#x60;mcd_id&#x60; in its configuration. The same value as &#x60;id&#x60;. | 
 
 ## Example
 

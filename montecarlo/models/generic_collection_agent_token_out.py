@@ -30,13 +30,13 @@ class GenericCollectionAgentTokenOut(BaseModel):
     """
     A key and secret a generic collection agent sends as headers on every request.
     """ # noqa: E501
-    created_time: datetime = Field(description="When the credential was created.")
-    deployment_id: UUID = Field(description="Identifier of the deployment whose agent presents this credential.")
-    description: StrictStr = Field(description="What this credential is for.")
     id: StrictStr = Field(description="Unique identifier of the credential. For a token this is also its key id; for an OAuth client, its client id.")
-    mcd_id: StrictStr = Field(description="Key id the agent presents, as `mcd_id` in its configuration. The same value as `id`.")
+    deployment_id: UUID = Field(description="Identifier of the deployment whose agent presents this credential.")
     type: CredentialType = Field(description="Which kind of credential this is.")
-    __properties: ClassVar[List[str]] = ["created_time", "deployment_id", "description", "id", "mcd_id", "type"]
+    description: StrictStr = Field(description="What this credential is for.")
+    created_time: datetime = Field(description="When the credential was created.")
+    mcd_id: StrictStr = Field(description="Key id the agent presents, as `mcd_id` in its configuration. The same value as `id`.")
+    __properties: ClassVar[List[str]] = ["id", "deployment_id", "type", "description", "created_time", "mcd_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -89,12 +89,12 @@ class GenericCollectionAgentTokenOut(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "created_time": obj.get("created_time"),
-            "deployment_id": obj.get("deployment_id"),
-            "description": obj.get("description"),
             "id": obj.get("id"),
-            "mcd_id": obj.get("mcd_id"),
-            "type": obj.get("type")
+            "deployment_id": obj.get("deployment_id"),
+            "type": obj.get("type"),
+            "description": obj.get("description"),
+            "created_time": obj.get("created_time"),
+            "mcd_id": obj.get("mcd_id")
         })
         return _obj
 

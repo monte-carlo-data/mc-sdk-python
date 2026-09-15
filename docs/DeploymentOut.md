@@ -6,14 +6,14 @@ One deployment, with the fields only a single read returns.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**aws_external_id** | **str** | Value to supply when you register an AWS collection agent or data store on this deployment. It goes in the trust policy of the role Monte Carlo assumes. Null until Monte Carlo has generated one, for a deployment on another platform, for a caller who is not permitted to register one, and if the value could not be read just now. Retry the request in that last case. | [optional] 
-**created_time** | **datetime** | When the deployment was assigned to your account. Null when Monte Carlo has no record of that. | [optional] 
-**enabled** | **bool** | Whether the deployment can serve connections. A deployment still waiting for its collection agent or data store to be registered, or with nothing provisioned on it, is not enabled. | 
 **id** | **UUID** | Unique identifier of the deployment. | 
-**last_updated_time** | **datetime** | When Monte Carlo last updated the infrastructure behind the deployment. Null when Monte Carlo has no record of an update. | [optional] 
 **name** | **str** | Display name of the deployment. | 
-**runtime_platform** | [**RuntimePlatform**](RuntimePlatform.md) | Where the deployment&#39;s collection agent or data store runs. Null for a Monte Carlo hosted deployment, which runs neither, for one with nothing provisioned on it, and for one whose platform Monte Carlo has not recorded. | [optional] 
 **type** | [**DeploymentType**](DeploymentType.md) | What the deployment hosts. Null when nothing is provisioned on it, in which case it has to be provisioned before it can be used. | [optional] 
+**runtime_platform** | [**RuntimePlatform**](RuntimePlatform.md) | Where the deployment&#39;s collection agent or data store runs. Null for a Monte Carlo hosted deployment, which runs neither, for one with nothing provisioned on it, and for one whose platform Monte Carlo has not recorded. | [optional] 
+**enabled** | **bool** | Whether the deployment can serve connections. A deployment still waiting for its collection agent or data store to be registered, or with nothing provisioned on it, is not enabled. | 
+**created_time** | **datetime** | When the deployment was assigned to your account. Null when Monte Carlo has no record of that. | [optional] 
+**last_updated_time** | **datetime** | When Monte Carlo last updated the infrastructure behind the deployment. Null when Monte Carlo has no record of an update. | [optional] 
+**aws_external_id** | **str** | Value to supply when you register an AWS collection agent or data store on this deployment. It goes in the trust policy of the role Monte Carlo assumes. Null until Monte Carlo has generated one, for a deployment on another platform, for a caller who is not permitted to register one, and if the value could not be read just now. Retry the request in that last case. | [optional] 
 
 ## Example
 

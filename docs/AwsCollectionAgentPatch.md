@@ -7,8 +7,8 @@ Details to change on an AWS collection agent. Only what you send is changed.  Se
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **lambda_function_arn** | **str** | ARN of the Lambda function Monte Carlo should invoke. | [optional] 
-**name** | **str** | Display name for the collection agent. Replaces the name it currently has. | [optional] 
 **role_arn** | **str** | ARN of the role Monte Carlo assumes to invoke the function. Its trust policy must already carry the deployment&#39;s external id. | [optional] 
+**name** | **str** | Display name for the collection agent. Replaces the name it currently has. | [optional] 
 
 ## Example
 

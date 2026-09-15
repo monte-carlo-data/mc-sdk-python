@@ -31,16 +31,16 @@ class GcpCollectionDataStoreOut(BaseModel):
     """
     A data store held in a Google Cloud Storage bucket.  There is no external id: Monte Carlo assumes no role to reach Cloud Storage.
     """ # noqa: E501
-    authentication_type: AuthenticationType = Field(description="How Monte Carlo authenticates when it reaches the data store.")
-    bucket_name: StrictStr = Field(description="Name of the Cloud Storage bucket Monte Carlo uses. Empty until it has been registered.")
-    created_time: Optional[datetime] = Field(default=None, description="When the data store was created, which is when its deployment was provisioned.")
-    deployment_id: UUID = Field(description="Identifier of the deployment this data store belongs to.")
-    enabled: StrictBool = Field(description="Whether Monte Carlo is using this data store. One that is unregistered, or whose validation failed, is not enabled.")
     id: UUID = Field(description="Unique identifier of the data store.")
-    last_updated_time: Optional[datetime] = Field(default=None, description="When the data store was last registered, renamed, or given different storage or credentials. Null until one of those has happened.")
     name: Optional[StrictStr] = Field(default=None, description="Display name of the data store. Null when it has no name.")
+    deployment_id: UUID = Field(description="Identifier of the deployment this data store belongs to.")
     storage_type: StorageType = Field(description="Which kind of storage the data store keeps its data in.")
-    __properties: ClassVar[List[str]] = ["authentication_type", "bucket_name", "created_time", "deployment_id", "enabled", "id", "last_updated_time", "name", "storage_type"]
+    authentication_type: AuthenticationType = Field(description="How Monte Carlo authenticates when it reaches the data store.")
+    enabled: StrictBool = Field(description="Whether Monte Carlo is using this data store. One that is unregistered, or whose validation failed, is not enabled.")
+    created_time: Optional[datetime] = Field(default=None, description="When the data store was created, which is when its deployment was provisioned.")
+    last_updated_time: Optional[datetime] = Field(default=None, description="When the data store was last registered, renamed, or given different storage or credentials. Null until one of those has happened.")
+    bucket_name: StrictStr = Field(description="Name of the Cloud Storage bucket Monte Carlo uses. Empty until it has been registered.")
+    __properties: ClassVar[List[str]] = ["id", "name", "deployment_id", "storage_type", "authentication_type", "enabled", "created_time", "last_updated_time", "bucket_name"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -81,6 +81,11 @@ class GcpCollectionDataStoreOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
         # set to None if created_time (nullable) is None
         # and model_fields_set contains the field
         if self.created_time is None and "created_time" in self.model_fields_set:
@@ -90,11 +95,6 @@ class GcpCollectionDataStoreOut(BaseModel):
         # and model_fields_set contains the field
         if self.last_updated_time is None and "last_updated_time" in self.model_fields_set:
             _dict['last_updated_time'] = None
-
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
 
         return _dict
 
@@ -108,15 +108,15 @@ class GcpCollectionDataStoreOut(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "authentication_type": obj.get("authentication_type"),
-            "bucket_name": obj.get("bucket_name"),
-            "created_time": obj.get("created_time"),
-            "deployment_id": obj.get("deployment_id"),
-            "enabled": obj.get("enabled"),
             "id": obj.get("id"),
-            "last_updated_time": obj.get("last_updated_time"),
             "name": obj.get("name"),
-            "storage_type": obj.get("storage_type")
+            "deployment_id": obj.get("deployment_id"),
+            "storage_type": obj.get("storage_type"),
+            "authentication_type": obj.get("authentication_type"),
+            "enabled": obj.get("enabled"),
+            "created_time": obj.get("created_time"),
+            "last_updated_time": obj.get("last_updated_time"),
+            "bucket_name": obj.get("bucket_name")
         })
         return _obj
 

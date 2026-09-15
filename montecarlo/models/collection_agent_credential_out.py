@@ -30,16 +30,16 @@ class CollectionAgentCredentialOut(BaseModel):
     """
     A credential of either kind, as the list returns it.  `type` says which kind, and which of the kind-specific fields are set. A kind-specific read returns the same credential with only its own fields.
     """ # noqa: E501
-    client_id: Optional[StrictStr] = Field(default=None, description="Client id the agent presents. Set for an `OAUTH_CLIENT`, null otherwise.")
-    created_time: datetime = Field(description="When the credential was created.")
-    deployment_id: UUID = Field(description="Identifier of the deployment whose agent presents this credential.")
-    description: StrictStr = Field(description="What this credential is for.")
-    expiration_time: Optional[datetime] = Field(default=None, description="When an `OAUTH_CLIENT` stops being accepted. Null for one that does not expire, and for a `TOKEN`.")
     id: StrictStr = Field(description="Unique identifier of the credential. For a token this is also its key id; for an OAuth client, its client id.")
-    mcd_id: Optional[StrictStr] = Field(default=None, description="Key id the agent presents. Set for a `TOKEN`, null otherwise.")
-    scopes: Optional[List[StrictStr]] = Field(default=None, description="OAuth scopes the client is granted. Set for an `OAUTH_CLIENT`, null otherwise.")
+    deployment_id: UUID = Field(description="Identifier of the deployment whose agent presents this credential.")
     type: CredentialType = Field(description="Which kind of credential this is.")
-    __properties: ClassVar[List[str]] = ["client_id", "created_time", "deployment_id", "description", "expiration_time", "id", "mcd_id", "scopes", "type"]
+    description: StrictStr = Field(description="What this credential is for.")
+    created_time: datetime = Field(description="When the credential was created.")
+    mcd_id: Optional[StrictStr] = Field(default=None, description="Key id the agent presents. Set for a `TOKEN`, null otherwise.")
+    client_id: Optional[StrictStr] = Field(default=None, description="Client id the agent presents. Set for an `OAUTH_CLIENT`, null otherwise.")
+    scopes: Optional[List[StrictStr]] = Field(default=None, description="OAuth scopes the client is granted. Set for an `OAUTH_CLIENT`, null otherwise.")
+    expiration_time: Optional[datetime] = Field(default=None, description="When an `OAUTH_CLIENT` stops being accepted. Null for one that does not expire, and for a `TOKEN`.")
+    __properties: ClassVar[List[str]] = ["id", "deployment_id", "type", "description", "created_time", "mcd_id", "client_id", "scopes", "expiration_time"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -80,25 +80,25 @@ class CollectionAgentCredentialOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if client_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.client_id is None and "client_id" in self.model_fields_set:
-            _dict['client_id'] = None
-
-        # set to None if expiration_time (nullable) is None
-        # and model_fields_set contains the field
-        if self.expiration_time is None and "expiration_time" in self.model_fields_set:
-            _dict['expiration_time'] = None
-
         # set to None if mcd_id (nullable) is None
         # and model_fields_set contains the field
         if self.mcd_id is None and "mcd_id" in self.model_fields_set:
             _dict['mcd_id'] = None
 
+        # set to None if client_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.client_id is None and "client_id" in self.model_fields_set:
+            _dict['client_id'] = None
+
         # set to None if scopes (nullable) is None
         # and model_fields_set contains the field
         if self.scopes is None and "scopes" in self.model_fields_set:
             _dict['scopes'] = None
+
+        # set to None if expiration_time (nullable) is None
+        # and model_fields_set contains the field
+        if self.expiration_time is None and "expiration_time" in self.model_fields_set:
+            _dict['expiration_time'] = None
 
         return _dict
 
@@ -112,15 +112,15 @@ class CollectionAgentCredentialOut(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "client_id": obj.get("client_id"),
-            "created_time": obj.get("created_time"),
-            "deployment_id": obj.get("deployment_id"),
-            "description": obj.get("description"),
-            "expiration_time": obj.get("expiration_time"),
             "id": obj.get("id"),
+            "deployment_id": obj.get("deployment_id"),
+            "type": obj.get("type"),
+            "description": obj.get("description"),
+            "created_time": obj.get("created_time"),
             "mcd_id": obj.get("mcd_id"),
+            "client_id": obj.get("client_id"),
             "scopes": obj.get("scopes"),
-            "type": obj.get("type")
+            "expiration_time": obj.get("expiration_time")
         })
         return _obj
 

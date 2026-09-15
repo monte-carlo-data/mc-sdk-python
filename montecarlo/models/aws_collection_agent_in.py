@@ -31,9 +31,9 @@ class AwsCollectionAgentIn(BaseModel):
     """ # noqa: E501
     deployment_id: UUID = Field(description="Deployment to register the collection agent on. It must already hold an unregistered AWS collection agent.")
     lambda_function_arn: StrictStr = Field(description="ARN of the Lambda function Monte Carlo should invoke.")
-    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the collection agent. Replaces the name it currently has.")
     role_arn: Annotated[str, Field(strict=True)] = Field(description="ARN of the role Monte Carlo assumes to invoke the function. Its trust policy must already carry the deployment's external id.")
-    __properties: ClassVar[List[str]] = ["deployment_id", "lambda_function_arn", "name", "role_arn"]
+    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the collection agent. Replaces the name it currently has.")
+    __properties: ClassVar[List[str]] = ["deployment_id", "lambda_function_arn", "role_arn", "name"]
 
     @field_validator('role_arn')
     def role_arn_validate_regular_expression(cls, value):
@@ -103,8 +103,8 @@ class AwsCollectionAgentIn(BaseModel):
         _obj = cls.model_validate({
             "deployment_id": obj.get("deployment_id"),
             "lambda_function_arn": obj.get("lambda_function_arn"),
-            "name": obj.get("name"),
-            "role_arn": obj.get("role_arn")
+            "role_arn": obj.get("role_arn"),
+            "name": obj.get("name")
         })
         return _obj
 

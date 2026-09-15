@@ -27,11 +27,11 @@ class ServicePrincipalCredentialsIn(BaseModel):
     """
     The service principal Monte Carlo authenticates as.
     """ # noqa: E501
-    audience: StrictStr = Field(description="Audience the issued token is for, usually the function app's application id.")
+    tenant_id: StrictStr = Field(description="Directory (tenant) id the service principal lives in.")
     client_id: StrictStr = Field(description="Application (client) id of the service principal.")
     client_secret: SecretStr = Field(description="Client secret of the service principal.")
-    tenant_id: StrictStr = Field(description="Directory (tenant) id the service principal lives in.")
-    __properties: ClassVar[List[str]] = ["audience", "client_id", "client_secret", "tenant_id"]
+    audience: StrictStr = Field(description="Audience the issued token is for, usually the function app's application id.")
+    __properties: ClassVar[List[str]] = ["tenant_id", "client_id", "client_secret", "audience"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -84,10 +84,10 @@ class ServicePrincipalCredentialsIn(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "audience": obj.get("audience"),
+            "tenant_id": obj.get("tenant_id"),
             "client_id": obj.get("client_id"),
             "client_secret": obj.get("client_secret"),
-            "tenant_id": obj.get("tenant_id")
+            "audience": obj.get("audience")
         })
         return _obj
 

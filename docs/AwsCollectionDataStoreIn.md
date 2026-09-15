@@ -6,10 +6,10 @@ Details Monte Carlo needs to access a data store you keep in an S3 bucket.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bucket_name** | **str** | Name of the S3 bucket Monte Carlo should use. | 
 **deployment_id** | **UUID** | Deployment to register the data store on. It must already hold an unregistered S3 data store. | 
-**name** | **str** | Display name for the data store. Replaces the name its deployment gave it. | [optional] 
+**bucket_name** | **str** | Name of the S3 bucket Monte Carlo should use. | 
 **role_arn** | **str** | ARN of the role Monte Carlo assumes to access the bucket. Its trust policy must already carry the deployment&#39;s external id. | 
+**name** | **str** | Display name for the data store. Replaces the name its deployment gave it. | [optional] 
 
 ## Example
 

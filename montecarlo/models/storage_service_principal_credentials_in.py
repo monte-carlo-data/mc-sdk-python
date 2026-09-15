@@ -28,12 +28,12 @@ class StorageServicePrincipalCredentialsIn(BaseModel):
     """
     The service principal Monte Carlo authenticates to the storage account as.
     """ # noqa: E501
-    account_name: Optional[StrictStr] = Field(default=None, description="Name of the storage account, needed only when `account_url` does not start with it. Monte Carlo takes the first label of the host otherwise, which is right for a standard or private-link URL but not for a custom ingress host.")
-    account_url: Annotated[str, Field(strict=True)] = Field(description="URL of the storage account Monte Carlo sends requests to. A private endpoint or a custom host works, so this is not required to be under `blob.core.windows.net`.")
+    tenant_id: StrictStr = Field(description="Directory (tenant) id the service principal lives in.")
     client_id: StrictStr = Field(description="Application (client) id of the service principal.")
     client_secret: SecretStr = Field(description="Client secret of the service principal.")
-    tenant_id: StrictStr = Field(description="Directory (tenant) id the service principal lives in.")
-    __properties: ClassVar[List[str]] = ["account_name", "account_url", "client_id", "client_secret", "tenant_id"]
+    account_url: Annotated[str, Field(strict=True)] = Field(description="URL of the storage account Monte Carlo sends requests to. A private endpoint or a custom host works, so this is not required to be under `blob.core.windows.net`.")
+    account_name: Optional[StrictStr] = Field(default=None, description="Name of the storage account, needed only when `account_url` does not start with it. Monte Carlo takes the first label of the host otherwise, which is right for a standard or private-link URL but not for a custom ingress host.")
+    __properties: ClassVar[List[str]] = ["tenant_id", "client_id", "client_secret", "account_url", "account_name"]
 
     @field_validator('account_url')
     def account_url_validate_regular_expression(cls, value):
@@ -101,11 +101,11 @@ class StorageServicePrincipalCredentialsIn(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "account_name": obj.get("account_name"),
-            "account_url": obj.get("account_url"),
+            "tenant_id": obj.get("tenant_id"),
             "client_id": obj.get("client_id"),
             "client_secret": obj.get("client_secret"),
-            "tenant_id": obj.get("tenant_id")
+            "account_url": obj.get("account_url"),
+            "account_name": obj.get("account_name")
         })
         return _obj
 

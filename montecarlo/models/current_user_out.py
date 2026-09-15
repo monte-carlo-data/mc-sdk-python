@@ -29,16 +29,16 @@ class CurrentUserOut(BaseModel):
     """
     The identity the request was authenticated as, and the account it resolved to.
     """ # noqa: E501
-    account_frozen: StrictBool = Field(description="Whether the account is paused. While it is, this endpoint still answers but every other one returns 403 with the code `account_frozen`.")
-    account_id: UUID = Field(description="Unique identifier of the caller's account.")
-    account_name: Optional[StrictStr] = Field(default=None, description="Display name of the account. Null when the account has no name.")
-    auth_groups: Optional[List[StrictStr]] = Field(default=None, description="Names of the authorization groups this user belongs to. They determine what the user is permitted to do.")
+    user_id: StrictStr = Field(description="Unique identifier of the user.")
     email: StrictStr = Field(description="Email address of the user. An identity with no mailbox of its own, such as an AI agent, carries a display label here instead.")
     first_name: Optional[StrictStr] = Field(default=None, description="Given name of the user. Null when it is not set.")
-    identity_type: IdentityType = Field(description="What kind of identity this is. It does not decide what the identity may do — that comes from the authorization groups it belongs to.")
     last_name: Optional[StrictStr] = Field(default=None, description="Family name of the user. Null when it is not set.")
-    user_id: StrictStr = Field(description="Unique identifier of the user.")
-    __properties: ClassVar[List[str]] = ["account_frozen", "account_id", "account_name", "auth_groups", "email", "first_name", "identity_type", "last_name", "user_id"]
+    identity_type: IdentityType = Field(description="What kind of identity this is. It does not decide what the identity may do — that comes from the authorization groups it belongs to.")
+    account_id: UUID = Field(description="Unique identifier of the caller's account.")
+    account_name: Optional[StrictStr] = Field(default=None, description="Display name of the account. Null when the account has no name.")
+    account_frozen: StrictBool = Field(description="Whether the account is paused. While it is, this endpoint still answers but every other one returns 403 with the code `account_frozen`.")
+    auth_groups: Optional[List[StrictStr]] = Field(default=None, description="Names of the authorization groups this user belongs to. They determine what the user is permitted to do.")
+    __properties: ClassVar[List[str]] = ["user_id", "email", "first_name", "last_name", "identity_type", "account_id", "account_name", "account_frozen", "auth_groups"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -79,11 +79,6 @@ class CurrentUserOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if account_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.account_name is None and "account_name" in self.model_fields_set:
-            _dict['account_name'] = None
-
         # set to None if first_name (nullable) is None
         # and model_fields_set contains the field
         if self.first_name is None and "first_name" in self.model_fields_set:
@@ -93,6 +88,11 @@ class CurrentUserOut(BaseModel):
         # and model_fields_set contains the field
         if self.last_name is None and "last_name" in self.model_fields_set:
             _dict['last_name'] = None
+
+        # set to None if account_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.account_name is None and "account_name" in self.model_fields_set:
+            _dict['account_name'] = None
 
         return _dict
 
@@ -106,15 +106,15 @@ class CurrentUserOut(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "account_frozen": obj.get("account_frozen"),
-            "account_id": obj.get("account_id"),
-            "account_name": obj.get("account_name"),
-            "auth_groups": obj.get("auth_groups"),
+            "user_id": obj.get("user_id"),
             "email": obj.get("email"),
             "first_name": obj.get("first_name"),
-            "identity_type": obj.get("identity_type"),
             "last_name": obj.get("last_name"),
-            "user_id": obj.get("user_id")
+            "identity_type": obj.get("identity_type"),
+            "account_id": obj.get("account_id"),
+            "account_name": obj.get("account_name"),
+            "account_frozen": obj.get("account_frozen"),
+            "auth_groups": obj.get("auth_groups")
         })
         return _obj
 

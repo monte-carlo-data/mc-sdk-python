@@ -6,15 +6,15 @@ A credential of either kind, as the list returns it.  `type` says which kind, an
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**client_id** | **str** | Client id the agent presents. Set for an &#x60;OAUTH_CLIENT&#x60;, null otherwise. | [optional] 
-**created_time** | **datetime** | When the credential was created. | 
-**deployment_id** | **UUID** | Identifier of the deployment whose agent presents this credential. | 
-**description** | **str** | What this credential is for. | 
-**expiration_time** | **datetime** | When an &#x60;OAUTH_CLIENT&#x60; stops being accepted. Null for one that does not expire, and for a &#x60;TOKEN&#x60;. | [optional] 
 **id** | **str** | Unique identifier of the credential. For a token this is also its key id; for an OAuth client, its client id. | 
-**mcd_id** | **str** | Key id the agent presents. Set for a &#x60;TOKEN&#x60;, null otherwise. | [optional] 
-**scopes** | **List[str]** | OAuth scopes the client is granted. Set for an &#x60;OAUTH_CLIENT&#x60;, null otherwise. | [optional] 
+**deployment_id** | **UUID** | Identifier of the deployment whose agent presents this credential. | 
 **type** | [**CredentialType**](CredentialType.md) | Which kind of credential this is. | 
+**description** | **str** | What this credential is for. | 
+**created_time** | **datetime** | When the credential was created. | 
+**mcd_id** | **str** | Key id the agent presents. Set for a &#x60;TOKEN&#x60;, null otherwise. | [optional] 
+**client_id** | **str** | Client id the agent presents. Set for an &#x60;OAUTH_CLIENT&#x60;, null otherwise. | [optional] 
+**scopes** | **List[str]** | OAuth scopes the client is granted. Set for an &#x60;OAUTH_CLIENT&#x60;, null otherwise. | [optional] 
+**expiration_time** | **datetime** | When an &#x60;OAUTH_CLIENT&#x60; stops being accepted. Null for one that does not expire, and for a &#x60;TOKEN&#x60;. | [optional] 
 
 ## Example
 

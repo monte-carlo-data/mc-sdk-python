@@ -31,13 +31,13 @@ class GcpCollectionAgentIn(BaseModel):
     """
     Details Monte Carlo needs to reach a collection agent you have deployed on GCP.
     """ # noqa: E501
+    service_account_key: Optional[Annotated[str, Field(strict=True, max_length=16384)]] = Field(default=None, description="Credentials for `GCP_JSON_SERVICE_ACCOUNT_KEY`, as the contents of the JSON key file Google issued for the service account. Send this or `auth_headers`, never both. It replaces the stored credentials rather than merging into them.")
     auth_headers: Optional[AuthHeadersCredentialsIn] = Field(default=None, description="Credentials for `CUSTOM_AUTH_HEADERS`. Send this or `service_account_key`, never both. It replaces the stored credentials rather than merging into them.")
     authentication_type: GcpAgentAuthenticationType = Field(description="How Monte Carlo authenticates when it calls the agent. Send it together with the matching credentials.")
-    cloud_run_url: Annotated[str, Field(strict=True)] = Field(description="URL of the Cloud Run service Monte Carlo should call.")
     deployment_id: UUID = Field(description="Deployment to register the collection agent on. It must already hold an unregistered GCP collection agent.")
+    cloud_run_url: Annotated[str, Field(strict=True)] = Field(description="URL of the Cloud Run service Monte Carlo should call.")
     name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the collection agent. Replaces the name it currently has.")
-    service_account_key: Optional[Annotated[str, Field(strict=True, max_length=16384)]] = Field(default=None, description="Credentials for `GCP_JSON_SERVICE_ACCOUNT_KEY`, as the contents of the JSON key file Google issued for the service account. Send this or `auth_headers`, never both. It replaces the stored credentials rather than merging into them.")
-    __properties: ClassVar[List[str]] = ["auth_headers", "authentication_type", "cloud_run_url", "deployment_id", "name", "service_account_key"]
+    __properties: ClassVar[List[str]] = ["service_account_key", "auth_headers", "authentication_type", "deployment_id", "cloud_run_url", "name"]
 
     @field_validator('cloud_run_url')
     def cloud_run_url_validate_regular_expression(cls, value):
@@ -91,6 +91,11 @@ class GcpCollectionAgentIn(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of auth_headers
         if self.auth_headers:
             _dict['auth_headers'] = self.auth_headers.to_dict()
+        # set to None if service_account_key (nullable) is None
+        # and model_fields_set contains the field
+        if self.service_account_key is None and "service_account_key" in self.model_fields_set:
+            _dict['service_account_key'] = None
+
         # set to None if auth_headers (nullable) is None
         # and model_fields_set contains the field
         if self.auth_headers is None and "auth_headers" in self.model_fields_set:
@@ -100,11 +105,6 @@ class GcpCollectionAgentIn(BaseModel):
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
             _dict['name'] = None
-
-        # set to None if service_account_key (nullable) is None
-        # and model_fields_set contains the field
-        if self.service_account_key is None and "service_account_key" in self.model_fields_set:
-            _dict['service_account_key'] = None
 
         return _dict
 
@@ -118,12 +118,12 @@ class GcpCollectionAgentIn(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "service_account_key": obj.get("service_account_key"),
             "auth_headers": AuthHeadersCredentialsIn.from_dict(obj["auth_headers"]) if obj.get("auth_headers") is not None else None,
             "authentication_type": obj.get("authentication_type"),
-            "cloud_run_url": obj.get("cloud_run_url"),
             "deployment_id": obj.get("deployment_id"),
-            "name": obj.get("name"),
-            "service_account_key": obj.get("service_account_key")
+            "cloud_run_url": obj.get("cloud_run_url"),
+            "name": obj.get("name")
         })
         return _obj
 

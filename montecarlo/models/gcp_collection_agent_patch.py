@@ -30,12 +30,12 @@ class GcpCollectionAgentPatch(BaseModel):
     """
     Details to change on a GCP collection agent. Only what you send is changed.  Credentials are the exception: they replace the stored credentials instead of merging into them, so send them in full along with the matching `authentication_type`. Sending only `name` skips the checks against your Cloud Run service, since a name is not validated against it.
     """ # noqa: E501
+    service_account_key: Optional[Annotated[str, Field(strict=True, max_length=16384)]] = Field(default=None, description="Credentials for `GCP_JSON_SERVICE_ACCOUNT_KEY`, as the contents of the JSON key file Google issued for the service account. Send this or `auth_headers`, never both. It replaces the stored credentials rather than merging into them.")
     auth_headers: Optional[AuthHeadersCredentialsIn] = Field(default=None, description="Credentials for `CUSTOM_AUTH_HEADERS`. Send this or `service_account_key`, never both. It replaces the stored credentials rather than merging into them.")
-    authentication_type: Optional[GcpAgentAuthenticationType] = Field(default=None, description="How Monte Carlo authenticates when it calls the agent. Send it together with the matching credentials.")
     cloud_run_url: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="URL of the Cloud Run service Monte Carlo should call.")
     name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the collection agent. Replaces the name it currently has.")
-    service_account_key: Optional[Annotated[str, Field(strict=True, max_length=16384)]] = Field(default=None, description="Credentials for `GCP_JSON_SERVICE_ACCOUNT_KEY`, as the contents of the JSON key file Google issued for the service account. Send this or `auth_headers`, never both. It replaces the stored credentials rather than merging into them.")
-    __properties: ClassVar[List[str]] = ["auth_headers", "authentication_type", "cloud_run_url", "name", "service_account_key"]
+    authentication_type: Optional[GcpAgentAuthenticationType] = Field(default=None, description="How Monte Carlo authenticates when it calls the agent. Send it together with the matching credentials.")
+    __properties: ClassVar[List[str]] = ["service_account_key", "auth_headers", "cloud_run_url", "name", "authentication_type"]
 
     @field_validator('cloud_run_url')
     def cloud_run_url_validate_regular_expression(cls, value):
@@ -92,15 +92,15 @@ class GcpCollectionAgentPatch(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of auth_headers
         if self.auth_headers:
             _dict['auth_headers'] = self.auth_headers.to_dict()
+        # set to None if service_account_key (nullable) is None
+        # and model_fields_set contains the field
+        if self.service_account_key is None and "service_account_key" in self.model_fields_set:
+            _dict['service_account_key'] = None
+
         # set to None if auth_headers (nullable) is None
         # and model_fields_set contains the field
         if self.auth_headers is None and "auth_headers" in self.model_fields_set:
             _dict['auth_headers'] = None
-
-        # set to None if authentication_type (nullable) is None
-        # and model_fields_set contains the field
-        if self.authentication_type is None and "authentication_type" in self.model_fields_set:
-            _dict['authentication_type'] = None
 
         # set to None if cloud_run_url (nullable) is None
         # and model_fields_set contains the field
@@ -112,10 +112,10 @@ class GcpCollectionAgentPatch(BaseModel):
         if self.name is None and "name" in self.model_fields_set:
             _dict['name'] = None
 
-        # set to None if service_account_key (nullable) is None
+        # set to None if authentication_type (nullable) is None
         # and model_fields_set contains the field
-        if self.service_account_key is None and "service_account_key" in self.model_fields_set:
-            _dict['service_account_key'] = None
+        if self.authentication_type is None and "authentication_type" in self.model_fields_set:
+            _dict['authentication_type'] = None
 
         return _dict
 
@@ -129,11 +129,11 @@ class GcpCollectionAgentPatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "service_account_key": obj.get("service_account_key"),
             "auth_headers": AuthHeadersCredentialsIn.from_dict(obj["auth_headers"]) if obj.get("auth_headers") is not None else None,
-            "authentication_type": obj.get("authentication_type"),
             "cloud_run_url": obj.get("cloud_run_url"),
             "name": obj.get("name"),
-            "service_account_key": obj.get("service_account_key")
+            "authentication_type": obj.get("authentication_type")
         })
         return _obj
 

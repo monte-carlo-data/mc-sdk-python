@@ -6,14 +6,14 @@ An OAuth 2.0 client a generic collection agent exchanges for short-lived access 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**client_id** | **str** | Client id the agent presents, as &#x60;client_id&#x60; in its configuration. The same value as &#x60;id&#x60;. | 
-**created_time** | **datetime** | When the credential was created. | 
-**deployment_id** | **UUID** | Identifier of the deployment whose agent presents this credential. | 
-**description** | **str** | What this credential is for. | 
-**expiration_time** | **datetime** | When the client stops being accepted. Null for a client that does not expire. | [optional] 
 **id** | **str** | Unique identifier of the credential. For a token this is also its key id; for an OAuth client, its client id. | 
-**scopes** | **List[str]** | OAuth scopes the client is granted. | 
+**deployment_id** | **UUID** | Identifier of the deployment whose agent presents this credential. | 
 **type** | [**CredentialType**](CredentialType.md) | Which kind of credential this is. | 
+**description** | **str** | What this credential is for. | 
+**created_time** | **datetime** | When the credential was created. | 
+**client_id** | **str** | Client id the agent presents, as &#x60;client_id&#x60; in its configuration. The same value as &#x60;id&#x60;. | 
+**scopes** | **List[str]** | OAuth scopes the client is granted. | 
+**expiration_time** | **datetime** | When the client stops being accepted. Null for a client that does not expire. | [optional] 
 
 ## Example
 

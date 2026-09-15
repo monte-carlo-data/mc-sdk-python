@@ -30,17 +30,17 @@ class GenericCollectionAgentOAuthClientCreatedOut(BaseModel):
     """
     An OAuth client as it comes back from its create, the only time the secret is available.
     """ # noqa: E501
-    client_id: StrictStr = Field(description="Client id the agent presents, as `client_id` in its configuration. The same value as `id`.")
-    client_secret: SecretStr = Field(description="Secret the agent presents, as `client_secret` in its configuration. Returned once, by this call. It is not retrievable afterwards, and Terraform holds it in state like any generated credential. To rotate, create a new credential and delete this one.")
-    created_time: datetime = Field(description="When the credential was created.")
-    deployment_id: UUID = Field(description="Identifier of the deployment whose agent presents this credential.")
-    description: StrictStr = Field(description="What this credential is for.")
-    expiration_time: Optional[datetime] = Field(default=None, description="When the client stops being accepted. Null for a client that does not expire.")
     id: StrictStr = Field(description="Unique identifier of the credential. For a token this is also its key id; for an OAuth client, its client id.")
-    scopes: List[StrictStr] = Field(description="OAuth scopes the client is granted.")
-    secret_id: StrictStr = Field(description="Identifier of the secret this call created, as the client's secrets are listed. Keep it with the secret.")
+    deployment_id: UUID = Field(description="Identifier of the deployment whose agent presents this credential.")
     type: CredentialType = Field(description="Which kind of credential this is.")
-    __properties: ClassVar[List[str]] = ["client_id", "client_secret", "created_time", "deployment_id", "description", "expiration_time", "id", "scopes", "secret_id", "type"]
+    description: StrictStr = Field(description="What this credential is for.")
+    created_time: datetime = Field(description="When the credential was created.")
+    client_id: StrictStr = Field(description="Client id the agent presents, as `client_id` in its configuration. The same value as `id`.")
+    scopes: List[StrictStr] = Field(description="OAuth scopes the client is granted.")
+    expiration_time: Optional[datetime] = Field(default=None, description="When the client stops being accepted. Null for a client that does not expire.")
+    client_secret: SecretStr = Field(description="Secret the agent presents, as `client_secret` in its configuration. Returned once, by this call. It is not retrievable afterwards, and Terraform holds it in state like any generated credential. To rotate, create a new credential and delete this one.")
+    secret_id: StrictStr = Field(description="Identifier of the secret this call created, as the client's secrets are listed. Keep it with the secret.")
+    __properties: ClassVar[List[str]] = ["id", "deployment_id", "type", "description", "created_time", "client_id", "scopes", "expiration_time", "client_secret", "secret_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -100,16 +100,16 @@ class GenericCollectionAgentOAuthClientCreatedOut(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "client_id": obj.get("client_id"),
-            "client_secret": obj.get("client_secret"),
-            "created_time": obj.get("created_time"),
-            "deployment_id": obj.get("deployment_id"),
-            "description": obj.get("description"),
-            "expiration_time": obj.get("expiration_time"),
             "id": obj.get("id"),
+            "deployment_id": obj.get("deployment_id"),
+            "type": obj.get("type"),
+            "description": obj.get("description"),
+            "created_time": obj.get("created_time"),
+            "client_id": obj.get("client_id"),
             "scopes": obj.get("scopes"),
-            "secret_id": obj.get("secret_id"),
-            "type": obj.get("type")
+            "expiration_time": obj.get("expiration_time"),
+            "client_secret": obj.get("client_secret"),
+            "secret_id": obj.get("secret_id")
         })
         return _obj
 

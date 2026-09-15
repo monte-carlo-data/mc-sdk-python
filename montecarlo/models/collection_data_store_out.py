@@ -32,17 +32,17 @@ class CollectionDataStoreOut(BaseModel):
     """
     A data store: the storage where Monte Carlo keeps your account's query results, samples and temporary data.  The cross-platform list returns this shape. A platform-specific read names the address for that platform instead.
     """ # noqa: E501
-    authentication_type: AuthenticationType = Field(description="How Monte Carlo authenticates when it reaches the data store.")
-    created_time: Optional[datetime] = Field(default=None, description="When the data store was created, which is when its deployment was provisioned.")
-    deployment_id: UUID = Field(description="Identifier of the deployment this data store belongs to.")
-    enabled: StrictBool = Field(description="Whether Monte Carlo is using this data store. One that is unregistered, or whose validation failed, is not enabled.")
-    endpoint: StrictStr = Field(description="Address of the data store, in the form its platform uses. On AWS that is an S3 bucket name, on Azure the name of a blob container, and on GCP a Cloud Storage bucket name. Empty until it has been registered.")
     id: UUID = Field(description="Unique identifier of the data store.")
-    last_updated_time: Optional[datetime] = Field(default=None, description="When the data store was last registered, renamed, or given different storage or credentials. Null until one of those has happened.")
     name: Optional[StrictStr] = Field(default=None, description="Display name of the data store. Null when it has no name.")
-    platform: Optional[RuntimePlatform] = Field(default=None, description="Where the data store runs. Build the platform-specific path for any other operation on it from this. Null when Monte Carlo has not recorded a platform, and no platform-specific path addresses those.")
+    deployment_id: UUID = Field(description="Identifier of the deployment this data store belongs to.")
     storage_type: StorageType = Field(description="Which kind of storage the data store keeps its data in.")
-    __properties: ClassVar[List[str]] = ["authentication_type", "created_time", "deployment_id", "enabled", "endpoint", "id", "last_updated_time", "name", "platform", "storage_type"]
+    authentication_type: AuthenticationType = Field(description="How Monte Carlo authenticates when it reaches the data store.")
+    enabled: StrictBool = Field(description="Whether Monte Carlo is using this data store. One that is unregistered, or whose validation failed, is not enabled.")
+    created_time: Optional[datetime] = Field(default=None, description="When the data store was created, which is when its deployment was provisioned.")
+    last_updated_time: Optional[datetime] = Field(default=None, description="When the data store was last registered, renamed, or given different storage or credentials. Null until one of those has happened.")
+    platform: Optional[RuntimePlatform] = Field(default=None, description="Where the data store runs. Build the platform-specific path for any other operation on it from this. Null when Monte Carlo has not recorded a platform, and no platform-specific path addresses those.")
+    endpoint: StrictStr = Field(description="Address of the data store, in the form its platform uses. On AWS that is an S3 bucket name, on Azure the name of a blob container, and on GCP a Cloud Storage bucket name. Empty until it has been registered.")
+    __properties: ClassVar[List[str]] = ["id", "name", "deployment_id", "storage_type", "authentication_type", "enabled", "created_time", "last_updated_time", "platform", "endpoint"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -83,6 +83,11 @@ class CollectionDataStoreOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
         # set to None if created_time (nullable) is None
         # and model_fields_set contains the field
         if self.created_time is None and "created_time" in self.model_fields_set:
@@ -92,11 +97,6 @@ class CollectionDataStoreOut(BaseModel):
         # and model_fields_set contains the field
         if self.last_updated_time is None and "last_updated_time" in self.model_fields_set:
             _dict['last_updated_time'] = None
-
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
 
         # set to None if platform (nullable) is None
         # and model_fields_set contains the field
@@ -115,16 +115,16 @@ class CollectionDataStoreOut(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "authentication_type": obj.get("authentication_type"),
-            "created_time": obj.get("created_time"),
-            "deployment_id": obj.get("deployment_id"),
-            "enabled": obj.get("enabled"),
-            "endpoint": obj.get("endpoint"),
             "id": obj.get("id"),
-            "last_updated_time": obj.get("last_updated_time"),
             "name": obj.get("name"),
+            "deployment_id": obj.get("deployment_id"),
+            "storage_type": obj.get("storage_type"),
+            "authentication_type": obj.get("authentication_type"),
+            "enabled": obj.get("enabled"),
+            "created_time": obj.get("created_time"),
+            "last_updated_time": obj.get("last_updated_time"),
             "platform": obj.get("platform"),
-            "storage_type": obj.get("storage_type")
+            "endpoint": obj.get("endpoint")
         })
         return _obj
 

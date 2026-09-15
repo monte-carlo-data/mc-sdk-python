@@ -7,8 +7,8 @@ Details to change on an S3 data store. Only what you send is changed.  Sending o
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bucket_name** | **str** | Name of the S3 bucket Monte Carlo should use. | [optional] 
-**name** | **str** | Display name for the data store. Replaces the name its deployment gave it. | [optional] 
 **role_arn** | **str** | ARN of the role Monte Carlo assumes to access the bucket. Its trust policy must already carry the deployment&#39;s external id. | [optional] 
+**name** | **str** | Display name for the data store. Replaces the name its deployment gave it. | [optional] 
 
 ## Example
 

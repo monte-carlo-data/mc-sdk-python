@@ -31,12 +31,12 @@ class AzureCollectionDataStorePatch(BaseModel):
     """
     Details to change on an Azure data store. Only what you send is changed.  A credentials object is the exception: it replaces the stored credentials instead of merging into them, so send every field of the object you send, along with the matching `authentication_type`. Sending only `name` skips the checks against your storage, since a name is not validated against it.
     """ # noqa: E501
-    authentication_type: Optional[AzureDataStoreAuthenticationType] = Field(default=None, description="How Monte Carlo authenticates to the storage account. Send it together with the matching credentials object.")
+    storage_account_keys: Optional[StorageAccountKeysCredentialsIn] = Field(default=None, description="Credentials for `AZURE_STORAGE_ACCOUNT_KEYS`. Send this or `service_principal`, never both.")
+    service_principal: Optional[StorageServicePrincipalCredentialsIn] = Field(default=None, description="Credentials for `AZURE_STORAGE_SERVICE_PRINCIPAL`. Send this or `storage_account_keys`, never both.")
     container_name: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="Name of the blob container Monte Carlo should use.")
     name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the data store. Replaces the name its deployment gave it.")
-    service_principal: Optional[StorageServicePrincipalCredentialsIn] = Field(default=None, description="Credentials for `AZURE_STORAGE_SERVICE_PRINCIPAL`. Send this or `storage_account_keys`, never both.")
-    storage_account_keys: Optional[StorageAccountKeysCredentialsIn] = Field(default=None, description="Credentials for `AZURE_STORAGE_ACCOUNT_KEYS`. Send this or `service_principal`, never both.")
-    __properties: ClassVar[List[str]] = ["authentication_type", "container_name", "name", "service_principal", "storage_account_keys"]
+    authentication_type: Optional[AzureDataStoreAuthenticationType] = Field(default=None, description="How Monte Carlo authenticates to the storage account. Send it together with the matching credentials object.")
+    __properties: ClassVar[List[str]] = ["storage_account_keys", "service_principal", "container_name", "name", "authentication_type"]
 
     @field_validator('container_name')
     def container_name_validate_regular_expression(cls, value):
@@ -90,16 +90,21 @@ class AzureCollectionDataStorePatch(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of service_principal
-        if self.service_principal:
-            _dict['service_principal'] = self.service_principal.to_dict()
         # override the default output from pydantic by calling `to_dict()` of storage_account_keys
         if self.storage_account_keys:
             _dict['storage_account_keys'] = self.storage_account_keys.to_dict()
-        # set to None if authentication_type (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of service_principal
+        if self.service_principal:
+            _dict['service_principal'] = self.service_principal.to_dict()
+        # set to None if storage_account_keys (nullable) is None
         # and model_fields_set contains the field
-        if self.authentication_type is None and "authentication_type" in self.model_fields_set:
-            _dict['authentication_type'] = None
+        if self.storage_account_keys is None and "storage_account_keys" in self.model_fields_set:
+            _dict['storage_account_keys'] = None
+
+        # set to None if service_principal (nullable) is None
+        # and model_fields_set contains the field
+        if self.service_principal is None and "service_principal" in self.model_fields_set:
+            _dict['service_principal'] = None
 
         # set to None if container_name (nullable) is None
         # and model_fields_set contains the field
@@ -111,15 +116,10 @@ class AzureCollectionDataStorePatch(BaseModel):
         if self.name is None and "name" in self.model_fields_set:
             _dict['name'] = None
 
-        # set to None if service_principal (nullable) is None
+        # set to None if authentication_type (nullable) is None
         # and model_fields_set contains the field
-        if self.service_principal is None and "service_principal" in self.model_fields_set:
-            _dict['service_principal'] = None
-
-        # set to None if storage_account_keys (nullable) is None
-        # and model_fields_set contains the field
-        if self.storage_account_keys is None and "storage_account_keys" in self.model_fields_set:
-            _dict['storage_account_keys'] = None
+        if self.authentication_type is None and "authentication_type" in self.model_fields_set:
+            _dict['authentication_type'] = None
 
         return _dict
 
@@ -133,11 +133,11 @@ class AzureCollectionDataStorePatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "authentication_type": obj.get("authentication_type"),
+            "storage_account_keys": StorageAccountKeysCredentialsIn.from_dict(obj["storage_account_keys"]) if obj.get("storage_account_keys") is not None else None,
+            "service_principal": StorageServicePrincipalCredentialsIn.from_dict(obj["service_principal"]) if obj.get("service_principal") is not None else None,
             "container_name": obj.get("container_name"),
             "name": obj.get("name"),
-            "service_principal": StorageServicePrincipalCredentialsIn.from_dict(obj["service_principal"]) if obj.get("service_principal") is not None else None,
-            "storage_account_keys": StorageAccountKeysCredentialsIn.from_dict(obj["storage_account_keys"]) if obj.get("storage_account_keys") is not None else None
+            "authentication_type": obj.get("authentication_type")
         })
         return _obj
 

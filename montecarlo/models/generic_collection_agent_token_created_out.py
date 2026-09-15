@@ -30,14 +30,14 @@ class GenericCollectionAgentTokenCreatedOut(BaseModel):
     """
     A token as it comes back from its create, the only time the secret is available.
     """ # noqa: E501
-    created_time: datetime = Field(description="When the credential was created.")
-    deployment_id: UUID = Field(description="Identifier of the deployment whose agent presents this credential.")
-    description: StrictStr = Field(description="What this credential is for.")
     id: StrictStr = Field(description="Unique identifier of the credential. For a token this is also its key id; for an OAuth client, its client id.")
+    deployment_id: UUID = Field(description="Identifier of the deployment whose agent presents this credential.")
+    type: CredentialType = Field(description="Which kind of credential this is.")
+    description: StrictStr = Field(description="What this credential is for.")
+    created_time: datetime = Field(description="When the credential was created.")
     mcd_id: StrictStr = Field(description="Key id the agent presents, as `mcd_id` in its configuration. The same value as `id`.")
     mcd_token: SecretStr = Field(description="Secret the agent presents, as `mcd_token` in its configuration. Returned once, by this call. It is not retrievable afterwards, and Terraform holds it in state like any generated credential. To rotate, create a new credential and delete this one.")
-    type: CredentialType = Field(description="Which kind of credential this is.")
-    __properties: ClassVar[List[str]] = ["created_time", "deployment_id", "description", "id", "mcd_id", "mcd_token", "type"]
+    __properties: ClassVar[List[str]] = ["id", "deployment_id", "type", "description", "created_time", "mcd_id", "mcd_token"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -92,13 +92,13 @@ class GenericCollectionAgentTokenCreatedOut(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "created_time": obj.get("created_time"),
-            "deployment_id": obj.get("deployment_id"),
-            "description": obj.get("description"),
             "id": obj.get("id"),
+            "deployment_id": obj.get("deployment_id"),
+            "type": obj.get("type"),
+            "description": obj.get("description"),
+            "created_time": obj.get("created_time"),
             "mcd_id": obj.get("mcd_id"),
-            "mcd_token": obj.get("mcd_token"),
-            "type": obj.get("type")
+            "mcd_token": obj.get("mcd_token")
         })
         return _obj
 

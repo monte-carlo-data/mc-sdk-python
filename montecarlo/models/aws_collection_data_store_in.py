@@ -29,11 +29,11 @@ class AwsCollectionDataStoreIn(BaseModel):
     """
     Details Monte Carlo needs to access a data store you keep in an S3 bucket.
     """ # noqa: E501
-    bucket_name: Annotated[str, Field(strict=True)] = Field(description="Name of the S3 bucket Monte Carlo should use.")
     deployment_id: UUID = Field(description="Deployment to register the data store on. It must already hold an unregistered S3 data store.")
-    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the data store. Replaces the name its deployment gave it.")
+    bucket_name: Annotated[str, Field(strict=True)] = Field(description="Name of the S3 bucket Monte Carlo should use.")
     role_arn: Annotated[str, Field(strict=True)] = Field(description="ARN of the role Monte Carlo assumes to access the bucket. Its trust policy must already carry the deployment's external id.")
-    __properties: ClassVar[List[str]] = ["bucket_name", "deployment_id", "name", "role_arn"]
+    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the data store. Replaces the name its deployment gave it.")
+    __properties: ClassVar[List[str]] = ["deployment_id", "bucket_name", "role_arn", "name"]
 
     @field_validator('bucket_name')
     def bucket_name_validate_regular_expression(cls, value):
@@ -111,10 +111,10 @@ class AwsCollectionDataStoreIn(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "bucket_name": obj.get("bucket_name"),
             "deployment_id": obj.get("deployment_id"),
-            "name": obj.get("name"),
-            "role_arn": obj.get("role_arn")
+            "bucket_name": obj.get("bucket_name"),
+            "role_arn": obj.get("role_arn"),
+            "name": obj.get("name")
         })
         return _obj
 

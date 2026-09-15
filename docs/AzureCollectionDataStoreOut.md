@@ -6,15 +6,15 @@ A data store held in an Azure Blob Storage container.  There is no external id: 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**authentication_type** | [**AuthenticationType**](AuthenticationType.md) | How Monte Carlo authenticates when it reaches the data store. | 
-**container_name** | **str** | Name of the blob container Monte Carlo uses. Empty until it has been registered. The storage account holding it is part of the credentials, so it is not returned. | 
-**created_time** | **datetime** | When the data store was created, which is when its deployment was provisioned. | [optional] 
-**deployment_id** | **UUID** | Identifier of the deployment this data store belongs to. | 
-**enabled** | **bool** | Whether Monte Carlo is using this data store. One that is unregistered, or whose validation failed, is not enabled. | 
 **id** | **UUID** | Unique identifier of the data store. | 
-**last_updated_time** | **datetime** | When the data store was last registered, renamed, or given different storage or credentials. Null until one of those has happened. | [optional] 
 **name** | **str** | Display name of the data store. Null when it has no name. | [optional] 
+**deployment_id** | **UUID** | Identifier of the deployment this data store belongs to. | 
 **storage_type** | [**StorageType**](StorageType.md) | Which kind of storage the data store keeps its data in. | 
+**authentication_type** | [**AuthenticationType**](AuthenticationType.md) | How Monte Carlo authenticates when it reaches the data store. | 
+**enabled** | **bool** | Whether Monte Carlo is using this data store. One that is unregistered, or whose validation failed, is not enabled. | 
+**created_time** | **datetime** | When the data store was created, which is when its deployment was provisioned. | [optional] 
+**last_updated_time** | **datetime** | When the data store was last registered, renamed, or given different storage or credentials. Null until one of those has happened. | [optional] 
+**container_name** | **str** | Name of the blob container Monte Carlo uses. Empty until it has been registered. The storage account holding it is part of the credentials, so it is not returned. | 
 
 ## Example
 

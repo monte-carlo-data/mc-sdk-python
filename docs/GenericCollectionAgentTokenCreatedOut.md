@@ -6,13 +6,13 @@ A token as it comes back from its create, the only time the secret is available.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_time** | **datetime** | When the credential was created. | 
-**deployment_id** | **UUID** | Identifier of the deployment whose agent presents this credential. | 
-**description** | **str** | What this credential is for. | 
 **id** | **str** | Unique identifier of the credential. For a token this is also its key id; for an OAuth client, its client id. | 
+**deployment_id** | **UUID** | Identifier of the deployment whose agent presents this credential. | 
+**type** | [**CredentialType**](CredentialType.md) | Which kind of credential this is. | 
+**description** | **str** | What this credential is for. | 
+**created_time** | **datetime** | When the credential was created. | 
 **mcd_id** | **str** | Key id the agent presents, as &#x60;mcd_id&#x60; in its configuration. The same value as &#x60;id&#x60;. | 
 **mcd_token** | **str** | Secret the agent presents, as &#x60;mcd_token&#x60; in its configuration. Returned once, by this call. It is not retrievable afterwards, and Terraform holds it in state like any generated credential. To rotate, create a new credential and delete this one. | [readonly] 
-**type** | [**CredentialType**](CredentialType.md) | Which kind of credential this is. | 
 
 ## Example
 

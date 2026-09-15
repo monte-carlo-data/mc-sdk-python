@@ -6,12 +6,12 @@ Details Monte Carlo needs to access a data store you keep in Azure Blob Storage.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**authentication_type** | [**AzureDataStoreAuthenticationType**](AzureDataStoreAuthenticationType.md) | How Monte Carlo authenticates to the storage account. Send it together with the matching credentials object. | 
-**container_name** | **str** | Name of the blob container Monte Carlo should use. | 
-**deployment_id** | **UUID** | Deployment to register the data store on. It must already hold an unregistered Azure data store. | 
-**name** | **str** | Display name for the data store. Replaces the name its deployment gave it. | [optional] 
-**service_principal** | [**StorageServicePrincipalCredentialsIn**](StorageServicePrincipalCredentialsIn.md) | Credentials for &#x60;AZURE_STORAGE_SERVICE_PRINCIPAL&#x60;. Send this or &#x60;storage_account_keys&#x60;, never both. | [optional] 
 **storage_account_keys** | [**StorageAccountKeysCredentialsIn**](StorageAccountKeysCredentialsIn.md) | Credentials for &#x60;AZURE_STORAGE_ACCOUNT_KEYS&#x60;. Send this or &#x60;service_principal&#x60;, never both. | [optional] 
+**service_principal** | [**StorageServicePrincipalCredentialsIn**](StorageServicePrincipalCredentialsIn.md) | Credentials for &#x60;AZURE_STORAGE_SERVICE_PRINCIPAL&#x60;. Send this or &#x60;storage_account_keys&#x60;, never both. | [optional] 
+**authentication_type** | [**AzureDataStoreAuthenticationType**](AzureDataStoreAuthenticationType.md) | How Monte Carlo authenticates to the storage account. Send it together with the matching credentials object. | 
+**deployment_id** | **UUID** | Deployment to register the data store on. It must already hold an unregistered Azure data store. | 
+**container_name** | **str** | Name of the blob container Monte Carlo should use. | 
+**name** | **str** | Display name for the data store. Replaces the name its deployment gave it. | [optional] 
 
 ## Example
 

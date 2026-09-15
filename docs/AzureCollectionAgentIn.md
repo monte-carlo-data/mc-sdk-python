@@ -6,12 +6,12 @@ Details Monte Carlo needs to reach a collection agent you have deployed on Azure
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**function_app_key** | [**FunctionAppKeyCredentialsIn**](FunctionAppKeyCredentialsIn.md) | Credentials for &#x60;AZURE_FUNCTION_APP_KEY&#x60;. Send this or &#x60;service_principal&#x60;, never both. | [optional] 
+**service_principal** | [**ServicePrincipalCredentialsIn**](ServicePrincipalCredentialsIn.md) | Credentials for &#x60;AZURE_FUNCTION_SERVICE_PRINCIPAL&#x60;. Send this or &#x60;function_app_key&#x60;, never both. | [optional] 
 **authentication_type** | [**AzureAgentAuthenticationType**](AzureAgentAuthenticationType.md) | How Monte Carlo authenticates when it calls the agent. Send it together with the matching credentials object. | 
 **deployment_id** | **UUID** | Deployment to register the collection agent on. It must already hold an unregistered Azure collection agent. | 
-**function_app_key** | [**FunctionAppKeyCredentialsIn**](FunctionAppKeyCredentialsIn.md) | Credentials for &#x60;AZURE_FUNCTION_APP_KEY&#x60;. Send this or &#x60;service_principal&#x60;, never both. | [optional] 
 **function_app_url** | **str** | URL of the function app Monte Carlo should call. | 
 **name** | **str** | Display name for the collection agent. Replaces the name it currently has. | [optional] 
-**service_principal** | [**ServicePrincipalCredentialsIn**](ServicePrincipalCredentialsIn.md) | Credentials for &#x60;AZURE_FUNCTION_SERVICE_PRINCIPAL&#x60;. Send this or &#x60;function_app_key&#x60;, never both. | [optional] 
 
 ## Example
 

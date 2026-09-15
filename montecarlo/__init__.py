@@ -22,6 +22,7 @@ __all__ = [
     "CollectionDataStoresApi",
     "DeploymentsApi",
     "UsersApi",
+    "WarehousesApi",
     "ApiResponse",
     "ApiClient",
     "Configuration",
@@ -79,12 +80,18 @@ __all__ = [
     "GenericCollectionAgentTokenIn",
     "GenericCollectionAgentTokenOut",
     "IdentityType",
+    "Input",
+    "PagedWarehouseOut",
     "ProblemOut",
     "RuntimePlatform",
     "ServicePrincipalCredentialsIn",
     "StorageAccountKeysCredentialsIn",
     "StorageServicePrincipalCredentialsIn",
     "StorageType",
+    "WarehouseIn",
+    "WarehouseOut",
+    "WarehousePatch",
+    "WarehouseType",
 ]
 
 # import apis into sdk package
@@ -92,6 +99,7 @@ from montecarlo.api.collection_agents_api import CollectionAgentsApi as Collecti
 from montecarlo.api.collection_data_stores_api import CollectionDataStoresApi as CollectionDataStoresApi
 from montecarlo.api.deployments_api import DeploymentsApi as DeploymentsApi
 from montecarlo.api.users_api import UsersApi as UsersApi
+from montecarlo.api.warehouses_api import WarehousesApi as WarehousesApi
 
 # import ApiClient
 from montecarlo.api_response import ApiResponse as ApiResponse
@@ -150,12 +158,18 @@ from montecarlo.models.generic_collection_agent_token_created_out import Generic
 from montecarlo.models.generic_collection_agent_token_in import GenericCollectionAgentTokenIn as GenericCollectionAgentTokenIn
 from montecarlo.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut as GenericCollectionAgentTokenOut
 from montecarlo.models.identity_type import IdentityType as IdentityType
+from montecarlo.models.input import Input as Input
+from montecarlo.models.paged_warehouse_out import PagedWarehouseOut as PagedWarehouseOut
 from montecarlo.models.problem_out import ProblemOut as ProblemOut
 from montecarlo.models.runtime_platform import RuntimePlatform as RuntimePlatform
 from montecarlo.models.service_principal_credentials_in import ServicePrincipalCredentialsIn as ServicePrincipalCredentialsIn
 from montecarlo.models.storage_account_keys_credentials_in import StorageAccountKeysCredentialsIn as StorageAccountKeysCredentialsIn
 from montecarlo.models.storage_service_principal_credentials_in import StorageServicePrincipalCredentialsIn as StorageServicePrincipalCredentialsIn
 from montecarlo.models.storage_type import StorageType as StorageType
+from montecarlo.models.warehouse_in import WarehouseIn as WarehouseIn
+from montecarlo.models.warehouse_out import WarehouseOut as WarehouseOut
+from montecarlo.models.warehouse_patch import WarehousePatch as WarehousePatch
+from montecarlo.models.warehouse_type import WarehouseType as WarehouseType
 
 
 # Hand-written client construction and credentials; auth.py is not generator output.

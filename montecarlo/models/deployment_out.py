@@ -31,15 +31,15 @@ class DeploymentOut(BaseModel):
     """
     One deployment, with the fields only a single read returns.
     """ # noqa: E501
-    aws_external_id: Optional[StrictStr] = Field(default=None, description="Value to supply when you register an AWS collection agent or data store on this deployment. It goes in the trust policy of the role Monte Carlo assumes. Null until Monte Carlo has generated one, for a deployment on another platform, for a caller who is not permitted to register one, and if the value could not be read just now. Retry the request in that last case.")
-    created_time: Optional[datetime] = Field(default=None, description="When the deployment was assigned to your account. Null when Monte Carlo has no record of that.")
-    enabled: StrictBool = Field(description="Whether the deployment can serve connections. A deployment still waiting for its collection agent or data store to be registered, or with nothing provisioned on it, is not enabled.")
     id: UUID = Field(description="Unique identifier of the deployment.")
-    last_updated_time: Optional[datetime] = Field(default=None, description="When Monte Carlo last updated the infrastructure behind the deployment. Null when Monte Carlo has no record of an update.")
     name: StrictStr = Field(description="Display name of the deployment.")
-    runtime_platform: Optional[RuntimePlatform] = Field(default=None, description="Where the deployment's collection agent or data store runs. Null for a Monte Carlo hosted deployment, which runs neither, for one with nothing provisioned on it, and for one whose platform Monte Carlo has not recorded.")
     type: Optional[DeploymentType] = Field(default=None, description="What the deployment hosts. Null when nothing is provisioned on it, in which case it has to be provisioned before it can be used.")
-    __properties: ClassVar[List[str]] = ["aws_external_id", "created_time", "enabled", "id", "last_updated_time", "name", "runtime_platform", "type"]
+    runtime_platform: Optional[RuntimePlatform] = Field(default=None, description="Where the deployment's collection agent or data store runs. Null for a Monte Carlo hosted deployment, which runs neither, for one with nothing provisioned on it, and for one whose platform Monte Carlo has not recorded.")
+    enabled: StrictBool = Field(description="Whether the deployment can serve connections. A deployment still waiting for its collection agent or data store to be registered, or with nothing provisioned on it, is not enabled.")
+    created_time: Optional[datetime] = Field(default=None, description="When the deployment was assigned to your account. Null when Monte Carlo has no record of that.")
+    last_updated_time: Optional[datetime] = Field(default=None, description="When Monte Carlo last updated the infrastructure behind the deployment. Null when Monte Carlo has no record of an update.")
+    aws_external_id: Optional[StrictStr] = Field(default=None, description="Value to supply when you register an AWS collection agent or data store on this deployment. It goes in the trust policy of the role Monte Carlo assumes. Null until Monte Carlo has generated one, for a deployment on another platform, for a caller who is not permitted to register one, and if the value could not be read just now. Retry the request in that last case.")
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "runtime_platform", "enabled", "created_time", "last_updated_time", "aws_external_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -80,10 +80,15 @@ class DeploymentOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if aws_external_id (nullable) is None
+        # set to None if type (nullable) is None
         # and model_fields_set contains the field
-        if self.aws_external_id is None and "aws_external_id" in self.model_fields_set:
-            _dict['aws_external_id'] = None
+        if self.type is None and "type" in self.model_fields_set:
+            _dict['type'] = None
+
+        # set to None if runtime_platform (nullable) is None
+        # and model_fields_set contains the field
+        if self.runtime_platform is None and "runtime_platform" in self.model_fields_set:
+            _dict['runtime_platform'] = None
 
         # set to None if created_time (nullable) is None
         # and model_fields_set contains the field
@@ -95,15 +100,10 @@ class DeploymentOut(BaseModel):
         if self.last_updated_time is None and "last_updated_time" in self.model_fields_set:
             _dict['last_updated_time'] = None
 
-        # set to None if runtime_platform (nullable) is None
+        # set to None if aws_external_id (nullable) is None
         # and model_fields_set contains the field
-        if self.runtime_platform is None and "runtime_platform" in self.model_fields_set:
-            _dict['runtime_platform'] = None
-
-        # set to None if type (nullable) is None
-        # and model_fields_set contains the field
-        if self.type is None and "type" in self.model_fields_set:
-            _dict['type'] = None
+        if self.aws_external_id is None and "aws_external_id" in self.model_fields_set:
+            _dict['aws_external_id'] = None
 
         return _dict
 
@@ -117,14 +117,14 @@ class DeploymentOut(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "aws_external_id": obj.get("aws_external_id"),
-            "created_time": obj.get("created_time"),
-            "enabled": obj.get("enabled"),
             "id": obj.get("id"),
-            "last_updated_time": obj.get("last_updated_time"),
             "name": obj.get("name"),
+            "type": obj.get("type"),
             "runtime_platform": obj.get("runtime_platform"),
-            "type": obj.get("type")
+            "enabled": obj.get("enabled"),
+            "created_time": obj.get("created_time"),
+            "last_updated_time": obj.get("last_updated_time"),
+            "aws_external_id": obj.get("aws_external_id")
         })
         return _obj
 

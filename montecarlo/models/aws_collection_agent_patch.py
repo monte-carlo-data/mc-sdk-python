@@ -29,9 +29,9 @@ class AwsCollectionAgentPatch(BaseModel):
     Details to change on an AWS collection agent. Only what you send is changed.  Sending only `name` skips the checks against your function, since a name is not validated against it.
     """ # noqa: E501
     lambda_function_arn: Optional[StrictStr] = Field(default=None, description="ARN of the Lambda function Monte Carlo should invoke.")
-    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the collection agent. Replaces the name it currently has.")
     role_arn: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="ARN of the role Monte Carlo assumes to invoke the function. Its trust policy must already carry the deployment's external id.")
-    __properties: ClassVar[List[str]] = ["lambda_function_arn", "name", "role_arn"]
+    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the collection agent. Replaces the name it currently has.")
+    __properties: ClassVar[List[str]] = ["lambda_function_arn", "role_arn", "name"]
 
     @field_validator('role_arn')
     def role_arn_validate_regular_expression(cls, value):
@@ -90,15 +90,15 @@ class AwsCollectionAgentPatch(BaseModel):
         if self.lambda_function_arn is None and "lambda_function_arn" in self.model_fields_set:
             _dict['lambda_function_arn'] = None
 
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
-
         # set to None if role_arn (nullable) is None
         # and model_fields_set contains the field
         if self.role_arn is None and "role_arn" in self.model_fields_set:
             _dict['role_arn'] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
 
         return _dict
 
@@ -113,8 +113,8 @@ class AwsCollectionAgentPatch(BaseModel):
 
         _obj = cls.model_validate({
             "lambda_function_arn": obj.get("lambda_function_arn"),
-            "name": obj.get("name"),
-            "role_arn": obj.get("role_arn")
+            "role_arn": obj.get("role_arn"),
+            "name": obj.get("name")
         })
         return _obj
 

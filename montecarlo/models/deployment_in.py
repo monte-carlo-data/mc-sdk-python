@@ -30,10 +30,10 @@ class DeploymentIn(BaseModel):
     """
     What to provision a deployment for. Sent both when creating one and when reprovisioning.
     """ # noqa: E501
-    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the deployment. Monte Carlo generates one if you leave it out.")
-    runtime_platform: RuntimePlatform = Field(description="Where the deployment's collection agent or data store will run. Either can be provisioned on `AWS`, `AZURE` or `GCP`, and a collection agent also on `GENERIC`. Any other combination is rejected.")
     type: DeploymentType = Field(description="What the deployment will host. Only `COLLECTION_AGENT` and `COLLECTION_DATA_STORE` can be provisioned today. Any other value is rejected.")
-    __properties: ClassVar[List[str]] = ["name", "runtime_platform", "type"]
+    runtime_platform: RuntimePlatform = Field(description="Where the deployment's collection agent or data store will run. Either can be provisioned on `AWS`, `AZURE` or `GCP`, and a collection agent also on `GENERIC`. Any other combination is rejected.")
+    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the deployment. Monte Carlo generates one if you leave it out.")
+    __properties: ClassVar[List[str]] = ["type", "runtime_platform", "name"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -91,9 +91,9 @@ class DeploymentIn(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
+            "type": obj.get("type"),
             "runtime_platform": obj.get("runtime_platform"),
-            "type": obj.get("type")
+            "name": obj.get("name")
         })
         return _obj
 

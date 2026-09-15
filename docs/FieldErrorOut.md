@@ -6,10 +6,10 @@ One field of a request that failed validation.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **str** | Machine-readable code identifying the kind of validation failure. | 
-**extra** | **Dict[str, str]** | Values that parameterize &#x60;message&#x60;, for a client that renders its own text instead of showing &#x60;message&#x60; directly. Absent when there is nothing to report. | [optional] 
 **var_field** | **List[str]** | Where the invalid field sits, as the path to it from the top of the request body. For example &#x60;[&#39;port&#39;]&#x60;, or &#x60;[&#39;settings&#39;, &#39;timeout&#39;]&#x60; for a field nested inside an object. | 
+**code** | **str** | Machine-readable code identifying the kind of validation failure. | 
 **message** | **str** | Human-readable explanation of why this field failed validation. | 
+**extra** | **Dict[str, str]** | Values that parameterize &#x60;message&#x60;, for a client that renders its own text instead of showing &#x60;message&#x60; directly. Absent when there is nothing to report. | [optional] 
 
 ## Example
 

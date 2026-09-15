@@ -31,12 +31,12 @@ class AzureCollectionAgentPatch(BaseModel):
     """
     Details to change on an Azure collection agent. Only what you send is changed.  A credentials object is the exception: it replaces the stored credentials instead of merging into them, so send every field of the object you send, along with the matching `authentication_type`. Sending only `name` skips the checks against your function app, since a name is not validated against it.
     """ # noqa: E501
-    authentication_type: Optional[AzureAgentAuthenticationType] = Field(default=None, description="How Monte Carlo authenticates when it calls the agent. Send it together with the matching credentials object.")
     function_app_key: Optional[FunctionAppKeyCredentialsIn] = Field(default=None, description="Credentials for `AZURE_FUNCTION_APP_KEY`. Send this or `service_principal`, never both.")
+    service_principal: Optional[ServicePrincipalCredentialsIn] = Field(default=None, description="Credentials for `AZURE_FUNCTION_SERVICE_PRINCIPAL`. Send this or `function_app_key`, never both.")
     function_app_url: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="URL of the function app Monte Carlo should call.")
     name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the collection agent. Replaces the name it currently has.")
-    service_principal: Optional[ServicePrincipalCredentialsIn] = Field(default=None, description="Credentials for `AZURE_FUNCTION_SERVICE_PRINCIPAL`. Send this or `function_app_key`, never both.")
-    __properties: ClassVar[List[str]] = ["authentication_type", "function_app_key", "function_app_url", "name", "service_principal"]
+    authentication_type: Optional[AzureAgentAuthenticationType] = Field(default=None, description="How Monte Carlo authenticates when it calls the agent. Send it together with the matching credentials object.")
+    __properties: ClassVar[List[str]] = ["function_app_key", "service_principal", "function_app_url", "name", "authentication_type"]
 
     @field_validator('function_app_url')
     def function_app_url_validate_regular_expression(cls, value):
@@ -96,15 +96,15 @@ class AzureCollectionAgentPatch(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of service_principal
         if self.service_principal:
             _dict['service_principal'] = self.service_principal.to_dict()
-        # set to None if authentication_type (nullable) is None
-        # and model_fields_set contains the field
-        if self.authentication_type is None and "authentication_type" in self.model_fields_set:
-            _dict['authentication_type'] = None
-
         # set to None if function_app_key (nullable) is None
         # and model_fields_set contains the field
         if self.function_app_key is None and "function_app_key" in self.model_fields_set:
             _dict['function_app_key'] = None
+
+        # set to None if service_principal (nullable) is None
+        # and model_fields_set contains the field
+        if self.service_principal is None and "service_principal" in self.model_fields_set:
+            _dict['service_principal'] = None
 
         # set to None if function_app_url (nullable) is None
         # and model_fields_set contains the field
@@ -116,10 +116,10 @@ class AzureCollectionAgentPatch(BaseModel):
         if self.name is None and "name" in self.model_fields_set:
             _dict['name'] = None
 
-        # set to None if service_principal (nullable) is None
+        # set to None if authentication_type (nullable) is None
         # and model_fields_set contains the field
-        if self.service_principal is None and "service_principal" in self.model_fields_set:
-            _dict['service_principal'] = None
+        if self.authentication_type is None and "authentication_type" in self.model_fields_set:
+            _dict['authentication_type'] = None
 
         return _dict
 
@@ -133,11 +133,11 @@ class AzureCollectionAgentPatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "authentication_type": obj.get("authentication_type"),
             "function_app_key": FunctionAppKeyCredentialsIn.from_dict(obj["function_app_key"]) if obj.get("function_app_key") is not None else None,
+            "service_principal": ServicePrincipalCredentialsIn.from_dict(obj["service_principal"]) if obj.get("service_principal") is not None else None,
             "function_app_url": obj.get("function_app_url"),
             "name": obj.get("name"),
-            "service_principal": ServicePrincipalCredentialsIn.from_dict(obj["service_principal"]) if obj.get("service_principal") is not None else None
+            "authentication_type": obj.get("authentication_type")
         })
         return _obj
 

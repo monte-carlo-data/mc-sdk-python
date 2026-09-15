@@ -6,14 +6,14 @@ The error body returned by every failed request.  Every response with a status o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **str** | URI identifying the category of error. The same category always uses the same URI. | 
+**title** | **str** | Short, human-readable summary of the category of error. | 
+**status** | **int** | HTTP status code, repeated here for clients that only see the body. | 
 **code** | **str** | Machine-readable code identifying the category of error. Branch on this rather than on &#x60;status&#x60;, because several codes can share one status. | 
 **detail** | **str** | Human-readable explanation of this particular occurrence of the error. | 
+**request_id** | **str** | Identifier for this request, also returned in the &#x60;X-Request-Id&#x60; header. Quote it when reporting the error to support. | 
 **errors** | [**List[FieldErrorOut]**](FieldErrorOut.md) | The fields that failed validation. Empty unless this is a validation error. | [optional] 
 **extra** | **Dict[str, str]** | Values that parameterize &#x60;message&#x60;, for a client that renders its own text instead of showing &#x60;message&#x60; directly. Absent when there is nothing to report. | [optional] 
-**request_id** | **str** | Identifier for this request, also returned in the &#x60;X-Request-Id&#x60; header. Quote it when reporting the error to support. | 
-**status** | **int** | HTTP status code, repeated here for clients that only see the body. | 
-**title** | **str** | Short, human-readable summary of the category of error. | 
-**type** | **str** | URI identifying the category of error. The same category always uses the same URI. | 
 
 ## Example
 

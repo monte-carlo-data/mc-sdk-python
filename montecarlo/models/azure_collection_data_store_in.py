@@ -32,13 +32,13 @@ class AzureCollectionDataStoreIn(BaseModel):
     """
     Details Monte Carlo needs to access a data store you keep in Azure Blob Storage.
     """ # noqa: E501
-    authentication_type: AzureDataStoreAuthenticationType = Field(description="How Monte Carlo authenticates to the storage account. Send it together with the matching credentials object.")
-    container_name: Annotated[str, Field(strict=True)] = Field(description="Name of the blob container Monte Carlo should use.")
-    deployment_id: UUID = Field(description="Deployment to register the data store on. It must already hold an unregistered Azure data store.")
-    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the data store. Replaces the name its deployment gave it.")
-    service_principal: Optional[StorageServicePrincipalCredentialsIn] = Field(default=None, description="Credentials for `AZURE_STORAGE_SERVICE_PRINCIPAL`. Send this or `storage_account_keys`, never both.")
     storage_account_keys: Optional[StorageAccountKeysCredentialsIn] = Field(default=None, description="Credentials for `AZURE_STORAGE_ACCOUNT_KEYS`. Send this or `service_principal`, never both.")
-    __properties: ClassVar[List[str]] = ["authentication_type", "container_name", "deployment_id", "name", "service_principal", "storage_account_keys"]
+    service_principal: Optional[StorageServicePrincipalCredentialsIn] = Field(default=None, description="Credentials for `AZURE_STORAGE_SERVICE_PRINCIPAL`. Send this or `storage_account_keys`, never both.")
+    authentication_type: AzureDataStoreAuthenticationType = Field(description="How Monte Carlo authenticates to the storage account. Send it together with the matching credentials object.")
+    deployment_id: UUID = Field(description="Deployment to register the data store on. It must already hold an unregistered Azure data store.")
+    container_name: Annotated[str, Field(strict=True)] = Field(description="Name of the blob container Monte Carlo should use.")
+    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the data store. Replaces the name its deployment gave it.")
+    __properties: ClassVar[List[str]] = ["storage_account_keys", "service_principal", "authentication_type", "deployment_id", "container_name", "name"]
 
     @field_validator('container_name')
     def container_name_validate_regular_expression(cls, value):
@@ -89,26 +89,26 @@ class AzureCollectionDataStoreIn(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of service_principal
-        if self.service_principal:
-            _dict['service_principal'] = self.service_principal.to_dict()
         # override the default output from pydantic by calling `to_dict()` of storage_account_keys
         if self.storage_account_keys:
             _dict['storage_account_keys'] = self.storage_account_keys.to_dict()
-        # set to None if name (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of service_principal
+        if self.service_principal:
+            _dict['service_principal'] = self.service_principal.to_dict()
+        # set to None if storage_account_keys (nullable) is None
         # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
+        if self.storage_account_keys is None and "storage_account_keys" in self.model_fields_set:
+            _dict['storage_account_keys'] = None
 
         # set to None if service_principal (nullable) is None
         # and model_fields_set contains the field
         if self.service_principal is None and "service_principal" in self.model_fields_set:
             _dict['service_principal'] = None
 
-        # set to None if storage_account_keys (nullable) is None
+        # set to None if name (nullable) is None
         # and model_fields_set contains the field
-        if self.storage_account_keys is None and "storage_account_keys" in self.model_fields_set:
-            _dict['storage_account_keys'] = None
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
 
         return _dict
 
@@ -122,12 +122,12 @@ class AzureCollectionDataStoreIn(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "authentication_type": obj.get("authentication_type"),
-            "container_name": obj.get("container_name"),
-            "deployment_id": obj.get("deployment_id"),
-            "name": obj.get("name"),
+            "storage_account_keys": StorageAccountKeysCredentialsIn.from_dict(obj["storage_account_keys"]) if obj.get("storage_account_keys") is not None else None,
             "service_principal": StorageServicePrincipalCredentialsIn.from_dict(obj["service_principal"]) if obj.get("service_principal") is not None else None,
-            "storage_account_keys": StorageAccountKeysCredentialsIn.from_dict(obj["storage_account_keys"]) if obj.get("storage_account_keys") is not None else None
+            "authentication_type": obj.get("authentication_type"),
+            "deployment_id": obj.get("deployment_id"),
+            "container_name": obj.get("container_name"),
+            "name": obj.get("name")
         })
         return _obj
 

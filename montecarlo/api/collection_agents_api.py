@@ -110,12 +110,12 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "GenericCollectionAgentOAuthClientCreatedOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -262,12 +262,12 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "GenericCollectionAgentTokenCreatedOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -414,11 +414,11 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -551,11 +551,11 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -688,11 +688,11 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -825,11 +825,11 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -962,9 +962,9 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '429': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
-            '429': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -1097,9 +1097,9 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
+            '429': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
-            '429': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -1232,9 +1232,9 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AwsCollectionAgentOut",
+            '404': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
-            '404': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -1368,9 +1368,9 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AzureCollectionAgentOut",
+            '404': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
-            '404': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -1504,9 +1504,9 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GcpCollectionAgentOut",
+            '404': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
-            '404': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -1640,9 +1640,9 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GenericCollectionAgentOut",
+            '404': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
-            '404': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -1776,9 +1776,9 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GenericCollectionAgentOAuthClientOut",
+            '404': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
-            '404': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -1912,9 +1912,9 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GenericCollectionAgentTokenOut",
+            '404': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
-            '404': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -2313,14 +2313,14 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "AwsCollectionAgentOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2466,14 +2466,14 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "AzureCollectionAgentOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2619,14 +2619,14 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "GcpCollectionAgentOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2772,14 +2772,14 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "GenericCollectionAgentOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2929,14 +2929,14 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AwsCollectionAgentOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3089,14 +3089,14 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AzureCollectionAgentOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3249,14 +3249,14 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GcpCollectionAgentOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3409,11 +3409,11 @@ class CollectionAgentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GenericCollectionAgentOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(

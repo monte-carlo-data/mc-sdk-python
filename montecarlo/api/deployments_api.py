@@ -92,13 +92,13 @@ class DeploymentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "DeploymentOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -244,12 +244,12 @@ class DeploymentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -381,9 +381,9 @@ class DeploymentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeploymentOut",
+            '404': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
-            '404': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -649,12 +649,12 @@ class DeploymentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeploymentOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -808,11 +808,11 @@ class DeploymentsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DeploymentOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(

@@ -6,11 +6,11 @@ The service principal Monte Carlo authenticates to the storage account as.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_name** | **str** | Name of the storage account, needed only when &#x60;account_url&#x60; does not start with it. Monte Carlo takes the first label of the host otherwise, which is right for a standard or private-link URL but not for a custom ingress host. | [optional] 
-**account_url** | **str** | URL of the storage account Monte Carlo sends requests to. A private endpoint or a custom host works, so this is not required to be under &#x60;blob.core.windows.net&#x60;. | 
+**tenant_id** | **str** | Directory (tenant) id the service principal lives in. | 
 **client_id** | **str** | Application (client) id of the service principal. | 
 **client_secret** | **str** | Client secret of the service principal. | 
-**tenant_id** | **str** | Directory (tenant) id the service principal lives in. | 
+**account_url** | **str** | URL of the storage account Monte Carlo sends requests to. A private endpoint or a custom host works, so this is not required to be under &#x60;blob.core.windows.net&#x60;. | 
+**account_name** | **str** | Name of the storage account, needed only when &#x60;account_url&#x60; does not start with it. Monte Carlo takes the first label of the host otherwise, which is right for a standard or private-link URL but not for a custom ingress host. | [optional] 
 
 ## Example
 

@@ -7,8 +7,8 @@ Details to change on a Cloud Storage data store. Only what you send is changed. 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bucket_name** | **str** | Name of the Cloud Storage bucket Monte Carlo should use. | [optional] 
-**name** | **str** | Display name for the data store. Replaces the name its deployment gave it. | [optional] 
 **service_account_key** | **str** | Service account key Monte Carlo reaches the bucket with, as the contents of the JSON key file Google issued for it. It replaces the stored key rather than merging into it. | [optional] 
+**name** | **str** | Display name for the data store. Replaces the name its deployment gave it. | [optional] 
 
 ## Example
 

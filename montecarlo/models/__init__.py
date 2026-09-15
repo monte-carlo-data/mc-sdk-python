@@ -58,10 +58,16 @@ from montecarlo.models.generic_collection_agent_token_created_out import Generic
 from montecarlo.models.generic_collection_agent_token_in import GenericCollectionAgentTokenIn
 from montecarlo.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut
 from montecarlo.models.identity_type import IdentityType
+from montecarlo.models.input import Input
+from montecarlo.models.paged_warehouse_out import PagedWarehouseOut
 from montecarlo.models.problem_out import ProblemOut
 from montecarlo.models.runtime_platform import RuntimePlatform
 from montecarlo.models.service_principal_credentials_in import ServicePrincipalCredentialsIn
 from montecarlo.models.storage_account_keys_credentials_in import StorageAccountKeysCredentialsIn
 from montecarlo.models.storage_service_principal_credentials_in import StorageServicePrincipalCredentialsIn
 from montecarlo.models.storage_type import StorageType
+from montecarlo.models.warehouse_in import WarehouseIn
+from montecarlo.models.warehouse_out import WarehouseOut
+from montecarlo.models.warehouse_patch import WarehousePatch
+from montecarlo.models.warehouse_type import WarehouseType
 

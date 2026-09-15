@@ -29,9 +29,9 @@ class GcpCollectionDataStorePatch(BaseModel):
     Details to change on a Cloud Storage data store. Only what you send is changed.  The service account key is the exception: it replaces the stored key instead of merging into it. Sending only `name` skips the checks against your storage, since a name is not validated against it.
     """ # noqa: E501
     bucket_name: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="Name of the Cloud Storage bucket Monte Carlo should use.")
-    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the data store. Replaces the name its deployment gave it.")
     service_account_key: Optional[Annotated[str, Field(strict=True, max_length=16384)]] = Field(default=None, description="Service account key Monte Carlo reaches the bucket with, as the contents of the JSON key file Google issued for it. It replaces the stored key rather than merging into it.")
-    __properties: ClassVar[List[str]] = ["bucket_name", "name", "service_account_key"]
+    name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the data store. Replaces the name its deployment gave it.")
+    __properties: ClassVar[List[str]] = ["bucket_name", "service_account_key", "name"]
 
     @field_validator('bucket_name')
     def bucket_name_validate_regular_expression(cls, value):
@@ -90,15 +90,15 @@ class GcpCollectionDataStorePatch(BaseModel):
         if self.bucket_name is None and "bucket_name" in self.model_fields_set:
             _dict['bucket_name'] = None
 
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
-
         # set to None if service_account_key (nullable) is None
         # and model_fields_set contains the field
         if self.service_account_key is None and "service_account_key" in self.model_fields_set:
             _dict['service_account_key'] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
 
         return _dict
 
@@ -113,8 +113,8 @@ class GcpCollectionDataStorePatch(BaseModel):
 
         _obj = cls.model_validate({
             "bucket_name": obj.get("bucket_name"),
-            "name": obj.get("name"),
-            "service_account_key": obj.get("service_account_key")
+            "service_account_key": obj.get("service_account_key"),
+            "name": obj.get("name")
         })
         return _obj
 

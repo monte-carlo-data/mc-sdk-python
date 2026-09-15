@@ -98,11 +98,11 @@ class CollectionDataStoresApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -235,11 +235,11 @@ class CollectionDataStoresApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -372,11 +372,11 @@ class CollectionDataStoresApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -509,9 +509,9 @@ class CollectionDataStoresApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AwsCollectionDataStoreOut",
+            '404': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
-            '404': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -645,9 +645,9 @@ class CollectionDataStoresApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AzureCollectionDataStoreOut",
+            '404': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
-            '404': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -781,9 +781,9 @@ class CollectionDataStoresApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GcpCollectionDataStoreOut",
+            '404': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
-            '404': "ProblemOut",
             '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
@@ -1045,14 +1045,14 @@ class CollectionDataStoresApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "AwsCollectionDataStoreOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1198,14 +1198,14 @@ class CollectionDataStoresApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "AzureCollectionDataStoreOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1351,14 +1351,14 @@ class CollectionDataStoresApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "GcpCollectionDataStoreOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1508,14 +1508,14 @@ class CollectionDataStoresApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AwsCollectionDataStoreOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1668,14 +1668,14 @@ class CollectionDataStoresApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AzureCollectionDataStoreOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1828,14 +1828,14 @@ class CollectionDataStoresApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "GcpCollectionDataStoreOut",
-            '401': "ProblemOut",
-            '403': "ProblemOut",
             '404': "ProblemOut",
             '409': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
-            '500': "ProblemOut",
             '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
         }
         response_data = self.api_client.call_api(
             *_param,

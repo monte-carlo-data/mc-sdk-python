@@ -32,13 +32,13 @@ class AzureCollectionAgentIn(BaseModel):
     """
     Details Monte Carlo needs to reach a collection agent you have deployed on Azure.
     """ # noqa: E501
+    function_app_key: Optional[FunctionAppKeyCredentialsIn] = Field(default=None, description="Credentials for `AZURE_FUNCTION_APP_KEY`. Send this or `service_principal`, never both.")
+    service_principal: Optional[ServicePrincipalCredentialsIn] = Field(default=None, description="Credentials for `AZURE_FUNCTION_SERVICE_PRINCIPAL`. Send this or `function_app_key`, never both.")
     authentication_type: AzureAgentAuthenticationType = Field(description="How Monte Carlo authenticates when it calls the agent. Send it together with the matching credentials object.")
     deployment_id: UUID = Field(description="Deployment to register the collection agent on. It must already hold an unregistered Azure collection agent.")
-    function_app_key: Optional[FunctionAppKeyCredentialsIn] = Field(default=None, description="Credentials for `AZURE_FUNCTION_APP_KEY`. Send this or `service_principal`, never both.")
     function_app_url: Annotated[str, Field(strict=True)] = Field(description="URL of the function app Monte Carlo should call.")
     name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the collection agent. Replaces the name it currently has.")
-    service_principal: Optional[ServicePrincipalCredentialsIn] = Field(default=None, description="Credentials for `AZURE_FUNCTION_SERVICE_PRINCIPAL`. Send this or `function_app_key`, never both.")
-    __properties: ClassVar[List[str]] = ["authentication_type", "deployment_id", "function_app_key", "function_app_url", "name", "service_principal"]
+    __properties: ClassVar[List[str]] = ["function_app_key", "service_principal", "authentication_type", "deployment_id", "function_app_url", "name"]
 
     @field_validator('function_app_url')
     def function_app_url_validate_regular_expression(cls, value):
@@ -100,15 +100,15 @@ class AzureCollectionAgentIn(BaseModel):
         if self.function_app_key is None and "function_app_key" in self.model_fields_set:
             _dict['function_app_key'] = None
 
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
-
         # set to None if service_principal (nullable) is None
         # and model_fields_set contains the field
         if self.service_principal is None and "service_principal" in self.model_fields_set:
             _dict['service_principal'] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
 
         return _dict
 
@@ -122,12 +122,12 @@ class AzureCollectionAgentIn(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "function_app_key": FunctionAppKeyCredentialsIn.from_dict(obj["function_app_key"]) if obj.get("function_app_key") is not None else None,
+            "service_principal": ServicePrincipalCredentialsIn.from_dict(obj["service_principal"]) if obj.get("service_principal") is not None else None,
             "authentication_type": obj.get("authentication_type"),
             "deployment_id": obj.get("deployment_id"),
-            "function_app_key": FunctionAppKeyCredentialsIn.from_dict(obj["function_app_key"]) if obj.get("function_app_key") is not None else None,
             "function_app_url": obj.get("function_app_url"),
-            "name": obj.get("name"),
-            "service_principal": ServicePrincipalCredentialsIn.from_dict(obj["service_principal"]) if obj.get("service_principal") is not None else None
+            "name": obj.get("name")
         })
         return _obj
 

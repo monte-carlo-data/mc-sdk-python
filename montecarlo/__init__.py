@@ -20,6 +20,7 @@ __version__ = "0.0.0"
 __all__ = [
     "CollectionAgentsApi",
     "CollectionDataStoresApi",
+    "CredentialsApi",
     "DeploymentsApi",
     "UsersApi",
     "WarehousesApi",
@@ -43,6 +44,9 @@ __all__ = [
     "AwsCollectionDataStoreIn",
     "AwsCollectionDataStoreOut",
     "AwsCollectionDataStorePatch",
+    "AwsSecretsManagerCredentialsIn",
+    "AwsSecretsManagerCredentialsOut",
+    "AwsSecretsManagerCredentialsPatch",
     "AzureAgentAuthenticationType",
     "AzureCollectionAgentIn",
     "AzureCollectionAgentOut",
@@ -51,17 +55,28 @@ __all__ = [
     "AzureCollectionDataStoreOut",
     "AzureCollectionDataStorePatch",
     "AzureDataStoreAuthenticationType",
+    "AzureKeyVaultCredentialsIn",
+    "AzureKeyVaultCredentialsOut",
+    "AzureKeyVaultCredentialsPatch",
     "CollectionAgentCredentialOut",
     "CollectionAgentOut",
     "CollectionDataStoreOut",
     "CredentialType",
+    "CredentialsStorageType",
+    "CredentialsSummaryOut",
     "CurrentUserOut",
     "DeploymentIn",
     "DeploymentOut",
     "DeploymentPatch",
     "DeploymentSummaryOut",
     "DeploymentType",
+    "EnvVarCredentialsIn",
+    "EnvVarCredentialsOut",
+    "EnvVarCredentialsPatch",
     "FieldErrorOut",
+    "FileCredentialsIn",
+    "FileCredentialsOut",
+    "FileCredentialsPatch",
     "FunctionAppKeyCredentialsIn",
     "GcpAgentAuthenticationType",
     "GcpCollectionAgentIn",
@@ -70,6 +85,9 @@ __all__ = [
     "GcpCollectionDataStoreIn",
     "GcpCollectionDataStoreOut",
     "GcpCollectionDataStorePatch",
+    "GcpSecretManagerCredentialsIn",
+    "GcpSecretManagerCredentialsOut",
+    "GcpSecretManagerCredentialsPatch",
     "GenericCollectionAgentIn",
     "GenericCollectionAgentOAuthClientCreatedOut",
     "GenericCollectionAgentOAuthClientIn",
@@ -81,10 +99,14 @@ __all__ = [
     "GenericCollectionAgentTokenOut",
     "IdentityType",
     "Input",
+    "PagedCredentialsSummaryOut",
     "PagedWarehouseOut",
     "ProblemOut",
     "RuntimePlatform",
     "ServicePrincipalCredentialsIn",
+    "SnowflakeCredentialsIn",
+    "SnowflakeCredentialsOut",
+    "SnowflakeCredentialsPatch",
     "StorageAccountKeysCredentialsIn",
     "StorageServicePrincipalCredentialsIn",
     "StorageType",
@@ -97,6 +119,7 @@ __all__ = [
 # import apis into sdk package
 from montecarlo.api.collection_agents_api import CollectionAgentsApi as CollectionAgentsApi
 from montecarlo.api.collection_data_stores_api import CollectionDataStoresApi as CollectionDataStoresApi
+from montecarlo.api.credentials_api import CredentialsApi as CredentialsApi
 from montecarlo.api.deployments_api import DeploymentsApi as DeploymentsApi
 from montecarlo.api.users_api import UsersApi as UsersApi
 from montecarlo.api.warehouses_api import WarehousesApi as WarehousesApi
@@ -121,6 +144,9 @@ from montecarlo.models.aws_collection_agent_patch import AwsCollectionAgentPatch
 from montecarlo.models.aws_collection_data_store_in import AwsCollectionDataStoreIn as AwsCollectionDataStoreIn
 from montecarlo.models.aws_collection_data_store_out import AwsCollectionDataStoreOut as AwsCollectionDataStoreOut
 from montecarlo.models.aws_collection_data_store_patch import AwsCollectionDataStorePatch as AwsCollectionDataStorePatch
+from montecarlo.models.aws_secrets_manager_credentials_in import AwsSecretsManagerCredentialsIn as AwsSecretsManagerCredentialsIn
+from montecarlo.models.aws_secrets_manager_credentials_out import AwsSecretsManagerCredentialsOut as AwsSecretsManagerCredentialsOut
+from montecarlo.models.aws_secrets_manager_credentials_patch import AwsSecretsManagerCredentialsPatch as AwsSecretsManagerCredentialsPatch
 from montecarlo.models.azure_agent_authentication_type import AzureAgentAuthenticationType as AzureAgentAuthenticationType
 from montecarlo.models.azure_collection_agent_in import AzureCollectionAgentIn as AzureCollectionAgentIn
 from montecarlo.models.azure_collection_agent_out import AzureCollectionAgentOut as AzureCollectionAgentOut
@@ -129,17 +155,28 @@ from montecarlo.models.azure_collection_data_store_in import AzureCollectionData
 from montecarlo.models.azure_collection_data_store_out import AzureCollectionDataStoreOut as AzureCollectionDataStoreOut
 from montecarlo.models.azure_collection_data_store_patch import AzureCollectionDataStorePatch as AzureCollectionDataStorePatch
 from montecarlo.models.azure_data_store_authentication_type import AzureDataStoreAuthenticationType as AzureDataStoreAuthenticationType
+from montecarlo.models.azure_key_vault_credentials_in import AzureKeyVaultCredentialsIn as AzureKeyVaultCredentialsIn
+from montecarlo.models.azure_key_vault_credentials_out import AzureKeyVaultCredentialsOut as AzureKeyVaultCredentialsOut
+from montecarlo.models.azure_key_vault_credentials_patch import AzureKeyVaultCredentialsPatch as AzureKeyVaultCredentialsPatch
 from montecarlo.models.collection_agent_credential_out import CollectionAgentCredentialOut as CollectionAgentCredentialOut
 from montecarlo.models.collection_agent_out import CollectionAgentOut as CollectionAgentOut
 from montecarlo.models.collection_data_store_out import CollectionDataStoreOut as CollectionDataStoreOut
 from montecarlo.models.credential_type import CredentialType as CredentialType
+from montecarlo.models.credentials_storage_type import CredentialsStorageType as CredentialsStorageType
+from montecarlo.models.credentials_summary_out import CredentialsSummaryOut as CredentialsSummaryOut
 from montecarlo.models.current_user_out import CurrentUserOut as CurrentUserOut
 from montecarlo.models.deployment_in import DeploymentIn as DeploymentIn
 from montecarlo.models.deployment_out import DeploymentOut as DeploymentOut
 from montecarlo.models.deployment_patch import DeploymentPatch as DeploymentPatch
 from montecarlo.models.deployment_summary_out import DeploymentSummaryOut as DeploymentSummaryOut
 from montecarlo.models.deployment_type import DeploymentType as DeploymentType
+from montecarlo.models.env_var_credentials_in import EnvVarCredentialsIn as EnvVarCredentialsIn
+from montecarlo.models.env_var_credentials_out import EnvVarCredentialsOut as EnvVarCredentialsOut
+from montecarlo.models.env_var_credentials_patch import EnvVarCredentialsPatch as EnvVarCredentialsPatch
 from montecarlo.models.field_error_out import FieldErrorOut as FieldErrorOut
+from montecarlo.models.file_credentials_in import FileCredentialsIn as FileCredentialsIn
+from montecarlo.models.file_credentials_out import FileCredentialsOut as FileCredentialsOut
+from montecarlo.models.file_credentials_patch import FileCredentialsPatch as FileCredentialsPatch
 from montecarlo.models.function_app_key_credentials_in import FunctionAppKeyCredentialsIn as FunctionAppKeyCredentialsIn
 from montecarlo.models.gcp_agent_authentication_type import GcpAgentAuthenticationType as GcpAgentAuthenticationType
 from montecarlo.models.gcp_collection_agent_in import GcpCollectionAgentIn as GcpCollectionAgentIn
@@ -148,6 +185,9 @@ from montecarlo.models.gcp_collection_agent_patch import GcpCollectionAgentPatch
 from montecarlo.models.gcp_collection_data_store_in import GcpCollectionDataStoreIn as GcpCollectionDataStoreIn
 from montecarlo.models.gcp_collection_data_store_out import GcpCollectionDataStoreOut as GcpCollectionDataStoreOut
 from montecarlo.models.gcp_collection_data_store_patch import GcpCollectionDataStorePatch as GcpCollectionDataStorePatch
+from montecarlo.models.gcp_secret_manager_credentials_in import GcpSecretManagerCredentialsIn as GcpSecretManagerCredentialsIn
+from montecarlo.models.gcp_secret_manager_credentials_out import GcpSecretManagerCredentialsOut as GcpSecretManagerCredentialsOut
+from montecarlo.models.gcp_secret_manager_credentials_patch import GcpSecretManagerCredentialsPatch as GcpSecretManagerCredentialsPatch
 from montecarlo.models.generic_collection_agent_in import GenericCollectionAgentIn as GenericCollectionAgentIn
 from montecarlo.models.generic_collection_agent_o_auth_client_created_out import GenericCollectionAgentOAuthClientCreatedOut as GenericCollectionAgentOAuthClientCreatedOut
 from montecarlo.models.generic_collection_agent_o_auth_client_in import GenericCollectionAgentOAuthClientIn as GenericCollectionAgentOAuthClientIn
@@ -159,10 +199,14 @@ from montecarlo.models.generic_collection_agent_token_in import GenericCollectio
 from montecarlo.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut as GenericCollectionAgentTokenOut
 from montecarlo.models.identity_type import IdentityType as IdentityType
 from montecarlo.models.input import Input as Input
+from montecarlo.models.paged_credentials_summary_out import PagedCredentialsSummaryOut as PagedCredentialsSummaryOut
 from montecarlo.models.paged_warehouse_out import PagedWarehouseOut as PagedWarehouseOut
 from montecarlo.models.problem_out import ProblemOut as ProblemOut
 from montecarlo.models.runtime_platform import RuntimePlatform as RuntimePlatform
 from montecarlo.models.service_principal_credentials_in import ServicePrincipalCredentialsIn as ServicePrincipalCredentialsIn
+from montecarlo.models.snowflake_credentials_in import SnowflakeCredentialsIn as SnowflakeCredentialsIn
+from montecarlo.models.snowflake_credentials_out import SnowflakeCredentialsOut as SnowflakeCredentialsOut
+from montecarlo.models.snowflake_credentials_patch import SnowflakeCredentialsPatch as SnowflakeCredentialsPatch
 from montecarlo.models.storage_account_keys_credentials_in import StorageAccountKeysCredentialsIn as StorageAccountKeysCredentialsIn
 from montecarlo.models.storage_service_principal_credentials_in import StorageServicePrincipalCredentialsIn as StorageServicePrincipalCredentialsIn
 from montecarlo.models.storage_type import StorageType as StorageType

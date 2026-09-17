@@ -29,9 +29,11 @@ tox.ini
 .travis.yml
 git_push.sh
 
-# Hand-written inside the package: client construction and credentials. Defensive: the
-# generator names its package files api_client.py, api_response.py, configuration.py,
-# exceptions.py, rest.py, __init__.py and py.typed, and writes under api/ and models/.
+# Hand-written inside the package: client construction and credentials, and the pagination
+# helper. Defensive: the generator names its package files api_client.py, api_response.py,
+# configuration.py, exceptions.py, rest.py, __init__.py and py.typed, and writes under api/
+# and models/.
 montecarlo/auth.py
 montecarlo/oauth.py
 montecarlo/profile.py
+montecarlo/paging.py

@@ -61,6 +61,39 @@ package, so one import covers everything: `montecarlo.DeploymentIn`, `montecarlo
 and so on. Errors from the API raise `montecarlo.ApiException`; a misconfiguration raises
 `montecarlo.CredentialsError` when the client is built.
 
+### Walking a paginated list
+
+A list that pages returns one page per call, with `next_cursor` to ask for the next.
+`paginate` follows the cursor for you and yields every item, so nothing has to track it:
+
+```python
+from montecarlo import WarehousesApi, new_client
+from montecarlo.paging import paginate
+
+warehouses = WarehousesApi(new_client(options))
+
+for warehouse in paginate(warehouses.list_warehouses):
+    print(warehouse.id, warehouse.name)
+```
+
+Any other keyword arguments go to every call, so a filter a list accepts applies to the whole
+walk. `limit` is worth passing: the largest value the operation accepts walks the same list in
+fewer requests, since each call otherwise asks for the API's default page size.
+
+```python
+for warehouse in paginate(warehouses.list_warehouses, limit=100):
+    ...
+```
+
+A failed request raises whatever the client raises, so a walk ends on an `ApiException` like
+any other call. A page that promises more items without a cursor to ask for, or that repeats a
+cursor already served, raises `NoCursorError` or `RepeatedCursorError` from the same module;
+both subclass `PaginationError`. Call the list method directly when you want one page, the
+cursor, or a total.
+
+`paginate` is one function for every paginated list, because a page is recognised by its
+attributes. The Go SDK generates an `All` method per list instead.
+
 ### Using credentials you have already configured
 
 If you have configured the Monte Carlo CLI, the SDK reads the same `mcd_id` and `mcd_token`
@@ -103,11 +136,12 @@ section is read when a profile is consulted at all.
 | `docs/` | Generated API reference; see below. |
 | `.openapi-generator/` | Generator bookkeeping. |
 | `montecarlo/auth.py`, `oauth.py`, `profile.py` | Hand-written. `new_client`, `Options`, and the credential resolution behind them. |
+| `montecarlo/paging.py` | Hand-written. `paginate`, which walks a paginated list. |
 | `tests/` | Hand-written tests for the hand-written surface. |
 
 The generator writes at the repository root, replacing any path it emits and deleting nothing.
 Every hand-written file it would otherwise emit (`pyproject.toml`, `README.md`, `.gitignore`,
-and the three modules inside the package) is listed in `.openapi-generator-ignore`; other
+and the four modules inside the package) is listed in `.openapi-generator-ignore`; other
 hand-written files (`tests/`, `AGENTS.md`, `LICENSE`, the CI workflow) are names the generator
 never emits and need no entry. Adding a file that shares a generated path without listing it
 risks a silent overwrite.

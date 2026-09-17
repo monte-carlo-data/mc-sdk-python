@@ -6,7 +6,7 @@ globs: "**/*"
 # General Standards
 
 Almost everything under `montecarlo/` is `openapi-generator` output. The hand-written surface
-is `montecarlo/auth.py`, `oauth.py`, `profile.py`, the tests under `tests/`, `pyproject.toml`,
+is `montecarlo/auth.py`, `oauth.py`, `profile.py`, `paging.py`, the tests under `tests/`, `pyproject.toml`,
 `.openapi-generator-ignore`, and the repository documentation; see AGENTS.md for the exact
 list. These rules apply to that surface. Do not hand-edit generated files: the next generation
 run overwrites them.

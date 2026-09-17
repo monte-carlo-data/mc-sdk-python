@@ -9,7 +9,12 @@ import pytest
 
 from montecarlo import WarehousesApi, new_client
 from montecarlo.auth import Options
-from montecarlo.paging import NoCursorError, RepeatedCursorError, paginate
+from montecarlo.paging import (
+    NoCursorError,
+    PaginationError,
+    RepeatedCursorError,
+    paginate,
+)
 from tests.conftest import FakeApi
 
 
@@ -52,8 +57,17 @@ def test_a_walk_yields_every_page_in_order() -> None:
     )
 
     assert list(paginate(listing)) == ["a", "b", "c", "d", "e"]
-    # The first page is asked for with no cursor; each later page with the one before it.
     assert listing.asked == [None, "c1", "c2"]
+
+
+def test_a_page_reporting_no_more_ends_the_walk_whatever_cursor_it_carries() -> None:
+    """`has_more` is the terminator, not the cursor's presence. A last page that still carries
+    a cursor is the shape that tells the two apart, and `FakeList` raises on the over-fetch a
+    cursor-driven loop would make."""
+    listing = FakeList([CannedPage(["a"], next_cursor="c1", has_more=False)])
+
+    assert list(paginate(listing)) == ["a"]
+    assert listing.asked == [None]
 
 
 def test_a_walk_stops_fetching_when_the_consumer_stops() -> None:
@@ -79,6 +93,30 @@ def test_a_walk_passes_its_other_arguments_to_every_call() -> None:
     assert seen == [{"limit": 100, "warehouse_id": "w1"}] * 2
 
 
+def test_a_walk_asks_for_the_largest_page_the_api_serves() -> None:
+    seen: list[dict[str, object]] = []
+
+    def listing(cursor: str | None = None, **kwargs: object) -> CannedPage:
+        seen.append(kwargs)
+        return CannedPage(["a"])
+
+    list(paginate(listing))
+
+    assert seen == [{"limit": 100}]
+
+
+def test_a_walk_does_not_ask_the_server_for_a_total() -> None:
+    seen: list[dict[str, object]] = []
+
+    def listing(cursor: str | None = None, **kwargs: object) -> CannedPage:
+        seen.append(kwargs)
+        return CannedPage(["a"])
+
+    list(paginate(listing, with_count=True))
+
+    assert "with_count" not in seen[0]
+
+
 def test_a_cursor_argument_is_where_the_walk_starts() -> None:
     listing = FakeList([CannedPage(["a"])])
 
@@ -90,13 +128,27 @@ def test_a_cursor_argument_is_where_the_walk_starts() -> None:
 def test_more_pages_with_no_cursor_is_refused() -> None:
     listing = FakeList([CannedPage(["a"], has_more=True)])
 
-    with pytest.raises(NoCursorError):
+    with pytest.raises(NoCursorError, match="no cursor") as failure:
         list(paginate(listing))
+    assert isinstance(failure.value, PaginationError)
 
 
 def test_a_repeated_cursor_is_refused() -> None:
     def listing(cursor: str | None = None, **kwargs: object) -> CannedPage:
         return CannedPage(["a"], next_cursor="same", has_more=True)
+
+    with pytest.raises(RepeatedCursorError, match="same cursor twice") as failure:
+        list(paginate(listing))
+    assert isinstance(failure.value, PaginationError)
+
+
+def test_a_cursor_repeated_after_other_pages_is_refused() -> None:
+    """Every cursor is remembered, not just the last one, so a server cycling through several
+    cursors is caught as surely as one repeating a single cursor."""
+    cursors = iter(["c1", "c2", "c1"])
+
+    def listing(cursor: str | None = None, **kwargs: object) -> CannedPage:
+        return CannedPage(["a"], next_cursor=next(cursors), has_more=True)
 
     with pytest.raises(RepeatedCursorError):
         list(paginate(listing))
@@ -179,7 +231,7 @@ def test_a_walk_through_the_generated_client_follows_the_cursor(
 def test_a_malformed_page_from_the_generated_client_is_refused(
     isolate: Path, fake_api: FakeApi
 ) -> None:
-    """The driver reads `next_cursor` off the generated model, so a null cursor has to reach it
+    """`paginate` reads `next_cursor` off the generated model, so a null cursor has to reach it
     as a falsy value for the guard to fire."""
     fake_api.api_response = _warehouse_page(["1"], None, True)
     client = new_client(
@@ -191,5 +243,5 @@ def test_a_malformed_page_from_the_generated_client_is_refused(
         )
     )
 
-    with pytest.raises(NoCursorError):
+    with pytest.raises(NoCursorError, match="no cursor"):
         list(paginate(WarehousesApi(client).list_warehouses))

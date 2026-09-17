@@ -8,6 +8,11 @@ yields every item across every page.
 One function serves every paginated list, because a page is recognised by its attributes rather
 than by its type. The Go SDK generates an `All` method per list instead, where the attributes
 are not reachable without knowing the type.
+
+These names stay in this module rather than joining the package root, which holds the generated
+surface plus the three names a client cannot be built without. Pagination is one optional
+feature, and a name kept out of the generated `__all__` is one no future schema can collide
+with.
 """
 
 from __future__ import annotations
@@ -16,6 +21,11 @@ from collections.abc import Callable, Iterator
 from typing import Any, Protocol, TypeVar
 
 T = TypeVar("T")
+
+# Every paginated operation in the spec declares this same ceiling, so a walk asks for it rather
+# than settling for the API's smaller default. An operation that ever lowers its own maximum
+# rejects this value on the first call, which fails loudly rather than truncating a page.
+_PAGE_LIMIT = 100
 
 
 class PaginationError(Exception):
@@ -43,18 +53,19 @@ def paginate(list_page: Callable[..., Page[T]], **kwargs: Any) -> Iterator[T]:
 
     `list_page` is a paginated list method, such as `WarehousesApi(client).list_warehouses`.
     Remaining keyword arguments go to every call, so a filter applies to the whole walk. A
-    `cursor` among them is where the walk starts.
+    `cursor` among them is where the walk starts. `limit` sets the page size and defaults to the
+    largest the API serves; `with_count` is dropped, since a walk yields every item and never
+    reports the total it would pay for.
 
-    The walk ends when a page reports no more pages. An error from `list_page` propagates, so a
-    failed request ends the walk on the exception the client raised. Two malformed pages end it
-    instead: more pages promised with no cursor raises `NoCursorError`, and a cursor already
-    requested raises `RepeatedCursorError`. A server repeating a cursor would otherwise keep a
-    caller in this loop forever.
-
-    Each call asks for whatever page size `list_page` defaults to. Passing `limit` — the largest
-    the operation accepts — walks the same list in fewer requests.
+    The walk ends when a page reports no more pages, when an error from `list_page` propagates,
+    or when a malformed page raises `NoCursorError` or `RepeatedCursorError` rather than
+    looping. Those guards catch a server repeating a cursor, not one minting a fresh cursor
+    forever: bound a walk of unknown length from the consumer, with `itertools.islice` or a
+    timeout among the keyword arguments.
     """
     cursor = kwargs.pop("cursor", None)
+    kwargs.pop("with_count", None)
+    kwargs.setdefault("limit", _PAGE_LIMIT)
     requested: set[str | None] = set()
     while True:
         requested.add(cursor)

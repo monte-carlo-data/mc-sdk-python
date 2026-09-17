@@ -2,8 +2,9 @@
 
 Official Python SDK for the Monte Carlo REST API.
 
-The SDK is one package, `montecarlo`. Most of it is generated from the API's OpenAPI spec;
-client construction and credentials are hand-written, so every request is authenticated.
+The SDK is one package, `montecarlo`. Most of it is generated from the API's OpenAPI spec.
+Client construction and credentials are hand-written, so every request is authenticated, and so
+is the helper that walks a paginated list.
 
 > For the GraphQL API, use [pycarlo](https://pypi.org/project/pycarlo/) instead.
 > This SDK targets the REST API. Its name is provisional and it is not yet published.
@@ -77,19 +78,17 @@ for warehouse in paginate(warehouses.list_warehouses):
 ```
 
 Any other keyword arguments go to every call, so a filter a list accepts applies to the whole
-walk. `limit` is worth passing: the largest value the operation accepts walks the same list in
-fewer requests, since each call otherwise asks for the API's default page size.
-
-```python
-for warehouse in paginate(warehouses.list_warehouses, limit=100):
-    ...
-```
+walk, except `with_count`, which `paginate` drops, since a walk yields every item and never
+reports a total. Each call asks for the largest page the API serves; passing `limit` overrides
+it.
 
 A failed request raises whatever the client raises, so a walk ends on an `ApiException` like
 any other call. A page that promises more items without a cursor to ask for, or that repeats a
 cursor already served, raises `NoCursorError` or `RepeatedCursorError` from the same module;
-both subclass `PaginationError`. Call the list method directly when you want one page, the
-cursor, or a total.
+both subclass `PaginationError`. These guards catch a server that repeats a cursor, not one
+that mints a fresh cursor forever, so bound a walk of unknown length yourself with
+`itertools.islice` or a timeout passed among the keyword arguments. Call the list method
+directly when you want one page, the cursor, or a total.
 
 `paginate` is one function for every paginated list, because a page is recognised by its
 attributes. The Go SDK generates an `All` method per list instead.
@@ -152,8 +151,10 @@ risks a silent overwrite.
 
 - [`CollectionAgentsApi`](docs/CollectionAgentsApi.md)
 - [`CollectionDataStoresApi`](docs/CollectionDataStoresApi.md)
+- [`CredentialsApi`](docs/CredentialsApi.md)
 - [`DeploymentsApi`](docs/DeploymentsApi.md)
 - [`UsersApi`](docs/UsersApi.md)
+- [`WarehousesApi`](docs/WarehousesApi.md)
 
 Each generated page's "All URIs are relative to *http://localhost*" line and its example block
 are generator boilerplate: the example builds `Configuration` and `ApiClient` directly and sets
@@ -165,5 +166,5 @@ is whatever `endpoint` you pass.
 
 The generated files track the API and are not edited by hand. A fix to one of them belongs in
 the API or in the generator, so please open an issue describing what is wrong rather than a
-patch. Changes to the hand-written files (`auth.py`, `oauth.py`, `profile.py` and their tests)
-are welcome as pull requests.
+patch. Changes to the hand-written files (`auth.py`, `oauth.py`, `profile.py`, `paging.py` and
+their tests) are welcome as pull requests.

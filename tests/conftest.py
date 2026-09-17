@@ -101,6 +101,10 @@ class FakeApi:
     fresh token); every other path answers 200 with `api_response`, `CURRENT_USER` by default.
     Every request is recorded, body included.
 
+    `api_responses` is consumed one per API request, for a walk that needs successive pages to
+    differ; when it runs out, or when it was never set, every API request answers with
+    `api_response`.
+
     `token_responses` is consumed one per token request as `(status, body)`; when it runs
     out, the server answers with a fresh `oauth-access-token`. `body` is usually a dict or
     list, sent as JSON; a `(301|302|307|308, {"Location": url})` pair sends that status with a
@@ -116,6 +120,7 @@ class FakeApi:
     requests: list[Request] = field(default_factory=list)
     token_responses: list[tuple[int, dict | list | str]] = field(default_factory=list)
     api_response: dict | list = field(default_factory=lambda: CURRENT_USER)
+    api_responses: list[dict | list] = field(default_factory=list)
     redirect_api_to: str = ""
 
     def token_requests(self) -> list[Request]:
@@ -193,12 +198,17 @@ def fake_api() -> Iterator[FakeApi]:
             else:
                 self._reply(status, payload)
 
+        def _next_api_response(self) -> dict | list:
+            if state.api_responses:
+                return state.api_responses.pop(0)
+            return state.api_response
+
         def do_GET(self) -> None:
             self._record()
             if state.redirect_api_to and self.path != "/collector":
                 self._redirect(307, state.redirect_api_to)
             else:
-                self._reply(200, state.api_response)
+                self._reply(200, self._next_api_response())
 
         def do_POST(self) -> None:
             request = self._record()
@@ -207,14 +217,14 @@ def fake_api() -> Iterator[FakeApi]:
             elif state.redirect_api_to and self.path != "/collector":
                 self._redirect(307, state.redirect_api_to)
             else:
-                self._reply(200, state.api_response)
+                self._reply(200, self._next_api_response())
 
         def do_PATCH(self) -> None:
             self._record()
             if state.redirect_api_to and self.path != "/collector":
                 self._redirect(307, state.redirect_api_to)
             else:
-                self._reply(200, state.api_response)
+                self._reply(200, self._next_api_response())
 
     server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
     state.url = f"http://127.0.0.1:{server.server_port}"

@@ -38,6 +38,9 @@ from montecarlo.models.azure_key_vault_credentials_patch import AzureKeyVaultCre
 from montecarlo.models.collection_agent_credential_out import CollectionAgentCredentialOut
 from montecarlo.models.collection_agent_out import CollectionAgentOut
 from montecarlo.models.collection_data_store_out import CollectionDataStoreOut
+from montecarlo.models.connection_in import ConnectionIn
+from montecarlo.models.connection_out import ConnectionOut
+from montecarlo.models.connection_patch import ConnectionPatch
 from montecarlo.models.credential_type import CredentialType
 from montecarlo.models.credentials_storage_type import CredentialsStorageType
 from montecarlo.models.credentials_summary_out import CredentialsSummaryOut
@@ -76,6 +79,7 @@ from montecarlo.models.generic_collection_agent_token_in import GenericCollectio
 from montecarlo.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut
 from montecarlo.models.identity_type import IdentityType
 from montecarlo.models.input import Input
+from montecarlo.models.paged_connection_out import PagedConnectionOut
 from montecarlo.models.paged_credentials_summary_out import PagedCredentialsSummaryOut
 from montecarlo.models.paged_warehouse_out import PagedWarehouseOut
 from montecarlo.models.problem_out import ProblemOut

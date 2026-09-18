@@ -25,6 +25,10 @@ docs/CollectionAgentOut.md
 docs/CollectionAgentsApi.md
 docs/CollectionDataStoreOut.md
 docs/CollectionDataStoresApi.md
+docs/ConnectionIn.md
+docs/ConnectionOut.md
+docs/ConnectionPatch.md
+docs/ConnectionsApi.md
 docs/CredentialType.md
 docs/CredentialsApi.md
 docs/CredentialsStorageType.md
@@ -65,6 +69,7 @@ docs/GenericCollectionAgentTokenIn.md
 docs/GenericCollectionAgentTokenOut.md
 docs/IdentityType.md
 docs/Input.md
+docs/PagedConnectionOut.md
 docs/PagedCredentialsSummaryOut.md
 docs/PagedWarehouseOut.md
 docs/ProblemOut.md
@@ -86,6 +91,7 @@ montecarlo/__init__.py
 montecarlo/api/__init__.py
 montecarlo/api/collection_agents_api.py
 montecarlo/api/collection_data_stores_api.py
+montecarlo/api/connections_api.py
 montecarlo/api/credentials_api.py
 montecarlo/api/deployments_api.py
 montecarlo/api/users_api.py
@@ -120,6 +126,9 @@ montecarlo/models/azure_key_vault_credentials_patch.py
 montecarlo/models/collection_agent_credential_out.py
 montecarlo/models/collection_agent_out.py
 montecarlo/models/collection_data_store_out.py
+montecarlo/models/connection_in.py
+montecarlo/models/connection_out.py
+montecarlo/models/connection_patch.py
 montecarlo/models/credential_type.py
 montecarlo/models/credentials_storage_type.py
 montecarlo/models/credentials_summary_out.py
@@ -158,6 +167,7 @@ montecarlo/models/generic_collection_agent_token_in.py
 montecarlo/models/generic_collection_agent_token_out.py
 montecarlo/models/identity_type.py
 montecarlo/models/input.py
+montecarlo/models/paged_connection_out.py
 montecarlo/models/paged_credentials_summary_out.py
 montecarlo/models/paged_warehouse_out.py
 montecarlo/models/problem_out.py

@@ -20,6 +20,7 @@ __version__ = "0.0.0"
 __all__ = [
     "CollectionAgentsApi",
     "CollectionDataStoresApi",
+    "ConnectionsApi",
     "CredentialsApi",
     "DeploymentsApi",
     "UsersApi",
@@ -61,6 +62,9 @@ __all__ = [
     "CollectionAgentCredentialOut",
     "CollectionAgentOut",
     "CollectionDataStoreOut",
+    "ConnectionIn",
+    "ConnectionOut",
+    "ConnectionPatch",
     "CredentialType",
     "CredentialsStorageType",
     "CredentialsSummaryOut",
@@ -99,6 +103,7 @@ __all__ = [
     "GenericCollectionAgentTokenOut",
     "IdentityType",
     "Input",
+    "PagedConnectionOut",
     "PagedCredentialsSummaryOut",
     "PagedWarehouseOut",
     "ProblemOut",
@@ -119,6 +124,7 @@ __all__ = [
 # import apis into sdk package
 from montecarlo.api.collection_agents_api import CollectionAgentsApi as CollectionAgentsApi
 from montecarlo.api.collection_data_stores_api import CollectionDataStoresApi as CollectionDataStoresApi
+from montecarlo.api.connections_api import ConnectionsApi as ConnectionsApi
 from montecarlo.api.credentials_api import CredentialsApi as CredentialsApi
 from montecarlo.api.deployments_api import DeploymentsApi as DeploymentsApi
 from montecarlo.api.users_api import UsersApi as UsersApi
@@ -161,6 +167,9 @@ from montecarlo.models.azure_key_vault_credentials_patch import AzureKeyVaultCre
 from montecarlo.models.collection_agent_credential_out import CollectionAgentCredentialOut as CollectionAgentCredentialOut
 from montecarlo.models.collection_agent_out import CollectionAgentOut as CollectionAgentOut
 from montecarlo.models.collection_data_store_out import CollectionDataStoreOut as CollectionDataStoreOut
+from montecarlo.models.connection_in import ConnectionIn as ConnectionIn
+from montecarlo.models.connection_out import ConnectionOut as ConnectionOut
+from montecarlo.models.connection_patch import ConnectionPatch as ConnectionPatch
 from montecarlo.models.credential_type import CredentialType as CredentialType
 from montecarlo.models.credentials_storage_type import CredentialsStorageType as CredentialsStorageType
 from montecarlo.models.credentials_summary_out import CredentialsSummaryOut as CredentialsSummaryOut
@@ -199,6 +208,7 @@ from montecarlo.models.generic_collection_agent_token_in import GenericCollectio
 from montecarlo.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut as GenericCollectionAgentTokenOut
 from montecarlo.models.identity_type import IdentityType as IdentityType
 from montecarlo.models.input import Input as Input
+from montecarlo.models.paged_connection_out import PagedConnectionOut as PagedConnectionOut
 from montecarlo.models.paged_credentials_summary_out import PagedCredentialsSummaryOut as PagedCredentialsSummaryOut
 from montecarlo.models.paged_warehouse_out import PagedWarehouseOut as PagedWarehouseOut
 from montecarlo.models.problem_out import ProblemOut as ProblemOut

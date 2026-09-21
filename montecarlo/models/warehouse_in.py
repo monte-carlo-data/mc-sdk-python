@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from uuid import UUID
 from montecarlo.models.warehouse_type import WarehouseType
@@ -31,9 +31,10 @@ class WarehouseIn(BaseModel):
     What to create a warehouse with.
     """ # noqa: E501
     name: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="Display name for the warehouse. Unique among your warehouses of the same type.")
-    type: WarehouseType = Field(description="The kind of data platform the warehouse represents. Every connection added to it has to fit. Cannot be changed after the warehouse is created.")
+    type: Optional[WarehouseType] = Field(default=None, description="The kind of data platform the warehouse represents. Every connection added to it has to fit. Cannot be changed after the warehouse is created. Send this or `connection_type`, not both.")
+    connection_type: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="The type of the first connection you plan to add. The warehouse type is taken from it and returned as `type`. Send this or `type`, not both. A connection type no warehouse type can be taken from is refused, custom connectors included. So is one this account does not have.")
     deployment_id: UUID = Field(description="The deployment the warehouse's connections will run through. Pick one from the deployments list. Only a deployment on Monte Carlo's current collection platform is accepted.")
-    __properties: ClassVar[List[str]] = ["name", "type", "deployment_id"]
+    __properties: ClassVar[List[str]] = ["name", "type", "connection_type", "deployment_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -74,6 +75,16 @@ class WarehouseIn(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if type (nullable) is None
+        # and model_fields_set contains the field
+        if self.type is None and "type" in self.model_fields_set:
+            _dict['type'] = None
+
+        # set to None if connection_type (nullable) is None
+        # and model_fields_set contains the field
+        if self.connection_type is None and "connection_type" in self.model_fields_set:
+            _dict['connection_type'] = None
+
         return _dict
 
     @classmethod
@@ -88,6 +99,7 @@ class WarehouseIn(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "type": obj.get("type"),
+            "connection_type": obj.get("connection_type"),
             "deployment_id": obj.get("deployment_id")
         })
         return _obj

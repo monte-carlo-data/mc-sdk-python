@@ -22,6 +22,11 @@ The warehouse holds no connections until you add some. Its type is fixed at crea
 decides which connections it accepts. The deployment has to be one the deployments list
 returns; any other id returns 404.
 
+Name the type one of two ways, and send exactly one of them. Use `type` when you know
+which kind of warehouse you want. Use `connection_type` when you know what you are
+connecting but not where it lives. A Databricks SQL warehouse connection, for one,
+belongs on a `data-lake` warehouse. Either way the chosen type comes back as `type`.
+
 Two warehouses of the same type cannot share a name.
 
 ### Example

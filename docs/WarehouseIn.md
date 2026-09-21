@@ -7,7 +7,8 @@ What to create a warehouse with.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Display name for the warehouse. Unique among your warehouses of the same type. | 
-**type** | [**WarehouseType**](WarehouseType.md) | The kind of data platform the warehouse represents. Every connection added to it has to fit. Cannot be changed after the warehouse is created. | 
+**type** | [**WarehouseType**](WarehouseType.md) | The kind of data platform the warehouse represents. Every connection added to it has to fit. Cannot be changed after the warehouse is created. Send this or &#x60;connection_type&#x60;, not both. | [optional] 
+**connection_type** | **str** | The type of the first connection you plan to add. The warehouse type is taken from it and returned as &#x60;type&#x60;. Send this or &#x60;type&#x60;, not both. A connection type no warehouse type can be taken from is refused, custom connectors included. So is one this account does not have. | [optional] 
 **deployment_id** | **UUID** | The deployment the warehouse&#39;s connections will run through. Pick one from the deployments list. Only a deployment on Monte Carlo&#39;s current collection platform is accepted. | 
 
 ## Example

@@ -7,5 +7,6 @@ from montecarlo.api.connections_api import ConnectionsApi
 from montecarlo.api.credentials_api import CredentialsApi
 from montecarlo.api.deployments_api import DeploymentsApi
 from montecarlo.api.users_api import UsersApi
+from montecarlo.api.validations_api import ValidationsApi
 from montecarlo.api.warehouses_api import WarehousesApi
 

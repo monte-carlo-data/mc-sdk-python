@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**create_snowflake_credentials**](CredentialsApi.md#create_snowflake_credentials) | **POST** /api/v2/credentials/snowflake | Create Snowflake credentials
 [**delete_aws_secrets_manager_credentials**](CredentialsApi.md#delete_aws_secrets_manager_credentials) | **DELETE** /api/v2/credentials/self-hosted/aws/{credentials_id} | Delete AWS Secrets Manager credentials
 [**delete_azure_key_vault_credentials**](CredentialsApi.md#delete_azure_key_vault_credentials) | **DELETE** /api/v2/credentials/self-hosted/azure/{credentials_id} | Delete Azure Key Vault credentials
+[**delete_credentials**](CredentialsApi.md#delete_credentials) | **DELETE** /api/v2/credentials/{credentials_id} | Delete credentials
 [**delete_env_var_credentials**](CredentialsApi.md#delete_env_var_credentials) | **DELETE** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Delete environment variable credentials
 [**delete_file_credentials**](CredentialsApi.md#delete_file_credentials) | **DELETE** /api/v2/credentials/self-hosted/file/{credentials_id} | Delete file credentials
 [**delete_gcp_secret_manager_credentials**](CredentialsApi.md#delete_gcp_secret_manager_credentials) | **DELETE** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Delete GCP Secret Manager credentials
@@ -603,8 +604,8 @@ Delete AWS Secrets Manager credentials
 
 Delete AWS Secrets Manager credentials.
 
-Refused while a connection still uses them: delete the connection or point it at other
-credentials first. The secret in AWS is untouched.
+Refused while a connection still uses them. Delete the connection first. The secret in AWS
+is untouched.
 
 ### Example
 
@@ -687,8 +688,8 @@ Delete Azure Key Vault credentials
 
 Delete Azure Key Vault credentials.
 
-Refused while a connection still uses them: delete the connection or point it at other
-credentials first. The secret in Azure is untouched.
+Refused while a connection still uses them. Delete the connection first. The secret in Azure
+is untouched.
 
 ### Example
 
@@ -764,6 +765,91 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_credentials**
+> delete_credentials(credentials_id)
+
+Delete credentials
+
+Delete credentials of any connection type and storage.
+
+Takes the id the list or a connection returns. Refused while a connection still uses them.
+Delete the connection first. Monte Carlo stops using them. Whatever they point at is
+untouched.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Delete credentials
+        api_instance.delete_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_env_var_credentials**
 > delete_env_var_credentials(credentials_id)
 
@@ -771,8 +857,8 @@ Delete environment variable credentials
 
 Delete environment variable credentials.
 
-Refused while a connection still uses them: delete the connection or point it at other
-credentials first. The variable on the deployment is untouched.
+Refused while a connection still uses them. Delete the connection first. The variable on the
+deployment is untouched.
 
 ### Example
 
@@ -855,8 +941,8 @@ Delete file credentials
 
 Delete file credentials.
 
-Refused while a connection still uses them: delete the connection or point it at other
-credentials first. The file on the deployment is untouched.
+Refused while a connection still uses them. Delete the connection first. The file on the
+deployment is untouched.
 
 ### Example
 
@@ -939,8 +1025,8 @@ Delete GCP Secret Manager credentials
 
 Delete GCP Secret Manager credentials.
 
-Refused while a connection still uses them: delete the connection or point it at other
-credentials first. The secret in GCP is untouched.
+Refused while a connection still uses them. Delete the connection first. The secret in GCP
+is untouched.
 
 ### Example
 
@@ -1023,9 +1109,9 @@ Delete Snowflake credentials
 
 Delete Snowflake credentials.
 
-Refused while a connection still uses them: delete the connection or point it at other
-credentials first. Monte Carlo stops using the stored key. Rotate or revoke the key pair
-in Snowflake if the key itself must be retired.
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+using the stored key. Rotate or revoke the key pair in Snowflake if the key itself must be
+retired.
 
 ### Example
 

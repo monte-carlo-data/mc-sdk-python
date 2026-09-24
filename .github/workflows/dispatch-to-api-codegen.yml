@@ -1,0 +1,47 @@
+# A merge here can leave the MCP server's generated tools in ai-agent behind: ai-agent pins this
+# SDK by commit, and the tools import models that only exist once the change lands. This tells
+# api-codegen to look now; it moves the pin in the same commit as the tools that need it.
+#
+# It is a nudge, not a message. api-codegen reads this SDK's head and ai-agent's own pin for
+# itself, so the dispatch carries no payload to be trusted, and a missed one costs nothing but
+# time: the next push to api-codegen main reaches the same check.
+#
+# This is the only workflow here that writes anything anywhere, and everything it writes is the
+# dispatch itself. It stays this small on purpose: the SDK is headed public.
+
+name: Tell api-codegen the SDK changed
+
+on:
+  push:
+    branches: [main]
+
+# Nothing reads or writes this repository. The dispatch goes out under a token minted from the
+# org App, not under GITHUB_TOKEN, which cannot trigger a workflow in another repository.
+permissions:
+  contents: read
+
+jobs:
+  dispatch:
+    name: Dispatch to api-codegen
+    runs-on: ubuntu-latest
+    steps:
+      # Scoped to api-codegen, the one repository this token may reach. contents: write is what
+      # the dispatches endpoint requires; it grants no more than that repository.
+      - uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2.2.2
+        id: token
+        with:
+          app-id: ${{ secrets.MC_GITHUB_APP_ID }}
+          private-key: ${{ secrets.MC_GITHUB_APP_PRIVATE_KEY }}
+          owner: monte-carlo-data
+          repositories: api-codegen
+          permission-contents: write
+
+      # python-sdk-merged is the contract with api-codegen's propagate.yml, which refuses any
+      # event type it does not know. mc-sdk-go sends sdk-merged.
+      - name: Ask api-codegen to propagate
+        env:
+          GH_TOKEN: ${{ steps.token.outputs.token }}
+        run: |
+          gh api -X POST repos/monte-carlo-data/api-codegen/dispatches \
+            -f event_type=python-sdk-merged
+          echo "Asked api-codegen to check whether the MCP tools are behind this SDK."

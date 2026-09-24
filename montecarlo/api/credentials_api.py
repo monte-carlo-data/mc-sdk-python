@@ -992,7 +992,7 @@ class CredentialsApi:
     ) -> None:
         """Delete AWS Secrets Manager credentials
 
-        Delete AWS Secrets Manager credentials.  Refused while a connection still uses them: delete the connection or point it at other credentials first. The secret in AWS is untouched.
+        Delete AWS Secrets Manager credentials.  Refused while a connection still uses them. Delete the connection first. The secret in AWS is untouched.
 
         :param credentials_id: (required)
         :type credentials_id: UUID
@@ -1129,7 +1129,7 @@ class CredentialsApi:
     ) -> None:
         """Delete Azure Key Vault credentials
 
-        Delete Azure Key Vault credentials.  Refused while a connection still uses them: delete the connection or point it at other credentials first. The secret in Azure is untouched.
+        Delete Azure Key Vault credentials.  Refused while a connection still uses them. Delete the connection first. The secret in Azure is untouched.
 
         :param credentials_id: (required)
         :type credentials_id: UUID
@@ -1248,6 +1248,143 @@ class CredentialsApi:
 
 
     @validate_call
+    def delete_credentials(
+        self,
+        credentials_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete credentials
+
+        Delete credentials of any connection type and storage.  Takes the id the list or a connection returns. Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using them. Whatever they point at is untouched.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _delete_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/api/v2/credentials/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def delete_env_var_credentials(
         self,
         credentials_id: UUID,
@@ -1266,7 +1403,7 @@ class CredentialsApi:
     ) -> None:
         """Delete environment variable credentials
 
-        Delete environment variable credentials.  Refused while a connection still uses them: delete the connection or point it at other credentials first. The variable on the deployment is untouched.
+        Delete environment variable credentials.  Refused while a connection still uses them. Delete the connection first. The variable on the deployment is untouched.
 
         :param credentials_id: (required)
         :type credentials_id: UUID
@@ -1403,7 +1540,7 @@ class CredentialsApi:
     ) -> None:
         """Delete file credentials
 
-        Delete file credentials.  Refused while a connection still uses them: delete the connection or point it at other credentials first. The file on the deployment is untouched.
+        Delete file credentials.  Refused while a connection still uses them. Delete the connection first. The file on the deployment is untouched.
 
         :param credentials_id: (required)
         :type credentials_id: UUID
@@ -1540,7 +1677,7 @@ class CredentialsApi:
     ) -> None:
         """Delete GCP Secret Manager credentials
 
-        Delete GCP Secret Manager credentials.  Refused while a connection still uses them: delete the connection or point it at other credentials first. The secret in GCP is untouched.
+        Delete GCP Secret Manager credentials.  Refused while a connection still uses them. Delete the connection first. The secret in GCP is untouched.
 
         :param credentials_id: (required)
         :type credentials_id: UUID
@@ -1677,7 +1814,7 @@ class CredentialsApi:
     ) -> None:
         """Delete Snowflake credentials
 
-        Delete Snowflake credentials.  Refused while a connection still uses them: delete the connection or point it at other credentials first. Monte Carlo stops using the stored key. Rotate or revoke the key pair in Snowflake if the key itself must be retired.
+        Delete Snowflake credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored key. Rotate or revoke the key pair in Snowflake if the key itself must be retired.
 
         :param credentials_id: (required)
         :type credentials_id: UUID

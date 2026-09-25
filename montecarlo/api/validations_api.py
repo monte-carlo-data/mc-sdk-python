@@ -14,7 +14,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field
+from pydantic import Field, StrictInt, StrictStr
+from typing import Optional
 from typing_extensions import Annotated
 from uuid import UUID
 from montecarlo.models.validation_run_out import ValidationRunOut
@@ -39,6 +40,8 @@ class ValidationsApi:
     def get_validation_run(
         self,
         run_id: Annotated[UUID, Field(description="Id of the validation run, as returned by the operation that started it.")],
+        since: Annotated[Optional[StrictInt], Field(description="The `revision` from the previous response. Only validations that changed after it are returned. Omit it to get every validation.")] = None,
+        if_none_match: Annotated[Optional[StrictStr], Field(description="The `ETag` from a previous response. The read answers 304 with no body while the run's `revision` is unchanged.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -54,10 +57,14 @@ class ValidationsApi:
     ) -> ValidationRunOut:
         """Get a validation run
 
-        Read a validation run started by a validate operation.  Poll this until `status` is `completed`. Each validation carries its own `status` and, once it has one, a `passed` verdict with the problems behind it.  A run is kept for a limited time after it starts and then forgotten. An id that has expired, never existed, or belongs to another account all return 404.  `Retry-After` says how long to wait before polling again.
+        Read a validation run started by a validate operation.  Poll this until `status` is `completed`. Each validation carries its own `status` and, once it has one, a `passed` verdict with the problems behind it.  Pass the `revision` from each response as `since` on the next poll to get only the validations that changed. The run's other fields are always returned in full.  A response with the run carries an `ETag`. Send it back as `If-None-Match` to get a 304 with no body when nothing has changed.  A run is kept for a limited time after it starts and then forgotten. An id that has expired, never existed, or belongs to another account all return 404.  `Retry-After` says how long to wait before polling again.
 
         :param run_id: Id of the validation run, as returned by the operation that started it. (required)
         :type run_id: UUID
+        :param since: The `revision` from the previous response. Only validations that changed after it are returned. Omit it to get every validation.
+        :type since: int
+        :param if_none_match: The `ETag` from a previous response. The read answers 304 with no body while the run's `revision` is unchanged.
+        :type if_none_match: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -82,6 +89,8 @@ class ValidationsApi:
 
         _param = self._get_validation_run_serialize(
             run_id=run_id,
+            since=since,
+            if_none_match=if_none_match,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -90,7 +99,9 @@ class ValidationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ValidationRunOut",
+            '304': None,
             '404': "ProblemOut",
+            '422': "ProblemOut",
             '503': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
@@ -110,6 +121,8 @@ class ValidationsApi:
     def _get_validation_run_serialize(
         self,
         run_id,
+        since,
+        if_none_match,
         _request_auth,
         _content_type,
         _headers,
@@ -134,7 +147,13 @@ class ValidationsApi:
         if run_id is not None:
             _path_params['run_id'] = run_id
         # process the query parameters
+        if since is not None:
+            
+            _query_params.append(('since', since))
+            
         # process the header parameters
+        if if_none_match is not None:
+            _header_params['If-None-Match'] = if_none_match
         # process the form parameters
         # process the body parameter
 

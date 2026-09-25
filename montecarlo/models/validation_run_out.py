@@ -34,6 +34,7 @@ class ValidationRunOut(BaseModel):
     """ # noqa: E501
     id: UUID = Field(description="Identifier of the run. Poll `GET /validations/{run_id}` with it.")
     status: RunStatus = Field(description="Whether the run is still going. Every validation is final once it is not.")
+    revision: StrictInt = Field(description="Moves forward every time a validation changes. Pass it as `since` on the next poll to get only the validations that changed after this response.")
     target_type: TargetType = Field(description="What the run validates.")
     target_id: Optional[UUID] = Field(description="Identifier of what is being validated. Null for candidate values, which are not stored anywhere.")
     validations_passed: StrictInt = Field(description="How many validations reached a passing verdict. One that was skipped or never reached a verdict is not counted here, but is still in `validations_total`.")
@@ -41,8 +42,8 @@ class ValidationRunOut(BaseModel):
     started_at: datetime = Field(description="When the run started.")
     finished_at: Optional[datetime] = Field(description="When the run finished. Null while it is still going.")
     expires_at: datetime = Field(description="When the run stops being readable. Measured from the start, not the finish, and never extended, so a slow run is readable for less time after it ends.")
-    validations: List[ValidationOut] = Field(description="Every validation the run covers, in the order they are declared. Validations waiting on a prerequisite are listed before they start.")
-    __properties: ClassVar[List[str]] = ["id", "status", "target_type", "target_id", "validations_passed", "validations_total", "started_at", "finished_at", "expires_at", "validations"]
+    validations: List[ValidationOut] = Field(description="The run's validations, in the order they are declared. Validations waiting on a prerequisite are listed before they start. A read with `since` lists only the validations that changed after that revision, and may list none.")
+    __properties: ClassVar[List[str]] = ["id", "status", "revision", "target_type", "target_id", "validations_passed", "validations_total", "started_at", "finished_at", "expires_at", "validations"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -114,6 +115,7 @@ class ValidationRunOut(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "status": obj.get("status"),
+            "revision": obj.get("revision"),
             "target_type": obj.get("target_type"),
             "target_id": obj.get("target_id"),
             "validations_passed": obj.get("validations_passed"),

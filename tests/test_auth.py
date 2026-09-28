@@ -172,7 +172,6 @@ def test_user_agent_identifies_the_sdk_unless_overridden(isolate: Path) -> None:
 
 
 def test_every_request_carries_the_telemetry_headers(isolate: Path, fake_api: FakeApi) -> None:
-    """The gateway drops User-Agent and x-mcd-source, so these identify the client."""
     client = new_client(
         Options(endpoint=fake_api.url, token_id="id", token_secret="secret", config_dir=isolate)
     )

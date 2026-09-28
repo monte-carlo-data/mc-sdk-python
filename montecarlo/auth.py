@@ -189,7 +189,7 @@ class Options:
         return out
 
 
-# pycarlo's header names; "user" matches its RequestReason.USER.
+# pycarlo's header names.
 _HEADER_TELEMETRY_REASON = "x-mcd-telemetry-reason"
 _HEADER_TELEMETRY_SERVICE = "x-mcd-telemetry-service"
 
@@ -251,6 +251,6 @@ def new_client(options: Options | None = None) -> ApiClient:
     client.user_agent = resolved.user_agent or default_user_agent()
     # The gateway drops User-Agent, so these are the only client identity usage telemetry sees.
     # A tool built on the SDK overrides them with `set_default_header`.
-    client.set_default_header(_HEADER_TELEMETRY_REASON, "user")
+    client.set_default_header(_HEADER_TELEMETRY_REASON, "user")  # pycarlo's RequestReason.USER
     client.set_default_header(_HEADER_TELEMETRY_SERVICE, "mc-sdk-python")
     return client

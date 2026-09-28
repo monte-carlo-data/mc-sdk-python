@@ -57,7 +57,7 @@ class ValidationsApi:
     ) -> ValidationRunOut:
         """Get a validation run
 
-        Read a validation run started by a validate operation.  Poll this until `status` is `completed`. Each validation carries its own `status` and, once it has one, a `passed` verdict with the problems behind it.  Pass the `revision` from each response as `since` on the next poll to get only the validations that changed. The run's other fields are always returned in full.  A response with the run carries an `ETag`. Send it back as `If-None-Match` to get a 304 with no body when nothing has changed.  A run is kept for a limited time after it starts and then forgotten. An id that has expired, never existed, or belongs to another account all return 404.  `Retry-After` says how long to wait before polling again.
+        Read a validation run started by a validate operation.  Poll this until `status` is `completed`. Each validation carries its own `status` and, once it has one, a `passed` verdict with the problems behind it.  Pass the `revision` from each response as `since` on the next poll to get only the validations that changed. The run's other fields are always returned in full.  A run is kept for a limited time after it starts and then forgotten. An id that has expired, never existed, or belongs to another account all return 404.  `Retry-After` says how long to wait before polling again.
 
         :param run_id: Id of the validation run, as returned by the operation that started it. (required)
         :type run_id: UUID

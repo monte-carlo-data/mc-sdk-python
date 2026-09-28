@@ -42,7 +42,7 @@ class ValidationRunOut(BaseModel):
     started_at: datetime = Field(description="When the run started.")
     finished_at: Optional[datetime] = Field(description="When the run finished. Null while it is still going.")
     expires_at: datetime = Field(description="When the run stops being readable. Measured from the start, not the finish, and never extended, so a slow run is readable for less time after it ends.")
-    validations: List[ValidationOut] = Field(description="The run's validations, in the order they are declared. Validations waiting on a prerequisite are listed before they start. A read with `since` lists only the validations that changed after that revision, and may list none.")
+    validations: List[ValidationOut] = Field(description="The run's validations, in the order they are declared. A validation stays `pending` until it starts. It can wait on a prerequisite, or for earlier validations to finish. A read with `since` lists only the validations that changed after that revision, and may list none.")
     __properties: ClassVar[List[str]] = ["id", "status", "revision", "target_type", "target_id", "validations_passed", "validations_total", "started_at", "finished_at", "expires_at", "validations"]
 
     model_config = ConfigDict(

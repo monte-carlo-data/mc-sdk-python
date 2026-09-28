@@ -189,6 +189,11 @@ class Options:
         return out
 
 
+# pycarlo's header names; "user" matches its RequestReason.USER.
+_HEADER_TELEMETRY_REASON = "x-mcd-telemetry-reason"
+_HEADER_TELEMETRY_SERVICE = "x-mcd-telemetry-service"
+
+
 def default_user_agent() -> str:
     # Deferred: montecarlo/__init__.py imports this module, so a module-level import would be a
     # cycle.
@@ -244,4 +249,8 @@ def new_client(options: Options | None = None) -> ApiClient:
     configuration = Configuration(host=resolved.base_url(), retries=API_REQUEST_RETRIES)
     client = _AuthenticatedClient(configuration, credential)
     client.user_agent = resolved.user_agent or default_user_agent()
+    # The gateway drops User-Agent, so these are the only client identity usage telemetry sees.
+    # A tool built on the SDK overrides them with `set_default_header`.
+    client.set_default_header(_HEADER_TELEMETRY_REASON, "user")
+    client.set_default_header(_HEADER_TELEMETRY_SERVICE, "mc-sdk-python")
     return client

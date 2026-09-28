@@ -127,6 +127,13 @@ environment variable. A profile you name in `profile` has to exist; the SDK repo
 than quietly falling back to different credentials. `MCD_DEFAULT_PROFILE` only selects which
 section is read when a profile is consulted at all.
 
+### Usage telemetry
+
+Every request carries `x-mcd-telemetry-reason: user` and `x-mcd-telemetry-service: mc-sdk-python`,
+the same headers pycarlo and the CLI send, so Monte Carlo can tell which client made a call.
+They carry no arguments or payload. A tool built on the SDK names itself by overriding them with
+`client.set_default_header(...)`.
+
 ## What is generated and what is not
 
 | Path | |

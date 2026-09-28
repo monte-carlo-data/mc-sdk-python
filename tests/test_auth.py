@@ -10,7 +10,7 @@ from montecarlo import ApiException, DeploymentsApi, UsersApi, __version__
 from montecarlo.auth import CredentialsError, Options, new_client
 from montecarlo.models.deployment_patch import DeploymentPatch
 from montecarlo.profile import PROFILE_FILE_NAME, config_dir
-from tests.conftest import DEPLOYMENT, FakeApi, write_profiles
+from tests.conftest import DEPLOYMENT, FakeApi, Request, write_profiles
 
 HTTPS = "https://api.example.com"
 
@@ -169,6 +169,24 @@ def test_user_agent_identifies_the_sdk_unless_overridden(isolate: Path) -> None:
 
     options.user_agent = "my-tool/1.0"
     assert new_client(options).user_agent == "my-tool/1.0"
+
+
+def test_every_request_carries_the_telemetry_headers(isolate: Path, fake_api: FakeApi) -> None:
+    client = new_client(
+        Options(endpoint=fake_api.url, token_id="id", token_secret="secret", config_dir=isolate)
+    )
+    UsersApi(client).get_current_user()
+    client.set_default_header("x-mcd-telemetry-reason", "cli")
+    UsersApi(client).get_current_user()
+
+    def sent(request: Request, name: str) -> list[str]:
+        return [v for k, v in request.headers if k.lower() == name]
+
+    default, overridden = fake_api.api_requests()
+    assert sent(default, "x-mcd-telemetry-reason") == ["user"]
+    assert sent(default, "x-mcd-telemetry-service") == ["mc-sdk-python"]
+    assert sent(default, "x-mcd-source") == []
+    assert sent(overridden, "x-mcd-telemetry-reason") == ["cli"]
 
 
 def test_options_repr_hides_secrets() -> None:

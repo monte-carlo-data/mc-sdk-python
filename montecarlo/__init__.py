@@ -62,6 +62,10 @@ __all__ = [
     "AzureKeyVaultCredentialsOut",
     "AzureKeyVaultCredentialsPatch",
     "AzureKeyVaultCredentialsValidateIn",
+    "BigQueryCredentialsIn",
+    "BigQueryCredentialsOut",
+    "BigQueryCredentialsPatch",
+    "BigQueryCredentialsValidateIn",
     "CollectionAgentCredentialOut",
     "CollectionAgentOut",
     "CollectionDataStoreOut",
@@ -113,6 +117,10 @@ __all__ = [
     "PagedCredentialsSummaryOut",
     "PagedWarehouseOut",
     "ProblemOut",
+    "RedshiftCredentialsIn",
+    "RedshiftCredentialsOut",
+    "RedshiftCredentialsPatch",
+    "RedshiftCredentialsValidateIn",
     "RunStatus",
     "RuntimePlatform",
     "ServicePrincipalCredentialsIn",
@@ -180,6 +188,10 @@ from montecarlo.models.azure_key_vault_credentials_in import AzureKeyVaultCreden
 from montecarlo.models.azure_key_vault_credentials_out import AzureKeyVaultCredentialsOut as AzureKeyVaultCredentialsOut
 from montecarlo.models.azure_key_vault_credentials_patch import AzureKeyVaultCredentialsPatch as AzureKeyVaultCredentialsPatch
 from montecarlo.models.azure_key_vault_credentials_validate_in import AzureKeyVaultCredentialsValidateIn as AzureKeyVaultCredentialsValidateIn
+from montecarlo.models.big_query_credentials_in import BigQueryCredentialsIn as BigQueryCredentialsIn
+from montecarlo.models.big_query_credentials_out import BigQueryCredentialsOut as BigQueryCredentialsOut
+from montecarlo.models.big_query_credentials_patch import BigQueryCredentialsPatch as BigQueryCredentialsPatch
+from montecarlo.models.big_query_credentials_validate_in import BigQueryCredentialsValidateIn as BigQueryCredentialsValidateIn
 from montecarlo.models.collection_agent_credential_out import CollectionAgentCredentialOut as CollectionAgentCredentialOut
 from montecarlo.models.collection_agent_out import CollectionAgentOut as CollectionAgentOut
 from montecarlo.models.collection_data_store_out import CollectionDataStoreOut as CollectionDataStoreOut
@@ -231,6 +243,10 @@ from montecarlo.models.paged_connection_out import PagedConnectionOut as PagedCo
 from montecarlo.models.paged_credentials_summary_out import PagedCredentialsSummaryOut as PagedCredentialsSummaryOut
 from montecarlo.models.paged_warehouse_out import PagedWarehouseOut as PagedWarehouseOut
 from montecarlo.models.problem_out import ProblemOut as ProblemOut
+from montecarlo.models.redshift_credentials_in import RedshiftCredentialsIn as RedshiftCredentialsIn
+from montecarlo.models.redshift_credentials_out import RedshiftCredentialsOut as RedshiftCredentialsOut
+from montecarlo.models.redshift_credentials_patch import RedshiftCredentialsPatch as RedshiftCredentialsPatch
+from montecarlo.models.redshift_credentials_validate_in import RedshiftCredentialsValidateIn as RedshiftCredentialsValidateIn
 from montecarlo.models.run_status import RunStatus as RunStatus
 from montecarlo.models.runtime_platform import RuntimePlatform as RuntimePlatform
 from montecarlo.models.service_principal_credentials_in import ServicePrincipalCredentialsIn as ServicePrincipalCredentialsIn

@@ -22,6 +22,10 @@ docs/AzureKeyVaultCredentialsIn.md
 docs/AzureKeyVaultCredentialsOut.md
 docs/AzureKeyVaultCredentialsPatch.md
 docs/AzureKeyVaultCredentialsValidateIn.md
+docs/BigQueryCredentialsIn.md
+docs/BigQueryCredentialsOut.md
+docs/BigQueryCredentialsPatch.md
+docs/BigQueryCredentialsValidateIn.md
 docs/CollectionAgentCredentialOut.md
 docs/CollectionAgentOut.md
 docs/CollectionAgentsApi.md
@@ -78,6 +82,10 @@ docs/PagedConnectionOut.md
 docs/PagedCredentialsSummaryOut.md
 docs/PagedWarehouseOut.md
 docs/ProblemOut.md
+docs/RedshiftCredentialsIn.md
+docs/RedshiftCredentialsOut.md
+docs/RedshiftCredentialsPatch.md
+docs/RedshiftCredentialsValidateIn.md
 docs/RunStatus.md
 docs/RuntimePlatform.md
 docs/ServicePrincipalCredentialsIn.md
@@ -139,6 +147,10 @@ montecarlo/models/azure_key_vault_credentials_in.py
 montecarlo/models/azure_key_vault_credentials_out.py
 montecarlo/models/azure_key_vault_credentials_patch.py
 montecarlo/models/azure_key_vault_credentials_validate_in.py
+montecarlo/models/big_query_credentials_in.py
+montecarlo/models/big_query_credentials_out.py
+montecarlo/models/big_query_credentials_patch.py
+montecarlo/models/big_query_credentials_validate_in.py
 montecarlo/models/collection_agent_credential_out.py
 montecarlo/models/collection_agent_out.py
 montecarlo/models/collection_data_store_out.py
@@ -190,6 +202,10 @@ montecarlo/models/paged_connection_out.py
 montecarlo/models/paged_credentials_summary_out.py
 montecarlo/models/paged_warehouse_out.py
 montecarlo/models/problem_out.py
+montecarlo/models/redshift_credentials_in.py
+montecarlo/models/redshift_credentials_out.py
+montecarlo/models/redshift_credentials_patch.py
+montecarlo/models/redshift_credentials_validate_in.py
 montecarlo/models/run_status.py
 montecarlo/models/runtime_platform.py
 montecarlo/models/service_principal_credentials_in.py

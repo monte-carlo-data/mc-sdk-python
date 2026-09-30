@@ -7,7 +7,7 @@ A change to Azure Key Vault credentials.  A field left out is unchanged. An opti
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bq_project_id** | **str** | BigQuery project the connection reads from. Only for a BigQuery connection. | [optional] 
-**databricks_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Required for a &#x60;databricks-sql-warehouse&#x60; or &#x60;databricks-metastore-sql-warehouse&#x60; connection. | [optional] 
+**sql_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Required for a &#x60;databricks-sql-warehouse&#x60; or &#x60;databricks-metastore-sql-warehouse&#x60; connection. | [optional] 
 **akv_secret** | **str** | Name of the Azure Key Vault secret holding the connection&#39;s credentials. | [optional] 
 **akv_vault_name** | **str** | Name of the key vault. Send this, &#x60;akv_vault_url&#x60;, or both. | [optional] 
 **akv_vault_url** | **str** | URL of the key vault. Send this, &#x60;akv_vault_name&#x60;, or both. | [optional] 

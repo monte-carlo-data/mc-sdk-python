@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **storage_type** | [**CredentialsStorageType**](CredentialsStorageType.md) | Where the secret lives. Fixed once created. | 
 **created_time** | **datetime** | When the credentials were created. | 
 **bq_project_id** | **str** | BigQuery project the connection reads from. Null unless set. | 
-**databricks_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Null unless set. | 
+**sql_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Null unless set. | 
 **env_var_name** | **str** | Name of the environment variable on the deployment that holds the connection&#39;s credentials. Must start with &#x60;MCD_&#x60;. | 
 **kms_key_id** | **str** | AWS KMS key the value is encrypted with. Null for a value in the clear. | 
 

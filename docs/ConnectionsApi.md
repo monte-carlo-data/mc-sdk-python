@@ -21,7 +21,9 @@ Add a connection to a warehouse.
 
 Create the credentials first, through one of the credentials endpoints, then name them
 here. The connection's type comes from them, and has to be a type the warehouse accepts
-and the warehouse's deployment supports.
+and the warehouse's deployment supports. A type that depends on a metastore, such as
+`databricks-sql-warehouse`, goes on a data lake warehouse that already has a metastore
+connection.
 
 Omit `job_types` to run what the type runs by default.
 

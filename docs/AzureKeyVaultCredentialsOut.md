@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **storage_type** | [**CredentialsStorageType**](CredentialsStorageType.md) | Where the secret lives. Fixed once created. | 
 **created_time** | **datetime** | When the credentials were created. | 
 **bq_project_id** | **str** | BigQuery project the connection reads from. Null unless set. | 
-**databricks_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Null unless set. | 
+**sql_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Null unless set. | 
 **akv_secret** | **str** | Name of the Azure Key Vault secret holding the connection&#39;s credentials. | 
 **akv_vault_name** | **str** | Name of the key vault. Null when unset. | 
 **akv_vault_url** | **str** | URL of the key vault. Null when unset. | 

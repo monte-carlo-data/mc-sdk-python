@@ -29,9 +29,9 @@ class FileCredentialsPatch(BaseModel):
     A change to file credentials.  A field left out is unchanged. An optional field set to null is cleared. `file_path` cannot be cleared.
     """ # noqa: E501
     bq_project_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="BigQuery project the connection reads from. Only for a BigQuery connection.")
-    databricks_warehouse_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Databricks SQL warehouse the connection runs queries on. Required for a `databricks-sql-warehouse` or `databricks-metastore-sql-warehouse` connection.")
+    sql_warehouse_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Databricks SQL warehouse the connection runs queries on. Required for a `databricks-sql-warehouse` or `databricks-metastore-sql-warehouse` connection.")
     file_path: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=1024)]] = Field(default=None, description="Path of the file on the deployment that holds the connection's credentials.")
-    __properties: ClassVar[List[str]] = ["bq_project_id", "databricks_warehouse_id", "file_path"]
+    __properties: ClassVar[List[str]] = ["bq_project_id", "sql_warehouse_id", "file_path"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -77,10 +77,10 @@ class FileCredentialsPatch(BaseModel):
         if self.bq_project_id is None and "bq_project_id" in self.model_fields_set:
             _dict['bq_project_id'] = None
 
-        # set to None if databricks_warehouse_id (nullable) is None
+        # set to None if sql_warehouse_id (nullable) is None
         # and model_fields_set contains the field
-        if self.databricks_warehouse_id is None and "databricks_warehouse_id" in self.model_fields_set:
-            _dict['databricks_warehouse_id'] = None
+        if self.sql_warehouse_id is None and "sql_warehouse_id" in self.model_fields_set:
+            _dict['sql_warehouse_id'] = None
 
         # set to None if file_path (nullable) is None
         # and model_fields_set contains the field
@@ -100,7 +100,7 @@ class FileCredentialsPatch(BaseModel):
 
         _obj = cls.model_validate({
             "bq_project_id": obj.get("bq_project_id"),
-            "databricks_warehouse_id": obj.get("databricks_warehouse_id"),
+            "sql_warehouse_id": obj.get("sql_warehouse_id"),
             "file_path": obj.get("file_path")
         })
         return _obj

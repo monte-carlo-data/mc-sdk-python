@@ -7,7 +7,7 @@ A change to environment variable credentials.  A field left out is unchanged. An
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bq_project_id** | **str** | BigQuery project the connection reads from. Only for a BigQuery connection. | [optional] 
-**databricks_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Required for a &#x60;databricks-sql-warehouse&#x60; or &#x60;databricks-metastore-sql-warehouse&#x60; connection. | [optional] 
+**sql_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Required for a &#x60;databricks-sql-warehouse&#x60; or &#x60;databricks-metastore-sql-warehouse&#x60; connection. | [optional] 
 **env_var_name** | **str** | Name of the environment variable on the deployment that holds the connection&#39;s credentials. Must start with &#x60;MCD_&#x60;. | [optional] 
 **kms_key_id** | **str** | AWS KMS key the variable&#39;s value is encrypted with. Omit it for a value stored in the clear. | [optional] 
 

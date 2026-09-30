@@ -29,9 +29,9 @@ class GcpSecretManagerCredentialsPatch(BaseModel):
     A change to GCP Secret Manager credentials.  A field left out is unchanged. An optional field set to null is cleared. `gcp_secret` cannot be cleared.
     """ # noqa: E501
     bq_project_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="BigQuery project the connection reads from. Only for a BigQuery connection.")
-    databricks_warehouse_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Databricks SQL warehouse the connection runs queries on. Required for a `databricks-sql-warehouse` or `databricks-metastore-sql-warehouse` connection.")
+    sql_warehouse_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Databricks SQL warehouse the connection runs queries on. Required for a `databricks-sql-warehouse` or `databricks-metastore-sql-warehouse` connection.")
     gcp_secret: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Name of the GCP Secret Manager secret holding the connection's credentials.")
-    __properties: ClassVar[List[str]] = ["bq_project_id", "databricks_warehouse_id", "gcp_secret"]
+    __properties: ClassVar[List[str]] = ["bq_project_id", "sql_warehouse_id", "gcp_secret"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -77,10 +77,10 @@ class GcpSecretManagerCredentialsPatch(BaseModel):
         if self.bq_project_id is None and "bq_project_id" in self.model_fields_set:
             _dict['bq_project_id'] = None
 
-        # set to None if databricks_warehouse_id (nullable) is None
+        # set to None if sql_warehouse_id (nullable) is None
         # and model_fields_set contains the field
-        if self.databricks_warehouse_id is None and "databricks_warehouse_id" in self.model_fields_set:
-            _dict['databricks_warehouse_id'] = None
+        if self.sql_warehouse_id is None and "sql_warehouse_id" in self.model_fields_set:
+            _dict['sql_warehouse_id'] = None
 
         # set to None if gcp_secret (nullable) is None
         # and model_fields_set contains the field
@@ -100,7 +100,7 @@ class GcpSecretManagerCredentialsPatch(BaseModel):
 
         _obj = cls.model_validate({
             "bq_project_id": obj.get("bq_project_id"),
-            "databricks_warehouse_id": obj.get("databricks_warehouse_id"),
+            "sql_warehouse_id": obj.get("sql_warehouse_id"),
             "gcp_secret": obj.get("gcp_secret")
         })
         return _obj

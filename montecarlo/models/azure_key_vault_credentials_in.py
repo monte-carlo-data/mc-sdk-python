@@ -30,11 +30,11 @@ class AzureKeyVaultCredentialsIn(BaseModel):
     """ # noqa: E501
     connection_type: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="The connection type the credentials are for, such as `snowflake` or `bigquery`, or one of your custom connector types. Fixed once created.")
     bq_project_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="BigQuery project the connection reads from. Only for a BigQuery connection.")
-    databricks_warehouse_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Databricks SQL warehouse the connection runs queries on. Required for a `databricks-sql-warehouse` or `databricks-metastore-sql-warehouse` connection.")
+    sql_warehouse_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Databricks SQL warehouse the connection runs queries on. Required for a `databricks-sql-warehouse` or `databricks-metastore-sql-warehouse` connection.")
     akv_secret: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="Name of the Azure Key Vault secret holding the connection's credentials.")
     akv_vault_name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Name of the key vault. Send this, `akv_vault_url`, or both.")
     akv_vault_url: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="URL of the key vault. Send this, `akv_vault_name`, or both.")
-    __properties: ClassVar[List[str]] = ["connection_type", "bq_project_id", "databricks_warehouse_id", "akv_secret", "akv_vault_name", "akv_vault_url"]
+    __properties: ClassVar[List[str]] = ["connection_type", "bq_project_id", "sql_warehouse_id", "akv_secret", "akv_vault_name", "akv_vault_url"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -80,10 +80,10 @@ class AzureKeyVaultCredentialsIn(BaseModel):
         if self.bq_project_id is None and "bq_project_id" in self.model_fields_set:
             _dict['bq_project_id'] = None
 
-        # set to None if databricks_warehouse_id (nullable) is None
+        # set to None if sql_warehouse_id (nullable) is None
         # and model_fields_set contains the field
-        if self.databricks_warehouse_id is None and "databricks_warehouse_id" in self.model_fields_set:
-            _dict['databricks_warehouse_id'] = None
+        if self.sql_warehouse_id is None and "sql_warehouse_id" in self.model_fields_set:
+            _dict['sql_warehouse_id'] = None
 
         # set to None if akv_vault_name (nullable) is None
         # and model_fields_set contains the field
@@ -109,7 +109,7 @@ class AzureKeyVaultCredentialsIn(BaseModel):
         _obj = cls.model_validate({
             "connection_type": obj.get("connection_type"),
             "bq_project_id": obj.get("bq_project_id"),
-            "databricks_warehouse_id": obj.get("databricks_warehouse_id"),
+            "sql_warehouse_id": obj.get("sql_warehouse_id"),
             "akv_secret": obj.get("akv_secret"),
             "akv_vault_name": obj.get("akv_vault_name"),
             "akv_vault_url": obj.get("akv_vault_url")

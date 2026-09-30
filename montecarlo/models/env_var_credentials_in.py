@@ -30,10 +30,10 @@ class EnvVarCredentialsIn(BaseModel):
     """ # noqa: E501
     connection_type: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="The connection type the credentials are for, such as `snowflake` or `bigquery`, or one of your custom connector types. Fixed once created.")
     bq_project_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="BigQuery project the connection reads from. Only for a BigQuery connection.")
-    databricks_warehouse_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Databricks SQL warehouse the connection runs queries on. Required for a `databricks-sql-warehouse` or `databricks-metastore-sql-warehouse` connection.")
+    sql_warehouse_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Databricks SQL warehouse the connection runs queries on. Required for a `databricks-sql-warehouse` or `databricks-metastore-sql-warehouse` connection.")
     env_var_name: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="Name of the environment variable on the deployment that holds the connection's credentials. Must start with `MCD_`.")
     kms_key_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="AWS KMS key the variable's value is encrypted with. Omit it for a value stored in the clear.")
-    __properties: ClassVar[List[str]] = ["connection_type", "bq_project_id", "databricks_warehouse_id", "env_var_name", "kms_key_id"]
+    __properties: ClassVar[List[str]] = ["connection_type", "bq_project_id", "sql_warehouse_id", "env_var_name", "kms_key_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -79,10 +79,10 @@ class EnvVarCredentialsIn(BaseModel):
         if self.bq_project_id is None and "bq_project_id" in self.model_fields_set:
             _dict['bq_project_id'] = None
 
-        # set to None if databricks_warehouse_id (nullable) is None
+        # set to None if sql_warehouse_id (nullable) is None
         # and model_fields_set contains the field
-        if self.databricks_warehouse_id is None and "databricks_warehouse_id" in self.model_fields_set:
-            _dict['databricks_warehouse_id'] = None
+        if self.sql_warehouse_id is None and "sql_warehouse_id" in self.model_fields_set:
+            _dict['sql_warehouse_id'] = None
 
         # set to None if kms_key_id (nullable) is None
         # and model_fields_set contains the field
@@ -103,7 +103,7 @@ class EnvVarCredentialsIn(BaseModel):
         _obj = cls.model_validate({
             "connection_type": obj.get("connection_type"),
             "bq_project_id": obj.get("bq_project_id"),
-            "databricks_warehouse_id": obj.get("databricks_warehouse_id"),
+            "sql_warehouse_id": obj.get("sql_warehouse_id"),
             "env_var_name": obj.get("env_var_name"),
             "kms_key_id": obj.get("kms_key_id")
         })

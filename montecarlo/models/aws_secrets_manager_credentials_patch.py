@@ -29,12 +29,12 @@ class AwsSecretsManagerCredentialsPatch(BaseModel):
     A change to AWS Secrets Manager credentials.  A field left out is unchanged. An optional field set to null is cleared. `aws_secret` cannot be cleared.
     """ # noqa: E501
     bq_project_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="BigQuery project the connection reads from. Only for a BigQuery connection.")
-    databricks_warehouse_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Databricks SQL warehouse the connection runs queries on. Required for a `databricks-sql-warehouse` or `databricks-metastore-sql-warehouse` connection.")
+    sql_warehouse_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Databricks SQL warehouse the connection runs queries on. Required for a `databricks-sql-warehouse` or `databricks-metastore-sql-warehouse` connection.")
     aws_secret: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="Name or ARN of the AWS Secrets Manager secret holding the connection's credentials.")
     aws_region: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="AWS region of the secret. Omit it to use the deployment's own region.")
     assumable_role: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="ARN of a role the deployment assumes to read the secret. Omit it to read as itself.")
     external_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=1224)]] = Field(default=None, description="External id the assumed role's trust policy requires, if it requires one.")
-    __properties: ClassVar[List[str]] = ["bq_project_id", "databricks_warehouse_id", "aws_secret", "aws_region", "assumable_role", "external_id"]
+    __properties: ClassVar[List[str]] = ["bq_project_id", "sql_warehouse_id", "aws_secret", "aws_region", "assumable_role", "external_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -80,10 +80,10 @@ class AwsSecretsManagerCredentialsPatch(BaseModel):
         if self.bq_project_id is None and "bq_project_id" in self.model_fields_set:
             _dict['bq_project_id'] = None
 
-        # set to None if databricks_warehouse_id (nullable) is None
+        # set to None if sql_warehouse_id (nullable) is None
         # and model_fields_set contains the field
-        if self.databricks_warehouse_id is None and "databricks_warehouse_id" in self.model_fields_set:
-            _dict['databricks_warehouse_id'] = None
+        if self.sql_warehouse_id is None and "sql_warehouse_id" in self.model_fields_set:
+            _dict['sql_warehouse_id'] = None
 
         # set to None if aws_secret (nullable) is None
         # and model_fields_set contains the field
@@ -118,7 +118,7 @@ class AwsSecretsManagerCredentialsPatch(BaseModel):
 
         _obj = cls.model_validate({
             "bq_project_id": obj.get("bq_project_id"),
-            "databricks_warehouse_id": obj.get("databricks_warehouse_id"),
+            "sql_warehouse_id": obj.get("sql_warehouse_id"),
             "aws_secret": obj.get("aws_secret"),
             "aws_region": obj.get("aws_region"),
             "assumable_role": obj.get("assumable_role"),

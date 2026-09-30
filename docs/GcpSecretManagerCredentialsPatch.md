@@ -7,7 +7,7 @@ A change to GCP Secret Manager credentials.  A field left out is unchanged. An o
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bq_project_id** | **str** | BigQuery project the connection reads from. Only for a BigQuery connection. | [optional] 
-**databricks_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Required for a &#x60;databricks-sql-warehouse&#x60; or &#x60;databricks-metastore-sql-warehouse&#x60; connection. | [optional] 
+**sql_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Required for a &#x60;databricks-sql-warehouse&#x60; or &#x60;databricks-metastore-sql-warehouse&#x60; connection. | [optional] 
 **gcp_secret** | **str** | Name of the GCP Secret Manager secret holding the connection&#39;s credentials. | [optional] 
 
 ## Example

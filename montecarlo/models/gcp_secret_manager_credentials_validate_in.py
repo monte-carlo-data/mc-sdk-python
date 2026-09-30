@@ -32,9 +32,9 @@ class GcpSecretManagerCredentialsValidateIn(BaseModel):
     deployment_id: UUID = Field(description="Deployment that runs the validations. It has to be one `GET /deployments` lists, and it has to be able to reach the system the credentials are for.")
     connection_type: Annotated[str, Field(min_length=1, strict=True, max_length=100)] = Field(description="What the credentials are for, hyphenated, such as `snowflake` or `bigquery`. Decides which checks run.")
     bq_project_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="BigQuery project the connection reads from. Only for a BigQuery connection.")
-    databricks_warehouse_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Databricks SQL warehouse the connection runs queries on. Required for a `databricks-sql-warehouse` or `databricks-metastore-sql-warehouse` connection.")
+    sql_warehouse_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Databricks SQL warehouse the connection runs queries on. Required for a `databricks-sql-warehouse` or `databricks-metastore-sql-warehouse` connection.")
     gcp_secret: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="Name of the GCP Secret Manager secret holding the connection's credentials.")
-    __properties: ClassVar[List[str]] = ["deployment_id", "connection_type", "bq_project_id", "databricks_warehouse_id", "gcp_secret"]
+    __properties: ClassVar[List[str]] = ["deployment_id", "connection_type", "bq_project_id", "sql_warehouse_id", "gcp_secret"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -80,10 +80,10 @@ class GcpSecretManagerCredentialsValidateIn(BaseModel):
         if self.bq_project_id is None and "bq_project_id" in self.model_fields_set:
             _dict['bq_project_id'] = None
 
-        # set to None if databricks_warehouse_id (nullable) is None
+        # set to None if sql_warehouse_id (nullable) is None
         # and model_fields_set contains the field
-        if self.databricks_warehouse_id is None and "databricks_warehouse_id" in self.model_fields_set:
-            _dict['databricks_warehouse_id'] = None
+        if self.sql_warehouse_id is None and "sql_warehouse_id" in self.model_fields_set:
+            _dict['sql_warehouse_id'] = None
 
         return _dict
 
@@ -100,7 +100,7 @@ class GcpSecretManagerCredentialsValidateIn(BaseModel):
             "deployment_id": obj.get("deployment_id"),
             "connection_type": obj.get("connection_type"),
             "bq_project_id": obj.get("bq_project_id"),
-            "databricks_warehouse_id": obj.get("databricks_warehouse_id"),
+            "sql_warehouse_id": obj.get("sql_warehouse_id"),
             "gcp_secret": obj.get("gcp_secret")
         })
         return _obj

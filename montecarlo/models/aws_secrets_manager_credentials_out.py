@@ -35,12 +35,12 @@ class AwsSecretsManagerCredentialsOut(BaseModel):
     storage_type: CredentialsStorageType = Field(description="Where the secret lives. Fixed once created.")
     created_time: datetime = Field(description="When the credentials were created.")
     bq_project_id: Optional[StrictStr] = Field(description="BigQuery project the connection reads from. Null unless set.")
-    databricks_warehouse_id: Optional[StrictStr] = Field(description="Databricks SQL warehouse the connection runs queries on. Null unless set.")
+    sql_warehouse_id: Optional[StrictStr] = Field(description="Databricks SQL warehouse the connection runs queries on. Null unless set.")
     aws_secret: StrictStr = Field(description="Name or ARN of the AWS Secrets Manager secret holding the connection's credentials.")
     aws_region: Optional[StrictStr] = Field(description="AWS region of the secret. Null when unset.")
     assumable_role: Optional[StrictStr] = Field(description="ARN of the role the deployment assumes to read the secret. Null when unset.")
     external_id: Optional[StrictStr] = Field(description="External id presented when assuming the role. Null when unset.")
-    __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "bq_project_id", "databricks_warehouse_id", "aws_secret", "aws_region", "assumable_role", "external_id"]
+    __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "bq_project_id", "sql_warehouse_id", "aws_secret", "aws_region", "assumable_role", "external_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,10 +86,10 @@ class AwsSecretsManagerCredentialsOut(BaseModel):
         if self.bq_project_id is None and "bq_project_id" in self.model_fields_set:
             _dict['bq_project_id'] = None
 
-        # set to None if databricks_warehouse_id (nullable) is None
+        # set to None if sql_warehouse_id (nullable) is None
         # and model_fields_set contains the field
-        if self.databricks_warehouse_id is None and "databricks_warehouse_id" in self.model_fields_set:
-            _dict['databricks_warehouse_id'] = None
+        if self.sql_warehouse_id is None and "sql_warehouse_id" in self.model_fields_set:
+            _dict['sql_warehouse_id'] = None
 
         # set to None if aws_region (nullable) is None
         # and model_fields_set contains the field
@@ -123,7 +123,7 @@ class AwsSecretsManagerCredentialsOut(BaseModel):
             "storage_type": obj.get("storage_type"),
             "created_time": obj.get("created_time"),
             "bq_project_id": obj.get("bq_project_id"),
-            "databricks_warehouse_id": obj.get("databricks_warehouse_id"),
+            "sql_warehouse_id": obj.get("sql_warehouse_id"),
             "aws_secret": obj.get("aws_secret"),
             "aws_region": obj.get("aws_region"),
             "assumable_role": obj.get("assumable_role"),

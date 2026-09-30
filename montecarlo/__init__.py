@@ -76,6 +76,14 @@ __all__ = [
     "CredentialsStorageType",
     "CredentialsSummaryOut",
     "CurrentUserOut",
+    "DatabricksMetastoreSqlWarehouseCredentialsIn",
+    "DatabricksMetastoreSqlWarehouseCredentialsOut",
+    "DatabricksMetastoreSqlWarehouseCredentialsPatch",
+    "DatabricksMetastoreSqlWarehouseCredentialsValidateIn",
+    "DatabricksSqlWarehouseCredentialsIn",
+    "DatabricksSqlWarehouseCredentialsOut",
+    "DatabricksSqlWarehouseCredentialsPatch",
+    "DatabricksSqlWarehouseCredentialsValidateIn",
     "DeploymentIn",
     "DeploymentOut",
     "DeploymentPatch",
@@ -202,6 +210,14 @@ from montecarlo.models.credential_type import CredentialType as CredentialType
 from montecarlo.models.credentials_storage_type import CredentialsStorageType as CredentialsStorageType
 from montecarlo.models.credentials_summary_out import CredentialsSummaryOut as CredentialsSummaryOut
 from montecarlo.models.current_user_out import CurrentUserOut as CurrentUserOut
+from montecarlo.models.databricks_metastore_sql_warehouse_credentials_in import DatabricksMetastoreSqlWarehouseCredentialsIn as DatabricksMetastoreSqlWarehouseCredentialsIn
+from montecarlo.models.databricks_metastore_sql_warehouse_credentials_out import DatabricksMetastoreSqlWarehouseCredentialsOut as DatabricksMetastoreSqlWarehouseCredentialsOut
+from montecarlo.models.databricks_metastore_sql_warehouse_credentials_patch import DatabricksMetastoreSqlWarehouseCredentialsPatch as DatabricksMetastoreSqlWarehouseCredentialsPatch
+from montecarlo.models.databricks_metastore_sql_warehouse_credentials_validate_in import DatabricksMetastoreSqlWarehouseCredentialsValidateIn as DatabricksMetastoreSqlWarehouseCredentialsValidateIn
+from montecarlo.models.databricks_sql_warehouse_credentials_in import DatabricksSqlWarehouseCredentialsIn as DatabricksSqlWarehouseCredentialsIn
+from montecarlo.models.databricks_sql_warehouse_credentials_out import DatabricksSqlWarehouseCredentialsOut as DatabricksSqlWarehouseCredentialsOut
+from montecarlo.models.databricks_sql_warehouse_credentials_patch import DatabricksSqlWarehouseCredentialsPatch as DatabricksSqlWarehouseCredentialsPatch
+from montecarlo.models.databricks_sql_warehouse_credentials_validate_in import DatabricksSqlWarehouseCredentialsValidateIn as DatabricksSqlWarehouseCredentialsValidateIn
 from montecarlo.models.deployment_in import DeploymentIn as DeploymentIn
 from montecarlo.models.deployment_out import DeploymentOut as DeploymentOut
 from montecarlo.models.deployment_patch import DeploymentPatch as DeploymentPatch

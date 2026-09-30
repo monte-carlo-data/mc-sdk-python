@@ -7,6 +7,8 @@ Method | HTTP request | Description
 [**create_aws_secrets_manager_credentials**](CredentialsApi.md#create_aws_secrets_manager_credentials) | **POST** /api/v2/credentials/self-hosted/aws | Create AWS Secrets Manager credentials
 [**create_azure_key_vault_credentials**](CredentialsApi.md#create_azure_key_vault_credentials) | **POST** /api/v2/credentials/self-hosted/azure | Create Azure Key Vault credentials
 [**create_bigquery_credentials**](CredentialsApi.md#create_bigquery_credentials) | **POST** /api/v2/credentials/bigquery | Create BigQuery credentials
+[**create_databricks_metastore_sql_warehouse_credentials**](CredentialsApi.md#create_databricks_metastore_sql_warehouse_credentials) | **POST** /api/v2/credentials/databricks-metastore-sql-warehouse | Create Databricks metadata collection credentials
+[**create_databricks_sql_warehouse_credentials**](CredentialsApi.md#create_databricks_sql_warehouse_credentials) | **POST** /api/v2/credentials/databricks-sql-warehouse | Create Databricks query credentials
 [**create_env_var_credentials**](CredentialsApi.md#create_env_var_credentials) | **POST** /api/v2/credentials/self-hosted/env-var | Create environment variable credentials
 [**create_file_credentials**](CredentialsApi.md#create_file_credentials) | **POST** /api/v2/credentials/self-hosted/file | Create file credentials
 [**create_gcp_secret_manager_credentials**](CredentialsApi.md#create_gcp_secret_manager_credentials) | **POST** /api/v2/credentials/self-hosted/gcp | Create GCP Secret Manager credentials
@@ -16,6 +18,8 @@ Method | HTTP request | Description
 [**delete_azure_key_vault_credentials**](CredentialsApi.md#delete_azure_key_vault_credentials) | **DELETE** /api/v2/credentials/self-hosted/azure/{credentials_id} | Delete Azure Key Vault credentials
 [**delete_bigquery_credentials**](CredentialsApi.md#delete_bigquery_credentials) | **DELETE** /api/v2/credentials/bigquery/{credentials_id} | Delete BigQuery credentials
 [**delete_credentials**](CredentialsApi.md#delete_credentials) | **DELETE** /api/v2/credentials/{credentials_id} | Delete credentials
+[**delete_databricks_metastore_sql_warehouse_credentials**](CredentialsApi.md#delete_databricks_metastore_sql_warehouse_credentials) | **DELETE** /api/v2/credentials/databricks-metastore-sql-warehouse/{credentials_id} | Delete Databricks metadata collection credentials
+[**delete_databricks_sql_warehouse_credentials**](CredentialsApi.md#delete_databricks_sql_warehouse_credentials) | **DELETE** /api/v2/credentials/databricks-sql-warehouse/{credentials_id} | Delete Databricks query credentials
 [**delete_env_var_credentials**](CredentialsApi.md#delete_env_var_credentials) | **DELETE** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Delete environment variable credentials
 [**delete_file_credentials**](CredentialsApi.md#delete_file_credentials) | **DELETE** /api/v2/credentials/self-hosted/file/{credentials_id} | Delete file credentials
 [**delete_gcp_secret_manager_credentials**](CredentialsApi.md#delete_gcp_secret_manager_credentials) | **DELETE** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Delete GCP Secret Manager credentials
@@ -24,6 +28,8 @@ Method | HTTP request | Description
 [**get_aws_secrets_manager_credentials**](CredentialsApi.md#get_aws_secrets_manager_credentials) | **GET** /api/v2/credentials/self-hosted/aws/{credentials_id} | Get AWS Secrets Manager credentials
 [**get_azure_key_vault_credentials**](CredentialsApi.md#get_azure_key_vault_credentials) | **GET** /api/v2/credentials/self-hosted/azure/{credentials_id} | Get Azure Key Vault credentials
 [**get_bigquery_credentials**](CredentialsApi.md#get_bigquery_credentials) | **GET** /api/v2/credentials/bigquery/{credentials_id} | Get BigQuery credentials
+[**get_databricks_metastore_sql_warehouse_credentials**](CredentialsApi.md#get_databricks_metastore_sql_warehouse_credentials) | **GET** /api/v2/credentials/databricks-metastore-sql-warehouse/{credentials_id} | Get Databricks metadata collection credentials
+[**get_databricks_sql_warehouse_credentials**](CredentialsApi.md#get_databricks_sql_warehouse_credentials) | **GET** /api/v2/credentials/databricks-sql-warehouse/{credentials_id} | Get Databricks query credentials
 [**get_env_var_credentials**](CredentialsApi.md#get_env_var_credentials) | **GET** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Get environment variable credentials
 [**get_file_credentials**](CredentialsApi.md#get_file_credentials) | **GET** /api/v2/credentials/self-hosted/file/{credentials_id} | Get file credentials
 [**get_gcp_secret_manager_credentials**](CredentialsApi.md#get_gcp_secret_manager_credentials) | **GET** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Get GCP Secret Manager credentials
@@ -33,6 +39,8 @@ Method | HTTP request | Description
 [**update_aws_secrets_manager_credentials**](CredentialsApi.md#update_aws_secrets_manager_credentials) | **PATCH** /api/v2/credentials/self-hosted/aws/{credentials_id} | Update AWS Secrets Manager credentials
 [**update_azure_key_vault_credentials**](CredentialsApi.md#update_azure_key_vault_credentials) | **PATCH** /api/v2/credentials/self-hosted/azure/{credentials_id} | Update Azure Key Vault credentials
 [**update_bigquery_credentials**](CredentialsApi.md#update_bigquery_credentials) | **PATCH** /api/v2/credentials/bigquery/{credentials_id} | Update BigQuery credentials
+[**update_databricks_metastore_sql_warehouse_credentials**](CredentialsApi.md#update_databricks_metastore_sql_warehouse_credentials) | **PATCH** /api/v2/credentials/databricks-metastore-sql-warehouse/{credentials_id} | Update Databricks metadata collection credentials
+[**update_databricks_sql_warehouse_credentials**](CredentialsApi.md#update_databricks_sql_warehouse_credentials) | **PATCH** /api/v2/credentials/databricks-sql-warehouse/{credentials_id} | Update Databricks query credentials
 [**update_env_var_credentials**](CredentialsApi.md#update_env_var_credentials) | **PATCH** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Update environment variable credentials
 [**update_file_credentials**](CredentialsApi.md#update_file_credentials) | **PATCH** /api/v2/credentials/self-hosted/file/{credentials_id} | Update file credentials
 [**update_gcp_secret_manager_credentials**](CredentialsApi.md#update_gcp_secret_manager_credentials) | **PATCH** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Update GCP Secret Manager credentials
@@ -41,6 +49,8 @@ Method | HTTP request | Description
 [**validate_aws_secrets_manager_credentials**](CredentialsApi.md#validate_aws_secrets_manager_credentials) | **POST** /api/v2/credentials/self-hosted/aws/validate | Validate AWS Secrets Manager credentials
 [**validate_azure_key_vault_credentials**](CredentialsApi.md#validate_azure_key_vault_credentials) | **POST** /api/v2/credentials/self-hosted/azure/validate | Validate Azure Key Vault credentials
 [**validate_bigquery_credentials**](CredentialsApi.md#validate_bigquery_credentials) | **POST** /api/v2/credentials/bigquery/validate | Validate BigQuery credentials
+[**validate_databricks_metastore_sql_warehouse_credentials**](CredentialsApi.md#validate_databricks_metastore_sql_warehouse_credentials) | **POST** /api/v2/credentials/databricks-metastore-sql-warehouse/validate | Validate Databricks metadata collection credentials
+[**validate_databricks_sql_warehouse_credentials**](CredentialsApi.md#validate_databricks_sql_warehouse_credentials) | **POST** /api/v2/credentials/databricks-sql-warehouse/validate | Validate Databricks query credentials
 [**validate_env_var_credentials**](CredentialsApi.md#validate_env_var_credentials) | **POST** /api/v2/credentials/self-hosted/env-var/validate | Validate environment variable credentials
 [**validate_file_credentials**](CredentialsApi.md#validate_file_credentials) | **POST** /api/v2/credentials/self-hosted/file/validate | Validate file credentials
 [**validate_gcp_secret_manager_credentials**](CredentialsApi.md#validate_gcp_secret_manager_credentials) | **POST** /api/v2/credentials/self-hosted/gcp/validate | Validate GCP Secret Manager credentials
@@ -303,6 +313,199 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BigQueryCredentialsOut**](BigQueryCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_databricks_metastore_sql_warehouse_credentials**
+> DatabricksMetastoreSqlWarehouseCredentialsOut create_databricks_metastore_sql_warehouse_credentials(databricks_metastore_sql_warehouse_credentials_in)
+
+Create Databricks metadata collection credentials
+
+Store Databricks credentials for collecting metadata through a SQL warehouse.
+
+Monte Carlo keeps the token or the OAuth secret and returns everything else. Create the
+credentials first, then create a connection that references them, on a data lake
+warehouse. Nothing is checked against Databricks here.
+
+Send `token`, or `oauth_client_id` and `oauth_client_secret`. For a service principal
+Azure manages, add `azure_tenant_id` and `azure_workspace_resource_id` to the OAuth
+client. An account holds a limited number of credentials; past that the create is
+refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.databricks_metastore_sql_warehouse_credentials_in import DatabricksMetastoreSqlWarehouseCredentialsIn
+from montecarlo.models.databricks_metastore_sql_warehouse_credentials_out import DatabricksMetastoreSqlWarehouseCredentialsOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    databricks_metastore_sql_warehouse_credentials_in = montecarlo.DatabricksMetastoreSqlWarehouseCredentialsIn() # DatabricksMetastoreSqlWarehouseCredentialsIn | 
+
+    try:
+        # Create Databricks metadata collection credentials
+        api_response = api_instance.create_databricks_metastore_sql_warehouse_credentials(databricks_metastore_sql_warehouse_credentials_in)
+        print("The response of CredentialsApi->create_databricks_metastore_sql_warehouse_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_databricks_metastore_sql_warehouse_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **databricks_metastore_sql_warehouse_credentials_in** | [**DatabricksMetastoreSqlWarehouseCredentialsIn**](DatabricksMetastoreSqlWarehouseCredentialsIn.md)|  | 
+
+### Return type
+
+[**DatabricksMetastoreSqlWarehouseCredentialsOut**](DatabricksMetastoreSqlWarehouseCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_databricks_sql_warehouse_credentials**
+> DatabricksSqlWarehouseCredentialsOut create_databricks_sql_warehouse_credentials(databricks_sql_warehouse_credentials_in)
+
+Create Databricks query credentials
+
+Store Databricks credentials for running queries on a SQL warehouse.
+
+Monte Carlo keeps the token or the OAuth secret and returns everything else. Create the
+credentials first, then create a connection that references them. Nothing is checked
+against Databricks here.
+
+The connection goes on a data lake warehouse that already has a metastore connection, such
+as a Databricks metadata collection one. Name that warehouse when creating the connection.
+
+Send `token`, or `oauth_client_id` and `oauth_client_secret`. For a service principal
+Azure manages, add `azure_tenant_id` and `azure_workspace_resource_id` to the OAuth
+client. An account holds a limited number of credentials; past that the create is
+refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.databricks_sql_warehouse_credentials_in import DatabricksSqlWarehouseCredentialsIn
+from montecarlo.models.databricks_sql_warehouse_credentials_out import DatabricksSqlWarehouseCredentialsOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    databricks_sql_warehouse_credentials_in = montecarlo.DatabricksSqlWarehouseCredentialsIn() # DatabricksSqlWarehouseCredentialsIn | 
+
+    try:
+        # Create Databricks query credentials
+        api_response = api_instance.create_databricks_sql_warehouse_credentials(databricks_sql_warehouse_credentials_in)
+        print("The response of CredentialsApi->create_databricks_sql_warehouse_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_databricks_sql_warehouse_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **databricks_sql_warehouse_credentials_in** | [**DatabricksSqlWarehouseCredentialsIn**](DatabricksSqlWarehouseCredentialsIn.md)|  | 
+
+### Return type
+
+[**DatabricksSqlWarehouseCredentialsOut**](DatabricksSqlWarehouseCredentialsOut.md)
 
 ### Authorization
 
@@ -1130,6 +1333,176 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_databricks_metastore_sql_warehouse_credentials**
+> delete_databricks_metastore_sql_warehouse_credentials(credentials_id)
+
+Delete Databricks metadata collection credentials
+
+Delete Databricks metadata collection credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+using the stored token or OAuth secret. Revoke it in Databricks, or in Microsoft Entra ID
+for a service principal Azure manages, if the secret itself must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Delete Databricks metadata collection credentials
+        api_instance.delete_databricks_metastore_sql_warehouse_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_databricks_metastore_sql_warehouse_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_databricks_sql_warehouse_credentials**
+> delete_databricks_sql_warehouse_credentials(credentials_id)
+
+Delete Databricks query credentials
+
+Delete Databricks query credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+using the stored token or OAuth secret. Revoke it in Databricks, or in Microsoft Entra ID
+for a service principal Azure manages, if the secret itself must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Delete Databricks query credentials
+        api_instance.delete_databricks_sql_warehouse_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_databricks_sql_warehouse_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_env_var_credentials**
 > delete_env_var_credentials(credentials_id)
 
@@ -1786,6 +2159,178 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BigQueryCredentialsOut**](BigQueryCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_databricks_metastore_sql_warehouse_credentials**
+> DatabricksMetastoreSqlWarehouseCredentialsOut get_databricks_metastore_sql_warehouse_credentials(credentials_id)
+
+Get Databricks metadata collection credentials
+
+Get one set of Databricks metadata collection credentials, without the secrets.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.databricks_metastore_sql_warehouse_credentials_out import DatabricksMetastoreSqlWarehouseCredentialsOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Get Databricks metadata collection credentials
+        api_response = api_instance.get_databricks_metastore_sql_warehouse_credentials(credentials_id)
+        print("The response of CredentialsApi->get_databricks_metastore_sql_warehouse_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_databricks_metastore_sql_warehouse_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+[**DatabricksMetastoreSqlWarehouseCredentialsOut**](DatabricksMetastoreSqlWarehouseCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_databricks_sql_warehouse_credentials**
+> DatabricksSqlWarehouseCredentialsOut get_databricks_sql_warehouse_credentials(credentials_id)
+
+Get Databricks query credentials
+
+Get one set of Databricks query credentials, without the secrets.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.databricks_sql_warehouse_credentials_out import DatabricksSqlWarehouseCredentialsOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Get Databricks query credentials
+        api_response = api_instance.get_databricks_sql_warehouse_credentials(credentials_id)
+        print("The response of CredentialsApi->get_databricks_sql_warehouse_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_databricks_sql_warehouse_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+[**DatabricksSqlWarehouseCredentialsOut**](DatabricksSqlWarehouseCredentialsOut.md)
 
 ### Authorization
 
@@ -2604,6 +3149,192 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_databricks_metastore_sql_warehouse_credentials**
+> DatabricksMetastoreSqlWarehouseCredentialsOut update_databricks_metastore_sql_warehouse_credentials(credentials_id, databricks_metastore_sql_warehouse_credentials_patch)
+
+Update Databricks metadata collection credentials
+
+Change Databricks metadata collection credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to
+change. Sending `token` drops the stored OAuth client and its Azure fields. Sending the
+OAuth client drops the stored token. Sending an empty body returns the credentials as
+they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.databricks_metastore_sql_warehouse_credentials_out import DatabricksMetastoreSqlWarehouseCredentialsOut
+from montecarlo.models.databricks_metastore_sql_warehouse_credentials_patch import DatabricksMetastoreSqlWarehouseCredentialsPatch
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    databricks_metastore_sql_warehouse_credentials_patch = montecarlo.DatabricksMetastoreSqlWarehouseCredentialsPatch() # DatabricksMetastoreSqlWarehouseCredentialsPatch | 
+
+    try:
+        # Update Databricks metadata collection credentials
+        api_response = api_instance.update_databricks_metastore_sql_warehouse_credentials(credentials_id, databricks_metastore_sql_warehouse_credentials_patch)
+        print("The response of CredentialsApi->update_databricks_metastore_sql_warehouse_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_databricks_metastore_sql_warehouse_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+ **databricks_metastore_sql_warehouse_credentials_patch** | [**DatabricksMetastoreSqlWarehouseCredentialsPatch**](DatabricksMetastoreSqlWarehouseCredentialsPatch.md)|  | 
+
+### Return type
+
+[**DatabricksMetastoreSqlWarehouseCredentialsOut**](DatabricksMetastoreSqlWarehouseCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_databricks_sql_warehouse_credentials**
+> DatabricksSqlWarehouseCredentialsOut update_databricks_sql_warehouse_credentials(credentials_id, databricks_sql_warehouse_credentials_patch)
+
+Update Databricks query credentials
+
+Change Databricks query credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to
+change. Sending `token` drops the stored OAuth client and its Azure fields. Sending the
+OAuth client drops the stored token. Sending an empty body returns the credentials as
+they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.databricks_sql_warehouse_credentials_out import DatabricksSqlWarehouseCredentialsOut
+from montecarlo.models.databricks_sql_warehouse_credentials_patch import DatabricksSqlWarehouseCredentialsPatch
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    databricks_sql_warehouse_credentials_patch = montecarlo.DatabricksSqlWarehouseCredentialsPatch() # DatabricksSqlWarehouseCredentialsPatch | 
+
+    try:
+        # Update Databricks query credentials
+        api_response = api_instance.update_databricks_sql_warehouse_credentials(credentials_id, databricks_sql_warehouse_credentials_patch)
+        print("The response of CredentialsApi->update_databricks_sql_warehouse_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_databricks_sql_warehouse_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+ **databricks_sql_warehouse_credentials_patch** | [**DatabricksSqlWarehouseCredentialsPatch**](DatabricksSqlWarehouseCredentialsPatch.md)|  | 
+
+### Return type
+
+[**DatabricksSqlWarehouseCredentialsOut**](DatabricksSqlWarehouseCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_env_var_credentials**
 > EnvVarCredentialsOut update_env_var_credentials(credentials_id, env_var_credentials_patch)
 
@@ -3315,6 +4046,192 @@ with montecarlo.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **big_query_credentials_validate_in** | [**BigQueryCredentialsValidateIn**](BigQueryCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_databricks_metastore_sql_warehouse_credentials**
+> ValidationRunOut validate_databricks_metastore_sql_warehouse_credentials(databricks_metastore_sql_warehouse_credentials_validate_in)
+
+Validate Databricks metadata collection credentials
+
+Check candidate Databricks metadata collection credentials against Databricks.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your Databricks workspace.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.databricks_metastore_sql_warehouse_credentials_validate_in import DatabricksMetastoreSqlWarehouseCredentialsValidateIn
+from montecarlo.models.validation_run_out import ValidationRunOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    databricks_metastore_sql_warehouse_credentials_validate_in = montecarlo.DatabricksMetastoreSqlWarehouseCredentialsValidateIn() # DatabricksMetastoreSqlWarehouseCredentialsValidateIn | 
+
+    try:
+        # Validate Databricks metadata collection credentials
+        api_response = api_instance.validate_databricks_metastore_sql_warehouse_credentials(databricks_metastore_sql_warehouse_credentials_validate_in)
+        print("The response of CredentialsApi->validate_databricks_metastore_sql_warehouse_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_databricks_metastore_sql_warehouse_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **databricks_metastore_sql_warehouse_credentials_validate_in** | [**DatabricksMetastoreSqlWarehouseCredentialsValidateIn**](DatabricksMetastoreSqlWarehouseCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_databricks_sql_warehouse_credentials**
+> ValidationRunOut validate_databricks_sql_warehouse_credentials(databricks_sql_warehouse_credentials_validate_in)
+
+Validate Databricks query credentials
+
+Check candidate Databricks query credentials against Databricks.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your Databricks workspace.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.databricks_sql_warehouse_credentials_validate_in import DatabricksSqlWarehouseCredentialsValidateIn
+from montecarlo.models.validation_run_out import ValidationRunOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    databricks_sql_warehouse_credentials_validate_in = montecarlo.DatabricksSqlWarehouseCredentialsValidateIn() # DatabricksSqlWarehouseCredentialsValidateIn | 
+
+    try:
+        # Validate Databricks query credentials
+        api_response = api_instance.validate_databricks_sql_warehouse_credentials(databricks_sql_warehouse_credentials_validate_in)
+        print("The response of CredentialsApi->validate_databricks_sql_warehouse_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_databricks_sql_warehouse_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **databricks_sql_warehouse_credentials_validate_in** | [**DatabricksSqlWarehouseCredentialsValidateIn**](DatabricksSqlWarehouseCredentialsValidateIn.md)|  | 
 
 ### Return type
 

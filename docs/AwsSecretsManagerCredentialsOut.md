@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **storage_type** | [**CredentialsStorageType**](CredentialsStorageType.md) | Where the secret lives. Fixed once created. | 
 **created_time** | **datetime** | When the credentials were created. | 
 **bq_project_id** | **str** | BigQuery project the connection reads from. Null unless set. | 
-**databricks_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Null unless set. | 
+**sql_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Null unless set. | 
 **aws_secret** | **str** | Name or ARN of the AWS Secrets Manager secret holding the connection&#39;s credentials. | 
 **aws_region** | **str** | AWS region of the secret. Null when unset. | 
 **assumable_role** | **str** | ARN of the role the deployment assumes to read the secret. Null when unset. | 

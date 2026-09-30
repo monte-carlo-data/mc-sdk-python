@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **connection_type** | **str** | The connection type the credentials are for, such as &#x60;snowflake&#x60; or &#x60;bigquery&#x60;, or one of your custom connector types. Fixed once created. | 
 **bq_project_id** | **str** | BigQuery project the connection reads from. Only for a BigQuery connection. | [optional] 
-**databricks_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Required for a &#x60;databricks-sql-warehouse&#x60; or &#x60;databricks-metastore-sql-warehouse&#x60; connection. | [optional] 
+**sql_warehouse_id** | **str** | Databricks SQL warehouse the connection runs queries on. Required for a &#x60;databricks-sql-warehouse&#x60; or &#x60;databricks-metastore-sql-warehouse&#x60; connection. | [optional] 
 **aws_secret** | **str** | Name or ARN of the AWS Secrets Manager secret holding the connection&#39;s credentials. | 
 **aws_region** | **str** | AWS region of the secret. Omit it to use the deployment&#39;s own region. | [optional] 
 **assumable_role** | **str** | ARN of a role the deployment assumes to read the secret. Omit it to read as itself. | [optional] 

@@ -28,20 +28,22 @@ from pydantic_core import to_jsonable_python
 
 class ConnectionOut(BaseModel):
     """
-    A connection: what Monte Carlo reaches one of a warehouse's systems with.  A connection belongs to a warehouse and reads its secret from a credentials row. Deleting it leaves both in place.
+    A connection: what Monte Carlo reaches one of a warehouse's or a BI container's systems with.  A connection belongs to a warehouse or to a BI container, and reads its secret from a credentials row. Deleting it leaves both in place.
     """ # noqa: E501
     id: UUID = Field(description="Unique identifier of the connection.")
     connection_type: StrictStr = Field(description="What the connection reaches, such as `snowflake`. Taken from the credentials the connection was created with, and fixed once created.")
     name: Optional[StrictStr] = Field(description="Display name of the connection. Null for a connection that was never named.")
-    warehouse_id: UUID = Field(description="The warehouse the connection belongs to. Fixed once created.")
-    warehouse_name: Optional[StrictStr] = Field(description="Display name of that warehouse. Null for a warehouse that was never named.")
-    deployment_id: Optional[UUID] = Field(description="The deployment the connection runs through, taken from its warehouse. Null for a warehouse that has no deployment. The id may name a deployment on Monte Carlo's older collection platform, which the deployments endpoints do not list.")
+    warehouse_id: Optional[UUID] = Field(description="The warehouse the connection belongs to. Null for a connection on a BI container. Fixed once created.")
+    warehouse_name: Optional[StrictStr] = Field(description="Display name of that warehouse. Null for a warehouse that was never named, and for a connection on a BI container.")
+    bi_container_id: Optional[UUID] = Field(description="The BI container the connection belongs to. Null for a connection on a warehouse. Fixed once created.")
+    bi_container_name: Optional[StrictStr] = Field(description="Display name of that BI container. Null for a container that was never named, and for a connection on a warehouse.")
+    deployment_id: Optional[UUID] = Field(description="The deployment the connection runs through, taken from its warehouse or BI container. Null when that has no deployment. The id may name a deployment on Monte Carlo's older collection platform, which the deployments endpoints do not list.")
     deployment_name: Optional[StrictStr] = Field(description="Display name of that deployment. Null when there is no deployment to name.")
     credentials_id: Optional[UUID] = Field(description="The credentials the connection reads with. Null for a connection created before credentials became their own resource, and for one created outside this API.")
     credentials_storage_type: Optional[CredentialsStorageType] = Field(description="Where that secret lives. Null when there are no credentials to describe.")
     job_types: List[StrictStr] = Field(description="The jobs Monte Carlo runs on this connection, such as `metadata`.")
     created_time: datetime = Field(description="When the connection was created.")
-    __properties: ClassVar[List[str]] = ["id", "connection_type", "name", "warehouse_id", "warehouse_name", "deployment_id", "deployment_name", "credentials_id", "credentials_storage_type", "job_types", "created_time"]
+    __properties: ClassVar[List[str]] = ["id", "connection_type", "name", "warehouse_id", "warehouse_name", "bi_container_id", "bi_container_name", "deployment_id", "deployment_name", "credentials_id", "credentials_storage_type", "job_types", "created_time"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -87,10 +89,25 @@ class ConnectionOut(BaseModel):
         if self.name is None and "name" in self.model_fields_set:
             _dict['name'] = None
 
+        # set to None if warehouse_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.warehouse_id is None and "warehouse_id" in self.model_fields_set:
+            _dict['warehouse_id'] = None
+
         # set to None if warehouse_name (nullable) is None
         # and model_fields_set contains the field
         if self.warehouse_name is None and "warehouse_name" in self.model_fields_set:
             _dict['warehouse_name'] = None
+
+        # set to None if bi_container_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.bi_container_id is None and "bi_container_id" in self.model_fields_set:
+            _dict['bi_container_id'] = None
+
+        # set to None if bi_container_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.bi_container_name is None and "bi_container_name" in self.model_fields_set:
+            _dict['bi_container_name'] = None
 
         # set to None if deployment_id (nullable) is None
         # and model_fields_set contains the field
@@ -129,6 +146,8 @@ class ConnectionOut(BaseModel):
             "name": obj.get("name"),
             "warehouse_id": obj.get("warehouse_id"),
             "warehouse_name": obj.get("warehouse_name"),
+            "bi_container_id": obj.get("bi_container_id"),
+            "bi_container_name": obj.get("bi_container_name"),
             "deployment_id": obj.get("deployment_id"),
             "deployment_name": obj.get("deployment_name"),
             "credentials_id": obj.get("credentials_id"),

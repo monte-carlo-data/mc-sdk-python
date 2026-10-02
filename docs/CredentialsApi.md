@@ -16,15 +16,19 @@ Method | HTTP request | Description
 [**create_env_var_credentials**](CredentialsApi.md#create_env_var_credentials) | **POST** /api/v2/credentials/self-hosted/env-var | Create environment variable credentials
 [**create_file_credentials**](CredentialsApi.md#create_file_credentials) | **POST** /api/v2/credentials/self-hosted/file | Create file credentials
 [**create_gcp_secret_manager_credentials**](CredentialsApi.md#create_gcp_secret_manager_credentials) | **POST** /api/v2/credentials/self-hosted/gcp | Create GCP Secret Manager credentials
+[**create_looker_credentials**](CredentialsApi.md#create_looker_credentials) | **POST** /api/v2/credentials/looker | Create Looker credentials
+[**create_looker_git_clone_credentials**](CredentialsApi.md#create_looker_git_clone_credentials) | **POST** /api/v2/credentials/looker-git-clone | Create LookML repository credentials
 [**create_mariadb_credentials**](CredentialsApi.md#create_mariadb_credentials) | **POST** /api/v2/credentials/mariadb | Create MariaDB credentials
 [**create_mysql_credentials**](CredentialsApi.md#create_mysql_credentials) | **POST** /api/v2/credentials/mysql | Create MySQL credentials
 [**create_oracle_credentials**](CredentialsApi.md#create_oracle_credentials) | **POST** /api/v2/credentials/oracle | Create Oracle credentials
 [**create_postgres_credentials**](CredentialsApi.md#create_postgres_credentials) | **POST** /api/v2/credentials/postgres | Create PostgreSQL credentials
+[**create_power_bi_credentials**](CredentialsApi.md#create_power_bi_credentials) | **POST** /api/v2/credentials/power-bi | Create Power BI credentials
 [**create_redshift_credentials**](CredentialsApi.md#create_redshift_credentials) | **POST** /api/v2/credentials/redshift | Create Redshift credentials
 [**create_sap_hana_credentials**](CredentialsApi.md#create_sap_hana_credentials) | **POST** /api/v2/credentials/sap-hana | Create SAP HANA credentials
 [**create_snowflake_credentials**](CredentialsApi.md#create_snowflake_credentials) | **POST** /api/v2/credentials/snowflake | Create Snowflake credentials
 [**create_starburst_enterprise_credentials**](CredentialsApi.md#create_starburst_enterprise_credentials) | **POST** /api/v2/credentials/starburst-enterprise | Create Starburst Enterprise credentials
 [**create_starburst_galaxy_credentials**](CredentialsApi.md#create_starburst_galaxy_credentials) | **POST** /api/v2/credentials/starburst-galaxy | Create Starburst Galaxy credentials
+[**create_tableau_credentials**](CredentialsApi.md#create_tableau_credentials) | **POST** /api/v2/credentials/tableau | Create Tableau credentials
 [**create_teradata_credentials**](CredentialsApi.md#create_teradata_credentials) | **POST** /api/v2/credentials/teradata | Create Teradata credentials
 [**delete_aws_secrets_manager_credentials**](CredentialsApi.md#delete_aws_secrets_manager_credentials) | **DELETE** /api/v2/credentials/self-hosted/aws/{credentials_id} | Delete AWS Secrets Manager credentials
 [**delete_azure_dedicated_sql_pool_credentials**](CredentialsApi.md#delete_azure_dedicated_sql_pool_credentials) | **DELETE** /api/v2/credentials/azure-dedicated-sql-pool/{credentials_id} | Delete Azure Dedicated SQL Pool credentials
@@ -39,15 +43,19 @@ Method | HTTP request | Description
 [**delete_env_var_credentials**](CredentialsApi.md#delete_env_var_credentials) | **DELETE** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Delete environment variable credentials
 [**delete_file_credentials**](CredentialsApi.md#delete_file_credentials) | **DELETE** /api/v2/credentials/self-hosted/file/{credentials_id} | Delete file credentials
 [**delete_gcp_secret_manager_credentials**](CredentialsApi.md#delete_gcp_secret_manager_credentials) | **DELETE** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Delete GCP Secret Manager credentials
+[**delete_looker_credentials**](CredentialsApi.md#delete_looker_credentials) | **DELETE** /api/v2/credentials/looker/{credentials_id} | Delete Looker credentials
+[**delete_looker_git_clone_credentials**](CredentialsApi.md#delete_looker_git_clone_credentials) | **DELETE** /api/v2/credentials/looker-git-clone/{credentials_id} | Delete LookML repository credentials
 [**delete_mariadb_credentials**](CredentialsApi.md#delete_mariadb_credentials) | **DELETE** /api/v2/credentials/mariadb/{credentials_id} | Delete MariaDB credentials
 [**delete_mysql_credentials**](CredentialsApi.md#delete_mysql_credentials) | **DELETE** /api/v2/credentials/mysql/{credentials_id} | Delete MySQL credentials
 [**delete_oracle_credentials**](CredentialsApi.md#delete_oracle_credentials) | **DELETE** /api/v2/credentials/oracle/{credentials_id} | Delete Oracle credentials
 [**delete_postgres_credentials**](CredentialsApi.md#delete_postgres_credentials) | **DELETE** /api/v2/credentials/postgres/{credentials_id} | Delete PostgreSQL credentials
+[**delete_power_bi_credentials**](CredentialsApi.md#delete_power_bi_credentials) | **DELETE** /api/v2/credentials/power-bi/{credentials_id} | Delete Power BI credentials
 [**delete_redshift_credentials**](CredentialsApi.md#delete_redshift_credentials) | **DELETE** /api/v2/credentials/redshift/{credentials_id} | Delete Redshift credentials
 [**delete_sap_hana_credentials**](CredentialsApi.md#delete_sap_hana_credentials) | **DELETE** /api/v2/credentials/sap-hana/{credentials_id} | Delete SAP HANA credentials
 [**delete_snowflake_credentials**](CredentialsApi.md#delete_snowflake_credentials) | **DELETE** /api/v2/credentials/snowflake/{credentials_id} | Delete Snowflake credentials
 [**delete_starburst_enterprise_credentials**](CredentialsApi.md#delete_starburst_enterprise_credentials) | **DELETE** /api/v2/credentials/starburst-enterprise/{credentials_id} | Delete Starburst Enterprise credentials
 [**delete_starburst_galaxy_credentials**](CredentialsApi.md#delete_starburst_galaxy_credentials) | **DELETE** /api/v2/credentials/starburst-galaxy/{credentials_id} | Delete Starburst Galaxy credentials
+[**delete_tableau_credentials**](CredentialsApi.md#delete_tableau_credentials) | **DELETE** /api/v2/credentials/tableau/{credentials_id} | Delete Tableau credentials
 [**delete_teradata_credentials**](CredentialsApi.md#delete_teradata_credentials) | **DELETE** /api/v2/credentials/teradata/{credentials_id} | Delete Teradata credentials
 [**get_aws_secrets_manager_credentials**](CredentialsApi.md#get_aws_secrets_manager_credentials) | **GET** /api/v2/credentials/self-hosted/aws/{credentials_id} | Get AWS Secrets Manager credentials
 [**get_azure_dedicated_sql_pool_credentials**](CredentialsApi.md#get_azure_dedicated_sql_pool_credentials) | **GET** /api/v2/credentials/azure-dedicated-sql-pool/{credentials_id} | Get Azure Dedicated SQL Pool credentials
@@ -61,15 +69,19 @@ Method | HTTP request | Description
 [**get_env_var_credentials**](CredentialsApi.md#get_env_var_credentials) | **GET** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Get environment variable credentials
 [**get_file_credentials**](CredentialsApi.md#get_file_credentials) | **GET** /api/v2/credentials/self-hosted/file/{credentials_id} | Get file credentials
 [**get_gcp_secret_manager_credentials**](CredentialsApi.md#get_gcp_secret_manager_credentials) | **GET** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Get GCP Secret Manager credentials
+[**get_looker_credentials**](CredentialsApi.md#get_looker_credentials) | **GET** /api/v2/credentials/looker/{credentials_id} | Get Looker credentials
+[**get_looker_git_clone_credentials**](CredentialsApi.md#get_looker_git_clone_credentials) | **GET** /api/v2/credentials/looker-git-clone/{credentials_id} | Get LookML repository credentials
 [**get_mariadb_credentials**](CredentialsApi.md#get_mariadb_credentials) | **GET** /api/v2/credentials/mariadb/{credentials_id} | Get MariaDB credentials
 [**get_mysql_credentials**](CredentialsApi.md#get_mysql_credentials) | **GET** /api/v2/credentials/mysql/{credentials_id} | Get MySQL credentials
 [**get_oracle_credentials**](CredentialsApi.md#get_oracle_credentials) | **GET** /api/v2/credentials/oracle/{credentials_id} | Get Oracle credentials
 [**get_postgres_credentials**](CredentialsApi.md#get_postgres_credentials) | **GET** /api/v2/credentials/postgres/{credentials_id} | Get PostgreSQL credentials
+[**get_power_bi_credentials**](CredentialsApi.md#get_power_bi_credentials) | **GET** /api/v2/credentials/power-bi/{credentials_id} | Get Power BI credentials
 [**get_redshift_credentials**](CredentialsApi.md#get_redshift_credentials) | **GET** /api/v2/credentials/redshift/{credentials_id} | Get Redshift credentials
 [**get_sap_hana_credentials**](CredentialsApi.md#get_sap_hana_credentials) | **GET** /api/v2/credentials/sap-hana/{credentials_id} | Get SAP HANA credentials
 [**get_snowflake_credentials**](CredentialsApi.md#get_snowflake_credentials) | **GET** /api/v2/credentials/snowflake/{credentials_id} | Get Snowflake credentials
 [**get_starburst_enterprise_credentials**](CredentialsApi.md#get_starburst_enterprise_credentials) | **GET** /api/v2/credentials/starburst-enterprise/{credentials_id} | Get Starburst Enterprise credentials
 [**get_starburst_galaxy_credentials**](CredentialsApi.md#get_starburst_galaxy_credentials) | **GET** /api/v2/credentials/starburst-galaxy/{credentials_id} | Get Starburst Galaxy credentials
+[**get_tableau_credentials**](CredentialsApi.md#get_tableau_credentials) | **GET** /api/v2/credentials/tableau/{credentials_id} | Get Tableau credentials
 [**get_teradata_credentials**](CredentialsApi.md#get_teradata_credentials) | **GET** /api/v2/credentials/teradata/{credentials_id} | Get Teradata credentials
 [**list_credentials**](CredentialsApi.md#list_credentials) | **GET** /api/v2/credentials | List credentials
 [**update_aws_secrets_manager_credentials**](CredentialsApi.md#update_aws_secrets_manager_credentials) | **PATCH** /api/v2/credentials/self-hosted/aws/{credentials_id} | Update AWS Secrets Manager credentials
@@ -84,15 +96,19 @@ Method | HTTP request | Description
 [**update_env_var_credentials**](CredentialsApi.md#update_env_var_credentials) | **PATCH** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Update environment variable credentials
 [**update_file_credentials**](CredentialsApi.md#update_file_credentials) | **PATCH** /api/v2/credentials/self-hosted/file/{credentials_id} | Update file credentials
 [**update_gcp_secret_manager_credentials**](CredentialsApi.md#update_gcp_secret_manager_credentials) | **PATCH** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Update GCP Secret Manager credentials
+[**update_looker_credentials**](CredentialsApi.md#update_looker_credentials) | **PATCH** /api/v2/credentials/looker/{credentials_id} | Update Looker credentials
+[**update_looker_git_clone_credentials**](CredentialsApi.md#update_looker_git_clone_credentials) | **PATCH** /api/v2/credentials/looker-git-clone/{credentials_id} | Update LookML repository credentials
 [**update_mariadb_credentials**](CredentialsApi.md#update_mariadb_credentials) | **PATCH** /api/v2/credentials/mariadb/{credentials_id} | Update MariaDB credentials
 [**update_mysql_credentials**](CredentialsApi.md#update_mysql_credentials) | **PATCH** /api/v2/credentials/mysql/{credentials_id} | Update MySQL credentials
 [**update_oracle_credentials**](CredentialsApi.md#update_oracle_credentials) | **PATCH** /api/v2/credentials/oracle/{credentials_id} | Update Oracle credentials
 [**update_postgres_credentials**](CredentialsApi.md#update_postgres_credentials) | **PATCH** /api/v2/credentials/postgres/{credentials_id} | Update PostgreSQL credentials
+[**update_power_bi_credentials**](CredentialsApi.md#update_power_bi_credentials) | **PATCH** /api/v2/credentials/power-bi/{credentials_id} | Update Power BI credentials
 [**update_redshift_credentials**](CredentialsApi.md#update_redshift_credentials) | **PATCH** /api/v2/credentials/redshift/{credentials_id} | Update Redshift credentials
 [**update_sap_hana_credentials**](CredentialsApi.md#update_sap_hana_credentials) | **PATCH** /api/v2/credentials/sap-hana/{credentials_id} | Update SAP HANA credentials
 [**update_snowflake_credentials**](CredentialsApi.md#update_snowflake_credentials) | **PATCH** /api/v2/credentials/snowflake/{credentials_id} | Update Snowflake credentials
 [**update_starburst_enterprise_credentials**](CredentialsApi.md#update_starburst_enterprise_credentials) | **PATCH** /api/v2/credentials/starburst-enterprise/{credentials_id} | Update Starburst Enterprise credentials
 [**update_starburst_galaxy_credentials**](CredentialsApi.md#update_starburst_galaxy_credentials) | **PATCH** /api/v2/credentials/starburst-galaxy/{credentials_id} | Update Starburst Galaxy credentials
+[**update_tableau_credentials**](CredentialsApi.md#update_tableau_credentials) | **PATCH** /api/v2/credentials/tableau/{credentials_id} | Update Tableau credentials
 [**update_teradata_credentials**](CredentialsApi.md#update_teradata_credentials) | **PATCH** /api/v2/credentials/teradata/{credentials_id} | Update Teradata credentials
 [**validate_aws_secrets_manager_credentials**](CredentialsApi.md#validate_aws_secrets_manager_credentials) | **POST** /api/v2/credentials/self-hosted/aws/validate | Validate AWS Secrets Manager credentials
 [**validate_azure_dedicated_sql_pool_credentials**](CredentialsApi.md#validate_azure_dedicated_sql_pool_credentials) | **POST** /api/v2/credentials/azure-dedicated-sql-pool/validate | Validate Azure Dedicated SQL Pool credentials
@@ -106,15 +122,19 @@ Method | HTTP request | Description
 [**validate_env_var_credentials**](CredentialsApi.md#validate_env_var_credentials) | **POST** /api/v2/credentials/self-hosted/env-var/validate | Validate environment variable credentials
 [**validate_file_credentials**](CredentialsApi.md#validate_file_credentials) | **POST** /api/v2/credentials/self-hosted/file/validate | Validate file credentials
 [**validate_gcp_secret_manager_credentials**](CredentialsApi.md#validate_gcp_secret_manager_credentials) | **POST** /api/v2/credentials/self-hosted/gcp/validate | Validate GCP Secret Manager credentials
+[**validate_looker_credentials**](CredentialsApi.md#validate_looker_credentials) | **POST** /api/v2/credentials/looker/validate | Validate Looker credentials
+[**validate_looker_git_clone_credentials**](CredentialsApi.md#validate_looker_git_clone_credentials) | **POST** /api/v2/credentials/looker-git-clone/validate | Validate LookML repository credentials
 [**validate_mariadb_credentials**](CredentialsApi.md#validate_mariadb_credentials) | **POST** /api/v2/credentials/mariadb/validate | Validate MariaDB credentials
 [**validate_mysql_credentials**](CredentialsApi.md#validate_mysql_credentials) | **POST** /api/v2/credentials/mysql/validate | Validate MySQL credentials
 [**validate_oracle_credentials**](CredentialsApi.md#validate_oracle_credentials) | **POST** /api/v2/credentials/oracle/validate | Validate Oracle credentials
 [**validate_postgres_credentials**](CredentialsApi.md#validate_postgres_credentials) | **POST** /api/v2/credentials/postgres/validate | Validate PostgreSQL credentials
+[**validate_power_bi_credentials**](CredentialsApi.md#validate_power_bi_credentials) | **POST** /api/v2/credentials/power-bi/validate | Validate Power BI credentials
 [**validate_redshift_credentials**](CredentialsApi.md#validate_redshift_credentials) | **POST** /api/v2/credentials/redshift/validate | Validate Redshift credentials
 [**validate_sap_hana_credentials**](CredentialsApi.md#validate_sap_hana_credentials) | **POST** /api/v2/credentials/sap-hana/validate | Validate SAP HANA credentials
 [**validate_snowflake_credentials**](CredentialsApi.md#validate_snowflake_credentials) | **POST** /api/v2/credentials/snowflake/validate | Validate Snowflake credentials
 [**validate_starburst_enterprise_credentials**](CredentialsApi.md#validate_starburst_enterprise_credentials) | **POST** /api/v2/credentials/starburst-enterprise/validate | Validate Starburst Enterprise credentials
 [**validate_starburst_galaxy_credentials**](CredentialsApi.md#validate_starburst_galaxy_credentials) | **POST** /api/v2/credentials/starburst-galaxy/validate | Validate Starburst Galaxy credentials
+[**validate_tableau_credentials**](CredentialsApi.md#validate_tableau_credentials) | **POST** /api/v2/credentials/tableau/validate | Validate Tableau credentials
 [**validate_teradata_credentials**](CredentialsApi.md#validate_teradata_credentials) | **POST** /api/v2/credentials/teradata/validate | Validate Teradata credentials
 
 
@@ -1238,6 +1258,191 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_looker_credentials**
+> LookerCredentialsOut create_looker_credentials(looker_credentials_in)
+
+Create Looker credentials
+
+Store Looker API credentials.
+
+Monte Carlo keeps the client secret and returns everything else. Create the credentials
+first, then create a connection that references them, on a Looker BI container. Nothing is
+checked against Looker here. An account holds a limited number of credentials; past that
+the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.looker_credentials_in import LookerCredentialsIn
+from montecarlo.models.looker_credentials_out import LookerCredentialsOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    looker_credentials_in = montecarlo.LookerCredentialsIn() # LookerCredentialsIn | 
+
+    try:
+        # Create Looker credentials
+        api_response = api_instance.create_looker_credentials(looker_credentials_in)
+        print("The response of CredentialsApi->create_looker_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_looker_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **looker_credentials_in** | [**LookerCredentialsIn**](LookerCredentialsIn.md)|  | 
+
+### Return type
+
+[**LookerCredentialsOut**](LookerCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_looker_git_clone_credentials**
+> LookerGitCloneCredentialsOut create_looker_git_clone_credentials(looker_git_clone_credentials_in)
+
+Create LookML repository credentials
+
+Store credentials for cloning a LookML repository.
+
+Monte Carlo keeps the token or the SSH key and returns everything else. Create the
+credentials first, then create a connection that references them, on the Looker BI
+container that holds the Looker API connection. Nothing is checked against the
+repository here.
+
+Send `username` and `token` for an HTTPS clone, or `ssh_key` for an SSH clone. An account
+holds a limited number of credentials; past that the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.looker_git_clone_credentials_in import LookerGitCloneCredentialsIn
+from montecarlo.models.looker_git_clone_credentials_out import LookerGitCloneCredentialsOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    looker_git_clone_credentials_in = montecarlo.LookerGitCloneCredentialsIn() # LookerGitCloneCredentialsIn | 
+
+    try:
+        # Create LookML repository credentials
+        api_response = api_instance.create_looker_git_clone_credentials(looker_git_clone_credentials_in)
+        print("The response of CredentialsApi->create_looker_git_clone_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_looker_git_clone_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **looker_git_clone_credentials_in** | [**LookerGitCloneCredentialsIn**](LookerGitCloneCredentialsIn.md)|  | 
+
+### Return type
+
+[**LookerGitCloneCredentialsOut**](LookerGitCloneCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_mariadb_credentials**
 > MariaDbCredentialsOut create_mariadb_credentials(maria_db_credentials_in)
 
@@ -1583,6 +1788,100 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PostgresCredentialsOut**](PostgresCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_power_bi_credentials**
+> PowerBiCredentialsOut create_power_bi_credentials(power_bi_credentials_in)
+
+Create Power BI credentials
+
+Store Power BI credentials.
+
+Monte Carlo keeps the client secret or the password and returns everything else. Create
+the credentials first, then create a connection that references them, on a Power BI BI
+container. Nothing is checked against Power BI here.
+
+`auth_mode` decides what else to send: `app_client_secret` for `service_principal`, or
+`username` and `password` for `primary_user`. An account holds a limited number of
+credentials; past that the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.power_bi_credentials_in import PowerBiCredentialsIn
+from montecarlo.models.power_bi_credentials_out import PowerBiCredentialsOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    power_bi_credentials_in = montecarlo.PowerBiCredentialsIn() # PowerBiCredentialsIn | 
+
+    try:
+        # Create Power BI credentials
+        api_response = api_instance.create_power_bi_credentials(power_bi_credentials_in)
+        print("The response of CredentialsApi->create_power_bi_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_power_bi_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **power_bi_credentials_in** | [**PowerBiCredentialsIn**](PowerBiCredentialsIn.md)|  | 
+
+### Return type
+
+[**PowerBiCredentialsOut**](PowerBiCredentialsOut.md)
 
 ### Authorization
 
@@ -2043,6 +2342,101 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**StarburstGalaxyCredentialsOut**](StarburstGalaxyCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_tableau_credentials**
+> TableauCredentialsOut create_tableau_credentials(tableau_credentials_in)
+
+Create Tableau credentials
+
+Store Tableau credentials.
+
+Monte Carlo keeps the password or the secret and returns everything else. Create the
+credentials first, then create a connection that references them, on a Tableau BI
+container. Nothing is checked against Tableau here.
+
+Send one way to sign in: `username` and `password`, `token_name` and `token_value` for a
+personal access token, or `username` with the three `connected_app_*` fields for a
+connected app. An account holds a limited number of credentials; past that the create is
+refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.tableau_credentials_in import TableauCredentialsIn
+from montecarlo.models.tableau_credentials_out import TableauCredentialsOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    tableau_credentials_in = montecarlo.TableauCredentialsIn() # TableauCredentialsIn | 
+
+    try:
+        # Create Tableau credentials
+        api_response = api_instance.create_tableau_credentials(tableau_credentials_in)
+        print("The response of CredentialsApi->create_tableau_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_tableau_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tableau_credentials_in** | [**TableauCredentialsIn**](TableauCredentialsIn.md)|  | 
+
+### Return type
+
+[**TableauCredentialsOut**](TableauCredentialsOut.md)
 
 ### Authorization
 
@@ -3257,6 +3651,175 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_looker_credentials**
+> delete_looker_credentials(credentials_id)
+
+Delete Looker credentials
+
+Delete Looker API credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+using the stored client secret. Delete the API key in Looker if the secret itself must be
+retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Delete Looker credentials
+        api_instance.delete_looker_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_looker_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_looker_git_clone_credentials**
+> delete_looker_git_clone_credentials(credentials_id)
+
+Delete LookML repository credentials
+
+Delete LookML repository credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+using the stored token or SSH key. Revoke it on the git server if it must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Delete LookML repository credentials
+        api_instance.delete_looker_git_clone_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_looker_git_clone_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_mariadb_credentials**
 > delete_mariadb_credentials(credentials_id)
 
@@ -3555,6 +4118,91 @@ with montecarlo.ApiClient(configuration) as api_client:
         api_instance.delete_postgres_credentials(credentials_id)
     except Exception as e:
         print("Exception when calling CredentialsApi->delete_postgres_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_power_bi_credentials**
+> delete_power_bi_credentials(credentials_id)
+
+Delete Power BI credentials
+
+Delete Power BI credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+using the stored client secret or password. Rotate it in Microsoft Entra ID if it must be
+retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Delete Power BI credentials
+        api_instance.delete_power_bi_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_power_bi_credentials: %s\n" % e)
 ```
 
 
@@ -3976,6 +4624,91 @@ with montecarlo.ApiClient(configuration) as api_client:
         api_instance.delete_starburst_galaxy_credentials(credentials_id)
     except Exception as e:
         print("Exception when calling CredentialsApi->delete_starburst_galaxy_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_tableau_credentials**
+> delete_tableau_credentials(credentials_id)
+
+Delete Tableau credentials
+
+Delete Tableau credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+using the stored password or secret. Revoke it in Tableau if the secret itself must be
+retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Delete Tableau credentials
+        api_instance.delete_tableau_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_tableau_credentials: %s\n" % e)
 ```
 
 
@@ -5131,6 +5864,178 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_looker_credentials**
+> LookerCredentialsOut get_looker_credentials(credentials_id)
+
+Get Looker credentials
+
+Get one set of Looker API credentials, without the client secret.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.looker_credentials_out import LookerCredentialsOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Get Looker credentials
+        api_response = api_instance.get_looker_credentials(credentials_id)
+        print("The response of CredentialsApi->get_looker_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_looker_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+[**LookerCredentialsOut**](LookerCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_looker_git_clone_credentials**
+> LookerGitCloneCredentialsOut get_looker_git_clone_credentials(credentials_id)
+
+Get LookML repository credentials
+
+Get one set of LookML repository credentials, without the token or the SSH key.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.looker_git_clone_credentials_out import LookerGitCloneCredentialsOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Get LookML repository credentials
+        api_response = api_instance.get_looker_git_clone_credentials(credentials_id)
+        print("The response of CredentialsApi->get_looker_git_clone_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_looker_git_clone_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+[**LookerGitCloneCredentialsOut**](LookerGitCloneCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_mariadb_credentials**
 > MariaDbCredentialsOut get_mariadb_credentials(credentials_id)
 
@@ -5452,6 +6357,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PostgresCredentialsOut**](PostgresCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_power_bi_credentials**
+> PowerBiCredentialsOut get_power_bi_credentials(credentials_id)
+
+Get Power BI credentials
+
+Get one set of Power BI credentials, without the client secret or the password.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.power_bi_credentials_out import PowerBiCredentialsOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Get Power BI credentials
+        api_response = api_instance.get_power_bi_credentials(credentials_id)
+        print("The response of CredentialsApi->get_power_bi_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_power_bi_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+[**PowerBiCredentialsOut**](PowerBiCredentialsOut.md)
 
 ### Authorization
 
@@ -5882,6 +6873,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**StarburstGalaxyCredentialsOut**](StarburstGalaxyCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_tableau_credentials**
+> TableauCredentialsOut get_tableau_credentials(credentials_id)
+
+Get Tableau credentials
+
+Get one set of Tableau credentials, without the password or the secrets.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.tableau_credentials_out import TableauCredentialsOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Get Tableau credentials
+        api_response = api_instance.get_tableau_credentials(credentials_id)
+        print("The response of CredentialsApi->get_tableau_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_tableau_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+[**TableauCredentialsOut**](TableauCredentialsOut.md)
 
 ### Authorization
 
@@ -7187,6 +8264,189 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_looker_credentials**
+> LookerCredentialsOut update_looker_credentials(credentials_id, looker_credentials_patch)
+
+Update Looker credentials
+
+Change Looker API credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to
+change. Sending an empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.looker_credentials_out import LookerCredentialsOut
+from montecarlo.models.looker_credentials_patch import LookerCredentialsPatch
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    looker_credentials_patch = montecarlo.LookerCredentialsPatch() # LookerCredentialsPatch | 
+
+    try:
+        # Update Looker credentials
+        api_response = api_instance.update_looker_credentials(credentials_id, looker_credentials_patch)
+        print("The response of CredentialsApi->update_looker_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_looker_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+ **looker_credentials_patch** | [**LookerCredentialsPatch**](LookerCredentialsPatch.md)|  | 
+
+### Return type
+
+[**LookerCredentialsOut**](LookerCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_looker_git_clone_credentials**
+> LookerGitCloneCredentialsOut update_looker_git_clone_credentials(credentials_id, looker_git_clone_credentials_patch)
+
+Update LookML repository credentials
+
+Change LookML repository credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to
+change. Sending `ssh_key` drops a stored username and token, and sending `username` or
+`token` drops a stored key. Sending an empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.looker_git_clone_credentials_out import LookerGitCloneCredentialsOut
+from montecarlo.models.looker_git_clone_credentials_patch import LookerGitCloneCredentialsPatch
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    looker_git_clone_credentials_patch = montecarlo.LookerGitCloneCredentialsPatch() # LookerGitCloneCredentialsPatch | 
+
+    try:
+        # Update LookML repository credentials
+        api_response = api_instance.update_looker_git_clone_credentials(credentials_id, looker_git_clone_credentials_patch)
+        print("The response of CredentialsApi->update_looker_git_clone_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_looker_git_clone_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+ **looker_git_clone_credentials_patch** | [**LookerGitCloneCredentialsPatch**](LookerGitCloneCredentialsPatch.md)|  | 
+
+### Return type
+
+[**LookerGitCloneCredentialsOut**](LookerGitCloneCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_mariadb_credentials**
 > MariaDbCredentialsOut update_mariadb_credentials(credentials_id, maria_db_credentials_patch)
 
@@ -7531,6 +8791,98 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PostgresCredentialsOut**](PostgresCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_power_bi_credentials**
+> PowerBiCredentialsOut update_power_bi_credentials(credentials_id, power_bi_credentials_patch)
+
+Update Power BI credentials
+
+Change Power BI credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to
+change. A new `auth_mode` drops the fields of the old one, so send the new mode's fields
+with it. Sending an empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.power_bi_credentials_out import PowerBiCredentialsOut
+from montecarlo.models.power_bi_credentials_patch import PowerBiCredentialsPatch
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    power_bi_credentials_patch = montecarlo.PowerBiCredentialsPatch() # PowerBiCredentialsPatch | 
+
+    try:
+        # Update Power BI credentials
+        api_response = api_instance.update_power_bi_credentials(credentials_id, power_bi_credentials_patch)
+        print("The response of CredentialsApi->update_power_bi_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_power_bi_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+ **power_bi_credentials_patch** | [**PowerBiCredentialsPatch**](PowerBiCredentialsPatch.md)|  | 
+
+### Return type
+
+[**PowerBiCredentialsOut**](PowerBiCredentialsOut.md)
 
 ### Authorization
 
@@ -8013,6 +9365,100 @@ Name | Type | Description  | Notes
 **422** | Unprocessable Entity |  -  |
 **429** | Too Many Requests |  -  |
 **503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_tableau_credentials**
+> TableauCredentialsOut update_tableau_credentials(credentials_id, tableau_credentials_patch)
+
+Update Tableau credentials
+
+Change Tableau credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to
+change. Sending a field of another way to sign in drops the stored one. Moving to a
+connected app is refused while a connection using the credentials runs on a deployment
+too old for connected apps. Sending an empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.tableau_credentials_out import TableauCredentialsOut
+from montecarlo.models.tableau_credentials_patch import TableauCredentialsPatch
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    tableau_credentials_patch = montecarlo.TableauCredentialsPatch() # TableauCredentialsPatch | 
+
+    try:
+        # Update Tableau credentials
+        api_response = api_instance.update_tableau_credentials(credentials_id, tableau_credentials_patch)
+        print("The response of CredentialsApi->update_tableau_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_tableau_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+ **tableau_credentials_patch** | [**TableauCredentialsPatch**](TableauCredentialsPatch.md)|  | 
+
+### Return type
+
+[**TableauCredentialsOut**](TableauCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**409** | Conflict |  -  |
 **401** | Authentication credentials are missing or invalid. |  -  |
 **403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
 **500** | An unexpected error prevented the request from being processed. |  -  |
@@ -9228,6 +10674,192 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **validate_looker_credentials**
+> ValidationRunOut validate_looker_credentials(looker_credentials_validate_in)
+
+Validate Looker credentials
+
+Check candidate Looker API credentials against Looker.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your Looker instance.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.looker_credentials_validate_in import LookerCredentialsValidateIn
+from montecarlo.models.validation_run_out import ValidationRunOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    looker_credentials_validate_in = montecarlo.LookerCredentialsValidateIn() # LookerCredentialsValidateIn | 
+
+    try:
+        # Validate Looker credentials
+        api_response = api_instance.validate_looker_credentials(looker_credentials_validate_in)
+        print("The response of CredentialsApi->validate_looker_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_looker_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **looker_credentials_validate_in** | [**LookerCredentialsValidateIn**](LookerCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_looker_git_clone_credentials**
+> ValidationRunOut validate_looker_git_clone_credentials(looker_git_clone_credentials_validate_in)
+
+Validate LookML repository credentials
+
+Check candidate LookML repository credentials against the repository.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your git server.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.looker_git_clone_credentials_validate_in import LookerGitCloneCredentialsValidateIn
+from montecarlo.models.validation_run_out import ValidationRunOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    looker_git_clone_credentials_validate_in = montecarlo.LookerGitCloneCredentialsValidateIn() # LookerGitCloneCredentialsValidateIn | 
+
+    try:
+        # Validate LookML repository credentials
+        api_response = api_instance.validate_looker_git_clone_credentials(looker_git_clone_credentials_validate_in)
+        print("The response of CredentialsApi->validate_looker_git_clone_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_looker_git_clone_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **looker_git_clone_credentials_validate_in** | [**LookerGitCloneCredentialsValidateIn**](LookerGitCloneCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **validate_mariadb_credentials**
 > ValidationRunOut validate_mariadb_credentials(maria_db_credentials_validate_in)
 
@@ -9570,6 +11202,99 @@ with montecarlo.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **postgres_credentials_validate_in** | [**PostgresCredentialsValidateIn**](PostgresCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_power_bi_credentials**
+> ValidationRunOut validate_power_bi_credentials(power_bi_credentials_validate_in)
+
+Validate Power BI credentials
+
+Check candidate Power BI credentials against Power BI.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your Power BI tenant.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.power_bi_credentials_validate_in import PowerBiCredentialsValidateIn
+from montecarlo.models.validation_run_out import ValidationRunOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    power_bi_credentials_validate_in = montecarlo.PowerBiCredentialsValidateIn() # PowerBiCredentialsValidateIn | 
+
+    try:
+        # Validate Power BI credentials
+        api_response = api_instance.validate_power_bi_credentials(power_bi_credentials_validate_in)
+        print("The response of CredentialsApi->validate_power_bi_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_power_bi_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **power_bi_credentials_validate_in** | [**PowerBiCredentialsValidateIn**](PowerBiCredentialsValidateIn.md)|  | 
 
 ### Return type
 
@@ -10035,6 +11760,99 @@ with montecarlo.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **starburst_galaxy_credentials_validate_in** | [**StarburstGalaxyCredentialsValidateIn**](StarburstGalaxyCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_tableau_credentials**
+> ValidationRunOut validate_tableau_credentials(tableau_credentials_validate_in)
+
+Validate Tableau credentials
+
+Check candidate Tableau credentials against Tableau.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your Tableau server.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import montecarlo
+from montecarlo.models.tableau_credentials_validate_in import TableauCredentialsValidateIn
+from montecarlo.models.validation_run_out import ValidationRunOut
+from montecarlo.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = montecarlo.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = montecarlo.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with montecarlo.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = montecarlo.CredentialsApi(api_client)
+    tableau_credentials_validate_in = montecarlo.TableauCredentialsValidateIn() # TableauCredentialsValidateIn | 
+
+    try:
+        # Validate Tableau credentials
+        api_response = api_instance.validate_tableau_credentials(tableau_credentials_validate_in)
+        print("The response of CredentialsApi->validate_tableau_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_tableau_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tableau_credentials_validate_in** | [**TableauCredentialsValidateIn**](TableauCredentialsValidateIn.md)|  | 
 
 ### Return type
 

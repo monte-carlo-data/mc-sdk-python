@@ -59,7 +59,7 @@ class ConnectionsApi:
     ) -> ConnectionOut:
         """Create a connection
 
-        Add a connection to a warehouse.  Create the credentials first, through one of the credentials endpoints, then name them here. The connection's type comes from them, and has to be a type the warehouse accepts and the warehouse's deployment supports. A type that depends on a metastore, such as `databricks-sql-warehouse`, goes on a data lake warehouse that already has a metastore connection.  Omit `job_types` to run what the type runs by default.  An unknown warehouse id or credentials id returns 404.
+        Add a connection to a warehouse or a BI container.  Create the credentials first, through one of the credentials endpoints, then name them here. The connection's type comes from them, and has to be a type the parent accepts and its deployment supports. Send `warehouse_id` or `bi_container_id`, exactly one.  A type that depends on a metastore, such as `databricks-sql-warehouse`, goes on a data lake warehouse that already has a metastore connection. Tableau, Looker and Power BI credentials go on a BI container of the same tool; a `looker` container takes both the `looker` and the `looker-git-clone` connection.  Omit `job_types` to run what the type runs by default.  An unknown warehouse, BI container or credentials id returns 404.
 
         :param connection_in: (required)
         :type connection_in: ConnectionIn
@@ -212,7 +212,7 @@ class ConnectionsApi:
     ) -> None:
         """Delete a connection
 
-        Delete a connection.  The warehouse and the credentials are left in place. Delete each of those through its own endpoint once nothing uses it. Deleting the connection also deletes its own schedules, monitors and rules.  Deleting a warehouse's last connection is refused when that would also take monitors, rules or use cases that belong to the warehouse as a whole. Delete the warehouse instead.
+        Delete a connection.  The warehouse or BI container and the credentials are left in place. Delete each of those through its own endpoint once nothing uses it. Deleting the connection also deletes its own schedules, monitors and rules.  Deleting a warehouse's last connection is refused when that would also take monitors, rules or use cases that belong to the warehouse as a whole. Delete the warehouse instead. Deleting a custom BI connector's connection is refused too, since its BI container and the assets collected through it would go with it.
 
         :param connection_id: (required)
         :type connection_id: UUID
@@ -470,6 +470,7 @@ class ConnectionsApi:
     def list_connections(
         self,
         warehouse_id: Annotated[Optional[UUID], Field(description="Only list connections on this warehouse. Omit it to list every connection in your account.")] = None,
+        bi_container_id: Annotated[Optional[UUID], Field(description="Only list connections on this BI container. Omit it to list every connection in your account.")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="Position to continue from, as returned in `next_cursor` by the previous page. Omit it to start from the first page. The value is opaque; do not build or modify one.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=100, strict=True, ge=1)]], Field(description="Maximum number of items to return, between 1 and 100.")] = None,
         with_count: Annotated[Optional[StrictBool], Field(description="Whether to also return the total number of items across every page, in `count`. Off by default: counting costs an extra query.")] = None,
@@ -488,10 +489,12 @@ class ConnectionsApi:
     ) -> PagedConnectionOut:
         """List connections
 
-        List the connections in your account, a page at a time.  Connections are returned oldest first. Pass `warehouse_id` to list one warehouse's connections; an id you cannot see returns an empty page. A caller whose asset access is restricted to certain domains sees only the connections of warehouses holding assets in those domains.  Connections that belong to a BI or ETL integration rather than to a warehouse are not listed here.
+        List the connections in your account, a page at a time.  Connections are returned oldest first. Pass `warehouse_id` or `bi_container_id` to list one warehouse's or one BI container's connections; an id you cannot see returns an empty page. A caller whose asset access is restricted to certain domains sees only the connections of warehouses holding assets in those domains, and every BI connection.  Connections that belong to an ETL integration are not listed here.
 
         :param warehouse_id: Only list connections on this warehouse. Omit it to list every connection in your account.
         :type warehouse_id: UUID
+        :param bi_container_id: Only list connections on this BI container. Omit it to list every connection in your account.
+        :type bi_container_id: UUID
         :param cursor: Position to continue from, as returned in `next_cursor` by the previous page. Omit it to start from the first page. The value is opaque; do not build or modify one.
         :type cursor: str
         :param limit: Maximum number of items to return, between 1 and 100.
@@ -522,6 +525,7 @@ class ConnectionsApi:
 
         _param = self._list_connections_serialize(
             warehouse_id=warehouse_id,
+            bi_container_id=bi_container_id,
             cursor=cursor,
             limit=limit,
             with_count=with_count,
@@ -552,6 +556,7 @@ class ConnectionsApi:
     def _list_connections_serialize(
         self,
         warehouse_id,
+        bi_container_id,
         cursor,
         limit,
         with_count,
@@ -580,6 +585,10 @@ class ConnectionsApi:
         if warehouse_id is not None:
             
             _query_params.append(('warehouse_id', warehouse_id))
+            
+        if bi_container_id is not None:
+            
+            _query_params.append(('bi_container_id', bi_container_id))
             
         if cursor is not None:
             
@@ -651,7 +660,7 @@ class ConnectionsApi:
     ) -> ConnectionOut:
         """Update a connection
 
-        Rename a connection.  The name is the only thing you can change. The type, the warehouse and the credentials are fixed when the connection is created. Two connections on one warehouse cannot share a name. Sending an empty body leaves the connection as it is and returns it.
+        Rename a connection.  The name is the only thing you can change. The type, the warehouse or BI container and the credentials are fixed when the connection is created. Two connections on one warehouse or BI container cannot share a name. Sending an empty body leaves the connection as it is and returns it.
 
         :param connection_id: (required)
         :type connection_id: UUID

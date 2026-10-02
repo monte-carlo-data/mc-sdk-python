@@ -18,6 +18,7 @@ __version__ = "0.0.0"
 
 # Define package exports
 __all__ = [
+    "BiContainersApi",
     "CollectionAgentsApi",
     "CollectionDataStoresApi",
     "ConnectionsApi",
@@ -70,6 +71,10 @@ __all__ = [
     "AzureSqlDatabaseCredentialsOut",
     "AzureSqlDatabaseCredentialsPatch",
     "AzureSqlDatabaseCredentialsValidateIn",
+    "BiContainerIn",
+    "BiContainerOut",
+    "BiContainerPatch",
+    "BiContainerType",
     "BigQueryCredentialsIn",
     "BigQueryCredentialsOut",
     "BigQueryCredentialsPatch",
@@ -137,6 +142,14 @@ __all__ = [
     "GenericCollectionAgentTokenOut",
     "IdentityType",
     "Input",
+    "LookerCredentialsIn",
+    "LookerCredentialsOut",
+    "LookerCredentialsPatch",
+    "LookerCredentialsValidateIn",
+    "LookerGitCloneCredentialsIn",
+    "LookerGitCloneCredentialsOut",
+    "LookerGitCloneCredentialsPatch",
+    "LookerGitCloneCredentialsValidateIn",
     "MariaDbCredentialsIn",
     "MariaDbCredentialsOut",
     "MariaDbCredentialsPatch",
@@ -145,6 +158,7 @@ __all__ = [
     "MySqlCredentialsOut",
     "MySqlCredentialsPatch",
     "MySqlCredentialsValidateIn",
+    "NewBiContainerType",
     "OracleCredentialsIn",
     "OracleCredentialsOut",
     "OracleCredentialsPatch",
@@ -156,6 +170,11 @@ __all__ = [
     "PostgresCredentialsOut",
     "PostgresCredentialsPatch",
     "PostgresCredentialsValidateIn",
+    "PowerBiAuthMode",
+    "PowerBiCredentialsIn",
+    "PowerBiCredentialsOut",
+    "PowerBiCredentialsPatch",
+    "PowerBiCredentialsValidateIn",
     "ProblemOut",
     "RedshiftCredentialsIn",
     "RedshiftCredentialsOut",
@@ -183,6 +202,10 @@ __all__ = [
     "StorageAccountKeysCredentialsIn",
     "StorageServicePrincipalCredentialsIn",
     "StorageType",
+    "TableauCredentialsIn",
+    "TableauCredentialsOut",
+    "TableauCredentialsPatch",
+    "TableauCredentialsValidateIn",
     "TargetType",
     "TeradataCredentialsIn",
     "TeradataCredentialsOut",
@@ -201,6 +224,7 @@ __all__ = [
 ]
 
 # import apis into sdk package
+from montecarlo.api.bi_containers_api import BiContainersApi as BiContainersApi
 from montecarlo.api.collection_agents_api import CollectionAgentsApi as CollectionAgentsApi
 from montecarlo.api.collection_data_stores_api import CollectionDataStoresApi as CollectionDataStoresApi
 from montecarlo.api.connections_api import ConnectionsApi as ConnectionsApi
@@ -254,6 +278,10 @@ from montecarlo.models.azure_sql_database_credentials_in import AzureSqlDatabase
 from montecarlo.models.azure_sql_database_credentials_out import AzureSqlDatabaseCredentialsOut as AzureSqlDatabaseCredentialsOut
 from montecarlo.models.azure_sql_database_credentials_patch import AzureSqlDatabaseCredentialsPatch as AzureSqlDatabaseCredentialsPatch
 from montecarlo.models.azure_sql_database_credentials_validate_in import AzureSqlDatabaseCredentialsValidateIn as AzureSqlDatabaseCredentialsValidateIn
+from montecarlo.models.bi_container_in import BiContainerIn as BiContainerIn
+from montecarlo.models.bi_container_out import BiContainerOut as BiContainerOut
+from montecarlo.models.bi_container_patch import BiContainerPatch as BiContainerPatch
+from montecarlo.models.bi_container_type import BiContainerType as BiContainerType
 from montecarlo.models.big_query_credentials_in import BigQueryCredentialsIn as BigQueryCredentialsIn
 from montecarlo.models.big_query_credentials_out import BigQueryCredentialsOut as BigQueryCredentialsOut
 from montecarlo.models.big_query_credentials_patch import BigQueryCredentialsPatch as BigQueryCredentialsPatch
@@ -321,6 +349,14 @@ from montecarlo.models.generic_collection_agent_token_in import GenericCollectio
 from montecarlo.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut as GenericCollectionAgentTokenOut
 from montecarlo.models.identity_type import IdentityType as IdentityType
 from montecarlo.models.input import Input as Input
+from montecarlo.models.looker_credentials_in import LookerCredentialsIn as LookerCredentialsIn
+from montecarlo.models.looker_credentials_out import LookerCredentialsOut as LookerCredentialsOut
+from montecarlo.models.looker_credentials_patch import LookerCredentialsPatch as LookerCredentialsPatch
+from montecarlo.models.looker_credentials_validate_in import LookerCredentialsValidateIn as LookerCredentialsValidateIn
+from montecarlo.models.looker_git_clone_credentials_in import LookerGitCloneCredentialsIn as LookerGitCloneCredentialsIn
+from montecarlo.models.looker_git_clone_credentials_out import LookerGitCloneCredentialsOut as LookerGitCloneCredentialsOut
+from montecarlo.models.looker_git_clone_credentials_patch import LookerGitCloneCredentialsPatch as LookerGitCloneCredentialsPatch
+from montecarlo.models.looker_git_clone_credentials_validate_in import LookerGitCloneCredentialsValidateIn as LookerGitCloneCredentialsValidateIn
 from montecarlo.models.maria_db_credentials_in import MariaDbCredentialsIn as MariaDbCredentialsIn
 from montecarlo.models.maria_db_credentials_out import MariaDbCredentialsOut as MariaDbCredentialsOut
 from montecarlo.models.maria_db_credentials_patch import MariaDbCredentialsPatch as MariaDbCredentialsPatch
@@ -329,6 +365,7 @@ from montecarlo.models.my_sql_credentials_in import MySqlCredentialsIn as MySqlC
 from montecarlo.models.my_sql_credentials_out import MySqlCredentialsOut as MySqlCredentialsOut
 from montecarlo.models.my_sql_credentials_patch import MySqlCredentialsPatch as MySqlCredentialsPatch
 from montecarlo.models.my_sql_credentials_validate_in import MySqlCredentialsValidateIn as MySqlCredentialsValidateIn
+from montecarlo.models.new_bi_container_type import NewBiContainerType as NewBiContainerType
 from montecarlo.models.oracle_credentials_in import OracleCredentialsIn as OracleCredentialsIn
 from montecarlo.models.oracle_credentials_out import OracleCredentialsOut as OracleCredentialsOut
 from montecarlo.models.oracle_credentials_patch import OracleCredentialsPatch as OracleCredentialsPatch
@@ -340,6 +377,11 @@ from montecarlo.models.postgres_credentials_in import PostgresCredentialsIn as P
 from montecarlo.models.postgres_credentials_out import PostgresCredentialsOut as PostgresCredentialsOut
 from montecarlo.models.postgres_credentials_patch import PostgresCredentialsPatch as PostgresCredentialsPatch
 from montecarlo.models.postgres_credentials_validate_in import PostgresCredentialsValidateIn as PostgresCredentialsValidateIn
+from montecarlo.models.power_bi_auth_mode import PowerBiAuthMode as PowerBiAuthMode
+from montecarlo.models.power_bi_credentials_in import PowerBiCredentialsIn as PowerBiCredentialsIn
+from montecarlo.models.power_bi_credentials_out import PowerBiCredentialsOut as PowerBiCredentialsOut
+from montecarlo.models.power_bi_credentials_patch import PowerBiCredentialsPatch as PowerBiCredentialsPatch
+from montecarlo.models.power_bi_credentials_validate_in import PowerBiCredentialsValidateIn as PowerBiCredentialsValidateIn
 from montecarlo.models.problem_out import ProblemOut as ProblemOut
 from montecarlo.models.redshift_credentials_in import RedshiftCredentialsIn as RedshiftCredentialsIn
 from montecarlo.models.redshift_credentials_out import RedshiftCredentialsOut as RedshiftCredentialsOut
@@ -367,6 +409,10 @@ from montecarlo.models.starburst_galaxy_credentials_validate_in import Starburst
 from montecarlo.models.storage_account_keys_credentials_in import StorageAccountKeysCredentialsIn as StorageAccountKeysCredentialsIn
 from montecarlo.models.storage_service_principal_credentials_in import StorageServicePrincipalCredentialsIn as StorageServicePrincipalCredentialsIn
 from montecarlo.models.storage_type import StorageType as StorageType
+from montecarlo.models.tableau_credentials_in import TableauCredentialsIn as TableauCredentialsIn
+from montecarlo.models.tableau_credentials_out import TableauCredentialsOut as TableauCredentialsOut
+from montecarlo.models.tableau_credentials_patch import TableauCredentialsPatch as TableauCredentialsPatch
+from montecarlo.models.tableau_credentials_validate_in import TableauCredentialsValidateIn as TableauCredentialsValidateIn
 from montecarlo.models.target_type import TargetType as TargetType
 from montecarlo.models.teradata_credentials_in import TeradataCredentialsIn as TeradataCredentialsIn
 from montecarlo.models.teradata_credentials_out import TeradataCredentialsOut as TeradataCredentialsOut

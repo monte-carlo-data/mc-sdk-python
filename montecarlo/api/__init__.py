@@ -1,6 +1,7 @@
 # flake8: noqa
 
 # import apis into api package
+from montecarlo.api.bi_containers_api import BiContainersApi
 from montecarlo.api.collection_agents_api import CollectionAgentsApi
 from montecarlo.api.collection_data_stores_api import CollectionDataStoresApi
 from montecarlo.api.connections_api import ConnectionsApi

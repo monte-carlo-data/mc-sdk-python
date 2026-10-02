@@ -17,17 +17,20 @@ Method | HTTP request | Description
 
 Create a connection
 
-Add a connection to a warehouse.
+Add a connection to a warehouse or a BI container.
 
 Create the credentials first, through one of the credentials endpoints, then name them
-here. The connection's type comes from them, and has to be a type the warehouse accepts
-and the warehouse's deployment supports. A type that depends on a metastore, such as
-`databricks-sql-warehouse`, goes on a data lake warehouse that already has a metastore
-connection.
+here. The connection's type comes from them, and has to be a type the parent accepts and
+its deployment supports. Send `warehouse_id` or `bi_container_id`, exactly one.
+
+A type that depends on a metastore, such as `databricks-sql-warehouse`, goes on a data
+lake warehouse that already has a metastore connection. Tableau, Looker and Power BI
+credentials go on a BI container of the same tool; a `looker` container takes both the
+`looker` and the `looker-git-clone` connection.
 
 Omit `job_types` to run what the type runs by default.
 
-An unknown warehouse id or credentials id returns 404.
+An unknown warehouse, BI container or credentials id returns 404.
 
 ### Example
 
@@ -116,12 +119,14 @@ Delete a connection
 
 Delete a connection.
 
-The warehouse and the credentials are left in place. Delete each of those through its own
-endpoint once nothing uses it. Deleting the connection also deletes its own schedules,
-monitors and rules.
+The warehouse or BI container and the credentials are left in place. Delete each of those
+through its own endpoint once nothing uses it. Deleting the connection also deletes its
+own schedules, monitors and rules.
 
 Deleting a warehouse's last connection is refused when that would also take monitors,
 rules or use cases that belong to the warehouse as a whole. Delete the warehouse instead.
+Deleting a custom BI connector's connection is refused too, since its BI container and
+the assets collected through it would go with it.
 
 ### Example
 
@@ -283,19 +288,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_connections**
-> PagedConnectionOut list_connections(warehouse_id=warehouse_id, cursor=cursor, limit=limit, with_count=with_count)
+> PagedConnectionOut list_connections(warehouse_id=warehouse_id, bi_container_id=bi_container_id, cursor=cursor, limit=limit, with_count=with_count)
 
 List connections
 
 List the connections in your account, a page at a time.
 
-Connections are returned oldest first. Pass `warehouse_id` to list one warehouse's
-connections; an id you cannot see returns an empty page. A caller whose asset access is
-restricted to certain domains sees only the connections of warehouses holding assets in
-those domains.
+Connections are returned oldest first. Pass `warehouse_id` or `bi_container_id` to list
+one warehouse's or one BI container's connections; an id you cannot see returns an empty
+page. A caller whose asset access is restricted to certain domains sees only the
+connections of warehouses holding assets in those domains, and every BI connection.
 
-Connections that belong to a BI or ETL integration rather than to a warehouse are not
-listed here.
+Connections that belong to an ETL integration are not listed here.
 
 ### Example
 
@@ -328,13 +332,14 @@ with montecarlo.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = montecarlo.ConnectionsApi(api_client)
     warehouse_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Only list connections on this warehouse. Omit it to list every connection in your account. (optional)
+    bi_container_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Only list connections on this BI container. Omit it to list every connection in your account. (optional)
     cursor = 'cursor_example' # str | Position to continue from, as returned in `next_cursor` by the previous page. Omit it to start from the first page. The value is opaque; do not build or modify one. (optional)
     limit = 50 # int | Maximum number of items to return, between 1 and 100. (optional) (default to 50)
     with_count = False # bool | Whether to also return the total number of items across every page, in `count`. Off by default: counting costs an extra query. (optional) (default to False)
 
     try:
         # List connections
-        api_response = api_instance.list_connections(warehouse_id=warehouse_id, cursor=cursor, limit=limit, with_count=with_count)
+        api_response = api_instance.list_connections(warehouse_id=warehouse_id, bi_container_id=bi_container_id, cursor=cursor, limit=limit, with_count=with_count)
         print("The response of ConnectionsApi->list_connections:\n")
         pprint(api_response)
     except Exception as e:
@@ -349,6 +354,7 @@ with montecarlo.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **warehouse_id** | **UUID**| Only list connections on this warehouse. Omit it to list every connection in your account. | [optional] 
+ **bi_container_id** | **UUID**| Only list connections on this BI container. Omit it to list every connection in your account. | [optional] 
  **cursor** | **str**| Position to continue from, as returned in &#x60;next_cursor&#x60; by the previous page. Omit it to start from the first page. The value is opaque; do not build or modify one. | [optional] 
  **limit** | **int**| Maximum number of items to return, between 1 and 100. | [optional] [default to 50]
  **with_count** | **bool**| Whether to also return the total number of items across every page, in &#x60;count&#x60;. Off by default: counting costs an extra query. | [optional] [default to False]
@@ -385,9 +391,10 @@ Update a connection
 
 Rename a connection.
 
-The name is the only thing you can change. The type, the warehouse and the credentials
-are fixed when the connection is created. Two connections on one warehouse cannot share a
-name. Sending an empty body leaves the connection as it is and returns it.
+The name is the only thing you can change. The type, the warehouse or BI container and the
+credentials are fixed when the connection is created. Two connections on one warehouse or
+BI container cannot share a name. Sending an empty body leaves the connection as it is and
+returns it.
 
 ### Example
 

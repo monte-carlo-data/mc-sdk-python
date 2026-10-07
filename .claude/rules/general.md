@@ -17,7 +17,9 @@ next generation run overwrites them.
 - Prefer explicit over implicit; name things clearly
 - Write code that reads like a specification
 - Every hand-written module under `pycarlo2/` starts with `# Hand-written, not generator
-  output.`; CI asserts it, and derives the generator-protection check from it.
+  output.`; CI asserts it, and derives the generator-protection check from it. The
+  `# Copyright Monte Carlo AI, Inc.` and `# SPDX-License-Identifier: Apache-2.0` lines follow
+  it; test modules start with them.
 - A hand-written identifier must never take a name the generator could emit: `<Schema>` for
   every schema in the spec, the `*Api` classes, `ApiClient`, `ApiResponse`, `Configuration`,
   and the exception classes

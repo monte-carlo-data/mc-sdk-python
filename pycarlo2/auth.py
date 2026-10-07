@@ -1,4 +1,6 @@
 # Hand-written, not generator output.
+# Copyright Monte Carlo AI, Inc.
+# SPDX-License-Identifier: Apache-2.0
 """Client construction and credentials.
 
 Build a client with `new_client`. Credentials resolve from the `Options` passed in, then from

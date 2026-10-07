@@ -1,4 +1,6 @@
 # Hand-written, not generator output.
+# Copyright Monte Carlo AI, Inc.
+# SPDX-License-Identifier: Apache-2.0
 """Walking a paginated list.
 
 A paginated list method returns one page at a time: a model carrying `items`, `next_cursor`,

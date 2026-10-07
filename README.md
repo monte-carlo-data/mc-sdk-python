@@ -15,8 +15,7 @@ is the helper that walks a paginated list.
 pip install git+https://github.com/monte-carlo-data/mc-sdk-python.git
 ```
 
-Requires Python 3.10 or later. While this repository is internal, `pip` needs a git credential
-with access.
+Requires Python 3.10 or later.
 
 ## Usage
 

@@ -17,20 +17,25 @@ Method | HTTP request | Description
 
 Create a connection
 
-Add a connection to a warehouse or a BI container.
+Add a connection to a warehouse, a BI container or an ETL container.
 
 Create the credentials first, through one of the credentials endpoints, then name them
 here. The connection's type comes from them, and has to be a type the parent accepts and
-its deployment supports. Send `warehouse_id` or `bi_container_id`, exactly one.
+its deployment supports. Send exactly one of `warehouse_id`, `bi_container_id` and
+`etl_container_id`.
 
 A type that depends on a metastore, such as `databricks-sql-warehouse`, goes on a data
 lake warehouse that already has a metastore connection. Tableau, Looker and Power BI
 credentials go on a BI container of the same tool; a `looker` container takes both the
 `looker` and the `looker-git-clone` connection.
 
+ETL tool credentials go on an empty ETL container of the same type, created through
+`/etl-containers`. A container takes one connection. A container of a type this API does
+not create, such as Snowflake Tasks, takes none.
+
 Omit `job_types` to run what the type runs by default.
 
-An unknown warehouse, BI container or credentials id returns 404.
+An unknown warehouse, BI container, ETL container or credentials id returns 404.
 
 ### Example
 
@@ -119,7 +124,8 @@ Delete a connection
 
 Delete a connection.
 
-The warehouse or BI container and the credentials are left in place. Delete each of those
+The warehouse, BI container or ETL container and the credentials are left in place. An ETL
+container keeps what it collected, and takes a new connection. Delete each of those
 through its own endpoint once nothing uses it. Deleting the connection also deletes its
 own schedules, monitors and rules.
 
@@ -157,7 +163,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.ConnectionsApi(api_client)
-    connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the connection, as returned when it is created or listed.
 
     try:
         # Delete a connection
@@ -173,7 +179,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connection_id** | **UUID**|  | 
+ **connection_id** | **UUID**| Id of the connection, as returned when it is created or listed. | 
 
 ### Return type
 
@@ -242,7 +248,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.ConnectionsApi(api_client)
-    connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the connection, as returned when it is created or listed.
 
     try:
         # Get a connection
@@ -260,7 +266,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connection_id** | **UUID**|  | 
+ **connection_id** | **UUID**| Id of the connection, as returned when it is created or listed. | 
 
 ### Return type
 
@@ -288,18 +294,20 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_connections**
-> PagedConnectionOut list_connections(warehouse_id=warehouse_id, bi_container_id=bi_container_id, cursor=cursor, limit=limit, with_count=with_count)
+> PagedConnectionOut list_connections(warehouse_id=warehouse_id, bi_container_id=bi_container_id, etl_container_id=etl_container_id, cursor=cursor, limit=limit, with_count=with_count)
 
 List connections
 
 List the connections in your account, a page at a time.
 
-Connections are returned oldest first. Pass `warehouse_id` or `bi_container_id` to list
-one warehouse's or one BI container's connections; an id you cannot see returns an empty
-page. A caller whose asset access is restricted to certain domains sees only the
-connections of warehouses holding assets in those domains, and every BI connection.
+Connections are returned oldest first. Pass `warehouse_id`, `bi_container_id` or
+`etl_container_id` to list one parent's connections; an id you cannot see returns an
+empty page. A caller whose asset access is restricted to certain domains sees only the
+connections of warehouses holding assets in those domains, and every BI and ETL
+connection.
 
-Connections that belong to an ETL integration are not listed here.
+Filtering by an ETL container also returns a warehouse or BI connection that collects ETL
+jobs through it, such as a Snowflake Tasks or Power BI dataflows connection.
 
 ### Example
 
@@ -333,13 +341,14 @@ with pycarlo2.ApiClient(configuration) as api_client:
     api_instance = pycarlo2.ConnectionsApi(api_client)
     warehouse_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Only list connections on this warehouse. Omit it to list every connection in your account. (optional)
     bi_container_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Only list connections on this BI container. Omit it to list every connection in your account. (optional)
+    etl_container_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Only list connections on this ETL container. Omit it to list every connection in your account. (optional)
     cursor = 'cursor_example' # str | Position to continue from, as returned in `next_cursor` by the previous page. Omit it to start from the first page. The value is opaque; do not build or modify one. (optional)
     limit = 50 # int | Maximum number of items to return, between 1 and 100. (optional) (default to 50)
     with_count = False # bool | Whether to also return the total number of items across every page, in `count`. Off by default: counting costs an extra query. (optional) (default to False)
 
     try:
         # List connections
-        api_response = api_instance.list_connections(warehouse_id=warehouse_id, bi_container_id=bi_container_id, cursor=cursor, limit=limit, with_count=with_count)
+        api_response = api_instance.list_connections(warehouse_id=warehouse_id, bi_container_id=bi_container_id, etl_container_id=etl_container_id, cursor=cursor, limit=limit, with_count=with_count)
         print("The response of ConnectionsApi->list_connections:\n")
         pprint(api_response)
     except Exception as e:
@@ -355,6 +364,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **warehouse_id** | **UUID**| Only list connections on this warehouse. Omit it to list every connection in your account. | [optional] 
  **bi_container_id** | **UUID**| Only list connections on this BI container. Omit it to list every connection in your account. | [optional] 
+ **etl_container_id** | **UUID**| Only list connections on this ETL container. Omit it to list every connection in your account. | [optional] 
  **cursor** | **str**| Position to continue from, as returned in &#x60;next_cursor&#x60; by the previous page. Omit it to start from the first page. The value is opaque; do not build or modify one. | [optional] 
  **limit** | **int**| Maximum number of items to return, between 1 and 100. | [optional] [default to 50]
  **with_count** | **bool**| Whether to also return the total number of items across every page, in &#x60;count&#x60;. Off by default: counting costs an extra query. | [optional] [default to False]
@@ -391,10 +401,10 @@ Update a connection
 
 Rename a connection.
 
-The name is the only thing you can change. The type, the warehouse or BI container and the
-credentials are fixed when the connection is created. Two connections on one warehouse or
-BI container cannot share a name. Sending an empty body leaves the connection as it is and
-returns it.
+The name is the only thing you can change. The type, the warehouse, BI container or ETL
+container and the credentials are fixed when the connection is created. Two connections on
+one warehouse or BI container cannot share a name. Sending an empty body leaves the
+connection as it is and returns it.
 
 ### Example
 
@@ -427,7 +437,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.ConnectionsApi(api_client)
-    connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the connection, as returned when it is created or listed.
     connection_patch = pycarlo2.ConnectionPatch() # ConnectionPatch | 
 
     try:
@@ -446,7 +456,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connection_id** | **UUID**|  | 
+ **connection_id** | **UUID**| Id of the connection, as returned when it is created or listed. | 
  **connection_patch** | [**ConnectionPatch**](ConnectionPatch.md)|  | 
 
 ### Return type
@@ -490,7 +500,8 @@ changed, and you send no credentials.
 The response is the run as it starts, and `Location` names where to read it. Poll that
 until the run's status is `completed`; each validation carries its own verdict.
 
-An id that does not exist or belongs to another account returns 404.
+An id that does not exist or belongs to another account returns 404. A connection that
+runs on no deployment, as an Airflow one does, returns 409.
 
 ### Example
 
@@ -522,7 +533,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.ConnectionsApi(api_client)
-    connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the connection, as returned when it is created or listed.
 
     try:
         # Validate a connection
@@ -540,7 +551,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **connection_id** | **UUID**|  | 
+ **connection_id** | **UUID**| Id of the connection, as returned when it is created or listed. | 
 
 ### Return type
 

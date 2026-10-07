@@ -1,6 +1,6 @@
 # LookerGitCloneCredentialsPatch
 
-A change to existing LookML repository credentials.  A field left out is unchanged. `username` and the `ssl_*` fields set to null are cleared. A secret set to null is unchanged. `repo_url` cannot be cleared. Sending `ssh_key` drops a stored username and token, and sending `username` or `token` drops a stored key. Sending an empty body returns the credentials as they are.
+A change to existing LookML repository credentials.  A field left out is unchanged. The `ssl_*` fields set to null are cleared. A secret set to null is unchanged. `repo_url` cannot be cleared, and neither can `username` for an HTTPS clone, which needs one. Sending `ssh_key` drops a stored username and token, and sending `username` or `token` drops a stored key. Sending an empty body returns the credentials as they are.
 
 ## Properties
 

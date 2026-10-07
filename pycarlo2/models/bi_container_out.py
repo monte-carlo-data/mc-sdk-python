@@ -33,7 +33,7 @@ class BiContainerOut(BaseModel):
     id: UUID = Field(description="Unique identifier of the BI container.")
     type: BiContainerType = Field(description="The BI tool the container represents. Fixed once created.")
     name: Optional[StrictStr] = Field(description="Display name of the BI container. Null for a container that was never named.")
-    deployment_id: Optional[UUID] = Field(description="The deployment the container's connections run through. Null for a custom BI connector's container, which has none. The id may name a deployment on Monte Carlo's older collection platform. The deployments endpoints do not list those.")
+    deployment_id: Optional[UUID] = Field(description="The deployment the container's connections run through. Null for a container with no deployment, such as a push-only custom BI connector's. The id may name a deployment on Monte Carlo's older collection platform. The deployments endpoints do not list those.")
     deployment_name: Optional[StrictStr] = Field(description="Display name of the deployment. Null exactly when `deployment_id` is.")
     created_time: datetime = Field(description="When the BI container was created.")
     __properties: ClassVar[List[str]] = ["id", "type", "name", "deployment_id", "deployment_name", "created_time"]

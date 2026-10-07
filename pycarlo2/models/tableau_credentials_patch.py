@@ -26,7 +26,7 @@ from pydantic_core import to_jsonable_python
 
 class TableauCredentialsPatch(BaseModel):
     """
-    A change to existing Tableau credentials.  A field left out is unchanged. `site_name`, `verify_ssl` and `username` set to null are cleared. A secret set to null is unchanged. `server_name` cannot be cleared. Sending a field of another way to sign in drops the stored one: a personal access token drops the username too. Sending an empty body returns the credentials as they are.
+    A change to existing Tableau credentials.  A field left out is unchanged. `site_name` and `verify_ssl` set to null are cleared. A secret set to null is unchanged. `server_name` cannot be cleared, and neither can `username` while the credentials sign in with a password or a connected app, which need one. Sending a field of another way to sign in drops the stored one: a personal access token drops the username too. Sending an empty body returns the credentials as they are.
     """ # noqa: E501
     site_name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Tableau site to connect to. Leave it out for the default site.")
     verify_ssl: Optional[StrictBool] = Field(default=None, description="Whether to verify the server's TLS certificate. Verified when left out.")

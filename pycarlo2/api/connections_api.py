@@ -59,7 +59,7 @@ class ConnectionsApi:
     ) -> ConnectionOut:
         """Create a connection
 
-        Add a connection to a warehouse or a BI container.  Create the credentials first, through one of the credentials endpoints, then name them here. The connection's type comes from them, and has to be a type the parent accepts and its deployment supports. Send `warehouse_id` or `bi_container_id`, exactly one.  A type that depends on a metastore, such as `databricks-sql-warehouse`, goes on a data lake warehouse that already has a metastore connection. Tableau, Looker and Power BI credentials go on a BI container of the same tool; a `looker` container takes both the `looker` and the `looker-git-clone` connection.  Omit `job_types` to run what the type runs by default.  An unknown warehouse, BI container or credentials id returns 404.
+        Add a connection to a warehouse, a BI container or an ETL container.  Create the credentials first, through one of the credentials endpoints, then name them here. The connection's type comes from them, and has to be a type the parent accepts and its deployment supports. Send exactly one of `warehouse_id`, `bi_container_id` and `etl_container_id`.  A type that depends on a metastore, such as `databricks-sql-warehouse`, goes on a data lake warehouse that already has a metastore connection. Tableau, Looker and Power BI credentials go on a BI container of the same tool; a `looker` container takes both the `looker` and the `looker-git-clone` connection.  ETL tool credentials go on an empty ETL container of the same type, created through `/etl-containers`. A container takes one connection. A container of a type this API does not create, such as Snowflake Tasks, takes none.  Omit `job_types` to run what the type runs by default.  An unknown warehouse, BI container, ETL container or credentials id returns 404.
 
         :param connection_in: (required)
         :type connection_in: ConnectionIn
@@ -196,7 +196,7 @@ class ConnectionsApi:
     @validate_call
     def delete_connection(
         self,
-        connection_id: UUID,
+        connection_id: Annotated[UUID, Field(description="Id of the connection, as returned when it is created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -212,9 +212,9 @@ class ConnectionsApi:
     ) -> None:
         """Delete a connection
 
-        Delete a connection.  The warehouse or BI container and the credentials are left in place. Delete each of those through its own endpoint once nothing uses it. Deleting the connection also deletes its own schedules, monitors and rules.  Deleting a warehouse's last connection is refused when that would also take monitors, rules or use cases that belong to the warehouse as a whole. Delete the warehouse instead. Deleting a custom BI connector's connection is refused too, since its BI container and the assets collected through it would go with it.
+        Delete a connection.  The warehouse, BI container or ETL container and the credentials are left in place. An ETL container keeps what it collected, and takes a new connection. Delete each of those through its own endpoint once nothing uses it. Deleting the connection also deletes its own schedules, monitors and rules.  Deleting a warehouse's last connection is refused when that would also take monitors, rules or use cases that belong to the warehouse as a whole. Delete the warehouse instead. Deleting a custom BI connector's connection is refused too, since its BI container and the assets collected through it would go with it.
 
-        :param connection_id: (required)
+        :param connection_id: Id of the connection, as returned when it is created or listed. (required)
         :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -333,7 +333,7 @@ class ConnectionsApi:
     @validate_call
     def get_connection(
         self,
-        connection_id: UUID,
+        connection_id: Annotated[UUID, Field(description="Id of the connection, as returned when it is created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -351,7 +351,7 @@ class ConnectionsApi:
 
         Get one connection.  An id that does not exist, belongs to another account, or names a connection your domain restrictions hide from you returns 404.
 
-        :param connection_id: (required)
+        :param connection_id: Id of the connection, as returned when it is created or listed. (required)
         :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -471,6 +471,7 @@ class ConnectionsApi:
         self,
         warehouse_id: Annotated[Optional[UUID], Field(description="Only list connections on this warehouse. Omit it to list every connection in your account.")] = None,
         bi_container_id: Annotated[Optional[UUID], Field(description="Only list connections on this BI container. Omit it to list every connection in your account.")] = None,
+        etl_container_id: Annotated[Optional[UUID], Field(description="Only list connections on this ETL container. Omit it to list every connection in your account.")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="Position to continue from, as returned in `next_cursor` by the previous page. Omit it to start from the first page. The value is opaque; do not build or modify one.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=100, strict=True, ge=1)]], Field(description="Maximum number of items to return, between 1 and 100.")] = None,
         with_count: Annotated[Optional[StrictBool], Field(description="Whether to also return the total number of items across every page, in `count`. Off by default: counting costs an extra query.")] = None,
@@ -489,12 +490,14 @@ class ConnectionsApi:
     ) -> PagedConnectionOut:
         """List connections
 
-        List the connections in your account, a page at a time.  Connections are returned oldest first. Pass `warehouse_id` or `bi_container_id` to list one warehouse's or one BI container's connections; an id you cannot see returns an empty page. A caller whose asset access is restricted to certain domains sees only the connections of warehouses holding assets in those domains, and every BI connection.  Connections that belong to an ETL integration are not listed here.
+        List the connections in your account, a page at a time.  Connections are returned oldest first. Pass `warehouse_id`, `bi_container_id` or `etl_container_id` to list one parent's connections; an id you cannot see returns an empty page. A caller whose asset access is restricted to certain domains sees only the connections of warehouses holding assets in those domains, and every BI and ETL connection.  Filtering by an ETL container also returns a warehouse or BI connection that collects ETL jobs through it, such as a Snowflake Tasks or Power BI dataflows connection.
 
         :param warehouse_id: Only list connections on this warehouse. Omit it to list every connection in your account.
         :type warehouse_id: UUID
         :param bi_container_id: Only list connections on this BI container. Omit it to list every connection in your account.
         :type bi_container_id: UUID
+        :param etl_container_id: Only list connections on this ETL container. Omit it to list every connection in your account.
+        :type etl_container_id: UUID
         :param cursor: Position to continue from, as returned in `next_cursor` by the previous page. Omit it to start from the first page. The value is opaque; do not build or modify one.
         :type cursor: str
         :param limit: Maximum number of items to return, between 1 and 100.
@@ -526,6 +529,7 @@ class ConnectionsApi:
         _param = self._list_connections_serialize(
             warehouse_id=warehouse_id,
             bi_container_id=bi_container_id,
+            etl_container_id=etl_container_id,
             cursor=cursor,
             limit=limit,
             with_count=with_count,
@@ -557,6 +561,7 @@ class ConnectionsApi:
         self,
         warehouse_id,
         bi_container_id,
+        etl_container_id,
         cursor,
         limit,
         with_count,
@@ -589,6 +594,10 @@ class ConnectionsApi:
         if bi_container_id is not None:
             
             _query_params.append(('bi_container_id', bi_container_id))
+            
+        if etl_container_id is not None:
+            
+            _query_params.append(('etl_container_id', etl_container_id))
             
         if cursor is not None:
             
@@ -643,7 +652,7 @@ class ConnectionsApi:
     @validate_call
     def update_connection(
         self,
-        connection_id: UUID,
+        connection_id: Annotated[UUID, Field(description="Id of the connection, as returned when it is created or listed.")],
         connection_patch: ConnectionPatch,
         _request_timeout: Union[
             None,
@@ -660,9 +669,9 @@ class ConnectionsApi:
     ) -> ConnectionOut:
         """Update a connection
 
-        Rename a connection.  The name is the only thing you can change. The type, the warehouse or BI container and the credentials are fixed when the connection is created. Two connections on one warehouse or BI container cannot share a name. Sending an empty body leaves the connection as it is and returns it.
+        Rename a connection.  The name is the only thing you can change. The type, the warehouse, BI container or ETL container and the credentials are fixed when the connection is created. Two connections on one warehouse or BI container cannot share a name. Sending an empty body leaves the connection as it is and returns it.
 
-        :param connection_id: (required)
+        :param connection_id: Id of the connection, as returned when it is created or listed. (required)
         :type connection_id: UUID
         :param connection_patch: (required)
         :type connection_patch: ConnectionPatch
@@ -802,7 +811,7 @@ class ConnectionsApi:
     @validate_call
     def validate_connection(
         self,
-        connection_id: UUID,
+        connection_id: Annotated[UUID, Field(description="Id of the connection, as returned when it is created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -818,9 +827,9 @@ class ConnectionsApi:
     ) -> ValidationRunOut:
         """Validate a connection
 
-        Check a connection against the system it reads from.  Tests the connection as it stands, with the credentials it already uses. Nothing is changed, and you send no credentials.  The response is the run as it starts, and `Location` names where to read it. Poll that until the run's status is `completed`; each validation carries its own verdict.  An id that does not exist or belongs to another account returns 404.
+        Check a connection against the system it reads from.  Tests the connection as it stands, with the credentials it already uses. Nothing is changed, and you send no credentials.  The response is the run as it starts, and `Location` names where to read it. Poll that until the run's status is `completed`; each validation carries its own verdict.  An id that does not exist or belongs to another account returns 404. A connection that runs on no deployment, as an Airflow one does, returns 409.
 
-        :param connection_id: (required)
+        :param connection_id: Id of the connection, as returned when it is created or listed. (required)
         :type connection_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

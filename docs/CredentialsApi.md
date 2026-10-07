@@ -4,7 +4,9 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**create_airflow_credentials**](CredentialsApi.md#create_airflow_credentials) | **POST** /api/v2/credentials/airflow | Create Airflow credentials
 [**create_aws_secrets_manager_credentials**](CredentialsApi.md#create_aws_secrets_manager_credentials) | **POST** /api/v2/credentials/self-hosted/aws | Create AWS Secrets Manager credentials
+[**create_azure_data_factory_credentials**](CredentialsApi.md#create_azure_data_factory_credentials) | **POST** /api/v2/credentials/azure-data-factory | Create Azure Data Factory credentials
 [**create_azure_dedicated_sql_pool_credentials**](CredentialsApi.md#create_azure_dedicated_sql_pool_credentials) | **POST** /api/v2/credentials/azure-dedicated-sql-pool | Create Azure Dedicated SQL Pool credentials
 [**create_azure_key_vault_credentials**](CredentialsApi.md#create_azure_key_vault_credentials) | **POST** /api/v2/credentials/self-hosted/azure | Create Azure Key Vault credentials
 [**create_azure_sql_database_credentials**](CredentialsApi.md#create_azure_sql_database_credentials) | **POST** /api/v2/credentials/azure-sql-database | Create Azure SQL Database credentials
@@ -15,10 +17,14 @@ Method | HTTP request | Description
 [**create_db2_credentials**](CredentialsApi.md#create_db2_credentials) | **POST** /api/v2/credentials/db2 | Create Db2 credentials
 [**create_env_var_credentials**](CredentialsApi.md#create_env_var_credentials) | **POST** /api/v2/credentials/self-hosted/env-var | Create environment variable credentials
 [**create_file_credentials**](CredentialsApi.md#create_file_credentials) | **POST** /api/v2/credentials/self-hosted/file | Create file credentials
+[**create_fivetran_credentials**](CredentialsApi.md#create_fivetran_credentials) | **POST** /api/v2/credentials/fivetran | Create Fivetran credentials
+[**create_gcp_dataform_credentials**](CredentialsApi.md#create_gcp_dataform_credentials) | **POST** /api/v2/credentials/gcp-dataform | Create GCP Dataform credentials
 [**create_gcp_secret_manager_credentials**](CredentialsApi.md#create_gcp_secret_manager_credentials) | **POST** /api/v2/credentials/self-hosted/gcp | Create GCP Secret Manager credentials
+[**create_informatica_v2_credentials**](CredentialsApi.md#create_informatica_v2_credentials) | **POST** /api/v2/credentials/informatica-v2 | Create Informatica credentials
 [**create_looker_credentials**](CredentialsApi.md#create_looker_credentials) | **POST** /api/v2/credentials/looker | Create Looker credentials
 [**create_looker_git_clone_credentials**](CredentialsApi.md#create_looker_git_clone_credentials) | **POST** /api/v2/credentials/looker-git-clone | Create LookML repository credentials
 [**create_mariadb_credentials**](CredentialsApi.md#create_mariadb_credentials) | **POST** /api/v2/credentials/mariadb | Create MariaDB credentials
+[**create_mulesoft_credentials**](CredentialsApi.md#create_mulesoft_credentials) | **POST** /api/v2/credentials/mulesoft | Create MuleSoft credentials
 [**create_mysql_credentials**](CredentialsApi.md#create_mysql_credentials) | **POST** /api/v2/credentials/mysql | Create MySQL credentials
 [**create_oracle_credentials**](CredentialsApi.md#create_oracle_credentials) | **POST** /api/v2/credentials/oracle | Create Oracle credentials
 [**create_postgres_credentials**](CredentialsApi.md#create_postgres_credentials) | **POST** /api/v2/credentials/postgres | Create PostgreSQL credentials
@@ -30,7 +36,9 @@ Method | HTTP request | Description
 [**create_starburst_galaxy_credentials**](CredentialsApi.md#create_starburst_galaxy_credentials) | **POST** /api/v2/credentials/starburst-galaxy | Create Starburst Galaxy credentials
 [**create_tableau_credentials**](CredentialsApi.md#create_tableau_credentials) | **POST** /api/v2/credentials/tableau | Create Tableau credentials
 [**create_teradata_credentials**](CredentialsApi.md#create_teradata_credentials) | **POST** /api/v2/credentials/teradata | Create Teradata credentials
+[**delete_airflow_credentials**](CredentialsApi.md#delete_airflow_credentials) | **DELETE** /api/v2/credentials/airflow/{credentials_id} | Delete Airflow credentials
 [**delete_aws_secrets_manager_credentials**](CredentialsApi.md#delete_aws_secrets_manager_credentials) | **DELETE** /api/v2/credentials/self-hosted/aws/{credentials_id} | Delete AWS Secrets Manager credentials
+[**delete_azure_data_factory_credentials**](CredentialsApi.md#delete_azure_data_factory_credentials) | **DELETE** /api/v2/credentials/azure-data-factory/{credentials_id} | Delete Azure Data Factory credentials
 [**delete_azure_dedicated_sql_pool_credentials**](CredentialsApi.md#delete_azure_dedicated_sql_pool_credentials) | **DELETE** /api/v2/credentials/azure-dedicated-sql-pool/{credentials_id} | Delete Azure Dedicated SQL Pool credentials
 [**delete_azure_key_vault_credentials**](CredentialsApi.md#delete_azure_key_vault_credentials) | **DELETE** /api/v2/credentials/self-hosted/azure/{credentials_id} | Delete Azure Key Vault credentials
 [**delete_azure_sql_database_credentials**](CredentialsApi.md#delete_azure_sql_database_credentials) | **DELETE** /api/v2/credentials/azure-sql-database/{credentials_id} | Delete Azure SQL Database credentials
@@ -42,10 +50,14 @@ Method | HTTP request | Description
 [**delete_db2_credentials**](CredentialsApi.md#delete_db2_credentials) | **DELETE** /api/v2/credentials/db2/{credentials_id} | Delete Db2 credentials
 [**delete_env_var_credentials**](CredentialsApi.md#delete_env_var_credentials) | **DELETE** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Delete environment variable credentials
 [**delete_file_credentials**](CredentialsApi.md#delete_file_credentials) | **DELETE** /api/v2/credentials/self-hosted/file/{credentials_id} | Delete file credentials
+[**delete_fivetran_credentials**](CredentialsApi.md#delete_fivetran_credentials) | **DELETE** /api/v2/credentials/fivetran/{credentials_id} | Delete Fivetran credentials
+[**delete_gcp_dataform_credentials**](CredentialsApi.md#delete_gcp_dataform_credentials) | **DELETE** /api/v2/credentials/gcp-dataform/{credentials_id} | Delete GCP Dataform credentials
 [**delete_gcp_secret_manager_credentials**](CredentialsApi.md#delete_gcp_secret_manager_credentials) | **DELETE** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Delete GCP Secret Manager credentials
+[**delete_informatica_v2_credentials**](CredentialsApi.md#delete_informatica_v2_credentials) | **DELETE** /api/v2/credentials/informatica-v2/{credentials_id} | Delete Informatica credentials
 [**delete_looker_credentials**](CredentialsApi.md#delete_looker_credentials) | **DELETE** /api/v2/credentials/looker/{credentials_id} | Delete Looker credentials
 [**delete_looker_git_clone_credentials**](CredentialsApi.md#delete_looker_git_clone_credentials) | **DELETE** /api/v2/credentials/looker-git-clone/{credentials_id} | Delete LookML repository credentials
 [**delete_mariadb_credentials**](CredentialsApi.md#delete_mariadb_credentials) | **DELETE** /api/v2/credentials/mariadb/{credentials_id} | Delete MariaDB credentials
+[**delete_mulesoft_credentials**](CredentialsApi.md#delete_mulesoft_credentials) | **DELETE** /api/v2/credentials/mulesoft/{credentials_id} | Delete MuleSoft credentials
 [**delete_mysql_credentials**](CredentialsApi.md#delete_mysql_credentials) | **DELETE** /api/v2/credentials/mysql/{credentials_id} | Delete MySQL credentials
 [**delete_oracle_credentials**](CredentialsApi.md#delete_oracle_credentials) | **DELETE** /api/v2/credentials/oracle/{credentials_id} | Delete Oracle credentials
 [**delete_postgres_credentials**](CredentialsApi.md#delete_postgres_credentials) | **DELETE** /api/v2/credentials/postgres/{credentials_id} | Delete PostgreSQL credentials
@@ -57,7 +69,9 @@ Method | HTTP request | Description
 [**delete_starburst_galaxy_credentials**](CredentialsApi.md#delete_starburst_galaxy_credentials) | **DELETE** /api/v2/credentials/starburst-galaxy/{credentials_id} | Delete Starburst Galaxy credentials
 [**delete_tableau_credentials**](CredentialsApi.md#delete_tableau_credentials) | **DELETE** /api/v2/credentials/tableau/{credentials_id} | Delete Tableau credentials
 [**delete_teradata_credentials**](CredentialsApi.md#delete_teradata_credentials) | **DELETE** /api/v2/credentials/teradata/{credentials_id} | Delete Teradata credentials
+[**get_airflow_credentials**](CredentialsApi.md#get_airflow_credentials) | **GET** /api/v2/credentials/airflow/{credentials_id} | Get Airflow credentials
 [**get_aws_secrets_manager_credentials**](CredentialsApi.md#get_aws_secrets_manager_credentials) | **GET** /api/v2/credentials/self-hosted/aws/{credentials_id} | Get AWS Secrets Manager credentials
+[**get_azure_data_factory_credentials**](CredentialsApi.md#get_azure_data_factory_credentials) | **GET** /api/v2/credentials/azure-data-factory/{credentials_id} | Get Azure Data Factory credentials
 [**get_azure_dedicated_sql_pool_credentials**](CredentialsApi.md#get_azure_dedicated_sql_pool_credentials) | **GET** /api/v2/credentials/azure-dedicated-sql-pool/{credentials_id} | Get Azure Dedicated SQL Pool credentials
 [**get_azure_key_vault_credentials**](CredentialsApi.md#get_azure_key_vault_credentials) | **GET** /api/v2/credentials/self-hosted/azure/{credentials_id} | Get Azure Key Vault credentials
 [**get_azure_sql_database_credentials**](CredentialsApi.md#get_azure_sql_database_credentials) | **GET** /api/v2/credentials/azure-sql-database/{credentials_id} | Get Azure SQL Database credentials
@@ -68,10 +82,14 @@ Method | HTTP request | Description
 [**get_db2_credentials**](CredentialsApi.md#get_db2_credentials) | **GET** /api/v2/credentials/db2/{credentials_id} | Get Db2 credentials
 [**get_env_var_credentials**](CredentialsApi.md#get_env_var_credentials) | **GET** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Get environment variable credentials
 [**get_file_credentials**](CredentialsApi.md#get_file_credentials) | **GET** /api/v2/credentials/self-hosted/file/{credentials_id} | Get file credentials
+[**get_fivetran_credentials**](CredentialsApi.md#get_fivetran_credentials) | **GET** /api/v2/credentials/fivetran/{credentials_id} | Get Fivetran credentials
+[**get_gcp_dataform_credentials**](CredentialsApi.md#get_gcp_dataform_credentials) | **GET** /api/v2/credentials/gcp-dataform/{credentials_id} | Get GCP Dataform credentials
 [**get_gcp_secret_manager_credentials**](CredentialsApi.md#get_gcp_secret_manager_credentials) | **GET** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Get GCP Secret Manager credentials
+[**get_informatica_v2_credentials**](CredentialsApi.md#get_informatica_v2_credentials) | **GET** /api/v2/credentials/informatica-v2/{credentials_id} | Get Informatica credentials
 [**get_looker_credentials**](CredentialsApi.md#get_looker_credentials) | **GET** /api/v2/credentials/looker/{credentials_id} | Get Looker credentials
 [**get_looker_git_clone_credentials**](CredentialsApi.md#get_looker_git_clone_credentials) | **GET** /api/v2/credentials/looker-git-clone/{credentials_id} | Get LookML repository credentials
 [**get_mariadb_credentials**](CredentialsApi.md#get_mariadb_credentials) | **GET** /api/v2/credentials/mariadb/{credentials_id} | Get MariaDB credentials
+[**get_mulesoft_credentials**](CredentialsApi.md#get_mulesoft_credentials) | **GET** /api/v2/credentials/mulesoft/{credentials_id} | Get MuleSoft credentials
 [**get_mysql_credentials**](CredentialsApi.md#get_mysql_credentials) | **GET** /api/v2/credentials/mysql/{credentials_id} | Get MySQL credentials
 [**get_oracle_credentials**](CredentialsApi.md#get_oracle_credentials) | **GET** /api/v2/credentials/oracle/{credentials_id} | Get Oracle credentials
 [**get_postgres_credentials**](CredentialsApi.md#get_postgres_credentials) | **GET** /api/v2/credentials/postgres/{credentials_id} | Get PostgreSQL credentials
@@ -84,7 +102,9 @@ Method | HTTP request | Description
 [**get_tableau_credentials**](CredentialsApi.md#get_tableau_credentials) | **GET** /api/v2/credentials/tableau/{credentials_id} | Get Tableau credentials
 [**get_teradata_credentials**](CredentialsApi.md#get_teradata_credentials) | **GET** /api/v2/credentials/teradata/{credentials_id} | Get Teradata credentials
 [**list_credentials**](CredentialsApi.md#list_credentials) | **GET** /api/v2/credentials | List credentials
+[**update_airflow_credentials**](CredentialsApi.md#update_airflow_credentials) | **PATCH** /api/v2/credentials/airflow/{credentials_id} | Update Airflow credentials
 [**update_aws_secrets_manager_credentials**](CredentialsApi.md#update_aws_secrets_manager_credentials) | **PATCH** /api/v2/credentials/self-hosted/aws/{credentials_id} | Update AWS Secrets Manager credentials
+[**update_azure_data_factory_credentials**](CredentialsApi.md#update_azure_data_factory_credentials) | **PATCH** /api/v2/credentials/azure-data-factory/{credentials_id} | Update Azure Data Factory credentials
 [**update_azure_dedicated_sql_pool_credentials**](CredentialsApi.md#update_azure_dedicated_sql_pool_credentials) | **PATCH** /api/v2/credentials/azure-dedicated-sql-pool/{credentials_id} | Update Azure Dedicated SQL Pool credentials
 [**update_azure_key_vault_credentials**](CredentialsApi.md#update_azure_key_vault_credentials) | **PATCH** /api/v2/credentials/self-hosted/azure/{credentials_id} | Update Azure Key Vault credentials
 [**update_azure_sql_database_credentials**](CredentialsApi.md#update_azure_sql_database_credentials) | **PATCH** /api/v2/credentials/azure-sql-database/{credentials_id} | Update Azure SQL Database credentials
@@ -95,10 +115,14 @@ Method | HTTP request | Description
 [**update_db2_credentials**](CredentialsApi.md#update_db2_credentials) | **PATCH** /api/v2/credentials/db2/{credentials_id} | Update Db2 credentials
 [**update_env_var_credentials**](CredentialsApi.md#update_env_var_credentials) | **PATCH** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Update environment variable credentials
 [**update_file_credentials**](CredentialsApi.md#update_file_credentials) | **PATCH** /api/v2/credentials/self-hosted/file/{credentials_id} | Update file credentials
+[**update_fivetran_credentials**](CredentialsApi.md#update_fivetran_credentials) | **PATCH** /api/v2/credentials/fivetran/{credentials_id} | Update Fivetran credentials
+[**update_gcp_dataform_credentials**](CredentialsApi.md#update_gcp_dataform_credentials) | **PATCH** /api/v2/credentials/gcp-dataform/{credentials_id} | Update GCP Dataform credentials
 [**update_gcp_secret_manager_credentials**](CredentialsApi.md#update_gcp_secret_manager_credentials) | **PATCH** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Update GCP Secret Manager credentials
+[**update_informatica_v2_credentials**](CredentialsApi.md#update_informatica_v2_credentials) | **PATCH** /api/v2/credentials/informatica-v2/{credentials_id} | Update Informatica credentials
 [**update_looker_credentials**](CredentialsApi.md#update_looker_credentials) | **PATCH** /api/v2/credentials/looker/{credentials_id} | Update Looker credentials
 [**update_looker_git_clone_credentials**](CredentialsApi.md#update_looker_git_clone_credentials) | **PATCH** /api/v2/credentials/looker-git-clone/{credentials_id} | Update LookML repository credentials
 [**update_mariadb_credentials**](CredentialsApi.md#update_mariadb_credentials) | **PATCH** /api/v2/credentials/mariadb/{credentials_id} | Update MariaDB credentials
+[**update_mulesoft_credentials**](CredentialsApi.md#update_mulesoft_credentials) | **PATCH** /api/v2/credentials/mulesoft/{credentials_id} | Update MuleSoft credentials
 [**update_mysql_credentials**](CredentialsApi.md#update_mysql_credentials) | **PATCH** /api/v2/credentials/mysql/{credentials_id} | Update MySQL credentials
 [**update_oracle_credentials**](CredentialsApi.md#update_oracle_credentials) | **PATCH** /api/v2/credentials/oracle/{credentials_id} | Update Oracle credentials
 [**update_postgres_credentials**](CredentialsApi.md#update_postgres_credentials) | **PATCH** /api/v2/credentials/postgres/{credentials_id} | Update PostgreSQL credentials
@@ -111,6 +135,7 @@ Method | HTTP request | Description
 [**update_tableau_credentials**](CredentialsApi.md#update_tableau_credentials) | **PATCH** /api/v2/credentials/tableau/{credentials_id} | Update Tableau credentials
 [**update_teradata_credentials**](CredentialsApi.md#update_teradata_credentials) | **PATCH** /api/v2/credentials/teradata/{credentials_id} | Update Teradata credentials
 [**validate_aws_secrets_manager_credentials**](CredentialsApi.md#validate_aws_secrets_manager_credentials) | **POST** /api/v2/credentials/self-hosted/aws/validate | Validate AWS Secrets Manager credentials
+[**validate_azure_data_factory_credentials**](CredentialsApi.md#validate_azure_data_factory_credentials) | **POST** /api/v2/credentials/azure-data-factory/validate | Validate Azure Data Factory credentials
 [**validate_azure_dedicated_sql_pool_credentials**](CredentialsApi.md#validate_azure_dedicated_sql_pool_credentials) | **POST** /api/v2/credentials/azure-dedicated-sql-pool/validate | Validate Azure Dedicated SQL Pool credentials
 [**validate_azure_key_vault_credentials**](CredentialsApi.md#validate_azure_key_vault_credentials) | **POST** /api/v2/credentials/self-hosted/azure/validate | Validate Azure Key Vault credentials
 [**validate_azure_sql_database_credentials**](CredentialsApi.md#validate_azure_sql_database_credentials) | **POST** /api/v2/credentials/azure-sql-database/validate | Validate Azure SQL Database credentials
@@ -121,10 +146,14 @@ Method | HTTP request | Description
 [**validate_db2_credentials**](CredentialsApi.md#validate_db2_credentials) | **POST** /api/v2/credentials/db2/validate | Validate Db2 credentials
 [**validate_env_var_credentials**](CredentialsApi.md#validate_env_var_credentials) | **POST** /api/v2/credentials/self-hosted/env-var/validate | Validate environment variable credentials
 [**validate_file_credentials**](CredentialsApi.md#validate_file_credentials) | **POST** /api/v2/credentials/self-hosted/file/validate | Validate file credentials
+[**validate_fivetran_credentials**](CredentialsApi.md#validate_fivetran_credentials) | **POST** /api/v2/credentials/fivetran/validate | Validate Fivetran credentials
+[**validate_gcp_dataform_credentials**](CredentialsApi.md#validate_gcp_dataform_credentials) | **POST** /api/v2/credentials/gcp-dataform/validate | Validate GCP Dataform credentials
 [**validate_gcp_secret_manager_credentials**](CredentialsApi.md#validate_gcp_secret_manager_credentials) | **POST** /api/v2/credentials/self-hosted/gcp/validate | Validate GCP Secret Manager credentials
+[**validate_informatica_v2_credentials**](CredentialsApi.md#validate_informatica_v2_credentials) | **POST** /api/v2/credentials/informatica-v2/validate | Validate Informatica credentials
 [**validate_looker_credentials**](CredentialsApi.md#validate_looker_credentials) | **POST** /api/v2/credentials/looker/validate | Validate Looker credentials
 [**validate_looker_git_clone_credentials**](CredentialsApi.md#validate_looker_git_clone_credentials) | **POST** /api/v2/credentials/looker-git-clone/validate | Validate LookML repository credentials
 [**validate_mariadb_credentials**](CredentialsApi.md#validate_mariadb_credentials) | **POST** /api/v2/credentials/mariadb/validate | Validate MariaDB credentials
+[**validate_mulesoft_credentials**](CredentialsApi.md#validate_mulesoft_credentials) | **POST** /api/v2/credentials/mulesoft/validate | Validate MuleSoft credentials
 [**validate_mysql_credentials**](CredentialsApi.md#validate_mysql_credentials) | **POST** /api/v2/credentials/mysql/validate | Validate MySQL credentials
 [**validate_oracle_credentials**](CredentialsApi.md#validate_oracle_credentials) | **POST** /api/v2/credentials/oracle/validate | Validate Oracle credentials
 [**validate_postgres_credentials**](CredentialsApi.md#validate_postgres_credentials) | **POST** /api/v2/credentials/postgres/validate | Validate PostgreSQL credentials
@@ -137,6 +166,95 @@ Method | HTTP request | Description
 [**validate_tableau_credentials**](CredentialsApi.md#validate_tableau_credentials) | **POST** /api/v2/credentials/tableau/validate | Validate Tableau credentials
 [**validate_teradata_credentials**](CredentialsApi.md#validate_teradata_credentials) | **POST** /api/v2/credentials/teradata/validate | Validate Teradata credentials
 
+
+# **create_airflow_credentials**
+> AirflowCredentialsOut create_airflow_credentials(airflow_credentials_in)
+
+Create Airflow credentials
+
+Store the connection details of an Airflow environment.
+
+Airflow reports its runs to Monte Carlo, so there is no secret to keep. An account
+holds a limited number of credentials; past that the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.airflow_credentials_in import AirflowCredentialsIn
+from pycarlo2.models.airflow_credentials_out import AirflowCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    airflow_credentials_in = pycarlo2.AirflowCredentialsIn() # AirflowCredentialsIn | 
+
+    try:
+        # Create Airflow credentials
+        api_response = api_instance.create_airflow_credentials(airflow_credentials_in)
+        print("The response of CredentialsApi->create_airflow_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_airflow_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **airflow_credentials_in** | [**AirflowCredentialsIn**](AirflowCredentialsIn.md)|  | 
+
+### Return type
+
+[**AirflowCredentialsOut**](AirflowCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_aws_secrets_manager_credentials**
 > AwsSecretsManagerCredentialsOut create_aws_secrets_manager_credentials(aws_secrets_manager_credentials_in)
@@ -206,6 +324,96 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AwsSecretsManagerCredentialsOut**](AwsSecretsManagerCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_azure_data_factory_credentials**
+> AzureDataFactoryCredentialsOut create_azure_data_factory_credentials(azure_data_factory_credentials_in)
+
+Create Azure Data Factory credentials
+
+Store Azure Data Factory credentials.
+
+Monte Carlo keeps the client secret and returns everything else. Nothing
+is checked against Azure Data Factory here. An account holds a limited number of credentials;
+past that the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.azure_data_factory_credentials_in import AzureDataFactoryCredentialsIn
+from pycarlo2.models.azure_data_factory_credentials_out import AzureDataFactoryCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    azure_data_factory_credentials_in = pycarlo2.AzureDataFactoryCredentialsIn() # AzureDataFactoryCredentialsIn | 
+
+    try:
+        # Create Azure Data Factory credentials
+        api_response = api_instance.create_azure_data_factory_credentials(azure_data_factory_credentials_in)
+        print("The response of CredentialsApi->create_azure_data_factory_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_azure_data_factory_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **azure_data_factory_credentials_in** | [**AzureDataFactoryCredentialsIn**](AzureDataFactoryCredentialsIn.md)|  | 
+
+### Return type
+
+[**AzureDataFactoryCredentialsOut**](AzureDataFactoryCredentialsOut.md)
 
 ### Authorization
 
@@ -1165,6 +1373,186 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_fivetran_credentials**
+> FivetranCredentialsOut create_fivetran_credentials(fivetran_credentials_in)
+
+Create Fivetran credentials
+
+Store Fivetran credentials.
+
+Monte Carlo keeps the API key and its secret and returns everything else. Nothing is
+checked against Fivetran here. An account holds a limited number of credentials; past that the
+create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.fivetran_credentials_in import FivetranCredentialsIn
+from pycarlo2.models.fivetran_credentials_out import FivetranCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    fivetran_credentials_in = pycarlo2.FivetranCredentialsIn() # FivetranCredentialsIn | 
+
+    try:
+        # Create Fivetran credentials
+        api_response = api_instance.create_fivetran_credentials(fivetran_credentials_in)
+        print("The response of CredentialsApi->create_fivetran_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_fivetran_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fivetran_credentials_in** | [**FivetranCredentialsIn**](FivetranCredentialsIn.md)|  | 
+
+### Return type
+
+[**FivetranCredentialsOut**](FivetranCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_gcp_dataform_credentials**
+> GcpDataformCredentialsOut create_gcp_dataform_credentials(gcp_dataform_credentials_in)
+
+Create GCP Dataform credentials
+
+Store GCP Dataform credentials.
+
+Monte Carlo keeps the key and returns everything else. Nothing is checked against
+GCP Dataform here. An account holds a limited number of credentials; past that the create is
+refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.gcp_dataform_credentials_in import GcpDataformCredentialsIn
+from pycarlo2.models.gcp_dataform_credentials_out import GcpDataformCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    gcp_dataform_credentials_in = pycarlo2.GcpDataformCredentialsIn() # GcpDataformCredentialsIn | 
+
+    try:
+        # Create GCP Dataform credentials
+        api_response = api_instance.create_gcp_dataform_credentials(gcp_dataform_credentials_in)
+        print("The response of CredentialsApi->create_gcp_dataform_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_gcp_dataform_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gcp_dataform_credentials_in** | [**GcpDataformCredentialsIn**](GcpDataformCredentialsIn.md)|  | 
+
+### Return type
+
+[**GcpDataformCredentialsOut**](GcpDataformCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_gcp_secret_manager_credentials**
 > GcpSecretManagerCredentialsOut create_gcp_secret_manager_credentials(gcp_secret_manager_credentials_in)
 
@@ -1233,6 +1621,99 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GcpSecretManagerCredentialsOut**](GcpSecretManagerCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_informatica_v2_credentials**
+> InformaticaV2CredentialsOut create_informatica_v2_credentials(informatica_v2_credentials_in)
+
+Create Informatica credentials
+
+Store Informatica credentials.
+
+Monte Carlo keeps the passwords and the client secret and returns everything else. Nothing is
+checked against Informatica here.
+
+`auth_mode` decides what else to send: `username` and `password` for `password`, or `org_id` and
+the `oauth_*` fields for `oauth`. An account holds a limited number of credentials; past that
+the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.informatica_v2_credentials_in import InformaticaV2CredentialsIn
+from pycarlo2.models.informatica_v2_credentials_out import InformaticaV2CredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    informatica_v2_credentials_in = pycarlo2.InformaticaV2CredentialsIn() # InformaticaV2CredentialsIn | 
+
+    try:
+        # Create Informatica credentials
+        api_response = api_instance.create_informatica_v2_credentials(informatica_v2_credentials_in)
+        print("The response of CredentialsApi->create_informatica_v2_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_informatica_v2_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **informatica_v2_credentials_in** | [**InformaticaV2CredentialsIn**](InformaticaV2CredentialsIn.md)|  | 
+
+### Return type
+
+[**InformaticaV2CredentialsOut**](InformaticaV2CredentialsOut.md)
 
 ### Authorization
 
@@ -1509,6 +1990,96 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MariaDbCredentialsOut**](MariaDbCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_mulesoft_credentials**
+> MulesoftCredentialsOut create_mulesoft_credentials(mulesoft_credentials_in)
+
+Create MuleSoft credentials
+
+Store MuleSoft credentials.
+
+Monte Carlo keeps the client secret and returns everything else. Nothing is checked
+against MuleSoft here. An account holds a limited number of credentials; past that the create is
+refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.mulesoft_credentials_in import MulesoftCredentialsIn
+from pycarlo2.models.mulesoft_credentials_out import MulesoftCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    mulesoft_credentials_in = pycarlo2.MulesoftCredentialsIn() # MulesoftCredentialsIn | 
+
+    try:
+        # Create MuleSoft credentials
+        api_response = api_instance.create_mulesoft_credentials(mulesoft_credentials_in)
+        print("The response of CredentialsApi->create_mulesoft_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_mulesoft_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mulesoft_credentials_in** | [**MulesoftCredentialsIn**](MulesoftCredentialsIn.md)|  | 
+
+### Return type
+
+[**MulesoftCredentialsOut**](MulesoftCredentialsOut.md)
 
 ### Authorization
 
@@ -1821,7 +2392,7 @@ Create Power BI credentials
 Store Power BI credentials.
 
 Monte Carlo keeps the client secret or the password and returns everything else. Create
-the credentials first, then create a connection that references them, on a Power BI BI
+the credentials first, then create a connection that references them, on a Power BI
 container. Nothing is checked against Power BI here.
 
 `auth_mode` decides what else to send: `app_client_secret` for `service_principal`, or
@@ -2555,6 +3126,89 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_airflow_credentials**
+> delete_airflow_credentials(credentials_id)
+
+Delete Airflow credentials
+
+Delete Airflow connection details.
+
+Refused while a connection still uses them. Delete the connection first.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Delete Airflow credentials
+        api_instance.delete_airflow_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_airflow_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_aws_secrets_manager_credentials**
 > delete_aws_secrets_manager_credentials(credentials_id)
 
@@ -2594,13 +3248,97 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete AWS Secrets Manager credentials
         api_instance.delete_aws_secrets_manager_credentials(credentials_id)
     except Exception as e:
         print("Exception when calling CredentialsApi->delete_aws_secrets_manager_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_azure_data_factory_credentials**
+> delete_azure_data_factory_credentials(credentials_id)
+
+Delete Azure Data Factory credentials
+
+Delete Azure Data Factory credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using
+the stored client secret. Rotate it in Microsoft Entra ID if it must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Delete Azure Data Factory credentials
+        api_instance.delete_azure_data_factory_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_azure_data_factory_credentials: %s\n" % e)
 ```
 
 
@@ -2679,7 +3417,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete Azure Dedicated SQL Pool credentials
@@ -2695,7 +3433,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -2763,7 +3501,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete Azure Key Vault credentials
@@ -2779,7 +3517,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -2847,7 +3585,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete Azure SQL Database credentials
@@ -2863,7 +3601,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -2931,7 +3669,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete BigQuery credentials
@@ -2947,7 +3685,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -3015,7 +3753,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete ClickHouse credentials
@@ -3031,7 +3769,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -3100,7 +3838,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete credentials
@@ -3116,7 +3854,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -3185,7 +3923,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete Databricks metadata collection credentials
@@ -3201,7 +3939,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -3270,7 +4008,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete Databricks query credentials
@@ -3286,7 +4024,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -3354,7 +4092,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete Db2 credentials
@@ -3370,7 +4108,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -3438,7 +4176,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete environment variable credentials
@@ -3454,7 +4192,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -3522,13 +4260,181 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete file credentials
         api_instance.delete_file_credentials(credentials_id)
     except Exception as e:
         print("Exception when calling CredentialsApi->delete_file_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_fivetran_credentials**
+> delete_fivetran_credentials(credentials_id)
+
+Delete Fivetran credentials
+
+Delete Fivetran credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using
+the stored API key and secret. Delete the API key in Fivetran if it must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Delete Fivetran credentials
+        api_instance.delete_fivetran_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_fivetran_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_gcp_dataform_credentials**
+> delete_gcp_dataform_credentials(credentials_id)
+
+Delete GCP Dataform credentials
+
+Delete GCP Dataform credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using
+the stored service account key. Delete the key in Google Cloud if it must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Delete GCP Dataform credentials
+        api_instance.delete_gcp_dataform_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_gcp_dataform_credentials: %s\n" % e)
 ```
 
 
@@ -3606,13 +4512,98 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete GCP Secret Manager credentials
         api_instance.delete_gcp_secret_manager_credentials(credentials_id)
     except Exception as e:
         print("Exception when calling CredentialsApi->delete_gcp_secret_manager_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_informatica_v2_credentials**
+> delete_informatica_v2_credentials(credentials_id)
+
+Delete Informatica credentials
+
+Delete Informatica credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using
+the stored password or client secret. Rotate it in Informatica or your identity provider if it
+must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Delete Informatica credentials
+        api_instance.delete_informatica_v2_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_informatica_v2_credentials: %s\n" % e)
 ```
 
 
@@ -3859,13 +4850,97 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete MariaDB credentials
         api_instance.delete_mariadb_credentials(credentials_id)
     except Exception as e:
         print("Exception when calling CredentialsApi->delete_mariadb_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_mulesoft_credentials**
+> delete_mulesoft_credentials(credentials_id)
+
+Delete MuleSoft credentials
+
+Delete MuleSoft credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using
+the stored client secret. Rotate it in Anypoint if it must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Delete MuleSoft credentials
+        api_instance.delete_mulesoft_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_mulesoft_credentials: %s\n" % e)
 ```
 
 
@@ -3943,7 +5018,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete MySQL credentials
@@ -3959,7 +5034,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -4027,7 +5102,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete Oracle credentials
@@ -4043,7 +5118,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -4111,7 +5186,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete PostgreSQL credentials
@@ -4127,7 +5202,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -4280,7 +5355,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete Redshift credentials
@@ -4296,7 +5371,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -4364,7 +5439,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete SAP HANA credentials
@@ -4380,7 +5455,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -4449,7 +5524,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete Snowflake credentials
@@ -4465,7 +5540,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -4533,7 +5608,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete Starburst Enterprise credentials
@@ -4549,7 +5624,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -4617,7 +5692,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete Starburst Galaxy credentials
@@ -4633,7 +5708,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -4787,7 +5862,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Delete Teradata credentials
@@ -4803,7 +5878,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -4826,6 +5901,92 @@ void (empty response body)
 **404** | Not Found |  -  |
 **409** | Conflict |  -  |
 **429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_airflow_credentials**
+> AirflowCredentialsOut get_airflow_credentials(credentials_id)
+
+Get Airflow credentials
+
+Get one set of Airflow connection details.
+
+An id that does not exist, belongs to another account, or names credentials of another kind
+returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.airflow_credentials_out import AirflowCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Get Airflow credentials
+        api_response = api_instance.get_airflow_credentials(credentials_id)
+        print("The response of CredentialsApi->get_airflow_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_airflow_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+[**AirflowCredentialsOut**](AirflowCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
 **401** | Authentication credentials are missing or invalid. |  -  |
 **403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
 **500** | An unexpected error prevented the request from being processed. |  -  |
@@ -4872,7 +6033,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get AWS Secrets Manager credentials
@@ -4890,11 +6051,97 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
 [**AwsSecretsManagerCredentialsOut**](AwsSecretsManagerCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_azure_data_factory_credentials**
+> AzureDataFactoryCredentialsOut get_azure_data_factory_credentials(credentials_id)
+
+Get Azure Data Factory credentials
+
+Get one set of Azure Data Factory credentials, without the client secret.
+
+An id that does not exist, belongs to another account, or names credentials of another kind
+returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.azure_data_factory_credentials_out import AzureDataFactoryCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Get Azure Data Factory credentials
+        api_response = api_instance.get_azure_data_factory_credentials(credentials_id)
+        print("The response of CredentialsApi->get_azure_data_factory_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_azure_data_factory_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+[**AzureDataFactoryCredentialsOut**](AzureDataFactoryCredentialsOut.md)
 
 ### Authorization
 
@@ -4958,7 +6205,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get Azure Dedicated SQL Pool credentials
@@ -4976,7 +6223,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -5044,7 +6291,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get Azure Key Vault credentials
@@ -5062,7 +6309,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -5130,7 +6377,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get Azure SQL Database credentials
@@ -5148,7 +6395,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -5216,7 +6463,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get BigQuery credentials
@@ -5234,7 +6481,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -5302,7 +6549,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get ClickHouse credentials
@@ -5320,7 +6567,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -5388,7 +6635,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get Databricks metadata collection credentials
@@ -5406,7 +6653,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -5474,7 +6721,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get Databricks query credentials
@@ -5492,7 +6739,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -5560,7 +6807,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get Db2 credentials
@@ -5578,7 +6825,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -5646,7 +6893,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get environment variable credentials
@@ -5664,7 +6911,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -5732,7 +6979,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get file credentials
@@ -5750,11 +6997,183 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
 [**FileCredentialsOut**](FileCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_fivetran_credentials**
+> FivetranCredentialsOut get_fivetran_credentials(credentials_id)
+
+Get Fivetran credentials
+
+Get one set of Fivetran credentials, without the API key and its secret.
+
+An id that does not exist, belongs to another account, or names credentials of another kind
+returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.fivetran_credentials_out import FivetranCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Get Fivetran credentials
+        api_response = api_instance.get_fivetran_credentials(credentials_id)
+        print("The response of CredentialsApi->get_fivetran_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_fivetran_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+[**FivetranCredentialsOut**](FivetranCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_gcp_dataform_credentials**
+> GcpDataformCredentialsOut get_gcp_dataform_credentials(credentials_id)
+
+Get GCP Dataform credentials
+
+Get one set of GCP Dataform credentials, without the key.
+
+An id that does not exist, belongs to another account, or names credentials of another kind
+returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.gcp_dataform_credentials_out import GcpDataformCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Get GCP Dataform credentials
+        api_response = api_instance.get_gcp_dataform_credentials(credentials_id)
+        print("The response of CredentialsApi->get_gcp_dataform_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_gcp_dataform_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+[**GcpDataformCredentialsOut**](GcpDataformCredentialsOut.md)
 
 ### Authorization
 
@@ -5818,7 +7237,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get GCP Secret Manager credentials
@@ -5836,11 +7255,97 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
 [**GcpSecretManagerCredentialsOut**](GcpSecretManagerCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_informatica_v2_credentials**
+> InformaticaV2CredentialsOut get_informatica_v2_credentials(credentials_id)
+
+Get Informatica credentials
+
+Get one set of Informatica credentials, without the passwords and the client secret.
+
+An id that does not exist, belongs to another account, or names credentials of another kind
+returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.informatica_v2_credentials_out import InformaticaV2CredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Get Informatica credentials
+        api_response = api_instance.get_informatica_v2_credentials(credentials_id)
+        print("The response of CredentialsApi->get_informatica_v2_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_informatica_v2_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+[**InformaticaV2CredentialsOut**](InformaticaV2CredentialsOut.md)
 
 ### Authorization
 
@@ -6076,7 +7581,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get MariaDB credentials
@@ -6094,11 +7599,97 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
 [**MariaDbCredentialsOut**](MariaDbCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_mulesoft_credentials**
+> MulesoftCredentialsOut get_mulesoft_credentials(credentials_id)
+
+Get MuleSoft credentials
+
+Get one set of MuleSoft credentials, without the client secret.
+
+An id that does not exist, belongs to another account, or names credentials of another kind
+returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.mulesoft_credentials_out import MulesoftCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+
+    try:
+        # Get MuleSoft credentials
+        api_response = api_instance.get_mulesoft_credentials(credentials_id)
+        print("The response of CredentialsApi->get_mulesoft_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_mulesoft_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+
+### Return type
+
+[**MulesoftCredentialsOut**](MulesoftCredentialsOut.md)
 
 ### Authorization
 
@@ -6162,7 +7753,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get MySQL credentials
@@ -6180,7 +7771,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -6248,7 +7839,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get Oracle credentials
@@ -6266,7 +7857,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -6334,7 +7925,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get PostgreSQL credentials
@@ -6352,7 +7943,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -6506,7 +8097,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get Redshift credentials
@@ -6524,7 +8115,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -6592,7 +8183,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get SAP HANA credentials
@@ -6610,7 +8201,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -6678,7 +8269,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get Snowflake credentials
@@ -6696,7 +8287,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -6764,7 +8355,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get Starburst Enterprise credentials
@@ -6782,7 +8373,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -6850,7 +8441,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get Starburst Galaxy credentials
@@ -6868,7 +8459,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -7022,7 +8613,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
 
     try:
         # Get Teradata credentials
@@ -7040,7 +8631,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
 
 ### Return type
 
@@ -7157,6 +8748,97 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_airflow_credentials**
+> AirflowCredentialsOut update_airflow_credentials(credentials_id, airflow_credentials_patch)
+
+Update Airflow credentials
+
+Change Airflow connection details in place.
+
+Every connection using the credentials picks up the change. Sending an empty body returns the
+credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.airflow_credentials_out import AirflowCredentialsOut
+from pycarlo2.models.airflow_credentials_patch import AirflowCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    airflow_credentials_patch = pycarlo2.AirflowCredentialsPatch() # AirflowCredentialsPatch | 
+
+    try:
+        # Update Airflow credentials
+        api_response = api_instance.update_airflow_credentials(credentials_id, airflow_credentials_patch)
+        print("The response of CredentialsApi->update_airflow_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_airflow_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+ **airflow_credentials_patch** | [**AirflowCredentialsPatch**](AirflowCredentialsPatch.md)|  | 
+
+### Return type
+
+[**AirflowCredentialsOut**](AirflowCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_aws_secrets_manager_credentials**
 > AwsSecretsManagerCredentialsOut update_aws_secrets_manager_credentials(credentials_id, aws_secrets_manager_credentials_patch)
 
@@ -7199,7 +8881,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     aws_secrets_manager_credentials_patch = pycarlo2.AwsSecretsManagerCredentialsPatch() # AwsSecretsManagerCredentialsPatch | 
 
     try:
@@ -7218,12 +8900,103 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **aws_secrets_manager_credentials_patch** | [**AwsSecretsManagerCredentialsPatch**](AwsSecretsManagerCredentialsPatch.md)|  | 
 
 ### Return type
 
 [**AwsSecretsManagerCredentialsOut**](AwsSecretsManagerCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_azure_data_factory_credentials**
+> AzureDataFactoryCredentialsOut update_azure_data_factory_credentials(credentials_id, azure_data_factory_credentials_patch)
+
+Update Azure Data Factory credentials
+
+Change Azure Data Factory credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to change.
+Sending an empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.azure_data_factory_credentials_out import AzureDataFactoryCredentialsOut
+from pycarlo2.models.azure_data_factory_credentials_patch import AzureDataFactoryCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    azure_data_factory_credentials_patch = pycarlo2.AzureDataFactoryCredentialsPatch() # AzureDataFactoryCredentialsPatch | 
+
+    try:
+        # Update Azure Data Factory credentials
+        api_response = api_instance.update_azure_data_factory_credentials(credentials_id, azure_data_factory_credentials_patch)
+        print("The response of CredentialsApi->update_azure_data_factory_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_azure_data_factory_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+ **azure_data_factory_credentials_patch** | [**AzureDataFactoryCredentialsPatch**](AzureDataFactoryCredentialsPatch.md)|  | 
+
+### Return type
+
+[**AzureDataFactoryCredentialsOut**](AzureDataFactoryCredentialsOut.md)
 
 ### Authorization
 
@@ -7291,7 +9064,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     azure_dedicated_sql_pool_credentials_patch = pycarlo2.AzureDedicatedSqlPoolCredentialsPatch() # AzureDedicatedSqlPoolCredentialsPatch | 
 
     try:
@@ -7310,7 +9083,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **azure_dedicated_sql_pool_credentials_patch** | [**AzureDedicatedSqlPoolCredentialsPatch**](AzureDedicatedSqlPoolCredentialsPatch.md)|  | 
 
 ### Return type
@@ -7384,7 +9157,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     azure_key_vault_credentials_patch = pycarlo2.AzureKeyVaultCredentialsPatch() # AzureKeyVaultCredentialsPatch | 
 
     try:
@@ -7403,7 +9176,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **azure_key_vault_credentials_patch** | [**AzureKeyVaultCredentialsPatch**](AzureKeyVaultCredentialsPatch.md)|  | 
 
 ### Return type
@@ -7476,7 +9249,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     azure_sql_database_credentials_patch = pycarlo2.AzureSqlDatabaseCredentialsPatch() # AzureSqlDatabaseCredentialsPatch | 
 
     try:
@@ -7495,7 +9268,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **azure_sql_database_credentials_patch** | [**AzureSqlDatabaseCredentialsPatch**](AzureSqlDatabaseCredentialsPatch.md)|  | 
 
 ### Return type
@@ -7567,7 +9340,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     big_query_credentials_patch = pycarlo2.BigQueryCredentialsPatch() # BigQueryCredentialsPatch | 
 
     try:
@@ -7586,7 +9359,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **big_query_credentials_patch** | [**BigQueryCredentialsPatch**](BigQueryCredentialsPatch.md)|  | 
 
 ### Return type
@@ -7659,7 +9432,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     click_house_credentials_patch = pycarlo2.ClickHouseCredentialsPatch() # ClickHouseCredentialsPatch | 
 
     try:
@@ -7678,7 +9451,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **click_house_credentials_patch** | [**ClickHouseCredentialsPatch**](ClickHouseCredentialsPatch.md)|  | 
 
 ### Return type
@@ -7752,7 +9525,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     databricks_metastore_sql_warehouse_credentials_patch = pycarlo2.DatabricksMetastoreSqlWarehouseCredentialsPatch() # DatabricksMetastoreSqlWarehouseCredentialsPatch | 
 
     try:
@@ -7771,7 +9544,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **databricks_metastore_sql_warehouse_credentials_patch** | [**DatabricksMetastoreSqlWarehouseCredentialsPatch**](DatabricksMetastoreSqlWarehouseCredentialsPatch.md)|  | 
 
 ### Return type
@@ -7845,7 +9618,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     databricks_sql_warehouse_credentials_patch = pycarlo2.DatabricksSqlWarehouseCredentialsPatch() # DatabricksSqlWarehouseCredentialsPatch | 
 
     try:
@@ -7864,7 +9637,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **databricks_sql_warehouse_credentials_patch** | [**DatabricksSqlWarehouseCredentialsPatch**](DatabricksSqlWarehouseCredentialsPatch.md)|  | 
 
 ### Return type
@@ -7938,7 +9711,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     db2_credentials_patch = pycarlo2.Db2CredentialsPatch() # Db2CredentialsPatch | 
 
     try:
@@ -7957,7 +9730,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **db2_credentials_patch** | [**Db2CredentialsPatch**](Db2CredentialsPatch.md)|  | 
 
 ### Return type
@@ -8030,7 +9803,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     env_var_credentials_patch = pycarlo2.EnvVarCredentialsPatch() # EnvVarCredentialsPatch | 
 
     try:
@@ -8049,7 +9822,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **env_var_credentials_patch** | [**EnvVarCredentialsPatch**](EnvVarCredentialsPatch.md)|  | 
 
 ### Return type
@@ -8122,7 +9895,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     file_credentials_patch = pycarlo2.FileCredentialsPatch() # FileCredentialsPatch | 
 
     try:
@@ -8141,12 +9914,194 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **file_credentials_patch** | [**FileCredentialsPatch**](FileCredentialsPatch.md)|  | 
 
 ### Return type
 
 [**FileCredentialsOut**](FileCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_fivetran_credentials**
+> FivetranCredentialsOut update_fivetran_credentials(credentials_id, fivetran_credentials_patch)
+
+Update Fivetran credentials
+
+Change Fivetran credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to change.
+Sending an empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.fivetran_credentials_out import FivetranCredentialsOut
+from pycarlo2.models.fivetran_credentials_patch import FivetranCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    fivetran_credentials_patch = pycarlo2.FivetranCredentialsPatch() # FivetranCredentialsPatch | 
+
+    try:
+        # Update Fivetran credentials
+        api_response = api_instance.update_fivetran_credentials(credentials_id, fivetran_credentials_patch)
+        print("The response of CredentialsApi->update_fivetran_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_fivetran_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+ **fivetran_credentials_patch** | [**FivetranCredentialsPatch**](FivetranCredentialsPatch.md)|  | 
+
+### Return type
+
+[**FivetranCredentialsOut**](FivetranCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_gcp_dataform_credentials**
+> GcpDataformCredentialsOut update_gcp_dataform_credentials(credentials_id, gcp_dataform_credentials_patch)
+
+Update GCP Dataform credentials
+
+Change GCP Dataform credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to change.
+Sending an empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.gcp_dataform_credentials_out import GcpDataformCredentialsOut
+from pycarlo2.models.gcp_dataform_credentials_patch import GcpDataformCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    gcp_dataform_credentials_patch = pycarlo2.GcpDataformCredentialsPatch() # GcpDataformCredentialsPatch | 
+
+    try:
+        # Update GCP Dataform credentials
+        api_response = api_instance.update_gcp_dataform_credentials(credentials_id, gcp_dataform_credentials_patch)
+        print("The response of CredentialsApi->update_gcp_dataform_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_gcp_dataform_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+ **gcp_dataform_credentials_patch** | [**GcpDataformCredentialsPatch**](GcpDataformCredentialsPatch.md)|  | 
+
+### Return type
+
+[**GcpDataformCredentialsOut**](GcpDataformCredentialsOut.md)
 
 ### Authorization
 
@@ -8214,7 +10169,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     gcp_secret_manager_credentials_patch = pycarlo2.GcpSecretManagerCredentialsPatch() # GcpSecretManagerCredentialsPatch | 
 
     try:
@@ -8233,12 +10188,103 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **gcp_secret_manager_credentials_patch** | [**GcpSecretManagerCredentialsPatch**](GcpSecretManagerCredentialsPatch.md)|  | 
 
 ### Return type
 
 [**GcpSecretManagerCredentialsOut**](GcpSecretManagerCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_informatica_v2_credentials**
+> InformaticaV2CredentialsOut update_informatica_v2_credentials(credentials_id, informatica_v2_credentials_patch)
+
+Update Informatica credentials
+
+Change Informatica credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to change.
+Sending an empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.informatica_v2_credentials_out import InformaticaV2CredentialsOut
+from pycarlo2.models.informatica_v2_credentials_patch import InformaticaV2CredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    informatica_v2_credentials_patch = pycarlo2.InformaticaV2CredentialsPatch() # InformaticaV2CredentialsPatch | 
+
+    try:
+        # Update Informatica credentials
+        api_response = api_instance.update_informatica_v2_credentials(credentials_id, informatica_v2_credentials_patch)
+        print("The response of CredentialsApi->update_informatica_v2_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_informatica_v2_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+ **informatica_v2_credentials_patch** | [**InformaticaV2CredentialsPatch**](InformaticaV2CredentialsPatch.md)|  | 
+
+### Return type
+
+[**InformaticaV2CredentialsOut**](InformaticaV2CredentialsOut.md)
 
 ### Authorization
 
@@ -8489,7 +10535,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     maria_db_credentials_patch = pycarlo2.MariaDbCredentialsPatch() # MariaDbCredentialsPatch | 
 
     try:
@@ -8508,12 +10554,103 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **maria_db_credentials_patch** | [**MariaDbCredentialsPatch**](MariaDbCredentialsPatch.md)|  | 
 
 ### Return type
 
 [**MariaDbCredentialsOut**](MariaDbCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_mulesoft_credentials**
+> MulesoftCredentialsOut update_mulesoft_credentials(credentials_id, mulesoft_credentials_patch)
+
+Update MuleSoft credentials
+
+Change MuleSoft credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to change.
+Sending an empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.mulesoft_credentials_out import MulesoftCredentialsOut
+from pycarlo2.models.mulesoft_credentials_patch import MulesoftCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    mulesoft_credentials_patch = pycarlo2.MulesoftCredentialsPatch() # MulesoftCredentialsPatch | 
+
+    try:
+        # Update MuleSoft credentials
+        api_response = api_instance.update_mulesoft_credentials(credentials_id, mulesoft_credentials_patch)
+        print("The response of CredentialsApi->update_mulesoft_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_mulesoft_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**|  | 
+ **mulesoft_credentials_patch** | [**MulesoftCredentialsPatch**](MulesoftCredentialsPatch.md)|  | 
+
+### Return type
+
+[**MulesoftCredentialsOut**](MulesoftCredentialsOut.md)
 
 ### Authorization
 
@@ -8582,7 +10719,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     my_sql_credentials_patch = pycarlo2.MySqlCredentialsPatch() # MySqlCredentialsPatch | 
 
     try:
@@ -8601,7 +10738,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **my_sql_credentials_patch** | [**MySqlCredentialsPatch**](MySqlCredentialsPatch.md)|  | 
 
 ### Return type
@@ -8674,7 +10811,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     oracle_credentials_patch = pycarlo2.OracleCredentialsPatch() # OracleCredentialsPatch | 
 
     try:
@@ -8693,7 +10830,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **oracle_credentials_patch** | [**OracleCredentialsPatch**](OracleCredentialsPatch.md)|  | 
 
 ### Return type
@@ -8766,7 +10903,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     postgres_credentials_patch = pycarlo2.PostgresCredentialsPatch() # PostgresCredentialsPatch | 
 
     try:
@@ -8785,7 +10922,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **postgres_credentials_patch** | [**PostgresCredentialsPatch**](PostgresCredentialsPatch.md)|  | 
 
 ### Return type
@@ -8951,7 +11088,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     redshift_credentials_patch = pycarlo2.RedshiftCredentialsPatch() # RedshiftCredentialsPatch | 
 
     try:
@@ -8970,7 +11107,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **redshift_credentials_patch** | [**RedshiftCredentialsPatch**](RedshiftCredentialsPatch.md)|  | 
 
 ### Return type
@@ -9043,7 +11180,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     sap_hana_credentials_patch = pycarlo2.SapHanaCredentialsPatch() # SapHanaCredentialsPatch | 
 
     try:
@@ -9062,7 +11199,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **sap_hana_credentials_patch** | [**SapHanaCredentialsPatch**](SapHanaCredentialsPatch.md)|  | 
 
 ### Return type
@@ -9136,7 +11273,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     snowflake_credentials_patch = pycarlo2.SnowflakeCredentialsPatch() # SnowflakeCredentialsPatch | 
 
     try:
@@ -9155,7 +11292,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **snowflake_credentials_patch** | [**SnowflakeCredentialsPatch**](SnowflakeCredentialsPatch.md)|  | 
 
 ### Return type
@@ -9229,7 +11366,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     starburst_enterprise_credentials_patch = pycarlo2.StarburstEnterpriseCredentialsPatch() # StarburstEnterpriseCredentialsPatch | 
 
     try:
@@ -9248,7 +11385,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **starburst_enterprise_credentials_patch** | [**StarburstEnterpriseCredentialsPatch**](StarburstEnterpriseCredentialsPatch.md)|  | 
 
 ### Return type
@@ -9321,7 +11458,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     starburst_galaxy_credentials_patch = pycarlo2.StarburstGalaxyCredentialsPatch() # StarburstGalaxyCredentialsPatch | 
 
     try:
@@ -9340,7 +11477,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **starburst_galaxy_credentials_patch** | [**StarburstGalaxyCredentialsPatch**](StarburstGalaxyCredentialsPatch.md)|  | 
 
 ### Return type
@@ -9508,7 +11645,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CredentialsApi(api_client)
-    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
     teradata_credentials_patch = pycarlo2.TeradataCredentialsPatch() # TeradataCredentialsPatch | 
 
     try:
@@ -9527,7 +11664,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentials_id** | **UUID**|  | 
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **teradata_credentials_patch** | [**TeradataCredentialsPatch**](TeradataCredentialsPatch.md)|  | 
 
 ### Return type
@@ -9621,6 +11758,99 @@ with pycarlo2.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **aws_secrets_manager_credentials_validate_in** | [**AwsSecretsManagerCredentialsValidateIn**](AwsSecretsManagerCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_azure_data_factory_credentials**
+> ValidationRunOut validate_azure_data_factory_credentials(azure_data_factory_credentials_validate_in)
+
+Validate Azure Data Factory credentials
+
+Check candidate Azure Data Factory credentials against Azure Data Factory.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your data factory.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that until the
+run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.azure_data_factory_credentials_validate_in import AzureDataFactoryCredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    azure_data_factory_credentials_validate_in = pycarlo2.AzureDataFactoryCredentialsValidateIn() # AzureDataFactoryCredentialsValidateIn | 
+
+    try:
+        # Validate Azure Data Factory credentials
+        api_response = api_instance.validate_azure_data_factory_credentials(azure_data_factory_credentials_validate_in)
+        print("The response of CredentialsApi->validate_azure_data_factory_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_azure_data_factory_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **azure_data_factory_credentials_validate_in** | [**AzureDataFactoryCredentialsValidateIn**](AzureDataFactoryCredentialsValidateIn.md)|  | 
 
 ### Return type
 
@@ -10581,6 +12811,192 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **validate_fivetran_credentials**
+> ValidationRunOut validate_fivetran_credentials(fivetran_credentials_validate_in)
+
+Validate Fivetran credentials
+
+Check candidate Fivetran credentials against Fivetran.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your Fivetran account.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that until the
+run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.fivetran_credentials_validate_in import FivetranCredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    fivetran_credentials_validate_in = pycarlo2.FivetranCredentialsValidateIn() # FivetranCredentialsValidateIn | 
+
+    try:
+        # Validate Fivetran credentials
+        api_response = api_instance.validate_fivetran_credentials(fivetran_credentials_validate_in)
+        print("The response of CredentialsApi->validate_fivetran_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_fivetran_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fivetran_credentials_validate_in** | [**FivetranCredentialsValidateIn**](FivetranCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_gcp_dataform_credentials**
+> ValidationRunOut validate_gcp_dataform_credentials(gcp_dataform_credentials_validate_in)
+
+Validate GCP Dataform credentials
+
+Check candidate GCP Dataform credentials against GCP Dataform.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against Dataform in your project.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that until the
+run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.gcp_dataform_credentials_validate_in import GcpDataformCredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    gcp_dataform_credentials_validate_in = pycarlo2.GcpDataformCredentialsValidateIn() # GcpDataformCredentialsValidateIn | 
+
+    try:
+        # Validate GCP Dataform credentials
+        api_response = api_instance.validate_gcp_dataform_credentials(gcp_dataform_credentials_validate_in)
+        print("The response of CredentialsApi->validate_gcp_dataform_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_gcp_dataform_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gcp_dataform_credentials_validate_in** | [**GcpDataformCredentialsValidateIn**](GcpDataformCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **validate_gcp_secret_manager_credentials**
 > ValidationRunOut validate_gcp_secret_manager_credentials(gcp_secret_manager_credentials_validate_in)
 
@@ -10644,6 +13060,99 @@ with pycarlo2.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gcp_secret_manager_credentials_validate_in** | [**GcpSecretManagerCredentialsValidateIn**](GcpSecretManagerCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_informatica_v2_credentials**
+> ValidationRunOut validate_informatica_v2_credentials(informatica_v2_credentials_validate_in)
+
+Validate Informatica credentials
+
+Check candidate Informatica credentials against Informatica.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your Informatica organization.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that until the
+run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.informatica_v2_credentials_validate_in import InformaticaV2CredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    informatica_v2_credentials_validate_in = pycarlo2.InformaticaV2CredentialsValidateIn() # InformaticaV2CredentialsValidateIn | 
+
+    try:
+        # Validate Informatica credentials
+        api_response = api_instance.validate_informatica_v2_credentials(informatica_v2_credentials_validate_in)
+        print("The response of CredentialsApi->validate_informatica_v2_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_informatica_v2_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **informatica_v2_credentials_validate_in** | [**InformaticaV2CredentialsValidateIn**](InformaticaV2CredentialsValidateIn.md)|  | 
 
 ### Return type
 
@@ -10923,6 +13432,99 @@ with pycarlo2.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **maria_db_credentials_validate_in** | [**MariaDbCredentialsValidateIn**](MariaDbCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_mulesoft_credentials**
+> ValidationRunOut validate_mulesoft_credentials(mulesoft_credentials_validate_in)
+
+Validate MuleSoft credentials
+
+Check candidate MuleSoft credentials against MuleSoft.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your Anypoint organization.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that until the
+run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.mulesoft_credentials_validate_in import MulesoftCredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    mulesoft_credentials_validate_in = pycarlo2.MulesoftCredentialsValidateIn() # MulesoftCredentialsValidateIn | 
+
+    try:
+        # Validate MuleSoft credentials
+        api_response = api_instance.validate_mulesoft_credentials(mulesoft_credentials_validate_in)
+        print("The response of CredentialsApi->validate_mulesoft_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_mulesoft_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mulesoft_credentials_validate_in** | [**MulesoftCredentialsValidateIn**](MulesoftCredentialsValidateIn.md)|  | 
 
 ### Return type
 

@@ -148,7 +148,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.WarehousesApi(api_client)
-    warehouse_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    warehouse_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the warehouse, as returned when it is created or listed.
 
     try:
         # Delete a warehouse
@@ -164,7 +164,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **warehouse_id** | **UUID**|  | 
+ **warehouse_id** | **UUID**| Id of the warehouse, as returned when it is created or listed. | 
 
 ### Return type
 
@@ -233,7 +233,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.WarehousesApi(api_client)
-    warehouse_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    warehouse_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the warehouse, as returned when it is created or listed.
 
     try:
         # Get a warehouse
@@ -251,7 +251,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **warehouse_id** | **UUID**|  | 
+ **warehouse_id** | **UUID**| Id of the warehouse, as returned when it is created or listed. | 
 
 ### Return type
 
@@ -409,7 +409,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.WarehousesApi(api_client)
-    warehouse_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    warehouse_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the warehouse, as returned when it is created or listed.
     warehouse_patch = pycarlo2.WarehousePatch() # WarehousePatch | 
 
     try:
@@ -428,7 +428,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **warehouse_id** | **UUID**|  | 
+ **warehouse_id** | **UUID**| Id of the warehouse, as returned when it is created or listed. | 
  **warehouse_patch** | [**WarehousePatch**](WarehousePatch.md)|  | 
 
 ### Return type

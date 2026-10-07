@@ -18,10 +18,17 @@ from pydantic import Field, StrictBool, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
 from uuid import UUID
+from pycarlo2.models.airflow_credentials_in import AirflowCredentialsIn
+from pycarlo2.models.airflow_credentials_out import AirflowCredentialsOut
+from pycarlo2.models.airflow_credentials_patch import AirflowCredentialsPatch
 from pycarlo2.models.aws_secrets_manager_credentials_in import AwsSecretsManagerCredentialsIn
 from pycarlo2.models.aws_secrets_manager_credentials_out import AwsSecretsManagerCredentialsOut
 from pycarlo2.models.aws_secrets_manager_credentials_patch import AwsSecretsManagerCredentialsPatch
 from pycarlo2.models.aws_secrets_manager_credentials_validate_in import AwsSecretsManagerCredentialsValidateIn
+from pycarlo2.models.azure_data_factory_credentials_in import AzureDataFactoryCredentialsIn
+from pycarlo2.models.azure_data_factory_credentials_out import AzureDataFactoryCredentialsOut
+from pycarlo2.models.azure_data_factory_credentials_patch import AzureDataFactoryCredentialsPatch
+from pycarlo2.models.azure_data_factory_credentials_validate_in import AzureDataFactoryCredentialsValidateIn
 from pycarlo2.models.azure_dedicated_sql_pool_credentials_in import AzureDedicatedSqlPoolCredentialsIn
 from pycarlo2.models.azure_dedicated_sql_pool_credentials_out import AzureDedicatedSqlPoolCredentialsOut
 from pycarlo2.models.azure_dedicated_sql_pool_credentials_patch import AzureDedicatedSqlPoolCredentialsPatch
@@ -62,10 +69,22 @@ from pycarlo2.models.file_credentials_in import FileCredentialsIn
 from pycarlo2.models.file_credentials_out import FileCredentialsOut
 from pycarlo2.models.file_credentials_patch import FileCredentialsPatch
 from pycarlo2.models.file_credentials_validate_in import FileCredentialsValidateIn
+from pycarlo2.models.fivetran_credentials_in import FivetranCredentialsIn
+from pycarlo2.models.fivetran_credentials_out import FivetranCredentialsOut
+from pycarlo2.models.fivetran_credentials_patch import FivetranCredentialsPatch
+from pycarlo2.models.fivetran_credentials_validate_in import FivetranCredentialsValidateIn
+from pycarlo2.models.gcp_dataform_credentials_in import GcpDataformCredentialsIn
+from pycarlo2.models.gcp_dataform_credentials_out import GcpDataformCredentialsOut
+from pycarlo2.models.gcp_dataform_credentials_patch import GcpDataformCredentialsPatch
+from pycarlo2.models.gcp_dataform_credentials_validate_in import GcpDataformCredentialsValidateIn
 from pycarlo2.models.gcp_secret_manager_credentials_in import GcpSecretManagerCredentialsIn
 from pycarlo2.models.gcp_secret_manager_credentials_out import GcpSecretManagerCredentialsOut
 from pycarlo2.models.gcp_secret_manager_credentials_patch import GcpSecretManagerCredentialsPatch
 from pycarlo2.models.gcp_secret_manager_credentials_validate_in import GcpSecretManagerCredentialsValidateIn
+from pycarlo2.models.informatica_v2_credentials_in import InformaticaV2CredentialsIn
+from pycarlo2.models.informatica_v2_credentials_out import InformaticaV2CredentialsOut
+from pycarlo2.models.informatica_v2_credentials_patch import InformaticaV2CredentialsPatch
+from pycarlo2.models.informatica_v2_credentials_validate_in import InformaticaV2CredentialsValidateIn
 from pycarlo2.models.looker_credentials_in import LookerCredentialsIn
 from pycarlo2.models.looker_credentials_out import LookerCredentialsOut
 from pycarlo2.models.looker_credentials_patch import LookerCredentialsPatch
@@ -78,6 +97,10 @@ from pycarlo2.models.maria_db_credentials_in import MariaDbCredentialsIn
 from pycarlo2.models.maria_db_credentials_out import MariaDbCredentialsOut
 from pycarlo2.models.maria_db_credentials_patch import MariaDbCredentialsPatch
 from pycarlo2.models.maria_db_credentials_validate_in import MariaDbCredentialsValidateIn
+from pycarlo2.models.mulesoft_credentials_in import MulesoftCredentialsIn
+from pycarlo2.models.mulesoft_credentials_out import MulesoftCredentialsOut
+from pycarlo2.models.mulesoft_credentials_patch import MulesoftCredentialsPatch
+from pycarlo2.models.mulesoft_credentials_validate_in import MulesoftCredentialsValidateIn
 from pycarlo2.models.my_sql_credentials_in import MySqlCredentialsIn
 from pycarlo2.models.my_sql_credentials_out import MySqlCredentialsOut
 from pycarlo2.models.my_sql_credentials_patch import MySqlCredentialsPatch
@@ -139,6 +162,158 @@ class CredentialsApi:
         if api_client is None:
             api_client = ApiClient.get_default()
         self.api_client = api_client
+
+
+    @validate_call
+    def create_airflow_credentials(
+        self,
+        airflow_credentials_in: AirflowCredentialsIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> AirflowCredentialsOut:
+        """Create Airflow credentials
+
+        Store the connection details of an Airflow environment.  Airflow reports its runs to Monte Carlo, so there is no secret to keep. An account holds a limited number of credentials; past that the create is refused.
+
+        :param airflow_credentials_in: (required)
+        :type airflow_credentials_in: AirflowCredentialsIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_airflow_credentials_serialize(
+            airflow_credentials_in=airflow_credentials_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "AirflowCredentialsOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _create_airflow_credentials_serialize(
+        self,
+        airflow_credentials_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if airflow_credentials_in is not None:
+            _body_params = airflow_credentials_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/airflow',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
 
 
     @validate_call
@@ -278,6 +453,158 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/api/v2/credentials/self-hosted/aws',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def create_azure_data_factory_credentials(
+        self,
+        azure_data_factory_credentials_in: AzureDataFactoryCredentialsIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> AzureDataFactoryCredentialsOut:
+        """Create Azure Data Factory credentials
+
+        Store Azure Data Factory credentials.  Monte Carlo keeps the client secret and returns everything else. Nothing is checked against Azure Data Factory here. An account holds a limited number of credentials; past that the create is refused.
+
+        :param azure_data_factory_credentials_in: (required)
+        :type azure_data_factory_credentials_in: AzureDataFactoryCredentialsIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_azure_data_factory_credentials_serialize(
+            azure_data_factory_credentials_in=azure_data_factory_credentials_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "AzureDataFactoryCredentialsOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _create_azure_data_factory_credentials_serialize(
+        self,
+        azure_data_factory_credentials_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if azure_data_factory_credentials_in is not None:
+            _body_params = azure_data_factory_credentials_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/azure-data-factory',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1814,6 +2141,310 @@ class CredentialsApi:
 
 
     @validate_call
+    def create_fivetran_credentials(
+        self,
+        fivetran_credentials_in: FivetranCredentialsIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> FivetranCredentialsOut:
+        """Create Fivetran credentials
+
+        Store Fivetran credentials.  Monte Carlo keeps the API key and its secret and returns everything else. Nothing is checked against Fivetran here. An account holds a limited number of credentials; past that the create is refused.
+
+        :param fivetran_credentials_in: (required)
+        :type fivetran_credentials_in: FivetranCredentialsIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_fivetran_credentials_serialize(
+            fivetran_credentials_in=fivetran_credentials_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "FivetranCredentialsOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _create_fivetran_credentials_serialize(
+        self,
+        fivetran_credentials_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if fivetran_credentials_in is not None:
+            _body_params = fivetran_credentials_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/fivetran',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def create_gcp_dataform_credentials(
+        self,
+        gcp_dataform_credentials_in: GcpDataformCredentialsIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GcpDataformCredentialsOut:
+        """Create GCP Dataform credentials
+
+        Store GCP Dataform credentials.  Monte Carlo keeps the key and returns everything else. Nothing is checked against GCP Dataform here. An account holds a limited number of credentials; past that the create is refused.
+
+        :param gcp_dataform_credentials_in: (required)
+        :type gcp_dataform_credentials_in: GcpDataformCredentialsIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_gcp_dataform_credentials_serialize(
+            gcp_dataform_credentials_in=gcp_dataform_credentials_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "GcpDataformCredentialsOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _create_gcp_dataform_credentials_serialize(
+        self,
+        gcp_dataform_credentials_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if gcp_dataform_credentials_in is not None:
+            _body_params = gcp_dataform_credentials_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/gcp-dataform',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def create_gcp_secret_manager_credentials(
         self,
         gcp_secret_manager_credentials_in: GcpSecretManagerCredentialsIn,
@@ -1950,6 +2581,158 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/api/v2/credentials/self-hosted/gcp',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def create_informatica_v2_credentials(
+        self,
+        informatica_v2_credentials_in: InformaticaV2CredentialsIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> InformaticaV2CredentialsOut:
+        """Create Informatica credentials
+
+        Store Informatica credentials.  Monte Carlo keeps the passwords and the client secret and returns everything else. Nothing is checked against Informatica here.  `auth_mode` decides what else to send: `username` and `password` for `password`, or `org_id` and the `oauth_*` fields for `oauth`. An account holds a limited number of credentials; past that the create is refused.
+
+        :param informatica_v2_credentials_in: (required)
+        :type informatica_v2_credentials_in: InformaticaV2CredentialsIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_informatica_v2_credentials_serialize(
+            informatica_v2_credentials_in=informatica_v2_credentials_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "InformaticaV2CredentialsOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _create_informatica_v2_credentials_serialize(
+        self,
+        informatica_v2_credentials_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if informatica_v2_credentials_in is not None:
+            _body_params = informatica_v2_credentials_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/informatica-v2',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2406,6 +3189,158 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/api/v2/credentials/mariadb',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def create_mulesoft_credentials(
+        self,
+        mulesoft_credentials_in: MulesoftCredentialsIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> MulesoftCredentialsOut:
+        """Create MuleSoft credentials
+
+        Store MuleSoft credentials.  Monte Carlo keeps the client secret and returns everything else. Nothing is checked against MuleSoft here. An account holds a limited number of credentials; past that the create is refused.
+
+        :param mulesoft_credentials_in: (required)
+        :type mulesoft_credentials_in: MulesoftCredentialsIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_mulesoft_credentials_serialize(
+            mulesoft_credentials_in=mulesoft_credentials_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "MulesoftCredentialsOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _create_mulesoft_credentials_serialize(
+        self,
+        mulesoft_credentials_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if mulesoft_credentials_in is not None:
+            _body_params = mulesoft_credentials_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/mulesoft',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2896,7 +3831,7 @@ class CredentialsApi:
     ) -> PowerBiCredentialsOut:
         """Create Power BI credentials
 
-        Store Power BI credentials.  Monte Carlo keeps the client secret or the password and returns everything else. Create the credentials first, then create a connection that references them, on a Power BI BI container. Nothing is checked against Power BI here.  `auth_mode` decides what else to send: `app_client_secret` for `service_principal`, or `username` and `password` for `primary_user`. An account holds a limited number of credentials; past that the create is refused.
+        Store Power BI credentials.  Monte Carlo keeps the client secret or the password and returns everything else. Create the credentials first, then create a connection that references them, on a Power BI container. Nothing is checked against Power BI here.  `auth_mode` decides what else to send: `app_client_secret` for `service_principal`, or `username` and `password` for `primary_user`. An account holds a limited number of credentials; past that the create is refused.
 
         :param power_bi_credentials_in: (required)
         :type power_bi_credentials_in: PowerBiCredentialsIn
@@ -4094,9 +5029,146 @@ class CredentialsApi:
 
 
     @validate_call
-    def delete_aws_secrets_manager_credentials(
+    def delete_airflow_credentials(
         self,
         credentials_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete Airflow credentials
+
+        Delete Airflow connection details.  Refused while a connection still uses them. Delete the connection first.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_airflow_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _delete_airflow_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/api/v2/credentials/airflow/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_aws_secrets_manager_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4114,7 +5186,7 @@ class CredentialsApi:
 
         Delete AWS Secrets Manager credentials.  Refused while a connection still uses them. Delete the connection first. The secret in AWS is untouched.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4231,9 +5303,146 @@ class CredentialsApi:
 
 
     @validate_call
-    def delete_azure_dedicated_sql_pool_credentials(
+    def delete_azure_data_factory_credentials(
         self,
         credentials_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete Azure Data Factory credentials
+
+        Delete Azure Data Factory credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored client secret. Rotate it in Microsoft Entra ID if it must be retired.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_azure_data_factory_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _delete_azure_data_factory_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/api/v2/credentials/azure-data-factory/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_azure_dedicated_sql_pool_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4251,7 +5460,7 @@ class CredentialsApi:
 
         Delete Azure Dedicated SQL Pool credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password. Change it in Azure Dedicated SQL Pool if the password itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4370,7 +5579,7 @@ class CredentialsApi:
     @validate_call
     def delete_azure_key_vault_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4388,7 +5597,7 @@ class CredentialsApi:
 
         Delete Azure Key Vault credentials.  Refused while a connection still uses them. Delete the connection first. The secret in Azure is untouched.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4507,7 +5716,7 @@ class CredentialsApi:
     @validate_call
     def delete_azure_sql_database_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4525,7 +5734,7 @@ class CredentialsApi:
 
         Delete Azure SQL Database credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password. Change it in Azure SQL Database if the password itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4644,7 +5853,7 @@ class CredentialsApi:
     @validate_call
     def delete_bigquery_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4662,7 +5871,7 @@ class CredentialsApi:
 
         Delete BigQuery credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored key. Revoke the key in Google Cloud if the key itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4781,7 +5990,7 @@ class CredentialsApi:
     @validate_call
     def delete_clickhouse_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4799,7 +6008,7 @@ class CredentialsApi:
 
         Delete ClickHouse credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password. Change it in ClickHouse if the password itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4918,7 +6127,7 @@ class CredentialsApi:
     @validate_call
     def delete_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4936,7 +6145,7 @@ class CredentialsApi:
 
         Delete credentials of any connection type and storage.  Takes the id the list or a connection returns. Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using them. Whatever they point at is untouched.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5055,7 +6264,7 @@ class CredentialsApi:
     @validate_call
     def delete_databricks_metastore_sql_warehouse_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5073,7 +6282,7 @@ class CredentialsApi:
 
         Delete Databricks metadata collection credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored token or OAuth secret. Revoke it in Databricks, or in Microsoft Entra ID for a service principal Azure manages, if the secret itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5192,7 +6401,7 @@ class CredentialsApi:
     @validate_call
     def delete_databricks_sql_warehouse_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5210,7 +6419,7 @@ class CredentialsApi:
 
         Delete Databricks query credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored token or OAuth secret. Revoke it in Databricks, or in Microsoft Entra ID for a service principal Azure manages, if the secret itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5329,7 +6538,7 @@ class CredentialsApi:
     @validate_call
     def delete_db2_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5347,7 +6556,7 @@ class CredentialsApi:
 
         Delete Db2 credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password. Change it in Db2 if the password itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5466,7 +6675,7 @@ class CredentialsApi:
     @validate_call
     def delete_env_var_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5484,7 +6693,7 @@ class CredentialsApi:
 
         Delete environment variable credentials.  Refused while a connection still uses them. Delete the connection first. The variable on the deployment is untouched.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5603,7 +6812,7 @@ class CredentialsApi:
     @validate_call
     def delete_file_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5621,7 +6830,7 @@ class CredentialsApi:
 
         Delete file credentials.  Refused while a connection still uses them. Delete the connection first. The file on the deployment is untouched.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5738,9 +6947,283 @@ class CredentialsApi:
 
 
     @validate_call
-    def delete_gcp_secret_manager_credentials(
+    def delete_fivetran_credentials(
         self,
         credentials_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete Fivetran credentials
+
+        Delete Fivetran credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored API key and secret. Delete the API key in Fivetran if it must be retired.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_fivetran_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _delete_fivetran_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/api/v2/credentials/fivetran/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_gcp_dataform_credentials(
+        self,
+        credentials_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete GCP Dataform credentials
+
+        Delete GCP Dataform credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored service account key. Delete the key in Google Cloud if it must be retired.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_gcp_dataform_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _delete_gcp_dataform_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/api/v2/credentials/gcp-dataform/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_gcp_secret_manager_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5758,7 +7241,7 @@ class CredentialsApi:
 
         Delete GCP Secret Manager credentials.  Refused while a connection still uses them. Delete the connection first. The secret in GCP is untouched.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5859,6 +7342,143 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='DELETE',
             resource_path='/api/v2/credentials/self-hosted/gcp/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_informatica_v2_credentials(
+        self,
+        credentials_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete Informatica credentials
+
+        Delete Informatica credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password or client secret. Rotate it in Informatica or your identity provider if it must be retired.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_informatica_v2_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _delete_informatica_v2_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/api/v2/credentials/informatica-v2/{credentials_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -6151,7 +7771,7 @@ class CredentialsApi:
     @validate_call
     def delete_mariadb_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6169,7 +7789,7 @@ class CredentialsApi:
 
         Delete MariaDB credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password. Change it in MariaDB if the password itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6286,9 +7906,146 @@ class CredentialsApi:
 
 
     @validate_call
-    def delete_mysql_credentials(
+    def delete_mulesoft_credentials(
         self,
         credentials_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete MuleSoft credentials
+
+        Delete MuleSoft credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored client secret. Rotate it in Anypoint if it must be retired.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_mulesoft_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _delete_mulesoft_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/api/v2/credentials/mulesoft/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_mysql_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6306,7 +8063,7 @@ class CredentialsApi:
 
         Delete MySQL credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password. Change it in MySQL if the password itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6425,7 +8182,7 @@ class CredentialsApi:
     @validate_call
     def delete_oracle_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6443,7 +8200,7 @@ class CredentialsApi:
 
         Delete Oracle credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password. Change it in Oracle if the password itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6562,7 +8319,7 @@ class CredentialsApi:
     @validate_call
     def delete_postgres_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6580,7 +8337,7 @@ class CredentialsApi:
 
         Delete PostgreSQL credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password. Change it in PostgreSQL if the password itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6836,7 +8593,7 @@ class CredentialsApi:
     @validate_call
     def delete_redshift_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6854,7 +8611,7 @@ class CredentialsApi:
 
         Delete Redshift credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password. Change it in Redshift if the password itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6973,7 +8730,7 @@ class CredentialsApi:
     @validate_call
     def delete_sap_hana_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6991,7 +8748,7 @@ class CredentialsApi:
 
         Delete SAP HANA credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password. Change it in SAP HANA if the password itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -7110,7 +8867,7 @@ class CredentialsApi:
     @validate_call
     def delete_snowflake_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7128,7 +8885,7 @@ class CredentialsApi:
 
         Delete Snowflake credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored key. Rotate or revoke the key pair in Snowflake if the key itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -7247,7 +9004,7 @@ class CredentialsApi:
     @validate_call
     def delete_starburst_enterprise_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7265,7 +9022,7 @@ class CredentialsApi:
 
         Delete Starburst Enterprise credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password. Change it in Starburst Enterprise if the password itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -7384,7 +9141,7 @@ class CredentialsApi:
     @validate_call
     def delete_starburst_galaxy_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7402,7 +9159,7 @@ class CredentialsApi:
 
         Delete Starburst Galaxy credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password. Change it in Starburst Galaxy if the password itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -7658,7 +9415,7 @@ class CredentialsApi:
     @validate_call
     def delete_teradata_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7676,7 +9433,7 @@ class CredentialsApi:
 
         Delete Teradata credentials.  Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using the stored password. Change it where Teradata checks it if the password itself must be retired.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -7793,9 +9550,146 @@ class CredentialsApi:
 
 
     @validate_call
-    def get_aws_secrets_manager_credentials(
+    def get_airflow_credentials(
         self,
         credentials_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> AirflowCredentialsOut:
+        """Get Airflow credentials
+
+        Get one set of Airflow connection details.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_airflow_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "AirflowCredentialsOut",
+            '404': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _get_airflow_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/credentials/airflow/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_aws_secrets_manager_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7813,7 +9707,7 @@ class CredentialsApi:
 
         Get one set of AWS Secrets Manager credentials.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -7930,9 +9824,146 @@ class CredentialsApi:
 
 
     @validate_call
-    def get_azure_dedicated_sql_pool_credentials(
+    def get_azure_data_factory_credentials(
         self,
         credentials_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> AzureDataFactoryCredentialsOut:
+        """Get Azure Data Factory credentials
+
+        Get one set of Azure Data Factory credentials, without the client secret.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_azure_data_factory_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "AzureDataFactoryCredentialsOut",
+            '404': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _get_azure_data_factory_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/credentials/azure-data-factory/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_azure_dedicated_sql_pool_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7950,7 +9981,7 @@ class CredentialsApi:
 
         Get one set of Azure Dedicated SQL Pool credentials, without the password.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -8069,7 +10100,7 @@ class CredentialsApi:
     @validate_call
     def get_azure_key_vault_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8087,7 +10118,7 @@ class CredentialsApi:
 
         Get one set of Azure Key Vault credentials.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -8206,7 +10237,7 @@ class CredentialsApi:
     @validate_call
     def get_azure_sql_database_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8224,7 +10255,7 @@ class CredentialsApi:
 
         Get one set of Azure SQL Database credentials, without the password.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -8343,7 +10374,7 @@ class CredentialsApi:
     @validate_call
     def get_bigquery_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8361,7 +10392,7 @@ class CredentialsApi:
 
         Get one set of BigQuery credentials, without the key.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -8480,7 +10511,7 @@ class CredentialsApi:
     @validate_call
     def get_clickhouse_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8498,7 +10529,7 @@ class CredentialsApi:
 
         Get one set of ClickHouse credentials, without the password.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -8617,7 +10648,7 @@ class CredentialsApi:
     @validate_call
     def get_databricks_metastore_sql_warehouse_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8635,7 +10666,7 @@ class CredentialsApi:
 
         Get one set of Databricks metadata collection credentials, without the secrets.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -8754,7 +10785,7 @@ class CredentialsApi:
     @validate_call
     def get_databricks_sql_warehouse_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8772,7 +10803,7 @@ class CredentialsApi:
 
         Get one set of Databricks query credentials, without the secrets.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -8891,7 +10922,7 @@ class CredentialsApi:
     @validate_call
     def get_db2_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8909,7 +10940,7 @@ class CredentialsApi:
 
         Get one set of Db2 credentials, without the password.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -9028,7 +11059,7 @@ class CredentialsApi:
     @validate_call
     def get_env_var_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9046,7 +11077,7 @@ class CredentialsApi:
 
         Get one set of environment variable credentials.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -9165,7 +11196,7 @@ class CredentialsApi:
     @validate_call
     def get_file_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9183,7 +11214,7 @@ class CredentialsApi:
 
         Get one set of file credentials.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -9300,9 +11331,283 @@ class CredentialsApi:
 
 
     @validate_call
-    def get_gcp_secret_manager_credentials(
+    def get_fivetran_credentials(
         self,
         credentials_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> FivetranCredentialsOut:
+        """Get Fivetran credentials
+
+        Get one set of Fivetran credentials, without the API key and its secret.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_fivetran_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "FivetranCredentialsOut",
+            '404': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _get_fivetran_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/credentials/fivetran/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_gcp_dataform_credentials(
+        self,
+        credentials_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GcpDataformCredentialsOut:
+        """Get GCP Dataform credentials
+
+        Get one set of GCP Dataform credentials, without the key.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_gcp_dataform_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GcpDataformCredentialsOut",
+            '404': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _get_gcp_dataform_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/credentials/gcp-dataform/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_gcp_secret_manager_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9320,7 +11625,7 @@ class CredentialsApi:
 
         Get one set of GCP Secret Manager credentials.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -9421,6 +11726,143 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/api/v2/credentials/self-hosted/gcp/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_informatica_v2_credentials(
+        self,
+        credentials_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> InformaticaV2CredentialsOut:
+        """Get Informatica credentials
+
+        Get one set of Informatica credentials, without the passwords and the client secret.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_informatica_v2_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "InformaticaV2CredentialsOut",
+            '404': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _get_informatica_v2_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/credentials/informatica-v2/{credentials_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -9713,7 +12155,7 @@ class CredentialsApi:
     @validate_call
     def get_mariadb_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9731,7 +12173,7 @@ class CredentialsApi:
 
         Get one set of MariaDB credentials, without the password.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -9848,9 +12290,146 @@ class CredentialsApi:
 
 
     @validate_call
-    def get_mysql_credentials(
+    def get_mulesoft_credentials(
         self,
         credentials_id: UUID,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> MulesoftCredentialsOut:
+        """Get MuleSoft credentials
+
+        Get one set of MuleSoft credentials, without the client secret.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_mulesoft_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "MulesoftCredentialsOut",
+            '404': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _get_mulesoft_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/credentials/mulesoft/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_mysql_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9868,7 +12447,7 @@ class CredentialsApi:
 
         Get one set of MySQL credentials, without the password.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -9987,7 +12566,7 @@ class CredentialsApi:
     @validate_call
     def get_oracle_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10005,7 +12584,7 @@ class CredentialsApi:
 
         Get one set of Oracle credentials, without the password.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -10124,7 +12703,7 @@ class CredentialsApi:
     @validate_call
     def get_postgres_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10142,7 +12721,7 @@ class CredentialsApi:
 
         Get one set of PostgreSQL credentials, without the password.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -10398,7 +12977,7 @@ class CredentialsApi:
     @validate_call
     def get_redshift_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10416,7 +12995,7 @@ class CredentialsApi:
 
         Get one set of Redshift credentials, without the password.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -10535,7 +13114,7 @@ class CredentialsApi:
     @validate_call
     def get_sap_hana_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10553,7 +13132,7 @@ class CredentialsApi:
 
         Get one set of SAP HANA credentials, without the password.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -10672,7 +13251,7 @@ class CredentialsApi:
     @validate_call
     def get_snowflake_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10690,7 +13269,7 @@ class CredentialsApi:
 
         Get one set of Snowflake credentials, without the key.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -10809,7 +13388,7 @@ class CredentialsApi:
     @validate_call
     def get_starburst_enterprise_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10827,7 +13406,7 @@ class CredentialsApi:
 
         Get one set of Starburst Enterprise credentials, without the password.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -10946,7 +13525,7 @@ class CredentialsApi:
     @validate_call
     def get_starburst_galaxy_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10964,7 +13543,7 @@ class CredentialsApi:
 
         Get one set of Starburst Galaxy credentials, without the password.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -11220,7 +13799,7 @@ class CredentialsApi:
     @validate_call
     def get_teradata_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11238,7 +13817,7 @@ class CredentialsApi:
 
         Get one set of Teradata credentials, without the password.  An id that does not exist, belongs to another account, or names credentials of another kind returns 404.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -11511,9 +14090,168 @@ class CredentialsApi:
 
 
     @validate_call
-    def update_aws_secrets_manager_credentials(
+    def update_airflow_credentials(
         self,
         credentials_id: UUID,
+        airflow_credentials_patch: AirflowCredentialsPatch,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> AirflowCredentialsOut:
+        """Update Airflow credentials
+
+        Change Airflow connection details in place.  Every connection using the credentials picks up the change. Sending an empty body returns the credentials as they are.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param airflow_credentials_patch: (required)
+        :type airflow_credentials_patch: AirflowCredentialsPatch
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_airflow_credentials_serialize(
+            credentials_id=credentials_id,
+            airflow_credentials_patch=airflow_credentials_patch,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "AirflowCredentialsOut",
+            '404': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _update_airflow_credentials_serialize(
+        self,
+        credentials_id,
+        airflow_credentials_patch,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if airflow_credentials_patch is not None:
+            _body_params = airflow_credentials_patch
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/api/v2/credentials/airflow/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_aws_secrets_manager_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         aws_secrets_manager_credentials_patch: AwsSecretsManagerCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -11532,7 +14270,7 @@ class CredentialsApi:
 
         Change AWS Secrets Manager credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, and an optional field set to null is cleared. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param aws_secrets_manager_credentials_patch: (required)
         :type aws_secrets_manager_credentials_patch: AwsSecretsManagerCredentialsPatch
@@ -11670,9 +14408,168 @@ class CredentialsApi:
 
 
     @validate_call
-    def update_azure_dedicated_sql_pool_credentials(
+    def update_azure_data_factory_credentials(
         self,
         credentials_id: UUID,
+        azure_data_factory_credentials_patch: AzureDataFactoryCredentialsPatch,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> AzureDataFactoryCredentialsOut:
+        """Update Azure Data Factory credentials
+
+        Change Azure Data Factory credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change. Sending an empty body returns the credentials as they are.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param azure_data_factory_credentials_patch: (required)
+        :type azure_data_factory_credentials_patch: AzureDataFactoryCredentialsPatch
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_azure_data_factory_credentials_serialize(
+            credentials_id=credentials_id,
+            azure_data_factory_credentials_patch=azure_data_factory_credentials_patch,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "AzureDataFactoryCredentialsOut",
+            '404': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _update_azure_data_factory_credentials_serialize(
+        self,
+        credentials_id,
+        azure_data_factory_credentials_patch,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if azure_data_factory_credentials_patch is not None:
+            _body_params = azure_data_factory_credentials_patch
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/api/v2/credentials/azure-data-factory/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_azure_dedicated_sql_pool_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         azure_dedicated_sql_pool_credentials_patch: AzureDedicatedSqlPoolCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -11691,7 +14588,7 @@ class CredentialsApi:
 
         Change Azure Dedicated SQL Pool credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, and `password` set to null is unchanged. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param azure_dedicated_sql_pool_credentials_patch: (required)
         :type azure_dedicated_sql_pool_credentials_patch: AzureDedicatedSqlPoolCredentialsPatch
@@ -11831,7 +14728,7 @@ class CredentialsApi:
     @validate_call
     def update_azure_key_vault_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         azure_key_vault_credentials_patch: AzureKeyVaultCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -11850,7 +14747,7 @@ class CredentialsApi:
 
         Change Azure Key Vault credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, and an optional field set to null is cleared, as long as the vault stays named one way. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param azure_key_vault_credentials_patch: (required)
         :type azure_key_vault_credentials_patch: AzureKeyVaultCredentialsPatch
@@ -11990,7 +14887,7 @@ class CredentialsApi:
     @validate_call
     def update_azure_sql_database_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         azure_sql_database_credentials_patch: AzureSqlDatabaseCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -12009,7 +14906,7 @@ class CredentialsApi:
 
         Change Azure SQL Database credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, and `password` set to null is unchanged. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param azure_sql_database_credentials_patch: (required)
         :type azure_sql_database_credentials_patch: AzureSqlDatabaseCredentialsPatch
@@ -12149,7 +15046,7 @@ class CredentialsApi:
     @validate_call
     def update_bigquery_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         big_query_credentials_patch: BigQueryCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -12168,7 +15065,7 @@ class CredentialsApi:
 
         Replace the key of BigQuery credentials in place.  Every connection using the credentials picks up the change. A new `service_account_key` replaces the stored key whole. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param big_query_credentials_patch: (required)
         :type big_query_credentials_patch: BigQueryCredentialsPatch
@@ -12308,7 +15205,7 @@ class CredentialsApi:
     @validate_call
     def update_clickhouse_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         click_house_credentials_patch: ClickHouseCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -12327,7 +15224,7 @@ class CredentialsApi:
 
         Change ClickHouse credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, `db_name` set to null is cleared, and `password` set to null is unchanged. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param click_house_credentials_patch: (required)
         :type click_house_credentials_patch: ClickHouseCredentialsPatch
@@ -12467,7 +15364,7 @@ class CredentialsApi:
     @validate_call
     def update_databricks_metastore_sql_warehouse_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         databricks_metastore_sql_warehouse_credentials_patch: DatabricksMetastoreSqlWarehouseCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -12486,7 +15383,7 @@ class CredentialsApi:
 
         Change Databricks metadata collection credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change. Sending `token` drops the stored OAuth client and its Azure fields. Sending the OAuth client drops the stored token. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param databricks_metastore_sql_warehouse_credentials_patch: (required)
         :type databricks_metastore_sql_warehouse_credentials_patch: DatabricksMetastoreSqlWarehouseCredentialsPatch
@@ -12626,7 +15523,7 @@ class CredentialsApi:
     @validate_call
     def update_databricks_sql_warehouse_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         databricks_sql_warehouse_credentials_patch: DatabricksSqlWarehouseCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -12645,7 +15542,7 @@ class CredentialsApi:
 
         Change Databricks query credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change. Sending `token` drops the stored OAuth client and its Azure fields. Sending the OAuth client drops the stored token. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param databricks_sql_warehouse_credentials_patch: (required)
         :type databricks_sql_warehouse_credentials_patch: DatabricksSqlWarehouseCredentialsPatch
@@ -12785,7 +15682,7 @@ class CredentialsApi:
     @validate_call
     def update_db2_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         db2_credentials_patch: Db2CredentialsPatch,
         _request_timeout: Union[
             None,
@@ -12804,7 +15701,7 @@ class CredentialsApi:
 
         Change Db2 credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, `db_name` or an `ssl_*` field set to null is cleared, and `password` set to null is unchanged. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param db2_credentials_patch: (required)
         :type db2_credentials_patch: Db2CredentialsPatch
@@ -12944,7 +15841,7 @@ class CredentialsApi:
     @validate_call
     def update_env_var_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         env_var_credentials_patch: EnvVarCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -12963,7 +15860,7 @@ class CredentialsApi:
 
         Change environment variable credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, and an optional field set to null is cleared. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param env_var_credentials_patch: (required)
         :type env_var_credentials_patch: EnvVarCredentialsPatch
@@ -13103,7 +16000,7 @@ class CredentialsApi:
     @validate_call
     def update_file_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         file_credentials_patch: FileCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -13122,7 +16019,7 @@ class CredentialsApi:
 
         Change file credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, and an optional field set to null is cleared. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param file_credentials_patch: (required)
         :type file_credentials_patch: FileCredentialsPatch
@@ -13260,9 +16157,327 @@ class CredentialsApi:
 
 
     @validate_call
-    def update_gcp_secret_manager_credentials(
+    def update_fivetran_credentials(
         self,
         credentials_id: UUID,
+        fivetran_credentials_patch: FivetranCredentialsPatch,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> FivetranCredentialsOut:
+        """Update Fivetran credentials
+
+        Change Fivetran credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change. Sending an empty body returns the credentials as they are.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param fivetran_credentials_patch: (required)
+        :type fivetran_credentials_patch: FivetranCredentialsPatch
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_fivetran_credentials_serialize(
+            credentials_id=credentials_id,
+            fivetran_credentials_patch=fivetran_credentials_patch,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "FivetranCredentialsOut",
+            '404': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _update_fivetran_credentials_serialize(
+        self,
+        credentials_id,
+        fivetran_credentials_patch,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if fivetran_credentials_patch is not None:
+            _body_params = fivetran_credentials_patch
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/api/v2/credentials/fivetran/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_gcp_dataform_credentials(
+        self,
+        credentials_id: UUID,
+        gcp_dataform_credentials_patch: GcpDataformCredentialsPatch,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GcpDataformCredentialsOut:
+        """Update GCP Dataform credentials
+
+        Change GCP Dataform credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change. Sending an empty body returns the credentials as they are.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param gcp_dataform_credentials_patch: (required)
+        :type gcp_dataform_credentials_patch: GcpDataformCredentialsPatch
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_gcp_dataform_credentials_serialize(
+            credentials_id=credentials_id,
+            gcp_dataform_credentials_patch=gcp_dataform_credentials_patch,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GcpDataformCredentialsOut",
+            '404': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _update_gcp_dataform_credentials_serialize(
+        self,
+        credentials_id,
+        gcp_dataform_credentials_patch,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if gcp_dataform_credentials_patch is not None:
+            _body_params = gcp_dataform_credentials_patch
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/api/v2/credentials/gcp-dataform/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_gcp_secret_manager_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         gcp_secret_manager_credentials_patch: GcpSecretManagerCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -13281,7 +16496,7 @@ class CredentialsApi:
 
         Change GCP Secret Manager credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, and an optional field set to null is cleared. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param gcp_secret_manager_credentials_patch: (required)
         :type gcp_secret_manager_credentials_patch: GcpSecretManagerCredentialsPatch
@@ -13403,6 +16618,165 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='PATCH',
             resource_path='/api/v2/credentials/self-hosted/gcp/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_informatica_v2_credentials(
+        self,
+        credentials_id: UUID,
+        informatica_v2_credentials_patch: InformaticaV2CredentialsPatch,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> InformaticaV2CredentialsOut:
+        """Update Informatica credentials
+
+        Change Informatica credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change. Sending an empty body returns the credentials as they are.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param informatica_v2_credentials_patch: (required)
+        :type informatica_v2_credentials_patch: InformaticaV2CredentialsPatch
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_informatica_v2_credentials_serialize(
+            credentials_id=credentials_id,
+            informatica_v2_credentials_patch=informatica_v2_credentials_patch,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "InformaticaV2CredentialsOut",
+            '404': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _update_informatica_v2_credentials_serialize(
+        self,
+        credentials_id,
+        informatica_v2_credentials_patch,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if informatica_v2_credentials_patch is not None:
+            _body_params = informatica_v2_credentials_patch
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/api/v2/credentials/informatica-v2/{credentials_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -13739,7 +17113,7 @@ class CredentialsApi:
     @validate_call
     def update_mariadb_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         maria_db_credentials_patch: MariaDbCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -13758,7 +17132,7 @@ class CredentialsApi:
 
         Change MariaDB credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, `db_name` set to null is cleared, and `password` set to null is unchanged. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param maria_db_credentials_patch: (required)
         :type maria_db_credentials_patch: MariaDbCredentialsPatch
@@ -13896,9 +17270,168 @@ class CredentialsApi:
 
 
     @validate_call
-    def update_mysql_credentials(
+    def update_mulesoft_credentials(
         self,
         credentials_id: UUID,
+        mulesoft_credentials_patch: MulesoftCredentialsPatch,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> MulesoftCredentialsOut:
+        """Update MuleSoft credentials
+
+        Change MuleSoft credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change. Sending an empty body returns the credentials as they are.
+
+        :param credentials_id: (required)
+        :type credentials_id: UUID
+        :param mulesoft_credentials_patch: (required)
+        :type mulesoft_credentials_patch: MulesoftCredentialsPatch
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_mulesoft_credentials_serialize(
+            credentials_id=credentials_id,
+            mulesoft_credentials_patch=mulesoft_credentials_patch,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "MulesoftCredentialsOut",
+            '404': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _update_mulesoft_credentials_serialize(
+        self,
+        credentials_id,
+        mulesoft_credentials_patch,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if mulesoft_credentials_patch is not None:
+            _body_params = mulesoft_credentials_patch
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/api/v2/credentials/mulesoft/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_mysql_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         my_sql_credentials_patch: MySqlCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -13917,7 +17450,7 @@ class CredentialsApi:
 
         Change MySQL credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, `db_name` or an `ssl_*` field set to null is cleared, and `password` set to null is unchanged. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param my_sql_credentials_patch: (required)
         :type my_sql_credentials_patch: MySqlCredentialsPatch
@@ -14057,7 +17590,7 @@ class CredentialsApi:
     @validate_call
     def update_oracle_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         oracle_credentials_patch: OracleCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -14076,7 +17609,7 @@ class CredentialsApi:
 
         Change Oracle credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, an `ssl_*` field set to null is cleared, and `password` set to null is unchanged. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param oracle_credentials_patch: (required)
         :type oracle_credentials_patch: OracleCredentialsPatch
@@ -14216,7 +17749,7 @@ class CredentialsApi:
     @validate_call
     def update_postgres_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         postgres_credentials_patch: PostgresCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -14235,7 +17768,7 @@ class CredentialsApi:
 
         Change PostgreSQL credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, a setting or an `ssl_*` field set to null is cleared, and `password` set to null is unchanged. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param postgres_credentials_patch: (required)
         :type postgres_credentials_patch: PostgresCredentialsPatch
@@ -14534,7 +18067,7 @@ class CredentialsApi:
     @validate_call
     def update_redshift_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         redshift_credentials_patch: RedshiftCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -14553,7 +18086,7 @@ class CredentialsApi:
 
         Change Redshift credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, an `ssl_*` field set to null is cleared, and `password` set to null is unchanged. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param redshift_credentials_patch: (required)
         :type redshift_credentials_patch: RedshiftCredentialsPatch
@@ -14693,7 +18226,7 @@ class CredentialsApi:
     @validate_call
     def update_sap_hana_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         sap_hana_credentials_patch: SapHanaCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -14712,7 +18245,7 @@ class CredentialsApi:
 
         Change SAP HANA credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, and `password` set to null is unchanged. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param sap_hana_credentials_patch: (required)
         :type sap_hana_credentials_patch: SapHanaCredentialsPatch
@@ -14852,7 +18385,7 @@ class CredentialsApi:
     @validate_call
     def update_snowflake_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         snowflake_credentials_patch: SnowflakeCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -14871,7 +18404,7 @@ class CredentialsApi:
 
         Change Snowflake credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, `warehouse` set to null is cleared, and a new `private_key` replaces the whole key pair. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param snowflake_credentials_patch: (required)
         :type snowflake_credentials_patch: SnowflakeCredentialsPatch
@@ -15011,7 +18544,7 @@ class CredentialsApi:
     @validate_call
     def update_starburst_enterprise_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         starburst_enterprise_credentials_patch: StarburstEnterpriseCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -15030,7 +18563,7 @@ class CredentialsApi:
 
         Change Starburst Enterprise credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, `db_name` or an `ssl_*` field set to null is cleared, and `password` set to null is unchanged. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param starburst_enterprise_credentials_patch: (required)
         :type starburst_enterprise_credentials_patch: StarburstEnterpriseCredentialsPatch
@@ -15170,7 +18703,7 @@ class CredentialsApi:
     @validate_call
     def update_starburst_galaxy_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         starburst_galaxy_credentials_patch: StarburstGalaxyCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -15189,7 +18722,7 @@ class CredentialsApi:
 
         Change Starburst Galaxy credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, `db_name` set to null is cleared, and `password` set to null is unchanged. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param starburst_galaxy_credentials_patch: (required)
         :type starburst_galaxy_credentials_patch: StarburstGalaxyCredentialsPatch
@@ -15489,7 +19022,7 @@ class CredentialsApi:
     @validate_call
     def update_teradata_credentials(
         self,
-        credentials_id: UUID,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
         teradata_credentials_patch: TeradataCredentialsPatch,
         _request_timeout: Union[
             None,
@@ -15508,7 +19041,7 @@ class CredentialsApi:
 
         Change Teradata credentials in place.  Every connection using the credentials picks up the change. Send only the fields to change: a field left out is unchanged, `db_name`, a setting or an `ssl_*` field set to null is cleared, and `password` set to null is unchanged. Sending an empty body returns the credentials as they are.
 
-        :param credentials_id: (required)
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
         :param teradata_credentials_patch: (required)
         :type teradata_credentials_patch: TeradataCredentialsPatch
@@ -15783,6 +19316,159 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/api/v2/credentials/self-hosted/aws/validate',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def validate_azure_data_factory_credentials(
+        self,
+        azure_data_factory_credentials_validate_in: AzureDataFactoryCredentialsValidateIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ValidationRunOut:
+        """Validate Azure Data Factory credentials
+
+        Check candidate Azure Data Factory credentials against Azure Data Factory.  No credentials are created. Send the values you would create the credentials with, and a deployment to run them from, and the checks run against your data factory.  The response is the run as it starts, and `Location` names where to read it. Poll that until the run's status is `completed`; each validation carries its own verdict.
+
+        :param azure_data_factory_credentials_validate_in: (required)
+        :type azure_data_factory_credentials_validate_in: AzureDataFactoryCredentialsValidateIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._validate_azure_data_factory_credentials_serialize(
+            azure_data_factory_credentials_validate_in=azure_data_factory_credentials_validate_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "ValidationRunOut",
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _validate_azure_data_factory_credentials_serialize(
+        self,
+        azure_data_factory_credentials_validate_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if azure_data_factory_credentials_validate_in is not None:
+            _body_params = azure_data_factory_credentials_validate_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/azure-data-factory/validate',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -17329,6 +21015,312 @@ class CredentialsApi:
 
 
     @validate_call
+    def validate_fivetran_credentials(
+        self,
+        fivetran_credentials_validate_in: FivetranCredentialsValidateIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ValidationRunOut:
+        """Validate Fivetran credentials
+
+        Check candidate Fivetran credentials against Fivetran.  No credentials are created. Send the values you would create the credentials with, and a deployment to run them from, and the checks run against your Fivetran account.  The response is the run as it starts, and `Location` names where to read it. Poll that until the run's status is `completed`; each validation carries its own verdict.
+
+        :param fivetran_credentials_validate_in: (required)
+        :type fivetran_credentials_validate_in: FivetranCredentialsValidateIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._validate_fivetran_credentials_serialize(
+            fivetran_credentials_validate_in=fivetran_credentials_validate_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "ValidationRunOut",
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _validate_fivetran_credentials_serialize(
+        self,
+        fivetran_credentials_validate_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if fivetran_credentials_validate_in is not None:
+            _body_params = fivetran_credentials_validate_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/fivetran/validate',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def validate_gcp_dataform_credentials(
+        self,
+        gcp_dataform_credentials_validate_in: GcpDataformCredentialsValidateIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ValidationRunOut:
+        """Validate GCP Dataform credentials
+
+        Check candidate GCP Dataform credentials against GCP Dataform.  No credentials are created. Send the values you would create the credentials with, and a deployment to run them from, and the checks run against Dataform in your project.  The response is the run as it starts, and `Location` names where to read it. Poll that until the run's status is `completed`; each validation carries its own verdict.
+
+        :param gcp_dataform_credentials_validate_in: (required)
+        :type gcp_dataform_credentials_validate_in: GcpDataformCredentialsValidateIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._validate_gcp_dataform_credentials_serialize(
+            gcp_dataform_credentials_validate_in=gcp_dataform_credentials_validate_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "ValidationRunOut",
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _validate_gcp_dataform_credentials_serialize(
+        self,
+        gcp_dataform_credentials_validate_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if gcp_dataform_credentials_validate_in is not None:
+            _body_params = gcp_dataform_credentials_validate_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/gcp-dataform/validate',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def validate_gcp_secret_manager_credentials(
         self,
         gcp_secret_manager_credentials_validate_in: GcpSecretManagerCredentialsValidateIn,
@@ -17466,6 +21458,159 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/api/v2/credentials/self-hosted/gcp/validate',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def validate_informatica_v2_credentials(
+        self,
+        informatica_v2_credentials_validate_in: InformaticaV2CredentialsValidateIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ValidationRunOut:
+        """Validate Informatica credentials
+
+        Check candidate Informatica credentials against Informatica.  No credentials are created. Send the values you would create the credentials with, and a deployment to run them from, and the checks run against your Informatica organization.  The response is the run as it starts, and `Location` names where to read it. Poll that until the run's status is `completed`; each validation carries its own verdict.
+
+        :param informatica_v2_credentials_validate_in: (required)
+        :type informatica_v2_credentials_validate_in: InformaticaV2CredentialsValidateIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._validate_informatica_v2_credentials_serialize(
+            informatica_v2_credentials_validate_in=informatica_v2_credentials_validate_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "ValidationRunOut",
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _validate_informatica_v2_credentials_serialize(
+        self,
+        informatica_v2_credentials_validate_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if informatica_v2_credentials_validate_in is not None:
+            _body_params = informatica_v2_credentials_validate_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/informatica-v2/validate',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -17925,6 +22070,159 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/api/v2/credentials/mariadb/validate',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def validate_mulesoft_credentials(
+        self,
+        mulesoft_credentials_validate_in: MulesoftCredentialsValidateIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ValidationRunOut:
+        """Validate MuleSoft credentials
+
+        Check candidate MuleSoft credentials against MuleSoft.  No credentials are created. Send the values you would create the credentials with, and a deployment to run them from, and the checks run against your Anypoint organization.  The response is the run as it starts, and `Location` names where to read it. Poll that until the run's status is `completed`; each validation carries its own verdict.
+
+        :param mulesoft_credentials_validate_in: (required)
+        :type mulesoft_credentials_validate_in: MulesoftCredentialsValidateIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._validate_mulesoft_credentials_serialize(
+            mulesoft_credentials_validate_in=mulesoft_credentials_validate_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "ValidationRunOut",
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _validate_mulesoft_credentials_serialize(
+        self,
+        mulesoft_credentials_validate_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if mulesoft_credentials_validate_in is not None:
+            _body_params = mulesoft_credentials_validate_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/mulesoft/validate',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

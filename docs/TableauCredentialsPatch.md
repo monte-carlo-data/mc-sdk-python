@@ -1,6 +1,6 @@
 # TableauCredentialsPatch
 
-A change to existing Tableau credentials.  A field left out is unchanged. `site_name`, `verify_ssl` and `username` set to null are cleared. A secret set to null is unchanged. `server_name` cannot be cleared. Sending a field of another way to sign in drops the stored one: a personal access token drops the username too. Sending an empty body returns the credentials as they are.
+A change to existing Tableau credentials.  A field left out is unchanged. `site_name` and `verify_ssl` set to null are cleared. A secret set to null is unchanged. `server_name` cannot be cleared, and neither can `username` while the credentials sign in with a password or a connected app, which need one. Sending a field of another way to sign in drops the stored one: a personal access token drops the username too. Sending an empty body returns the credentials as they are.
 
 ## Properties
 

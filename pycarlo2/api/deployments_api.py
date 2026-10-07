@@ -14,7 +14,9 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from pydantic import Field
 from typing import List
+from typing_extensions import Annotated
 from uuid import UUID
 from pycarlo2.models.deployment_in import DeploymentIn
 from pycarlo2.models.deployment_out import DeploymentOut
@@ -192,7 +194,7 @@ class DeploymentsApi:
     @validate_call
     def delete_deployment(
         self,
-        deployment_id: UUID,
+        deployment_id: Annotated[UUID, Field(description="Id of the deployment, as returned when it is created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -208,9 +210,9 @@ class DeploymentsApi:
     ) -> None:
         """Delete a deployment
 
-        Delete a deployment, releasing the infrastructure Monte Carlo runs for it.  The deployment's storage is deleted with it, so empty that storage first. A deployment with an enabled collection agent or data store, or with connections still running through it, cannot be deleted. Neither can one hosted by Monte Carlo, which this API does not provision. One that is not enabled is deleted along with the deployment.  Deleting reaches several systems and can stop partway through. Repeating the request picks up where it stopped, so clear whatever a refusal named and send it again.
+        Delete a deployment, releasing the infrastructure Monte Carlo runs for it.  The deployment's storage is deleted with it, so empty that storage first. A deployment with an enabled collection agent or data store, connections still running through it, or ETL containers on it, cannot be deleted. Neither can one hosted by Monte Carlo, which this API does not provision. One that is not enabled is deleted along with the deployment.  Deleting reaches several systems and can stop partway through. Repeating the request picks up where it stopped, so clear whatever a refusal named and send it again.
 
-        :param deployment_id: (required)
+        :param deployment_id: Id of the deployment, as returned when it is created or listed. (required)
         :type deployment_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -329,7 +331,7 @@ class DeploymentsApi:
     @validate_call
     def get_deployment(
         self,
-        deployment_id: UUID,
+        deployment_id: Annotated[UUID, Field(description="Id of the deployment, as returned when it is created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -347,7 +349,7 @@ class DeploymentsApi:
 
         Get one deployment. An AWS deployment includes the external id needed to register on it.  An id that does not exist, belongs to another account, or names a deployment on Monte Carlo's older collection platform all return 404.
 
-        :param deployment_id: (required)
+        :param deployment_id: Id of the deployment, as returned when it is created or listed. (required)
         :type deployment_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -593,7 +595,7 @@ class DeploymentsApi:
     @validate_call
     def reprovision_deployment(
         self,
-        deployment_id: UUID,
+        deployment_id: Annotated[UUID, Field(description="Id of the deployment, as returned when it is created or listed.")],
         deployment_in: DeploymentIn,
         _request_timeout: Union[
             None,
@@ -612,7 +614,7 @@ class DeploymentsApi:
 
         Give a deployment something fresh to register.  Use this to recover a deployment whose collection agent or data store was deleted, and to change what a deployment hosts. The deployment itself is kept, so it does not count against your account's limit a second time, and what it hosted is discarded. An AWS deployment is given a new external id, so a role trust policy naming the old one has to be updated.  A deployment whose collection agent or data store is enabled cannot be reprovisioned; delete that first. Neither can one hosted by Monte Carlo, which this API does not provision.
 
-        :param deployment_id: (required)
+        :param deployment_id: Id of the deployment, as returned when it is created or listed. (required)
         :type deployment_id: UUID
         :param deployment_in: (required)
         :type deployment_in: DeploymentIn
@@ -752,7 +754,7 @@ class DeploymentsApi:
     @validate_call
     def update_deployment(
         self,
-        deployment_id: UUID,
+        deployment_id: Annotated[UUID, Field(description="Id of the deployment, as returned when it is created or listed.")],
         deployment_patch: DeploymentPatch,
         _request_timeout: Union[
             None,
@@ -771,7 +773,7 @@ class DeploymentsApi:
 
         Rename a deployment.  The name is the only thing you can change here. What a deployment hosts and where it runs are settled when it is provisioned, so use reprovision to change either.  Renaming changes nothing about the infrastructure behind the deployment. Every deployment can be renamed, including one hosted by Monte Carlo. Sending an empty body leaves the deployment as it is and returns it.
 
-        :param deployment_id: (required)
+        :param deployment_id: Id of the deployment, as returned when it is created or listed. (required)
         :type deployment_id: UUID
         :param deployment_patch: (required)
         :type deployment_patch: DeploymentPatch

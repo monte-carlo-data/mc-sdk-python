@@ -7,6 +7,7 @@ from pycarlo2.api.collection_data_stores_api import CollectionDataStoresApi
 from pycarlo2.api.connections_api import ConnectionsApi
 from pycarlo2.api.credentials_api import CredentialsApi
 from pycarlo2.api.deployments_api import DeploymentsApi
+from pycarlo2.api.etl_containers_api import EtlContainersApi
 from pycarlo2.api.users_api import UsersApi
 from pycarlo2.api.validations_api import ValidationsApi
 from pycarlo2.api.warehouses_api import WarehousesApi

@@ -362,7 +362,7 @@ class CollectionAgentsApi:
     @validate_call
     def delete_aws_collection_agent(
         self,
-        collection_agent_id: UUID,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -380,7 +380,7 @@ class CollectionAgentsApi:
 
         Deregister an AWS collection agent.  Its deployment is left without an agent. Reprovision that deployment before registering another agent on it.  An agent cannot be deleted while its deployment still has a connection running through it. Delete or move those connections first.  An id that names an agent on another platform, or no agent in your account, returns 404.
 
-        :param collection_agent_id: (required)
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
         :type collection_agent_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -499,7 +499,7 @@ class CollectionAgentsApi:
     @validate_call
     def delete_azure_collection_agent(
         self,
-        collection_agent_id: UUID,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -517,7 +517,7 @@ class CollectionAgentsApi:
 
         Deregister an Azure collection agent.  Its deployment is left without an agent. Reprovision that deployment before registering another agent on it.  An agent cannot be deleted while its deployment still has a connection running through it. Delete or move those connections first.  An id that names an agent on another platform, or no agent in your account, returns 404.
 
-        :param collection_agent_id: (required)
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
         :type collection_agent_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -636,7 +636,7 @@ class CollectionAgentsApi:
     @validate_call
     def delete_gcp_collection_agent(
         self,
-        collection_agent_id: UUID,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -654,7 +654,7 @@ class CollectionAgentsApi:
 
         Deregister a GCP collection agent.  Its deployment is left without an agent. Reprovision that deployment before registering another agent on it.  An agent cannot be deleted while its deployment still has a connection running through it. Delete or move those connections first.  An id that names an agent on another platform, or no agent in your account, returns 404.
 
-        :param collection_agent_id: (required)
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
         :type collection_agent_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -773,7 +773,7 @@ class CollectionAgentsApi:
     @validate_call
     def delete_generic_collection_agent(
         self,
-        collection_agent_id: UUID,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -791,7 +791,7 @@ class CollectionAgentsApi:
 
         Deregister a generic collection agent.  Every credential created for its deployment is deleted with it, so a running agent stops being able to connect. Its deployment is left without an agent. Reprovision that deployment before registering another agent on it.  An agent cannot be deleted while its deployment still has a connection running through it. Delete or move those connections first.  An id that names an agent on another platform, or no agent in your account, returns 404.
 
-        :param collection_agent_id: (required)
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
         :type collection_agent_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -910,7 +910,7 @@ class CollectionAgentsApi:
     @validate_call
     def delete_generic_collection_agent_oauth_client(
         self,
-        credential_id: StrictStr,
+        credential_id: Annotated[StrictStr, Field(description="Id of the token or OAuth client, as returned when it is created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -928,7 +928,7 @@ class CollectionAgentsApi:
 
         Delete an OAuth client.  An agent still running with it stops being able to get new access tokens. Access tokens it already holds stay valid until they expire.  Deleting an id your account does not hold, or has already deleted, also returns 204.
 
-        :param credential_id: (required)
+        :param credential_id: Id of the token or OAuth client, as returned when it is created or listed. (required)
         :type credential_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1045,7 +1045,7 @@ class CollectionAgentsApi:
     @validate_call
     def delete_generic_collection_agent_token(
         self,
-        credential_id: StrictStr,
+        credential_id: Annotated[StrictStr, Field(description="Id of the token or OAuth client, as returned when it is created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1063,7 +1063,7 @@ class CollectionAgentsApi:
 
         Delete a token. An agent still running with it stops being able to connect.  Deleting an id your account does not hold, or has already deleted, also returns 204.
 
-        :param credential_id: (required)
+        :param credential_id: Id of the token or OAuth client, as returned when it is created or listed. (required)
         :type credential_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1180,7 +1180,7 @@ class CollectionAgentsApi:
     @validate_call
     def get_aws_collection_agent(
         self,
-        collection_agent_id: UUID,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1198,7 +1198,7 @@ class CollectionAgentsApi:
 
         Get one collection agent running on AWS, including its external id.  An id that names an agent on another platform, or no agent in your account, returns 404.
 
-        :param collection_agent_id: (required)
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
         :type collection_agent_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1316,7 +1316,7 @@ class CollectionAgentsApi:
     @validate_call
     def get_azure_collection_agent(
         self,
-        collection_agent_id: UUID,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1334,7 +1334,7 @@ class CollectionAgentsApi:
 
         Get one collection agent running on Azure.  An id that names an agent on another platform, or no agent in your account, returns 404.
 
-        :param collection_agent_id: (required)
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
         :type collection_agent_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1452,7 +1452,7 @@ class CollectionAgentsApi:
     @validate_call
     def get_gcp_collection_agent(
         self,
-        collection_agent_id: UUID,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1470,7 +1470,7 @@ class CollectionAgentsApi:
 
         Get one collection agent running on GCP.  An id that names an agent on another platform, or no agent in your account, returns 404.
 
-        :param collection_agent_id: (required)
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
         :type collection_agent_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1588,7 +1588,7 @@ class CollectionAgentsApi:
     @validate_call
     def get_generic_collection_agent(
         self,
-        collection_agent_id: UUID,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1606,7 +1606,7 @@ class CollectionAgentsApi:
 
         Get one generic collection agent.  An id that names an agent on another platform, or no agent in your account, returns 404.
 
-        :param collection_agent_id: (required)
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
         :type collection_agent_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1724,7 +1724,7 @@ class CollectionAgentsApi:
     @validate_call
     def get_generic_collection_agent_oauth_client(
         self,
-        credential_id: StrictStr,
+        credential_id: Annotated[StrictStr, Field(description="Id of the token or OAuth client, as returned when it is created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1742,7 +1742,7 @@ class CollectionAgentsApi:
 
         Get one OAuth client. The secret is not part of it.  An id that names another kind of credential, or no credential in your account, returns 404.
 
-        :param credential_id: (required)
+        :param credential_id: Id of the token or OAuth client, as returned when it is created or listed. (required)
         :type credential_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1860,7 +1860,7 @@ class CollectionAgentsApi:
     @validate_call
     def get_generic_collection_agent_token(
         self,
-        credential_id: StrictStr,
+        credential_id: Annotated[StrictStr, Field(description="Id of the token or OAuth client, as returned when it is created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1878,7 +1878,7 @@ class CollectionAgentsApi:
 
         Get one token. The secret is not part of it.  An id that names another kind of credential, or no credential in your account, returns 404.
 
-        :param credential_id: (required)
+        :param credential_id: Id of the token or OAuth client, as returned when it is created or listed. (required)
         :type credential_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2873,7 +2873,7 @@ class CollectionAgentsApi:
     @validate_call
     def update_aws_collection_agent(
         self,
-        collection_agent_id: UUID,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
         aws_collection_agent_patch: AwsCollectionAgentPatch,
         _request_timeout: Union[
             None,
@@ -2892,7 +2892,7 @@ class CollectionAgentsApi:
 
         Change the Lambda function, the role or the name of an AWS collection agent.  Send any of the fields, in any combination. Anything you leave out is kept as it is. An agent that has no Lambda function yet needs one supplied here, since there would otherwise be nothing for Monte Carlo to reach.  Monte Carlo reaches the agent and checks it again before saving the change, and re-enables the agent if it was disabled. A successful response therefore always describes a working agent. If the check fails, nothing about the agent changes. Sending only `name` skips the check.  An id that names an agent on another platform, or no agent in your account, returns 404.
 
-        :param collection_agent_id: (required)
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
         :type collection_agent_id: UUID
         :param aws_collection_agent_patch: (required)
         :type aws_collection_agent_patch: AwsCollectionAgentPatch
@@ -3033,7 +3033,7 @@ class CollectionAgentsApi:
     @validate_call
     def update_azure_collection_agent(
         self,
-        collection_agent_id: UUID,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
         azure_collection_agent_patch: AzureCollectionAgentPatch,
         _request_timeout: Union[
             None,
@@ -3052,7 +3052,7 @@ class CollectionAgentsApi:
 
         Change the function app, the credentials, the authentication type or the name.  Send any of the fields, in any combination. An agent that has no function app URL yet needs one supplied here, since there would otherwise be nothing for Monte Carlo to reach. Sending credentials replaces the stored ones, so send every field of the object you send, along with the matching `authentication_type`. Sending both is also how you move an agent from one authentication type to the other. An agent that authenticates some other way refuses a credentials or authentication type change, since this endpoint only manages the two Azure function authentication types.  Monte Carlo reaches the agent and checks it again before saving the change, and re-enables the agent if it was disabled. A successful response therefore always describes a working agent. If the check fails, nothing about the agent changes. Sending only `name` skips the check.  An id that names an agent on another platform, or no agent in your account, returns 404.
 
-        :param collection_agent_id: (required)
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
         :type collection_agent_id: UUID
         :param azure_collection_agent_patch: (required)
         :type azure_collection_agent_patch: AzureCollectionAgentPatch
@@ -3193,7 +3193,7 @@ class CollectionAgentsApi:
     @validate_call
     def update_gcp_collection_agent(
         self,
-        collection_agent_id: UUID,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
         gcp_collection_agent_patch: GcpCollectionAgentPatch,
         _request_timeout: Union[
             None,
@@ -3212,7 +3212,7 @@ class CollectionAgentsApi:
 
         Change the Cloud Run service, the credentials, the authentication type or the name.  Send any of the fields, in any combination. An agent that has no Cloud Run URL yet needs one supplied here, since there would otherwise be nothing for Monte Carlo to reach. Sending credentials replaces the stored ones, and sending `authentication_type` along with them moves the agent between the two GCP authentication types. An agent that authenticates some other way refuses a Cloud Run URL or credentials change, since this endpoint only manages the two GCP authentication types.  Monte Carlo reaches the agent and checks it again before saving the change, and re-enables the agent if it was disabled. A successful response therefore always describes a working agent. If the check fails, nothing about the agent changes. Sending only `name` skips the check.  An id that names an agent on another platform, or no agent in your account, returns 404.
 
-        :param collection_agent_id: (required)
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
         :type collection_agent_id: UUID
         :param gcp_collection_agent_patch: (required)
         :type gcp_collection_agent_patch: GcpCollectionAgentPatch
@@ -3353,7 +3353,7 @@ class CollectionAgentsApi:
     @validate_call
     def update_generic_collection_agent(
         self,
-        collection_agent_id: UUID,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
         generic_collection_agent_patch: GenericCollectionAgentPatch,
         _request_timeout: Union[
             None,
@@ -3372,7 +3372,7 @@ class CollectionAgentsApi:
 
         Rename a generic collection agent.  The name is the only thing you can change. How the agent authenticates is managed through its deployment's credentials, and where it runs is yours to manage. Sending an empty body leaves the agent as it is and returns it.  An id that names an agent on another platform, or no agent in your account, returns 404.
 
-        :param collection_agent_id: (required)
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
         :type collection_agent_id: UUID
         :param generic_collection_agent_patch: (required)
         :type generic_collection_agent_patch: GenericCollectionAgentPatch

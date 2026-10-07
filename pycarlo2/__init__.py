@@ -24,6 +24,7 @@ __all__ = [
     "ConnectionsApi",
     "CredentialsApi",
     "DeploymentsApi",
+    "EtlContainersApi",
     "UsersApi",
     "ValidationsApi",
     "WarehousesApi",
@@ -39,6 +40,9 @@ __all__ = [
     "Options",
     "new_client",
     "CredentialsError",
+    "AirflowCredentialsIn",
+    "AirflowCredentialsOut",
+    "AirflowCredentialsPatch",
     "AuthHeadersCredentialsIn",
     "AuthenticationType",
     "AwsCollectionAgentIn",
@@ -58,6 +62,10 @@ __all__ = [
     "AzureCollectionDataStoreIn",
     "AzureCollectionDataStoreOut",
     "AzureCollectionDataStorePatch",
+    "AzureDataFactoryCredentialsIn",
+    "AzureDataFactoryCredentialsOut",
+    "AzureDataFactoryCredentialsPatch",
+    "AzureDataFactoryCredentialsValidateIn",
     "AzureDataStoreAuthenticationType",
     "AzureDedicatedSqlPoolCredentialsIn",
     "AzureDedicatedSqlPoolCredentialsOut",
@@ -114,11 +122,19 @@ __all__ = [
     "EnvVarCredentialsOut",
     "EnvVarCredentialsPatch",
     "EnvVarCredentialsValidateIn",
+    "EtlContainerIn",
+    "EtlContainerOut",
+    "EtlContainerPatch",
+    "EtlContainerType",
     "FieldErrorOut",
     "FileCredentialsIn",
     "FileCredentialsOut",
     "FileCredentialsPatch",
     "FileCredentialsValidateIn",
+    "FivetranCredentialsIn",
+    "FivetranCredentialsOut",
+    "FivetranCredentialsPatch",
+    "FivetranCredentialsValidateIn",
     "FunctionAppKeyCredentialsIn",
     "GcpAgentAuthenticationType",
     "GcpCollectionAgentIn",
@@ -127,6 +143,10 @@ __all__ = [
     "GcpCollectionDataStoreIn",
     "GcpCollectionDataStoreOut",
     "GcpCollectionDataStorePatch",
+    "GcpDataformCredentialsIn",
+    "GcpDataformCredentialsOut",
+    "GcpDataformCredentialsPatch",
+    "GcpDataformCredentialsValidateIn",
     "GcpSecretManagerCredentialsIn",
     "GcpSecretManagerCredentialsOut",
     "GcpSecretManagerCredentialsPatch",
@@ -141,6 +161,11 @@ __all__ = [
     "GenericCollectionAgentTokenIn",
     "GenericCollectionAgentTokenOut",
     "IdentityType",
+    "InformaticaV2AuthMode",
+    "InformaticaV2CredentialsIn",
+    "InformaticaV2CredentialsOut",
+    "InformaticaV2CredentialsPatch",
+    "InformaticaV2CredentialsValidateIn",
     "Input",
     "LookerCredentialsIn",
     "LookerCredentialsOut",
@@ -154,11 +179,18 @@ __all__ = [
     "MariaDbCredentialsOut",
     "MariaDbCredentialsPatch",
     "MariaDbCredentialsValidateIn",
+    "MulesoftCredentialsIn",
+    "MulesoftCredentialsOut",
+    "MulesoftCredentialsPatch",
+    "MulesoftCredentialsValidateIn",
+    "MulesoftRegion",
     "MySqlCredentialsIn",
     "MySqlCredentialsOut",
     "MySqlCredentialsPatch",
     "MySqlCredentialsValidateIn",
     "NewBiContainerType",
+    "NewEtlContainerType",
+    "OAuthGrantType",
     "OracleCredentialsIn",
     "OracleCredentialsOut",
     "OracleCredentialsPatch",
@@ -230,6 +262,7 @@ from pycarlo2.api.collection_data_stores_api import CollectionDataStoresApi as C
 from pycarlo2.api.connections_api import ConnectionsApi as ConnectionsApi
 from pycarlo2.api.credentials_api import CredentialsApi as CredentialsApi
 from pycarlo2.api.deployments_api import DeploymentsApi as DeploymentsApi
+from pycarlo2.api.etl_containers_api import EtlContainersApi as EtlContainersApi
 from pycarlo2.api.users_api import UsersApi as UsersApi
 from pycarlo2.api.validations_api import ValidationsApi as ValidationsApi
 from pycarlo2.api.warehouses_api import WarehousesApi as WarehousesApi
@@ -246,6 +279,9 @@ from pycarlo2.exceptions import ApiAttributeError as ApiAttributeError
 from pycarlo2.exceptions import ApiException as ApiException
 
 # import models into sdk package
+from pycarlo2.models.airflow_credentials_in import AirflowCredentialsIn as AirflowCredentialsIn
+from pycarlo2.models.airflow_credentials_out import AirflowCredentialsOut as AirflowCredentialsOut
+from pycarlo2.models.airflow_credentials_patch import AirflowCredentialsPatch as AirflowCredentialsPatch
 from pycarlo2.models.auth_headers_credentials_in import AuthHeadersCredentialsIn as AuthHeadersCredentialsIn
 from pycarlo2.models.authentication_type import AuthenticationType as AuthenticationType
 from pycarlo2.models.aws_collection_agent_in import AwsCollectionAgentIn as AwsCollectionAgentIn
@@ -265,6 +301,10 @@ from pycarlo2.models.azure_collection_agent_patch import AzureCollectionAgentPat
 from pycarlo2.models.azure_collection_data_store_in import AzureCollectionDataStoreIn as AzureCollectionDataStoreIn
 from pycarlo2.models.azure_collection_data_store_out import AzureCollectionDataStoreOut as AzureCollectionDataStoreOut
 from pycarlo2.models.azure_collection_data_store_patch import AzureCollectionDataStorePatch as AzureCollectionDataStorePatch
+from pycarlo2.models.azure_data_factory_credentials_in import AzureDataFactoryCredentialsIn as AzureDataFactoryCredentialsIn
+from pycarlo2.models.azure_data_factory_credentials_out import AzureDataFactoryCredentialsOut as AzureDataFactoryCredentialsOut
+from pycarlo2.models.azure_data_factory_credentials_patch import AzureDataFactoryCredentialsPatch as AzureDataFactoryCredentialsPatch
+from pycarlo2.models.azure_data_factory_credentials_validate_in import AzureDataFactoryCredentialsValidateIn as AzureDataFactoryCredentialsValidateIn
 from pycarlo2.models.azure_data_store_authentication_type import AzureDataStoreAuthenticationType as AzureDataStoreAuthenticationType
 from pycarlo2.models.azure_dedicated_sql_pool_credentials_in import AzureDedicatedSqlPoolCredentialsIn as AzureDedicatedSqlPoolCredentialsIn
 from pycarlo2.models.azure_dedicated_sql_pool_credentials_out import AzureDedicatedSqlPoolCredentialsOut as AzureDedicatedSqlPoolCredentialsOut
@@ -321,11 +361,19 @@ from pycarlo2.models.env_var_credentials_in import EnvVarCredentialsIn as EnvVar
 from pycarlo2.models.env_var_credentials_out import EnvVarCredentialsOut as EnvVarCredentialsOut
 from pycarlo2.models.env_var_credentials_patch import EnvVarCredentialsPatch as EnvVarCredentialsPatch
 from pycarlo2.models.env_var_credentials_validate_in import EnvVarCredentialsValidateIn as EnvVarCredentialsValidateIn
+from pycarlo2.models.etl_container_in import EtlContainerIn as EtlContainerIn
+from pycarlo2.models.etl_container_out import EtlContainerOut as EtlContainerOut
+from pycarlo2.models.etl_container_patch import EtlContainerPatch as EtlContainerPatch
+from pycarlo2.models.etl_container_type import EtlContainerType as EtlContainerType
 from pycarlo2.models.field_error_out import FieldErrorOut as FieldErrorOut
 from pycarlo2.models.file_credentials_in import FileCredentialsIn as FileCredentialsIn
 from pycarlo2.models.file_credentials_out import FileCredentialsOut as FileCredentialsOut
 from pycarlo2.models.file_credentials_patch import FileCredentialsPatch as FileCredentialsPatch
 from pycarlo2.models.file_credentials_validate_in import FileCredentialsValidateIn as FileCredentialsValidateIn
+from pycarlo2.models.fivetran_credentials_in import FivetranCredentialsIn as FivetranCredentialsIn
+from pycarlo2.models.fivetran_credentials_out import FivetranCredentialsOut as FivetranCredentialsOut
+from pycarlo2.models.fivetran_credentials_patch import FivetranCredentialsPatch as FivetranCredentialsPatch
+from pycarlo2.models.fivetran_credentials_validate_in import FivetranCredentialsValidateIn as FivetranCredentialsValidateIn
 from pycarlo2.models.function_app_key_credentials_in import FunctionAppKeyCredentialsIn as FunctionAppKeyCredentialsIn
 from pycarlo2.models.gcp_agent_authentication_type import GcpAgentAuthenticationType as GcpAgentAuthenticationType
 from pycarlo2.models.gcp_collection_agent_in import GcpCollectionAgentIn as GcpCollectionAgentIn
@@ -334,6 +382,10 @@ from pycarlo2.models.gcp_collection_agent_patch import GcpCollectionAgentPatch a
 from pycarlo2.models.gcp_collection_data_store_in import GcpCollectionDataStoreIn as GcpCollectionDataStoreIn
 from pycarlo2.models.gcp_collection_data_store_out import GcpCollectionDataStoreOut as GcpCollectionDataStoreOut
 from pycarlo2.models.gcp_collection_data_store_patch import GcpCollectionDataStorePatch as GcpCollectionDataStorePatch
+from pycarlo2.models.gcp_dataform_credentials_in import GcpDataformCredentialsIn as GcpDataformCredentialsIn
+from pycarlo2.models.gcp_dataform_credentials_out import GcpDataformCredentialsOut as GcpDataformCredentialsOut
+from pycarlo2.models.gcp_dataform_credentials_patch import GcpDataformCredentialsPatch as GcpDataformCredentialsPatch
+from pycarlo2.models.gcp_dataform_credentials_validate_in import GcpDataformCredentialsValidateIn as GcpDataformCredentialsValidateIn
 from pycarlo2.models.gcp_secret_manager_credentials_in import GcpSecretManagerCredentialsIn as GcpSecretManagerCredentialsIn
 from pycarlo2.models.gcp_secret_manager_credentials_out import GcpSecretManagerCredentialsOut as GcpSecretManagerCredentialsOut
 from pycarlo2.models.gcp_secret_manager_credentials_patch import GcpSecretManagerCredentialsPatch as GcpSecretManagerCredentialsPatch
@@ -348,6 +400,11 @@ from pycarlo2.models.generic_collection_agent_token_created_out import GenericCo
 from pycarlo2.models.generic_collection_agent_token_in import GenericCollectionAgentTokenIn as GenericCollectionAgentTokenIn
 from pycarlo2.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut as GenericCollectionAgentTokenOut
 from pycarlo2.models.identity_type import IdentityType as IdentityType
+from pycarlo2.models.informatica_v2_auth_mode import InformaticaV2AuthMode as InformaticaV2AuthMode
+from pycarlo2.models.informatica_v2_credentials_in import InformaticaV2CredentialsIn as InformaticaV2CredentialsIn
+from pycarlo2.models.informatica_v2_credentials_out import InformaticaV2CredentialsOut as InformaticaV2CredentialsOut
+from pycarlo2.models.informatica_v2_credentials_patch import InformaticaV2CredentialsPatch as InformaticaV2CredentialsPatch
+from pycarlo2.models.informatica_v2_credentials_validate_in import InformaticaV2CredentialsValidateIn as InformaticaV2CredentialsValidateIn
 from pycarlo2.models.input import Input as Input
 from pycarlo2.models.looker_credentials_in import LookerCredentialsIn as LookerCredentialsIn
 from pycarlo2.models.looker_credentials_out import LookerCredentialsOut as LookerCredentialsOut
@@ -361,11 +418,18 @@ from pycarlo2.models.maria_db_credentials_in import MariaDbCredentialsIn as Mari
 from pycarlo2.models.maria_db_credentials_out import MariaDbCredentialsOut as MariaDbCredentialsOut
 from pycarlo2.models.maria_db_credentials_patch import MariaDbCredentialsPatch as MariaDbCredentialsPatch
 from pycarlo2.models.maria_db_credentials_validate_in import MariaDbCredentialsValidateIn as MariaDbCredentialsValidateIn
+from pycarlo2.models.mulesoft_credentials_in import MulesoftCredentialsIn as MulesoftCredentialsIn
+from pycarlo2.models.mulesoft_credentials_out import MulesoftCredentialsOut as MulesoftCredentialsOut
+from pycarlo2.models.mulesoft_credentials_patch import MulesoftCredentialsPatch as MulesoftCredentialsPatch
+from pycarlo2.models.mulesoft_credentials_validate_in import MulesoftCredentialsValidateIn as MulesoftCredentialsValidateIn
+from pycarlo2.models.mulesoft_region import MulesoftRegion as MulesoftRegion
 from pycarlo2.models.my_sql_credentials_in import MySqlCredentialsIn as MySqlCredentialsIn
 from pycarlo2.models.my_sql_credentials_out import MySqlCredentialsOut as MySqlCredentialsOut
 from pycarlo2.models.my_sql_credentials_patch import MySqlCredentialsPatch as MySqlCredentialsPatch
 from pycarlo2.models.my_sql_credentials_validate_in import MySqlCredentialsValidateIn as MySqlCredentialsValidateIn
 from pycarlo2.models.new_bi_container_type import NewBiContainerType as NewBiContainerType
+from pycarlo2.models.new_etl_container_type import NewEtlContainerType as NewEtlContainerType
+from pycarlo2.models.o_auth_grant_type import OAuthGrantType as OAuthGrantType
 from pycarlo2.models.oracle_credentials_in import OracleCredentialsIn as OracleCredentialsIn
 from pycarlo2.models.oracle_credentials_out import OracleCredentialsOut as OracleCredentialsOut
 from pycarlo2.models.oracle_credentials_patch import OracleCredentialsPatch as OracleCredentialsPatch

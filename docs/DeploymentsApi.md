@@ -114,9 +114,9 @@ Delete a deployment
 Delete a deployment, releasing the infrastructure Monte Carlo runs for it.
 
 The deployment's storage is deleted with it, so empty that storage first. A deployment
-with an enabled collection agent or data store, or with connections still running through
-it, cannot be deleted. Neither can one hosted by Monte Carlo, which this API does not
-provision. One that is not enabled is deleted along with the deployment.
+with an enabled collection agent or data store, connections still running through it, or
+ETL containers on it, cannot be deleted. Neither can one hosted by Monte Carlo, which this
+API does not provision. One that is not enabled is deleted along with the deployment.
 
 Deleting reaches several systems and can stop partway through. Repeating the request
 picks up where it stopped, so clear whatever a refusal named and send it again.
@@ -150,7 +150,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.DeploymentsApi(api_client)
-    deployment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    deployment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the deployment, as returned when it is created or listed.
 
     try:
         # Delete a deployment
@@ -166,7 +166,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deployment_id** | **UUID**|  | 
+ **deployment_id** | **UUID**| Id of the deployment, as returned when it is created or listed. | 
 
 ### Return type
 
@@ -235,7 +235,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.DeploymentsApi(api_client)
-    deployment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    deployment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the deployment, as returned when it is created or listed.
 
     try:
         # Get a deployment
@@ -253,7 +253,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deployment_id** | **UUID**|  | 
+ **deployment_id** | **UUID**| Id of the deployment, as returned when it is created or listed. | 
 
 ### Return type
 
@@ -415,7 +415,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.DeploymentsApi(api_client)
-    deployment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    deployment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the deployment, as returned when it is created or listed.
     deployment_in = pycarlo2.DeploymentIn() # DeploymentIn | 
 
     try:
@@ -434,7 +434,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deployment_id** | **UUID**|  | 
+ **deployment_id** | **UUID**| Id of the deployment, as returned when it is created or listed. | 
  **deployment_in** | [**DeploymentIn**](DeploymentIn.md)|  | 
 
 ### Return type
@@ -510,7 +510,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.DeploymentsApi(api_client)
-    deployment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    deployment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the deployment, as returned when it is created or listed.
     deployment_patch = pycarlo2.DeploymentPatch() # DeploymentPatch | 
 
     try:
@@ -529,7 +529,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deployment_id** | **UUID**|  | 
+ **deployment_id** | **UUID**| Id of the deployment, as returned when it is created or listed. | 
  **deployment_patch** | [**DeploymentPatch**](DeploymentPatch.md)|  | 
 
 ### Return type

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **id** | **UUID** | Unique identifier of the BI container. | 
 **type** | [**BiContainerType**](BiContainerType.md) | The BI tool the container represents. Fixed once created. | 
 **name** | **str** | Display name of the BI container. Null for a container that was never named. | 
-**deployment_id** | **UUID** | The deployment the container&#39;s connections run through. Null for a custom BI connector&#39;s container, which has none. The id may name a deployment on Monte Carlo&#39;s older collection platform. The deployments endpoints do not list those. | 
+**deployment_id** | **UUID** | The deployment the container&#39;s connections run through. Null for a container with no deployment, such as a push-only custom BI connector&#39;s. The id may name a deployment on Monte Carlo&#39;s older collection platform. The deployments endpoints do not list those. | 
 **deployment_name** | **str** | Display name of the deployment. Null exactly when &#x60;deployment_id&#x60; is. | 
 **created_time** | **datetime** | When the BI container was created. | 
 

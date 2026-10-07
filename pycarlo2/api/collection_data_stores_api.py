@@ -14,7 +14,9 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from pydantic import Field
 from typing import List
+from typing_extensions import Annotated
 from uuid import UUID
 from pycarlo2.models.aws_collection_data_store_in import AwsCollectionDataStoreIn
 from pycarlo2.models.aws_collection_data_store_out import AwsCollectionDataStoreOut
@@ -46,7 +48,7 @@ class CollectionDataStoresApi:
     @validate_call
     def delete_aws_collection_data_store(
         self,
-        collection_data_store_id: UUID,
+        collection_data_store_id: Annotated[UUID, Field(description="Id of the collection data store, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,7 +66,7 @@ class CollectionDataStoresApi:
 
         Deregister an S3 data store.  Its deployment is left without one. Reprovision that deployment before registering another.  The bucket itself is yours and is not deleted.  A data store cannot be deleted while its deployment still has a connection running through it. Delete or move those connections first.  An id that names a data store on another platform, or no data store in your account, returns 404.
 
-        :param collection_data_store_id: (required)
+        :param collection_data_store_id: Id of the collection data store, as returned when it is registered or listed. (required)
         :type collection_data_store_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -183,7 +185,7 @@ class CollectionDataStoresApi:
     @validate_call
     def delete_azure_collection_data_store(
         self,
-        collection_data_store_id: UUID,
+        collection_data_store_id: Annotated[UUID, Field(description="Id of the collection data store, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -201,7 +203,7 @@ class CollectionDataStoresApi:
 
         Deregister a data store held in Azure Blob Storage.  Its deployment is left without one. Reprovision that deployment before registering another.  The container itself is yours and is not deleted.  A data store cannot be deleted while its deployment still has a connection running through it. Delete or move those connections first.  An id that names a data store on another platform, or no data store in your account, returns 404.
 
-        :param collection_data_store_id: (required)
+        :param collection_data_store_id: Id of the collection data store, as returned when it is registered or listed. (required)
         :type collection_data_store_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -320,7 +322,7 @@ class CollectionDataStoresApi:
     @validate_call
     def delete_gcp_collection_data_store(
         self,
-        collection_data_store_id: UUID,
+        collection_data_store_id: Annotated[UUID, Field(description="Id of the collection data store, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -338,7 +340,7 @@ class CollectionDataStoresApi:
 
         Deregister a data store held in Google Cloud Storage.  Its deployment is left without one. Reprovision that deployment before registering another.  The bucket itself is yours and is not deleted.  A data store cannot be deleted while its deployment still has a connection running through it. Delete or move those connections first.  An id that names a data store on another platform, or no data store in your account, returns 404.
 
-        :param collection_data_store_id: (required)
+        :param collection_data_store_id: Id of the collection data store, as returned when it is registered or listed. (required)
         :type collection_data_store_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -457,7 +459,7 @@ class CollectionDataStoresApi:
     @validate_call
     def get_aws_collection_data_store(
         self,
-        collection_data_store_id: UUID,
+        collection_data_store_id: Annotated[UUID, Field(description="Id of the collection data store, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -475,7 +477,7 @@ class CollectionDataStoresApi:
 
         Get one data store held in an S3 bucket, including its external id.  An id that names a data store on another platform, or no data store in your account, returns 404.
 
-        :param collection_data_store_id: (required)
+        :param collection_data_store_id: Id of the collection data store, as returned when it is registered or listed. (required)
         :type collection_data_store_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -593,7 +595,7 @@ class CollectionDataStoresApi:
     @validate_call
     def get_azure_collection_data_store(
         self,
-        collection_data_store_id: UUID,
+        collection_data_store_id: Annotated[UUID, Field(description="Id of the collection data store, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -611,7 +613,7 @@ class CollectionDataStoresApi:
 
         Read one data store held in Azure Blob Storage.  An id that names a data store on another platform, or no data store in your account, returns 404.
 
-        :param collection_data_store_id: (required)
+        :param collection_data_store_id: Id of the collection data store, as returned when it is registered or listed. (required)
         :type collection_data_store_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -729,7 +731,7 @@ class CollectionDataStoresApi:
     @validate_call
     def get_gcp_collection_data_store(
         self,
-        collection_data_store_id: UUID,
+        collection_data_store_id: Annotated[UUID, Field(description="Id of the collection data store, as returned when it is registered or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -747,7 +749,7 @@ class CollectionDataStoresApi:
 
         Read one data store held in Google Cloud Storage.  An id that names a data store on another platform, or no data store in your account, returns 404.
 
-        :param collection_data_store_id: (required)
+        :param collection_data_store_id: Id of the collection data store, as returned when it is registered or listed. (required)
         :type collection_data_store_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1452,7 +1454,7 @@ class CollectionDataStoresApi:
     @validate_call
     def update_aws_collection_data_store(
         self,
-        collection_data_store_id: UUID,
+        collection_data_store_id: Annotated[UUID, Field(description="Id of the collection data store, as returned when it is registered or listed.")],
         aws_collection_data_store_patch: AwsCollectionDataStorePatch,
         _request_timeout: Union[
             None,
@@ -1471,7 +1473,7 @@ class CollectionDataStoresApi:
 
         Change the bucket, the role or the name of an S3 data store.  Send any of the three. Anything you leave out is kept as it is. A data store with no bucket yet needs one supplied here.  A new bucket or role is checked before it is saved, and re-enables a data store that had been disabled. Nothing changes if that check fails. Sending only `name` skips the check.  An id that names a data store on another platform, or no data store in your account, returns 404.
 
-        :param collection_data_store_id: (required)
+        :param collection_data_store_id: Id of the collection data store, as returned when it is registered or listed. (required)
         :type collection_data_store_id: UUID
         :param aws_collection_data_store_patch: (required)
         :type aws_collection_data_store_patch: AwsCollectionDataStorePatch
@@ -1612,7 +1614,7 @@ class CollectionDataStoresApi:
     @validate_call
     def update_azure_collection_data_store(
         self,
-        collection_data_store_id: UUID,
+        collection_data_store_id: Annotated[UUID, Field(description="Id of the collection data store, as returned when it is registered or listed.")],
         azure_collection_data_store_patch: AzureCollectionDataStorePatch,
         _request_timeout: Union[
             None,
@@ -1631,7 +1633,7 @@ class CollectionDataStoresApi:
 
         Change the container, the credentials, the authentication type or the name.  Send any of them. Anything you leave out is kept as it is. A data store with no container yet needs one supplied here.  A credentials object replaces the stored credentials rather than merging into them, so send every field of it, along with the `authentication_type` it belongs to. That is also how you move a data store between the two authentication types.  Anything Monte Carlo validates against your storage is checked before it is saved, and re-enables a data store that had been disabled. Nothing changes if that check fails. Sending only `name` skips the check.  An id that names a data store on another platform, or no data store in your account, returns 404.
 
-        :param collection_data_store_id: (required)
+        :param collection_data_store_id: Id of the collection data store, as returned when it is registered or listed. (required)
         :type collection_data_store_id: UUID
         :param azure_collection_data_store_patch: (required)
         :type azure_collection_data_store_patch: AzureCollectionDataStorePatch
@@ -1772,7 +1774,7 @@ class CollectionDataStoresApi:
     @validate_call
     def update_gcp_collection_data_store(
         self,
-        collection_data_store_id: UUID,
+        collection_data_store_id: Annotated[UUID, Field(description="Id of the collection data store, as returned when it is registered or listed.")],
         gcp_collection_data_store_patch: GcpCollectionDataStorePatch,
         _request_timeout: Union[
             None,
@@ -1791,7 +1793,7 @@ class CollectionDataStoresApi:
 
         Change the bucket, the service account key or the name.  Send any of them. Anything you leave out is kept as it is. A data store with no bucket yet needs one supplied here.  The service account key replaces the stored key rather than merging into it.  Anything Monte Carlo validates against your storage is checked before it is saved, and re-enables a data store that had been disabled. Nothing changes if that check fails. Sending only `name` skips the check.  An id that names a data store on another platform, or no data store in your account, returns 404.
 
-        :param collection_data_store_id: (required)
+        :param collection_data_store_id: Id of the collection data store, as returned when it is registered or listed. (required)
         :type collection_data_store_id: UUID
         :param gcp_collection_data_store_patch: (required)
         :type gcp_collection_data_store_patch: GcpCollectionDataStorePatch

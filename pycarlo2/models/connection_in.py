@@ -29,12 +29,13 @@ class ConnectionIn(BaseModel):
     """
     What to create a connection with.
     """ # noqa: E501
-    name: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="Display name for the connection. Unique among the connections of its warehouse or BI container.")
-    warehouse_id: Optional[UUID] = Field(default=None, description="The warehouse to add the connection to. Its type has to match what the credentials are for. Send this or `bi_container_id`, not both.")
-    bi_container_id: Optional[UUID] = Field(default=None, description="The BI container to add the connection to, for Tableau, Looker or Power BI credentials. Its type has to match what the credentials are for: a `looker` container takes both `looker` and `looker-git-clone` credentials. Send this or `warehouse_id`, not both.")
+    name: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="Display name for the connection. Unique among the connections of its warehouse or BI container. An ETL container holds one connection.")
+    warehouse_id: Optional[UUID] = Field(default=None, description="The warehouse to add the connection to. Its type has to match what the credentials are for. Send exactly one of this, `bi_container_id` and `etl_container_id`.")
+    bi_container_id: Optional[UUID] = Field(default=None, description="The BI container to add the connection to, for Tableau, Looker or Power BI credentials. Its type has to match what the credentials are for: a `looker` container takes both `looker` and `looker-git-clone` credentials. Send exactly one of this, `warehouse_id` and `etl_container_id`.")
+    etl_container_id: Optional[UUID] = Field(default=None, description="The ETL container to add the connection to, for ETL tool credentials such as Fivetran or Airflow. The container's type has to equal the credentials' type, and the container must not have a connection yet. Send exactly one of this, `warehouse_id` and `bi_container_id`.")
     credentials_id: UUID = Field(description="The credentials the connection reads with. They also decide the connection's type. Create them first, through one of the credentials endpoints.")
     job_types: Optional[Annotated[List[StrictStr], Field(min_length=1)]] = Field(default=None, description="The jobs to run on this connection. Omit it to run what the connection type runs by default, which is what the app does. Which values are accepted depends on the connection type. An empty list is not accepted; omit the field to take the defaults.")
-    __properties: ClassVar[List[str]] = ["name", "warehouse_id", "bi_container_id", "credentials_id", "job_types"]
+    __properties: ClassVar[List[str]] = ["name", "warehouse_id", "bi_container_id", "etl_container_id", "credentials_id", "job_types"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,6 +86,11 @@ class ConnectionIn(BaseModel):
         if self.bi_container_id is None and "bi_container_id" in self.model_fields_set:
             _dict['bi_container_id'] = None
 
+        # set to None if etl_container_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.etl_container_id is None and "etl_container_id" in self.model_fields_set:
+            _dict['etl_container_id'] = None
+
         # set to None if job_types (nullable) is None
         # and model_fields_set contains the field
         if self.job_types is None and "job_types" in self.model_fields_set:
@@ -105,6 +111,7 @@ class ConnectionIn(BaseModel):
             "name": obj.get("name"),
             "warehouse_id": obj.get("warehouse_id"),
             "bi_container_id": obj.get("bi_container_id"),
+            "etl_container_id": obj.get("etl_container_id"),
             "credentials_id": obj.get("credentials_id"),
             "job_types": obj.get("job_types")
         })

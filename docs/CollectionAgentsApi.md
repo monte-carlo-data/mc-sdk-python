@@ -261,7 +261,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
 
     try:
         # Delete an AWS collection agent
@@ -277,7 +277,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_agent_id** | **UUID**|  | 
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -350,7 +350,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
 
     try:
         # Delete an Azure collection agent
@@ -366,7 +366,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_agent_id** | **UUID**|  | 
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -439,7 +439,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
 
     try:
         # Delete a GCP collection agent
@@ -455,7 +455,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_agent_id** | **UUID**|  | 
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -529,7 +529,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
 
     try:
         # Delete a generic collection agent
@@ -545,7 +545,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_agent_id** | **UUID**|  | 
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -615,7 +615,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    credential_id = 'credential_id_example' # str | 
+    credential_id = 'credential_id_example' # str | Id of the token or OAuth client, as returned when it is created or listed.
 
     try:
         # Delete a generic collection agent OAuth client
@@ -631,7 +631,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credential_id** | **str**|  | 
+ **credential_id** | **str**| Id of the token or OAuth client, as returned when it is created or listed. | 
 
 ### Return type
 
@@ -696,7 +696,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    credential_id = 'credential_id_example' # str | 
+    credential_id = 'credential_id_example' # str | Id of the token or OAuth client, as returned when it is created or listed.
 
     try:
         # Delete a generic collection agent token
@@ -712,7 +712,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credential_id** | **str**|  | 
+ **credential_id** | **str**| Id of the token or OAuth client, as returned when it is created or listed. | 
 
 ### Return type
 
@@ -778,7 +778,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
 
     try:
         # Get an AWS collection agent
@@ -796,7 +796,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_agent_id** | **UUID**|  | 
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -862,7 +862,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
 
     try:
         # Get an Azure collection agent
@@ -880,7 +880,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_agent_id** | **UUID**|  | 
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -946,7 +946,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
 
     try:
         # Get a GCP collection agent
@@ -964,7 +964,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_agent_id** | **UUID**|  | 
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -1030,7 +1030,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
 
     try:
         # Get a generic collection agent
@@ -1048,7 +1048,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_agent_id** | **UUID**|  | 
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -1114,7 +1114,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    credential_id = 'credential_id_example' # str | 
+    credential_id = 'credential_id_example' # str | Id of the token or OAuth client, as returned when it is created or listed.
 
     try:
         # Get a generic collection agent OAuth client
@@ -1132,7 +1132,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credential_id** | **str**|  | 
+ **credential_id** | **str**| Id of the token or OAuth client, as returned when it is created or listed. | 
 
 ### Return type
 
@@ -1198,7 +1198,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    credential_id = 'credential_id_example' # str | 
+    credential_id = 'credential_id_example' # str | Id of the token or OAuth client, as returned when it is created or listed.
 
     try:
         # Get a generic collection agent token
@@ -1216,7 +1216,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credential_id** | **str**|  | 
+ **credential_id** | **str**| Id of the token or OAuth client, as returned when it is created or listed. | 
 
 ### Return type
 
@@ -1854,7 +1854,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
     aws_collection_agent_patch = pycarlo2.AwsCollectionAgentPatch() # AwsCollectionAgentPatch | 
 
     try:
@@ -1873,7 +1873,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_agent_id** | **UUID**|  | 
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
  **aws_collection_agent_patch** | [**AwsCollectionAgentPatch**](AwsCollectionAgentPatch.md)|  | 
 
 ### Return type
@@ -1958,7 +1958,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
     azure_collection_agent_patch = pycarlo2.AzureCollectionAgentPatch() # AzureCollectionAgentPatch | 
 
     try:
@@ -1977,7 +1977,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_agent_id** | **UUID**|  | 
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
  **azure_collection_agent_patch** | [**AzureCollectionAgentPatch**](AzureCollectionAgentPatch.md)|  | 
 
 ### Return type
@@ -2061,7 +2061,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
     gcp_collection_agent_patch = pycarlo2.GcpCollectionAgentPatch() # GcpCollectionAgentPatch | 
 
     try:
@@ -2080,7 +2080,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_agent_id** | **UUID**|  | 
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
  **gcp_collection_agent_patch** | [**GcpCollectionAgentPatch**](GcpCollectionAgentPatch.md)|  | 
 
 ### Return type
@@ -2156,7 +2156,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionAgentsApi(api_client)
-    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
     generic_collection_agent_patch = pycarlo2.GenericCollectionAgentPatch() # GenericCollectionAgentPatch | 
 
     try:
@@ -2175,7 +2175,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_agent_id** | **UUID**|  | 
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
  **generic_collection_agent_patch** | [**GenericCollectionAgentPatch**](GenericCollectionAgentPatch.md)|  | 
 
 ### Return type

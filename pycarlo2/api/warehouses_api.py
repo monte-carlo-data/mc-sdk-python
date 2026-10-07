@@ -194,7 +194,7 @@ class WarehousesApi:
     @validate_call
     def delete_warehouse(
         self,
-        warehouse_id: UUID,
+        warehouse_id: Annotated[UUID, Field(description="Id of the warehouse, as returned when it is created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -212,7 +212,7 @@ class WarehousesApi:
 
         Delete a warehouse.  Only an empty warehouse can be deleted: one that still has connections, or that other warehouses consume from, is refused. Connections are managed as their own resources and are never deleted with a warehouse. Remove them first.
 
-        :param warehouse_id: (required)
+        :param warehouse_id: Id of the warehouse, as returned when it is created or listed. (required)
         :type warehouse_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -331,7 +331,7 @@ class WarehousesApi:
     @validate_call
     def get_warehouse(
         self,
-        warehouse_id: UUID,
+        warehouse_id: Annotated[UUID, Field(description="Id of the warehouse, as returned when it is created or listed.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -349,7 +349,7 @@ class WarehousesApi:
 
         Get one warehouse.  An id that does not exist, belongs to another account, or names a warehouse your domain restrictions hide from you returns 404.
 
-        :param warehouse_id: (required)
+        :param warehouse_id: Id of the warehouse, as returned when it is created or listed. (required)
         :type warehouse_id: UUID
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -623,7 +623,7 @@ class WarehousesApi:
     @validate_call
     def update_warehouse(
         self,
-        warehouse_id: UUID,
+        warehouse_id: Annotated[UUID, Field(description="Id of the warehouse, as returned when it is created or listed.")],
         warehouse_patch: WarehousePatch,
         _request_timeout: Union[
             None,
@@ -642,7 +642,7 @@ class WarehousesApi:
 
         Rename a warehouse.  The name is the only thing you can change. The type and the deployment are fixed when the warehouse is created. Two warehouses of the same type cannot share a name. Sending an empty body leaves the warehouse as it is and returns it.
 
-        :param warehouse_id: (required)
+        :param warehouse_id: Id of the warehouse, as returned when it is created or listed. (required)
         :type warehouse_id: UUID
         :param warehouse_patch: (required)
         :type warehouse_patch: WarehousePatch

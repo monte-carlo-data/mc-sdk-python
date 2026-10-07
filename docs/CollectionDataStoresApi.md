@@ -65,7 +65,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionDataStoresApi(api_client)
-    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection data store, as returned when it is registered or listed.
 
     try:
         # Delete an AWS collection data store
@@ -81,7 +81,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_data_store_id** | **UUID**|  | 
+ **collection_data_store_id** | **UUID**| Id of the collection data store, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -156,7 +156,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionDataStoresApi(api_client)
-    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection data store, as returned when it is registered or listed.
 
     try:
         # Delete an Azure collection data store
@@ -172,7 +172,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_data_store_id** | **UUID**|  | 
+ **collection_data_store_id** | **UUID**| Id of the collection data store, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -247,7 +247,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionDataStoresApi(api_client)
-    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection data store, as returned when it is registered or listed.
 
     try:
         # Delete a GCP collection data store
@@ -263,7 +263,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_data_store_id** | **UUID**|  | 
+ **collection_data_store_id** | **UUID**| Id of the collection data store, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -332,7 +332,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionDataStoresApi(api_client)
-    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection data store, as returned when it is registered or listed.
 
     try:
         # Get an AWS collection data store
@@ -350,7 +350,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_data_store_id** | **UUID**|  | 
+ **collection_data_store_id** | **UUID**| Id of the collection data store, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -417,7 +417,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionDataStoresApi(api_client)
-    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection data store, as returned when it is registered or listed.
 
     try:
         # Get an Azure collection data store
@@ -435,7 +435,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_data_store_id** | **UUID**|  | 
+ **collection_data_store_id** | **UUID**| Id of the collection data store, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -502,7 +502,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionDataStoresApi(api_client)
-    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection data store, as returned when it is registered or listed.
 
     try:
         # Get a GCP collection data store
@@ -520,7 +520,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_data_store_id** | **UUID**|  | 
+ **collection_data_store_id** | **UUID**| Id of the collection data store, as returned when it is registered or listed. | 
 
 ### Return type
 
@@ -974,7 +974,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionDataStoresApi(api_client)
-    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection data store, as returned when it is registered or listed.
     aws_collection_data_store_patch = pycarlo2.AwsCollectionDataStorePatch() # AwsCollectionDataStorePatch | 
 
     try:
@@ -993,7 +993,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_data_store_id** | **UUID**|  | 
+ **collection_data_store_id** | **UUID**| Id of the collection data store, as returned when it is registered or listed. | 
  **aws_collection_data_store_patch** | [**AwsCollectionDataStorePatch**](AwsCollectionDataStorePatch.md)|  | 
 
 ### Return type
@@ -1077,7 +1077,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionDataStoresApi(api_client)
-    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection data store, as returned when it is registered or listed.
     azure_collection_data_store_patch = pycarlo2.AzureCollectionDataStorePatch() # AzureCollectionDataStorePatch | 
 
     try:
@@ -1096,7 +1096,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_data_store_id** | **UUID**|  | 
+ **collection_data_store_id** | **UUID**| Id of the collection data store, as returned when it is registered or listed. | 
  **azure_collection_data_store_patch** | [**AzureCollectionDataStorePatch**](AzureCollectionDataStorePatch.md)|  | 
 
 ### Return type
@@ -1178,7 +1178,7 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.CollectionDataStoresApi(api_client)
-    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
+    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection data store, as returned when it is registered or listed.
     gcp_collection_data_store_patch = pycarlo2.GcpCollectionDataStorePatch() # GcpCollectionDataStorePatch | 
 
     try:
@@ -1197,7 +1197,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_data_store_id** | **UUID**|  | 
+ **collection_data_store_id** | **UUID**| Id of the collection data store, as returned when it is registered or listed. | 
  **gcp_collection_data_store_patch** | [**GcpCollectionDataStorePatch**](GcpCollectionDataStorePatch.md)|  | 
 
 ### Return type

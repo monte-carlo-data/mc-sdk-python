@@ -1,6 +1,6 @@
 [project]
-# The distribution name and the import name are both pycarlo2. The import name is also
-# api-codegen's generate-python-sdk.sh PACKAGE_NAME; the distribution name is also in uv.lock.
+# Also the import name (packages, below). api-codegen's AGENTS.md lists every other place either
+# name is spelled, there and in ai-agent.
 name = "pycarlo2"
 version = "0.0.0"
 description = "Official Python SDK for the Monte Carlo REST API."

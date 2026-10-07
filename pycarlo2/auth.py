@@ -195,8 +195,7 @@ _HEADER_TELEMETRY_SERVICE = "x-mcd-telemetry-service"
 
 
 def default_user_agent() -> str:
-    # Deferred: pycarlo2/__init__.py imports this module, so a module-level import would be a
-    # cycle.
+    # Deferred: pycarlo2/__init__.py imports this module, so a module-level import would be a cycle.
     from pycarlo2 import __version__
 
     return f"mc-sdk-python/{__version__} (python/{platform.python_version()})"

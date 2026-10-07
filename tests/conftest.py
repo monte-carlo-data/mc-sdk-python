@@ -1,3 +1,6 @@
+# Copyright Monte Carlo AI, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
 """Fixtures shared by the hand-written surface's tests.
 
 `isolate` keeps a test from reading the developer's real credentials. `fake_api` is the

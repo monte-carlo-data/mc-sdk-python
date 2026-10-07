@@ -1,4 +1,6 @@
 # Hand-written, not generator output.
+# Copyright Monte Carlo AI, Inc.
+# SPDX-License-Identifier: Apache-2.0
 """The credentials file every Monte Carlo tool shares, and the environment variable names that
 can stand in for it.
 

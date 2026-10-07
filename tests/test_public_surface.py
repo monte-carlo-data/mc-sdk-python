@@ -1,3 +1,6 @@
+# Copyright Monte Carlo AI, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
 """Compiles the public surface the way a consumer does: one import, one name.
 
 A rename of `new_client`, `Options` or `CredentialsError`, or a generator upgrade that drops

@@ -1,4 +1,6 @@
 # Hand-written, not generator output.
+# Copyright Monte Carlo AI, Inc.
+# SPDX-License-Identifier: Apache-2.0
 """OAuth 2.0 client credentials: scopes, the token exchange, and a self-refreshing token.
 
 `TokenSource` validates its own inputs at construction, so a caller that builds one directly

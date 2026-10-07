@@ -1,3 +1,6 @@
+# Copyright Monte Carlo AI, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
 """Tests for `pycarlo2.paging`."""
 
 from __future__ import annotations

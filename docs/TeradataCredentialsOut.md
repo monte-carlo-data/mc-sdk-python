@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.teradata_credentials_out import TeradataCredentialsOut
+from pycarlo2.models.teradata_credentials_out import TeradataCredentialsOut
 
 # TODO update the JSON string below
 json = "{}"

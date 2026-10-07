@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.generic_collection_agent_token_created_out import GenericCollectionAgentTokenCreatedOut
+from pycarlo2.models.generic_collection_agent_token_created_out import GenericCollectionAgentTokenCreatedOut
 
 # TODO update the JSON string below
 json = "{}"

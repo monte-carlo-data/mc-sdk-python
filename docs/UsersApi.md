@@ -1,4 +1,4 @@
-# montecarlo.UsersApi
+# pycarlo2.UsersApi
 
 All URIs are relative to *http://localhost*
 
@@ -26,14 +26,14 @@ seeing every other operation refused.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.current_user_out import CurrentUserOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.current_user_out import CurrentUserOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -43,14 +43,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.UsersApi(api_client)
+    api_instance = pycarlo2.UsersApi(api_client)
 
     try:
         # Get the current user

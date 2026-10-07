@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.azure_key_vault_credentials_out import AzureKeyVaultCredentialsOut
+from pycarlo2.models.azure_key_vault_credentials_out import AzureKeyVaultCredentialsOut
 
 # TODO update the JSON string below
 json = "{}"

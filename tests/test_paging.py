@@ -1,4 +1,4 @@
-"""Tests for `montecarlo.paging`."""
+"""Tests for `pycarlo2.paging`."""
 
 from __future__ import annotations
 
@@ -7,9 +7,9 @@ from pathlib import Path
 
 import pytest
 
-from montecarlo import WarehousesApi, new_client
-from montecarlo.auth import Options
-from montecarlo.paging import (
+from pycarlo2 import WarehousesApi, new_client
+from pycarlo2.auth import Options
+from pycarlo2.paging import (
     NoCursorError,
     PaginationError,
     RepeatedCursorError,

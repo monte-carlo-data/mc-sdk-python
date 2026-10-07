@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.aws_secrets_manager_credentials_in import AwsSecretsManagerCredentialsIn
+from pycarlo2.models.aws_secrets_manager_credentials_in import AwsSecretsManagerCredentialsIn
 
 # TODO update the JSON string below
 json = "{}"

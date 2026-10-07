@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.paged_warehouse_out import PagedWarehouseOut
+from pycarlo2.models.paged_warehouse_out import PagedWarehouseOut
 
 # TODO update the JSON string below
 json = "{}"

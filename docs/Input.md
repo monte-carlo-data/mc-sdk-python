@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.input import Input
+from pycarlo2.models.input import Input
 
 # TODO update the JSON string below
 json = "{}"

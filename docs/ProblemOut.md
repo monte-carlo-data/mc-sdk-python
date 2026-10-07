@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.problem_out import ProblemOut
+from pycarlo2.models.problem_out import ProblemOut
 
 # TODO update the JSON string below
 json = "{}"

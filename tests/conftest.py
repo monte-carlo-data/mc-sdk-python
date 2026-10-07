@@ -18,7 +18,7 @@ from urllib.parse import parse_qs
 
 import pytest
 
-from montecarlo.profile import ENVIRONMENT_KEYS, PROFILE_FILE_NAME
+from pycarlo2.profile import ENVIRONMENT_KEYS, PROFILE_FILE_NAME
 
 CURRENT_USER = {
     "account_frozen": False,

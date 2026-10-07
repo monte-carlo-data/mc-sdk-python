@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.my_sql_credentials_patch import MySqlCredentialsPatch
+from pycarlo2.models.my_sql_credentials_patch import MySqlCredentialsPatch
 
 # TODO update the JSON string below
 json = "{}"

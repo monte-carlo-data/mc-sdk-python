@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.azure_sql_database_credentials_validate_in import AzureSqlDatabaseCredentialsValidateIn
+from pycarlo2.models.azure_sql_database_credentials_validate_in import AzureSqlDatabaseCredentialsValidateIn
 
 # TODO update the JSON string below
 json = "{}"

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.looker_credentials_out import LookerCredentialsOut
+from pycarlo2.models.looker_credentials_out import LookerCredentialsOut
 
 # TODO update the JSON string below
 json = "{}"

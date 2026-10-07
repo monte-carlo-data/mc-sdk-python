@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.collection_agent_out import CollectionAgentOut
+from pycarlo2.models.collection_agent_out import CollectionAgentOut
 
 # TODO update the JSON string below
 json = "{}"

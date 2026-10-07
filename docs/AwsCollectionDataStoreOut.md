@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.aws_collection_data_store_out import AwsCollectionDataStoreOut
+from pycarlo2.models.aws_collection_data_store_out import AwsCollectionDataStoreOut
 
 # TODO update the JSON string below
 json = "{}"

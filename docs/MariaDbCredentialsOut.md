@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.maria_db_credentials_out import MariaDbCredentialsOut
+from pycarlo2.models.maria_db_credentials_out import MariaDbCredentialsOut
 
 # TODO update the JSON string below
 json = "{}"

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.snowflake_credentials_out import SnowflakeCredentialsOut
+from pycarlo2.models.snowflake_credentials_out import SnowflakeCredentialsOut
 
 # TODO update the JSON string below
 json = "{}"

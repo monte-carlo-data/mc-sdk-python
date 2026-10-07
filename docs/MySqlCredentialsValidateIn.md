@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.my_sql_credentials_validate_in import MySqlCredentialsValidateIn
+from pycarlo2.models.my_sql_credentials_validate_in import MySqlCredentialsValidateIn
 
 # TODO update the JSON string below
 json = "{}"

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.gcp_collection_data_store_out import GcpCollectionDataStoreOut
+from pycarlo2.models.gcp_collection_data_store_out import GcpCollectionDataStoreOut
 
 # TODO update the JSON string below
 json = "{}"

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.aws_collection_data_store_patch import AwsCollectionDataStorePatch
+from pycarlo2.models.aws_collection_data_store_patch import AwsCollectionDataStorePatch
 
 # TODO update the JSON string below
 json = "{}"

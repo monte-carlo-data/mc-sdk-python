@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.storage_service_principal_credentials_in import StorageServicePrincipalCredentialsIn
+from pycarlo2.models.storage_service_principal_credentials_in import StorageServicePrincipalCredentialsIn
 
 # TODO update the JSON string below
 json = "{}"

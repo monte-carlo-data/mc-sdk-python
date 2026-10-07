@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.validation_out import ValidationOut
+from pycarlo2.models.validation_out import ValidationOut
 
 # TODO update the JSON string below
 json = "{}"

@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.power_bi_credentials_patch import PowerBiCredentialsPatch
+from pycarlo2.models.power_bi_credentials_patch import PowerBiCredentialsPatch
 
 # TODO update the JSON string below
 json = "{}"

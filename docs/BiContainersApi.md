@@ -1,4 +1,4 @@
-# montecarlo.BiContainersApi
+# pycarlo2.BiContainersApi
 
 All URIs are relative to *http://localhost*
 
@@ -29,15 +29,15 @@ or needs an upgrade first, returns 409.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.bi_container_in import BiContainerIn
-from montecarlo.models.bi_container_out import BiContainerOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.bi_container_in import BiContainerIn
+from pycarlo2.models.bi_container_out import BiContainerOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -47,15 +47,15 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.BiContainersApi(api_client)
-    bi_container_in = montecarlo.BiContainerIn() # BiContainerIn | 
+    api_instance = pycarlo2.BiContainersApi(api_client)
+    bi_container_in = pycarlo2.BiContainerIn() # BiContainerIn | 
 
     try:
         # Create a BI container
@@ -119,13 +119,13 @@ removes the BI assets, such as dashboards and reports, collected through it.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -135,14 +135,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.BiContainersApi(api_client)
+    api_instance = pycarlo2.BiContainersApi(api_client)
     bi_container_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -202,14 +202,14 @@ An id that does not exist or belongs to another account returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.bi_container_out import BiContainerOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.bi_container_out import BiContainerOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -219,14 +219,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.BiContainersApi(api_client)
+    api_instance = pycarlo2.BiContainersApi(api_client)
     bi_container_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -284,14 +284,14 @@ List every BI container in your account, oldest first.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.bi_container_out import BiContainerOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.bi_container_out import BiContainerOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -301,14 +301,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.BiContainersApi(api_client)
+    api_instance = pycarlo2.BiContainersApi(api_client)
 
     try:
         # List BI containers
@@ -364,15 +364,15 @@ container is created. Sending an empty body leaves the container as it is and re
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.bi_container_out import BiContainerOut
-from montecarlo.models.bi_container_patch import BiContainerPatch
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.bi_container_out import BiContainerOut
+from pycarlo2.models.bi_container_patch import BiContainerPatch
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -382,16 +382,16 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.BiContainersApi(api_client)
+    api_instance = pycarlo2.BiContainersApi(api_client)
     bi_container_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    bi_container_patch = montecarlo.BiContainerPatch() # BiContainerPatch | 
+    bi_container_patch = pycarlo2.BiContainerPatch() # BiContainerPatch | 
 
     try:
         # Update a BI container

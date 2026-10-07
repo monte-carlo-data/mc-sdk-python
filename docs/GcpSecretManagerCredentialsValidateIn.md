@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.gcp_secret_manager_credentials_validate_in import GcpSecretManagerCredentialsValidateIn
+from pycarlo2.models.gcp_secret_manager_credentials_validate_in import GcpSecretManagerCredentialsValidateIn
 
 # TODO update the JSON string below
 json = "{}"

@@ -5,9 +5,9 @@ from pathlib import Path
 
 import pytest
 
-from montecarlo import UsersApi
-from montecarlo.auth import CredentialsError, Options, new_client
-from montecarlo.oauth import TokenSource, scopes_for_instance, validate_instance_id
+from pycarlo2 import UsersApi
+from pycarlo2.auth import CredentialsError, Options, new_client
+from pycarlo2.oauth import TokenSource, scopes_for_instance, validate_instance_id
 from tests.conftest import FakeApi
 
 

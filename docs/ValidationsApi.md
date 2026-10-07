@@ -1,4 +1,4 @@
-# montecarlo.ValidationsApi
+# pycarlo2.ValidationsApi
 
 All URIs are relative to *http://localhost*
 
@@ -30,14 +30,14 @@ expired, never existed, or belongs to another account all return 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.validation_run_out import ValidationRunOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -47,14 +47,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.ValidationsApi(api_client)
+    api_instance = pycarlo2.ValidationsApi(api_client)
     run_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the validation run, as returned by the operation that started it.
     since = 56 # int | The `revision` from the previous response. Only validations that changed after it are returned. Omit it to get every validation. (optional)
     if_none_match = 'if_none_match_example' # str | The `ETag` from a previous response. The read answers 304 with no body while the run's `revision` is unchanged. (optional)

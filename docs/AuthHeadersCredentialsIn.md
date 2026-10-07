@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.auth_headers_credentials_in import AuthHeadersCredentialsIn
+from pycarlo2.models.auth_headers_credentials_in import AuthHeadersCredentialsIn
 
 # TODO update the JSON string below
 json = "{}"

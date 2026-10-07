@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.big_query_credentials_in import BigQueryCredentialsIn
+from pycarlo2.models.big_query_credentials_in import BigQueryCredentialsIn
 
 # TODO update the JSON string below
 json = "{}"

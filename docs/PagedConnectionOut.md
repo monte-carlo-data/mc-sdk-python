@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.paged_connection_out import PagedConnectionOut
+from pycarlo2.models.paged_connection_out import PagedConnectionOut
 
 # TODO update the JSON string below
 json = "{}"

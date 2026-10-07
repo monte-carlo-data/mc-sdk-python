@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.postgres_credentials_in import PostgresCredentialsIn
+from pycarlo2.models.postgres_credentials_in import PostgresCredentialsIn
 
 # TODO update the JSON string below
 json = "{}"

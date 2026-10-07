@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.file_credentials_patch import FileCredentialsPatch
+from pycarlo2.models.file_credentials_patch import FileCredentialsPatch
 
 # TODO update the JSON string below
 json = "{}"

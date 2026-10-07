@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.bi_container_patch import BiContainerPatch
+from pycarlo2.models.bi_container_patch import BiContainerPatch
 
 # TODO update the JSON string below
 json = "{}"

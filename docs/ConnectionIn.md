@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.connection_in import ConnectionIn
+from pycarlo2.models.connection_in import ConnectionIn
 
 # TODO update the JSON string below
 json = "{}"

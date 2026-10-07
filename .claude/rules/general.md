@@ -5,8 +5,8 @@ globs: "**/*"
 
 # General Standards
 
-Almost everything under `montecarlo/` is `openapi-generator` output. The hand-written surface is
-`montecarlo/auth.py`, `oauth.py`, `profile.py`, `paging.py`, the tests under `tests/`,
+Almost everything under `pycarlo2/` is `openapi-generator` output. The hand-written surface is
+`pycarlo2/auth.py`, `oauth.py`, `profile.py`, `paging.py`, the tests under `tests/`,
 `pyproject.toml`, `.openapi-generator-ignore`, and the repository documentation; see AGENTS.md
 for the exact list. These rules apply to that surface. Do not hand-edit generated files: the
 next generation run overwrites them.
@@ -16,7 +16,7 @@ next generation run overwrites them.
 - Keep functions small and focused on a single responsibility
 - Prefer explicit over implicit; name things clearly
 - Write code that reads like a specification
-- Every hand-written module under `montecarlo/` starts with `# Hand-written, not generator
+- Every hand-written module under `pycarlo2/` starts with `# Hand-written, not generator
   output.`; CI asserts it, and derives the generator-protection check from it.
 - A hand-written identifier must never take a name the generator could emit: `<Schema>` for
   every schema in the spec, the `*Api` classes, `ApiClient`, `ApiResponse`, `Configuration`,

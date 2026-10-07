@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.oracle_credentials_in import OracleCredentialsIn
+from pycarlo2.models.oracle_credentials_in import OracleCredentialsIn
 
 # TODO update the JSON string below
 json = "{}"

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.aws_collection_data_store_in import AwsCollectionDataStoreIn
+from pycarlo2.models.aws_collection_data_store_in import AwsCollectionDataStoreIn
 
 # TODO update the JSON string below
 json = "{}"

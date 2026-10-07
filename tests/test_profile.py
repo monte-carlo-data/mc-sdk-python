@@ -4,9 +4,9 @@ from pathlib import Path
 
 import pytest
 
-from montecarlo import profile as profile_module
-from montecarlo.auth import CredentialsError, Options
-from montecarlo.profile import config_dir, load_profile, parse_ini
+from pycarlo2 import profile as profile_module
+from pycarlo2.auth import CredentialsError, Options
+from pycarlo2.profile import config_dir, load_profile, parse_ini
 from tests.conftest import write_profiles
 
 

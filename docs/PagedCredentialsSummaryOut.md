@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.paged_credentials_summary_out import PagedCredentialsSummaryOut
+from pycarlo2.models.paged_credentials_summary_out import PagedCredentialsSummaryOut
 
 # TODO update the JSON string below
 json = "{}"

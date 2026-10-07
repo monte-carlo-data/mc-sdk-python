@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.starburst_galaxy_credentials_out import StarburstGalaxyCredentialsOut
+from pycarlo2.models.starburst_galaxy_credentials_out import StarburstGalaxyCredentialsOut
 
 # TODO update the JSON string below
 json = "{}"

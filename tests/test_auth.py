@@ -6,10 +6,10 @@ from uuid import UUID
 
 import pytest
 
-from montecarlo import ApiException, DeploymentsApi, UsersApi, __version__
-from montecarlo.auth import CredentialsError, Options, new_client
-from montecarlo.models.deployment_patch import DeploymentPatch
-from montecarlo.profile import PROFILE_FILE_NAME, config_dir
+from pycarlo2 import ApiException, DeploymentsApi, UsersApi, __version__
+from pycarlo2.auth import CredentialsError, Options, new_client
+from pycarlo2.models.deployment_patch import DeploymentPatch
+from pycarlo2.profile import PROFILE_FILE_NAME, config_dir
 from tests.conftest import DEPLOYMENT, FakeApi, Request, write_profiles
 
 HTTPS = "https://api.example.com"

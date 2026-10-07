@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.file_credentials_in import FileCredentialsIn
+from pycarlo2.models.file_credentials_in import FileCredentialsIn
 
 # TODO update the JSON string below
 json = "{}"

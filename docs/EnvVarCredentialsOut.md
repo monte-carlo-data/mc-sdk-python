@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.env_var_credentials_out import EnvVarCredentialsOut
+from pycarlo2.models.env_var_credentials_out import EnvVarCredentialsOut
 
 # TODO update the JSON string below
 json = "{}"

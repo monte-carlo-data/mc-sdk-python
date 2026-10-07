@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.tableau_credentials_out import TableauCredentialsOut
+from pycarlo2.models.tableau_credentials_out import TableauCredentialsOut
 
 # TODO update the JSON string below
 json = "{}"

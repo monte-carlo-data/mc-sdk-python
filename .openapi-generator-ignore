@@ -33,7 +33,7 @@ git_push.sh
 # helper. Defensive: the generator names its package files api_client.py, api_response.py,
 # configuration.py, exceptions.py, rest.py, __init__.py and py.typed, and writes under api/
 # and models/.
-montecarlo/auth.py
-montecarlo/oauth.py
-montecarlo/profile.py
-montecarlo/paging.py
+pycarlo2/auth.py
+pycarlo2/oauth.py
+pycarlo2/profile.py
+pycarlo2/paging.py

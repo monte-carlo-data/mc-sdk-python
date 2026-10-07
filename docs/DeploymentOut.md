@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.deployment_out import DeploymentOut
+from pycarlo2.models.deployment_out import DeploymentOut
 
 # TODO update the JSON string below
 json = "{}"

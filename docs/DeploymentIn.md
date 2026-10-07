@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.deployment_in import DeploymentIn
+from pycarlo2.models.deployment_in import DeploymentIn
 
 # TODO update the JSON string below
 json = "{}"

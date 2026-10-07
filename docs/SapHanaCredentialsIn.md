@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.sap_hana_credentials_in import SapHanaCredentialsIn
+from pycarlo2.models.sap_hana_credentials_in import SapHanaCredentialsIn
 
 # TODO update the JSON string below
 json = "{}"

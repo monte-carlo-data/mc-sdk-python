@@ -1,4 +1,4 @@
-# montecarlo.WarehousesApi
+# pycarlo2.WarehousesApi
 
 All URIs are relative to *http://localhost*
 
@@ -34,15 +34,15 @@ Two warehouses of the same type cannot share a name.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.warehouse_in import WarehouseIn
-from montecarlo.models.warehouse_out import WarehouseOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.warehouse_in import WarehouseIn
+from pycarlo2.models.warehouse_out import WarehouseOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -52,15 +52,15 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.WarehousesApi(api_client)
-    warehouse_in = montecarlo.WarehouseIn() # WarehouseIn | 
+    api_instance = pycarlo2.WarehousesApi(api_client)
+    warehouse_in = pycarlo2.WarehouseIn() # WarehouseIn | 
 
     try:
         # Create a warehouse
@@ -124,13 +124,13 @@ are never deleted with a warehouse. Remove them first.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -140,14 +140,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.WarehousesApi(api_client)
+    api_instance = pycarlo2.WarehousesApi(api_client)
     warehouse_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -208,14 +208,14 @@ restrictions hide from you returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.warehouse_out import WarehouseOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.warehouse_out import WarehouseOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -225,14 +225,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.WarehousesApi(api_client)
+    api_instance = pycarlo2.WarehousesApi(api_client)
     warehouse_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -293,14 +293,14 @@ certain domains sees only the warehouses holding assets in those domains.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.paged_warehouse_out import PagedWarehouseOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.paged_warehouse_out import PagedWarehouseOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -310,14 +310,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.WarehousesApi(api_client)
+    api_instance = pycarlo2.WarehousesApi(api_client)
     cursor = 'cursor_example' # str | Position to continue from, as returned in `next_cursor` by the previous page. Omit it to start from the first page. The value is opaque; do not build or modify one. (optional)
     limit = 50 # int | Maximum number of items to return, between 1 and 100. (optional) (default to 50)
     with_count = False # bool | Whether to also return the total number of items across every page, in `count`. Off by default: counting costs an extra query. (optional) (default to False)
@@ -383,15 +383,15 @@ empty body leaves the warehouse as it is and returns it.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.warehouse_out import WarehouseOut
-from montecarlo.models.warehouse_patch import WarehousePatch
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.warehouse_out import WarehouseOut
+from pycarlo2.models.warehouse_patch import WarehousePatch
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -401,16 +401,16 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.WarehousesApi(api_client)
+    api_instance = pycarlo2.WarehousesApi(api_client)
     warehouse_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    warehouse_patch = montecarlo.WarehousePatch() # WarehousePatch | 
+    warehouse_patch = pycarlo2.WarehousePatch() # WarehousePatch | 
 
     try:
         # Update a warehouse

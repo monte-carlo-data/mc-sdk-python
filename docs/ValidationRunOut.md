@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.validation_run_out import ValidationRunOut
+from pycarlo2.models.validation_run_out import ValidationRunOut
 
 # TODO update the JSON string below
 json = "{}"

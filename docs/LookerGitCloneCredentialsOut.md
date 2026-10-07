@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.looker_git_clone_credentials_out import LookerGitCloneCredentialsOut
+from pycarlo2.models.looker_git_clone_credentials_out import LookerGitCloneCredentialsOut
 
 # TODO update the JSON string below
 json = "{}"

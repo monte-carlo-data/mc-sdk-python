@@ -1,6 +1,6 @@
 # mc-sdk-python
 
-> The Python SDK for the Monte Carlo REST API: one package, `montecarlo`. Generated from the API's OpenAPI spec, except client construction and credentials (`auth.py`, `oauth.py`, `profile.py`) and the pagination helper (`paging.py`), which are hand-written.
+> The Python SDK for the Monte Carlo REST API: one package, `pycarlo2`. Generated from the API's OpenAPI spec, except client construction and credentials (`auth.py`, `oauth.py`, `profile.py`) and the pagination helper (`paging.py`), which are hand-written.
 
 ## Stack
 
@@ -23,30 +23,30 @@ Ruff and pyright cover the whole package except the generator's own files, liste
 
 | Path | Purpose |
 |------|---------|
-| `montecarlo/` | The whole SDK: import name `montecarlo`, distribution `montecarlo-sdk`. Both names are provisional until the team settles them |
-| `montecarlo/auth.py`, `oauth.py`, `profile.py` | **Hand-written.** `new_client`, `Options`, `CredentialsError`, the OAuth token source, the CLI's profiles file |
-| `montecarlo/paging.py` | **Hand-written.** `paginate`, which walks a paginated list's pages and yields every item |
-| `montecarlo/api/`, `montecarlo/models/` | Generated operations, one module per tag, and one module per schema |
-| `montecarlo/__init__.py`, `api_client.py`, `api_response.py`, `configuration.py`, `exceptions.py`, `rest.py`, `py.typed` | Generated client plumbing. `__init__.py` comes from a template override that re-exports the hand-written names |
+| `pycarlo2/` | The whole SDK: import name and PyPI distribution `pycarlo2`. The GraphQL SDK stays `pycarlo` |
+| `pycarlo2/auth.py`, `oauth.py`, `profile.py` | **Hand-written.** `new_client`, `Options`, `CredentialsError`, the OAuth token source, the CLI's profiles file |
+| `pycarlo2/paging.py` | **Hand-written.** `paginate`, which walks a paginated list's pages and yields every item |
+| `pycarlo2/api/`, `pycarlo2/models/` | Generated operations, one module per tag, and one module per schema |
+| `pycarlo2/__init__.py`, `api_client.py`, `api_response.py`, `configuration.py`, `exceptions.py`, `rest.py`, `py.typed` | Generated client plumbing. `__init__.py` comes from a template override that re-exports the hand-written names |
 | `docs/` | Generated API reference |
 | `.openapi-generator/` | Generator bookkeeping |
 | `tests/` | **Hand-written.** Tests for the hand-written surface, one module each, plus `conftest.py` and `test_public_surface.py`, which pins the generated `__init__.py`'s re-export of the hand-written names |
 
 ## What is generated
 
-Everything under `montecarlo/` and `docs/` except the three auth modules and `paging.py`. The generator is pointed at the **repository root**, not the package: unlike the Go generator, the Python one writes its packaging scaffold beside the package. It overwrites every path it emits on each run and deletes nothing, so a fix to a generated file does not survive; it belongs in the API or in the generator that reads its spec.
+Everything under `pycarlo2/` and `docs/` except the three auth modules and `paging.py`. The generator is pointed at the **repository root**, not the package: unlike the Go generator, the Python one writes its packaging scaffold beside the package. It overwrites every path it emits on each run and deletes nothing, so a fix to a generated file does not survive; it belongs in the API or in the generator that reads its spec.
 
 **Anything hand-written the generator would overwrite, or anything we do not want emitted, must be listed in the root `.openapi-generator-ignore`.** That file is what api-codegen's `generate-python-sdk.sh` compares its `PROTECTED` array against, whole line for whole line, before it will run; this section documents the file entry for entry, and CI asserts the hand-written half. Keep the three in step by hand.
 
 - `pyproject.toml`, `README.md`, `.gitignore`: hand-written at the root, where the generator emits its own versions. Load-bearing.
 - `.github/workflows/python.yml`, `setup.py`, `setup.cfg`, `requirements.txt`, `test-requirements.txt`, `tox.ini`, `.gitlab-ci.yml`, `.travis.yml`, `git_push.sh`: suppressed, not protected. Generator scaffolding a uv project has no use for (this repository's workflow is `test.yml`); none exists in the tree, and CI asserts that. Load-bearing.
-- `montecarlo/auth.py`, `oauth.py`, `profile.py`, `paging.py`: hand-written inside the package. Defensive: the generator names its own package files `api_client.py`, `api_response.py`, `configuration.py`, `exceptions.py`, `rest.py`, `__init__.py`, `py.typed`, and writes under `api/` and `models/`.
+- `pycarlo2/auth.py`, `oauth.py`, `profile.py`, `paging.py`: hand-written inside the package. Defensive: the generator names its own package files `api_client.py`, `api_response.py`, `configuration.py`, `exceptions.py`, `rest.py`, `__init__.py`, `py.typed`, and writes under `api/` and `models/`.
 
-Twelve root paths verified by running the generator into an empty directory with no ignore file. `generateSourceCodeOnly=true` would suppress them natively but drops `py.typed`, nests `docs/` in the package and emits a `montecarlo_README.md`, so the ignore file is used instead.
+Twelve root paths verified by running the generator into an empty directory with no ignore file. `generateSourceCodeOnly=true` would suppress them natively but drops `py.typed`, nests `docs/` in the package and emits a `<package>_README.md`, so the ignore file is used instead.
 
-A hand-written file must never take one of the generator's names. Every hand-written module under `montecarlo/` starts with `# Hand-written, not generator output.`; CI derives the ignore-file check from that marker in both directions. The same goes for identifiers: the generator emits a class per schema in the spec, a `*Api` class per tag, and the fixed names `ApiClient`, `ApiResponse`, `Configuration`, `OpenApiException`, `ApiException` and their siblings. `Options`, `new_client` and `CredentialsError` are reserved against future schemas of those names; a collision surfaces at regeneration time and its only fix is renaming the SDK's public API. `paginate` needs no such reservation: it is reachable only as `montecarlo.paging.paginate`, never re-exported from the package root, so no generated name can reach it; its file is protected the same way as the other hand-written modules, by the `.openapi-generator-ignore` entry and the CI marker check.
+A hand-written file must never take one of the generator's names. Every hand-written module under `pycarlo2/` starts with `# Hand-written, not generator output.`; CI derives the ignore-file check from that marker in both directions. The same goes for identifiers: the generator emits a class per schema in the spec, a `*Api` class per tag, and the fixed names `ApiClient`, `ApiResponse`, `Configuration`, `OpenApiException`, `ApiException` and their siblings. `Options`, `new_client` and `CredentialsError` are reserved against future schemas of those names; a collision surfaces at regeneration time and its only fix is renaming the SDK's public API. `paginate` needs no such reservation: it is reachable only as `pycarlo2.paging.paginate`, never re-exported from the package root, so no generated name can reach it; its file is protected the same way as the other hand-written modules, by the `.openapi-generator-ignore` entry and the CI marker check.
 
-`montecarlo/__init__.py` is generated from api-codegen's `__init__package.mustache` override, which adds `Options`, `new_client` and `CredentialsError` to the generated `__all__` and imports them after the generated exports. Hand-writing the file instead would lose the automatic listing of new API classes and models. The pagination names deliberately do not join them: the package root holds the generated surface plus the three names a client cannot be built without, pagination is one optional feature, and keeping its names out of the generated `__all__` is also what keeps them out of reach of a future schema of the same name.
+`pycarlo2/__init__.py` is generated from api-codegen's `__init__package.mustache` override, which adds `Options`, `new_client` and `CredentialsError` to the generated `__all__` and imports them after the generated exports. Hand-writing the file instead would lose the automatic listing of new API classes and models. The pagination names deliberately do not join them: the package root holds the generated surface plus the three names a client cannot be built without, pagination is one optional feature, and keeping its names out of the generated `__all__` is also what keeps them out of reach of a future schema of the same name.
 
 The version is spelled once, in `pyproject.toml`. The generation script reads it from there and stamps it into `__version__` and the generated debug report.
 
@@ -78,6 +78,6 @@ Branch from `main` as `<person>/<ticket-id>-<slug>`. Never commit directly to `m
 
 ## Releasing
 
-**Not yet.** A distribution name is permanent once published to PyPI, and this SDK's name is not final. Install from the repository until then.
+**Not yet.** The distribution will publish to PyPI as `pycarlo2`. Install from the repository until then.
 
 The licence is Apache-2.0, matching pycarlo and mc-sdk-go.

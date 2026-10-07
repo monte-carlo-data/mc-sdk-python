@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.azure_collection_agent_in import AzureCollectionAgentIn
+from pycarlo2.models.azure_collection_agent_in import AzureCollectionAgentIn
 
 # TODO update the JSON string below
 json = "{}"

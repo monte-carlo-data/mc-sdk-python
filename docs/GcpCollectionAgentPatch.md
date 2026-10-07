@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.gcp_collection_agent_patch import GcpCollectionAgentPatch
+from pycarlo2.models.gcp_collection_agent_patch import GcpCollectionAgentPatch
 
 # TODO update the JSON string below
 json = "{}"

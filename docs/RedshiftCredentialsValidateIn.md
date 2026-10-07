@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.redshift_credentials_validate_in import RedshiftCredentialsValidateIn
+from pycarlo2.models.redshift_credentials_validate_in import RedshiftCredentialsValidateIn
 
 # TODO update the JSON string below
 json = "{}"

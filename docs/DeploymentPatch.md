@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.deployment_patch import DeploymentPatch
+from pycarlo2.models.deployment_patch import DeploymentPatch
 
 # TODO update the JSON string below
 json = "{}"

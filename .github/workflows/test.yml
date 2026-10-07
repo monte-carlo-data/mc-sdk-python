@@ -61,13 +61,13 @@ jobs:
           for p in pyproject.toml README.md .gitignore; do
             grep -qxF "$p" .openapi-generator-ignore || { echo "$p is hand-written but not protected"; exit 1; }
           done
-          for f in $(find montecarlo -name '*.py'); do
+          for f in $(find pycarlo2 -name '*.py'); do
             [ "$(head -n1 "$f")" = "# Hand-written, not generator output." ] || continue
             grep -qxF "$f" .openapi-generator-ignore || { echo "$f is hand-written but not protected"; exit 1; }
           done
           while IFS= read -r f; do
             head -n1 "$f" | grep -qxF '# Hand-written, not generator output.' || { echo "$f is protected but not marked hand-written"; exit 1; }
-          done < <(grep -E '^montecarlo/' .openapi-generator-ignore)
+          done < <(grep -E '^pycarlo2/' .openapi-generator-ignore)
 
       # Nine root paths the generator would emit are suppressed via the ignore file. Drop an
       # entry and the file comes back, so guard their absence and the entries both.

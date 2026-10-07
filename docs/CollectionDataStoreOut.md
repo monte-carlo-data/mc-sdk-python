@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.collection_data_store_out import CollectionDataStoreOut
+from pycarlo2.models.collection_data_store_out import CollectionDataStoreOut
 
 # TODO update the JSON string below
 json = "{}"

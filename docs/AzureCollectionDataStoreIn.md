@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.azure_collection_data_store_in import AzureCollectionDataStoreIn
+from pycarlo2.models.azure_collection_data_store_in import AzureCollectionDataStoreIn
 
 # TODO update the JSON string below
 json = "{}"

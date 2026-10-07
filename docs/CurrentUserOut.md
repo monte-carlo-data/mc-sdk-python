@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.current_user_out import CurrentUserOut
+from pycarlo2.models.current_user_out import CurrentUserOut
 
 # TODO update the JSON string below
 json = "{}"

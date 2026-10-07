@@ -2,12 +2,12 @@
 
 Official Python SDK for the Monte Carlo REST API.
 
-The SDK is one package, `montecarlo`. Most of it is generated from the API's OpenAPI spec.
+The SDK is one package, `pycarlo2`. Most of it is generated from the API's OpenAPI spec.
 Client construction and credentials are hand-written, so every request is authenticated, and so
 is the helper that walks a paginated list.
 
 > For the GraphQL API, use [pycarlo](https://pypi.org/project/pycarlo/) instead.
-> This SDK targets the REST API. Its name is provisional and it is not yet published.
+> This SDK targets the REST API. It is not yet published to PyPI.
 
 ## Install
 
@@ -29,24 +29,24 @@ credential:
 ```python
 import os
 
-import montecarlo
+import pycarlo2
 
-client = montecarlo.new_client(
-    montecarlo.Options(
+client = pycarlo2.new_client(
+    pycarlo2.Options(
         endpoint="https://api.getmontecarlo.com",
         token_id=os.environ["MCD_ID"],
         token_secret=os.environ["MCD_TOKEN"],
     )
 )
-me = montecarlo.UsersApi(client).get_current_user()
+me = pycarlo2.UsersApi(client).get_current_user()
 ```
 
 With OAuth 2.0 client credentials, where `instance` selects the deployment the gateway routes
 to:
 
 ```python
-client = montecarlo.new_client(
-    montecarlo.Options(
+client = pycarlo2.new_client(
+    pycarlo2.Options(
         endpoint="https://api.getmontecarlo.com",
         client_id=os.environ["MCD_CLIENT_ID"],
         client_secret=os.environ["MCD_CLIENT_SECRET"],
@@ -58,9 +58,9 @@ client = montecarlo.new_client(
 Tokens are fetched and renewed as needed, so a long-lived client does not go stale. Neither the token exchange nor the API client follows a redirect.
 
 The operations and the request and response models they take are all importable from the
-package, so one import covers everything: `montecarlo.DeploymentIn`, `montecarlo.ProblemOut`,
-and so on. Errors from the API raise `montecarlo.ApiException`; a misconfiguration raises
-`montecarlo.CredentialsError` when the client is built.
+package, so one import covers everything: `pycarlo2.DeploymentIn`, `pycarlo2.ProblemOut`,
+and so on. Errors from the API raise `pycarlo2.ApiException`; a misconfiguration raises
+`pycarlo2.CredentialsError` when the client is built.
 
 ### Walking a paginated list
 
@@ -68,8 +68,8 @@ A list that pages returns one page per call, with `next_cursor` to ask for the n
 `paginate` follows the cursor for you and yields every item, so nothing has to track it:
 
 ```python
-from montecarlo import WarehousesApi, new_client
-from montecarlo.paging import paginate
+from pycarlo2 import WarehousesApi, new_client
+from pycarlo2.paging import paginate
 
 warehouses = WarehousesApi(new_client(options))
 
@@ -100,7 +100,7 @@ from `~/.mcd/profiles.ini`. You still pass `endpoint` yourself, since the CLI's 
 command never writes one:
 
 ```python
-client = montecarlo.new_client(montecarlo.Options(endpoint="https://api.getmontecarlo.com"))
+client = pycarlo2.new_client(pycarlo2.Options(endpoint="https://api.getmontecarlo.com"))
 ```
 
 If your profile has an `mcd_api_endpoint` key, set when the CLI or pycarlo point at a
@@ -138,11 +138,11 @@ They carry no arguments or payload. A tool built on the SDK names itself by over
 
 | Path | |
 |---|---|
-| `montecarlo/api/`, `montecarlo/models/`, `api_client.py`, `api_response.py`, `configuration.py`, `exceptions.py`, `rest.py`, `__init__.py` | Generated. Do not edit. One module per operation group and one per schema. |
+| `pycarlo2/api/`, `pycarlo2/models/`, `api_client.py`, `api_response.py`, `configuration.py`, `exceptions.py`, `rest.py`, `__init__.py` | Generated. Do not edit. One module per operation group and one per schema. |
 | `docs/` | Generated API reference; see below. |
 | `.openapi-generator/` | Generator bookkeeping. |
-| `montecarlo/auth.py`, `oauth.py`, `profile.py` | Hand-written. `new_client`, `Options`, and the credential resolution behind them. |
-| `montecarlo/paging.py` | Hand-written. `paginate`, which walks a paginated list. |
+| `pycarlo2/auth.py`, `oauth.py`, `profile.py` | Hand-written. `new_client`, `Options`, and the credential resolution behind them. |
+| `pycarlo2/paging.py` | Hand-written. `paginate`, which walks a paginated list. |
 | `tests/` | Hand-written tests for the hand-written surface. |
 
 The generator writes at the repository root, replacing any path it emits and deleting nothing.
@@ -166,7 +166,7 @@ risks a silent overwrite.
 Each generated page's "All URIs are relative to *http://localhost*" line and its example block
 are generator boilerplate: the example builds `Configuration` and `ApiClient` directly and sets
 `access_token` on the configuration, which `to_debug_report()` then renders. Ignore both and
-build the client with `montecarlo.new_client` as shown under [Usage](#usage); the real base URL
+build the client with `pycarlo2.new_client` as shown under [Usage](#usage); the real base URL
 is whatever `endpoint` you pass.
 
 ## Contributing

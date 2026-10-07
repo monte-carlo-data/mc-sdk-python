@@ -1,4 +1,4 @@
-# montecarlo.ConnectionsApi
+# pycarlo2.ConnectionsApi
 
 All URIs are relative to *http://localhost*
 
@@ -37,15 +37,15 @@ An unknown warehouse, BI container or credentials id returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.connection_in import ConnectionIn
-from montecarlo.models.connection_out import ConnectionOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.connection_in import ConnectionIn
+from pycarlo2.models.connection_out import ConnectionOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -55,15 +55,15 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.ConnectionsApi(api_client)
-    connection_in = montecarlo.ConnectionIn() # ConnectionIn | 
+    api_instance = pycarlo2.ConnectionsApi(api_client)
+    connection_in = pycarlo2.ConnectionIn() # ConnectionIn | 
 
     try:
         # Create a connection
@@ -133,13 +133,13 @@ the assets collected through it would go with it.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -149,14 +149,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.ConnectionsApi(api_client)
+    api_instance = pycarlo2.ConnectionsApi(api_client)
     connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -217,14 +217,14 @@ restrictions hide from you returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.connection_out import ConnectionOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.connection_out import ConnectionOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -234,14 +234,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.ConnectionsApi(api_client)
+    api_instance = pycarlo2.ConnectionsApi(api_client)
     connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -306,14 +306,14 @@ Connections that belong to an ETL integration are not listed here.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.paged_connection_out import PagedConnectionOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.paged_connection_out import PagedConnectionOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -323,14 +323,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.ConnectionsApi(api_client)
+    api_instance = pycarlo2.ConnectionsApi(api_client)
     warehouse_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Only list connections on this warehouse. Omit it to list every connection in your account. (optional)
     bi_container_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Only list connections on this BI container. Omit it to list every connection in your account. (optional)
     cursor = 'cursor_example' # str | Position to continue from, as returned in `next_cursor` by the previous page. Omit it to start from the first page. The value is opaque; do not build or modify one. (optional)
@@ -401,15 +401,15 @@ returns it.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.connection_out import ConnectionOut
-from montecarlo.models.connection_patch import ConnectionPatch
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.connection_out import ConnectionOut
+from pycarlo2.models.connection_patch import ConnectionPatch
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -419,16 +419,16 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.ConnectionsApi(api_client)
+    api_instance = pycarlo2.ConnectionsApi(api_client)
     connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    connection_patch = montecarlo.ConnectionPatch() # ConnectionPatch | 
+    connection_patch = pycarlo2.ConnectionPatch() # ConnectionPatch | 
 
     try:
         # Update a connection
@@ -497,14 +497,14 @@ An id that does not exist or belongs to another account returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.validation_run_out import ValidationRunOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -514,14 +514,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.ConnectionsApi(api_client)
+    api_instance = pycarlo2.ConnectionsApi(api_client)
     connection_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:

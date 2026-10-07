@@ -2,10 +2,10 @@
 
 # Written by api-codegen's propagate workflow. No owner, so a bot pull request requests no
 # review. The hand-written modules in the package keep theirs.
-/montecarlo/
-/montecarlo/auth.py @monte-carlo-data/apollo
-/montecarlo/oauth.py @monte-carlo-data/apollo
-/montecarlo/profile.py @monte-carlo-data/apollo
+/pycarlo2/
+/pycarlo2/auth.py @monte-carlo-data/apollo
+/pycarlo2/oauth.py @monte-carlo-data/apollo
+/pycarlo2/profile.py @monte-carlo-data/apollo
 /docs/
 /.openapi-generator/
 /.api-codegen-source.json

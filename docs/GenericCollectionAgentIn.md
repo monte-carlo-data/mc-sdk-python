@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.generic_collection_agent_in import GenericCollectionAgentIn
+from pycarlo2.models.generic_collection_agent_in import GenericCollectionAgentIn
 
 # TODO update the JSON string below
 json = "{}"

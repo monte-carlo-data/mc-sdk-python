@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.redshift_credentials_in import RedshiftCredentialsIn
+from pycarlo2.models.redshift_credentials_in import RedshiftCredentialsIn
 
 # TODO update the JSON string below
 json = "{}"

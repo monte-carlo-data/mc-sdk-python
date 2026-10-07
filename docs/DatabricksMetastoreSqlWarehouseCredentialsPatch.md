@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.databricks_metastore_sql_warehouse_credentials_patch import DatabricksMetastoreSqlWarehouseCredentialsPatch
+from pycarlo2.models.databricks_metastore_sql_warehouse_credentials_patch import DatabricksMetastoreSqlWarehouseCredentialsPatch
 
 # TODO update the JSON string below
 json = "{}"

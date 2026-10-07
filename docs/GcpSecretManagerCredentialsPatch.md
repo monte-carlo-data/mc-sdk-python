@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.gcp_secret_manager_credentials_patch import GcpSecretManagerCredentialsPatch
+from pycarlo2.models.gcp_secret_manager_credentials_patch import GcpSecretManagerCredentialsPatch
 
 # TODO update the JSON string below
 json = "{}"

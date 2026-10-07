@@ -1,4 +1,4 @@
-# montecarlo.CollectionDataStoresApi
+# pycarlo2.CollectionDataStoresApi
 
 All URIs are relative to *http://localhost*
 
@@ -41,13 +41,13 @@ returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -57,14 +57,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.CollectionDataStoresApi(api_client)
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
     collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -132,13 +132,13 @@ returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -148,14 +148,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.CollectionDataStoresApi(api_client)
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
     collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -223,13 +223,13 @@ returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -239,14 +239,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.CollectionDataStoresApi(api_client)
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
     collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -307,14 +307,14 @@ returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.aws_collection_data_store_out import AwsCollectionDataStoreOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.aws_collection_data_store_out import AwsCollectionDataStoreOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -324,14 +324,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.CollectionDataStoresApi(api_client)
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
     collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -392,14 +392,14 @@ returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.azure_collection_data_store_out import AzureCollectionDataStoreOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.azure_collection_data_store_out import AzureCollectionDataStoreOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -409,14 +409,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.CollectionDataStoresApi(api_client)
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
     collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -477,14 +477,14 @@ returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.gcp_collection_data_store_out import GcpCollectionDataStoreOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.gcp_collection_data_store_out import GcpCollectionDataStoreOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -494,14 +494,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.CollectionDataStoresApi(api_client)
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
     collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -564,14 +564,14 @@ Data stores are sorted by name, ignoring case. Data stores with no name come las
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.collection_data_store_out import CollectionDataStoreOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.collection_data_store_out import CollectionDataStoreOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -581,14 +581,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.CollectionDataStoresApi(api_client)
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
 
     try:
         # List collection data stores
@@ -652,15 +652,15 @@ safe. A different bucket or role over a registered one is refused.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.aws_collection_data_store_in import AwsCollectionDataStoreIn
-from montecarlo.models.aws_collection_data_store_out import AwsCollectionDataStoreOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.aws_collection_data_store_in import AwsCollectionDataStoreIn
+from pycarlo2.models.aws_collection_data_store_out import AwsCollectionDataStoreOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -670,15 +670,15 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.CollectionDataStoresApi(api_client)
-    aws_collection_data_store_in = montecarlo.AwsCollectionDataStoreIn() # AwsCollectionDataStoreIn | 
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
+    aws_collection_data_store_in = pycarlo2.AwsCollectionDataStoreIn() # AwsCollectionDataStoreIn | 
 
     try:
         # Register an AWS collection data store
@@ -753,15 +753,15 @@ Different details over a registered one are refused.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.azure_collection_data_store_in import AzureCollectionDataStoreIn
-from montecarlo.models.azure_collection_data_store_out import AzureCollectionDataStoreOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.azure_collection_data_store_in import AzureCollectionDataStoreIn
+from pycarlo2.models.azure_collection_data_store_out import AzureCollectionDataStoreOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -771,15 +771,15 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.CollectionDataStoresApi(api_client)
-    azure_collection_data_store_in = montecarlo.AzureCollectionDataStoreIn() # AzureCollectionDataStoreIn | 
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
+    azure_collection_data_store_in = pycarlo2.AzureCollectionDataStoreIn() # AzureCollectionDataStoreIn | 
 
     try:
         # Register an Azure collection data store
@@ -852,15 +852,15 @@ Different details over a registered one are refused.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.gcp_collection_data_store_in import GcpCollectionDataStoreIn
-from montecarlo.models.gcp_collection_data_store_out import GcpCollectionDataStoreOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.gcp_collection_data_store_in import GcpCollectionDataStoreIn
+from pycarlo2.models.gcp_collection_data_store_out import GcpCollectionDataStoreOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -870,15 +870,15 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.CollectionDataStoresApi(api_client)
-    gcp_collection_data_store_in = montecarlo.GcpCollectionDataStoreIn() # GcpCollectionDataStoreIn | 
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
+    gcp_collection_data_store_in = pycarlo2.GcpCollectionDataStoreIn() # GcpCollectionDataStoreIn | 
 
     try:
         # Register a GCP collection data store
@@ -948,15 +948,15 @@ returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.aws_collection_data_store_out import AwsCollectionDataStoreOut
-from montecarlo.models.aws_collection_data_store_patch import AwsCollectionDataStorePatch
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.aws_collection_data_store_out import AwsCollectionDataStoreOut
+from pycarlo2.models.aws_collection_data_store_patch import AwsCollectionDataStorePatch
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -966,16 +966,16 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.CollectionDataStoresApi(api_client)
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
     collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    aws_collection_data_store_patch = montecarlo.AwsCollectionDataStorePatch() # AwsCollectionDataStorePatch | 
+    aws_collection_data_store_patch = pycarlo2.AwsCollectionDataStorePatch() # AwsCollectionDataStorePatch | 
 
     try:
         # Update an AWS collection data store
@@ -1051,15 +1051,15 @@ returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.azure_collection_data_store_out import AzureCollectionDataStoreOut
-from montecarlo.models.azure_collection_data_store_patch import AzureCollectionDataStorePatch
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.azure_collection_data_store_out import AzureCollectionDataStoreOut
+from pycarlo2.models.azure_collection_data_store_patch import AzureCollectionDataStorePatch
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -1069,16 +1069,16 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.CollectionDataStoresApi(api_client)
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
     collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    azure_collection_data_store_patch = montecarlo.AzureCollectionDataStorePatch() # AzureCollectionDataStorePatch | 
+    azure_collection_data_store_patch = pycarlo2.AzureCollectionDataStorePatch() # AzureCollectionDataStorePatch | 
 
     try:
         # Update an Azure collection data store
@@ -1152,15 +1152,15 @@ returns 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.gcp_collection_data_store_out import GcpCollectionDataStoreOut
-from montecarlo.models.gcp_collection_data_store_patch import GcpCollectionDataStorePatch
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.gcp_collection_data_store_out import GcpCollectionDataStoreOut
+from pycarlo2.models.gcp_collection_data_store_patch import GcpCollectionDataStorePatch
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -1170,16 +1170,16 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.CollectionDataStoresApi(api_client)
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
     collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    gcp_collection_data_store_patch = montecarlo.GcpCollectionDataStorePatch() # GcpCollectionDataStorePatch | 
+    gcp_collection_data_store_patch = pycarlo2.GcpCollectionDataStorePatch() # GcpCollectionDataStorePatch | 
 
     try:
         # Update a GCP collection data store

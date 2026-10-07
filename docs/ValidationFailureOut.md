@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.validation_failure_out import ValidationFailureOut
+from pycarlo2.models.validation_failure_out import ValidationFailureOut
 
 # TODO update the JSON string below
 json = "{}"

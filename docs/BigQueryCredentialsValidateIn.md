@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.big_query_credentials_validate_in import BigQueryCredentialsValidateIn
+from pycarlo2.models.big_query_credentials_validate_in import BigQueryCredentialsValidateIn
 
 # TODO update the JSON string below
 json = "{}"

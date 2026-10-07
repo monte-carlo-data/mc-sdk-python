@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.connection_out import ConnectionOut
+from pycarlo2.models.connection_out import ConnectionOut
 
 # TODO update the JSON string below
 json = "{}"

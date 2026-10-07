@@ -1,4 +1,4 @@
-# montecarlo.DeploymentsApi
+# pycarlo2.DeploymentsApi
 
 All URIs are relative to *http://localhost*
 
@@ -32,15 +32,15 @@ or not anything ever is.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.deployment_in import DeploymentIn
-from montecarlo.models.deployment_out import DeploymentOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.deployment_in import DeploymentIn
+from pycarlo2.models.deployment_out import DeploymentOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -50,15 +50,15 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.DeploymentsApi(api_client)
-    deployment_in = montecarlo.DeploymentIn() # DeploymentIn | 
+    api_instance = pycarlo2.DeploymentsApi(api_client)
+    deployment_in = pycarlo2.DeploymentIn() # DeploymentIn | 
 
     try:
         # Create a deployment
@@ -126,13 +126,13 @@ picks up where it stopped, so clear whatever a refusal named and send it again.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -142,14 +142,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.DeploymentsApi(api_client)
+    api_instance = pycarlo2.DeploymentsApi(api_client)
     deployment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -210,14 +210,14 @@ Carlo's older collection platform all return 404.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.deployment_out import DeploymentOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.deployment_out import DeploymentOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -227,14 +227,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.DeploymentsApi(api_client)
+    api_instance = pycarlo2.DeploymentsApi(api_client)
     deployment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -302,14 +302,14 @@ A deployment's external id is returned by the single-deployment read, not by thi
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.deployment_summary_out import DeploymentSummaryOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.deployment_summary_out import DeploymentSummaryOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -319,14 +319,14 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.DeploymentsApi(api_client)
+    api_instance = pycarlo2.DeploymentsApi(api_client)
 
     try:
         # List deployments
@@ -389,15 +389,15 @@ provision.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.deployment_in import DeploymentIn
-from montecarlo.models.deployment_out import DeploymentOut
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.deployment_in import DeploymentIn
+from pycarlo2.models.deployment_out import DeploymentOut
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -407,16 +407,16 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.DeploymentsApi(api_client)
+    api_instance = pycarlo2.DeploymentsApi(api_client)
     deployment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    deployment_in = montecarlo.DeploymentIn() # DeploymentIn | 
+    deployment_in = pycarlo2.DeploymentIn() # DeploymentIn | 
 
     try:
         # Reprovision a deployment
@@ -484,15 +484,15 @@ deployment as it is and returns it.
 * Bearer Authentication (GatewayAuth):
 
 ```python
-import montecarlo
-from montecarlo.models.deployment_out import DeploymentOut
-from montecarlo.models.deployment_patch import DeploymentPatch
-from montecarlo.rest import ApiException
+import pycarlo2
+from pycarlo2.models.deployment_out import DeploymentOut
+from pycarlo2.models.deployment_patch import DeploymentPatch
+from pycarlo2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     host = "http://localhost"
 )
 
@@ -502,16 +502,16 @@ configuration = montecarlo.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: GatewayAuth
-configuration = montecarlo.Configuration(
+configuration = pycarlo2.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with montecarlo.ApiClient(configuration) as api_client:
+with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = montecarlo.DeploymentsApi(api_client)
+    api_instance = pycarlo2.DeploymentsApi(api_client)
     deployment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    deployment_patch = montecarlo.DeploymentPatch() # DeploymentPatch | 
+    deployment_patch = pycarlo2.DeploymentPatch() # DeploymentPatch | 
 
     try:
         # Update a deployment

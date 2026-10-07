@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.field_error_out import FieldErrorOut
+from pycarlo2.models.field_error_out import FieldErrorOut
 
 # TODO update the JSON string below
 json = "{}"

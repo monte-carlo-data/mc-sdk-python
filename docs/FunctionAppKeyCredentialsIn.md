@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from montecarlo.models.function_app_key_credentials_in import FunctionAppKeyCredentialsIn
+from pycarlo2.models.function_app_key_credentials_in import FunctionAppKeyCredentialsIn
 
 # TODO update the JSON string below
 json = "{}"

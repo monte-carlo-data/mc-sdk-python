@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **bi_container_id** | **UUID** | The BI container to add the connection to, for Tableau, Looker or Power BI credentials. Its type has to match what the credentials are for: a &#x60;looker&#x60; container takes both &#x60;looker&#x60; and &#x60;looker-git-clone&#x60; credentials. Send exactly one of this, &#x60;warehouse_id&#x60; and &#x60;etl_container_id&#x60;. | [optional] 
 **etl_container_id** | **UUID** | The ETL container to add the connection to, for ETL tool credentials such as Fivetran or Airflow. The container&#39;s type has to equal the credentials&#39; type, and the container must not have a connection yet. Send exactly one of this, &#x60;warehouse_id&#x60; and &#x60;bi_container_id&#x60;. | [optional] 
 **credentials_id** | **UUID** | The credentials the connection reads with. They also decide the connection&#39;s type. Create them first, through one of the credentials endpoints. | 
-**job_types** | **List[str]** | The jobs to run on this connection. Omit it to run what the connection type runs by default, which is what the app does. Which values are accepted depends on the connection type. An empty list is not accepted; omit the field to take the defaults. | [optional] 
+**job_types** | **List[str]** | The jobs to run on this connection. Omit it to run what the connection type runs by default, which is what the app does. Which values are accepted depends on the connection type. &#x60;etl&#x60; on a Snowflake, Power BI or Salesforce Data Cloud connection also creates its ETL container. An empty list is not accepted; omit the field to take the defaults. | [optional] 
 
 ## Example
 

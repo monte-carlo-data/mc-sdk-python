@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -26,10 +26,11 @@ from pydantic_core import to_jsonable_python
 
 class ConnectionPatch(BaseModel):
     """
-    A change to an existing connection. Sent when renaming one.
+    A change to an existing connection: a new name, or ETL turned on or off.
     """ # noqa: E501
     name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="New display name for the connection. Omit it to leave the name unchanged. An explicit null is ignored, the same as omitting the field.")
-    __properties: ClassVar[List[str]] = ["name"]
+    job_types: Optional[Annotated[List[StrictStr], Field(min_length=1)]] = Field(default=None, description="The connection's job types with `etl` added or removed. Adding `etl` turns on ETL collection for a Snowflake (Snowflake Tasks), Power BI (dataflows) or Salesforce Data Cloud connection, and creates the ETL container that `etl_container_id` then names. Removing it deletes that container. No other job can be added or removed. Omit it to leave the job types unchanged.")
+    __properties: ClassVar[List[str]] = ["name", "job_types"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -75,6 +76,11 @@ class ConnectionPatch(BaseModel):
         if self.name is None and "name" in self.model_fields_set:
             _dict['name'] = None
 
+        # set to None if job_types (nullable) is None
+        # and model_fields_set contains the field
+        if self.job_types is None and "job_types" in self.model_fields_set:
+            _dict['job_types'] = None
+
         return _dict
 
     @classmethod
@@ -87,7 +93,8 @@ class ConnectionPatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name")
+            "name": obj.get("name"),
+            "job_types": obj.get("job_types")
         })
         return _obj
 

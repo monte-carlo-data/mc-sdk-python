@@ -223,6 +223,11 @@ __all__ = [
     "SnowflakeCredentialsOut",
     "SnowflakeCredentialsPatch",
     "SnowflakeCredentialsValidateIn",
+    "SqlServerAuthMode",
+    "SqlServerCredentialsIn",
+    "SqlServerCredentialsOut",
+    "SqlServerCredentialsPatch",
+    "SqlServerCredentialsValidateIn",
     "StarburstEnterpriseCredentialsIn",
     "StarburstEnterpriseCredentialsOut",
     "StarburstEnterpriseCredentialsPatch",
@@ -462,6 +467,11 @@ from pycarlo2.models.snowflake_credentials_in import SnowflakeCredentialsIn as S
 from pycarlo2.models.snowflake_credentials_out import SnowflakeCredentialsOut as SnowflakeCredentialsOut
 from pycarlo2.models.snowflake_credentials_patch import SnowflakeCredentialsPatch as SnowflakeCredentialsPatch
 from pycarlo2.models.snowflake_credentials_validate_in import SnowflakeCredentialsValidateIn as SnowflakeCredentialsValidateIn
+from pycarlo2.models.sql_server_auth_mode import SqlServerAuthMode as SqlServerAuthMode
+from pycarlo2.models.sql_server_credentials_in import SqlServerCredentialsIn as SqlServerCredentialsIn
+from pycarlo2.models.sql_server_credentials_out import SqlServerCredentialsOut as SqlServerCredentialsOut
+from pycarlo2.models.sql_server_credentials_patch import SqlServerCredentialsPatch as SqlServerCredentialsPatch
+from pycarlo2.models.sql_server_credentials_validate_in import SqlServerCredentialsValidateIn as SqlServerCredentialsValidateIn
 from pycarlo2.models.starburst_enterprise_credentials_in import StarburstEnterpriseCredentialsIn as StarburstEnterpriseCredentialsIn
 from pycarlo2.models.starburst_enterprise_credentials_out import StarburstEnterpriseCredentialsOut as StarburstEnterpriseCredentialsOut
 from pycarlo2.models.starburst_enterprise_credentials_patch import StarburstEnterpriseCredentialsPatch as StarburstEnterpriseCredentialsPatch

@@ -188,6 +188,11 @@ docs/SnowflakeCredentialsIn.md
 docs/SnowflakeCredentialsOut.md
 docs/SnowflakeCredentialsPatch.md
 docs/SnowflakeCredentialsValidateIn.md
+docs/SqlServerAuthMode.md
+docs/SqlServerCredentialsIn.md
+docs/SqlServerCredentialsOut.md
+docs/SqlServerCredentialsPatch.md
+docs/SqlServerCredentialsValidateIn.md
 docs/StarburstEnterpriseCredentialsIn.md
 docs/StarburstEnterpriseCredentialsOut.md
 docs/StarburstEnterpriseCredentialsPatch.md
@@ -421,6 +426,11 @@ pycarlo2/models/snowflake_credentials_in.py
 pycarlo2/models/snowflake_credentials_out.py
 pycarlo2/models/snowflake_credentials_patch.py
 pycarlo2/models/snowflake_credentials_validate_in.py
+pycarlo2/models/sql_server_auth_mode.py
+pycarlo2/models/sql_server_credentials_in.py
+pycarlo2/models/sql_server_credentials_out.py
+pycarlo2/models/sql_server_credentials_patch.py
+pycarlo2/models/sql_server_credentials_validate_in.py
 pycarlo2/models/starburst_enterprise_credentials_in.py
 pycarlo2/models/starburst_enterprise_credentials_out.py
 pycarlo2/models/starburst_enterprise_credentials_patch.py

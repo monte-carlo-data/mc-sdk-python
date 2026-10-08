@@ -32,6 +32,7 @@ Method | HTTP request | Description
 [**create_redshift_credentials**](CredentialsApi.md#create_redshift_credentials) | **POST** /api/v2/credentials/redshift | Create Redshift credentials
 [**create_sap_hana_credentials**](CredentialsApi.md#create_sap_hana_credentials) | **POST** /api/v2/credentials/sap-hana | Create SAP HANA credentials
 [**create_snowflake_credentials**](CredentialsApi.md#create_snowflake_credentials) | **POST** /api/v2/credentials/snowflake | Create Snowflake credentials
+[**create_sql_server_credentials**](CredentialsApi.md#create_sql_server_credentials) | **POST** /api/v2/credentials/sql-server | Create SQL Server credentials
 [**create_starburst_enterprise_credentials**](CredentialsApi.md#create_starburst_enterprise_credentials) | **POST** /api/v2/credentials/starburst-enterprise | Create Starburst Enterprise credentials
 [**create_starburst_galaxy_credentials**](CredentialsApi.md#create_starburst_galaxy_credentials) | **POST** /api/v2/credentials/starburst-galaxy | Create Starburst Galaxy credentials
 [**create_tableau_credentials**](CredentialsApi.md#create_tableau_credentials) | **POST** /api/v2/credentials/tableau | Create Tableau credentials
@@ -65,6 +66,7 @@ Method | HTTP request | Description
 [**delete_redshift_credentials**](CredentialsApi.md#delete_redshift_credentials) | **DELETE** /api/v2/credentials/redshift/{credentials_id} | Delete Redshift credentials
 [**delete_sap_hana_credentials**](CredentialsApi.md#delete_sap_hana_credentials) | **DELETE** /api/v2/credentials/sap-hana/{credentials_id} | Delete SAP HANA credentials
 [**delete_snowflake_credentials**](CredentialsApi.md#delete_snowflake_credentials) | **DELETE** /api/v2/credentials/snowflake/{credentials_id} | Delete Snowflake credentials
+[**delete_sql_server_credentials**](CredentialsApi.md#delete_sql_server_credentials) | **DELETE** /api/v2/credentials/sql-server/{credentials_id} | Delete SQL Server credentials
 [**delete_starburst_enterprise_credentials**](CredentialsApi.md#delete_starburst_enterprise_credentials) | **DELETE** /api/v2/credentials/starburst-enterprise/{credentials_id} | Delete Starburst Enterprise credentials
 [**delete_starburst_galaxy_credentials**](CredentialsApi.md#delete_starburst_galaxy_credentials) | **DELETE** /api/v2/credentials/starburst-galaxy/{credentials_id} | Delete Starburst Galaxy credentials
 [**delete_tableau_credentials**](CredentialsApi.md#delete_tableau_credentials) | **DELETE** /api/v2/credentials/tableau/{credentials_id} | Delete Tableau credentials
@@ -97,6 +99,7 @@ Method | HTTP request | Description
 [**get_redshift_credentials**](CredentialsApi.md#get_redshift_credentials) | **GET** /api/v2/credentials/redshift/{credentials_id} | Get Redshift credentials
 [**get_sap_hana_credentials**](CredentialsApi.md#get_sap_hana_credentials) | **GET** /api/v2/credentials/sap-hana/{credentials_id} | Get SAP HANA credentials
 [**get_snowflake_credentials**](CredentialsApi.md#get_snowflake_credentials) | **GET** /api/v2/credentials/snowflake/{credentials_id} | Get Snowflake credentials
+[**get_sql_server_credentials**](CredentialsApi.md#get_sql_server_credentials) | **GET** /api/v2/credentials/sql-server/{credentials_id} | Get SQL Server credentials
 [**get_starburst_enterprise_credentials**](CredentialsApi.md#get_starburst_enterprise_credentials) | **GET** /api/v2/credentials/starburst-enterprise/{credentials_id} | Get Starburst Enterprise credentials
 [**get_starburst_galaxy_credentials**](CredentialsApi.md#get_starburst_galaxy_credentials) | **GET** /api/v2/credentials/starburst-galaxy/{credentials_id} | Get Starburst Galaxy credentials
 [**get_tableau_credentials**](CredentialsApi.md#get_tableau_credentials) | **GET** /api/v2/credentials/tableau/{credentials_id} | Get Tableau credentials
@@ -130,6 +133,7 @@ Method | HTTP request | Description
 [**update_redshift_credentials**](CredentialsApi.md#update_redshift_credentials) | **PATCH** /api/v2/credentials/redshift/{credentials_id} | Update Redshift credentials
 [**update_sap_hana_credentials**](CredentialsApi.md#update_sap_hana_credentials) | **PATCH** /api/v2/credentials/sap-hana/{credentials_id} | Update SAP HANA credentials
 [**update_snowflake_credentials**](CredentialsApi.md#update_snowflake_credentials) | **PATCH** /api/v2/credentials/snowflake/{credentials_id} | Update Snowflake credentials
+[**update_sql_server_credentials**](CredentialsApi.md#update_sql_server_credentials) | **PATCH** /api/v2/credentials/sql-server/{credentials_id} | Update SQL Server credentials
 [**update_starburst_enterprise_credentials**](CredentialsApi.md#update_starburst_enterprise_credentials) | **PATCH** /api/v2/credentials/starburst-enterprise/{credentials_id} | Update Starburst Enterprise credentials
 [**update_starburst_galaxy_credentials**](CredentialsApi.md#update_starburst_galaxy_credentials) | **PATCH** /api/v2/credentials/starburst-galaxy/{credentials_id} | Update Starburst Galaxy credentials
 [**update_tableau_credentials**](CredentialsApi.md#update_tableau_credentials) | **PATCH** /api/v2/credentials/tableau/{credentials_id} | Update Tableau credentials
@@ -161,6 +165,7 @@ Method | HTTP request | Description
 [**validate_redshift_credentials**](CredentialsApi.md#validate_redshift_credentials) | **POST** /api/v2/credentials/redshift/validate | Validate Redshift credentials
 [**validate_sap_hana_credentials**](CredentialsApi.md#validate_sap_hana_credentials) | **POST** /api/v2/credentials/sap-hana/validate | Validate SAP HANA credentials
 [**validate_snowflake_credentials**](CredentialsApi.md#validate_snowflake_credentials) | **POST** /api/v2/credentials/snowflake/validate | Validate Snowflake credentials
+[**validate_sql_server_credentials**](CredentialsApi.md#validate_sql_server_credentials) | **POST** /api/v2/credentials/sql-server/validate | Validate SQL Server credentials
 [**validate_starburst_enterprise_credentials**](CredentialsApi.md#validate_starburst_enterprise_credentials) | **POST** /api/v2/credentials/starburst-enterprise/validate | Validate Starburst Enterprise credentials
 [**validate_starburst_galaxy_credentials**](CredentialsApi.md#validate_starburst_galaxy_credentials) | **POST** /api/v2/credentials/starburst-galaxy/validate | Validate Starburst Galaxy credentials
 [**validate_tableau_credentials**](CredentialsApi.md#validate_tableau_credentials) | **POST** /api/v2/credentials/tableau/validate | Validate Tableau credentials
@@ -2729,6 +2734,100 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SnowflakeCredentialsOut**](SnowflakeCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_sql_server_credentials**
+> SqlServerCredentialsOut create_sql_server_credentials(sql_server_credentials_in)
+
+Create SQL Server credentials
+
+Store a SQL Server login for connections to use.
+
+Monte Carlo keeps the password or the keytab and returns everything else. Create the
+credentials first, then create a connection that references them. Nothing is checked
+against SQL Server here.
+
+`auth_mode` decides what else to send: `user` and `password` for `sql`, or `realm`, `kdc`,
+`principal` and one of `keytab_base64` or `password` for `kerberos`. An account holds a
+limited number of credentials; past that the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.sql_server_credentials_in import SqlServerCredentialsIn
+from pycarlo2.models.sql_server_credentials_out import SqlServerCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    sql_server_credentials_in = pycarlo2.SqlServerCredentialsIn() # SqlServerCredentialsIn | 
+
+    try:
+        # Create SQL Server credentials
+        api_response = api_instance.create_sql_server_credentials(sql_server_credentials_in)
+        print("The response of CredentialsApi->create_sql_server_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_sql_server_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sql_server_credentials_in** | [**SqlServerCredentialsIn**](SqlServerCredentialsIn.md)|  | 
+
+### Return type
+
+[**SqlServerCredentialsOut**](SqlServerCredentialsOut.md)
 
 ### Authorization
 
@@ -5569,6 +5668,91 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_sql_server_credentials**
+> delete_sql_server_credentials(credentials_id)
+
+Delete SQL Server credentials
+
+Delete SQL Server credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+using the stored password or keytab. Change the password in SQL Server or Active Directory
+if it must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Delete SQL Server credentials
+        api_instance.delete_sql_server_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_sql_server_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_starburst_enterprise_credentials**
 > delete_starburst_enterprise_credentials(credentials_id)
 
@@ -8292,6 +8476,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SnowflakeCredentialsOut**](SnowflakeCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_sql_server_credentials**
+> SqlServerCredentialsOut get_sql_server_credentials(credentials_id)
+
+Get SQL Server credentials
+
+Get one set of SQL Server credentials, without the password or the keytab.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.sql_server_credentials_out import SqlServerCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Get SQL Server credentials
+        api_response = api_instance.get_sql_server_credentials(credentials_id)
+        print("The response of CredentialsApi->get_sql_server_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_sql_server_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+[**SqlServerCredentialsOut**](SqlServerCredentialsOut.md)
 
 ### Authorization
 
@@ -11323,6 +11593,98 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_sql_server_credentials**
+> SqlServerCredentialsOut update_sql_server_credentials(credentials_id, sql_server_credentials_patch)
+
+Update SQL Server credentials
+
+Change SQL Server credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to change.
+A new `auth_mode` drops the fields and the secret of the old one, so send the new mode's
+fields with it. Sending an empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.sql_server_credentials_out import SqlServerCredentialsOut
+from pycarlo2.models.sql_server_credentials_patch import SqlServerCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    sql_server_credentials_patch = pycarlo2.SqlServerCredentialsPatch() # SqlServerCredentialsPatch | 
+
+    try:
+        # Update SQL Server credentials
+        api_response = api_instance.update_sql_server_credentials(credentials_id, sql_server_credentials_patch)
+        print("The response of CredentialsApi->update_sql_server_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_sql_server_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **sql_server_credentials_patch** | [**SqlServerCredentialsPatch**](SqlServerCredentialsPatch.md)|  | 
+
+### Return type
+
+[**SqlServerCredentialsOut**](SqlServerCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_starburst_enterprise_credentials**
 > StarburstEnterpriseCredentialsOut update_starburst_enterprise_credentials(credentials_id, starburst_enterprise_credentials_patch)
 
@@ -14176,6 +14538,100 @@ with pycarlo2.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **snowflake_credentials_validate_in** | [**SnowflakeCredentialsValidateIn**](SnowflakeCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_sql_server_credentials**
+> ValidationRunOut validate_sql_server_credentials(sql_server_credentials_validate_in)
+
+Validate SQL Server credentials
+
+Check a candidate SQL Server login against SQL Server.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your SQL Server database. Kerberos
+needs a deployment whose agent can reach the key distribution center.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.sql_server_credentials_validate_in import SqlServerCredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    sql_server_credentials_validate_in = pycarlo2.SqlServerCredentialsValidateIn() # SqlServerCredentialsValidateIn | 
+
+    try:
+        # Validate SQL Server credentials
+        api_response = api_instance.validate_sql_server_credentials(sql_server_credentials_validate_in)
+        print("The response of CredentialsApi->validate_sql_server_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_sql_server_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sql_server_credentials_validate_in** | [**SqlServerCredentialsValidateIn**](SqlServerCredentialsValidateIn.md)|  | 
 
 ### Return type
 

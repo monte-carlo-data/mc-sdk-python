@@ -30,7 +30,8 @@ class ValidationFailureOut(BaseModel):
     friendly_message: Optional[StrictStr] = Field(description="What went wrong, in terms a reader can act on. Null when none was given.")
     resolution: Optional[StrictStr] = Field(description="What to change to fix it. Null when there is no specific step to suggest.")
     cause: Optional[StrictStr] = Field(description="The underlying error the check ran into, as the system reported it. Values that look like passwords or tokens are masked, and long text is shortened. Null when none was reported.")
-    __properties: ClassVar[List[str]] = ["friendly_message", "resolution", "cause"]
+    stack_trace: Optional[StrictStr] = Field(description="The call stack the system reported with the error, ending at the most recent call. Values that look like passwords or tokens are masked, and a long trace keeps only its end. Null when none was reported.")
+    __properties: ClassVar[List[str]] = ["friendly_message", "resolution", "cause", "stack_trace"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,6 +87,11 @@ class ValidationFailureOut(BaseModel):
         if self.cause is None and "cause" in self.model_fields_set:
             _dict['cause'] = None
 
+        # set to None if stack_trace (nullable) is None
+        # and model_fields_set contains the field
+        if self.stack_trace is None and "stack_trace" in self.model_fields_set:
+            _dict['stack_trace'] = None
+
         return _dict
 
     @classmethod
@@ -100,7 +106,8 @@ class ValidationFailureOut(BaseModel):
         _obj = cls.model_validate({
             "friendly_message": obj.get("friendly_message"),
             "resolution": obj.get("resolution"),
-            "cause": obj.get("cause")
+            "cause": obj.get("cause"),
+            "stack_trace": obj.get("stack_trace")
         })
         return _obj
 

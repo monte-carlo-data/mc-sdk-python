@@ -59,7 +59,7 @@ class ConnectionsApi:
     ) -> ConnectionOut:
         """Create a connection
 
-        Add a connection to a warehouse, a BI container or an ETL container.  Create the credentials first, through one of the credentials endpoints, then name them here. The connection's type comes from them, and has to be a type the parent accepts and its deployment supports. Send exactly one of `warehouse_id`, `bi_container_id` and `etl_container_id`.  A type that depends on a metastore, such as `databricks-sql-warehouse`, goes on a data lake warehouse that already has a metastore connection. Tableau, Looker and Power BI credentials go on a BI container of the same tool; a `looker` container takes both the `looker` and the `looker-git-clone` connection.  ETL tool credentials go on an empty ETL container of the same type, created through `/etl-containers`. A container takes one connection. A container of a type this API does not create, such as Snowflake Tasks, takes none.  Omit `job_types` to run what the type runs by default.  An unknown warehouse, BI container, ETL container or credentials id returns 404.
+        Add a connection to a warehouse, a BI container or an ETL container.  Create the credentials first, through one of the credentials endpoints, then name them here. The connection's type comes from them, and has to be a type the parent accepts and its deployment supports. Send exactly one of `warehouse_id`, `bi_container_id` and `etl_container_id`.  A type that depends on a metastore, such as `databricks-sql-warehouse`, goes on a data lake warehouse that already has a metastore connection. Tableau, Looker and Power BI credentials go on a BI container of the same tool; a `looker` container takes both the `looker` and the `looker-git-clone` connection.  ETL tool credentials go on an empty ETL container of the same type, created through `/etl-containers`. A container takes one connection. A container of a type this API does not create, such as Snowflake Tasks, takes none.  Omit `job_types` to run what the type runs by default. `etl` on a Snowflake, Power BI or Salesforce Data Cloud connection also turns on its ETL, as adding it later through the update does. Snowflake takes `etl` alone, the other two only beside their other jobs.  An unknown warehouse, BI container, ETL container or credentials id returns 404.
 
         :param connection_in: (required)
         :type connection_in: ConnectionIn
@@ -212,7 +212,7 @@ class ConnectionsApi:
     ) -> None:
         """Delete a connection
 
-        Delete a connection.  The warehouse, BI container or ETL container and the credentials are left in place. An ETL container keeps what it collected, and takes a new connection. Delete each of those through its own endpoint once nothing uses it. Deleting the connection also deletes its own schedules, monitors and rules.  Deleting a warehouse's last connection is refused when that would also take monitors, rules or use cases that belong to the warehouse as a whole. Delete the warehouse instead. Deleting a custom BI connector's connection is refused too, since its BI container and the assets collected through it would go with it.
+        Delete a connection.  The warehouse, BI container or ETL container and the credentials are left in place. An ETL container keeps what it collected, and takes a new connection. Delete each of those through its own endpoint once nothing uses it. Deleting the connection also deletes its own schedules, monitors and rules.  Deleting a warehouse's last connection is refused when that would also take monitors, rules or use cases that belong to the warehouse as a whole. Delete the warehouse instead. Deleting a custom BI connector's connection is refused too, since its BI container and the assets collected through it would go with it. So is deleting a Power BI connection with ETL on. Remove `etl` from its `job_types` first.
 
         :param connection_id: Id of the connection, as returned when it is created or listed. (required)
         :type connection_id: UUID
@@ -669,7 +669,7 @@ class ConnectionsApi:
     ) -> ConnectionOut:
         """Update a connection
 
-        Rename a connection.  The name is the only thing you can change. The type, the warehouse, BI container or ETL container and the credentials are fixed when the connection is created. Two connections on one warehouse or BI container cannot share a name. Sending an empty body leaves the connection as it is and returns it.
+        Rename a connection, or turn its ETL on or off.  The type, the warehouse, BI container or ETL container and the credentials are fixed when the connection is created. Two connections on one warehouse or BI container cannot share a name.  `job_types` takes one change: `etl` added or removed. Adding it to a Snowflake, Power BI or Salesforce Data Cloud connection turns on Snowflake Tasks, Power BI dataflows or Data Cloud ETL. That creates an ETL container, returned in `etl_container_id`. Removing `etl` deletes the container, and `etl_container_id` goes back to null. Sending the current job types, or an empty body, leaves the connection as it is and returns it.
 
         :param connection_id: Id of the connection, as returned when it is created or listed. (required)
         :type connection_id: UUID

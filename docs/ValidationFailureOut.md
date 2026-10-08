@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **friendly_message** | **str** | What went wrong, in terms a reader can act on. Null when none was given. | 
 **resolution** | **str** | What to change to fix it. Null when there is no specific step to suggest. | 
+**cause** | **str** | The underlying error the check ran into, as the system reported it. Values that look like passwords or tokens are masked, and long text is shortened. Null when none was reported. | 
 
 ## Example
 

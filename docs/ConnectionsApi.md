@@ -33,7 +33,9 @@ ETL tool credentials go on an empty ETL container of the same type, created thro
 `/etl-containers`. A container takes one connection. A container of a type this API does
 not create, such as Snowflake Tasks, takes none.
 
-Omit `job_types` to run what the type runs by default.
+Omit `job_types` to run what the type runs by default. `etl` on a Snowflake, Power BI or
+Salesforce Data Cloud connection also turns on its ETL, as adding it later through the
+update does. Snowflake takes `etl` alone, the other two only beside their other jobs.
 
 An unknown warehouse, BI container, ETL container or credentials id returns 404.
 
@@ -132,7 +134,8 @@ own schedules, monitors and rules.
 Deleting a warehouse's last connection is refused when that would also take monitors,
 rules or use cases that belong to the warehouse as a whole. Delete the warehouse instead.
 Deleting a custom BI connector's connection is refused too, since its BI container and
-the assets collected through it would go with it.
+the assets collected through it would go with it. So is deleting a Power BI connection with
+ETL on. Remove `etl` from its `job_types` first.
 
 ### Example
 
@@ -399,12 +402,17 @@ Name | Type | Description  | Notes
 
 Update a connection
 
-Rename a connection.
+Rename a connection, or turn its ETL on or off.
 
-The name is the only thing you can change. The type, the warehouse, BI container or ETL
-container and the credentials are fixed when the connection is created. Two connections on
-one warehouse or BI container cannot share a name. Sending an empty body leaves the
-connection as it is and returns it.
+The type, the warehouse, BI container or ETL container and the credentials are fixed when
+the connection is created. Two connections on one warehouse or BI container cannot share a
+name.
+
+`job_types` takes one change: `etl` added or removed. Adding it to a Snowflake, Power BI
+or Salesforce Data Cloud connection turns on Snowflake Tasks, Power BI dataflows or Data
+Cloud ETL. That creates an ETL container, returned in `etl_container_id`. Removing `etl`
+deletes the container, and `etl_container_id` goes back to null. Sending the current job
+types, or an empty body, leaves the connection as it is and returns it.
 
 ### Example
 

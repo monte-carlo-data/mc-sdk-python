@@ -23,6 +23,7 @@ __all__ = [
     "CollectionDataStoresApi",
     "ConnectionsApi",
     "CredentialsApi",
+    "CustomConnectorTypesApi",
     "DeploymentsApi",
     "EtlContainersApi",
     "UsersApi",
@@ -101,6 +102,10 @@ __all__ = [
     "CredentialsStorageType",
     "CredentialsSummaryOut",
     "CurrentUserOut",
+    "CustomConnectorAssetClass",
+    "CustomConnectorCapabilities",
+    "CustomConnectorTerminology",
+    "CustomConnectorTypeOut",
     "DatabricksMetastoreSqlWarehouseCredentialsIn",
     "DatabricksMetastoreSqlWarehouseCredentialsOut",
     "DatabricksMetastoreSqlWarehouseCredentialsPatch",
@@ -266,6 +271,7 @@ from pycarlo2.api.collection_agents_api import CollectionAgentsApi as Collection
 from pycarlo2.api.collection_data_stores_api import CollectionDataStoresApi as CollectionDataStoresApi
 from pycarlo2.api.connections_api import ConnectionsApi as ConnectionsApi
 from pycarlo2.api.credentials_api import CredentialsApi as CredentialsApi
+from pycarlo2.api.custom_connector_types_api import CustomConnectorTypesApi as CustomConnectorTypesApi
 from pycarlo2.api.deployments_api import DeploymentsApi as DeploymentsApi
 from pycarlo2.api.etl_containers_api import EtlContainersApi as EtlContainersApi
 from pycarlo2.api.users_api import UsersApi as UsersApi
@@ -345,6 +351,10 @@ from pycarlo2.models.credential_type import CredentialType as CredentialType
 from pycarlo2.models.credentials_storage_type import CredentialsStorageType as CredentialsStorageType
 from pycarlo2.models.credentials_summary_out import CredentialsSummaryOut as CredentialsSummaryOut
 from pycarlo2.models.current_user_out import CurrentUserOut as CurrentUserOut
+from pycarlo2.models.custom_connector_asset_class import CustomConnectorAssetClass as CustomConnectorAssetClass
+from pycarlo2.models.custom_connector_capabilities import CustomConnectorCapabilities as CustomConnectorCapabilities
+from pycarlo2.models.custom_connector_terminology import CustomConnectorTerminology as CustomConnectorTerminology
+from pycarlo2.models.custom_connector_type_out import CustomConnectorTypeOut as CustomConnectorTypeOut
 from pycarlo2.models.databricks_metastore_sql_warehouse_credentials_in import DatabricksMetastoreSqlWarehouseCredentialsIn as DatabricksMetastoreSqlWarehouseCredentialsIn
 from pycarlo2.models.databricks_metastore_sql_warehouse_credentials_out import DatabricksMetastoreSqlWarehouseCredentialsOut as DatabricksMetastoreSqlWarehouseCredentialsOut
 from pycarlo2.models.databricks_metastore_sql_warehouse_credentials_patch import DatabricksMetastoreSqlWarehouseCredentialsPatch as DatabricksMetastoreSqlWarehouseCredentialsPatch

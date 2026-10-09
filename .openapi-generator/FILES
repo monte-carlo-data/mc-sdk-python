@@ -64,6 +64,11 @@ docs/CredentialsApi.md
 docs/CredentialsStorageType.md
 docs/CredentialsSummaryOut.md
 docs/CurrentUserOut.md
+docs/CustomConnectorAssetClass.md
+docs/CustomConnectorCapabilities.md
+docs/CustomConnectorTerminology.md
+docs/CustomConnectorTypeOut.md
+docs/CustomConnectorTypesApi.md
 docs/DatabricksMetastoreSqlWarehouseCredentialsIn.md
 docs/DatabricksMetastoreSqlWarehouseCredentialsOut.md
 docs/DatabricksMetastoreSqlWarehouseCredentialsPatch.md
@@ -233,6 +238,7 @@ pycarlo2/api/collection_agents_api.py
 pycarlo2/api/collection_data_stores_api.py
 pycarlo2/api/connections_api.py
 pycarlo2/api/credentials_api.py
+pycarlo2/api/custom_connector_types_api.py
 pycarlo2/api/deployments_api.py
 pycarlo2/api/etl_containers_api.py
 pycarlo2/api/users_api.py
@@ -304,6 +310,10 @@ pycarlo2/models/credential_type.py
 pycarlo2/models/credentials_storage_type.py
 pycarlo2/models/credentials_summary_out.py
 pycarlo2/models/current_user_out.py
+pycarlo2/models/custom_connector_asset_class.py
+pycarlo2/models/custom_connector_capabilities.py
+pycarlo2/models/custom_connector_terminology.py
+pycarlo2/models/custom_connector_type_out.py
 pycarlo2/models/databricks_metastore_sql_warehouse_credentials_in.py
 pycarlo2/models/databricks_metastore_sql_warehouse_credentials_out.py
 pycarlo2/models/databricks_metastore_sql_warehouse_credentials_patch.py

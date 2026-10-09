@@ -1,6 +1,6 @@
 # EtlContainerType
 
-The ETL tool an ETL container represents.  Only the types a create accepts can be created through this API. Containers of every other type read with `is_synthetic` true and cannot be deleted through this API. Most belong to another connection, such as a warehouse or BI connection, and go away with it.
+The ETL tool an ETL container represents.  Only the types a create accepts can be created through this API. A `databricks`, `snowflake`, `power_bi_dataflow` or `salesforce-data-cloud` container belongs to a warehouse or BI connection. It reads with `is_synthetic` true, cannot be deleted through this API, and goes away with that connection. An `informatica` container is created in the app and can be deleted here.
 
 ## Enum
 

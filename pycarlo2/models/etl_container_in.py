@@ -32,7 +32,7 @@ class EtlContainerIn(BaseModel):
     """ # noqa: E501
     type: NewEtlContainerType = Field(description="The ETL tool the container represents. Its connection has to be for this tool. Cannot be changed after the container is created.")
     name: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="Display name for the ETL container. No two containers of the same type can share a name.")
-    deployment_id: Optional[UUID] = Field(default=None, description="The deployment the container's connection will run through. Pick one from the deployments list. Only a deployment on Monte Carlo's current collection platform is accepted. Required for every type except `airflow`, which takes none.")
+    deployment_id: Optional[UUID] = Field(default=None, description="The deployment the container's connection will run through. Pick one from the deployments list. Only a deployment on Monte Carlo's current collection platform is accepted. `airflow` takes none. `custom-etl-connector` takes the deployment of the agent that registered the connector, or none for a push-only connector. Every other type requires one.")
     __properties: ClassVar[List[str]] = ["type", "name", "deployment_id"]
 
     model_config = ConfigDict(

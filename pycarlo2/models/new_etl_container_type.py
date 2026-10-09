@@ -21,7 +21,7 @@ from typing_extensions import Self
 
 class NewEtlContainerType(str, Enum):
     """
-    The ETL tool to create an ETL container for.  An `airflow` container takes no deployment. Every other type runs through one.
+    The ETL tool to create an ETL container for.  An `airflow` container takes no deployment. A `custom-etl-connector` container takes the deployment of the agent that registered its connector type, or none for a push-only connector. Every other type runs through one.
     """
 
     """
@@ -29,6 +29,7 @@ class NewEtlContainerType(str, Enum):
     """
     AIRFLOW = 'airflow'
     AZURE_MINUS_DATA_MINUS_FACTORY = 'azure-data-factory'
+    CUSTOM_MINUS_ETL_MINUS_CONNECTOR = 'custom-etl-connector'
     FIVETRAN = 'fivetran'
     GCP_MINUS_DATAFORM = 'gcp-dataform'
     INFORMATICA_MINUS_V2 = 'informatica-v2'

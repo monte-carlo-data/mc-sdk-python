@@ -207,7 +207,7 @@ class EtlContainersApi:
     ) -> None:
         """Delete an ETL container
 
-        Delete an ETL container.  Only an empty container can be deleted. A connection is managed as its own resource and is never deleted with its container, so remove it first. A synthetic container cannot be deleted here. Both refusals return 409.
+        Delete an ETL container.  Only an empty container can be deleted. A connection is managed as its own resource and is never deleted with its container, so remove it first. A synthetic container cannot be deleted here. Both refusals return 409. Deleting a container revokes the integration keys scoped to it.
 
         :param etl_container_id: (required)
         :type etl_container_id: UUID

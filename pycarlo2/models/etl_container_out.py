@@ -33,7 +33,7 @@ class EtlContainerOut(BaseModel):
     id: UUID = Field(description="Unique identifier of the ETL container.")
     type: EtlContainerType = Field(description="The ETL tool the container represents. Fixed once created.")
     name: StrictStr = Field(description="Display name of the ETL container.")
-    is_synthetic: StrictBool = Field(description="True for a container this API does not create or delete. Most belong to another connection, such as a warehouse or BI connection, and go away with it.")
+    is_synthetic: StrictBool = Field(description="True for a container that belongs to a warehouse or BI connection and goes away with it. This API does not create or delete one. Fixed by the type.")
     deployment_id: Optional[UUID] = Field(description="The deployment the container's connection runs through. Null for a type that runs on none, such as `airflow`. The id may name a deployment on Monte Carlo's older collection platform. The deployments endpoints do not list those.")
     deployment_name: Optional[StrictStr] = Field(description="Display name of the deployment. Null exactly when `deployment_id` is.")
     created_time: datetime = Field(description="When the ETL container was created.")

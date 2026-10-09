@@ -55,7 +55,7 @@ class BiContainersApi:
     ) -> BiContainerOut:
         """Create a BI container
 
-        Create an empty BI container.  The container holds no connections until you add some. Its type is fixed at creation and decides which connections it accepts. A `looker` container takes both the Looker API connection and the LookML git connection. The deployment has to be one the deployments list returns; any other id returns 404. A deployment that does not support the BI tool, or needs an upgrade first, returns 409.
+        Create an empty BI container.  The container holds no connections until you add some. Its type is fixed at creation and decides which connections it accepts. A `looker` container takes both the Looker API connection and the LookML git connection. The deployment has to be one the deployments list returns; any other id returns 404. A deployment that does not support the BI tool, or needs an upgrade first, returns 409. A `custom-bi-connector` container goes on the deployment of the agent that registered the connector, or on none for a push-only connector. Every other type requires a deployment.
 
         :param bi_container_in: (required)
         :type bi_container_in: BiContainerIn

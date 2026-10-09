@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict
+from typing import Any, ClassVar, Dict, Optional
 from typing_extensions import Annotated
 from uuid import UUID
 from pycarlo2.models.new_bi_container_type import NewBiContainerType
@@ -32,7 +32,7 @@ class BiContainerIn(BaseModel):
     """ # noqa: E501
     type: NewBiContainerType = Field(description="The BI tool the container represents. Every connection added to it has to be for this tool. Cannot be changed after the container is created.")
     name: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="Display name for the BI container.")
-    deployment_id: UUID = Field(description="The deployment the container's connections will run through. Pick one from the deployments list. Only a deployment on Monte Carlo's current collection platform is accepted.")
+    deployment_id: Optional[UUID] = Field(default=None, description="The deployment the container's connections will run through. Pick one from the deployments list. Only a deployment on Monte Carlo's current collection platform is accepted. `custom-bi-connector` takes the deployment of the agent that registered the connector, or none for a push-only connector. Every other type requires one.")
     __properties: ClassVar[List[str]] = ["type", "name", "deployment_id"]
 
     model_config = ConfigDict(
@@ -74,6 +74,11 @@ class BiContainerIn(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if deployment_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.deployment_id is None and "deployment_id" in self.model_fields_set:
+            _dict['deployment_id'] = None
+
         return _dict
 
     @classmethod

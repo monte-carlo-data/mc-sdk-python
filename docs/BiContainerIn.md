@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**NewBiContainerType**](NewBiContainerType.md) | The BI tool the container represents. Every connection added to it has to be for this tool. Cannot be changed after the container is created. | 
 **name** | **str** | Display name for the BI container. | 
-**deployment_id** | **UUID** | The deployment the container&#39;s connections will run through. Pick one from the deployments list. Only a deployment on Monte Carlo&#39;s current collection platform is accepted. | 
+**deployment_id** | **UUID** | The deployment the container&#39;s connections will run through. Pick one from the deployments list. Only a deployment on Monte Carlo&#39;s current collection platform is accepted. &#x60;custom-bi-connector&#x60; takes the deployment of the agent that registered the connector, or none for a push-only connector. Every other type requires one. | [optional] 
 
 ## Example
 

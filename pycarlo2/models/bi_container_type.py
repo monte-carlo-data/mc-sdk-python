@@ -21,7 +21,7 @@ from typing_extensions import Self
 
 class BiContainerType(str, Enum):
     """
-    The BI tool a BI container represents.  `custom-bi-connector` holds a custom BI connector's connection. It is read here but is not created through this API.
+    The BI tool a BI container represents.  `custom-bi-connector` holds a custom BI connector's connection.
     """
 
     """

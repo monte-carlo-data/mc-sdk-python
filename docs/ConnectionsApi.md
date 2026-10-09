@@ -33,6 +33,12 @@ ETL tool credentials go on an empty ETL container of the same type, created thro
 `/etl-containers`. A container takes one connection. A container of a type this API does
 not create, such as Snowflake Tasks, takes none.
 
+A custom ETL or BI connector's credentials, of type `custom-etl-connector-<id>` or
+`custom-bi-connector-<id>`, go on a `custom-etl-connector` or `custom-bi-connector`
+container on the deployment of the agent that registered the connector. Such a container
+with no deployment holds a push-only connector: send no `credentials_id`, and the
+connection takes the container's type and runs no jobs.
+
 Omit `job_types` to run what the type runs by default. `etl` on a Snowflake, Power BI or
 Salesforce Data Cloud connection also turns on its ETL, as adding it later through the
 update does. Snowflake takes `etl` alone, the other two only beside their other jobs.

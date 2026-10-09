@@ -69,7 +69,9 @@ from pycarlo2.models.collection_agent_out import CollectionAgentOut
 from pycarlo2.models.collection_data_store_out import CollectionDataStoreOut
 from pycarlo2.models.connection_in import ConnectionIn
 from pycarlo2.models.connection_out import ConnectionOut
+from pycarlo2.models.connection_parent import ConnectionParent
 from pycarlo2.models.connection_patch import ConnectionPatch
+from pycarlo2.models.connection_type_out import ConnectionTypeOut
 from pycarlo2.models.credential_type import CredentialType
 from pycarlo2.models.credentials_storage_type import CredentialsStorageType
 from pycarlo2.models.credentials_summary_out import CredentialsSummaryOut

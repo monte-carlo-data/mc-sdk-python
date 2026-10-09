@@ -57,7 +57,10 @@ docs/CollectionDataStoreOut.md
 docs/CollectionDataStoresApi.md
 docs/ConnectionIn.md
 docs/ConnectionOut.md
+docs/ConnectionParent.md
 docs/ConnectionPatch.md
+docs/ConnectionTypeOut.md
+docs/ConnectionTypesApi.md
 docs/ConnectionsApi.md
 docs/CredentialType.md
 docs/CredentialsApi.md
@@ -236,6 +239,7 @@ pycarlo2/api/__init__.py
 pycarlo2/api/bi_containers_api.py
 pycarlo2/api/collection_agents_api.py
 pycarlo2/api/collection_data_stores_api.py
+pycarlo2/api/connection_types_api.py
 pycarlo2/api/connections_api.py
 pycarlo2/api/credentials_api.py
 pycarlo2/api/custom_connector_types_api.py
@@ -305,7 +309,9 @@ pycarlo2/models/collection_agent_out.py
 pycarlo2/models/collection_data_store_out.py
 pycarlo2/models/connection_in.py
 pycarlo2/models/connection_out.py
+pycarlo2/models/connection_parent.py
 pycarlo2/models/connection_patch.py
+pycarlo2/models/connection_type_out.py
 pycarlo2/models/credential_type.py
 pycarlo2/models/credentials_storage_type.py
 pycarlo2/models/credentials_summary_out.py

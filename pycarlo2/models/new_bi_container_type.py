@@ -21,7 +21,7 @@ from typing_extensions import Self
 
 class NewBiContainerType(str, Enum):
     """
-    The BI tool to create a BI container for.  A `looker` container holds both the Looker API connection and the LookML git connection.
+    The BI tool to create a BI container for.  A `looker` container holds both the Looker API connection and the LookML git connection. A `custom-bi-connector` container takes the deployment of the agent that registered its connector type, or none for a push-only connector. Every other type runs through one.
     """
 
     """
@@ -30,6 +30,7 @@ class NewBiContainerType(str, Enum):
     LOOKER = 'looker'
     TABLEAU = 'tableau'
     POWER_MINUS_BI = 'power-bi'
+    CUSTOM_MINUS_BI_MINUS_CONNECTOR = 'custom-bi-connector'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

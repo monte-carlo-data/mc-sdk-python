@@ -21,6 +21,7 @@ __all__ = [
     "BiContainersApi",
     "CollectionAgentsApi",
     "CollectionDataStoresApi",
+    "ConnectionTypesApi",
     "ConnectionsApi",
     "CredentialsApi",
     "CustomConnectorTypesApi",
@@ -97,7 +98,9 @@ __all__ = [
     "CollectionDataStoreOut",
     "ConnectionIn",
     "ConnectionOut",
+    "ConnectionParent",
     "ConnectionPatch",
+    "ConnectionTypeOut",
     "CredentialType",
     "CredentialsStorageType",
     "CredentialsSummaryOut",
@@ -269,6 +272,7 @@ __all__ = [
 from pycarlo2.api.bi_containers_api import BiContainersApi as BiContainersApi
 from pycarlo2.api.collection_agents_api import CollectionAgentsApi as CollectionAgentsApi
 from pycarlo2.api.collection_data_stores_api import CollectionDataStoresApi as CollectionDataStoresApi
+from pycarlo2.api.connection_types_api import ConnectionTypesApi as ConnectionTypesApi
 from pycarlo2.api.connections_api import ConnectionsApi as ConnectionsApi
 from pycarlo2.api.credentials_api import CredentialsApi as CredentialsApi
 from pycarlo2.api.custom_connector_types_api import CustomConnectorTypesApi as CustomConnectorTypesApi
@@ -346,7 +350,9 @@ from pycarlo2.models.collection_agent_out import CollectionAgentOut as Collectio
 from pycarlo2.models.collection_data_store_out import CollectionDataStoreOut as CollectionDataStoreOut
 from pycarlo2.models.connection_in import ConnectionIn as ConnectionIn
 from pycarlo2.models.connection_out import ConnectionOut as ConnectionOut
+from pycarlo2.models.connection_parent import ConnectionParent as ConnectionParent
 from pycarlo2.models.connection_patch import ConnectionPatch as ConnectionPatch
+from pycarlo2.models.connection_type_out import ConnectionTypeOut as ConnectionTypeOut
 from pycarlo2.models.credential_type import CredentialType as CredentialType
 from pycarlo2.models.credentials_storage_type import CredentialsStorageType as CredentialsStorageType
 from pycarlo2.models.credentials_summary_out import CredentialsSummaryOut as CredentialsSummaryOut

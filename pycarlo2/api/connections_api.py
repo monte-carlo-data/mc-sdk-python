@@ -212,7 +212,7 @@ class ConnectionsApi:
     ) -> None:
         """Delete a connection
 
-        Delete a connection.  The warehouse, BI container or ETL container and the credentials are left in place. An ETL container keeps what it collected, and takes a new connection. Delete each of those through its own endpoint once nothing uses it. Deleting the connection also deletes its own schedules, monitors and rules.  Deleting a warehouse's last connection is refused when that would also take monitors, rules or use cases that belong to the warehouse as a whole. Delete the warehouse instead. Deleting a custom BI connector's connection is refused too, since its BI container and the assets collected through it would go with it. So is deleting a Power BI connection with ETL on. Remove `etl` from its `job_types` first.
+        Delete a connection.  The warehouse, BI container or ETL container and the credentials are left in place. An ETL container keeps what it collected, and takes a new connection. Delete each of those through its own endpoint once nothing uses it. Deleting the connection also deletes its own schedules, monitors and rules.  Deleting a warehouse's last connection is refused when that would also take monitors, rules or use cases that belong to the warehouse as a whole. Delete the warehouse instead. Deleting a Power BI connection with ETL on is refused too. Remove `etl` from its `job_types` first.
 
         :param connection_id: Id of the connection, as returned when it is created or listed. (required)
         :type connection_id: UUID
@@ -827,7 +827,7 @@ class ConnectionsApi:
     ) -> ValidationRunOut:
         """Validate a connection
 
-        Check a connection against the system it reads from.  Tests the connection as it stands, with the credentials it already uses. Nothing is changed, and you send no credentials.  The response is the run as it starts, and `Location` names where to read it. Poll that until the run's status is `completed`; each validation carries its own verdict.  An id that does not exist or belongs to another account returns 404. A connection that runs on no deployment, as an Airflow one does, returns 409.
+        Check a connection against the system it reads from.  Tests the connection as it stands, with the credentials it already uses. Nothing is changed, and you send no credentials.  The response is the run as it starts, and `Location` names where to read it. Poll that until the run's status is `completed`; each validation carries its own verdict.  An id that does not exist or belongs to another account returns 404. A connection that runs on no deployment, as an Airflow or push-only custom BI one does, returns 409.
 
         :param connection_id: Id of the connection, as returned when it is created or listed. (required)
         :type connection_id: UUID

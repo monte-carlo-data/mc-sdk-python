@@ -39,6 +39,7 @@ class DeploymentOut(BaseModel):
     created_time: Optional[datetime] = Field(default=None, description="When the deployment was assigned to your account. Null when Monte Carlo has no record of that.")
     last_updated_time: Optional[datetime] = Field(default=None, description="When Monte Carlo last updated the infrastructure behind the deployment. Null when Monte Carlo has no record of an update.")
     aws_external_id: Optional[StrictStr] = Field(default=None, description="Value to supply when you register an AWS collection agent or data store on this deployment. It goes in the trust policy of the role Monte Carlo assumes. Null until Monte Carlo has generated one, for a deployment on another platform, for a caller who is not permitted to register one, and if the value could not be read just now. Retry the request in that last case.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "name", "type", "runtime_platform", "enabled", "created_time", "last_updated_time", "aws_external_id"]
 
     model_config = ConfigDict(
@@ -71,8 +72,10 @@ class DeploymentOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -80,6 +83,11 @@ class DeploymentOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if type (nullable) is None
         # and model_fields_set contains the field
         if self.type is None and "type" in self.model_fields_set:
@@ -126,6 +134,11 @@ class DeploymentOut(BaseModel):
             "last_updated_time": obj.get("last_updated_time"),
             "aws_external_id": obj.get("aws_external_id")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -42,6 +42,7 @@ class AwsCollectionAgentOut(BaseModel):
     is_remote_upgradeable: StrictBool = Field(description="Whether Monte Carlo can update the collection agent's image for you.")
     lambda_function_arn: StrictStr = Field(description="ARN of the Lambda function Monte Carlo invokes. Empty until the agent has been registered.")
     external_id: Optional[StrictStr] = Field(default=None, description="Value to supply in the trust policy of the role Monte Carlo assumes to invoke the function. Null until Monte Carlo has generated one, for a caller who is not permitted to register an agent, and if the value could not be read just now. Retry the request in that last case.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "name", "deployment_id", "authentication_type", "enabled", "created_time", "last_updated_time", "image_build", "image_version", "is_remote_upgradeable", "lambda_function_arn", "external_id"]
 
     model_config = ConfigDict(
@@ -74,8 +75,10 @@ class AwsCollectionAgentOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -83,6 +86,11 @@ class AwsCollectionAgentOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -143,6 +151,11 @@ class AwsCollectionAgentOut(BaseModel):
             "lambda_function_arn": obj.get("lambda_function_arn"),
             "external_id": obj.get("external_id")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

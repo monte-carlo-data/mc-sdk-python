@@ -34,6 +34,7 @@ class CredentialsSummaryOut(BaseModel):
     connection_type: StrictStr = Field(description="The connection type the credentials are for, such as `snowflake`. Fixed once created.")
     storage_type: CredentialsStorageType = Field(description="Where the secret lives. Fixed once created.")
     created_time: datetime = Field(description="When the credentials were created.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time"]
 
     model_config = ConfigDict(
@@ -66,8 +67,10 @@ class CredentialsSummaryOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -75,6 +78,11 @@ class CredentialsSummaryOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -92,6 +100,11 @@ class CredentialsSummaryOut(BaseModel):
             "storage_type": obj.get("storage_type"),
             "created_time": obj.get("created_time")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

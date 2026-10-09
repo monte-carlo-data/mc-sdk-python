@@ -40,6 +40,7 @@ class Db2CredentialsOut(BaseModel):
     user: StrictStr = Field(description="Database user Monte Carlo logs in as.")
     ssl_ca_data: Optional[StrictStr] = Field(description="PEM text of the CA certificate the server's certificate is checked against. Null when none is set.")
     ssl_disabled: Optional[StrictBool] = Field(description="Connect without TLS. Null when unset.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "host", "port", "db_name", "user", "ssl_ca_data", "ssl_disabled"]
 
     model_config = ConfigDict(
@@ -72,8 +73,10 @@ class Db2CredentialsOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -81,6 +84,11 @@ class Db2CredentialsOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if db_name (nullable) is None
         # and model_fields_set contains the field
         if self.db_name is None and "db_name" in self.model_fields_set:
@@ -119,6 +127,11 @@ class Db2CredentialsOut(BaseModel):
             "ssl_ca_data": obj.get("ssl_ca_data"),
             "ssl_disabled": obj.get("ssl_disabled")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, Optional
 from typing_extensions import Annotated
 from pycarlo2.models.azure_data_store_authentication_type import AzureDataStoreAuthenticationType
 from pycarlo2.models.storage_account_keys_credentials_in import StorageAccountKeysCredentialsIn

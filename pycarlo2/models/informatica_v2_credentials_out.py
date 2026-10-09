@@ -45,6 +45,7 @@ class InformaticaV2CredentialsOut(BaseModel):
     oauth_access_token_endpoint: Optional[StrictStr] = Field(description="Identity provider URL Monte Carlo requests tokens from. Null unless `auth_mode` is oauth.")
     oauth_scope: Optional[StrictStr] = Field(description="Scope the token is requested with. Null unless set.")
     oauth_username: Optional[StrictStr] = Field(description="Identity provider user. Null unless the grant is password.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "auth_mode", "base_url", "username", "org_id", "oauth_client_id", "oauth_grant_type", "oauth_access_token_endpoint", "oauth_scope", "oauth_username"]
 
     model_config = ConfigDict(
@@ -77,8 +78,10 @@ class InformaticaV2CredentialsOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -86,6 +89,11 @@ class InformaticaV2CredentialsOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if base_url (nullable) is None
         # and model_fields_set contains the field
         if self.base_url is None and "base_url" in self.model_fields_set:
@@ -152,6 +160,11 @@ class InformaticaV2CredentialsOut(BaseModel):
             "oauth_scope": obj.get("oauth_scope"),
             "oauth_username": obj.get("oauth_username")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

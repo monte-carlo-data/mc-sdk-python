@@ -41,6 +41,7 @@ class GcpCollectionAgentOut(BaseModel):
     image_version: Optional[StrictStr] = Field(default=None, description="Version of the image the collection agent is running. Null until Monte Carlo has contacted the agent.")
     is_remote_upgradeable: StrictBool = Field(description="Whether Monte Carlo can update the collection agent's image for you.")
     cloud_run_url: StrictStr = Field(description="URL of the Cloud Run service Monte Carlo calls. Empty until the agent has been registered.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "name", "deployment_id", "authentication_type", "enabled", "created_time", "last_updated_time", "image_build", "image_version", "is_remote_upgradeable", "cloud_run_url"]
 
     model_config = ConfigDict(
@@ -73,8 +74,10 @@ class GcpCollectionAgentOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -82,6 +85,11 @@ class GcpCollectionAgentOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -136,6 +144,11 @@ class GcpCollectionAgentOut(BaseModel):
             "is_remote_upgradeable": obj.get("is_remote_upgradeable"),
             "cloud_run_url": obj.get("cloud_run_url")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

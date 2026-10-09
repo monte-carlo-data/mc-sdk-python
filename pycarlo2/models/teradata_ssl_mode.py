@@ -15,6 +15,7 @@
 from __future__ import annotations
 import json
 from enum import Enum
+from typing import Any, Optional
 from typing_extensions import Self
 
 
@@ -38,4 +39,14 @@ class TeradataSslMode(str, Enum):
         """Create an instance of TeradataSslMode from a JSON string"""
         return cls(json.loads(json_str))
 
+
+    @classmethod
+    def _missing_(cls, value: Any) -> Optional[Self]:
+        """Keep a value the API added after this SDK was generated."""
+        if not isinstance(value, cls._member_type_):
+            return None
+        member = cls._member_type_.__new__(cls, value)
+        member._name_ = str(value)
+        member._value_ = value
+        return member
 

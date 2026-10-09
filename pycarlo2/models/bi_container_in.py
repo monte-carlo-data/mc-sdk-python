@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict
 from typing_extensions import Annotated
 from uuid import UUID
 from pycarlo2.models.new_bi_container_type import NewBiContainerType

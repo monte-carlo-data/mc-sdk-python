@@ -38,6 +38,7 @@ class LookerGitCloneCredentialsOut(BaseModel):
     username: Optional[StrictStr] = Field(description="Git user. Null for an SSH clone.")
     ssl_ca_data: Optional[StrictStr] = Field(description="PEM certificate of the CA that signed the git server's certificate. Null unless set.")
     ssl_skip_cert_verification: Optional[StrictBool] = Field(description="Skip verifying the git server's TLS certificate. Null unless set.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "repo_url", "username", "ssl_ca_data", "ssl_skip_cert_verification"]
 
     model_config = ConfigDict(
@@ -70,8 +71,10 @@ class LookerGitCloneCredentialsOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,6 +82,11 @@ class LookerGitCloneCredentialsOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if username (nullable) is None
         # and model_fields_set contains the field
         if self.username is None and "username" in self.model_fields_set:
@@ -115,6 +123,11 @@ class LookerGitCloneCredentialsOut(BaseModel):
             "ssl_ca_data": obj.get("ssl_ca_data"),
             "ssl_skip_cert_verification": obj.get("ssl_skip_cert_verification")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

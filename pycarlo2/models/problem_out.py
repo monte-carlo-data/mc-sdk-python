@@ -36,6 +36,7 @@ class ProblemOut(BaseModel):
     request_id: StrictStr = Field(description="Identifier for this request, also returned in the `X-Request-Id` header. Quote it when reporting the error to support.")
     errors: Optional[List[FieldErrorOut]] = Field(default=None, description="The fields that failed validation. Empty unless this is a validation error.")
     extra: Optional[Dict[str, StrictStr]] = Field(default=None, description="Values that parameterize `message`, for a client that renders its own text instead of showing `message` directly. Absent when there is nothing to report.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["type", "title", "status", "code", "detail", "request_id", "errors", "extra"]
 
     model_config = ConfigDict(
@@ -68,8 +69,10 @@ class ProblemOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -84,6 +87,11 @@ class ProblemOut(BaseModel):
                 if _item_errors:
                     _items.append(_item_errors.to_dict())
             _dict['errors'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if extra (nullable) is None
         # and model_fields_set contains the field
         if self.extra is None and "extra" in self.model_fields_set:
@@ -110,6 +118,11 @@ class ProblemOut(BaseModel):
             "errors": [FieldErrorOut.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
             "extra": obj.get("extra")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

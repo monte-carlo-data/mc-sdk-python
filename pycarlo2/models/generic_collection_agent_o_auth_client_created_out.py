@@ -40,6 +40,7 @@ class GenericCollectionAgentOAuthClientCreatedOut(BaseModel):
     expiration_time: Optional[datetime] = Field(default=None, description="When the client stops being accepted. Null for a client that does not expire.")
     client_secret: SecretStr = Field(description="Secret the agent presents, as `client_secret` in its configuration. Returned once, by this call. It is not retrievable afterwards, and Terraform holds it in state like any generated credential. To rotate, create a new credential and delete this one.")
     secret_id: StrictStr = Field(description="Identifier of the secret this call created, as the client's secrets are listed. Keep it with the secret.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "deployment_id", "type", "description", "created_time", "client_id", "scopes", "expiration_time", "client_secret", "secret_id"]
 
     model_config = ConfigDict(
@@ -73,9 +74,11 @@ class GenericCollectionAgentOAuthClientCreatedOut(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
             "client_secret",
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -83,6 +86,11 @@ class GenericCollectionAgentOAuthClientCreatedOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if expiration_time (nullable) is None
         # and model_fields_set contains the field
         if self.expiration_time is None and "expiration_time" in self.model_fields_set:
@@ -111,6 +119,11 @@ class GenericCollectionAgentOAuthClientCreatedOut(BaseModel):
             "client_secret": obj.get("client_secret"),
             "secret_id": obj.get("secret_id")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

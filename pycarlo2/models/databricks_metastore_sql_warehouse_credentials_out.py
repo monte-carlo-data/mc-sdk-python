@@ -40,6 +40,7 @@ class DatabricksMetastoreSqlWarehouseCredentialsOut(BaseModel):
     oauth_client_id: Optional[StrictStr] = Field(description="Client ID of the OAuth service principal. Null for token credentials.")
     azure_tenant_id: Optional[StrictStr] = Field(description="Microsoft Entra ID tenant of the service principal. Null unless set.")
     azure_workspace_resource_id: Optional[StrictStr] = Field(description="Azure resource ID of the workspace. Null unless set.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "workspace_url", "sql_warehouse_id", "workspace_id", "oauth_client_id", "azure_tenant_id", "azure_workspace_resource_id"]
 
     model_config = ConfigDict(
@@ -72,8 +73,10 @@ class DatabricksMetastoreSqlWarehouseCredentialsOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -81,6 +84,11 @@ class DatabricksMetastoreSqlWarehouseCredentialsOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if oauth_client_id (nullable) is None
         # and model_fields_set contains the field
         if self.oauth_client_id is None and "oauth_client_id" in self.model_fields_set:
@@ -119,6 +127,11 @@ class DatabricksMetastoreSqlWarehouseCredentialsOut(BaseModel):
             "azure_tenant_id": obj.get("azure_tenant_id"),
             "azure_workspace_resource_id": obj.get("azure_workspace_resource_id")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

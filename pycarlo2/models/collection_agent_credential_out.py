@@ -39,6 +39,7 @@ class CollectionAgentCredentialOut(BaseModel):
     client_id: Optional[StrictStr] = Field(default=None, description="Client id the agent presents. Set for an `OAUTH_CLIENT`, null otherwise.")
     scopes: Optional[List[StrictStr]] = Field(default=None, description="OAuth scopes the client is granted. Set for an `OAUTH_CLIENT`, null otherwise.")
     expiration_time: Optional[datetime] = Field(default=None, description="When an `OAUTH_CLIENT` stops being accepted. Null for one that does not expire, and for a `TOKEN`.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "deployment_id", "type", "description", "created_time", "mcd_id", "client_id", "scopes", "expiration_time"]
 
     model_config = ConfigDict(
@@ -71,8 +72,10 @@ class CollectionAgentCredentialOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -80,6 +83,11 @@ class CollectionAgentCredentialOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if mcd_id (nullable) is None
         # and model_fields_set contains the field
         if self.mcd_id is None and "mcd_id" in self.model_fields_set:
@@ -122,6 +130,11 @@ class CollectionAgentCredentialOut(BaseModel):
             "scopes": obj.get("scopes"),
             "expiration_time": obj.get("expiration_time")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

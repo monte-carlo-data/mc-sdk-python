@@ -41,6 +41,7 @@ class TableauCredentialsOut(BaseModel):
     token_name: Optional[StrictStr] = Field(description="Name of the personal access token. Null unless the credentials use one.")
     connected_app_client_id: Optional[StrictStr] = Field(description="Client ID of the connected app. Null unless the credentials use one.")
     connected_app_secret_id: Optional[StrictStr] = Field(description="ID of the connected app's secret. Null unless the credentials use one.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "server_name", "site_name", "verify_ssl", "username", "token_name", "connected_app_client_id", "connected_app_secret_id"]
 
     model_config = ConfigDict(
@@ -73,8 +74,10 @@ class TableauCredentialsOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -82,6 +85,11 @@ class TableauCredentialsOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if site_name (nullable) is None
         # and model_fields_set contains the field
         if self.site_name is None and "site_name" in self.model_fields_set:
@@ -136,6 +144,11 @@ class TableauCredentialsOut(BaseModel):
             "connected_app_client_id": obj.get("connected_app_client_id"),
             "connected_app_secret_id": obj.get("connected_app_secret_id")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

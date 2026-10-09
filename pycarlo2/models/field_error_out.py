@@ -31,6 +31,7 @@ class FieldErrorOut(BaseModel):
     code: StrictStr = Field(description="Machine-readable code identifying the kind of validation failure.")
     message: StrictStr = Field(description="Human-readable explanation of why this field failed validation.")
     extra: Optional[Dict[str, StrictStr]] = Field(default=None, description="Values that parameterize `message`, for a client that renders its own text instead of showing `message` directly. Absent when there is nothing to report.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["field", "code", "message", "extra"]
 
     model_config = ConfigDict(
@@ -63,8 +64,10 @@ class FieldErrorOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -72,6 +75,11 @@ class FieldErrorOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if extra (nullable) is None
         # and model_fields_set contains the field
         if self.extra is None and "extra" in self.model_fields_set:
@@ -94,6 +102,11 @@ class FieldErrorOut(BaseModel):
             "message": obj.get("message"),
             "extra": obj.get("extra")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -40,6 +40,7 @@ class AzureCollectionDataStoreOut(BaseModel):
     created_time: Optional[datetime] = Field(default=None, description="When the data store was created, which is when its deployment was provisioned.")
     last_updated_time: Optional[datetime] = Field(default=None, description="When the data store was last registered, renamed, or given different storage or credentials. Null until one of those has happened.")
     container_name: StrictStr = Field(description="Name of the blob container Monte Carlo uses. Empty until it has been registered. The storage account holding it is part of the credentials, so it is not returned.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "name", "deployment_id", "storage_type", "authentication_type", "enabled", "created_time", "last_updated_time", "container_name"]
 
     model_config = ConfigDict(
@@ -72,8 +73,10 @@ class AzureCollectionDataStoreOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -81,6 +84,11 @@ class AzureCollectionDataStoreOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -118,6 +126,11 @@ class AzureCollectionDataStoreOut(BaseModel):
             "last_updated_time": obj.get("last_updated_time"),
             "container_name": obj.get("container_name")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

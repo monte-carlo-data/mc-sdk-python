@@ -38,6 +38,7 @@ class EnvVarCredentialsOut(BaseModel):
     sql_warehouse_id: Optional[StrictStr] = Field(description="Databricks SQL warehouse the connection runs queries on. Null unless set.")
     env_var_name: StrictStr = Field(description="Name of the environment variable on the deployment that holds the connection's credentials. Must start with `MCD_`.")
     kms_key_id: Optional[StrictStr] = Field(description="AWS KMS key the value is encrypted with. Null for a value in the clear.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "bq_project_id", "sql_warehouse_id", "env_var_name", "kms_key_id"]
 
     model_config = ConfigDict(
@@ -70,8 +71,10 @@ class EnvVarCredentialsOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,6 +82,11 @@ class EnvVarCredentialsOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if bq_project_id (nullable) is None
         # and model_fields_set contains the field
         if self.bq_project_id is None and "bq_project_id" in self.model_fields_set:
@@ -115,6 +123,11 @@ class EnvVarCredentialsOut(BaseModel):
             "env_var_name": obj.get("env_var_name"),
             "kms_key_id": obj.get("kms_key_id")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

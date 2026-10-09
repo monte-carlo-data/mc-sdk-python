@@ -38,6 +38,7 @@ class MariaDbCredentialsOut(BaseModel):
     port: StrictInt = Field(description="Port the database listens on.")
     db_name: Optional[StrictStr] = Field(description="Database to connect to. Null when none is set.")
     user: StrictStr = Field(description="Database user Monte Carlo logs in as.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "host", "port", "db_name", "user"]
 
     model_config = ConfigDict(
@@ -70,8 +71,10 @@ class MariaDbCredentialsOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,6 +82,11 @@ class MariaDbCredentialsOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if db_name (nullable) is None
         # and model_fields_set contains the field
         if self.db_name is None and "db_name" in self.model_fields_set:
@@ -105,6 +113,11 @@ class MariaDbCredentialsOut(BaseModel):
             "db_name": obj.get("db_name"),
             "user": obj.get("user")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

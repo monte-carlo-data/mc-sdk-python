@@ -43,6 +43,7 @@ class ValidationRunOut(BaseModel):
     finished_at: Optional[datetime] = Field(description="When the run finished. Null while it is still going.")
     expires_at: datetime = Field(description="When the run stops being readable. Measured from the start, not the finish, and never extended, so a slow run is readable for less time after it ends.")
     validations: List[ValidationOut] = Field(description="The run's validations, in the order they are declared. A validation stays `pending` until it starts. It can wait on a prerequisite, or for earlier validations to finish. A read with `since` lists only the validations that changed after that revision, and may list none.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "status", "revision", "target_type", "target_id", "validations_passed", "validations_total", "started_at", "finished_at", "expires_at", "validations"]
 
     model_config = ConfigDict(
@@ -75,8 +76,10 @@ class ValidationRunOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -91,6 +94,11 @@ class ValidationRunOut(BaseModel):
                 if _item_validations:
                     _items.append(_item_validations.to_dict())
             _dict['validations'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if target_id (nullable) is None
         # and model_fields_set contains the field
         if self.target_id is None and "target_id" in self.model_fields_set:
@@ -125,6 +133,11 @@ class ValidationRunOut(BaseModel):
             "expires_at": obj.get("expires_at"),
             "validations": [ValidationOut.from_dict(_item) for _item in obj["validations"]] if obj.get("validations") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

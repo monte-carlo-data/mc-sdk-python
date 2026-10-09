@@ -41,6 +41,7 @@ class AwsCollectionDataStoreOut(BaseModel):
     last_updated_time: Optional[datetime] = Field(default=None, description="When the data store was last registered, renamed, or given different storage or credentials. Null until one of those has happened.")
     bucket_name: StrictStr = Field(description="Name of the S3 bucket Monte Carlo uses. Empty until it has been registered.")
     external_id: Optional[StrictStr] = Field(default=None, description="Value to put in the trust policy of the role Monte Carlo assumes to access the bucket. Null before Monte Carlo has generated one, and for a caller who cannot register a data store. Also null if the value could not be read just now, so retry once before treating it as absent.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "name", "deployment_id", "storage_type", "authentication_type", "enabled", "created_time", "last_updated_time", "bucket_name", "external_id"]
 
     model_config = ConfigDict(
@@ -73,8 +74,10 @@ class AwsCollectionDataStoreOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -82,6 +85,11 @@ class AwsCollectionDataStoreOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -125,6 +133,11 @@ class AwsCollectionDataStoreOut(BaseModel):
             "bucket_name": obj.get("bucket_name"),
             "external_id": obj.get("external_id")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -38,6 +38,7 @@ class CurrentUserOut(BaseModel):
     account_name: Optional[StrictStr] = Field(default=None, description="Display name of the account. Null when the account has no name.")
     account_frozen: StrictBool = Field(description="Whether the account is paused. While it is, this endpoint still answers but every other one returns 403 with the code `account_frozen`.")
     auth_groups: Optional[List[StrictStr]] = Field(default=None, description="Names of the authorization groups this user belongs to. They determine what the user is permitted to do.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["user_id", "email", "first_name", "last_name", "identity_type", "account_id", "account_name", "account_frozen", "auth_groups"]
 
     model_config = ConfigDict(
@@ -70,8 +71,10 @@ class CurrentUserOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,6 +82,11 @@ class CurrentUserOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if first_name (nullable) is None
         # and model_fields_set contains the field
         if self.first_name is None and "first_name" in self.model_fields_set:
@@ -116,6 +124,11 @@ class CurrentUserOut(BaseModel):
             "account_frozen": obj.get("account_frozen"),
             "auth_groups": obj.get("auth_groups")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

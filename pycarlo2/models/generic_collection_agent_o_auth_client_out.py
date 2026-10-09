@@ -38,6 +38,7 @@ class GenericCollectionAgentOAuthClientOut(BaseModel):
     client_id: StrictStr = Field(description="Client id the agent presents, as `client_id` in its configuration. The same value as `id`.")
     scopes: List[StrictStr] = Field(description="OAuth scopes the client is granted.")
     expiration_time: Optional[datetime] = Field(default=None, description="When the client stops being accepted. Null for a client that does not expire.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "deployment_id", "type", "description", "created_time", "client_id", "scopes", "expiration_time"]
 
     model_config = ConfigDict(
@@ -70,8 +71,10 @@ class GenericCollectionAgentOAuthClientOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,6 +82,11 @@ class GenericCollectionAgentOAuthClientOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if expiration_time (nullable) is None
         # and model_fields_set contains the field
         if self.expiration_time is None and "expiration_time" in self.model_fields_set:
@@ -105,6 +113,11 @@ class GenericCollectionAgentOAuthClientOut(BaseModel):
             "scopes": obj.get("scopes"),
             "expiration_time": obj.get("expiration_time")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

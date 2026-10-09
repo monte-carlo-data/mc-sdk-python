@@ -45,6 +45,7 @@ class ConnectionOut(BaseModel):
     credentials_storage_type: Optional[CredentialsStorageType] = Field(description="Where that secret lives. Null when there are no credentials to describe.")
     job_types: List[StrictStr] = Field(description="The jobs Monte Carlo runs on this connection, such as `metadata`.")
     created_time: datetime = Field(description="When the connection was created.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "name", "warehouse_id", "warehouse_name", "bi_container_id", "bi_container_name", "etl_container_id", "etl_container_name", "deployment_id", "deployment_name", "credentials_id", "credentials_storage_type", "job_types", "created_time"]
 
     model_config = ConfigDict(
@@ -77,8 +78,10 @@ class ConnectionOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -86,6 +89,11 @@ class ConnectionOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -169,6 +177,11 @@ class ConnectionOut(BaseModel):
             "job_types": obj.get("job_types"),
             "created_time": obj.get("created_time")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

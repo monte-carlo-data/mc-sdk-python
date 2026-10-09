@@ -37,6 +37,7 @@ class GenericCollectionAgentTokenCreatedOut(BaseModel):
     created_time: datetime = Field(description="When the credential was created.")
     mcd_id: StrictStr = Field(description="Key id the agent presents, as `mcd_id` in its configuration. The same value as `id`.")
     mcd_token: SecretStr = Field(description="Secret the agent presents, as `mcd_token` in its configuration. Returned once, by this call. It is not retrievable afterwards, and Terraform holds it in state like any generated credential. To rotate, create a new credential and delete this one.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "deployment_id", "type", "description", "created_time", "mcd_id", "mcd_token"]
 
     model_config = ConfigDict(
@@ -70,9 +71,11 @@ class GenericCollectionAgentTokenCreatedOut(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
             "mcd_token",
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -80,6 +83,11 @@ class GenericCollectionAgentTokenCreatedOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -100,6 +108,11 @@ class GenericCollectionAgentTokenCreatedOut(BaseModel):
             "mcd_id": obj.get("mcd_id"),
             "mcd_token": obj.get("mcd_token")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

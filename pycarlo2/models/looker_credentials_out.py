@@ -37,6 +37,7 @@ class LookerCredentialsOut(BaseModel):
     base_url: StrictStr = Field(description="URL of the Looker API, such as https://acme.cloud.looker.com.")
     api_client_id: StrictStr = Field(description="Client ID of the Looker API key.")
     verify_ssl: Optional[StrictBool] = Field(description="Whether to verify Looker's TLS certificate. Verified when left out. Null unless set.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "base_url", "api_client_id", "verify_ssl"]
 
     model_config = ConfigDict(
@@ -69,8 +70,10 @@ class LookerCredentialsOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -78,6 +81,11 @@ class LookerCredentialsOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if verify_ssl (nullable) is None
         # and model_fields_set contains the field
         if self.verify_ssl is None and "verify_ssl" in self.model_fields_set:
@@ -103,6 +111,11 @@ class LookerCredentialsOut(BaseModel):
             "api_client_id": obj.get("api_client_id"),
             "verify_ssl": obj.get("verify_ssl")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

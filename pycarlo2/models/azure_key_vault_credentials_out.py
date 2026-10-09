@@ -39,6 +39,7 @@ class AzureKeyVaultCredentialsOut(BaseModel):
     akv_secret: StrictStr = Field(description="Name of the Azure Key Vault secret holding the connection's credentials.")
     akv_vault_name: Optional[StrictStr] = Field(description="Name of the key vault. Null when unset.")
     akv_vault_url: Optional[StrictStr] = Field(description="URL of the key vault. Null when unset.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "bq_project_id", "sql_warehouse_id", "akv_secret", "akv_vault_name", "akv_vault_url"]
 
     model_config = ConfigDict(
@@ -71,8 +72,10 @@ class AzureKeyVaultCredentialsOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -80,6 +83,11 @@ class AzureKeyVaultCredentialsOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if bq_project_id (nullable) is None
         # and model_fields_set contains the field
         if self.bq_project_id is None and "bq_project_id" in self.model_fields_set:
@@ -122,6 +130,11 @@ class AzureKeyVaultCredentialsOut(BaseModel):
             "akv_vault_name": obj.get("akv_vault_name"),
             "akv_vault_url": obj.get("akv_vault_url")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

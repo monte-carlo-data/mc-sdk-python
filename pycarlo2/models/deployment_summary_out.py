@@ -38,6 +38,7 @@ class DeploymentSummaryOut(BaseModel):
     enabled: StrictBool = Field(description="Whether the deployment can serve connections. A deployment still waiting for its collection agent or data store to be registered, or with nothing provisioned on it, is not enabled.")
     created_time: Optional[datetime] = Field(default=None, description="When the deployment was assigned to your account. Null when Monte Carlo has no record of that.")
     last_updated_time: Optional[datetime] = Field(default=None, description="When Monte Carlo last updated the infrastructure behind the deployment. Null when Monte Carlo has no record of an update.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "name", "type", "runtime_platform", "enabled", "created_time", "last_updated_time"]
 
     model_config = ConfigDict(
@@ -70,8 +71,10 @@ class DeploymentSummaryOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,6 +82,11 @@ class DeploymentSummaryOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if type (nullable) is None
         # and model_fields_set contains the field
         if self.type is None and "type" in self.model_fields_set:
@@ -119,6 +127,11 @@ class DeploymentSummaryOut(BaseModel):
             "created_time": obj.get("created_time"),
             "last_updated_time": obj.get("last_updated_time")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -37,6 +37,7 @@ class EtlContainerOut(BaseModel):
     deployment_id: Optional[UUID] = Field(description="The deployment the container's connection runs through. Null for a type that runs on none, such as `airflow`. The id may name a deployment on Monte Carlo's older collection platform. The deployments endpoints do not list those.")
     deployment_name: Optional[StrictStr] = Field(description="Display name of the deployment. Null exactly when `deployment_id` is.")
     created_time: datetime = Field(description="When the ETL container was created.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "type", "name", "is_synthetic", "deployment_id", "deployment_name", "created_time"]
 
     model_config = ConfigDict(
@@ -69,8 +70,10 @@ class EtlContainerOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -78,6 +81,11 @@ class EtlContainerOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if deployment_id (nullable) is None
         # and model_fields_set contains the field
         if self.deployment_id is None and "deployment_id" in self.model_fields_set:
@@ -108,6 +116,11 @@ class EtlContainerOut(BaseModel):
             "deployment_name": obj.get("deployment_name"),
             "created_time": obj.get("created_time")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

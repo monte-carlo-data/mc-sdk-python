@@ -43,6 +43,7 @@ class MySqlCredentialsOut(BaseModel):
     ssl_verify_cert: Optional[StrictBool] = Field(description="Check the server's certificate against the CA. Null when unset.")
     ssl_verify_identity: Optional[StrictBool] = Field(description="Check the certificate and that it names the host. Null when unset.")
     ssl_skip_cert_verification: Optional[StrictBool] = Field(description="Encrypt the connection without checking the server's certificate. Null when unset.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "host", "port", "db_name", "user", "ssl_ca_data", "ssl_disabled", "ssl_verify_cert", "ssl_verify_identity", "ssl_skip_cert_verification"]
 
     model_config = ConfigDict(
@@ -75,8 +76,10 @@ class MySqlCredentialsOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -84,6 +87,11 @@ class MySqlCredentialsOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if db_name (nullable) is None
         # and model_fields_set contains the field
         if self.db_name is None and "db_name" in self.model_fields_set:
@@ -140,6 +148,11 @@ class MySqlCredentialsOut(BaseModel):
             "ssl_verify_identity": obj.get("ssl_verify_identity"),
             "ssl_skip_cert_verification": obj.get("ssl_skip_cert_verification")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

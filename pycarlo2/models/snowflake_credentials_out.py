@@ -37,6 +37,7 @@ class SnowflakeCredentialsOut(BaseModel):
     account: StrictStr = Field(description="Snowflake account identifier, without the host suffix.")
     user: StrictStr = Field(description="Snowflake user the key pair belongs to.")
     warehouse: Optional[StrictStr] = Field(description="Snowflake virtual warehouse queries run in. Null when none is set.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "account", "user", "warehouse"]
 
     model_config = ConfigDict(
@@ -69,8 +70,10 @@ class SnowflakeCredentialsOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -78,6 +81,11 @@ class SnowflakeCredentialsOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if warehouse (nullable) is None
         # and model_fields_set contains the field
         if self.warehouse is None and "warehouse" in self.model_fields_set:
@@ -103,6 +111,11 @@ class SnowflakeCredentialsOut(BaseModel):
             "user": obj.get("user"),
             "warehouse": obj.get("warehouse")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

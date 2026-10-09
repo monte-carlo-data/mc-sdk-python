@@ -35,6 +35,7 @@ class FivetranCredentialsOut(BaseModel):
     storage_type: CredentialsStorageType = Field(description="Where the secret lives. Fixed once created.")
     created_time: datetime = Field(description="When the credentials were created.")
     base_url: Optional[StrictStr] = Field(description="URL of the Fivetran REST API. Leave it out for https://api.fivetran.com/v1/. Null unless set.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "base_url"]
 
     model_config = ConfigDict(
@@ -67,8 +68,10 @@ class FivetranCredentialsOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -76,6 +79,11 @@ class FivetranCredentialsOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if base_url (nullable) is None
         # and model_fields_set contains the field
         if self.base_url is None and "base_url" in self.model_fields_set:
@@ -99,6 +107,11 @@ class FivetranCredentialsOut(BaseModel):
             "created_time": obj.get("created_time"),
             "base_url": obj.get("base_url")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

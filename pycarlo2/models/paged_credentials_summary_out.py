@@ -32,6 +32,7 @@ class PagedCredentialsSummaryOut(BaseModel):
     next_cursor: Optional[StrictStr] = Field(description="Pass this as `cursor` to fetch the next page. Null when this is the last page.")
     has_more: StrictBool = Field(description="Whether there are more items after this page.")
     count: Optional[StrictInt] = Field(description="Total number of items across every page. Only returned when the request set `with_count=true`; null otherwise.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["items", "next_cursor", "has_more", "count"]
 
     model_config = ConfigDict(
@@ -64,8 +65,10 @@ class PagedCredentialsSummaryOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -80,6 +83,11 @@ class PagedCredentialsSummaryOut(BaseModel):
                 if _item_items:
                     _items.append(_item_items.to_dict())
             _dict['items'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if next_cursor (nullable) is None
         # and model_fields_set contains the field
         if self.next_cursor is None and "next_cursor" in self.model_fields_set:
@@ -107,6 +115,11 @@ class PagedCredentialsSummaryOut(BaseModel):
             "has_more": obj.get("has_more"),
             "count": obj.get("count")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

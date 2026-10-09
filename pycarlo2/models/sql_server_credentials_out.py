@@ -43,6 +43,7 @@ class SqlServerCredentialsOut(BaseModel):
     realm: Optional[StrictStr] = Field(description="Kerberos realm, normally the Active Directory domain in capitals, for `kerberos`. Null for `sql`.")
     kdc: Optional[StrictStr] = Field(description="Hostname of the key distribution center, optionally with `:port`, for `kerberos`. Null for `sql`.")
     principal: Optional[StrictStr] = Field(description="Active Directory principal Monte Carlo signs in as, for `kerberos`. Null for `sql`.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "host", "port", "db_name", "auth_mode", "user", "realm", "kdc", "principal"]
 
     model_config = ConfigDict(
@@ -75,8 +76,10 @@ class SqlServerCredentialsOut(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -84,6 +87,11 @@ class SqlServerCredentialsOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if db_name (nullable) is None
         # and model_fields_set contains the field
         if self.db_name is None and "db_name" in self.model_fields_set:
@@ -134,6 +142,11 @@ class SqlServerCredentialsOut(BaseModel):
             "kdc": obj.get("kdc"),
             "principal": obj.get("principal")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

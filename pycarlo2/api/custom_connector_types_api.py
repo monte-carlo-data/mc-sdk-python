@@ -55,7 +55,7 @@ class CustomConnectorTypesApi:
     ) -> CustomConnectorTypeOut:
         """Get a custom connector type
 
-        Get one custom connector type.  An id that does not exist or belongs to another account returns 404.
+        Get one custom connector type.  An id that does not exist, belongs to another account, or whose collection agent was removed returns 404.
 
         :param custom_connector_type_id: Id of the custom connector type, as returned when it is listed. (required)
         :type custom_connector_type_id: str
@@ -192,7 +192,7 @@ class CustomConnectorTypesApi:
     ) -> List[CustomConnectorTypeOut]:
         """List custom connector types
 
-        List the custom connector types your collection agents registered, oldest first.  A type whose collection agent was removed outright is not listed.
+        List the custom connector types your collection agents registered, oldest first.  A type whose collection agent was removed is not listed.
 
         :param asset_class: Only connector types of this asset class.
         :type asset_class: CustomConnectorAssetClass

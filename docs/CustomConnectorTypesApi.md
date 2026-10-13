@@ -15,7 +15,8 @@ Get a custom connector type
 
 Get one custom connector type.
 
-An id that does not exist or belongs to another account returns 404.
+An id that does not exist, belongs to another account, or whose collection agent was
+removed returns 404.
 
 ### Example
 
@@ -99,7 +100,7 @@ List custom connector types
 
 List the custom connector types your collection agents registered, oldest first.
 
-A type whose collection agent was removed outright is not listed.
+A type whose collection agent was removed is not listed.
 
 ### Example
 

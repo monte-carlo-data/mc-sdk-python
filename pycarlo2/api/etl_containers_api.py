@@ -55,7 +55,7 @@ class EtlContainersApi:
     ) -> EtlContainerOut:
         """Create an ETL container
 
-        Create an empty ETL container.  The container holds no connection until you add one. Its type is fixed at creation and decides which connection it accepts. Every type except `airflow` runs through a deployment, which has to be one the deployments list returns; any other id returns 404. A deployment that does not support the ETL tool, or needs an upgrade first, returns 409. A deployment takes one `fivetran` container. A name another container of the same type already uses returns 409. A type your account's plan does not include returns 403.
+        Create an empty ETL container.  The container holds no connection until you add one. Its type is fixed at creation and decides which connection it accepts. Every type except `airflow` runs through a deployment, which has to be one the deployments list returns; any other id returns 404. A deployment that does not support the ETL tool, or needs an upgrade first, returns 409. A deployment takes one `fivetran` container. A name another container of the same type already uses returns 409. A type your account's plan does not include returns 403.  A push-only `custom-etl-connector` container receives jobs and runs pushed with a key from `POST /integration-keys/ingestion`. An `airflow` container receives runs reported with a key from `POST /integration-keys/airflow-callbacks`.
 
         :param etl_container_in: (required)
         :type etl_container_in: EtlContainerIn

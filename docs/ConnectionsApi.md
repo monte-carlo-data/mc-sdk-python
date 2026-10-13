@@ -39,6 +39,10 @@ container on the deployment of the agent that registered the connector. Such a c
 with no deployment holds a push-only connector: send no `credentials_id`, and the
 connection takes the container's type and runs no jobs.
 
+A custom warehouse connector's credentials, of type `custom-connector-<id>`, go on a
+warehouse on the deployment of the agent that registered the connector, usually a
+`custom-integration` one. Its job types are the ones its capabilities allow.
+
 Omit `job_types` to run what the type runs by default. `etl` on a Snowflake, Power BI or
 Salesforce Data Cloud connection also turns on its ETL, as adding it later through the
 update does. Snowflake takes `etl` alone, the other two only beside their other jobs.

@@ -25,6 +25,10 @@ A deployment that does not support the ETL tool, or needs an upgrade first, retu
 A deployment takes one `fivetran` container. A name another container of the same type
 already uses returns 409. A type your account's plan does not include returns 403.
 
+A push-only `custom-etl-connector` container receives jobs and runs pushed with a key from
+`POST /integration-keys/ingestion`. An `airflow` container receives runs reported with a
+key from `POST /integration-keys/airflow-callbacks`.
+
 ### Example
 
 * Bearer Authentication (GatewayAuth):

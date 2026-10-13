@@ -13,6 +13,9 @@
 """  # noqa: E501
 
 # import models into model package
+from pycarlo2.models.airflow_callbacks_key_created_out import AirflowCallbacksKeyCreatedOut
+from pycarlo2.models.airflow_callbacks_key_in import AirflowCallbacksKeyIn
+from pycarlo2.models.airflow_callbacks_key_out import AirflowCallbacksKeyOut
 from pycarlo2.models.airflow_credentials_in import AirflowCredentialsIn
 from pycarlo2.models.airflow_credentials_out import AirflowCredentialsOut
 from pycarlo2.models.airflow_credentials_patch import AirflowCredentialsPatch
@@ -145,7 +148,12 @@ from pycarlo2.models.informatica_v2_credentials_in import InformaticaV2Credentia
 from pycarlo2.models.informatica_v2_credentials_out import InformaticaV2CredentialsOut
 from pycarlo2.models.informatica_v2_credentials_patch import InformaticaV2CredentialsPatch
 from pycarlo2.models.informatica_v2_credentials_validate_in import InformaticaV2CredentialsValidateIn
+from pycarlo2.models.ingestion_key_created_out import IngestionKeyCreatedOut
+from pycarlo2.models.ingestion_key_in import IngestionKeyIn
+from pycarlo2.models.ingestion_key_out import IngestionKeyOut
 from pycarlo2.models.input import Input
+from pycarlo2.models.integration_key_out import IntegrationKeyOut
+from pycarlo2.models.integration_key_scope import IntegrationKeyScope
 from pycarlo2.models.looker_credentials_in import LookerCredentialsIn
 from pycarlo2.models.looker_credentials_out import LookerCredentialsOut
 from pycarlo2.models.looker_credentials_patch import LookerCredentialsPatch

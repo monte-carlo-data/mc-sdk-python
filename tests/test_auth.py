@@ -10,7 +10,7 @@ from uuid import UUID
 import pytest
 
 from pycarlo2 import ApiException, DeploymentsApi, UsersApi, __version__
-from pycarlo2.auth import CredentialsError, Options, new_client
+from pycarlo2.auth import DEFAULT_ENDPOINT, CredentialsError, Options, new_client
 from pycarlo2.models.deployment_patch import DeploymentPatch
 from pycarlo2.profile import PROFILE_FILE_NAME, config_dir
 from tests.conftest import DEPLOYMENT, FakeApi, Request, write_profiles
@@ -126,10 +126,22 @@ def test_new_client_rejects_missing_credentials(isolate: Path) -> None:
         new_client(Options(endpoint=HTTPS, config_dir=isolate))
 
 
-def test_new_client_rejects_a_missing_endpoint(isolate: Path) -> None:
-    """Without this the first call dies inside urllib3 with "No host specified", not here."""
-    with pytest.raises(CredentialsError, match="endpoint is required"):
-        new_client(Options(token_id="id", token_secret="secret", config_dir=isolate))
+def test_new_client_defaults_the_endpoint(isolate: Path) -> None:
+    client = new_client(Options(token_id="id", token_secret="secret", config_dir=isolate))
+    assert client.configuration.host == DEFAULT_ENDPOINT
+
+
+def test_resolve_defaults_the_endpoint_for_a_cli_profile(isolate: Path) -> None:
+    """The Monte Carlo CLI leaves mcd_api_endpoint out when it is the default."""
+    write_profiles(isolate, "[default]\nmcd_id = id\nmcd_token = secret\n")
+    resolved = Options(config_dir=isolate).resolve()
+    assert (resolved.endpoint, resolved.token_id) == (DEFAULT_ENDPOINT, "id")
+
+
+def test_resolve_prefers_the_profiles_endpoint_over_the_default(isolate: Path) -> None:
+    write_profiles(isolate)
+    resolved = Options(token_id="id", token_secret="secret", config_dir=isolate).resolve()
+    assert (resolved.endpoint, resolved.token_id) == (HTTPS, "id")
 
 
 @pytest.mark.parametrize(

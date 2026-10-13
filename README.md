@@ -19,8 +19,8 @@ Requires Python 3.10 or later.
 
 ## Usage
 
-Every client needs an endpoint. There is no default: the API is reached at a different host per
-instance.
+The endpoint defaults to `pycarlo2.auth.DEFAULT_ENDPOINT`, `https://api.getmontecarlo.com`, which
+serves every instance. Pass `endpoint` only to reach a different one.
 
 With a Monte Carlo API token, supply the two halves separately and the SDK forms the
 credential:
@@ -95,11 +95,10 @@ attributes. The Go SDK generates an `All` method per list instead.
 ### Using credentials you have already configured
 
 If you have configured the Monte Carlo CLI, the SDK reads the same `mcd_id` and `mcd_token`
-from `~/.mcd/profiles.ini`. You still pass `endpoint` yourself, since the CLI's `configure`
-command never writes one:
+from `~/.mcd/profiles.ini`, so a client needs no options at all:
 
 ```python
-client = pycarlo2.new_client(pycarlo2.Options(endpoint="https://api.getmontecarlo.com"))
+client = pycarlo2.new_client()
 ```
 
 If your profile has an `mcd_api_endpoint` key, set when the CLI or pycarlo point at a

@@ -5,7 +5,7 @@
 
 Build a client with `new_client`. Credentials resolve from the `Options` passed in, then from
 the environment, then from the credentials file the Monte Carlo CLI writes, so a caller with
-the CLI already configured can often pass an endpoint alone and get a working client. Do not
+the CLI already configured can pass nothing at all and get a working client. Do not
 build one from the generated `ApiClient` or `Configuration` directly: the spec declares no
 server, so their default host is empty and the first call fails inside urllib3 with
 `No host specified` rather than reaching the API.
@@ -39,11 +39,16 @@ __all__ = ["CredentialsError", "Options", "new_client"]
 API_REQUEST_RETRIES = urllib3.Retry(total=3, redirect=0, raise_on_redirect=False)
 
 
+# Monte Carlo's global API, which serves every instance. `Options.resolve` falls back to it when
+# neither the caller nor a profile names an endpoint, as the Monte Carlo CLI does.
+DEFAULT_ENDPOINT = "https://api.getmontecarlo.com"
+
+
 @dataclass
 class Options:
     """The inputs for building an authenticated client.
 
-    `endpoint` is always required, though it can come from a profile rather than the caller.
+    `endpoint` defaults to `DEFAULT_ENDPOINT`, after the caller and a profile; see `resolve`.
     Exactly one credential mechanism is expected. When more than one is supplied directly, OAuth
     client credentials win, then an API token, then a pre-obtained bearer; `resolve` documents
     how a mechanism supplied through the environment or a profile is chosen instead.
@@ -51,7 +56,7 @@ class Options:
     Secrets are excluded from `repr` so an `Options` can be logged.
     """
 
-    # The API base URL, e.g. https://api.getmontecarlo.com.
+    # The API base URL. Empty means the profile's, then `DEFAULT_ENDPOINT`.
     endpoint: str = ""
 
     # The two halves of a Monte Carlo API token. They are supplied separately and combined into
@@ -152,7 +157,14 @@ class Options:
         profile named explicitly has to exist; otherwise a missing file means whatever was
         supplied stands on its own. A file that exists but cannot be read is always an error. A
         profile supplies `instance` and `token_url` only when OAuth is the selected mechanism.
+
+        An endpoint neither supplied here nor by a profile is `DEFAULT_ENDPOINT`.
         """
+        out = self._resolve()
+        out.endpoint = out.endpoint or DEFAULT_ENDPOINT
+        return out
+
+    def _resolve(self) -> Options:
         self._check_pairs()
         out = dataclasses.replace(self)
 

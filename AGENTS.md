@@ -62,7 +62,7 @@ OAuth client credentials are exchanged in the token request's form body, as mc-s
 
 Credentials are attached to each request as it goes out, by an `ApiClient` subclass, rather than stored on the generated `Configuration`. `Configuration.access_token` stays `None`, so nothing that logs the configuration can leak a credential, and a per-request credential passed through an operation's `_request_auth` wins instead of stacking into a second header. Neither the API client nor the token exchange follows a redirect. The API client returns a 3xx as an `ApiException`, since the API has one host and the credential rides on every request; the token exchange fails on a 3xx, since its request carries the client secret in its form body.
 
-**`endpoint` is always required**, though it can come from a profile rather than the caller. The spec declares no server, so the generated client's default host is empty and the first call fails inside urllib3 with `No host specified`; `new_client` refuses to build such a client.
+**`endpoint` defaults to `DEFAULT_ENDPOINT`**, the global API that serves every instance, once the caller and a profile have both left it empty. `Options.resolve` applies it, so `validate`'s "endpoint is required" is reached only by options that skip `resolve`. The spec declares no server, so the generated client's default host is empty and the first call fails inside urllib3 with `No host specified`, which is why a client is always built through `new_client`.
 
 ## Credentials are shared with the other tools
 

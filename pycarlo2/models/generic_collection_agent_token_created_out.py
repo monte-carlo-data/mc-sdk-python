@@ -36,7 +36,7 @@ class GenericCollectionAgentTokenCreatedOut(BaseModel):
     description: StrictStr = Field(description="What this credential is for.")
     created_time: datetime = Field(description="When the credential was created.")
     mcd_id: StrictStr = Field(description="Key id the agent presents, as `mcd_id` in its configuration. The same value as `id`.")
-    mcd_token: SecretStr = Field(description="Secret the agent presents, as `mcd_token` in its configuration. Returned once, by this call. It is not retrievable afterwards, and Terraform holds it in state like any generated credential. To rotate, create a new credential and delete this one.")
+    mcd_token: SecretStr = Field(description="Secret the agent presents, as `mcd_token` in its configuration. Returned once, by this call, and not retrievable afterwards. Terraform keeps it in state, so anyone who can read the state can read the secret: `sensitive` only hides it from CLI output. Keep state in a backend that encrypts it and limits who can read it. Hand the secret on through a write-only argument, such as `aws_secretsmanager_secret_version.secret_string_wo`, not through an output, because a `sensitive` output is stored in state too. To rotate, create a new credential and delete this one.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "deployment_id", "type", "description", "created_time", "mcd_id", "mcd_token"]
 

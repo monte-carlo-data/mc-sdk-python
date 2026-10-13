@@ -1,3 +1,6 @@
+docs/AirflowCallbacksKeyCreatedOut.md
+docs/AirflowCallbacksKeyIn.md
+docs/AirflowCallbacksKeyOut.md
 docs/AirflowCredentialsIn.md
 docs/AirflowCredentialsOut.md
 docs/AirflowCredentialsPatch.md
@@ -139,7 +142,13 @@ docs/InformaticaV2CredentialsIn.md
 docs/InformaticaV2CredentialsOut.md
 docs/InformaticaV2CredentialsPatch.md
 docs/InformaticaV2CredentialsValidateIn.md
+docs/IngestionKeyCreatedOut.md
+docs/IngestionKeyIn.md
+docs/IngestionKeyOut.md
 docs/Input.md
+docs/IntegrationKeyOut.md
+docs/IntegrationKeyScope.md
+docs/IntegrationKeysApi.md
 docs/LookerCredentialsIn.md
 docs/LookerCredentialsOut.md
 docs/LookerCredentialsPatch.md
@@ -245,6 +254,7 @@ pycarlo2/api/credentials_api.py
 pycarlo2/api/custom_connector_types_api.py
 pycarlo2/api/deployments_api.py
 pycarlo2/api/etl_containers_api.py
+pycarlo2/api/integration_keys_api.py
 pycarlo2/api/users_api.py
 pycarlo2/api/validations_api.py
 pycarlo2/api/warehouses_api.py
@@ -253,6 +263,9 @@ pycarlo2/api_response.py
 pycarlo2/configuration.py
 pycarlo2/exceptions.py
 pycarlo2/models/__init__.py
+pycarlo2/models/airflow_callbacks_key_created_out.py
+pycarlo2/models/airflow_callbacks_key_in.py
+pycarlo2/models/airflow_callbacks_key_out.py
 pycarlo2/models/airflow_credentials_in.py
 pycarlo2/models/airflow_credentials_out.py
 pycarlo2/models/airflow_credentials_patch.py
@@ -385,7 +398,12 @@ pycarlo2/models/informatica_v2_credentials_in.py
 pycarlo2/models/informatica_v2_credentials_out.py
 pycarlo2/models/informatica_v2_credentials_patch.py
 pycarlo2/models/informatica_v2_credentials_validate_in.py
+pycarlo2/models/ingestion_key_created_out.py
+pycarlo2/models/ingestion_key_in.py
+pycarlo2/models/ingestion_key_out.py
 pycarlo2/models/input.py
+pycarlo2/models/integration_key_out.py
+pycarlo2/models/integration_key_scope.py
 pycarlo2/models/looker_credentials_in.py
 pycarlo2/models/looker_credentials_out.py
 pycarlo2/models/looker_credentials_patch.py

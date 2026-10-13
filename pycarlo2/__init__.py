@@ -27,6 +27,7 @@ __all__ = [
     "CustomConnectorTypesApi",
     "DeploymentsApi",
     "EtlContainersApi",
+    "IntegrationKeysApi",
     "UsersApi",
     "ValidationsApi",
     "WarehousesApi",
@@ -42,6 +43,9 @@ __all__ = [
     "Options",
     "new_client",
     "CredentialsError",
+    "AirflowCallbacksKeyCreatedOut",
+    "AirflowCallbacksKeyIn",
+    "AirflowCallbacksKeyOut",
     "AirflowCredentialsIn",
     "AirflowCredentialsOut",
     "AirflowCredentialsPatch",
@@ -174,7 +178,12 @@ __all__ = [
     "InformaticaV2CredentialsOut",
     "InformaticaV2CredentialsPatch",
     "InformaticaV2CredentialsValidateIn",
+    "IngestionKeyCreatedOut",
+    "IngestionKeyIn",
+    "IngestionKeyOut",
     "Input",
+    "IntegrationKeyOut",
+    "IntegrationKeyScope",
     "LookerCredentialsIn",
     "LookerCredentialsOut",
     "LookerCredentialsPatch",
@@ -278,6 +287,7 @@ from pycarlo2.api.credentials_api import CredentialsApi as CredentialsApi
 from pycarlo2.api.custom_connector_types_api import CustomConnectorTypesApi as CustomConnectorTypesApi
 from pycarlo2.api.deployments_api import DeploymentsApi as DeploymentsApi
 from pycarlo2.api.etl_containers_api import EtlContainersApi as EtlContainersApi
+from pycarlo2.api.integration_keys_api import IntegrationKeysApi as IntegrationKeysApi
 from pycarlo2.api.users_api import UsersApi as UsersApi
 from pycarlo2.api.validations_api import ValidationsApi as ValidationsApi
 from pycarlo2.api.warehouses_api import WarehousesApi as WarehousesApi
@@ -294,6 +304,9 @@ from pycarlo2.exceptions import ApiAttributeError as ApiAttributeError
 from pycarlo2.exceptions import ApiException as ApiException
 
 # import models into sdk package
+from pycarlo2.models.airflow_callbacks_key_created_out import AirflowCallbacksKeyCreatedOut as AirflowCallbacksKeyCreatedOut
+from pycarlo2.models.airflow_callbacks_key_in import AirflowCallbacksKeyIn as AirflowCallbacksKeyIn
+from pycarlo2.models.airflow_callbacks_key_out import AirflowCallbacksKeyOut as AirflowCallbacksKeyOut
 from pycarlo2.models.airflow_credentials_in import AirflowCredentialsIn as AirflowCredentialsIn
 from pycarlo2.models.airflow_credentials_out import AirflowCredentialsOut as AirflowCredentialsOut
 from pycarlo2.models.airflow_credentials_patch import AirflowCredentialsPatch as AirflowCredentialsPatch
@@ -426,7 +439,12 @@ from pycarlo2.models.informatica_v2_credentials_in import InformaticaV2Credentia
 from pycarlo2.models.informatica_v2_credentials_out import InformaticaV2CredentialsOut as InformaticaV2CredentialsOut
 from pycarlo2.models.informatica_v2_credentials_patch import InformaticaV2CredentialsPatch as InformaticaV2CredentialsPatch
 from pycarlo2.models.informatica_v2_credentials_validate_in import InformaticaV2CredentialsValidateIn as InformaticaV2CredentialsValidateIn
+from pycarlo2.models.ingestion_key_created_out import IngestionKeyCreatedOut as IngestionKeyCreatedOut
+from pycarlo2.models.ingestion_key_in import IngestionKeyIn as IngestionKeyIn
+from pycarlo2.models.ingestion_key_out import IngestionKeyOut as IngestionKeyOut
 from pycarlo2.models.input import Input as Input
+from pycarlo2.models.integration_key_out import IntegrationKeyOut as IntegrationKeyOut
+from pycarlo2.models.integration_key_scope import IntegrationKeyScope as IntegrationKeyScope
 from pycarlo2.models.looker_credentials_in import LookerCredentialsIn as LookerCredentialsIn
 from pycarlo2.models.looker_credentials_out import LookerCredentialsOut as LookerCredentialsOut
 from pycarlo2.models.looker_credentials_patch import LookerCredentialsPatch as LookerCredentialsPatch

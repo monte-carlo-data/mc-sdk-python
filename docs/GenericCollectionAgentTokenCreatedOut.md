@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **description** | **str** | What this credential is for. | 
 **created_time** | **datetime** | When the credential was created. | 
 **mcd_id** | **str** | Key id the agent presents, as &#x60;mcd_id&#x60; in its configuration. The same value as &#x60;id&#x60;. | 
-**mcd_token** | **str** | Secret the agent presents, as &#x60;mcd_token&#x60; in its configuration. Returned once, by this call. It is not retrievable afterwards, and Terraform holds it in state like any generated credential. To rotate, create a new credential and delete this one. | [readonly] 
+**mcd_token** | **str** | Secret the agent presents, as &#x60;mcd_token&#x60; in its configuration. Returned once, by this call, and not retrievable afterwards. Terraform keeps it in state, so anyone who can read the state can read the secret: &#x60;sensitive&#x60; only hides it from CLI output. Keep state in a backend that encrypts it and limits who can read it. Hand the secret on through a write-only argument, such as &#x60;aws_secretsmanager_secret_version.secret_string_wo&#x60;, not through an output, because a &#x60;sensitive&#x60; output is stored in state too. To rotate, create a new credential and delete this one. | [readonly] 
 
 ## Example
 

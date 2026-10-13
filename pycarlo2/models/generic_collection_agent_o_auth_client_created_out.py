@@ -38,7 +38,7 @@ class GenericCollectionAgentOAuthClientCreatedOut(BaseModel):
     client_id: StrictStr = Field(description="Client id the agent presents, as `client_id` in its configuration. The same value as `id`.")
     scopes: List[StrictStr] = Field(description="OAuth scopes the client is granted.")
     expiration_time: Optional[datetime] = Field(default=None, description="When the client stops being accepted. Null for a client that does not expire.")
-    client_secret: SecretStr = Field(description="Secret the agent presents, as `client_secret` in its configuration. Returned once, by this call. It is not retrievable afterwards, and Terraform holds it in state like any generated credential. To rotate, create a new credential and delete this one.")
+    client_secret: SecretStr = Field(description="Secret the agent presents, as `client_secret` in its configuration. Returned once, by this call, and not retrievable afterwards. Terraform keeps it in state, so anyone who can read the state can read the secret: `sensitive` only hides it from CLI output. Keep state in a backend that encrypts it and limits who can read it. Hand the secret on through a write-only argument, such as `aws_secretsmanager_secret_version.secret_string_wo`, not through an output, because a `sensitive` output is stored in state too. To rotate, create a new credential and delete this one.")
     secret_id: StrictStr = Field(description="Identifier of the secret this call created, as the client's secrets are listed. Keep it with the secret.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "deployment_id", "type", "description", "created_time", "client_id", "scopes", "expiration_time", "client_secret", "secret_id"]

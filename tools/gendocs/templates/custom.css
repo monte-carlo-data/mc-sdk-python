@@ -1,8 +1,8 @@
 /* The theme button theme.js adds to the sidebar, styled as pdoc's module list button. */
 nav.pdoc .theme-toggle {
-    float: right;
     display: inline-flex;
     align-items: center;
+    vertical-align: top;
     color: var(--text);
     background: none;
     border-color: var(--muted);
@@ -16,4 +16,12 @@ nav.pdoc .theme-toggle::before {
 
 nav.pdoc .theme-toggle:hover {
     border-color: var(--text);
+}
+
+/* Beside the module list button on wide screens. pdoc's menu button takes the top right of the
+   narrow layout, so there it stays at the left. */
+@media (min-width: 770px) {
+    nav.pdoc .theme-toggle {
+        float: right;
+    }
 }

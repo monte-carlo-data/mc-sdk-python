@@ -3,8 +3,8 @@
 """Writes the pycarlo2 reference site, which publish-docs.yml publishes to apidocs at /v2/python/.
 
 pdoc renders a page per module; the landing page and the guides in guides/ are added here. The
-site's CSP allows no inline script or style and no `data:`
-image, so search is off, the templates link one stylesheet, and pdoc's icons become files.
+site's CSP allows no inline script or style and no `data:` image, so search is off, the templates
+link one stylesheet and one script, and pdoc's icons become files.
 """
 
 from __future__ import annotations
@@ -24,14 +24,16 @@ from pathlib import Path
 import pdoc
 import pdoc.render
 from markupsafe import Markup
+from pygments.formatters import HtmlFormatter
 
 import pycarlo2
 
 HERE = Path(__file__).parent
 TEMPLATES = HERE / "templates"
 STYLESHEET = "pdoc.css"
-# Copied as they are. montecarlo.ai's icons, as the REST and CLI references use.
-STATIC_FILES = ("favicon.png", "apple-touch-icon.png")
+# Copied as they are: montecarlo.ai's icons, as the REST and CLI references use, and the script
+# that sets the light or dark theme.
+STATIC_FILES = ("favicon.png", "apple-touch-icon.png", "theme.js")
 
 
 @dataclass(frozen=True)
@@ -61,6 +63,32 @@ _CSS = "\n".join(
         "custom.css",
     )
 )
+
+# The CLI reference's dark palette, in pdoc's variables. `{root}` is the selector that turns it on.
+_DARK_PALETTE = """
+{root} {{
+    color-scheme: dark;
+    --pdoc-background: #0d1117;
+}}
+{root} .pdoc {{
+    --text: #e6edf3;
+    --muted: #9198a1;
+    --link: #4493f8;
+    --link-hover: #79b8ff;
+    --code: #151b23;
+    --active: #4b3e00;
+    --accent: #151b23;
+    --accent2: #3d444d;
+    --nav-hover: rgba(255, 255, 255, 0.08);
+    --name: #79c0ff;
+    --def: #7ee787;
+    --annotation: #a5d6ff;
+}}
+"""
+
+# Dark when the reader chose it, or when the OS prefers it and the reader chose nothing.
+_DARK_CHOSEN = ':root[data-theme="dark"]'
+_DARK_BY_OS = ':root:not([data-theme="light"])'
 
 _DATA_SVG = re.compile(r'url\("data:image/svg\+xml,([^"]*)"\)')
 
@@ -111,6 +139,20 @@ def write_guides(out: Path) -> None:
         (out / g.file).write_text(template.render(guide=g, body=body, all_modules=modules()))
 
 
+def dark_css() -> str:
+    """The dark palette and code highlighting, for both ways dark is turned on."""
+
+    def rules(root: str) -> str:
+        code = HtmlFormatter(style="github-dark").get_style_defs(f"{root} .pdoc-code")
+        # Drop the unprefixed rules Pygments adds for line numbers and <pre>.
+        scoped = "\n".join(line for line in code.splitlines() if line.startswith(root))
+        return _DARK_PALETTE.format(root=root) + scoped + "\n"
+
+    return (
+        rules(_DARK_CHOSEN) + "@media (prefers-color-scheme: dark) {\n" + rules(_DARK_BY_OS) + "}\n"
+    )
+
+
 def write_stylesheet(out: Path) -> None:
     """Writes pdoc's CSS as one file, with each inline SVG icon as a file beside it."""
 
@@ -120,7 +162,7 @@ def write_stylesheet(out: Path) -> None:
         (out / name).write_text(svg)
         return f'url("{name}")'
 
-    css = _DATA_SVG.sub(to_file, pdoc.render.env.from_string(_CSS).render())
+    css = _DATA_SVG.sub(to_file, pdoc.render.env.from_string(_CSS).render()) + dark_css()
     if "data:" in css:
         raise RuntimeError("pdoc's CSS has a data: URL this script does not extract")
     (out / STYLESHEET).write_text(css)

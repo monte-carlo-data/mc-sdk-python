@@ -26,6 +26,8 @@ REST_REFERENCE = "../index.html"
 ATTR_URL = re.compile(r'<(\w+)[^>]*?\s(?:href|src)="([^"]*)"')
 CSS_URL = re.compile(r"url\(([^)]*)\)")
 CODE = re.compile(r"(?s)<pre><code class=\"language-python\">(.*?)</code></pre>")
+SCRIPT = re.compile(r"<script\b[^>]*>.*?</script>", re.S)
+INLINE_HANDLER = re.compile(r"<[^>]*\son[a-z]+=", re.I)
 ENV_NAME = re.compile(r"\bMCD_[A-Z_]+")
 
 
@@ -107,8 +109,13 @@ def test_pages_load_under_csp(site: Path) -> None:
     """Nothing `default-src 'none'` with same-origin images, scripts and styles would block."""
     for page in pages(site):
         html = page.read_text()
-        for bad in ("<script", "<style", "style=", "<img", "<iframe", "<object", "<embed"):
-            assert bad not in html, f"{page.relative_to(site)} contains {bad}"
+        name = page.relative_to(site)
+        for bad in ("<style", "style=", "<img", "<iframe", "<object", "<embed"):
+            assert bad not in html, f"{name} contains {bad}"
+        assert not INLINE_HANDLER.search(html), f"{name} has an inline event handler"
+        root = "../" * (len(name.parts) - 1)
+        assert SCRIPT.findall(html) == [f'<script src="{root}theme.js"></script>'], name
+        assert html.count("<script") == 1, name
 
 
 def test_every_link_names_a_file_of_the_site(site: Path) -> None:
@@ -125,7 +132,7 @@ def test_every_link_names_a_file_of_the_site(site: Path) -> None:
             assert (page.parent / path).is_file(), f"{name}: broken link {url!r}"
 
 
-def test_every_page_has_the_icons(site: Path) -> None:
+def test_every_page_links_the_static_files(site: Path) -> None:
     for page in pages(site):
         html = page.read_text()
         for name in gendocs.STATIC_FILES:
@@ -140,6 +147,15 @@ def test_stylesheet_loads_only_files_of_the_site(site: Path) -> None:
     for url in urls:
         assert ":" not in url, url
         assert (site / url).is_file(), url
+
+
+def test_stylesheet_turns_dark_by_choice_or_by_os(site: Path) -> None:
+    css = (site / gendocs.STYLESHEET).read_text()
+    by_os = css.split("@media (prefers-color-scheme: dark) {", 1)
+    assert len(by_os) == 2, "no dark rules for the OS preference"
+    assert ':root[data-theme="dark"] .pdoc {' in by_os[0]
+    assert ':root:not([data-theme="light"]) .pdoc {' in by_os[1]
+    assert ':root[data-theme="dark"] .pdoc-code .k {' in css, "no dark code highlighting"
 
 
 def test_landing_page_links_to_the_rest_reference(site: Path) -> None:

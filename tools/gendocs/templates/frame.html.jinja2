@@ -5,6 +5,10 @@
     <link rel="icon" href="{{ root }}favicon.png" sizes="150x150">
     <link rel="apple-touch-icon" href="{{ root }}apple-touch-icon.png">
 {% endblock %}
+{# Blocking, so the reader's theme is set before the first paint. #}
+{% block head %}
+    <script src="{{ root }}theme.js"></script>
+{% endblock %}
 {% block style %}
     <link rel="stylesheet" href="{{ root }}pdoc.css">
 {% endblock %}

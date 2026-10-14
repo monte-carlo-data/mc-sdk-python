@@ -49,6 +49,27 @@ print(pycarlo2.UsersApi(client).get_current_user())</code></pre>
 for warehouse in paginate(pycarlo2.WarehousesApi(client).list_warehouses):
     print(warehouse.id, warehouse.name)</code></pre>
 
+                <h2 id="errors">Errors</h2>
+                {{ spec_intro }}
+                <p>A failed call raises <code>pycarlo2.ApiException</code>, with the response's
+                    <code>status</code>, <code>headers</code> and <code>body</code>.</p>
+
+                <h2 id="per-call-options">Per-call options</h2>
+                <p>Every operation also takes these keyword arguments, which apply to that call
+                    alone:</p>
+                <ul>
+                    <li><code>_request_timeout</code>: a total timeout in seconds, or a
+                        <code>(connect, read)</code> pair.</li>
+                    <li><code>_request_auth</code>: auth settings that replace the client's.</li>
+                    <li><code>_content_type</code>: the request's content type.</li>
+                    <li><code>_headers</code>: headers that replace the defaults.</li>
+                    <li><code>_host_index</code>: which configured host to call.</li>
+                </ul>
+                <p>Each operation also comes as <code>&lt;operation&gt;_with_http_info</code>,
+                    which returns the status and headers with the data, and
+                    <code>&lt;operation&gt;_without_preload_content</code>, which returns the raw
+                    response.</p>
+
                 <h2 id="operations">Operations</h2>
                 {% for api in operations %}
                     <h3 id="{{ api.name }}"><a href="{{ api.page }}">{{ api.name }}</a></h3>

@@ -301,6 +301,55 @@ def test_stylesheet_turns_dark_by_choice_or_by_os(site: Path) -> None:
     assert ':root[data-theme="dark"] .pdoc-code .k {' in css, "no dark code highlighting"
 
 
+def test_no_page_shows_the_generators_noise(site: Path) -> None:
+    """Its headers, pydantic's type metadata and decorator, and unparsed reST fields."""
+    noise = (
+        "OpenAPI Generator",
+        "Do not edit",
+        "Annotated[",
+        "FieldInfo(",
+        "@validate_call",
+        "PydanticUndefined",
+        ":param ",
+        ":type ",
+    )
+    for page in pages(site):
+        markup = html.unescape(page.read_text())
+        for text in noise:
+            assert text not in markup, f"{page.relative_to(site)} shows {text!r}"
+
+
+def entry_text(page: Path, ident: str) -> str:
+    """The text of the entry `ident` on `page`, up to the next entry."""
+    markup = page.read_text()
+    start = markup.index(f'id="{ident}"')
+    end = markup.find('class="classattr"', start + len(ident) + 30)
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", markup[start:end])))
+
+
+def test_operations_list_their_parameters_with_the_specs_descriptions(site: Path) -> None:
+    text = entry_text(
+        site / "pycarlo2/api/deployments_api.html", "DeploymentsApi.delete_deployment"
+    )
+    assert "Parameters" in text
+    assert "deployment_id : Id of the deployment" in text or "deployment_id: Id of the" in text
+    params = text.split("Parameters", 1)[1]
+    assert "_request_timeout" not in params, "per-call options belong on the landing page"
+
+
+def test_model_fields_show_their_type_and_description(site: Path) -> None:
+    text = entry_text(site / "pycarlo2/models/warehouse_out.html", "WarehouseOut.name")
+    assert "name : Optional[str] Display name of the warehouse" in text
+
+
+def test_landing_page_documents_errors_and_per_call_options(site: Path) -> None:
+    landing = (site / "index.html").read_text()
+    assert "application/problem+json" in landing
+    op = inspect.signature(pycarlo2.DeploymentsApi.delete_deployment).parameters
+    listed = re.findall(r"<li><code>(_\w+)</code>", landing)
+    assert listed and set(listed) == {n for n in op if n.startswith("_")}
+
+
 def test_landing_page_links_to_the_rest_reference(site: Path) -> None:
     html = (site / "index.html").read_text()
     assert f'href="{REST_REFERENCE}"' in html
@@ -310,7 +359,7 @@ def test_landing_page_links_to_the_rest_reference(site: Path) -> None:
 def cli_build(out: Path, hash_seed: str) -> Path:
     """Builds through the script, as publish-docs.yml does, in a process with `hash_seed`."""
     subprocess.run(
-        [sys.executable, str(gendocs.HERE / "gendocs.py"), "-o", str(out), "--version", "v1.2.3"],
+        [sys.executable, "-m", "tools.gendocs.gendocs", "-o", str(out), "--version", "v1.2.3"],
         check=True,
         env={**os.environ, "PYTHONHASHSEED": hash_seed},
         cwd=REPO_ROOT,

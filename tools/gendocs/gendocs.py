@@ -24,11 +24,14 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import pdoc
+import pdoc.doc
 import pdoc.render
+import pdoc.render_helpers
 from markupsafe import Markup
 from pygments.formatters import HtmlFormatter
 
 import pycarlo2
+from tools.gendocs import tidy
 
 HERE = Path(__file__).parent
 TEMPLATES = HERE / "templates"
@@ -134,6 +137,17 @@ def operations() -> list[ApiClass]:
     return apis
 
 
+def _write_modules(out: Path) -> None:
+    """What `pdoc.pdoc` does, with the generated modules tidied before they render."""
+    docs = {name: pdoc.doc.Module.from_name(name) for name in modules()}
+    for module in docs.values():
+        tidy.tidy(module)
+        page = out / f"{module.fullname.replace('.', '/')}.html"
+        page.parent.mkdir(parents=True, exist_ok=True)
+        page.write_text(pdoc.render.html_module(module, docs))
+    (out / "index.html").write_text(pdoc.render.html_index(docs))
+
+
 def _write_guides(out: Path) -> None:
     template = pdoc.render.env.get_template("guide.html.jinja2")
     for g in GUIDES:
@@ -177,17 +191,23 @@ def build(out: Path, version: str) -> None:
         raise FileExistsError(f"{out} is not empty")
     out.mkdir(parents=True, exist_ok=True)
     pdoc.render.configure(
-        docformat="markdown",
+        # The generated docstrings are reST field lists around the spec's Markdown.
+        docformat="restructuredtext",
         search=False,
         show_source=False,
         footer_text=f"pycarlo2 {version}",
         template_directory=TEMPLATES,
     )
-    pdoc.render.env.globals.update(docs_version=version, guides=GUIDES, operations=operations())
+    pdoc.render.env.globals.update(
+        docs_version=version,
+        guides=GUIDES,
+        operations=operations(),
+        spec_intro=Markup(pdoc.render_helpers.to_html(tidy.spec_intro())),
+    )
     with warnings.catch_warnings():
         # The generated models annotate a private ClassVar with a name pdoc cannot resolve.
         warnings.filterwarnings("ignore", message="Error parsing type annotation")
-        pdoc.pdoc(*modules(), output_directory=out)
+        _write_modules(out)
     _write_guides(out)
     _write_stylesheet(out)
     for name in STATIC_FILES:
@@ -199,7 +219,9 @@ def main(argv: list[str] | None = None) -> int:
     if os.environ.get("PYTHONHASHSEED") != "0":
         args = sys.argv[1:] if argv is None else argv
         env = {**os.environ, "PYTHONHASHSEED": "0"}
-        return subprocess.run([sys.executable, __file__, *args], env=env).returncode
+        return subprocess.run(
+            [sys.executable, "-m", "tools.gendocs.gendocs", *args], env=env
+        ).returncode
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("-o", "--output", type=Path, required=True, help="empty directory to write")
     parser.add_argument("--version", required=True, help='shown on every page, e.g. "v1.2.3"')

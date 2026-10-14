@@ -265,6 +265,9 @@ dev = [
     { name = "pytest" },
     { name = "ruff" },
 ]
+docs = [
+    { name = "pdoc" },
+]
 
 [package.metadata]
 requires-dist = [
@@ -276,11 +279,12 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "pdoc", specifier = ">=16" },
+    { name = "pdoc", specifier = ">=16,<17" },
     { name = "pyright", specifier = ">=1.1" },
     { name = "pytest", specifier = ">=8.0" },
     { name = "ruff", specifier = ">=0.6" },
 ]
+docs = [{ name = "pdoc", specifier = ">=16,<17" }]
 
 [[package]]
 name = "pydantic"

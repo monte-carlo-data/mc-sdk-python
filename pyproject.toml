@@ -20,7 +20,9 @@ dependencies = [
 Repository = "https://github.com/monte-carlo-data/mc-sdk-python"
 
 [dependency-groups]
-dev = ["pytest>=8.0", "ruff>=0.6", "pyright>=1.1", "pdoc>=16"]
+dev = ["pytest>=8.0", "ruff>=0.6", "pyright>=1.1", {include-group = "docs"}]
+# The reference site's build; publish-docs.yml installs only this group.
+docs = ["pdoc>=16,<17"]
 
 [build-system]
 requires = ["hatchling"]

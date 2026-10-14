@@ -156,6 +156,8 @@ risks a silent overwrite.
 
 ## API reference
 
+The hosted [SDK reference](https://apidocs.getmontecarlo.com/v2/python/index.html) is built from the package by `tools/gendocs`; `docs/` is the generator's Markdown copy.
+
 `docs/` holds one page per operation group and per schema:
 
 - [`CollectionAgentsApi`](docs/CollectionAgentsApi.md)
@@ -175,8 +177,8 @@ is whatever `endpoint` you pass.
 
 The generated files track the API and are not edited by hand. A fix to one of them belongs in
 the API or in the generator, so please open an issue describing what is wrong rather than a
-patch. Changes to the hand-written files (`auth.py`, `oauth.py`, `profile.py`, `paging.py` and
-their tests) are welcome as pull requests.
+patch. Changes to the hand-written files (`auth.py`, `oauth.py`, `profile.py`, `paging.py`, the
+reference site in `tools/gendocs/`, and their tests) are welcome as pull requests.
 
 ### The `dev` branch
 
@@ -185,7 +187,7 @@ requests, and regeneration from the spec, target `main`. To preview a branch, me
 the branch into `dev` and push it:
 
 ```bash
-git fetch origin && git switch dev && git merge origin/main
+git fetch origin && git switch -C dev origin/dev && git merge origin/main
 git merge <branch> && git push origin dev
 ```
 

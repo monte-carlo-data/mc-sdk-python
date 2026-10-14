@@ -3,10 +3,12 @@
 
 // Light or dark, as the reader last chose, else as the OS prefers. The choice is stored as the
 // REST reference on the same origin stores it (localStorage "colorMode"), so it carries between
-// the two. Loaded in <head>, so the theme is set before the page paints.
+// the two.
 (function () {
   "use strict";
   var KEY = "colorMode";
+  // The click's choice when storage is unavailable; lasts for this page only.
+  var memo = null;
   var root = document.documentElement;
   var os = window.matchMedia("(prefers-color-scheme: dark)");
   // Bootstrap Icons' sun and moon, the set pdoc's own icons come from.
@@ -19,6 +21,9 @@
   var SVG = "http://www.w3.org/2000/svg";
 
   function chosen() {
+    if (memo) {
+      return memo;
+    }
     try {
       var mode = localStorage.getItem(KEY);
       return mode === "light" || mode === "dark" ? mode : null;
@@ -67,10 +72,12 @@
       button.setAttribute("aria-label", button.title);
     }
     button.addEventListener("click", function () {
+      var next = current() === "dark" ? "light" : "dark";
       try {
-        localStorage.setItem(KEY, current() === "dark" ? "light" : "dark");
+        localStorage.setItem(KEY, next);
+        memo = null;
       } catch (e) {
-        return;
+        memo = next;
       }
       apply();
       label();

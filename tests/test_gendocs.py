@@ -8,8 +8,13 @@ from __future__ import annotations
 import ast
 import dataclasses
 import html
+import importlib
 import inspect
+import os
+import pkgutil
 import re
+import subprocess
+import sys
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -28,14 +33,22 @@ CODE = re.compile(r"(?s)<pre><code class=\"language-python\">(.*?)</code></pre>"
 ENV_NAME = re.compile(r"\bMCD_[A-Z_]+")
 
 
-# Tags the CSP blocks outright, or that would load what it blocks.
+REPO_ROOT = Path(__file__).parent.parent
+
+# Rejected outright. Every <img> is, though the CSP allows same-origin images: pdoc's are
+# `data:` or external.
 BLOCKED_TAGS = {"style", "img", "iframe", "object", "embed"}
+
+
+# Elements with no end tag, which never enclose another.
+VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source"}
 
 
 @dataclasses.dataclass
 class Tag:
     name: str
     attrs: dict[str, str]
+    parent: Tag | None = None
     body: str = ""
 
 
@@ -46,14 +59,21 @@ class _TagParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
         self.tags: list[Tag] = []
+        self._stack: list[Tag] = []
         self._open: Tag | None = None  # the <script> or <style> whose body is being read
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
-        self.tags.append(Tag(tag, {k: v or "" for k, v in attrs}))
-        self._open = self.tags[-1] if tag in ("script", "style") else None
+        t = Tag(tag, {k: v or "" for k, v in attrs}, self._stack[-1] if self._stack else None)
+        self.tags.append(t)
+        if tag not in VOID_TAGS:
+            self._stack.append(t)
+        self._open = t if tag in ("script", "style") else None
 
     def handle_endtag(self, tag: str) -> None:
         self._open = None
+        names = [t.name for t in self._stack]
+        if tag in names:
+            del self._stack[len(names) - 1 - names[::-1].index(tag) :]
 
     def handle_data(self, data: str) -> None:
         if self._open:
@@ -68,8 +88,8 @@ def tags(markup: str) -> list[Tag]:
 
 
 def csp_problems(markup: str, root: str) -> list[str]:
-    """What `default-src 'none'` with same-origin images, scripts and styles would block. The
-    one script allowed is theme.js, from `root`, with nothing inline."""
+    """What `default-src 'none'` with same-origin scripts and styles would block, plus every
+    <img>. The one script allowed is theme.js, from `root`, with nothing inline."""
     found = tags(markup)
     problems = [f"<{t.name}>" for t in found if t.name in BLOCKED_TAGS]
     for t in found:
@@ -107,23 +127,47 @@ def pages(site: Path) -> list[Path]:
     return sorted(site.rglob("*.html"))
 
 
-def test_every_api_class_and_model_has_a_page(site: Path) -> None:
-    exported = [getattr(pycarlo2, name) for name in pycarlo2.__all__]
-    classes = [
-        c
-        for c in exported
-        if inspect.isclass(c) and c.__module__.startswith(("pycarlo2.api.", "pycarlo2.models."))
+def public_objects() -> list[tuple[str, object]]:
+    return [
+        (name, obj)
+        for name in pycarlo2.__all__
+        if inspect.isclass(obj := getattr(pycarlo2, name)) or inspect.isfunction(obj)
     ]
-    assert len(classes) > 200
-    for c in classes:
-        page = site / (c.__module__.replace(".", "/") + ".html")
-        assert f'id="{c.__name__}"' in page.read_text(), f"{c.__name__} has no entry on {page}"
+
+
+def test_every_public_name_has_an_entry(site: Path) -> None:
+    objects = public_objects()
+    assert len(objects) > 200
+    for name, obj in objects:
+        page = site / (obj.__module__.replace(".", "/") + ".html")  # type: ignore[attr-defined]
+        assert f'id="{name}"' in page.read_text(), f"{name} has no entry on {page}"
+
+
+def test_every_module_is_documented() -> None:
+    walked = {m.name for m in pkgutil.walk_packages(pycarlo2.__path__, "pycarlo2.")}
+    expected = {m for m in walked | {"pycarlo2"} if "._" not in m} - gendocs.REEXPORTING
+    assert set(gendocs.modules()) == expected
 
 
 def test_landing_page_lists_every_operation(site: Path) -> None:
+    api_classes = {
+        name: obj
+        for name, obj in public_objects()
+        if inspect.isclass(obj) and getattr(obj, "__module__", "").startswith("pycarlo2.api.")
+    }
+    # The generator gives every operation a private `_<operation>_serialize` helper.
+    expected = {
+        (name, method[1 : -len("_serialize")])
+        for name, cls in api_classes.items()
+        for method in dir(cls)
+        if method.startswith("_") and method.endswith("_serialize")
+    }
+    assert len(expected) > 100
+    documented = {(api.name, op.name) for api in gendocs.operations() for op in api.operations}
+    assert expected == documented
+
     landing = (site / "index.html").read_text()
     for api in gendocs.operations():
-        assert api.operations, f"{api.name} has no operations"
         for op in api.operations:
             assert op.summary, f"{api.name}.{op.name} has no summary"
             assert f'href="{api.page}#{api.name}.{op.name}"' in landing
@@ -143,9 +187,20 @@ def root_pages() -> list[Path]:
     ]
 
 
+def is_api_instance(node: ast.expr) -> bool:
+    """Whether `node` is `pycarlo2.<Name>(...)` with `<Name>` a real `pycarlo2` attribute."""
+    return (
+        isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Attribute)
+        and getattr(node.func.value, "id", "") == "pycarlo2"
+        and hasattr(pycarlo2, node.func.attr)
+    )
+
+
 def test_quoted_code_uses_only_real_names() -> None:
-    """Every Python block on the landing page and the guides parses, and names only `pycarlo2`
-    attributes and `Options` fields that exist."""
+    """Every Python block on the landing page and the guides parses, and every `pycarlo2.<name>`,
+    `from pycarlo2... import <name>`, `pycarlo2.<Api>(...).<method>` and `Options` field it
+    names exists."""
     fields = {f.name for f in dataclasses.fields(Options)}
     for page in root_pages():
         blocks = CODE.findall(page.read_text())
@@ -155,6 +210,13 @@ def test_quoted_code_uses_only_real_names() -> None:
             for node in ast.walk(tree):
                 if isinstance(node, ast.Attribute) and getattr(node.value, "id", "") == "pycarlo2":
                     assert hasattr(pycarlo2, node.attr), f"{page.name}: pycarlo2.{node.attr}"
+                if isinstance(node, ast.ImportFrom) and (node.module or "").startswith("pycarlo2"):
+                    module = importlib.import_module(node.module or "")
+                    for alias in node.names:
+                        assert hasattr(module, alias.name), f"{page.name}: {alias.name}"
+                if isinstance(node, ast.Attribute) and is_api_instance(node.value):
+                    api = getattr(pycarlo2, node.value.func.attr)  # type: ignore[attr-defined]
+                    assert hasattr(api, node.attr), f"{page.name}: {api.__name__}.{node.attr}"
                 if isinstance(node, ast.Call) and getattr(node.func, "attr", "") == "Options":
                     for kw in node.keywords:
                         assert kw.arg in fields, f"{page.name}: Options has no {kw.arg}"
@@ -168,7 +230,6 @@ def test_quoted_environment_variables_are_ones_the_sdk_reads() -> None:
 
 
 def test_pages_load_under_csp(site: Path) -> None:
-    """Nothing `default-src 'none'` with same-origin images, scripts and styles would block."""
     for page in pages(site):
         name = page.relative_to(site)
         root = "../" * (len(name.parts) - 1)
@@ -176,20 +237,42 @@ def test_pages_load_under_csp(site: Path) -> None:
 
 
 def test_every_link_names_a_file_of_the_site(site: Path) -> None:
-    """The host serves no directory index, so a link to a directory answers 403."""
+    """The host serves no directory index, so a link to a directory answers 403. A #fragment
+    must be an id on its target page."""
+    ids = {
+        page.resolve(): {t.attrs["id"] for t in tags(page.read_text()) if "id" in t.attrs}
+        for page in pages(site)
+    }
     for page in pages(site):
         name = page.relative_to(site)
         found = tags(page.read_text())
         for tag, url in [
             (t.name, t.attrs[a]) for t in found for a in ("href", "src") if a in t.attrs
         ]:
-            if url.startswith("#") or (tag == "a" and url.startswith("https://")):
+            if tag == "a" and url.startswith("https://"):
                 continue
             if page == site / "index.html" and url == REST_REFERENCE:
                 continue
-            path = url.split("#")[0]
+            path, _, fragment = url.partition("#")
             assert ":" not in path and not path.endswith("/"), f"{name}: <{tag}> {url!r}"
-            assert (page.parent / path).is_file(), f"{name}: broken link {url!r}"
+            target = (page.parent / path).resolve() if path else page.resolve()
+            assert target.is_file(), f"{name}: broken link {url!r}"
+            if fragment:
+                assert fragment in ids.get(target, set()), f"{name}: no anchor for {url!r}"
+
+
+def test_module_pages_have_the_nav_the_theme_toggle_anchors_to(site: Path) -> None:
+    """theme.js inserts the toggle at `nav.pdoc > div`; `colorMode` is the key it shares with
+    the REST reference."""
+    found = tags((site / "pycarlo2/auth.html").read_text())
+    assert any(
+        t.name == "div"
+        and t.parent is not None
+        and t.parent.name == "nav"
+        and "pdoc" in t.parent.attrs.get("class", "").split()
+        for t in found
+    )
+    assert "colorMode" in (gendocs.HERE / "theme.js").read_text()
 
 
 def test_every_page_links_the_static_files(site: Path) -> None:
@@ -224,12 +307,23 @@ def test_landing_page_links_to_the_rest_reference(site: Path) -> None:
     assert "Version: v1.2.3" in html
 
 
-def test_output_is_reproducible(site: Path, tmp_path: Path) -> None:
-    again = build(tmp_path / "site")
-    files = sorted(p.relative_to(site) for p in site.rglob("*") if p.is_file())
-    assert files == sorted(p.relative_to(again) for p in again.rglob("*") if p.is_file())
+def cli_build(out: Path, hash_seed: str) -> Path:
+    """Builds through the script, as publish-docs.yml does, in a process with `hash_seed`."""
+    subprocess.run(
+        [sys.executable, str(gendocs.HERE / "gendocs.py"), "-o", str(out), "--version", "v1.2.3"],
+        check=True,
+        env={**os.environ, "PYTHONHASHSEED": hash_seed},
+        cwd=REPO_ROOT,
+    )
+    return out
+
+
+def test_cli_output_is_the_same_whatever_the_hash_seed(tmp_path: Path) -> None:
+    a, b = cli_build(tmp_path / "a", "1"), cli_build(tmp_path / "b", "2")
+    files = sorted(p.relative_to(a) for p in a.rglob("*") if p.is_file())
+    assert files == sorted(p.relative_to(b) for p in b.rglob("*") if p.is_file())
     for f in files:
-        assert (site / f).read_bytes() == (again / f).read_bytes(), f"{f} differs between runs"
+        assert (a / f).read_bytes() == (b / f).read_bytes(), f"{f} differs between runs"
 
 
 def test_version_is_required(tmp_path: Path) -> None:

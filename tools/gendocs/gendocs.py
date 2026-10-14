@@ -12,9 +12,11 @@ from __future__ import annotations
 import argparse
 import hashlib
 import inspect
+import os
 import pkgutil
 import re
 import shutil
+import subprocess
 import sys
 import urllib.parse
 import warnings
@@ -51,7 +53,7 @@ GUIDES = (
 # These re-export every class beneath them, so their pages would repeat the whole SDK.
 REEXPORTING = {"pycarlo2", "pycarlo2.api", "pycarlo2.models"}
 
-# pdoc's stylesheets, in the order its frame template includes them.
+# pdoc 16's stylesheets, in the order its frame template's style block includes them.
 _CSS = "\n".join(
     "{% include '" + name + "' %}"
     for name in (
@@ -94,9 +96,9 @@ _DATA_SVG = re.compile(r'url\("data:image/svg\+xml,([^"]*)"\)')
 
 
 def modules() -> list[str]:
-    """Every module documented, each defining what its page shows."""
+    """Every module that gets a page: all of pycarlo2 except REEXPORTING and private modules."""
     found = pkgutil.walk_packages(pycarlo2.__path__, "pycarlo2.")
-    return sorted(m.name for m in found if m.name not in REEXPORTING)
+    return sorted(m.name for m in found if m.name not in REEXPORTING and "._" not in m.name)
 
 
 @dataclass(frozen=True)
@@ -132,7 +134,7 @@ def operations() -> list[ApiClass]:
     return apis
 
 
-def write_guides(out: Path) -> None:
+def _write_guides(out: Path) -> None:
     template = pdoc.render.env.get_template("guide.html.jinja2")
     for g in GUIDES:
         body = Markup((HERE / "guides" / g.file).read_text())
@@ -153,7 +155,7 @@ def dark_css() -> str:
     )
 
 
-def write_stylesheet(out: Path) -> None:
+def _write_stylesheet(out: Path) -> None:
     """Writes pdoc's CSS as one file, with each inline SVG icon as a file beside it."""
 
     def to_file(m: re.Match[str]) -> str:
@@ -186,18 +188,24 @@ def build(out: Path, version: str) -> None:
         # The generated models annotate a private ClassVar with a name pdoc cannot resolve.
         warnings.filterwarnings("ignore", message="Error parsing type annotation")
         pdoc.pdoc(*modules(), output_directory=out)
-    write_guides(out)
-    write_stylesheet(out)
+    _write_guides(out)
+    _write_stylesheet(out)
     for name in STATIC_FILES:
         shutil.copyfile(HERE / name, out / name)
 
 
-def main(argv: list[str] | None = None) -> None:
+def main(argv: list[str] | None = None) -> int:
+    # pdoc renders the generated set constants in hash order, so the bytes depend on the seed.
+    if os.environ.get("PYTHONHASHSEED") != "0":
+        args = sys.argv[1:] if argv is None else argv
+        env = {**os.environ, "PYTHONHASHSEED": "0"}
+        return subprocess.run([sys.executable, __file__, *args], env=env).returncode
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("-o", "--output", type=Path, required=True, help="empty directory to write")
     parser.add_argument("--version", required=True, help='shown on every page, e.g. "v1.2.3"')
     args = parser.parse_args(argv)
     build(args.output, args.version)
+    return 0
 
 
 if __name__ == "__main__":

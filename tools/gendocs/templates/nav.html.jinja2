@@ -7,14 +7,14 @@
 </ul>
 <h2>Client</h2>
 <ul>
-    {% for m in all_modules if m.count(".") == 1 and "._" not in m %}
+    {% for m in all_modules if m.count(".") == 1 %}
         <li><a href="{{ m.replace(".", "/") }}.html">{{ m }}</a></li>
     {% endfor %}
 </ul>
 {% for title, prefix in (("Operations", "pycarlo2.api."), ("Models", "pycarlo2.models.")) %}
     <h2>{{ title }}</h2>
     <ul>
-        {% for m in all_modules if m.startswith(prefix) and "._" not in m %}
+        {% for m in all_modules if m.startswith(prefix) %}
             <li><a href="{{ m.replace(".", "/") }}.html">{{ m[prefix|length:] }}</a></li>
         {% endfor %}
     </ul>

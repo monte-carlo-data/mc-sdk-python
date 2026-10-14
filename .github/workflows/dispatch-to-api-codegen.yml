@@ -6,8 +6,8 @@
 # itself, so the dispatch carries no payload to be trusted, and a missed one costs nothing but
 # time: the next push to api-codegen main reaches the same check.
 #
-# This is the only workflow here that writes anything anywhere, and everything it writes is the
-# dispatch itself. It stays this small on purpose: the SDK is headed public.
+# Everything it writes is the dispatch itself; publish-docs.yml is the only other workflow that
+# writes anywhere. It stays this small on purpose: the SDK is headed public.
 
 name: Tell api-codegen the SDK changed
 

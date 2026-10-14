@@ -10,6 +10,7 @@ import dataclasses
 import html
 import inspect
 import re
+from html.parser import HTMLParser
 from pathlib import Path
 
 import pytest
@@ -22,13 +23,74 @@ from tools.gendocs import gendocs
 # The REST reference, one level above the site at /v2/index.html.
 REST_REFERENCE = "../index.html"
 
-# A URL attribute and the tag it is on.
-ATTR_URL = re.compile(r'<(\w+)[^>]*?\s(?:href|src)="([^"]*)"')
 CSS_URL = re.compile(r"url\(([^)]*)\)")
 CODE = re.compile(r"(?s)<pre><code class=\"language-python\">(.*?)</code></pre>")
-SCRIPT = re.compile(r"<script\b[^>]*>.*?</script>", re.S)
-INLINE_HANDLER = re.compile(r"<[^>]*\son[a-z]+=", re.I)
 ENV_NAME = re.compile(r"\bMCD_[A-Z_]+")
+
+
+# Tags the CSP blocks outright, or that would load what it blocks.
+BLOCKED_TAGS = {"style", "img", "iframe", "object", "embed"}
+
+
+@dataclasses.dataclass
+class Tag:
+    name: str
+    attrs: dict[str, str]
+    body: str = ""
+
+
+class _TagParser(HTMLParser):
+    """Collects every start tag. HTMLParser lowercases tag and attribute names, as browsers do,
+    so a check on its output can't be dodged by case or spacing."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.tags: list[Tag] = []
+        self._open: Tag | None = None  # the <script> or <style> whose body is being read
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        self.tags.append(Tag(tag, {k: v or "" for k, v in attrs}))
+        self._open = self.tags[-1] if tag in ("script", "style") else None
+
+    def handle_endtag(self, tag: str) -> None:
+        self._open = None
+
+    def handle_data(self, data: str) -> None:
+        if self._open:
+            self._open.body += data
+
+
+def tags(markup: str) -> list[Tag]:
+    parser = _TagParser()
+    parser.feed(markup)
+    parser.close()
+    return parser.tags
+
+
+def csp_problems(markup: str, root: str) -> list[str]:
+    """What `default-src 'none'` with same-origin images, scripts and styles would block. The
+    one script allowed is theme.js, from `root`, with nothing inline."""
+    found = tags(markup)
+    problems = [f"<{t.name}>" for t in found if t.name in BLOCKED_TAGS]
+    for t in found:
+        problems += [f"<{t.name} {a}=>" for a in t.attrs if a == "style" or a.startswith("on")]
+    scripts = [(t.attrs, t.body) for t in found if t.name == "script"]
+    if scripts != [({"src": f"{root}theme.js"}, "")]:
+        problems.append(f"scripts {scripts}")
+    return problems
+
+
+def test_csp_check_is_not_fooled_by_case_or_spacing() -> None:
+    ok = '<head><script src="theme.js"></script></head>'
+    assert csp_problems(ok, "") == []
+    for bad in (
+        "<SCRIPT>alert(1)</SCRIPT >",
+        '<p STYLE="color: red">',
+        "<Style>p {}</Style>",
+        '<a OnClick="x()">',
+        "<IMG src=x.png>",
+    ):
+        assert csp_problems(ok + bad, ""), bad
 
 
 def build(path: Path, version: str = "v1.2.3") -> Path:
@@ -108,21 +170,19 @@ def test_quoted_environment_variables_are_ones_the_sdk_reads() -> None:
 def test_pages_load_under_csp(site: Path) -> None:
     """Nothing `default-src 'none'` with same-origin images, scripts and styles would block."""
     for page in pages(site):
-        html = page.read_text()
         name = page.relative_to(site)
-        for bad in ("<style", "style=", "<img", "<iframe", "<object", "<embed"):
-            assert bad not in html, f"{name} contains {bad}"
-        assert not INLINE_HANDLER.search(html), f"{name} has an inline event handler"
         root = "../" * (len(name.parts) - 1)
-        assert SCRIPT.findall(html) == [f'<script src="{root}theme.js"></script>'], name
-        assert html.count("<script") == 1, name
+        assert csp_problems(page.read_text(), root) == [], name
 
 
 def test_every_link_names_a_file_of_the_site(site: Path) -> None:
     """The host serves no directory index, so a link to a directory answers 403."""
     for page in pages(site):
         name = page.relative_to(site)
-        for tag, url in ATTR_URL.findall(page.read_text()):
+        found = tags(page.read_text())
+        for tag, url in [
+            (t.name, t.attrs[a]) for t in found for a in ("href", "src") if a in t.attrs
+        ]:
             if url.startswith("#") or (tag == "a" and url.startswith("https://")):
                 continue
             if page == site / "index.html" and url == REST_REFERENCE:

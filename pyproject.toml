@@ -20,7 +20,7 @@ dependencies = [
 Repository = "https://github.com/monte-carlo-data/mc-sdk-python"
 
 [dependency-groups]
-dev = ["pytest>=8.0", "ruff>=0.6", "pyright>=1.1"]
+dev = ["pytest>=8.0", "ruff>=0.6", "pyright>=1.1", "pdoc>=16"]
 
 [build-system]
 requires = ["hatchling"]
@@ -40,7 +40,7 @@ extend-exclude = ["pycarlo2/api", "pycarlo2/models", "pycarlo2/__init__.py", "py
 select = ["E", "F", "I", "UP", "B"]
 
 [tool.pyright]
-include = ["pycarlo2", "tests"]
+include = ["pycarlo2", "tests", "tools"]
 exclude = ["pycarlo2/api", "pycarlo2/models", "pycarlo2/__init__.py", "pycarlo2/api_client.py", "pycarlo2/api_response.py", "pycarlo2/configuration.py", "pycarlo2/exceptions.py", "pycarlo2/rest.py"]
 venvPath = "."
 venv = ".venv"

@@ -30,3 +30,6 @@ htmlcov/
 
 # Misc
 *.log
+
+# Reference site, built by tools/gendocs
+/site/

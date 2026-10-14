@@ -1,0 +1,67 @@
+{# The landing page, at /v2/python/ and /v2/python/index.html. #}
+{% extends "frame.html.jinja2" %}
+{% block title %}pycarlo2 SDK reference{% endblock %}
+{% block nav %}{% include "nav.html.jinja2" %}{% endblock %}
+{% block content %}
+    <main class="pdoc">
+        <section class="module-info">
+            <h1 class="modulename">pycarlo2 SDK reference</h1>
+            <div class="docstring">
+                <p>Version: {{ docs_version }}</p>
+                <p><code>pycarlo2</code> lets you manage your Monte Carlo account from Python:
+                    connections, warehouses, agents and the rest of the REST API. Install it, set up
+                    credentials, then find any operation below. The
+                    <a href="../index.html">REST API reference</a> describes each operation's
+                    requests and responses.</p>
+
+                <h2 id="install">Install</h2>
+                <pre><code>pip install git+https://github.com/monte-carlo-data/mc-sdk-python.git</code></pre>
+                <p>Requires Python 3.10 or later.</p>
+
+                <h2 id="getting-started">Getting started</h2>
+                <p>Set up credentials with one of the guides:</p>
+                <ul>
+                    {% for g in guides %}
+                        <li><a href="{{ g.file }}">{{ g.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                <p>Then build a client and check who it acts as:</p>
+                <pre><code class="language-python">import pycarlo2
+
+client = pycarlo2.new_client()
+print(pycarlo2.UsersApi(client).get_current_user())</code></pre>
+                <p><a href="pycarlo2/auth.html#new_client"><code>new_client</code></a> takes its
+                    credentials from <a href="pycarlo2/auth.html#Options"><code>Options</code></a>
+                    first, then the <code>MCD_DEFAULT_*</code> environment variables, then the
+                    profile the <code>montecarlo</code> CLI writes to
+                    <code>~/.mcd/profiles.ini</code>. A misconfiguration raises
+                    <code>pycarlo2.CredentialsError</code> there, and a failed call raises
+                    <code>pycarlo2.ApiException</code>.</p>
+                <p>Every operation below is a method on an <code>*Api</code> class built from the
+                    client, and takes and returns the classes listed under Models. All of them are
+                    importable from <code>pycarlo2</code>.</p>
+
+                <h2 id="paginate">Walk a paginated list</h2>
+                <p>A list returns one page per call. <a href="pycarlo2/paging.html#paginate"><code>paginate</code></a>
+                    follows the cursor and yields every item:</p>
+                <pre><code class="language-python">from pycarlo2.paging import paginate
+
+for warehouse in paginate(pycarlo2.WarehousesApi(client).list_warehouses):
+    print(warehouse.id, warehouse.name)</code></pre>
+
+                <h2 id="operations">Operations</h2>
+                {% for api in operations %}
+                    <h3 id="{{ api.name }}"><a href="{{ api.page }}">{{ api.name }}</a></h3>
+                    <table>
+                        {% for op in api.operations %}
+                            <tr>
+                                <td><a href="{{ api.page }}#{{ api.name }}.{{ op.name }}"><code>{{ op.name }}</code></a></td>
+                                <td>{{ op.summary }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+{% endblock %}

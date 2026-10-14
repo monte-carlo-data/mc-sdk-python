@@ -1,0 +1,10 @@
+{# Same-origin files only: pdoc's inline styles break the site's CSP. #}
+{% extends "default/frame.html.jinja2" %}
+{% set root = "../" * (module.modulename.count(".") if module else 0) %}
+{% block favicon %}
+    <link rel="icon" href="{{ root }}favicon.png" sizes="150x150">
+    <link rel="apple-touch-icon" href="{{ root }}apple-touch-icon.png">
+{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{{ root }}pdoc.css">
+{% endblock %}

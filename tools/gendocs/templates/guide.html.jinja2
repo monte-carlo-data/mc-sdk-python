@@ -1,0 +1,15 @@
+{# A hand-written guide from tools/gendocs/guides/, at the site's root. #}
+{% extends "frame.html.jinja2" %}
+{% block title %}{{ guide.title }} · pycarlo2 SDK reference{% endblock %}
+{% block nav %}{% include "nav.html.jinja2" %}{% endblock %}
+{% block content %}
+    <main class="pdoc">
+        <section class="module-info">
+            <h1 class="modulename">{{ guide.title }}</h1>
+            <div class="docstring">
+                <p>Version: {{ docs_version }}</p>
+                {{ body }}
+            </div>
+        </section>
+    </main>
+{% endblock %}

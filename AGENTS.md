@@ -15,6 +15,7 @@ uv sync
 uv run pytest
 uv run ruff check . && uv run ruff format .
 uv run pyright
+uv run python tools/gendocs/gendocs.py -o site --version "preview of local"   # writes the reference site to site/
 ```
 
 Ruff and pyright cover the whole package except the generator's own files, listed in `pyproject.toml`, so a new hand-written module is checked by default. A finding in generated code belongs in the API or in the generator.
@@ -30,6 +31,8 @@ Ruff and pyright cover the whole package except the generator's own files, liste
 | `pycarlo2/__init__.py`, `api_client.py`, `api_response.py`, `configuration.py`, `exceptions.py`, `rest.py`, `py.typed` | Generated client plumbing. `__init__.py` comes from a template override that re-exports the hand-written names |
 | `docs/` | Generated API reference |
 | `.openapi-generator/` | Generator bookkeeping |
+| `tools/gendocs/` | **Hand-written.** Builds the SDK reference site; see [Reference docs](#reference-docs) |
+| `.github/workflows/publish-docs.yml`, `.github/actions/publish-docs/` | Build the reference on every pull request and publish it |
 | `tests/` | **Hand-written.** Tests for the hand-written surface, one module each, plus `conftest.py` and `test_public_surface.py`, which pins the generated `__init__.py`'s re-export of the hand-written names |
 
 ## What is generated
@@ -72,9 +75,19 @@ Precedence is the same three tiers as pycarlo and mc-sdk-go: values passed in, t
 
 Tests must not read the developer's real credentials. The `isolate` fixture in `tests/conftest.py` clears every environment variable resolution consults and points `HOME` at a temporary directory; use it, and pass the directory it returns as `Options.config_dir`, in any test that builds a client or resolves options.
 
+## Reference docs
+
+`tools/gendocs` runs pdoc over every module in `pycarlo2` except the package roots, which re-export everything beneath them, and writes the reference at https://apidocs.getmontecarlo.com/v2/python/index.html, beside the REST reference at `/v2/`. Its templates add the landing page, which lists every operation with its summary from the spec, and the credential guides in `tools/gendocs/guides/`, which mirror the CLI reference's. The site is built when it is published, never committed, and `docs/` is not part of it.
+
+The site's CSP allows no script, inline style, `data:` image or anything loaded from elsewhere, and its host serves no directory index. So search is off, the templates link one stylesheet that `gendocs.py` writes from pdoc's own CSS with each inline icon as a file, and every link names a file. `tests/test_gendocs.py` checks all of that, that every API class and model has a page, and that the code the landing page and guides quote names only real `pycarlo2` names, `Options` fields and environment variables. `/v2/python/` works because the publish also writes the landing page at key `v2/python/`.
+
+`publish-docs.yml` builds the site on every pull request. A push to `dev` publishes a preview to https://apidocs.dev.getmontecarlo.com/v2/python/index.html. After `Test` succeeds on `main`, it publishes `main`'s head; a run for an older commit publishes nothing. It triggers on `Test` by its name, so renaming that workflow stops it. Both publishing roles also trust only this file on its branch, `.github/workflows/publish-docs.yml` on `dev` or `main`, so renaming it, or moving its publish jobs into a reusable workflow, stops publishing. The roles, buckets and distributions are Actions secrets: `DOCS_DEV_*` in the repository, `DOCS_PROD_*` in the `release` environment, the only one the prod role trusts. That environment allows only `main`; don't widen or delete it.
+
 ## Branching
 
 Branch from `main` as `<person>/<ticket-id>-<slug>`. Never commit directly to `main`.
+
+`dev` previews the reference docs and is never released; the README's [`dev` branch](README.md#the-dev-branch) section says how to use and reset it.
 
 ## Releasing
 

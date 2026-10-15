@@ -16,8 +16,9 @@ class TargetType(str, Enum):
     """
     What a run validates.
     
-    `credentials` is a set of candidate values, which are not stored anywhere and have no
-    id. `connection` is a connection that already exists, tested as it stands.
+    `credentials` is candidate values or a change to stored credentials. Candidate values are
+    not stored and have no id. A change carries the id of the credentials it applies to.
+    `connection` is a connection that already exists, tested as it stands.
     """
 
     """

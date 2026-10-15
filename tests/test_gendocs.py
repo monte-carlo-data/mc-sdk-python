@@ -302,7 +302,7 @@ def test_stylesheet_turns_dark_by_choice_or_by_os(site: Path) -> None:
 
 
 def test_no_page_shows_the_generators_noise(site: Path) -> None:
-    """Its headers, pydantic's type metadata and decorator, and unparsed reST fields."""
+    """Its notices, pydantic's type metadata and decorator, and unparsed reST fields."""
     noise = (
         "OpenAPI Generator",
         "Do not edit",

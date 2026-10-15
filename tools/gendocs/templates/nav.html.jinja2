@@ -1,0 +1,22 @@
+{# The sidebar of the landing page and the guides, which sit at the site's root. #}
+<h2><a href="index.html">pycarlo2</a></h2>
+<ul>
+    {% for g in guides %}
+        <li><a href="{{ g.file }}">{{ g.title }}</a></li>
+    {% endfor %}
+</ul>
+<h2>Client</h2>
+<ul>
+    {% for m in all_modules if m.count(".") == 1 %}
+        <li><a href="{{ m.replace(".", "/") }}.html">{{ m }}</a></li>
+    {% endfor %}
+</ul>
+{% for title, prefix in (("Operations", "pycarlo2.api."), ("Models", "pycarlo2.models.")) %}
+    <h2>{{ title }}</h2>
+    <ul>
+        {% for m in all_modules if m.startswith(prefix) %}
+            <li><a href="{{ m.replace(".", "/") }}.html">{{ m[prefix|length:] }}</a></li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+<footer>pycarlo2 {{ docs_version }}</footer>

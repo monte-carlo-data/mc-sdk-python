@@ -9,6 +9,9 @@ is the helper that walks a paginated list.
 > For the GraphQL API, use [pycarlo](https://pypi.org/project/pycarlo/) instead.
 > This SDK targets the REST API. It is not yet published to PyPI.
 
+The [SDK reference](https://apidocs.getmontecarlo.com/v2/python/index.html) has a page for every
+module, operation group and model.
+
 ## Install
 
 ```bash
@@ -142,15 +145,18 @@ They carry no arguments or payload. A tool built on the SDK names itself by over
 | `pycarlo2/auth.py`, `oauth.py`, `profile.py` | Hand-written. `new_client`, `Options`, and the credential resolution behind them. |
 | `pycarlo2/paging.py` | Hand-written. `paginate`, which walks a paginated list. |
 | `tests/` | Hand-written tests for the hand-written surface. |
+| `tools/gendocs/` | Hand-written. Builds the SDK reference site. |
 
 The generator writes at the repository root, replacing any path it emits and deleting nothing.
 Every hand-written file it would otherwise emit (`pyproject.toml`, `README.md`, `.gitignore`,
 and the four modules inside the package) is listed in `.openapi-generator-ignore`; other
-hand-written files (`tests/`, `AGENTS.md`, `LICENSE`, the CI workflow) are names the generator
+hand-written files (`tests/`, `tools/`, `AGENTS.md`, `LICENSE`, the CI workflows) are names the generator
 never emits and need no entry. Adding a file that shares a generated path without listing it
 risks a silent overwrite.
 
 ## API reference
+
+The hosted [SDK reference](https://apidocs.getmontecarlo.com/v2/python/index.html) is built from the package by `tools/gendocs`; `docs/` is the generator's Markdown copy.
 
 `docs/` holds one page per operation group and per schema:
 
@@ -171,5 +177,20 @@ is whatever `endpoint` you pass.
 
 The generated files track the API and are not edited by hand. A fix to one of them belongs in
 the API or in the generator, so please open an issue describing what is wrong rather than a
-patch. Changes to the hand-written files (`auth.py`, `oauth.py`, `profile.py`, `paging.py` and
-their tests) are welcome as pull requests.
+patch. Changes to the hand-written files (`auth.py`, `oauth.py`, `profile.py`, `paging.py`, the
+reference site in `tools/gendocs/`, and their tests) are welcome as pull requests.
+
+### The `dev` branch
+
+`dev` publishes a preview of the SDK reference to dev apidocs and is never released. Pull
+requests, and regeneration from the spec, target `main`. To preview a branch, merge `main` and
+the branch into `dev` and push it:
+
+```bash
+git fetch origin && git switch -C dev origin/dev && git merge origin/main
+git merge <branch> && git push origin dev
+```
+
+Nothing keeps `dev` in step with `main`. When abandoned previews pile up, reset it with
+`git push --force-with-lease origin origin/main:dev`; that push publishes `main`'s reference to
+dev again.

@@ -1,0 +1,10 @@
+{% extends "default/module.html.jinja2" %}
+{# The package pages aren't documented, so every module links back to the landing page. #}
+{% block module_list_link %}
+    <a class="pdoc-button module-list-button" href="{{ "../" * module.modulename.count(".") }}index.html">
+        {% include "resources/box-arrow-in-left.svg" %}
+        &nbsp;pycarlo2
+    </a>
+{% endblock %}
+{# pdoc's attribution is a data: image. #}
+{% block attribution %}{% endblock %}

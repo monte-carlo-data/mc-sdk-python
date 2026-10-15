@@ -50,6 +50,7 @@ __all__ = [
     "AwsCollectionDataStoreIn",
     "AwsCollectionDataStoreOut",
     "AwsCollectionDataStorePatch",
+    "AwsSecretsManagerCredentialsChangeValidateIn",
     "AwsSecretsManagerCredentialsIn",
     "AwsSecretsManagerCredentialsOut",
     "AwsSecretsManagerCredentialsPatch",
@@ -61,19 +62,23 @@ __all__ = [
     "AzureCollectionDataStoreIn",
     "AzureCollectionDataStoreOut",
     "AzureCollectionDataStorePatch",
+    "AzureDataFactoryCredentialsChangeValidateIn",
     "AzureDataFactoryCredentialsIn",
     "AzureDataFactoryCredentialsOut",
     "AzureDataFactoryCredentialsPatch",
     "AzureDataFactoryCredentialsValidateIn",
     "AzureDataStoreAuthenticationType",
+    "AzureDedicatedSqlPoolCredentialsChangeValidateIn",
     "AzureDedicatedSqlPoolCredentialsIn",
     "AzureDedicatedSqlPoolCredentialsOut",
     "AzureDedicatedSqlPoolCredentialsPatch",
     "AzureDedicatedSqlPoolCredentialsValidateIn",
+    "AzureKeyVaultCredentialsChangeValidateIn",
     "AzureKeyVaultCredentialsIn",
     "AzureKeyVaultCredentialsOut",
     "AzureKeyVaultCredentialsPatch",
     "AzureKeyVaultCredentialsValidateIn",
+    "AzureSqlDatabaseCredentialsChangeValidateIn",
     "AzureSqlDatabaseCredentialsIn",
     "AzureSqlDatabaseCredentialsOut",
     "AzureSqlDatabaseCredentialsPatch",
@@ -82,10 +87,12 @@ __all__ = [
     "BiContainerOut",
     "BiContainerPatch",
     "BiContainerType",
+    "BigQueryCredentialsChangeValidateIn",
     "BigQueryCredentialsIn",
     "BigQueryCredentialsOut",
     "BigQueryCredentialsPatch",
     "BigQueryCredentialsValidateIn",
+    "ClickHouseCredentialsChangeValidateIn",
     "ClickHouseCredentialsIn",
     "ClickHouseCredentialsOut",
     "ClickHouseCredentialsPatch",
@@ -106,14 +113,17 @@ __all__ = [
     "CustomConnectorCapabilities",
     "CustomConnectorTerminology",
     "CustomConnectorTypeOut",
+    "DatabricksMetastoreSqlWarehouseCredentialsChangeValidateIn",
     "DatabricksMetastoreSqlWarehouseCredentialsIn",
     "DatabricksMetastoreSqlWarehouseCredentialsOut",
     "DatabricksMetastoreSqlWarehouseCredentialsPatch",
     "DatabricksMetastoreSqlWarehouseCredentialsValidateIn",
+    "DatabricksSqlWarehouseCredentialsChangeValidateIn",
     "DatabricksSqlWarehouseCredentialsIn",
     "DatabricksSqlWarehouseCredentialsOut",
     "DatabricksSqlWarehouseCredentialsPatch",
     "DatabricksSqlWarehouseCredentialsValidateIn",
+    "Db2CredentialsChangeValidateIn",
     "Db2CredentialsIn",
     "Db2CredentialsOut",
     "Db2CredentialsPatch",
@@ -123,6 +133,7 @@ __all__ = [
     "DeploymentPatch",
     "DeploymentSummaryOut",
     "DeploymentType",
+    "EnvVarCredentialsChangeValidateIn",
     "EnvVarCredentialsIn",
     "EnvVarCredentialsOut",
     "EnvVarCredentialsPatch",
@@ -132,10 +143,12 @@ __all__ = [
     "EtlContainerPatch",
     "EtlContainerType",
     "FieldErrorOut",
+    "FileCredentialsChangeValidateIn",
     "FileCredentialsIn",
     "FileCredentialsOut",
     "FileCredentialsPatch",
     "FileCredentialsValidateIn",
+    "FivetranCredentialsChangeValidateIn",
     "FivetranCredentialsIn",
     "FivetranCredentialsOut",
     "FivetranCredentialsPatch",
@@ -148,10 +161,12 @@ __all__ = [
     "GcpCollectionDataStoreIn",
     "GcpCollectionDataStoreOut",
     "GcpCollectionDataStorePatch",
+    "GcpDataformCredentialsChangeValidateIn",
     "GcpDataformCredentialsIn",
     "GcpDataformCredentialsOut",
     "GcpDataformCredentialsPatch",
     "GcpDataformCredentialsValidateIn",
+    "GcpSecretManagerCredentialsChangeValidateIn",
     "GcpSecretManagerCredentialsIn",
     "GcpSecretManagerCredentialsOut",
     "GcpSecretManagerCredentialsPatch",
@@ -167,6 +182,7 @@ __all__ = [
     "GenericCollectionAgentTokenOut",
     "IdentityType",
     "InformaticaV2AuthMode",
+    "InformaticaV2CredentialsChangeValidateIn",
     "InformaticaV2CredentialsIn",
     "InformaticaV2CredentialsOut",
     "InformaticaV2CredentialsPatch",
@@ -177,23 +193,28 @@ __all__ = [
     "Input",
     "IntegrationKeyOut",
     "IntegrationKeyScope",
+    "LookerCredentialsChangeValidateIn",
     "LookerCredentialsIn",
     "LookerCredentialsOut",
     "LookerCredentialsPatch",
     "LookerCredentialsValidateIn",
+    "LookerGitCloneCredentialsChangeValidateIn",
     "LookerGitCloneCredentialsIn",
     "LookerGitCloneCredentialsOut",
     "LookerGitCloneCredentialsPatch",
     "LookerGitCloneCredentialsValidateIn",
+    "MariaDbCredentialsChangeValidateIn",
     "MariaDbCredentialsIn",
     "MariaDbCredentialsOut",
     "MariaDbCredentialsPatch",
     "MariaDbCredentialsValidateIn",
+    "MulesoftCredentialsChangeValidateIn",
     "MulesoftCredentialsIn",
     "MulesoftCredentialsOut",
     "MulesoftCredentialsPatch",
     "MulesoftCredentialsValidateIn",
     "MulesoftRegion",
+    "MySqlCredentialsChangeValidateIn",
     "MySqlCredentialsIn",
     "MySqlCredentialsOut",
     "MySqlCredentialsPatch",
@@ -201,6 +222,7 @@ __all__ = [
     "NewBiContainerType",
     "NewEtlContainerType",
     "OAuthGrantType",
+    "OracleCredentialsChangeValidateIn",
     "OracleCredentialsIn",
     "OracleCredentialsOut",
     "OracleCredentialsPatch",
@@ -208,40 +230,48 @@ __all__ = [
     "PagedConnectionOut",
     "PagedCredentialsSummaryOut",
     "PagedWarehouseOut",
+    "PostgresCredentialsChangeValidateIn",
     "PostgresCredentialsIn",
     "PostgresCredentialsOut",
     "PostgresCredentialsPatch",
     "PostgresCredentialsValidateIn",
     "PowerBiAuthMode",
+    "PowerBiCredentialsChangeValidateIn",
     "PowerBiCredentialsIn",
     "PowerBiCredentialsOut",
     "PowerBiCredentialsPatch",
     "PowerBiCredentialsValidateIn",
     "ProblemOut",
+    "RedshiftCredentialsChangeValidateIn",
     "RedshiftCredentialsIn",
     "RedshiftCredentialsOut",
     "RedshiftCredentialsPatch",
     "RedshiftCredentialsValidateIn",
     "RunStatus",
     "RuntimePlatform",
+    "SapHanaCredentialsChangeValidateIn",
     "SapHanaCredentialsIn",
     "SapHanaCredentialsOut",
     "SapHanaCredentialsPatch",
     "SapHanaCredentialsValidateIn",
     "ServicePrincipalCredentialsIn",
+    "SnowflakeCredentialsChangeValidateIn",
     "SnowflakeCredentialsIn",
     "SnowflakeCredentialsOut",
     "SnowflakeCredentialsPatch",
     "SnowflakeCredentialsValidateIn",
     "SqlServerAuthMode",
+    "SqlServerCredentialsChangeValidateIn",
     "SqlServerCredentialsIn",
     "SqlServerCredentialsOut",
     "SqlServerCredentialsPatch",
     "SqlServerCredentialsValidateIn",
+    "StarburstEnterpriseCredentialsChangeValidateIn",
     "StarburstEnterpriseCredentialsIn",
     "StarburstEnterpriseCredentialsOut",
     "StarburstEnterpriseCredentialsPatch",
     "StarburstEnterpriseCredentialsValidateIn",
+    "StarburstGalaxyCredentialsChangeValidateIn",
     "StarburstGalaxyCredentialsIn",
     "StarburstGalaxyCredentialsOut",
     "StarburstGalaxyCredentialsPatch",
@@ -249,11 +279,13 @@ __all__ = [
     "StorageAccountKeysCredentialsIn",
     "StorageServicePrincipalCredentialsIn",
     "StorageType",
+    "TableauCredentialsChangeValidateIn",
     "TableauCredentialsIn",
     "TableauCredentialsOut",
     "TableauCredentialsPatch",
     "TableauCredentialsValidateIn",
     "TargetType",
+    "TeradataCredentialsChangeValidateIn",
     "TeradataCredentialsIn",
     "TeradataCredentialsOut",
     "TeradataCredentialsPatch",
@@ -311,6 +343,7 @@ from pycarlo2.models.aws_collection_agent_patch import AwsCollectionAgentPatch a
 from pycarlo2.models.aws_collection_data_store_in import AwsCollectionDataStoreIn as AwsCollectionDataStoreIn
 from pycarlo2.models.aws_collection_data_store_out import AwsCollectionDataStoreOut as AwsCollectionDataStoreOut
 from pycarlo2.models.aws_collection_data_store_patch import AwsCollectionDataStorePatch as AwsCollectionDataStorePatch
+from pycarlo2.models.aws_secrets_manager_credentials_change_validate_in import AwsSecretsManagerCredentialsChangeValidateIn as AwsSecretsManagerCredentialsChangeValidateIn
 from pycarlo2.models.aws_secrets_manager_credentials_in import AwsSecretsManagerCredentialsIn as AwsSecretsManagerCredentialsIn
 from pycarlo2.models.aws_secrets_manager_credentials_out import AwsSecretsManagerCredentialsOut as AwsSecretsManagerCredentialsOut
 from pycarlo2.models.aws_secrets_manager_credentials_patch import AwsSecretsManagerCredentialsPatch as AwsSecretsManagerCredentialsPatch
@@ -322,19 +355,23 @@ from pycarlo2.models.azure_collection_agent_patch import AzureCollectionAgentPat
 from pycarlo2.models.azure_collection_data_store_in import AzureCollectionDataStoreIn as AzureCollectionDataStoreIn
 from pycarlo2.models.azure_collection_data_store_out import AzureCollectionDataStoreOut as AzureCollectionDataStoreOut
 from pycarlo2.models.azure_collection_data_store_patch import AzureCollectionDataStorePatch as AzureCollectionDataStorePatch
+from pycarlo2.models.azure_data_factory_credentials_change_validate_in import AzureDataFactoryCredentialsChangeValidateIn as AzureDataFactoryCredentialsChangeValidateIn
 from pycarlo2.models.azure_data_factory_credentials_in import AzureDataFactoryCredentialsIn as AzureDataFactoryCredentialsIn
 from pycarlo2.models.azure_data_factory_credentials_out import AzureDataFactoryCredentialsOut as AzureDataFactoryCredentialsOut
 from pycarlo2.models.azure_data_factory_credentials_patch import AzureDataFactoryCredentialsPatch as AzureDataFactoryCredentialsPatch
 from pycarlo2.models.azure_data_factory_credentials_validate_in import AzureDataFactoryCredentialsValidateIn as AzureDataFactoryCredentialsValidateIn
 from pycarlo2.models.azure_data_store_authentication_type import AzureDataStoreAuthenticationType as AzureDataStoreAuthenticationType
+from pycarlo2.models.azure_dedicated_sql_pool_credentials_change_validate_in import AzureDedicatedSqlPoolCredentialsChangeValidateIn as AzureDedicatedSqlPoolCredentialsChangeValidateIn
 from pycarlo2.models.azure_dedicated_sql_pool_credentials_in import AzureDedicatedSqlPoolCredentialsIn as AzureDedicatedSqlPoolCredentialsIn
 from pycarlo2.models.azure_dedicated_sql_pool_credentials_out import AzureDedicatedSqlPoolCredentialsOut as AzureDedicatedSqlPoolCredentialsOut
 from pycarlo2.models.azure_dedicated_sql_pool_credentials_patch import AzureDedicatedSqlPoolCredentialsPatch as AzureDedicatedSqlPoolCredentialsPatch
 from pycarlo2.models.azure_dedicated_sql_pool_credentials_validate_in import AzureDedicatedSqlPoolCredentialsValidateIn as AzureDedicatedSqlPoolCredentialsValidateIn
+from pycarlo2.models.azure_key_vault_credentials_change_validate_in import AzureKeyVaultCredentialsChangeValidateIn as AzureKeyVaultCredentialsChangeValidateIn
 from pycarlo2.models.azure_key_vault_credentials_in import AzureKeyVaultCredentialsIn as AzureKeyVaultCredentialsIn
 from pycarlo2.models.azure_key_vault_credentials_out import AzureKeyVaultCredentialsOut as AzureKeyVaultCredentialsOut
 from pycarlo2.models.azure_key_vault_credentials_patch import AzureKeyVaultCredentialsPatch as AzureKeyVaultCredentialsPatch
 from pycarlo2.models.azure_key_vault_credentials_validate_in import AzureKeyVaultCredentialsValidateIn as AzureKeyVaultCredentialsValidateIn
+from pycarlo2.models.azure_sql_database_credentials_change_validate_in import AzureSqlDatabaseCredentialsChangeValidateIn as AzureSqlDatabaseCredentialsChangeValidateIn
 from pycarlo2.models.azure_sql_database_credentials_in import AzureSqlDatabaseCredentialsIn as AzureSqlDatabaseCredentialsIn
 from pycarlo2.models.azure_sql_database_credentials_out import AzureSqlDatabaseCredentialsOut as AzureSqlDatabaseCredentialsOut
 from pycarlo2.models.azure_sql_database_credentials_patch import AzureSqlDatabaseCredentialsPatch as AzureSqlDatabaseCredentialsPatch
@@ -343,10 +380,12 @@ from pycarlo2.models.bi_container_in import BiContainerIn as BiContainerIn
 from pycarlo2.models.bi_container_out import BiContainerOut as BiContainerOut
 from pycarlo2.models.bi_container_patch import BiContainerPatch as BiContainerPatch
 from pycarlo2.models.bi_container_type import BiContainerType as BiContainerType
+from pycarlo2.models.big_query_credentials_change_validate_in import BigQueryCredentialsChangeValidateIn as BigQueryCredentialsChangeValidateIn
 from pycarlo2.models.big_query_credentials_in import BigQueryCredentialsIn as BigQueryCredentialsIn
 from pycarlo2.models.big_query_credentials_out import BigQueryCredentialsOut as BigQueryCredentialsOut
 from pycarlo2.models.big_query_credentials_patch import BigQueryCredentialsPatch as BigQueryCredentialsPatch
 from pycarlo2.models.big_query_credentials_validate_in import BigQueryCredentialsValidateIn as BigQueryCredentialsValidateIn
+from pycarlo2.models.click_house_credentials_change_validate_in import ClickHouseCredentialsChangeValidateIn as ClickHouseCredentialsChangeValidateIn
 from pycarlo2.models.click_house_credentials_in import ClickHouseCredentialsIn as ClickHouseCredentialsIn
 from pycarlo2.models.click_house_credentials_out import ClickHouseCredentialsOut as ClickHouseCredentialsOut
 from pycarlo2.models.click_house_credentials_patch import ClickHouseCredentialsPatch as ClickHouseCredentialsPatch
@@ -367,14 +406,17 @@ from pycarlo2.models.custom_connector_asset_class import CustomConnectorAssetCla
 from pycarlo2.models.custom_connector_capabilities import CustomConnectorCapabilities as CustomConnectorCapabilities
 from pycarlo2.models.custom_connector_terminology import CustomConnectorTerminology as CustomConnectorTerminology
 from pycarlo2.models.custom_connector_type_out import CustomConnectorTypeOut as CustomConnectorTypeOut
+from pycarlo2.models.databricks_metastore_sql_warehouse_credentials_change_validate_in import DatabricksMetastoreSqlWarehouseCredentialsChangeValidateIn as DatabricksMetastoreSqlWarehouseCredentialsChangeValidateIn
 from pycarlo2.models.databricks_metastore_sql_warehouse_credentials_in import DatabricksMetastoreSqlWarehouseCredentialsIn as DatabricksMetastoreSqlWarehouseCredentialsIn
 from pycarlo2.models.databricks_metastore_sql_warehouse_credentials_out import DatabricksMetastoreSqlWarehouseCredentialsOut as DatabricksMetastoreSqlWarehouseCredentialsOut
 from pycarlo2.models.databricks_metastore_sql_warehouse_credentials_patch import DatabricksMetastoreSqlWarehouseCredentialsPatch as DatabricksMetastoreSqlWarehouseCredentialsPatch
 from pycarlo2.models.databricks_metastore_sql_warehouse_credentials_validate_in import DatabricksMetastoreSqlWarehouseCredentialsValidateIn as DatabricksMetastoreSqlWarehouseCredentialsValidateIn
+from pycarlo2.models.databricks_sql_warehouse_credentials_change_validate_in import DatabricksSqlWarehouseCredentialsChangeValidateIn as DatabricksSqlWarehouseCredentialsChangeValidateIn
 from pycarlo2.models.databricks_sql_warehouse_credentials_in import DatabricksSqlWarehouseCredentialsIn as DatabricksSqlWarehouseCredentialsIn
 from pycarlo2.models.databricks_sql_warehouse_credentials_out import DatabricksSqlWarehouseCredentialsOut as DatabricksSqlWarehouseCredentialsOut
 from pycarlo2.models.databricks_sql_warehouse_credentials_patch import DatabricksSqlWarehouseCredentialsPatch as DatabricksSqlWarehouseCredentialsPatch
 from pycarlo2.models.databricks_sql_warehouse_credentials_validate_in import DatabricksSqlWarehouseCredentialsValidateIn as DatabricksSqlWarehouseCredentialsValidateIn
+from pycarlo2.models.db2_credentials_change_validate_in import Db2CredentialsChangeValidateIn as Db2CredentialsChangeValidateIn
 from pycarlo2.models.db2_credentials_in import Db2CredentialsIn as Db2CredentialsIn
 from pycarlo2.models.db2_credentials_out import Db2CredentialsOut as Db2CredentialsOut
 from pycarlo2.models.db2_credentials_patch import Db2CredentialsPatch as Db2CredentialsPatch
@@ -384,6 +426,7 @@ from pycarlo2.models.deployment_out import DeploymentOut as DeploymentOut
 from pycarlo2.models.deployment_patch import DeploymentPatch as DeploymentPatch
 from pycarlo2.models.deployment_summary_out import DeploymentSummaryOut as DeploymentSummaryOut
 from pycarlo2.models.deployment_type import DeploymentType as DeploymentType
+from pycarlo2.models.env_var_credentials_change_validate_in import EnvVarCredentialsChangeValidateIn as EnvVarCredentialsChangeValidateIn
 from pycarlo2.models.env_var_credentials_in import EnvVarCredentialsIn as EnvVarCredentialsIn
 from pycarlo2.models.env_var_credentials_out import EnvVarCredentialsOut as EnvVarCredentialsOut
 from pycarlo2.models.env_var_credentials_patch import EnvVarCredentialsPatch as EnvVarCredentialsPatch
@@ -393,10 +436,12 @@ from pycarlo2.models.etl_container_out import EtlContainerOut as EtlContainerOut
 from pycarlo2.models.etl_container_patch import EtlContainerPatch as EtlContainerPatch
 from pycarlo2.models.etl_container_type import EtlContainerType as EtlContainerType
 from pycarlo2.models.field_error_out import FieldErrorOut as FieldErrorOut
+from pycarlo2.models.file_credentials_change_validate_in import FileCredentialsChangeValidateIn as FileCredentialsChangeValidateIn
 from pycarlo2.models.file_credentials_in import FileCredentialsIn as FileCredentialsIn
 from pycarlo2.models.file_credentials_out import FileCredentialsOut as FileCredentialsOut
 from pycarlo2.models.file_credentials_patch import FileCredentialsPatch as FileCredentialsPatch
 from pycarlo2.models.file_credentials_validate_in import FileCredentialsValidateIn as FileCredentialsValidateIn
+from pycarlo2.models.fivetran_credentials_change_validate_in import FivetranCredentialsChangeValidateIn as FivetranCredentialsChangeValidateIn
 from pycarlo2.models.fivetran_credentials_in import FivetranCredentialsIn as FivetranCredentialsIn
 from pycarlo2.models.fivetran_credentials_out import FivetranCredentialsOut as FivetranCredentialsOut
 from pycarlo2.models.fivetran_credentials_patch import FivetranCredentialsPatch as FivetranCredentialsPatch
@@ -409,10 +454,12 @@ from pycarlo2.models.gcp_collection_agent_patch import GcpCollectionAgentPatch a
 from pycarlo2.models.gcp_collection_data_store_in import GcpCollectionDataStoreIn as GcpCollectionDataStoreIn
 from pycarlo2.models.gcp_collection_data_store_out import GcpCollectionDataStoreOut as GcpCollectionDataStoreOut
 from pycarlo2.models.gcp_collection_data_store_patch import GcpCollectionDataStorePatch as GcpCollectionDataStorePatch
+from pycarlo2.models.gcp_dataform_credentials_change_validate_in import GcpDataformCredentialsChangeValidateIn as GcpDataformCredentialsChangeValidateIn
 from pycarlo2.models.gcp_dataform_credentials_in import GcpDataformCredentialsIn as GcpDataformCredentialsIn
 from pycarlo2.models.gcp_dataform_credentials_out import GcpDataformCredentialsOut as GcpDataformCredentialsOut
 from pycarlo2.models.gcp_dataform_credentials_patch import GcpDataformCredentialsPatch as GcpDataformCredentialsPatch
 from pycarlo2.models.gcp_dataform_credentials_validate_in import GcpDataformCredentialsValidateIn as GcpDataformCredentialsValidateIn
+from pycarlo2.models.gcp_secret_manager_credentials_change_validate_in import GcpSecretManagerCredentialsChangeValidateIn as GcpSecretManagerCredentialsChangeValidateIn
 from pycarlo2.models.gcp_secret_manager_credentials_in import GcpSecretManagerCredentialsIn as GcpSecretManagerCredentialsIn
 from pycarlo2.models.gcp_secret_manager_credentials_out import GcpSecretManagerCredentialsOut as GcpSecretManagerCredentialsOut
 from pycarlo2.models.gcp_secret_manager_credentials_patch import GcpSecretManagerCredentialsPatch as GcpSecretManagerCredentialsPatch
@@ -428,6 +475,7 @@ from pycarlo2.models.generic_collection_agent_token_in import GenericCollectionA
 from pycarlo2.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut as GenericCollectionAgentTokenOut
 from pycarlo2.models.identity_type import IdentityType as IdentityType
 from pycarlo2.models.informatica_v2_auth_mode import InformaticaV2AuthMode as InformaticaV2AuthMode
+from pycarlo2.models.informatica_v2_credentials_change_validate_in import InformaticaV2CredentialsChangeValidateIn as InformaticaV2CredentialsChangeValidateIn
 from pycarlo2.models.informatica_v2_credentials_in import InformaticaV2CredentialsIn as InformaticaV2CredentialsIn
 from pycarlo2.models.informatica_v2_credentials_out import InformaticaV2CredentialsOut as InformaticaV2CredentialsOut
 from pycarlo2.models.informatica_v2_credentials_patch import InformaticaV2CredentialsPatch as InformaticaV2CredentialsPatch
@@ -438,23 +486,28 @@ from pycarlo2.models.ingestion_key_out import IngestionKeyOut as IngestionKeyOut
 from pycarlo2.models.input import Input as Input
 from pycarlo2.models.integration_key_out import IntegrationKeyOut as IntegrationKeyOut
 from pycarlo2.models.integration_key_scope import IntegrationKeyScope as IntegrationKeyScope
+from pycarlo2.models.looker_credentials_change_validate_in import LookerCredentialsChangeValidateIn as LookerCredentialsChangeValidateIn
 from pycarlo2.models.looker_credentials_in import LookerCredentialsIn as LookerCredentialsIn
 from pycarlo2.models.looker_credentials_out import LookerCredentialsOut as LookerCredentialsOut
 from pycarlo2.models.looker_credentials_patch import LookerCredentialsPatch as LookerCredentialsPatch
 from pycarlo2.models.looker_credentials_validate_in import LookerCredentialsValidateIn as LookerCredentialsValidateIn
+from pycarlo2.models.looker_git_clone_credentials_change_validate_in import LookerGitCloneCredentialsChangeValidateIn as LookerGitCloneCredentialsChangeValidateIn
 from pycarlo2.models.looker_git_clone_credentials_in import LookerGitCloneCredentialsIn as LookerGitCloneCredentialsIn
 from pycarlo2.models.looker_git_clone_credentials_out import LookerGitCloneCredentialsOut as LookerGitCloneCredentialsOut
 from pycarlo2.models.looker_git_clone_credentials_patch import LookerGitCloneCredentialsPatch as LookerGitCloneCredentialsPatch
 from pycarlo2.models.looker_git_clone_credentials_validate_in import LookerGitCloneCredentialsValidateIn as LookerGitCloneCredentialsValidateIn
+from pycarlo2.models.maria_db_credentials_change_validate_in import MariaDbCredentialsChangeValidateIn as MariaDbCredentialsChangeValidateIn
 from pycarlo2.models.maria_db_credentials_in import MariaDbCredentialsIn as MariaDbCredentialsIn
 from pycarlo2.models.maria_db_credentials_out import MariaDbCredentialsOut as MariaDbCredentialsOut
 from pycarlo2.models.maria_db_credentials_patch import MariaDbCredentialsPatch as MariaDbCredentialsPatch
 from pycarlo2.models.maria_db_credentials_validate_in import MariaDbCredentialsValidateIn as MariaDbCredentialsValidateIn
+from pycarlo2.models.mulesoft_credentials_change_validate_in import MulesoftCredentialsChangeValidateIn as MulesoftCredentialsChangeValidateIn
 from pycarlo2.models.mulesoft_credentials_in import MulesoftCredentialsIn as MulesoftCredentialsIn
 from pycarlo2.models.mulesoft_credentials_out import MulesoftCredentialsOut as MulesoftCredentialsOut
 from pycarlo2.models.mulesoft_credentials_patch import MulesoftCredentialsPatch as MulesoftCredentialsPatch
 from pycarlo2.models.mulesoft_credentials_validate_in import MulesoftCredentialsValidateIn as MulesoftCredentialsValidateIn
 from pycarlo2.models.mulesoft_region import MulesoftRegion as MulesoftRegion
+from pycarlo2.models.my_sql_credentials_change_validate_in import MySqlCredentialsChangeValidateIn as MySqlCredentialsChangeValidateIn
 from pycarlo2.models.my_sql_credentials_in import MySqlCredentialsIn as MySqlCredentialsIn
 from pycarlo2.models.my_sql_credentials_out import MySqlCredentialsOut as MySqlCredentialsOut
 from pycarlo2.models.my_sql_credentials_patch import MySqlCredentialsPatch as MySqlCredentialsPatch
@@ -462,6 +515,7 @@ from pycarlo2.models.my_sql_credentials_validate_in import MySqlCredentialsValid
 from pycarlo2.models.new_bi_container_type import NewBiContainerType as NewBiContainerType
 from pycarlo2.models.new_etl_container_type import NewEtlContainerType as NewEtlContainerType
 from pycarlo2.models.o_auth_grant_type import OAuthGrantType as OAuthGrantType
+from pycarlo2.models.oracle_credentials_change_validate_in import OracleCredentialsChangeValidateIn as OracleCredentialsChangeValidateIn
 from pycarlo2.models.oracle_credentials_in import OracleCredentialsIn as OracleCredentialsIn
 from pycarlo2.models.oracle_credentials_out import OracleCredentialsOut as OracleCredentialsOut
 from pycarlo2.models.oracle_credentials_patch import OracleCredentialsPatch as OracleCredentialsPatch
@@ -469,40 +523,48 @@ from pycarlo2.models.oracle_credentials_validate_in import OracleCredentialsVali
 from pycarlo2.models.paged_connection_out import PagedConnectionOut as PagedConnectionOut
 from pycarlo2.models.paged_credentials_summary_out import PagedCredentialsSummaryOut as PagedCredentialsSummaryOut
 from pycarlo2.models.paged_warehouse_out import PagedWarehouseOut as PagedWarehouseOut
+from pycarlo2.models.postgres_credentials_change_validate_in import PostgresCredentialsChangeValidateIn as PostgresCredentialsChangeValidateIn
 from pycarlo2.models.postgres_credentials_in import PostgresCredentialsIn as PostgresCredentialsIn
 from pycarlo2.models.postgres_credentials_out import PostgresCredentialsOut as PostgresCredentialsOut
 from pycarlo2.models.postgres_credentials_patch import PostgresCredentialsPatch as PostgresCredentialsPatch
 from pycarlo2.models.postgres_credentials_validate_in import PostgresCredentialsValidateIn as PostgresCredentialsValidateIn
 from pycarlo2.models.power_bi_auth_mode import PowerBiAuthMode as PowerBiAuthMode
+from pycarlo2.models.power_bi_credentials_change_validate_in import PowerBiCredentialsChangeValidateIn as PowerBiCredentialsChangeValidateIn
 from pycarlo2.models.power_bi_credentials_in import PowerBiCredentialsIn as PowerBiCredentialsIn
 from pycarlo2.models.power_bi_credentials_out import PowerBiCredentialsOut as PowerBiCredentialsOut
 from pycarlo2.models.power_bi_credentials_patch import PowerBiCredentialsPatch as PowerBiCredentialsPatch
 from pycarlo2.models.power_bi_credentials_validate_in import PowerBiCredentialsValidateIn as PowerBiCredentialsValidateIn
 from pycarlo2.models.problem_out import ProblemOut as ProblemOut
+from pycarlo2.models.redshift_credentials_change_validate_in import RedshiftCredentialsChangeValidateIn as RedshiftCredentialsChangeValidateIn
 from pycarlo2.models.redshift_credentials_in import RedshiftCredentialsIn as RedshiftCredentialsIn
 from pycarlo2.models.redshift_credentials_out import RedshiftCredentialsOut as RedshiftCredentialsOut
 from pycarlo2.models.redshift_credentials_patch import RedshiftCredentialsPatch as RedshiftCredentialsPatch
 from pycarlo2.models.redshift_credentials_validate_in import RedshiftCredentialsValidateIn as RedshiftCredentialsValidateIn
 from pycarlo2.models.run_status import RunStatus as RunStatus
 from pycarlo2.models.runtime_platform import RuntimePlatform as RuntimePlatform
+from pycarlo2.models.sap_hana_credentials_change_validate_in import SapHanaCredentialsChangeValidateIn as SapHanaCredentialsChangeValidateIn
 from pycarlo2.models.sap_hana_credentials_in import SapHanaCredentialsIn as SapHanaCredentialsIn
 from pycarlo2.models.sap_hana_credentials_out import SapHanaCredentialsOut as SapHanaCredentialsOut
 from pycarlo2.models.sap_hana_credentials_patch import SapHanaCredentialsPatch as SapHanaCredentialsPatch
 from pycarlo2.models.sap_hana_credentials_validate_in import SapHanaCredentialsValidateIn as SapHanaCredentialsValidateIn
 from pycarlo2.models.service_principal_credentials_in import ServicePrincipalCredentialsIn as ServicePrincipalCredentialsIn
+from pycarlo2.models.snowflake_credentials_change_validate_in import SnowflakeCredentialsChangeValidateIn as SnowflakeCredentialsChangeValidateIn
 from pycarlo2.models.snowflake_credentials_in import SnowflakeCredentialsIn as SnowflakeCredentialsIn
 from pycarlo2.models.snowflake_credentials_out import SnowflakeCredentialsOut as SnowflakeCredentialsOut
 from pycarlo2.models.snowflake_credentials_patch import SnowflakeCredentialsPatch as SnowflakeCredentialsPatch
 from pycarlo2.models.snowflake_credentials_validate_in import SnowflakeCredentialsValidateIn as SnowflakeCredentialsValidateIn
 from pycarlo2.models.sql_server_auth_mode import SqlServerAuthMode as SqlServerAuthMode
+from pycarlo2.models.sql_server_credentials_change_validate_in import SqlServerCredentialsChangeValidateIn as SqlServerCredentialsChangeValidateIn
 from pycarlo2.models.sql_server_credentials_in import SqlServerCredentialsIn as SqlServerCredentialsIn
 from pycarlo2.models.sql_server_credentials_out import SqlServerCredentialsOut as SqlServerCredentialsOut
 from pycarlo2.models.sql_server_credentials_patch import SqlServerCredentialsPatch as SqlServerCredentialsPatch
 from pycarlo2.models.sql_server_credentials_validate_in import SqlServerCredentialsValidateIn as SqlServerCredentialsValidateIn
+from pycarlo2.models.starburst_enterprise_credentials_change_validate_in import StarburstEnterpriseCredentialsChangeValidateIn as StarburstEnterpriseCredentialsChangeValidateIn
 from pycarlo2.models.starburst_enterprise_credentials_in import StarburstEnterpriseCredentialsIn as StarburstEnterpriseCredentialsIn
 from pycarlo2.models.starburst_enterprise_credentials_out import StarburstEnterpriseCredentialsOut as StarburstEnterpriseCredentialsOut
 from pycarlo2.models.starburst_enterprise_credentials_patch import StarburstEnterpriseCredentialsPatch as StarburstEnterpriseCredentialsPatch
 from pycarlo2.models.starburst_enterprise_credentials_validate_in import StarburstEnterpriseCredentialsValidateIn as StarburstEnterpriseCredentialsValidateIn
+from pycarlo2.models.starburst_galaxy_credentials_change_validate_in import StarburstGalaxyCredentialsChangeValidateIn as StarburstGalaxyCredentialsChangeValidateIn
 from pycarlo2.models.starburst_galaxy_credentials_in import StarburstGalaxyCredentialsIn as StarburstGalaxyCredentialsIn
 from pycarlo2.models.starburst_galaxy_credentials_out import StarburstGalaxyCredentialsOut as StarburstGalaxyCredentialsOut
 from pycarlo2.models.starburst_galaxy_credentials_patch import StarburstGalaxyCredentialsPatch as StarburstGalaxyCredentialsPatch
@@ -510,11 +572,13 @@ from pycarlo2.models.starburst_galaxy_credentials_validate_in import StarburstGa
 from pycarlo2.models.storage_account_keys_credentials_in import StorageAccountKeysCredentialsIn as StorageAccountKeysCredentialsIn
 from pycarlo2.models.storage_service_principal_credentials_in import StorageServicePrincipalCredentialsIn as StorageServicePrincipalCredentialsIn
 from pycarlo2.models.storage_type import StorageType as StorageType
+from pycarlo2.models.tableau_credentials_change_validate_in import TableauCredentialsChangeValidateIn as TableauCredentialsChangeValidateIn
 from pycarlo2.models.tableau_credentials_in import TableauCredentialsIn as TableauCredentialsIn
 from pycarlo2.models.tableau_credentials_out import TableauCredentialsOut as TableauCredentialsOut
 from pycarlo2.models.tableau_credentials_patch import TableauCredentialsPatch as TableauCredentialsPatch
 from pycarlo2.models.tableau_credentials_validate_in import TableauCredentialsValidateIn as TableauCredentialsValidateIn
 from pycarlo2.models.target_type import TargetType as TargetType
+from pycarlo2.models.teradata_credentials_change_validate_in import TeradataCredentialsChangeValidateIn as TeradataCredentialsChangeValidateIn
 from pycarlo2.models.teradata_credentials_in import TeradataCredentialsIn as TeradataCredentialsIn
 from pycarlo2.models.teradata_credentials_out import TeradataCredentialsOut as TeradataCredentialsOut
 from pycarlo2.models.teradata_credentials_patch import TeradataCredentialsPatch as TeradataCredentialsPatch

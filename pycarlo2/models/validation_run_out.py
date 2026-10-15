@@ -29,7 +29,7 @@ class ValidationRunOut(BaseModel):
     status: RunStatus = Field(description="Whether the run is still going. Every validation is final once it is not.")
     revision: StrictInt = Field(description="Moves forward every time a validation changes. Pass it as `since` on the next poll to get only the validations that changed after this response.")
     target_type: TargetType = Field(description="What the run validates.")
-    target_id: Optional[UUID] = Field(description="Identifier of what is being validated. Null for candidate values, which are not stored anywhere.")
+    target_id: Optional[UUID] = Field(description="Identifier of what is being validated: the connection, or the credentials a change applies to. Null for candidate values, which are not stored anywhere.")
     validations_passed: StrictInt = Field(description="How many validations reached a passing verdict. One that was skipped or never reached a verdict is not counted here, but is still in `validations_total`.")
     validations_total: StrictInt = Field(description="How many validations the run covers.")
     started_at: datetime = Field(description="When the run started.")

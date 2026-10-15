@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **status** | [**RunStatus**](RunStatus.md) | Whether the run is still going. Every validation is final once it is not. | 
 **revision** | **int** | Moves forward every time a validation changes. Pass it as &#x60;since&#x60; on the next poll to get only the validations that changed after this response. | 
 **target_type** | [**TargetType**](TargetType.md) | What the run validates. | 
-**target_id** | **UUID** | Identifier of what is being validated. Null for candidate values, which are not stored anywhere. | 
+**target_id** | **UUID** | Identifier of what is being validated: the connection, or the credentials a change applies to. Null for candidate values, which are not stored anywhere. | 
 **validations_passed** | **int** | How many validations reached a passing verdict. One that was skipped or never reached a verdict is not counted here, but is still in &#x60;validations_total&#x60;. | 
 **validations_total** | **int** | How many validations the run covers. | 
 **started_at** | **datetime** | When the run started. | 

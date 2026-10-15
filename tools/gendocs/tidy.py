@@ -10,7 +10,6 @@ and class with its own header. pdoc would print all of it.
 from __future__ import annotations
 
 import functools
-import inspect
 import operator
 import re
 import types
@@ -32,10 +31,6 @@ _CLASS_BOILERPLATE = re.compile(
 
 # A field the generator writes without its colon, which reST then reads as text.
 _BARE_PARAM = re.compile(r"^(:param \w+)$", re.MULTILINE)
-
-# The generator's own name for the spec's title and footer, in each module's docstring.
-_SPEC_HEADER = "Monte Carlo AI API"
-_SPEC_FOOTER = "The version of the OpenAPI document"
 
 
 def is_generated(module: pdoc.doc.Module) -> bool:
@@ -68,16 +63,6 @@ def description(annotation: object) -> str:
         if found := description(arg):
             return found
     return ""
-
-
-def spec_intro() -> str:
-    """The spec's description, which the generator repeats atop every module, as Markdown."""
-    import pycarlo2.api_client
-
-    text = inspect.cleandoc(pycarlo2.api_client.__doc__ or "")
-    paragraphs = [p for p in text.split("\n\n") if p.strip() and p.strip() != _SPEC_HEADER]
-    kept = [p for p in paragraphs if not p.startswith(_SPEC_FOOTER)]
-    return "\n\n".join(p for p in kept if not _CLASS_BOILERPLATE.fullmatch(p.strip()))
 
 
 def tidy(module: pdoc.doc.Module) -> None:

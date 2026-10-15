@@ -344,7 +344,7 @@ def test_model_fields_show_their_type_and_description(site: Path) -> None:
 
 def test_landing_page_documents_errors_and_per_call_options(site: Path) -> None:
     landing = (site / "index.html").read_text()
-    assert "application/problem+json" in landing
+    assert "application/problem+json" in landing and "X-Request-Id" in landing
     op = inspect.signature(pycarlo2.DeploymentsApi.delete_deployment).parameters
     listed = re.findall(r"<li><code>(_\w+)</code>", landing)
     assert listed and set(listed) == {n for n in op if n.startswith("_")}

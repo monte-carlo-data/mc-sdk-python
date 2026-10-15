@@ -31,10 +31,3 @@ def test_unwrap_strips_annotated_at_any_depth() -> None:
 def test_description_finds_the_field_description_at_any_depth() -> None:
     assert tidy.description(Optional[Annotated[str, Field(description="Id.")]]) == "Id."
     assert tidy.description(str) == ""
-
-
-def test_spec_intro_keeps_the_specs_text_and_drops_the_generators() -> None:
-    intro = tidy.spec_intro()
-    assert "application/problem+json" in intro
-    for text in ("Monte Carlo AI API\n", "OpenAPI", "Do not edit"):
-        assert text not in intro

@@ -50,9 +50,13 @@ for warehouse in paginate(pycarlo2.WarehousesApi(client).list_warehouses):
     print(warehouse.id, warehouse.name)</code></pre>
 
                 <h2 id="errors">Errors</h2>
-                {{ spec_intro }}
                 <p>A failed call raises <code>pycarlo2.ApiException</code>, with the response's
-                    <code>status</code>, <code>headers</code> and <code>body</code>.</p>
+                    <code>status</code>, <code>headers</code> and <code>body</code>. Every response
+                    with a status of 400 or higher is <code>application/problem+json</code>, and its
+                    <code>code</code> names the failure.</p>
+                <p>Every response carries an <code>X-Request-Id</code> header, which an error body
+                    repeats as <code>request_id</code>; quote it when reporting a problem. To choose
+                    the value yourself, send an <code>x-correlation-id</code> header.</p>
 
                 <h2 id="per-call-options">Per-call options</h2>
                 <p>Every operation also takes these keyword arguments, which apply to that call

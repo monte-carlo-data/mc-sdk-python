@@ -26,7 +26,6 @@ from pathlib import Path
 import pdoc
 import pdoc.doc
 import pdoc.render
-import pdoc.render_helpers
 from markupsafe import Markup
 from pygments.formatters import HtmlFormatter
 
@@ -202,7 +201,6 @@ def build(out: Path, version: str) -> None:
         docs_version=version,
         guides=GUIDES,
         operations=operations(),
-        spec_intro=Markup(pdoc.render_helpers.to_html(tidy.spec_intro())),
     )
     with warnings.catch_warnings():
         # The generated models annotate a private ClassVar with a name pdoc cannot resolve.

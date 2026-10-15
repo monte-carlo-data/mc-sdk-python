@@ -1916,9 +1916,9 @@ Send any of the fields, in any combination. An agent that has no function app UR
 one supplied here, since there would otherwise be nothing for Monte Carlo to reach. Sending
 credentials replaces the stored ones, so send every field of the object you send, along with
 the matching `authentication_type`. Sending both is also how you move an agent from one
-authentication type to the other. An agent that authenticates some other way refuses a
-credentials or authentication type change, since this endpoint only manages the two Azure
-function authentication types.
+authentication type to another. An agent that authenticates some other way refuses a
+credentials or authentication type change, since this endpoint manages only the types
+`authentication_type` accepts.
 
 Monte Carlo reaches the agent and checks it again before saving the change, and re-enables
 the agent if it was disabled. A successful response therefore always describes a working

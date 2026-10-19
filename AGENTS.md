@@ -48,7 +48,7 @@ Ruff and pyright cover the whole package except the generator's own files, liste
 | `.openapi-generator/` | Generator bookkeeping |
 | `tools/gendocs/` | **Hand-written.** Builds the SDK reference site; see [Reference docs](#reference-docs) |
 | `.github/workflows/publish-docs.yml`, `.github/actions/publish-docs/` | Build the reference on every pull request and publish it |
-| `.github/workflows/release.yml`, `.github/scripts/`, `VERSION` | Release every merge to `main` to PyPI; see [Releasing](#releasing) |
+| `.github/workflows/release.yml`, `.github/scripts/`, `VERSION` | Release every merge to `main` to PyPI and as a GitHub release; see [Releasing](#releasing) |
 | `tests/` | **Hand-written.** Tests for the hand-written surface, one module each, plus `conftest.py` and `test_public_surface.py`, which pins the generated `__init__.py`'s re-export of the hand-written names |
 
 ## What is generated
@@ -117,11 +117,11 @@ After `Test` succeeds on `main`, `release.yml` runs:
 2. `build` runs `.github/scripts/build-dist.sh` at the tag's version, without `id-token`. The script stamps the version with `stamp-version.sh`, builds the wheel and sdist, checks them with `check-dist.sh` and `twine check --strict`, then installs the wheel into a clean venv and runs `.github/scripts/smoke.py`, which imports `pycarlo2`, checks `__version__` and builds a client.
 3. `publish-pypi` uploads them through PyPI's Trusted Publisher, in the `release` environment, with `skip-existing` so a retry can finish an upload that stopped halfway.
 4. `smoke` checks that PyPI serves exactly the files built, installs what PyPI serves into a clean venv and runs the same `smoke.py`.
-5. `github-release` attaches the same wheel and sdist to a GitHub release on the tag. Only the highest version is marked latest, and a rerun leaves a published release alone and replaces a draft a failed upload left.
+5. `github-release` runs `.github/scripts/github-release.sh`, which attaches the same wheel and sdist to a GitHub release on the tag. Only the highest version is marked latest. Releases are immutable once published, as tags are, so a rerun leaves a published release alone, replaces a draft that an interrupted run of the job left, and fails rather than delete anyone else's draft. The job gets the script and `smoke.py` from the `release-scripts` artifact, as `smoke` does.
 
-The `package` job in `test.yml` calls the same `build-dist.sh` on every pull request, at the version the merge would get, so the two can't drift. It also runs the tests of `next-tag.sh`, `check-dist.sh` and `stamp-version.sh`. A change that would break a release fails there, before it merges.
+The `package` job in `test.yml` calls the same `build-dist.sh` on every pull request, at the version the merge would get, so the two can't drift. It also runs the tests of `next-tag.sh`, `check-dist.sh`, `stamp-version.sh` and `github-release.sh`. A change that would break a release fails there, before it merges.
 
-PyPI's Trusted Publisher names `release.yml` and the `release` environment, so renaming the file, moving `publish-pypi` into a reusable workflow or renaming the environment stops publishing, and changing the publisher needs a PyPI owner of `pycarlo2`. If a job fails after tagging, use "Re-run failed jobs", which also completes a partial upload. Re-running all jobs finds the commit already tagged and releases nothing, and a commit older than an already-tagged one is never tagged.
+PyPI's Trusted Publisher names `release.yml` and the `release` environment, so renaming the file, moving `publish-pypi` into a reusable workflow or renaming the environment stops publishing, and changing the publisher needs a PyPI owner of `pycarlo2`. If a job fails after tagging, use "Re-run failed jobs", which also completes a partial upload. Re-running all jobs finds the commit already tagged and releases nothing, and a commit older than an already-tagged one is never tagged. "Re-run failed jobs" works only while the run's artifacts exist (7 days). A version whose smoke check fails gets no GitHub release, which is right if it is yanked. To create a missing release after that, use the files PyPI serves: download them, check their sha256 against PyPI's, and run `gh release create <tag> <files> --verify-tag --title <tag>` with the notes the job writes, passing `--latest` only if it is the highest version.
 
 Running `release.yml` by hand, from any branch, is a dry run: it publishes `<next version>.dev<run id>` to TestPyPI, or the current version's when HEAD is already released, and smoke-tests it from there. It tags nothing and never reaches PyPI: `publish-testpypi` runs in no environment, and PyPI's publisher requires `release`.
 

@@ -1,8 +1,9 @@
 name: Release
 
 # Every merge to main is a release. After Test succeeds on main, this tags the merge commit
-# v<base>.<n> and publishes that version of pycarlo2 to PyPI. A manual run, from any branch, is a
-# dry run: it publishes a dev version to TestPyPI and tags nothing.
+# v<base>.<n>, publishes that version of pycarlo2 to PyPI and attaches the same files to a GitHub
+# release. A manual run, from any branch, is a dry run: it publishes a dev version to TestPyPI and
+# tags nothing.
 #
 # PyPI's Trusted Publisher names this file and the release environment, so keep its path, keep
 # publish-pypi here, and never add a workflow_call trigger. The release environment allows only
@@ -127,11 +128,13 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
-      # smoke runs the build's copy, so that job checks out nothing.
+      # smoke and github-release run the build's copies, so neither job checks anything out.
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: smoke
-          path: .github/scripts/smoke.py
+          name: release-scripts
+          path: |
+            .github/scripts/smoke.py
+            .github/scripts/github-release.sh
           if-no-files-found: error
           retention-days: 7
 
@@ -205,8 +208,8 @@ jobs:
 
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: smoke
-          path: smoke
+          name: release-scripts
+          path: scripts
 
       - name: The index serves the files this run built
         run: |
@@ -236,4 +239,37 @@ jobs:
           venv/bin/pip download --no-deps --only-binary :all: -d served \
             --index-url "https://$INDEX/simple/" "pycarlo2==$VERSION"
           venv/bin/pip install served/*.whl
-          venv/bin/python -I smoke/smoke.py "$VERSION"
+          venv/bin/python -I scripts/smoke.py "$VERSION"
+
+  # Attaches the files PyPI now serves to a GitHub release on the tag, once smoke has checked them.
+  # Only the highest version is marked latest, since releases from back-to-back merges can finish
+  # out of order. A rerun leaves a published release alone and replaces a draft an interrupted run
+  # left; anyone else's draft fails the run.
+  github-release:
+    name: Create the GitHub release
+    needs: [tag, build, smoke]
+    if: >-
+      ${{ !cancelled() &&
+      github.event_name == 'workflow_run' &&
+      needs.tag.result == 'success' &&
+      needs.smoke.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # creates the release with GITHUB_TOKEN
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: dist
+          path: dist
+
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: release-scripts
+          path: scripts
+
+      - name: Create ${{ needs.tag.outputs.tag }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.tag.outputs.tag }}
+          VERSION: ${{ needs.build.outputs.version }}
+        run: bash scripts/github-release.sh "$TAG" "$VERSION" dist

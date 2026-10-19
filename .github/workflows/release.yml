@@ -241,7 +241,7 @@ jobs:
 
   # Attaches the files PyPI now serves to a GitHub release on the tag, once smoke has checked them.
   # Only the highest version is marked latest, since releases from back-to-back merges can finish
-  # out of order. A rerun finds the release already there and does nothing.
+  # out of order. A rerun finds a published release and does nothing, or replaces a draft.
   github-release:
     name: Create the GitHub release
     needs: [tag, build, smoke]
@@ -265,9 +265,18 @@ jobs:
           TAG: ${{ needs.tag.outputs.tag }}
           VERSION: ${{ needs.build.outputs.version }}
         run: |
-          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
-            echo "$TAG already has a release."
-            exit 0
+          # Listed rather than fetched by tag: the by-tag lookup never returns a draft.
+          existing=$(gh api "repos/$GITHUB_REPOSITORY/releases" --paginate \
+            --jq ".[] | select(.tag_name == \"$TAG\") | \"\(.id) \(.draft)\"")
+          if [ -n "$existing" ]; then
+            read -r id draft <<<"$existing"
+            if [ "$draft" = false ]; then
+              echo "$TAG already has a release."
+              exit 0
+            fi
+            # A draft is what an upload that failed partway leaves; it was never published.
+            gh api -X DELETE "repos/$GITHUB_REPOSITORY/releases/$id"
+            echo "Deleted the draft $TAG release a failed run left."
           fi
           highest=$(gh api "repos/$GITHUB_REPOSITORY/git/matching-refs/tags/v" --jq '.[].ref' |
             sed 's#^refs/tags/##' | { grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' || true; } | sort -V | tail -1)

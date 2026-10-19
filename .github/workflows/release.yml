@@ -233,11 +233,18 @@ jobs:
           print(f"{url} serves {sorted(built)}")
           EOF
 
+      # The simple index can lag the JSON API by a minute or more, so the download is retried.
+      # No pip cache: the index is served with max-age=600, which would pin a stale copy.
       - name: Install and build a client
         run: |
           python3 -m venv venv
-          venv/bin/pip download --no-deps --only-binary :all: -d served \
-            --index-url "https://$INDEX/simple/" "pycarlo2==$VERSION"
+          for attempt in $(seq 20); do
+            venv/bin/pip download --no-cache-dir --no-deps --only-binary :all: -d served \
+              --index-url "https://$INDEX/simple/" "pycarlo2==$VERSION" && break
+            [ "$attempt" -lt 20 ] || exit 1
+            echo "The $INDEX index doesn't list pycarlo2 $VERSION yet; retrying in 15s."
+            sleep 15
+          done
           venv/bin/pip install served/*.whl
           venv/bin/python -I scripts/smoke.py "$VERSION"
 

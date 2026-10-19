@@ -2,6 +2,7 @@
 # Also the import name (packages, below). api-codegen's AGENTS.md lists every other place either
 # name is spelled, there and in ai-agent.
 name = "pycarlo2"
+# Always 0.0.0 here. The release writes its version over it; see AGENTS.md, Releasing.
 version = "0.0.0"
 description = "Official Python SDK for the Monte Carlo REST API."
 readme = "README.md"
@@ -23,6 +24,8 @@ Repository = "https://github.com/monte-carlo-data/mc-sdk-python"
 dev = ["pytest>=8.0", "ruff>=0.6", "pyright>=1.1", {include-group = "docs"}]
 # The reference site's build; publish-docs.yml installs only this group.
 docs = ["pdoc>=16,<17"]
+# Checks the built distributions; the package job and the release install only this group.
+release = ["twine>=6.1"]
 
 [build-system]
 requires = ["hatchling"]
@@ -30,6 +33,11 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["pycarlo2"]
+
+# Hatch adds pyproject.toml, README.md, LICENSE and .gitignore itself. Without this the sdist takes every
+# file the root .gitignore doesn't exclude, local notes included.
+[tool.hatch.build.targets.sdist]
+only-include = ["pycarlo2"]
 
 [tool.ruff]
 line-length = 100

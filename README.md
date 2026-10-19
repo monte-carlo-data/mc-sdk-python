@@ -7,7 +7,7 @@ Client construction and credentials are hand-written, so every request is authen
 is the helper that walks a paginated list.
 
 > For the GraphQL API, use [pycarlo](https://pypi.org/project/pycarlo/) instead.
-> This SDK targets the REST API. It is not yet published to PyPI.
+> This SDK targets the REST API.
 
 The [SDK reference](https://apidocs.getmontecarlo.com/v2/python/index.html) has a page for every
 module, operation group and model.
@@ -15,7 +15,7 @@ module, operation group and model.
 ## Install
 
 ```bash
-pip install git+https://github.com/monte-carlo-data/mc-sdk-python.git
+pip install pycarlo2
 ```
 
 Requires Python 3.10 or later.

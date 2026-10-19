@@ -103,7 +103,7 @@ The site's CSP allows no inline script or style, no `data:` image or anything lo
 
 Branch from `main` as `<person>/<ticket-id>-<slug>`. Never commit directly to `main`.
 
-`dev` previews the reference docs and is never released; the README's [`dev` branch](README.md#the-dev-branch) section says how to use and reset it.
+`dev` previews the reference docs and is never released; CONTRIBUTING.md's [`dev` branch](CONTRIBUTING.md#the-dev-branch) section says how to use and reset it.
 
 ## Releasing
 

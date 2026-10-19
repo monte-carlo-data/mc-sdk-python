@@ -131,66 +131,19 @@ section is read when a profile is consulted at all.
 ### Usage telemetry
 
 Every request carries `x-mcd-telemetry-reason: user` and `x-mcd-telemetry-service: mc-sdk-python`,
-the same headers pycarlo and the CLI send, so Monte Carlo can tell which client made a call.
-They carry no arguments or payload. A tool built on the SDK names itself by overriding them with
-`client.set_default_header(...)`.
+the headers pycarlo and the CLI send, so Monte Carlo can tell which client made a call. They carry
+nothing about its arguments or payload. A tool built on the SDK names itself by overriding them
+with `client.set_default_header(...)`.
 
-## What is generated and what is not
+## Reference
 
-| Path | |
-|---|---|
-| `pycarlo2/api/`, `pycarlo2/models/`, `api_client.py`, `api_response.py`, `configuration.py`, `exceptions.py`, `rest.py`, `__init__.py` | Generated. Do not edit. One module per operation group and one per schema. |
-| `docs/` | Generated API reference; see below. |
-| `.openapi-generator/` | Generator bookkeeping. |
-| `pycarlo2/auth.py`, `oauth.py`, `profile.py` | Hand-written. `new_client`, `Options`, and the credential resolution behind them. |
-| `pycarlo2/paging.py` | Hand-written. `paginate`, which walks a paginated list. |
-| `tests/` | Hand-written tests for the hand-written surface. |
-| `tools/gendocs/` | Hand-written. Builds the SDK reference site. |
-
-The generator writes at the repository root, replacing any path it emits and deleting nothing.
-Every hand-written file it would otherwise emit (`pyproject.toml`, `README.md`, `.gitignore`,
-and the four modules inside the package) is listed in `.openapi-generator-ignore`; other
-hand-written files (`tests/`, `tools/`, `AGENTS.md`, `LICENSE`, `VERSION`, the CI workflows and
-scripts) are names the generator never emits and need no entry. Adding a file that shares a
-generated path without listing it risks a silent overwrite.
-
-## API reference
-
-The hosted [SDK reference](https://apidocs.getmontecarlo.com/v2/python/index.html) is built from the package by `tools/gendocs`; `docs/` is the generator's Markdown copy.
-
-`docs/` holds one page per operation group and per schema:
-
-- [`CollectionAgentsApi`](docs/CollectionAgentsApi.md)
-- [`CollectionDataStoresApi`](docs/CollectionDataStoresApi.md)
-- [`CredentialsApi`](docs/CredentialsApi.md)
-- [`DeploymentsApi`](docs/DeploymentsApi.md)
-- [`UsersApi`](docs/UsersApi.md)
-- [`WarehousesApi`](docs/WarehousesApi.md)
-
-Each generated page's "All URIs are relative to *http://localhost*" line and its example block
-are generator boilerplate: the example builds `Configuration` and `ApiClient` directly and sets
-`access_token` on the configuration, which `to_debug_report()` then renders. Ignore both and
-build the client with `pycarlo2.new_client` as shown under [Usage](#usage); the real base URL
-is whatever `endpoint` you pass.
+- The [SDK reference](https://apidocs.getmontecarlo.com/v2/python/index.html) has a page for every
+  module, operation group and model, and guides to setting up credentials.
+- The [REST API reference](https://apidocs.getmontecarlo.com/v2/index.html) describes each
+  operation's requests and responses.
 
 ## Contributing
 
-The generated files track the API and are not edited by hand. A fix to one of them belongs in
-the API or in the generator, so please open an issue describing what is wrong rather than a
-patch. Changes to the hand-written files (`auth.py`, `oauth.py`, `profile.py`, `paging.py`, the
-reference site in `tools/gendocs/`, and their tests) are welcome as pull requests.
-
-### The `dev` branch
-
-`dev` publishes a preview of the SDK reference to dev apidocs and is never released. Pull
-requests, and regeneration from the spec, target `main`. To preview a branch, merge `main` and
-the branch into `dev` and push it:
-
-```bash
-git fetch origin && git switch -C dev origin/dev && git merge origin/main
-git merge <branch> && git push origin dev
-```
-
-Nothing keeps `dev` in step with `main`. When abandoned previews pile up, reset it with
-`git push --force-with-lease origin origin/main:dev`; that push publishes `main`'s reference to
-dev again.
+Issues and pull requests are welcome.
+[CONTRIBUTING.md](https://github.com/monte-carlo-data/mc-sdk-python/blob/main/CONTRIBUTING.md)
+says which files are generated, which can be changed by hand, and how to preview the reference.

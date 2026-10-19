@@ -12,7 +12,11 @@ uv sync
 uv run pytest
 uv run ruff check . && uv run ruff format --check .
 uv run pyright
+rm -rf site && uv run python -m tools.gendocs.gendocs -o site --version "preview of local"
 ```
+
+The last command builds the SDK reference into `site/`, for previewing it locally; the
+[`dev` branch](#the-dev-branch) publishes a preview to dev apidocs.
 
 ## What is generated and what is not
 

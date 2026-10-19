@@ -131,8 +131,9 @@ section is read when a profile is consulted at all.
 ### Usage telemetry
 
 Every request carries `x-mcd-telemetry-reason: user` and `x-mcd-telemetry-service: mc-sdk-python`,
-the headers pycarlo and the CLI send, and nothing about its arguments or payload. A tool built on
-the SDK names itself by overriding them with `client.set_default_header(...)`.
+the headers pycarlo and the CLI send, so Monte Carlo can tell which client made a call. They carry
+nothing about its arguments or payload. A tool built on the SDK names itself by overriding them
+with `client.set_default_header(...)`.
 
 ## Reference
 

@@ -2,6 +2,21 @@
 
 > The Python SDK for the Monte Carlo REST API: one package, `pycarlo2`. Generated from the API's OpenAPI spec, except client construction and credentials (`auth.py`, `oauth.py`, `profile.py`) and the pagination helper (`paging.py`), which are hand-written.
 
+## This repository is public
+
+Treat everything here as customer-facing, including things that are easy to forget:
+
+- **Commit messages and pull request descriptions.** A closed pull request stays visible, a force-pushed commit stays reachable by its sha, and edited descriptions keep an edit history.
+- **Docstrings and the reference site**, which are what every user reads.
+- **Generated code**, which ships as-is.
+- **Every merge to `main`**, which is published to PyPI; see [Releasing](#releasing).
+
+So, **in the contents of any file committed here**: no internal file paths, no ticket identifiers, and no design rationale that only makes sense from the inside. That reasoning belongs in the ticket or in the internal repository that owns generation.
+
+Three internal names are the exception: api-codegen, the generator; monolith, the service the API spec is exported from; and ai-agent, whose MCP tools pin this SDK. Generated files, `.api-codegen-source.json` and the dispatch workflow already name them. Name no other internal repository.
+
+Branch names and pull request metadata may carry ticket identifiers: `<person>/<ticket-id>-<slug>` is the convention, and a merged pull request displays its head branch permanently.
+
 ## Stack
 
 - **Language:** Python 3.10+
@@ -33,6 +48,7 @@ Ruff and pyright cover the whole package except the generator's own files, liste
 | `.openapi-generator/` | Generator bookkeeping |
 | `tools/gendocs/` | **Hand-written.** Builds the SDK reference site; see [Reference docs](#reference-docs) |
 | `.github/workflows/publish-docs.yml`, `.github/actions/publish-docs/` | Build the reference on every pull request and publish it |
+| `.github/workflows/release.yml`, `.github/scripts/`, `VERSION` | Release every merge to `main` to PyPI; see [Releasing](#releasing) |
 | `tests/` | **Hand-written.** Tests for the hand-written surface, one module each, plus `conftest.py` and `test_public_surface.py`, which pins the generated `__init__.py`'s re-export of the hand-written names |
 
 ## What is generated
@@ -51,7 +67,7 @@ A hand-written file must never take one of the generator's names. Every hand-wri
 
 `pycarlo2/__init__.py` is generated from api-codegen's `__init__package.mustache` override, which adds `Options`, `new_client` and `CredentialsError` to the generated `__all__` and imports them after the generated exports. Hand-writing the file instead would lose the automatic listing of new API classes and models. The pagination names deliberately do not join them: the package root holds the generated surface plus the three names a client cannot be built without, pagination is one optional feature, and keeping its names out of the generated `__all__` is also what keeps them out of reach of a future schema of the same name.
 
-The version is spelled once, in `pyproject.toml`. The generation script reads it from there and stamps it into `__version__` and the generated debug report.
+`pyproject.toml` always says `0.0.0`. The generation script reads it and stamps it into `__version__`, the User-Agent and the debug report, and the release overwrites all four; see [Releasing](#releasing).
 
 Regeneration is performed by Monte Carlo's internal API code-generation tooling, run by a maintainer from outside this repository; it owns generation for every artifact built from the spec. Consult that tooling to regenerate; it is not reproduced here because it does not ship to consumers of this SDK.
 
@@ -91,6 +107,28 @@ Branch from `main` as `<person>/<ticket-id>-<slug>`. Never commit directly to `m
 
 ## Releasing
 
-**Not yet.** The distribution will publish to PyPI as `pycarlo2`. Install from the repository until then.
+Every merge to `main` is a release, as in mc-sdk-go and mc-cli, and a published version can't be replaced: PyPI never takes a version twice, even after it is deleted. A bad release can be yanked, and the fix ships as the next patch. `.github/scripts/next-tag.sh` works out the tag `v<base>.<n>`: `<base>` is the major.minor in `VERSION`, and `<n>` is one past the highest patch already tagged on that base. A merge that breaks callers, by removing or renaming an operation, a model or a field, or changing the hand-written API, must bump the minor: change `VERSION` (`0.1` to `0.2`) in the same pull request. A regeneration from api-codegen is a release too, and the same rule applies to what it changes. The same `next-tag.sh` and its test live in mc-sdk-go, mc-cli and the Terraform provider; change them together.
+
+`pyproject.toml` always says `0.0.0`, as do the three places the generator stamps it: `__version__` in `pycarlo2/__init__.py`, the User-Agent in `api_client.py` and the debug report in `configuration.py`. The release writes its version over all four with `.github/scripts/stamp-version.sh` before it builds, much as GoReleaser stamps mc-cli's, and never commits the result. So an install from the repository reports `0.0.0`. `0.0.0` on PyPI is the empty placeholder that reserved the name.
+
+After `Test` succeeds on `main`, `release.yml` runs:
+
+1. `tag` tags the merge commit through the org App, which with the `apollo` team is the only actor allowed to create tags; tags are immutable.
+2. `build` runs `.github/scripts/build-dist.sh` at the tag's version, without `id-token`. The script stamps the version with `stamp-version.sh`, builds the wheel and sdist, checks them with `check-dist.sh` and `twine check --strict`, then installs the wheel into a clean venv and runs `.github/scripts/smoke.py`, which imports `pycarlo2`, checks `__version__` and builds a client.
+3. `publish-pypi` uploads them through PyPI's Trusted Publisher, in the `release` environment, with `skip-existing` so a retry can finish an upload that stopped halfway.
+4. `smoke` checks that PyPI serves exactly the files built, installs what PyPI serves into a clean venv and runs the same `smoke.py`.
+
+The `package` job in `test.yml` calls the same `build-dist.sh` on every pull request, at the version the merge would get, so the two can't drift. It also runs the tests of `next-tag.sh`, `check-dist.sh` and `stamp-version.sh`. A change that would break a release fails there, before it merges.
+
+PyPI's Trusted Publisher names `release.yml` and the `release` environment, so renaming the file, moving `publish-pypi` into a reusable workflow or renaming the environment stops publishing, and changing the publisher needs a PyPI owner of `pycarlo2`. If a job fails after tagging, use "Re-run failed jobs", which also completes a partial upload. Re-running all jobs finds the commit already tagged and releases nothing, and a commit older than an already-tagged one is never tagged.
+
+Running `release.yml` by hand, from any branch, is a dry run: it publishes `<next version>.dev<run id>` to TestPyPI, or the current version's when HEAD is already released, and smoke-tests it from there. It tags nothing and never reaches PyPI: `publish-testpypi` runs in no environment, and PyPI's publisher requires `release`.
+
+To build a release locally, in a scratch copy, since stamping edits the tree:
+
+```bash
+tag=$(.github/scripts/next-tag.sh)
+.github/scripts/build-dist.sh "${tag#v}"
+```
 
 The licence is Apache-2.0, matching pycarlo and mc-sdk-go.

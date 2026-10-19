@@ -87,3 +87,32 @@ jobs:
       # generate-python-sdk.sh's basename and pyproject.toml checks.
       - name: Only the package holds Python
         run: test -z "$(find . -maxdepth 1 -name '*.py')"
+
+  # Builds the distributions the release would publish, at the version this commit would be
+  # released as, checks what is in them, and installs the wheel to build a client. One Python is
+  # enough: the wheel is pure Python and tagged py3-none-any.
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: The release scripts work
+        run: |
+          .github/scripts/next-tag.sh > /dev/null
+          .github/scripts/next-tag_test.sh
+          .github/scripts/check-dist_test.sh
+          .github/scripts/stamp-version_test.sh
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@e92bafb6253dcd438e0484186d7669ea7a8ca1cc # v6.4.3
+        with:
+          version: "0.6.x"
+
+      # A rerun on main after the release is tagged gets no tag, and builds 0.0.0 unstamped.
+      - name: Build and check, at the version this commit would be released as
+        run: |
+          tag=$(.github/scripts/next-tag.sh)
+          .github/scripts/build-dist.sh ${tag:+"${tag#v}"}

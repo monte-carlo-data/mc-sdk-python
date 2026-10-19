@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **deployment_id** | **UUID** | Deployment that runs the validations. It has to be one &#x60;GET /deployments&#x60; lists, and it has to be able to reach the system the credentials are for. | 
 **api_key** | **str** | Key of the Fivetran API key. Stored by Monte Carlo and never returned. | [optional] 
 **api_password** | **str** | Secret of the Fivetran API key. Stored by Monte Carlo and never returned. | [optional] 
-**base_url** | **str** | URL of the Fivetran REST API. Leave it out for https://api.fivetran.com/v1/. | [optional] 
+**base_url** | **str** | URL of the Fivetran REST API. Leave it out for https://api.fivetran.com/v1/. Changing it requires sending the credentials&#39; secrets again. | [optional] 
 
 ## Example
 

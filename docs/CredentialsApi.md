@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**create_databricks_metastore_sql_warehouse_credentials**](CredentialsApi.md#create_databricks_metastore_sql_warehouse_credentials) | **POST** /api/v2/credentials/databricks-metastore-sql-warehouse | Create Databricks metadata collection credentials
 [**create_databricks_sql_warehouse_credentials**](CredentialsApi.md#create_databricks_sql_warehouse_credentials) | **POST** /api/v2/credentials/databricks-sql-warehouse | Create Databricks query credentials
 [**create_db2_credentials**](CredentialsApi.md#create_db2_credentials) | **POST** /api/v2/credentials/db2 | Create Db2 credentials
+[**create_dbt_cloud_webhook_credentials**](CredentialsApi.md#create_dbt_cloud_webhook_credentials) | **POST** /api/v2/credentials/dbt-cloud-webhook | Create dbt Cloud webhook credentials
 [**create_env_var_credentials**](CredentialsApi.md#create_env_var_credentials) | **POST** /api/v2/credentials/self-hosted/env-var | Create environment variable credentials
 [**create_file_credentials**](CredentialsApi.md#create_file_credentials) | **POST** /api/v2/credentials/self-hosted/file | Create file credentials
 [**create_fivetran_credentials**](CredentialsApi.md#create_fivetran_credentials) | **POST** /api/v2/credentials/fivetran | Create Fivetran credentials
@@ -49,6 +50,7 @@ Method | HTTP request | Description
 [**delete_databricks_metastore_sql_warehouse_credentials**](CredentialsApi.md#delete_databricks_metastore_sql_warehouse_credentials) | **DELETE** /api/v2/credentials/databricks-metastore-sql-warehouse/{credentials_id} | Delete Databricks metadata collection credentials
 [**delete_databricks_sql_warehouse_credentials**](CredentialsApi.md#delete_databricks_sql_warehouse_credentials) | **DELETE** /api/v2/credentials/databricks-sql-warehouse/{credentials_id} | Delete Databricks query credentials
 [**delete_db2_credentials**](CredentialsApi.md#delete_db2_credentials) | **DELETE** /api/v2/credentials/db2/{credentials_id} | Delete Db2 credentials
+[**delete_dbt_cloud_webhook_credentials**](CredentialsApi.md#delete_dbt_cloud_webhook_credentials) | **DELETE** /api/v2/credentials/dbt-cloud-webhook/{credentials_id} | Delete dbt Cloud webhook credentials
 [**delete_env_var_credentials**](CredentialsApi.md#delete_env_var_credentials) | **DELETE** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Delete environment variable credentials
 [**delete_file_credentials**](CredentialsApi.md#delete_file_credentials) | **DELETE** /api/v2/credentials/self-hosted/file/{credentials_id} | Delete file credentials
 [**delete_fivetran_credentials**](CredentialsApi.md#delete_fivetran_credentials) | **DELETE** /api/v2/credentials/fivetran/{credentials_id} | Delete Fivetran credentials
@@ -82,6 +84,7 @@ Method | HTTP request | Description
 [**get_databricks_metastore_sql_warehouse_credentials**](CredentialsApi.md#get_databricks_metastore_sql_warehouse_credentials) | **GET** /api/v2/credentials/databricks-metastore-sql-warehouse/{credentials_id} | Get Databricks metadata collection credentials
 [**get_databricks_sql_warehouse_credentials**](CredentialsApi.md#get_databricks_sql_warehouse_credentials) | **GET** /api/v2/credentials/databricks-sql-warehouse/{credentials_id} | Get Databricks query credentials
 [**get_db2_credentials**](CredentialsApi.md#get_db2_credentials) | **GET** /api/v2/credentials/db2/{credentials_id} | Get Db2 credentials
+[**get_dbt_cloud_webhook_credentials**](CredentialsApi.md#get_dbt_cloud_webhook_credentials) | **GET** /api/v2/credentials/dbt-cloud-webhook/{credentials_id} | Get dbt Cloud webhook credentials
 [**get_env_var_credentials**](CredentialsApi.md#get_env_var_credentials) | **GET** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Get environment variable credentials
 [**get_file_credentials**](CredentialsApi.md#get_file_credentials) | **GET** /api/v2/credentials/self-hosted/file/{credentials_id} | Get file credentials
 [**get_fivetran_credentials**](CredentialsApi.md#get_fivetran_credentials) | **GET** /api/v2/credentials/fivetran/{credentials_id} | Get Fivetran credentials
@@ -116,6 +119,7 @@ Method | HTTP request | Description
 [**update_databricks_metastore_sql_warehouse_credentials**](CredentialsApi.md#update_databricks_metastore_sql_warehouse_credentials) | **PATCH** /api/v2/credentials/databricks-metastore-sql-warehouse/{credentials_id} | Update Databricks metadata collection credentials
 [**update_databricks_sql_warehouse_credentials**](CredentialsApi.md#update_databricks_sql_warehouse_credentials) | **PATCH** /api/v2/credentials/databricks-sql-warehouse/{credentials_id} | Update Databricks query credentials
 [**update_db2_credentials**](CredentialsApi.md#update_db2_credentials) | **PATCH** /api/v2/credentials/db2/{credentials_id} | Update Db2 credentials
+[**update_dbt_cloud_webhook_credentials**](CredentialsApi.md#update_dbt_cloud_webhook_credentials) | **PATCH** /api/v2/credentials/dbt-cloud-webhook/{credentials_id} | Update dbt Cloud webhook credentials
 [**update_env_var_credentials**](CredentialsApi.md#update_env_var_credentials) | **PATCH** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Update environment variable credentials
 [**update_file_credentials**](CredentialsApi.md#update_file_credentials) | **PATCH** /api/v2/credentials/self-hosted/file/{credentials_id} | Update file credentials
 [**update_fivetran_credentials**](CredentialsApi.md#update_fivetran_credentials) | **PATCH** /api/v2/credentials/fivetran/{credentials_id} | Update Fivetran credentials
@@ -158,6 +162,8 @@ Method | HTTP request | Description
 [**validate_databricks_sql_warehouse_credentials_change**](CredentialsApi.md#validate_databricks_sql_warehouse_credentials_change) | **POST** /api/v2/credentials/databricks-sql-warehouse/{credentials_id}/validate | Validate a change to Databricks query credentials
 [**validate_db2_credentials**](CredentialsApi.md#validate_db2_credentials) | **POST** /api/v2/credentials/db2/validate | Validate Db2 credentials
 [**validate_db2_credentials_change**](CredentialsApi.md#validate_db2_credentials_change) | **POST** /api/v2/credentials/db2/{credentials_id}/validate | Validate a change to Db2 credentials
+[**validate_dbt_cloud_webhook_credentials**](CredentialsApi.md#validate_dbt_cloud_webhook_credentials) | **POST** /api/v2/credentials/dbt-cloud-webhook/validate | Validate dbt Cloud webhook credentials
+[**validate_dbt_cloud_webhook_credentials_change**](CredentialsApi.md#validate_dbt_cloud_webhook_credentials_change) | **POST** /api/v2/credentials/dbt-cloud-webhook/{credentials_id}/validate | Validate a change to dbt Cloud webhook credentials
 [**validate_env_var_credentials**](CredentialsApi.md#validate_env_var_credentials) | **POST** /api/v2/credentials/self-hosted/env-var/validate | Validate environment variable credentials
 [**validate_env_var_credentials_change**](CredentialsApi.md#validate_env_var_credentials_change) | **POST** /api/v2/credentials/self-hosted/env-var/{credentials_id}/validate | Validate a change to environment variable credentials
 [**validate_file_credentials**](CredentialsApi.md#validate_file_credentials) | **POST** /api/v2/credentials/self-hosted/file/validate | Validate file credentials
@@ -1198,6 +1204,96 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Db2CredentialsOut**](Db2CredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_dbt_cloud_webhook_credentials**
+> DbtCloudWebhookCredentialsOut create_dbt_cloud_webhook_credentials(dbt_cloud_webhook_credentials_in)
+
+Create dbt Cloud webhook credentials
+
+Store dbt Cloud webhook credentials.
+
+Monte Carlo keeps the service token and the HMAC secret and returns everything else.
+Nothing is checked against dbt Cloud here. An account holds a limited number of
+credentials. Past that, the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.dbt_cloud_webhook_credentials_in import DbtCloudWebhookCredentialsIn
+from pycarlo2.models.dbt_cloud_webhook_credentials_out import DbtCloudWebhookCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    dbt_cloud_webhook_credentials_in = pycarlo2.DbtCloudWebhookCredentialsIn() # DbtCloudWebhookCredentialsIn | 
+
+    try:
+        # Create dbt Cloud webhook credentials
+        api_response = api_instance.create_dbt_cloud_webhook_credentials(dbt_cloud_webhook_credentials_in)
+        print("The response of CredentialsApi->create_dbt_cloud_webhook_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_dbt_cloud_webhook_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dbt_cloud_webhook_credentials_in** | [**DbtCloudWebhookCredentialsIn**](DbtCloudWebhookCredentialsIn.md)|  | 
+
+### Return type
+
+[**DbtCloudWebhookCredentialsOut**](DbtCloudWebhookCredentialsOut.md)
 
 ### Authorization
 
@@ -4268,6 +4364,91 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_dbt_cloud_webhook_credentials**
+> delete_dbt_cloud_webhook_credentials(credentials_id)
+
+Delete dbt Cloud webhook credentials
+
+Delete dbt Cloud webhook credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+using the stored service token and HMAC secret. Delete the token and the webhook in dbt
+Cloud if they must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Delete dbt Cloud webhook credentials
+        api_instance.delete_dbt_cloud_webhook_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_dbt_cloud_webhook_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_env_var_credentials**
 > delete_env_var_credentials(credentials_id)
 
@@ -7046,6 +7227,93 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Db2CredentialsOut**](Db2CredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_dbt_cloud_webhook_credentials**
+> DbtCloudWebhookCredentialsOut get_dbt_cloud_webhook_credentials(credentials_id)
+
+Get dbt Cloud webhook credentials
+
+Get one set of dbt Cloud webhook credentials, without the service token and the HMAC
+secret.
+
+An id that does not exist, belongs to another account, or names credentials of another kind
+returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.dbt_cloud_webhook_credentials_out import DbtCloudWebhookCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Get dbt Cloud webhook credentials
+        api_response = api_instance.get_dbt_cloud_webhook_credentials(credentials_id)
+        print("The response of CredentialsApi->get_dbt_cloud_webhook_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_dbt_cloud_webhook_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+[**DbtCloudWebhookCredentialsOut**](DbtCloudWebhookCredentialsOut.md)
 
 ### Authorization
 
@@ -10057,6 +10325,101 @@ Name | Type | Description  | Notes
 **422** | Unprocessable Entity |  -  |
 **429** | Too Many Requests |  -  |
 **503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_dbt_cloud_webhook_credentials**
+> DbtCloudWebhookCredentialsOut update_dbt_cloud_webhook_credentials(credentials_id, dbt_cloud_webhook_credentials_patch)
+
+Update dbt Cloud webhook credentials
+
+Change dbt Cloud webhook credentials in place.
+
+The connection using the credentials picks up the change. Send only the fields to change.
+Sending an empty body returns the credentials as they are.
+
+A new `account_id`, `webhook_id` or `hmac_secret` moves the connection to the new webhook
+or secret at once. A webhook another connection already receives is refused with 409.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.dbt_cloud_webhook_credentials_out import DbtCloudWebhookCredentialsOut
+from pycarlo2.models.dbt_cloud_webhook_credentials_patch import DbtCloudWebhookCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    dbt_cloud_webhook_credentials_patch = pycarlo2.DbtCloudWebhookCredentialsPatch() # DbtCloudWebhookCredentialsPatch | 
+
+    try:
+        # Update dbt Cloud webhook credentials
+        api_response = api_instance.update_dbt_cloud_webhook_credentials(credentials_id, dbt_cloud_webhook_credentials_patch)
+        print("The response of CredentialsApi->update_dbt_cloud_webhook_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_dbt_cloud_webhook_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **dbt_cloud_webhook_credentials_patch** | [**DbtCloudWebhookCredentialsPatch**](DbtCloudWebhookCredentialsPatch.md)|  | 
+
+### Return type
+
+[**DbtCloudWebhookCredentialsOut**](DbtCloudWebhookCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**409** | Conflict |  -  |
 **401** | Authentication credentials are missing or invalid. |  -  |
 **403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
 **500** | An unexpected error prevented the request from being processed. |  -  |
@@ -13979,6 +14342,198 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **db2_credentials_change_validate_in** | [**Db2CredentialsChangeValidateIn**](Db2CredentialsChangeValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_dbt_cloud_webhook_credentials**
+> ValidationRunOut validate_dbt_cloud_webhook_credentials(dbt_cloud_webhook_credentials_validate_in)
+
+Validate dbt Cloud webhook credentials
+
+Check candidate dbt Cloud webhook credentials against dbt Cloud.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from. The checks run against your dbt Cloud account.
+
+The response is the run as it starts. `Location` names where to read it. Poll that until the
+run's status is `completed`. Each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.dbt_cloud_webhook_credentials_validate_in import DbtCloudWebhookCredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    dbt_cloud_webhook_credentials_validate_in = pycarlo2.DbtCloudWebhookCredentialsValidateIn() # DbtCloudWebhookCredentialsValidateIn | 
+
+    try:
+        # Validate dbt Cloud webhook credentials
+        api_response = api_instance.validate_dbt_cloud_webhook_credentials(dbt_cloud_webhook_credentials_validate_in)
+        print("The response of CredentialsApi->validate_dbt_cloud_webhook_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_dbt_cloud_webhook_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dbt_cloud_webhook_credentials_validate_in** | [**DbtCloudWebhookCredentialsValidateIn**](DbtCloudWebhookCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_dbt_cloud_webhook_credentials_change**
+> ValidationRunOut validate_dbt_cloud_webhook_credentials_change(credentials_id, dbt_cloud_webhook_credentials_change_validate_in)
+
+Validate a change to dbt Cloud webhook credentials
+
+Check a change to dbt Cloud webhook credentials before making it.
+
+Send the fields you would update the credentials with, and a deployment to run them from.
+The change is applied to a copy of the stored credentials. The checks run against that
+copy. The credentials and the connection using them are left as they are.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+The response is the run as it starts. `Location` names where to read it. Poll that until the
+run's status is `completed`. Each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.dbt_cloud_webhook_credentials_change_validate_in import DbtCloudWebhookCredentialsChangeValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    dbt_cloud_webhook_credentials_change_validate_in = pycarlo2.DbtCloudWebhookCredentialsChangeValidateIn() # DbtCloudWebhookCredentialsChangeValidateIn | 
+
+    try:
+        # Validate a change to dbt Cloud webhook credentials
+        api_response = api_instance.validate_dbt_cloud_webhook_credentials_change(credentials_id, dbt_cloud_webhook_credentials_change_validate_in)
+        print("The response of CredentialsApi->validate_dbt_cloud_webhook_credentials_change:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_dbt_cloud_webhook_credentials_change: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **dbt_cloud_webhook_credentials_change_validate_in** | [**DbtCloudWebhookCredentialsChangeValidateIn**](DbtCloudWebhookCredentialsChangeValidateIn.md)|  | 
 
 ### Return type
 

@@ -28,13 +28,13 @@ class SqlServerCredentialsPatch(BaseModel):
     drops a stored `password`, and a new `password` drops a stored keytab. Sending an empty body
     returns the credentials as they are.
     """ # noqa: E501
-    host: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=255)]] = Field(default=None, description="Hostname of the database endpoint. For `kerberos`, the fully qualified name the server's service principal is registered under.")
+    host: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=255)]] = Field(default=None, description="Hostname of the database endpoint. For `kerberos`, the fully qualified name the server's service principal is registered under. Changing it requires sending the credentials' secrets again.")
     port: Optional[Annotated[int, Field(le=65535, strict=True, ge=1)]] = Field(default=None, description="Port the database listens on.")
     db_name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Database to connect to.")
     auth_mode: Optional[SqlServerAuthMode] = Field(default=None, description="How Monte Carlo signs in. `sql` takes `user` and `password`. `kerberos` takes `realm`, `kdc`, `principal`, and one of `keytab_base64` or `password`.")
     user: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="SQL login Monte Carlo signs in as, for `sql`.")
     realm: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=255)]] = Field(default=None, description="Kerberos realm, normally the Active Directory domain in capitals, for `kerberos`.")
-    kdc: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=255)]] = Field(default=None, description="Hostname of the key distribution center, optionally with `:port`, for `kerberos`.")
+    kdc: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=255)]] = Field(default=None, description="Hostname of the key distribution center, optionally with `:port`, for `kerberos`. Changing it requires sending the credentials' secrets again.")
     principal: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=255)]] = Field(default=None, description="Active Directory principal Monte Carlo signs in as, for `kerberos`.")
     password: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=1024)]] = Field(default=None, description="Password of `user` for `sql`, or of the Active Directory account behind `principal` for `kerberos`. Stored by Monte Carlo and never returned.")
     keytab_base64: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=32768)]] = Field(default=None, description="Base64-encoded keytab for `principal`, for `kerberos`. Send this or `password`. Stored by Monte Carlo and never returned.")

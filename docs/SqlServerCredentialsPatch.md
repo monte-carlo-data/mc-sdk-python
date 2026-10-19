@@ -6,13 +6,13 @@ A change to existing SQL Server credentials.  A field left out is unchanged. A s
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**host** | **str** | Hostname of the database endpoint. For &#x60;kerberos&#x60;, the fully qualified name the server&#39;s service principal is registered under. | [optional] 
+**host** | **str** | Hostname of the database endpoint. For &#x60;kerberos&#x60;, the fully qualified name the server&#39;s service principal is registered under. Changing it requires sending the credentials&#39; secrets again. | [optional] 
 **port** | **int** | Port the database listens on. | [optional] 
 **db_name** | **str** | Database to connect to. | [optional] 
 **auth_mode** | [**SqlServerAuthMode**](SqlServerAuthMode.md) | How Monte Carlo signs in. &#x60;sql&#x60; takes &#x60;user&#x60; and &#x60;password&#x60;. &#x60;kerberos&#x60; takes &#x60;realm&#x60;, &#x60;kdc&#x60;, &#x60;principal&#x60;, and one of &#x60;keytab_base64&#x60; or &#x60;password&#x60;. | [optional] 
 **user** | **str** | SQL login Monte Carlo signs in as, for &#x60;sql&#x60;. | [optional] 
 **realm** | **str** | Kerberos realm, normally the Active Directory domain in capitals, for &#x60;kerberos&#x60;. | [optional] 
-**kdc** | **str** | Hostname of the key distribution center, optionally with &#x60;:port&#x60;, for &#x60;kerberos&#x60;. | [optional] 
+**kdc** | **str** | Hostname of the key distribution center, optionally with &#x60;:port&#x60;, for &#x60;kerberos&#x60;. Changing it requires sending the credentials&#39; secrets again. | [optional] 
 **principal** | **str** | Active Directory principal Monte Carlo signs in as, for &#x60;kerberos&#x60;. | [optional] 
 **password** | **str** | Password of &#x60;user&#x60; for &#x60;sql&#x60;, or of the Active Directory account behind &#x60;principal&#x60; for &#x60;kerberos&#x60;. Stored by Monte Carlo and never returned. | [optional] 
 **keytab_base64** | **str** | Base64-encoded keytab for &#x60;principal&#x60;, for &#x60;kerberos&#x60;. Send this or &#x60;password&#x60;. Stored by Monte Carlo and never returned. | [optional] 

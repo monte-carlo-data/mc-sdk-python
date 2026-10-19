@@ -32,7 +32,7 @@ class LookerGitCloneCredentialsPatch(BaseModel):
     ssl_skip_cert_verification: Optional[StrictBool] = Field(default=None, description="Skip verifying the git server's TLS certificate.")
     token: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=1024)]] = Field(default=None, description="Access token of `username`, for an HTTPS clone. Send this or `ssh_key`. Stored by Monte Carlo and never returned.")
     ssh_key: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=32768)]] = Field(default=None, description="Private key for an SSH clone, as PEM text including its BEGIN and END lines. Send this or `username` and `token`. Stored by Monte Carlo and never returned.")
-    repo_url: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="Clone URL of the LookML repository, over HTTPS or SSH.")
+    repo_url: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="Clone URL of the LookML repository, over HTTPS or SSH. Changing it requires sending the credentials' secrets again.")
     __properties: ClassVar[List[str]] = ["username", "ssl_ca_data", "ssl_skip_cert_verification", "token", "ssh_key", "repo_url"]
 
     model_config = ConfigDict(

@@ -15,6 +15,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from uuid import UUID
 from pycarlo2.models.credentials_storage_type import CredentialsStorageType
+from pycarlo2.models.dbt_cloud_settings_out import DbtCloudSettingsOut
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -42,8 +43,9 @@ class ConnectionOut(BaseModel):
     credentials_storage_type: Optional[CredentialsStorageType] = Field(description="Where that secret lives. Null when there are no credentials to describe.")
     job_types: List[StrictStr] = Field(description="The jobs Monte Carlo runs on this connection, such as `metadata`.")
     created_time: datetime = Field(description="When the connection was created.")
+    dbt_cloud: Optional[DbtCloudSettingsOut] = Field(description="Which dbt Cloud runs a dbt Cloud webhook connection processes. A dbt Cloud webhook reports runs from every environment in the dbt account. These settings decide which of them Monte Carlo processes for the connection's warehouse. Null for every other connection type.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "connection_type", "name", "warehouse_id", "warehouse_name", "bi_container_id", "bi_container_name", "etl_container_id", "etl_container_name", "deployment_id", "deployment_name", "credentials_id", "credentials_storage_type", "job_types", "created_time"]
+    __properties: ClassVar[List[str]] = ["id", "connection_type", "name", "warehouse_id", "warehouse_name", "bi_container_id", "bi_container_name", "etl_container_id", "etl_container_name", "deployment_id", "deployment_name", "credentials_id", "credentials_storage_type", "job_types", "created_time", "dbt_cloud"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,6 +88,9 @@ class ConnectionOut(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of dbt_cloud
+        if self.dbt_cloud:
+            _dict['dbt_cloud'] = self.dbt_cloud.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -146,6 +151,11 @@ class ConnectionOut(BaseModel):
         if self.credentials_storage_type is None and "credentials_storage_type" in self.model_fields_set:
             _dict['credentials_storage_type'] = None
 
+        # set to None if dbt_cloud (nullable) is None
+        # and model_fields_set contains the field
+        if self.dbt_cloud is None and "dbt_cloud" in self.model_fields_set:
+            _dict['dbt_cloud'] = None
+
         return _dict
 
     @classmethod
@@ -172,7 +182,8 @@ class ConnectionOut(BaseModel):
             "credentials_id": obj.get("credentials_id"),
             "credentials_storage_type": obj.get("credentials_storage_type"),
             "job_types": obj.get("job_types"),
-            "created_time": obj.get("created_time")
+            "created_time": obj.get("created_time"),
+            "dbt_cloud": DbtCloudSettingsOut.from_dict(obj["dbt_cloud"]) if obj.get("dbt_cloud") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

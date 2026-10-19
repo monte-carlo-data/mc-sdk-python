@@ -35,7 +35,7 @@ class TableauCredentialsChangeValidateIn(BaseModel):
     password: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=1024)]] = Field(default=None, description="Password of `username`. Send this, a personal access token, or a connected app. Stored by Monte Carlo and never returned.")
     token_value: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=1024)]] = Field(default=None, description="Secret of the personal access token in `token_name`. Stored by Monte Carlo and never returned.")
     connected_app_secret_value: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=1024)]] = Field(default=None, description="Value of the connected app's secret in `connected_app_secret_id`. Stored by Monte Carlo and never returned.")
-    server_name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="URL of the Tableau server, starting with https:// or http://.")
+    server_name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="URL of the Tableau server, starting with https:// or http://. Changing it requires sending the credentials' secrets again.")
     __properties: ClassVar[List[str]] = ["deployment_id", "site_name", "verify_ssl", "username", "token_name", "connected_app_client_id", "connected_app_secret_id", "password", "token_value", "connected_app_secret_value", "server_name"]
 
     model_config = ConfigDict(

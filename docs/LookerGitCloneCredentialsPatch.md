@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ssl_skip_cert_verification** | **bool** | Skip verifying the git server&#39;s TLS certificate. | [optional] 
 **token** | **str** | Access token of &#x60;username&#x60;, for an HTTPS clone. Send this or &#x60;ssh_key&#x60;. Stored by Monte Carlo and never returned. | [optional] 
 **ssh_key** | **str** | Private key for an SSH clone, as PEM text including its BEGIN and END lines. Send this or &#x60;username&#x60; and &#x60;token&#x60;. Stored by Monte Carlo and never returned. | [optional] 
-**repo_url** | **str** | Clone URL of the LookML repository, over HTTPS or SSH. | [optional] 
+**repo_url** | **str** | Clone URL of the LookML repository, over HTTPS or SSH. Changing it requires sending the credentials&#39; secrets again. | [optional] 
 
 ## Example
 

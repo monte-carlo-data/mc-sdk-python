@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **credentials_storage_type** | [**CredentialsStorageType**](CredentialsStorageType.md) | Where that secret lives. Null when there are no credentials to describe. | 
 **job_types** | **List[str]** | The jobs Monte Carlo runs on this connection, such as &#x60;metadata&#x60;. | 
 **created_time** | **datetime** | When the connection was created. | 
+**dbt_cloud** | [**DbtCloudSettingsOut**](DbtCloudSettingsOut.md) | Which dbt Cloud runs a dbt Cloud webhook connection processes. A dbt Cloud webhook reports runs from every environment in the dbt account. These settings decide which of them Monte Carlo processes for the connection&#39;s warehouse. Null for every other connection type. | 
 
 ## Example
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **connection_type** | **str** | The connection type. Credentials for it name this type, and the connection takes its type from them. | 
 **name** | **str** | Display name of the connection type. | 
 **parent** | [**ConnectionParent**](ConnectionParent.md) | What a connection of this type is added to. Create or reuse one first. | 
-**warehouse_type** | [**WarehouseType**](WarehouseType.md) | The type of warehouse the connection goes on. Null unless &#x60;parent&#x60; is &#x60;warehouse&#x60;. | 
+**warehouse_type** | [**WarehouseType**](WarehouseType.md) | The type of warehouse the connection goes on. Null unless &#x60;parent&#x60; is &#x60;warehouse&#x60;. Null too for a type any existing warehouse takes, such as &#x60;dbt-cloud-webhook&#x60;. | 
 **bi_container_type** | [**NewBiContainerType**](NewBiContainerType.md) | The type of BI container the connection goes on. Null unless &#x60;parent&#x60; is &#x60;bi_container&#x60;. | 
 **etl_container_type** | [**NewEtlContainerType**](NewEtlContainerType.md) | The type of ETL container the connection goes on. Null unless &#x60;parent&#x60; is &#x60;etl_container&#x60;. | 
 **credentials_required** | **bool** | Whether the connection needs credentials. False for a push-only type: its data is sent to Monte Carlo, and Monte Carlo reaches no system for it. | 

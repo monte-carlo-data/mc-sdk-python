@@ -66,6 +66,7 @@ docs/CollectionAgentsApi.md
 docs/CollectionDataStoreOut.md
 docs/CollectionDataStoresApi.md
 docs/ConnectionIn.md
+docs/ConnectionMatch.md
 docs/ConnectionOut.md
 docs/ConnectionParent.md
 docs/ConnectionPatch.md
@@ -97,6 +98,13 @@ docs/Db2CredentialsIn.md
 docs/Db2CredentialsOut.md
 docs/Db2CredentialsPatch.md
 docs/Db2CredentialsValidateIn.md
+docs/DbtCloudSettingsIn.md
+docs/DbtCloudSettingsOut.md
+docs/DbtCloudWebhookCredentialsChangeValidateIn.md
+docs/DbtCloudWebhookCredentialsIn.md
+docs/DbtCloudWebhookCredentialsOut.md
+docs/DbtCloudWebhookCredentialsPatch.md
+docs/DbtCloudWebhookCredentialsValidateIn.md
 docs/DeploymentIn.md
 docs/DeploymentOut.md
 docs/DeploymentPatch.md
@@ -151,6 +159,8 @@ docs/GenericCollectionAgentPatch.md
 docs/GenericCollectionAgentTokenCreatedOut.md
 docs/GenericCollectionAgentTokenIn.md
 docs/GenericCollectionAgentTokenOut.md
+docs/HostingApi.md
+docs/HostingDomainsOut.md
 docs/IdentityType.md
 docs/InformaticaV2AuthMode.md
 docs/InformaticaV2CredentialsChangeValidateIn.md
@@ -286,6 +296,7 @@ pycarlo2/api/credentials_api.py
 pycarlo2/api/custom_connector_types_api.py
 pycarlo2/api/deployments_api.py
 pycarlo2/api/etl_containers_api.py
+pycarlo2/api/hosting_api.py
 pycarlo2/api/integration_keys_api.py
 pycarlo2/api/users_api.py
 pycarlo2/api/validations_api.py
@@ -360,6 +371,7 @@ pycarlo2/models/collection_agent_credential_out.py
 pycarlo2/models/collection_agent_out.py
 pycarlo2/models/collection_data_store_out.py
 pycarlo2/models/connection_in.py
+pycarlo2/models/connection_match.py
 pycarlo2/models/connection_out.py
 pycarlo2/models/connection_parent.py
 pycarlo2/models/connection_patch.py
@@ -387,6 +399,13 @@ pycarlo2/models/db2_credentials_in.py
 pycarlo2/models/db2_credentials_out.py
 pycarlo2/models/db2_credentials_patch.py
 pycarlo2/models/db2_credentials_validate_in.py
+pycarlo2/models/dbt_cloud_settings_in.py
+pycarlo2/models/dbt_cloud_settings_out.py
+pycarlo2/models/dbt_cloud_webhook_credentials_change_validate_in.py
+pycarlo2/models/dbt_cloud_webhook_credentials_in.py
+pycarlo2/models/dbt_cloud_webhook_credentials_out.py
+pycarlo2/models/dbt_cloud_webhook_credentials_patch.py
+pycarlo2/models/dbt_cloud_webhook_credentials_validate_in.py
 pycarlo2/models/deployment_in.py
 pycarlo2/models/deployment_out.py
 pycarlo2/models/deployment_patch.py
@@ -439,6 +458,7 @@ pycarlo2/models/generic_collection_agent_patch.py
 pycarlo2/models/generic_collection_agent_token_created_out.py
 pycarlo2/models/generic_collection_agent_token_in.py
 pycarlo2/models/generic_collection_agent_token_out.py
+pycarlo2/models/hosting_domains_out.py
 pycarlo2/models/identity_type.py
 pycarlo2/models/informatica_v2_auth_mode.py
 pycarlo2/models/informatica_v2_credentials_change_validate_in.py

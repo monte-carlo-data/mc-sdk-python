@@ -71,6 +71,7 @@ from pycarlo2.models.collection_agent_credential_out import CollectionAgentCrede
 from pycarlo2.models.collection_agent_out import CollectionAgentOut
 from pycarlo2.models.collection_data_store_out import CollectionDataStoreOut
 from pycarlo2.models.connection_in import ConnectionIn
+from pycarlo2.models.connection_match import ConnectionMatch
 from pycarlo2.models.connection_out import ConnectionOut
 from pycarlo2.models.connection_parent import ConnectionParent
 from pycarlo2.models.connection_patch import ConnectionPatch
@@ -98,6 +99,13 @@ from pycarlo2.models.db2_credentials_in import Db2CredentialsIn
 from pycarlo2.models.db2_credentials_out import Db2CredentialsOut
 from pycarlo2.models.db2_credentials_patch import Db2CredentialsPatch
 from pycarlo2.models.db2_credentials_validate_in import Db2CredentialsValidateIn
+from pycarlo2.models.dbt_cloud_settings_in import DbtCloudSettingsIn
+from pycarlo2.models.dbt_cloud_settings_out import DbtCloudSettingsOut
+from pycarlo2.models.dbt_cloud_webhook_credentials_change_validate_in import DbtCloudWebhookCredentialsChangeValidateIn
+from pycarlo2.models.dbt_cloud_webhook_credentials_in import DbtCloudWebhookCredentialsIn
+from pycarlo2.models.dbt_cloud_webhook_credentials_out import DbtCloudWebhookCredentialsOut
+from pycarlo2.models.dbt_cloud_webhook_credentials_patch import DbtCloudWebhookCredentialsPatch
+from pycarlo2.models.dbt_cloud_webhook_credentials_validate_in import DbtCloudWebhookCredentialsValidateIn
 from pycarlo2.models.deployment_in import DeploymentIn
 from pycarlo2.models.deployment_out import DeploymentOut
 from pycarlo2.models.deployment_patch import DeploymentPatch
@@ -150,6 +158,7 @@ from pycarlo2.models.generic_collection_agent_patch import GenericCollectionAgen
 from pycarlo2.models.generic_collection_agent_token_created_out import GenericCollectionAgentTokenCreatedOut
 from pycarlo2.models.generic_collection_agent_token_in import GenericCollectionAgentTokenIn
 from pycarlo2.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut
+from pycarlo2.models.hosting_domains_out import HostingDomainsOut
 from pycarlo2.models.identity_type import IdentityType
 from pycarlo2.models.informatica_v2_auth_mode import InformaticaV2AuthMode
 from pycarlo2.models.informatica_v2_credentials_change_validate_in import InformaticaV2CredentialsChangeValidateIn

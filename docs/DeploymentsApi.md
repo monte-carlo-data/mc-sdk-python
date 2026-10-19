@@ -459,6 +459,7 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
 **401** | Authentication credentials are missing or invalid. |  -  |
 **403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
 **500** | An unexpected error prevented the request from being processed. |  -  |
@@ -553,6 +554,7 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
 **401** | Authentication credentials are missing or invalid. |  -  |
 **403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
 **500** | An unexpected error prevented the request from being processed. |  -  |

@@ -6,7 +6,7 @@ What to create Snowflake key pair credentials with.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account** | **str** | Snowflake account identifier, such as &#x60;xy12345.us-east-1&#x60;. Without the &#x60;.snowflakecomputing.com&#x60; suffix. | 
+**account** | **str** | Snowflake account identifier, such as &#x60;xy12345.us-east-1&#x60;. Without the &#x60;.snowflakecomputing.com&#x60; suffix. Letters, digits, &#x60;_&#x60;, &#x60;.&#x60; and &#x60;-&#x60; only. | 
 **user** | **str** | Snowflake user the key pair belongs to. | 
 **private_key** | **str** | The private key of the pair, as PEM text including its BEGIN and END lines. Stored by Monte Carlo and never returned. | 
 **private_key_passphrase** | **str** | Passphrase the private key is encrypted with. Omit it for an unencrypted key. Never returned. | [optional] 

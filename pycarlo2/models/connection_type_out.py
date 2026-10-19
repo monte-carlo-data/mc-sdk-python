@@ -30,7 +30,7 @@ class ConnectionTypeOut(BaseModel):
     connection_type: StrictStr = Field(description="The connection type. Credentials for it name this type, and the connection takes its type from them.")
     name: StrictStr = Field(description="Display name of the connection type.")
     parent: ConnectionParent = Field(description="What a connection of this type is added to. Create or reuse one first.")
-    warehouse_type: Optional[WarehouseType] = Field(description="The type of warehouse the connection goes on. Null unless `parent` is `warehouse`.")
+    warehouse_type: Optional[WarehouseType] = Field(description="The type of warehouse the connection goes on. Null unless `parent` is `warehouse`. Null too for a type any existing warehouse takes, such as `dbt-cloud-webhook`.")
     bi_container_type: Optional[NewBiContainerType] = Field(description="The type of BI container the connection goes on. Null unless `parent` is `bi_container`.")
     etl_container_type: Optional[NewEtlContainerType] = Field(description="The type of ETL container the connection goes on. Null unless `parent` is `etl_container`.")
     credentials_required: StrictBool = Field(description="Whether the connection needs credentials. False for a push-only type: its data is sent to Monte Carlo, and Monte Carlo reaches no system for it.")

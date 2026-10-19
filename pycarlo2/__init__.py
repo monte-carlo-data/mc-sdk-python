@@ -20,6 +20,7 @@ __all__ = [
     "CustomConnectorTypesApi",
     "DeploymentsApi",
     "EtlContainersApi",
+    "HostingApi",
     "IntegrationKeysApi",
     "UsersApi",
     "ValidationsApi",
@@ -101,6 +102,7 @@ __all__ = [
     "CollectionAgentOut",
     "CollectionDataStoreOut",
     "ConnectionIn",
+    "ConnectionMatch",
     "ConnectionOut",
     "ConnectionParent",
     "ConnectionPatch",
@@ -128,6 +130,13 @@ __all__ = [
     "Db2CredentialsOut",
     "Db2CredentialsPatch",
     "Db2CredentialsValidateIn",
+    "DbtCloudSettingsIn",
+    "DbtCloudSettingsOut",
+    "DbtCloudWebhookCredentialsChangeValidateIn",
+    "DbtCloudWebhookCredentialsIn",
+    "DbtCloudWebhookCredentialsOut",
+    "DbtCloudWebhookCredentialsPatch",
+    "DbtCloudWebhookCredentialsValidateIn",
     "DeploymentIn",
     "DeploymentOut",
     "DeploymentPatch",
@@ -180,6 +189,7 @@ __all__ = [
     "GenericCollectionAgentTokenCreatedOut",
     "GenericCollectionAgentTokenIn",
     "GenericCollectionAgentTokenOut",
+    "HostingDomainsOut",
     "IdentityType",
     "InformaticaV2AuthMode",
     "InformaticaV2CredentialsChangeValidateIn",
@@ -312,6 +322,7 @@ from pycarlo2.api.credentials_api import CredentialsApi as CredentialsApi
 from pycarlo2.api.custom_connector_types_api import CustomConnectorTypesApi as CustomConnectorTypesApi
 from pycarlo2.api.deployments_api import DeploymentsApi as DeploymentsApi
 from pycarlo2.api.etl_containers_api import EtlContainersApi as EtlContainersApi
+from pycarlo2.api.hosting_api import HostingApi as HostingApi
 from pycarlo2.api.integration_keys_api import IntegrationKeysApi as IntegrationKeysApi
 from pycarlo2.api.users_api import UsersApi as UsersApi
 from pycarlo2.api.validations_api import ValidationsApi as ValidationsApi
@@ -394,6 +405,7 @@ from pycarlo2.models.collection_agent_credential_out import CollectionAgentCrede
 from pycarlo2.models.collection_agent_out import CollectionAgentOut as CollectionAgentOut
 from pycarlo2.models.collection_data_store_out import CollectionDataStoreOut as CollectionDataStoreOut
 from pycarlo2.models.connection_in import ConnectionIn as ConnectionIn
+from pycarlo2.models.connection_match import ConnectionMatch as ConnectionMatch
 from pycarlo2.models.connection_out import ConnectionOut as ConnectionOut
 from pycarlo2.models.connection_parent import ConnectionParent as ConnectionParent
 from pycarlo2.models.connection_patch import ConnectionPatch as ConnectionPatch
@@ -421,6 +433,13 @@ from pycarlo2.models.db2_credentials_in import Db2CredentialsIn as Db2Credential
 from pycarlo2.models.db2_credentials_out import Db2CredentialsOut as Db2CredentialsOut
 from pycarlo2.models.db2_credentials_patch import Db2CredentialsPatch as Db2CredentialsPatch
 from pycarlo2.models.db2_credentials_validate_in import Db2CredentialsValidateIn as Db2CredentialsValidateIn
+from pycarlo2.models.dbt_cloud_settings_in import DbtCloudSettingsIn as DbtCloudSettingsIn
+from pycarlo2.models.dbt_cloud_settings_out import DbtCloudSettingsOut as DbtCloudSettingsOut
+from pycarlo2.models.dbt_cloud_webhook_credentials_change_validate_in import DbtCloudWebhookCredentialsChangeValidateIn as DbtCloudWebhookCredentialsChangeValidateIn
+from pycarlo2.models.dbt_cloud_webhook_credentials_in import DbtCloudWebhookCredentialsIn as DbtCloudWebhookCredentialsIn
+from pycarlo2.models.dbt_cloud_webhook_credentials_out import DbtCloudWebhookCredentialsOut as DbtCloudWebhookCredentialsOut
+from pycarlo2.models.dbt_cloud_webhook_credentials_patch import DbtCloudWebhookCredentialsPatch as DbtCloudWebhookCredentialsPatch
+from pycarlo2.models.dbt_cloud_webhook_credentials_validate_in import DbtCloudWebhookCredentialsValidateIn as DbtCloudWebhookCredentialsValidateIn
 from pycarlo2.models.deployment_in import DeploymentIn as DeploymentIn
 from pycarlo2.models.deployment_out import DeploymentOut as DeploymentOut
 from pycarlo2.models.deployment_patch import DeploymentPatch as DeploymentPatch
@@ -473,6 +492,7 @@ from pycarlo2.models.generic_collection_agent_patch import GenericCollectionAgen
 from pycarlo2.models.generic_collection_agent_token_created_out import GenericCollectionAgentTokenCreatedOut as GenericCollectionAgentTokenCreatedOut
 from pycarlo2.models.generic_collection_agent_token_in import GenericCollectionAgentTokenIn as GenericCollectionAgentTokenIn
 from pycarlo2.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut as GenericCollectionAgentTokenOut
+from pycarlo2.models.hosting_domains_out import HostingDomainsOut as HostingDomainsOut
 from pycarlo2.models.identity_type import IdentityType as IdentityType
 from pycarlo2.models.informatica_v2_auth_mode import InformaticaV2AuthMode as InformaticaV2AuthMode
 from pycarlo2.models.informatica_v2_credentials_change_validate_in import InformaticaV2CredentialsChangeValidateIn as InformaticaV2CredentialsChangeValidateIn

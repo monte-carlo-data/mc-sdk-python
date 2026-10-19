@@ -234,7 +234,8 @@ jobs:
           EOF
 
       # The simple index can lag the JSON API by a minute or more, so the download is retried.
-      # No pip cache: the index is served with max-age=600, which would pin a stale copy.
+      # No pip cache: pip 26 can answer /simple/ from it for up to max-age=600; older pip
+      # revalidates every time anyway.
       - name: Install and build a client
         run: |
           python3 -m venv venv

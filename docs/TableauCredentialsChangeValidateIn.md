@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **password** | **str** | Password of &#x60;username&#x60;. Send this, a personal access token, or a connected app. Stored by Monte Carlo and never returned. | [optional] 
 **token_value** | **str** | Secret of the personal access token in &#x60;token_name&#x60;. Stored by Monte Carlo and never returned. | [optional] 
 **connected_app_secret_value** | **str** | Value of the connected app&#39;s secret in &#x60;connected_app_secret_id&#x60;. Stored by Monte Carlo and never returned. | [optional] 
-**server_name** | **str** | URL of the Tableau server, starting with https:// or http://. | [optional] 
+**server_name** | **str** | URL of the Tableau server, starting with https:// or http://. Changing it requires sending the credentials&#39; secrets again. | [optional] 
 
 ## Example
 

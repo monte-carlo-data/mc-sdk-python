@@ -14,6 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from uuid import UUID
+from pycarlo2.models.dbt_cloud_settings_in import DbtCloudSettingsIn
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -28,7 +29,8 @@ class ConnectionIn(BaseModel):
     etl_container_id: Optional[UUID] = Field(default=None, description="The ETL container to add the connection to, for ETL tool credentials such as Fivetran or Airflow. The container's type has to equal the credentials' type, and the container must not have a connection yet. A `custom-etl-connector` container takes a custom ETL connector's credentials, or none when it has no deployment. Send exactly one of this, `warehouse_id` and `bi_container_id`.")
     credentials_id: Optional[UUID] = Field(default=None, description="The credentials the connection reads with. They also decide the connection's type. Create them first, through one of the credentials endpoints. Required, except on a push-only container: a `custom-etl-connector` or `custom-bi-connector` container with no deployment. Its connection takes no credentials, and has the container's type.")
     job_types: Optional[Annotated[List[StrictStr], Field(min_length=1)]] = Field(default=None, description="The jobs to run on this connection. Omit it to run what the connection type runs by default, which is what the app does. Which values are accepted depends on the connection type. `etl` on a Snowflake, Power BI or Salesforce Data Cloud connection also creates its ETL container. An empty list is not accepted; omit the field to take the defaults.")
-    __properties: ClassVar[List[str]] = ["name", "warehouse_id", "bi_container_id", "etl_container_id", "credentials_id", "job_types"]
+    dbt_cloud: Optional[DbtCloudSettingsIn] = Field(default=None, description="Which dbt Cloud runs a dbt Cloud webhook connection processes. A dbt Cloud webhook reports runs from every environment in the dbt account. These settings decide which of them Monte Carlo processes for the connection's warehouse. Only a dbt Cloud webhook connection takes it. Omit it to process every run.")
+    __properties: ClassVar[List[str]] = ["name", "warehouse_id", "bi_container_id", "etl_container_id", "credentials_id", "job_types", "dbt_cloud"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -69,6 +71,9 @@ class ConnectionIn(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of dbt_cloud
+        if self.dbt_cloud:
+            _dict['dbt_cloud'] = self.dbt_cloud.to_dict()
         # set to None if warehouse_id (nullable) is None
         # and model_fields_set contains the field
         if self.warehouse_id is None and "warehouse_id" in self.model_fields_set:
@@ -94,6 +99,11 @@ class ConnectionIn(BaseModel):
         if self.job_types is None and "job_types" in self.model_fields_set:
             _dict['job_types'] = None
 
+        # set to None if dbt_cloud (nullable) is None
+        # and model_fields_set contains the field
+        if self.dbt_cloud is None and "dbt_cloud" in self.model_fields_set:
+            _dict['dbt_cloud'] = None
+
         return _dict
 
     @classmethod
@@ -111,7 +121,8 @@ class ConnectionIn(BaseModel):
             "bi_container_id": obj.get("bi_container_id"),
             "etl_container_id": obj.get("etl_container_id"),
             "credentials_id": obj.get("credentials_id"),
-            "job_types": obj.get("job_types")
+            "job_types": obj.get("job_types"),
+            "dbt_cloud": DbtCloudSettingsIn.from_dict(obj["dbt_cloud"]) if obj.get("dbt_cloud") is not None else None
         })
         return _obj
 

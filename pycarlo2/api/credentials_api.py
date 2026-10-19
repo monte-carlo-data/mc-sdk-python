@@ -64,6 +64,11 @@ from pycarlo2.models.db2_credentials_in import Db2CredentialsIn
 from pycarlo2.models.db2_credentials_out import Db2CredentialsOut
 from pycarlo2.models.db2_credentials_patch import Db2CredentialsPatch
 from pycarlo2.models.db2_credentials_validate_in import Db2CredentialsValidateIn
+from pycarlo2.models.dbt_cloud_webhook_credentials_change_validate_in import DbtCloudWebhookCredentialsChangeValidateIn
+from pycarlo2.models.dbt_cloud_webhook_credentials_in import DbtCloudWebhookCredentialsIn
+from pycarlo2.models.dbt_cloud_webhook_credentials_out import DbtCloudWebhookCredentialsOut
+from pycarlo2.models.dbt_cloud_webhook_credentials_patch import DbtCloudWebhookCredentialsPatch
+from pycarlo2.models.dbt_cloud_webhook_credentials_validate_in import DbtCloudWebhookCredentialsValidateIn
 from pycarlo2.models.env_var_credentials_change_validate_in import EnvVarCredentialsChangeValidateIn
 from pycarlo2.models.env_var_credentials_in import EnvVarCredentialsIn
 from pycarlo2.models.env_var_credentials_out import EnvVarCredentialsOut
@@ -1917,6 +1922,162 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/api/v2/credentials/db2',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def create_dbt_cloud_webhook_credentials(
+        self,
+        dbt_cloud_webhook_credentials_in: DbtCloudWebhookCredentialsIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> DbtCloudWebhookCredentialsOut:
+        """Create dbt Cloud webhook credentials
+
+        Store dbt Cloud webhook credentials.
+        
+        Monte Carlo keeps the service token and the HMAC secret and returns everything else.
+        Nothing is checked against dbt Cloud here. An account holds a limited number of
+        credentials. Past that, the create is refused.
+
+        :param dbt_cloud_webhook_credentials_in: (required)
+        :type dbt_cloud_webhook_credentials_in: DbtCloudWebhookCredentialsIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_dbt_cloud_webhook_credentials_serialize(
+            dbt_cloud_webhook_credentials_in=dbt_cloud_webhook_credentials_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "DbtCloudWebhookCredentialsOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _create_dbt_cloud_webhook_credentials_serialize(
+        self,
+        dbt_cloud_webhook_credentials_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if dbt_cloud_webhook_credentials_in is not None:
+            _body_params = dbt_cloud_webhook_credentials_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/dbt-cloud-webhook',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -7102,6 +7263,147 @@ class CredentialsApi:
 
 
     @validate_call
+    def delete_dbt_cloud_webhook_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete dbt Cloud webhook credentials
+
+        Delete dbt Cloud webhook credentials.
+        
+        Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+        using the stored service token and HMAC secret. Delete the token and the webhook in dbt
+        Cloud if they must be retired.
+
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_dbt_cloud_webhook_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _delete_dbt_cloud_webhook_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/api/v2/credentials/dbt-cloud-webhook/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def delete_env_var_credentials(
         self,
         credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
@@ -11713,6 +12015,147 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/api/v2/credentials/db2/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_dbt_cloud_webhook_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> DbtCloudWebhookCredentialsOut:
+        """Get dbt Cloud webhook credentials
+
+        Get one set of dbt Cloud webhook credentials, without the service token and the HMAC
+        secret.
+        
+        An id that does not exist, belongs to another account, or names credentials of another kind
+        returns 404.
+
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_dbt_cloud_webhook_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DbtCloudWebhookCredentialsOut",
+            '404': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _get_dbt_cloud_webhook_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/credentials/dbt-cloud-webhook/{credentials_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -16746,6 +17189,172 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='PATCH',
             resource_path='/api/v2/credentials/db2/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_dbt_cloud_webhook_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
+        dbt_cloud_webhook_credentials_patch: DbtCloudWebhookCredentialsPatch,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> DbtCloudWebhookCredentialsOut:
+        """Update dbt Cloud webhook credentials
+
+        Change dbt Cloud webhook credentials in place.
+        
+        The connection using the credentials picks up the change. Send only the fields to change.
+        Sending an empty body returns the credentials as they are.
+        
+        A new `account_id`, `webhook_id` or `hmac_secret` moves the connection to the new webhook
+        or secret at once. A webhook another connection already receives is refused with 409.
+
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
+        :type credentials_id: UUID
+        :param dbt_cloud_webhook_credentials_patch: (required)
+        :type dbt_cloud_webhook_credentials_patch: DbtCloudWebhookCredentialsPatch
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_dbt_cloud_webhook_credentials_serialize(
+            credentials_id=credentials_id,
+            dbt_cloud_webhook_credentials_patch=dbt_cloud_webhook_credentials_patch,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DbtCloudWebhookCredentialsOut",
+            '404': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '409': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _update_dbt_cloud_webhook_credentials_serialize(
+        self,
+        credentials_id,
+        dbt_cloud_webhook_credentials_patch,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if dbt_cloud_webhook_credentials_patch is not None:
+            _body_params = dbt_cloud_webhook_credentials_patch
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/api/v2/credentials/dbt-cloud-webhook/{credentials_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -23624,6 +24233,335 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/api/v2/credentials/db2/{credentials_id}/validate',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def validate_dbt_cloud_webhook_credentials(
+        self,
+        dbt_cloud_webhook_credentials_validate_in: DbtCloudWebhookCredentialsValidateIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ValidationRunOut:
+        """Validate dbt Cloud webhook credentials
+
+        Check candidate dbt Cloud webhook credentials against dbt Cloud.
+        
+        No credentials are created. Send the values you would create the credentials with, and a
+        deployment to run them from. The checks run against your dbt Cloud account.
+        
+        The response is the run as it starts. `Location` names where to read it. Poll that until the
+        run's status is `completed`. Each validation carries its own verdict.
+
+        :param dbt_cloud_webhook_credentials_validate_in: (required)
+        :type dbt_cloud_webhook_credentials_validate_in: DbtCloudWebhookCredentialsValidateIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._validate_dbt_cloud_webhook_credentials_serialize(
+            dbt_cloud_webhook_credentials_validate_in=dbt_cloud_webhook_credentials_validate_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "ValidationRunOut",
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _validate_dbt_cloud_webhook_credentials_serialize(
+        self,
+        dbt_cloud_webhook_credentials_validate_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if dbt_cloud_webhook_credentials_validate_in is not None:
+            _body_params = dbt_cloud_webhook_credentials_validate_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/dbt-cloud-webhook/validate',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def validate_dbt_cloud_webhook_credentials_change(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
+        dbt_cloud_webhook_credentials_change_validate_in: DbtCloudWebhookCredentialsChangeValidateIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ValidationRunOut:
+        """Validate a change to dbt Cloud webhook credentials
+
+        Check a change to dbt Cloud webhook credentials before making it.
+        
+        Send the fields you would update the credentials with, and a deployment to run them from.
+        The change is applied to a copy of the stored credentials. The checks run against that
+        copy. The credentials and the connection using them are left as they are.
+        
+        An id that does not exist, belongs to another account, or names credentials of another
+        kind returns 404.
+        
+        The response is the run as it starts. `Location` names where to read it. Poll that until the
+        run's status is `completed`. Each validation carries its own verdict.
+
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
+        :type credentials_id: UUID
+        :param dbt_cloud_webhook_credentials_change_validate_in: (required)
+        :type dbt_cloud_webhook_credentials_change_validate_in: DbtCloudWebhookCredentialsChangeValidateIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._validate_dbt_cloud_webhook_credentials_change_serialize(
+            credentials_id=credentials_id,
+            dbt_cloud_webhook_credentials_change_validate_in=dbt_cloud_webhook_credentials_change_validate_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "ValidationRunOut",
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _validate_dbt_cloud_webhook_credentials_change_serialize(
+        self,
+        credentials_id,
+        dbt_cloud_webhook_credentials_change_validate_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if dbt_cloud_webhook_credentials_change_validate_in is not None:
+            _body_params = dbt_cloud_webhook_credentials_change_validate_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/dbt-cloud-webhook/{credentials_id}/validate',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

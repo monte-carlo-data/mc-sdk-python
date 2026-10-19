@@ -25,7 +25,7 @@ class RedshiftCredentialsPatch(BaseModel):
     null is unchanged. `host`, `port`, `db_name` and `user` cannot be cleared. Sending an empty
     body returns the credentials as they are.
     """ # noqa: E501
-    host: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=255)]] = Field(default=None, description="Hostname of the database endpoint.")
+    host: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=255)]] = Field(default=None, description="Hostname of the database endpoint. Changing it requires sending the credentials' secrets again.")
     port: Optional[Annotated[int, Field(le=65535, strict=True, ge=1)]] = Field(default=None, description="Port the database listens on.")
     db_name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Database to connect to.")
     user: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Database user Monte Carlo logs in as.")

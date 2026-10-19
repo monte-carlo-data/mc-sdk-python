@@ -27,7 +27,7 @@ class DatabricksMetastoreSqlWarehouseCredentialsPatch(BaseModel):
     Azure fields. Sending the OAuth client drops a stored token. Sending an empty body
     returns the credentials as they are.
     """ # noqa: E501
-    workspace_url: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="URL of the Databricks workspace, or its host name.")
+    workspace_url: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="URL of the Databricks workspace, or its host name. Changing it requires sending the credentials' secrets again.")
     sql_warehouse_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="ID of the Databricks SQL warehouse the connection runs on.")
     workspace_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="ID of the Databricks workspace.")
     token: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=1024)]] = Field(default=None, description="Personal access token or service principal token. Send this, or `oauth_client_id` and `oauth_client_secret`. Stored by Monte Carlo and never returned.")

@@ -28,12 +28,12 @@ class InformaticaV2CredentialsChangeValidateIn(BaseModel):
     changed.
     """ # noqa: E501
     deployment_id: UUID = Field(description="Deployment that runs the validations. It has to be one `GET /deployments` lists, and it has to be able to reach the system the credentials are for.")
-    base_url: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="Informatica login URL for your POD. Leave it out for https://dm-us.informaticacloud.com.")
+    base_url: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="Informatica login URL for your POD. Leave it out for https://dm-us.informaticacloud.com. Changing it requires sending the credentials' secrets again.")
     username: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Informatica user, for `password`.")
     org_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Informatica organization ID, for `oauth`.")
     oauth_client_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Client ID of the app registered with your identity provider, for `oauth`.")
     oauth_grant_type: Optional[OAuthGrantType] = Field(default=None, description="Grant Monte Carlo requests the token with, for `oauth`. `password` also takes `oauth_username` and `oauth_password`.")
-    oauth_access_token_endpoint: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="Identity provider URL Monte Carlo requests tokens from.")
+    oauth_access_token_endpoint: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="Identity provider URL Monte Carlo requests tokens from. Changing it requires sending the credentials' secrets again.")
     oauth_scope: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="Scope to request the token with. Leave it out to request none.")
     oauth_username: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Identity provider user, for the `password` grant.")
     password: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=1024)]] = Field(default=None, description="Password of `username`, for `password`. Stored by Monte Carlo and never returned.")

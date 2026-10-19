@@ -7,7 +7,7 @@ A change to existing MySQL credentials to validate before it is made.  Takes the
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **deployment_id** | **UUID** | Deployment that runs the validations. It has to be one &#x60;GET /deployments&#x60; lists, and it has to be able to reach the system the credentials are for. | 
-**host** | **str** | Hostname of the database endpoint. | [optional] 
+**host** | **str** | Hostname of the database endpoint. Changing it requires sending the credentials&#39; secrets again. | [optional] 
 **port** | **int** | Port the database listens on. | [optional] 
 **db_name** | **str** | Database to connect to. | [optional] 
 **user** | **str** | Database user Monte Carlo logs in as. | [optional] 

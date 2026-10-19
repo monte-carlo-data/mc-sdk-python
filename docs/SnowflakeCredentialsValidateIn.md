@@ -7,7 +7,7 @@ Candidate Snowflake key pair credentials to validate.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **deployment_id** | **UUID** | Deployment that runs the validations. It has to be one &#x60;GET /deployments&#x60; lists, and it has to be able to reach the system the credentials are for. | 
-**account** | **str** | Snowflake account identifier, such as &#x60;xy12345.us-east-1&#x60;. Without the &#x60;.snowflakecomputing.com&#x60; suffix. | 
+**account** | **str** | Snowflake account identifier, such as &#x60;xy12345.us-east-1&#x60;. Without the &#x60;.snowflakecomputing.com&#x60; suffix. Letters, digits, &#x60;_&#x60;, &#x60;.&#x60; and &#x60;-&#x60; only. | 
 **user** | **str** | Snowflake user the key pair belongs to. | 
 **private_key** | **str** | The private key of the pair, as PEM text including its BEGIN and END lines. Used for this check and not kept. | 
 **private_key_passphrase** | **str** | Passphrase the private key is encrypted with. Omit it for an unencrypted key. Never returned. | [optional] 

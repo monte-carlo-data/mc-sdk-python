@@ -72,6 +72,11 @@ class ConnectionsApi:
         warehouse on the deployment of the agent that registered the connector, usually a
         `custom-integration` one. Its job types are the ones its capabilities allow.
         
+        dbt Cloud webhook credentials go on the existing warehouse the dbt project builds into,
+        of any type. A webhook takes one connection. Its `dbt_cloud` object sets which dbt Cloud
+        runs Monte Carlo processes. Left out, every run is processed. No other type takes
+        `dbt_cloud`.
+        
         Omit `job_types` to run what the type runs by default. `etl` on a Snowflake, Power BI or
         Salesforce Data Cloud connection also turns on its ETL, as adding it later through the
         update does. Snowflake takes `etl` alone, the other two only beside their other jobs.
@@ -278,6 +283,7 @@ class ConnectionsApi:
             '404': "ProblemOut",
             '409': "ProblemOut",
             '429': "ProblemOut",
+            '503': "ProblemOut",
             '401': "ProblemOut",
             '403': "ProblemOut",
             '500': "ProblemOut",
@@ -708,7 +714,7 @@ class ConnectionsApi:
     ) -> ConnectionOut:
         """Update a connection
 
-        Rename a connection, or turn its ETL on or off.
+        Rename a connection, turn its ETL on or off, or change its dbt Cloud settings.
         
         The type, the warehouse, BI container or ETL container and the credentials are fixed when
         the connection is created. Two connections on one warehouse or BI container cannot share a
@@ -719,6 +725,10 @@ class ConnectionsApi:
         Cloud ETL. That creates an ETL container, returned in `etl_container_id`. Removing `etl`
         deletes the container, and `etl_container_id` goes back to null. Sending the current job
         types, or an empty body, leaves the connection as it is and returns it.
+        
+        `dbt_cloud` applies to a dbt Cloud webhook connection only. An object replaces its settings
+        whole. Null resets them to the defaults. Another type that sends an object gets 422.
+        Changing the settings needs settings edit access as well as integrations edit access.
 
         :param connection_id: Id of the connection, as returned when it is created or listed. (required)
         :type connection_id: UUID

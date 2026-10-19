@@ -6,7 +6,7 @@ A change to existing Azure Dedicated SQL Pool credentials.  A field left out is 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**host** | **str** | Hostname of the database endpoint. | [optional] 
+**host** | **str** | Hostname of the database endpoint. Changing it requires sending the credentials&#39; secrets again. | [optional] 
 **port** | **int** | Port the database listens on. | [optional] 
 **db_name** | **str** | Database to connect to. | [optional] 
 **user** | **str** | Database user Monte Carlo logs in as. | [optional] 

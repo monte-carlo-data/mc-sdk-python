@@ -7,7 +7,7 @@ A change to Databricks metadata collection credentials to validate before it is 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **deployment_id** | **UUID** | Deployment that runs the validations. It has to be one &#x60;GET /deployments&#x60; lists, and it has to be able to reach the system the credentials are for. | 
-**workspace_url** | **str** | URL of the Databricks workspace, or its host name. | [optional] 
+**workspace_url** | **str** | URL of the Databricks workspace, or its host name. Changing it requires sending the credentials&#39; secrets again. | [optional] 
 **sql_warehouse_id** | **str** | ID of the Databricks SQL warehouse the connection runs on. | [optional] 
 **workspace_id** | **str** | ID of the Databricks workspace. | [optional] 
 **token** | **str** | Personal access token or service principal token. Send this, or &#x60;oauth_client_id&#x60; and &#x60;oauth_client_secret&#x60;. Stored by Monte Carlo and never returned. | [optional] 

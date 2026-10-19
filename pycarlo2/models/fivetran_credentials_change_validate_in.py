@@ -28,7 +28,7 @@ class FivetranCredentialsChangeValidateIn(BaseModel):
     deployment_id: UUID = Field(description="Deployment that runs the validations. It has to be one `GET /deployments` lists, and it has to be able to reach the system the credentials are for.")
     api_key: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=1024)]] = Field(default=None, description="Key of the Fivetran API key. Stored by Monte Carlo and never returned.")
     api_password: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=1024)]] = Field(default=None, description="Secret of the Fivetran API key. Stored by Monte Carlo and never returned.")
-    base_url: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="URL of the Fivetran REST API. Leave it out for https://api.fivetran.com/v1/.")
+    base_url: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="URL of the Fivetran REST API. Leave it out for https://api.fivetran.com/v1/. Changing it requires sending the credentials' secrets again.")
     __properties: ClassVar[List[str]] = ["deployment_id", "api_key", "api_password", "base_url"]
 
     model_config = ConfigDict(

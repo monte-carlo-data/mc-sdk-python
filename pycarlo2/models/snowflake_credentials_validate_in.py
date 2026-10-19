@@ -23,7 +23,7 @@ class SnowflakeCredentialsValidateIn(BaseModel):
     Candidate Snowflake key pair credentials to validate.
     """ # noqa: E501
     deployment_id: UUID = Field(description="Deployment that runs the validations. It has to be one `GET /deployments` lists, and it has to be able to reach the system the credentials are for.")
-    account: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="Snowflake account identifier, such as `xy12345.us-east-1`. Without the `.snowflakecomputing.com` suffix.")
+    account: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="Snowflake account identifier, such as `xy12345.us-east-1`. Without the `.snowflakecomputing.com` suffix. Letters, digits, `_`, `.` and `-` only.")
     user: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="Snowflake user the key pair belongs to.")
     private_key: Annotated[str, Field(min_length=1, strict=True, max_length=32768)] = Field(description="The private key of the pair, as PEM text including its BEGIN and END lines. Used for this check and not kept.")
     private_key_passphrase: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=32768)]] = Field(default=None, description="Passphrase the private key is encrypted with. Omit it for an unencrypted key. Never returned.")

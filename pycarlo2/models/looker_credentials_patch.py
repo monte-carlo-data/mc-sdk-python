@@ -25,7 +25,7 @@ class LookerCredentialsPatch(BaseModel):
     null is unchanged. `base_url` and `api_client_id` cannot be cleared. Sending an empty body
     returns the credentials as they are.
     """ # noqa: E501
-    base_url: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="URL of the Looker API, such as https://acme.cloud.looker.com.")
+    base_url: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]] = Field(default=None, description="URL of the Looker API, such as https://acme.cloud.looker.com. Changing it requires sending the credentials' secrets again.")
     api_client_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="Client ID of the Looker API key.")
     api_client_secret: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=1024)]] = Field(default=None, description="Client secret of the Looker API key. Stored by Monte Carlo and never returned.")
     verify_ssl: Optional[StrictBool] = Field(default=None, description="Whether to verify Looker's TLS certificate. Verified when left out.")

@@ -6,7 +6,7 @@ A change to existing Looker API credentials.  A field left out is unchanged. `ve
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**base_url** | **str** | URL of the Looker API, such as https://acme.cloud.looker.com. | [optional] 
+**base_url** | **str** | URL of the Looker API, such as https://acme.cloud.looker.com. Changing it requires sending the credentials&#39; secrets again. | [optional] 
 **api_client_id** | **str** | Client ID of the Looker API key. | [optional] 
 **api_client_secret** | **str** | Client secret of the Looker API key. Stored by Monte Carlo and never returned. | [optional] 
 **verify_ssl** | **bool** | Whether to verify Looker&#39;s TLS certificate. Verified when left out. | [optional] 

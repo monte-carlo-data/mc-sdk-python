@@ -7,12 +7,12 @@ A change to existing Informatica credentials to validate before it is made.  Tak
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **deployment_id** | **UUID** | Deployment that runs the validations. It has to be one &#x60;GET /deployments&#x60; lists, and it has to be able to reach the system the credentials are for. | 
-**base_url** | **str** | Informatica login URL for your POD. Leave it out for https://dm-us.informaticacloud.com. | [optional] 
+**base_url** | **str** | Informatica login URL for your POD. Leave it out for https://dm-us.informaticacloud.com. Changing it requires sending the credentials&#39; secrets again. | [optional] 
 **username** | **str** | Informatica user, for &#x60;password&#x60;. | [optional] 
 **org_id** | **str** | Informatica organization ID, for &#x60;oauth&#x60;. | [optional] 
 **oauth_client_id** | **str** | Client ID of the app registered with your identity provider, for &#x60;oauth&#x60;. | [optional] 
 **oauth_grant_type** | [**OAuthGrantType**](OAuthGrantType.md) | Grant Monte Carlo requests the token with, for &#x60;oauth&#x60;. &#x60;password&#x60; also takes &#x60;oauth_username&#x60; and &#x60;oauth_password&#x60;. | [optional] 
-**oauth_access_token_endpoint** | **str** | Identity provider URL Monte Carlo requests tokens from. | [optional] 
+**oauth_access_token_endpoint** | **str** | Identity provider URL Monte Carlo requests tokens from. Changing it requires sending the credentials&#39; secrets again. | [optional] 
 **oauth_scope** | **str** | Scope to request the token with. Leave it out to request none. | [optional] 
 **oauth_username** | **str** | Identity provider user, for the &#x60;password&#x60; grant. | [optional] 
 **password** | **str** | Password of &#x60;username&#x60;, for &#x60;password&#x60;. Stored by Monte Carlo and never returned. | [optional] 

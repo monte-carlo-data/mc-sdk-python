@@ -26,7 +26,7 @@ class SnowflakeCredentialsPatch(BaseModel):
     passphrase is only accepted alongside `private_key`, null included. `private_key` set to
     null is unchanged.
     """ # noqa: E501
-    account: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="New Snowflake account identifier, without the `.snowflakecomputing.com` suffix.")
+    account: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="New Snowflake account identifier, without the `.snowflakecomputing.com` suffix. Letters, digits, `_`, `.` and `-` only.")
     user: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="New Snowflake user.")
     private_key: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=32768)]] = Field(default=None, description="New private key, as PEM text. Replaces the stored key and its passphrase; send `private_key_passphrase` in the same request if the new key has one.")
     private_key_passphrase: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=32768)]] = Field(default=None, description="Passphrase of the new private key. Only accepted together with `private_key`.")

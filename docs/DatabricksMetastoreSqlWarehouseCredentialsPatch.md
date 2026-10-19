@@ -6,7 +6,7 @@ A change to existing Databricks metadata collection credentials.  A field left o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workspace_url** | **str** | URL of the Databricks workspace, or its host name. | [optional] 
+**workspace_url** | **str** | URL of the Databricks workspace, or its host name. Changing it requires sending the credentials&#39; secrets again. | [optional] 
 **sql_warehouse_id** | **str** | ID of the Databricks SQL warehouse the connection runs on. | [optional] 
 **workspace_id** | **str** | ID of the Databricks workspace. | [optional] 
 **token** | **str** | Personal access token or service principal token. Send this, or &#x60;oauth_client_id&#x60; and &#x60;oauth_client_secret&#x60;. Stored by Monte Carlo and never returned. | [optional] 

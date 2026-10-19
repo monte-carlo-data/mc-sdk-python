@@ -2,6 +2,21 @@
 
 > The Python SDK for the Monte Carlo REST API: one package, `pycarlo2`. Generated from the API's OpenAPI spec, except client construction and credentials (`auth.py`, `oauth.py`, `profile.py`) and the pagination helper (`paging.py`), which are hand-written.
 
+## This repository is public
+
+Treat everything here as customer-facing, including things that are easy to forget:
+
+- **Commit messages and pull request descriptions.** A closed pull request stays visible, a force-pushed commit stays reachable by its sha, and edited descriptions keep an edit history.
+- **Docstrings and the reference site**, which are what every user reads.
+- **Generated code**, which ships as-is.
+- **Every merge to `main`**, which is published to PyPI; see [Releasing](#releasing).
+
+So, **in the contents of any file committed here**: no internal file paths, no ticket identifiers, and no design rationale that only makes sense from the inside. That reasoning belongs in the ticket or in the internal repository that owns generation.
+
+Three internal names are the exception: api-codegen, the generator; monolith, the service the API spec is exported from; and ai-agent, whose MCP tools pin this SDK. Generated files, `.api-codegen-source.json` and the dispatch workflow already name them. Name no other internal repository.
+
+Branch names and pull request metadata may carry ticket identifiers: `<person>/<ticket-id>-<slug>` is the convention, and a merged pull request displays its head branch permanently.
+
 ## Stack
 
 - **Language:** Python 3.10+

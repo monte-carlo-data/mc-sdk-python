@@ -150,9 +150,9 @@ They carry no arguments or payload. A tool built on the SDK names itself by over
 The generator writes at the repository root, replacing any path it emits and deleting nothing.
 Every hand-written file it would otherwise emit (`pyproject.toml`, `README.md`, `.gitignore`,
 and the four modules inside the package) is listed in `.openapi-generator-ignore`; other
-hand-written files (`tests/`, `tools/`, `AGENTS.md`, `LICENSE`, the CI workflows) are names the generator
-never emits and need no entry. Adding a file that shares a generated path without listing it
-risks a silent overwrite.
+hand-written files (`tests/`, `tools/`, `AGENTS.md`, `LICENSE`, `VERSION`, the CI workflows and
+scripts) are names the generator never emits and need no entry. Adding a file that shares a
+generated path without listing it risks a silent overwrite.
 
 ## API reference
 

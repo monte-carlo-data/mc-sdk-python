@@ -1,8 +1,9 @@
 name: Release
 
 # Every merge to main is a release. After Test succeeds on main, this tags the merge commit
-# v<base>.<n> and publishes that version of pycarlo2 to PyPI. A manual run, from any branch, is a
-# dry run: it publishes a dev version to TestPyPI and tags nothing.
+# v<base>.<n>, publishes that version of pycarlo2 to PyPI and attaches the same files to a GitHub
+# release. A manual run, from any branch, is a dry run: it publishes a dev version to TestPyPI and
+# tags nothing.
 #
 # PyPI's Trusted Publisher names this file and the release environment, so keep its path, keep
 # publish-pypi here, and never add a workflow_call trigger. The release environment allows only
@@ -237,3 +238,43 @@ jobs:
             --index-url "https://$INDEX/simple/" "pycarlo2==$VERSION"
           venv/bin/pip install served/*.whl
           venv/bin/python -I smoke/smoke.py "$VERSION"
+
+  # Attaches the files PyPI now serves to a GitHub release on the tag, once smoke has checked them.
+  # Only the highest version is marked latest, since releases from back-to-back merges can finish
+  # out of order. A rerun finds the release already there and does nothing.
+  github-release:
+    name: Create the GitHub release
+    needs: [tag, build, smoke]
+    if: >-
+      ${{ !cancelled() &&
+      github.event_name == 'workflow_run' &&
+      needs.tag.result == 'success' &&
+      needs.smoke.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # creates the release with GITHUB_TOKEN
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: dist
+          path: dist
+
+      - name: Create ${{ needs.tag.outputs.tag }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.tag.outputs.tag }}
+          VERSION: ${{ needs.build.outputs.version }}
+        run: |
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            echo "$TAG already has a release."
+            exit 0
+          fi
+          highest=$(gh api "repos/$GITHUB_REPOSITORY/git/matching-refs/tags/v" --jq '.[].ref' |
+            sed 's#^refs/tags/##' | { grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' || true; } | sort -V | tail -1)
+          latest=false
+          if [ "$highest" = "$TAG" ]; then latest=true; fi
+          notes="Published to PyPI as [pycarlo2 $VERSION](https://pypi.org/project/pycarlo2/$VERSION/):"
+          # shellcheck disable=SC2016 # the backticks are a Markdown code fence
+          notes=$(printf '%s\n\n```bash\npip install pycarlo2==%s\n```\n' "$notes" "$VERSION")
+          gh release create "$TAG" dist/pycarlo2-* --repo "$GITHUB_REPOSITORY" --verify-tag \
+            --title "$TAG" --notes "$notes" --latest="$latest"

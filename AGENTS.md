@@ -117,6 +117,7 @@ After `Test` succeeds on `main`, `release.yml` runs:
 2. `build` runs `.github/scripts/build-dist.sh` at the tag's version, without `id-token`. The script stamps the version with `stamp-version.sh`, builds the wheel and sdist, checks them with `check-dist.sh` and `twine check --strict`, then installs the wheel into a clean venv and runs `.github/scripts/smoke.py`, which imports `pycarlo2`, checks `__version__` and builds a client.
 3. `publish-pypi` uploads them through PyPI's Trusted Publisher, in the `release` environment, with `skip-existing` so a retry can finish an upload that stopped halfway.
 4. `smoke` checks that PyPI serves exactly the files built, installs what PyPI serves into a clean venv and runs the same `smoke.py`.
+5. `github-release` attaches the same wheel and sdist to a GitHub release on the tag. Only the highest version is marked latest, and a rerun finds the release already there.
 
 The `package` job in `test.yml` calls the same `build-dist.sh` on every pull request, at the version the merge would get, so the two can't drift. It also runs the tests of `next-tag.sh`, `check-dist.sh` and `stamp-version.sh`. A change that would break a release fails there, before it merges.
 

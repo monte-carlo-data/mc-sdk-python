@@ -20,6 +20,8 @@ from pycarlo2.models.aws_collection_agent_patch import AwsCollectionAgentPatch
 from pycarlo2.models.aws_collection_data_store_in import AwsCollectionDataStoreIn
 from pycarlo2.models.aws_collection_data_store_out import AwsCollectionDataStoreOut
 from pycarlo2.models.aws_collection_data_store_patch import AwsCollectionDataStorePatch
+from pycarlo2.models.aws_private_link_out import AwsPrivateLinkOut
+from pycarlo2.models.aws_private_link_region_out import AwsPrivateLinkRegionOut
 from pycarlo2.models.aws_secrets_manager_credentials_change_validate_in import AwsSecretsManagerCredentialsChangeValidateIn
 from pycarlo2.models.aws_secrets_manager_credentials_in import AwsSecretsManagerCredentialsIn
 from pycarlo2.models.aws_secrets_manager_credentials_out import AwsSecretsManagerCredentialsOut
@@ -159,6 +161,8 @@ from pycarlo2.models.generic_collection_agent_token_created_out import GenericCo
 from pycarlo2.models.generic_collection_agent_token_in import GenericCollectionAgentTokenIn
 from pycarlo2.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut
 from pycarlo2.models.hosting_domains_out import HostingDomainsOut
+from pycarlo2.models.hosting_network_out import HostingNetworkOut
+from pycarlo2.models.hosting_private_link_out import HostingPrivateLinkOut
 from pycarlo2.models.identity_type import IdentityType
 from pycarlo2.models.informatica_v2_auth_mode import InformaticaV2AuthMode
 from pycarlo2.models.informatica_v2_credentials_change_validate_in import InformaticaV2CredentialsChangeValidateIn
@@ -170,6 +174,7 @@ from pycarlo2.models.ingestion_key_created_out import IngestionKeyCreatedOut
 from pycarlo2.models.ingestion_key_in import IngestionKeyIn
 from pycarlo2.models.ingestion_key_out import IngestionKeyOut
 from pycarlo2.models.input import Input
+from pycarlo2.models.instance_region import InstanceRegion
 from pycarlo2.models.integration_key_out import IntegrationKeyOut
 from pycarlo2.models.integration_key_scope import IntegrationKeyScope
 from pycarlo2.models.looker_credentials_change_validate_in import LookerCredentialsChangeValidateIn

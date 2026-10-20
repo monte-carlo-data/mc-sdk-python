@@ -1,6 +1,6 @@
 # HostingDomainsOut
 
-The URLs your Monte Carlo deployment serves.
+The URLs your Monte Carlo instance serves.
 
 ## Properties
 
@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **integrations_url** | **str** | Base URL of the integrations gateway, which receives webhooks and other inbound requests from the tools you connect. | 
 **graphql_api_url** | **str** | URL of the GraphQL API, for API keys. | 
 **graphql_oauth_api_url** | **str** | URL of the GraphQL API, for OAuth clients. | 
-**m2m_token_url** | **str** | URL an OAuth client requests an access token from, with the client-credentials grant. Null when the deployment does not support OAuth clients. | 
-**m2m_instance_scope** | **str** | Scope an OAuth client requests for its token to reach this deployment. Null when the deployment does not support OAuth clients. | 
+**m2m_token_url** | **str** | URL an OAuth client requests an access token from, with the client-credentials grant. Null when the instance does not support OAuth clients. | 
+**m2m_instance_scope** | **str** | Scope an OAuth client requests for its token to reach this instance. Null when the instance does not support OAuth clients. | 
 **dbt_cloud_webhook_url** | **str** | URL to give dbt Cloud when you create the webhook that reports job runs to Monte Carlo. | 
 
 ## Example

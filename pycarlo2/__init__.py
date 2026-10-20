@@ -51,6 +51,8 @@ __all__ = [
     "AwsCollectionDataStoreIn",
     "AwsCollectionDataStoreOut",
     "AwsCollectionDataStorePatch",
+    "AwsPrivateLinkOut",
+    "AwsPrivateLinkRegionOut",
     "AwsSecretsManagerCredentialsChangeValidateIn",
     "AwsSecretsManagerCredentialsIn",
     "AwsSecretsManagerCredentialsOut",
@@ -190,6 +192,8 @@ __all__ = [
     "GenericCollectionAgentTokenIn",
     "GenericCollectionAgentTokenOut",
     "HostingDomainsOut",
+    "HostingNetworkOut",
+    "HostingPrivateLinkOut",
     "IdentityType",
     "InformaticaV2AuthMode",
     "InformaticaV2CredentialsChangeValidateIn",
@@ -201,6 +205,7 @@ __all__ = [
     "IngestionKeyIn",
     "IngestionKeyOut",
     "Input",
+    "InstanceRegion",
     "IntegrationKeyOut",
     "IntegrationKeyScope",
     "LookerCredentialsChangeValidateIn",
@@ -354,6 +359,8 @@ from pycarlo2.models.aws_collection_agent_patch import AwsCollectionAgentPatch a
 from pycarlo2.models.aws_collection_data_store_in import AwsCollectionDataStoreIn as AwsCollectionDataStoreIn
 from pycarlo2.models.aws_collection_data_store_out import AwsCollectionDataStoreOut as AwsCollectionDataStoreOut
 from pycarlo2.models.aws_collection_data_store_patch import AwsCollectionDataStorePatch as AwsCollectionDataStorePatch
+from pycarlo2.models.aws_private_link_out import AwsPrivateLinkOut as AwsPrivateLinkOut
+from pycarlo2.models.aws_private_link_region_out import AwsPrivateLinkRegionOut as AwsPrivateLinkRegionOut
 from pycarlo2.models.aws_secrets_manager_credentials_change_validate_in import AwsSecretsManagerCredentialsChangeValidateIn as AwsSecretsManagerCredentialsChangeValidateIn
 from pycarlo2.models.aws_secrets_manager_credentials_in import AwsSecretsManagerCredentialsIn as AwsSecretsManagerCredentialsIn
 from pycarlo2.models.aws_secrets_manager_credentials_out import AwsSecretsManagerCredentialsOut as AwsSecretsManagerCredentialsOut
@@ -493,6 +500,8 @@ from pycarlo2.models.generic_collection_agent_token_created_out import GenericCo
 from pycarlo2.models.generic_collection_agent_token_in import GenericCollectionAgentTokenIn as GenericCollectionAgentTokenIn
 from pycarlo2.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut as GenericCollectionAgentTokenOut
 from pycarlo2.models.hosting_domains_out import HostingDomainsOut as HostingDomainsOut
+from pycarlo2.models.hosting_network_out import HostingNetworkOut as HostingNetworkOut
+from pycarlo2.models.hosting_private_link_out import HostingPrivateLinkOut as HostingPrivateLinkOut
 from pycarlo2.models.identity_type import IdentityType as IdentityType
 from pycarlo2.models.informatica_v2_auth_mode import InformaticaV2AuthMode as InformaticaV2AuthMode
 from pycarlo2.models.informatica_v2_credentials_change_validate_in import InformaticaV2CredentialsChangeValidateIn as InformaticaV2CredentialsChangeValidateIn
@@ -504,6 +513,7 @@ from pycarlo2.models.ingestion_key_created_out import IngestionKeyCreatedOut as 
 from pycarlo2.models.ingestion_key_in import IngestionKeyIn as IngestionKeyIn
 from pycarlo2.models.ingestion_key_out import IngestionKeyOut as IngestionKeyOut
 from pycarlo2.models.input import Input as Input
+from pycarlo2.models.instance_region import InstanceRegion as InstanceRegion
 from pycarlo2.models.integration_key_out import IntegrationKeyOut as IntegrationKeyOut
 from pycarlo2.models.integration_key_scope import IntegrationKeyScope as IntegrationKeyScope
 from pycarlo2.models.looker_credentials_change_validate_in import LookerCredentialsChangeValidateIn as LookerCredentialsChangeValidateIn

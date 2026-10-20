@@ -12,6 +12,8 @@ docs/AwsCollectionAgentPatch.md
 docs/AwsCollectionDataStoreIn.md
 docs/AwsCollectionDataStoreOut.md
 docs/AwsCollectionDataStorePatch.md
+docs/AwsPrivateLinkOut.md
+docs/AwsPrivateLinkRegionOut.md
 docs/AwsSecretsManagerCredentialsChangeValidateIn.md
 docs/AwsSecretsManagerCredentialsIn.md
 docs/AwsSecretsManagerCredentialsOut.md
@@ -161,6 +163,8 @@ docs/GenericCollectionAgentTokenIn.md
 docs/GenericCollectionAgentTokenOut.md
 docs/HostingApi.md
 docs/HostingDomainsOut.md
+docs/HostingNetworkOut.md
+docs/HostingPrivateLinkOut.md
 docs/IdentityType.md
 docs/InformaticaV2AuthMode.md
 docs/InformaticaV2CredentialsChangeValidateIn.md
@@ -172,6 +176,7 @@ docs/IngestionKeyCreatedOut.md
 docs/IngestionKeyIn.md
 docs/IngestionKeyOut.md
 docs/Input.md
+docs/InstanceRegion.md
 docs/IntegrationKeyOut.md
 docs/IntegrationKeyScope.md
 docs/IntegrationKeysApi.md
@@ -320,6 +325,8 @@ pycarlo2/models/aws_collection_agent_patch.py
 pycarlo2/models/aws_collection_data_store_in.py
 pycarlo2/models/aws_collection_data_store_out.py
 pycarlo2/models/aws_collection_data_store_patch.py
+pycarlo2/models/aws_private_link_out.py
+pycarlo2/models/aws_private_link_region_out.py
 pycarlo2/models/aws_secrets_manager_credentials_change_validate_in.py
 pycarlo2/models/aws_secrets_manager_credentials_in.py
 pycarlo2/models/aws_secrets_manager_credentials_out.py
@@ -459,6 +466,8 @@ pycarlo2/models/generic_collection_agent_token_created_out.py
 pycarlo2/models/generic_collection_agent_token_in.py
 pycarlo2/models/generic_collection_agent_token_out.py
 pycarlo2/models/hosting_domains_out.py
+pycarlo2/models/hosting_network_out.py
+pycarlo2/models/hosting_private_link_out.py
 pycarlo2/models/identity_type.py
 pycarlo2/models/informatica_v2_auth_mode.py
 pycarlo2/models/informatica_v2_credentials_change_validate_in.py
@@ -470,6 +479,7 @@ pycarlo2/models/ingestion_key_created_out.py
 pycarlo2/models/ingestion_key_in.py
 pycarlo2/models/ingestion_key_out.py
 pycarlo2/models/input.py
+pycarlo2/models/instance_region.py
 pycarlo2/models/integration_key_out.py
 pycarlo2/models/integration_key_scope.py
 pycarlo2/models/looker_credentials_change_validate_in.py

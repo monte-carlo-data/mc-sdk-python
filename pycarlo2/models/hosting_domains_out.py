@@ -18,14 +18,14 @@ from pydantic_core import to_jsonable_python
 
 class HostingDomainsOut(BaseModel):
     """
-    The URLs your Monte Carlo deployment serves.
+    The URLs your Monte Carlo instance serves.
     """ # noqa: E501
     ui_url: StrictStr = Field(description="URL of the Monte Carlo web app.")
     integrations_url: StrictStr = Field(description="Base URL of the integrations gateway, which receives webhooks and other inbound requests from the tools you connect.")
     graphql_api_url: StrictStr = Field(description="URL of the GraphQL API, for API keys.")
     graphql_oauth_api_url: StrictStr = Field(description="URL of the GraphQL API, for OAuth clients.")
-    m2m_token_url: Optional[StrictStr] = Field(description="URL an OAuth client requests an access token from, with the client-credentials grant. Null when the deployment does not support OAuth clients.")
-    m2m_instance_scope: Optional[StrictStr] = Field(description="Scope an OAuth client requests for its token to reach this deployment. Null when the deployment does not support OAuth clients.")
+    m2m_token_url: Optional[StrictStr] = Field(description="URL an OAuth client requests an access token from, with the client-credentials grant. Null when the instance does not support OAuth clients.")
+    m2m_instance_scope: Optional[StrictStr] = Field(description="Scope an OAuth client requests for its token to reach this instance. Null when the instance does not support OAuth clients.")
     dbt_cloud_webhook_url: StrictStr = Field(description="URL to give dbt Cloud when you create the webhook that reports job runs to Monte Carlo.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["ui_url", "integrations_url", "graphql_api_url", "graphql_oauth_api_url", "m2m_token_url", "m2m_instance_scope", "dbt_cloud_webhook_url"]

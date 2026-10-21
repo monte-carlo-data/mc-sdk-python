@@ -43,6 +43,11 @@ __all__ = [
     "AirflowCredentialsIn",
     "AirflowCredentialsOut",
     "AirflowCredentialsPatch",
+    "AthenaCredentialsChangeValidateIn",
+    "AthenaCredentialsIn",
+    "AthenaCredentialsOut",
+    "AthenaCredentialsPatch",
+    "AthenaCredentialsValidateIn",
     "AuthHeadersCredentialsIn",
     "AuthenticationType",
     "AwsCollectionAgentIn",
@@ -191,6 +196,11 @@ __all__ = [
     "GenericCollectionAgentTokenCreatedOut",
     "GenericCollectionAgentTokenIn",
     "GenericCollectionAgentTokenOut",
+    "GlueCredentialsChangeValidateIn",
+    "GlueCredentialsIn",
+    "GlueCredentialsOut",
+    "GlueCredentialsPatch",
+    "GlueCredentialsValidateIn",
     "HostingDomainsOut",
     "HostingNetworkOut",
     "HostingPrivateLinkOut",
@@ -351,6 +361,11 @@ from pycarlo2.models.airflow_callbacks_key_out import AirflowCallbacksKeyOut as 
 from pycarlo2.models.airflow_credentials_in import AirflowCredentialsIn as AirflowCredentialsIn
 from pycarlo2.models.airflow_credentials_out import AirflowCredentialsOut as AirflowCredentialsOut
 from pycarlo2.models.airflow_credentials_patch import AirflowCredentialsPatch as AirflowCredentialsPatch
+from pycarlo2.models.athena_credentials_change_validate_in import AthenaCredentialsChangeValidateIn as AthenaCredentialsChangeValidateIn
+from pycarlo2.models.athena_credentials_in import AthenaCredentialsIn as AthenaCredentialsIn
+from pycarlo2.models.athena_credentials_out import AthenaCredentialsOut as AthenaCredentialsOut
+from pycarlo2.models.athena_credentials_patch import AthenaCredentialsPatch as AthenaCredentialsPatch
+from pycarlo2.models.athena_credentials_validate_in import AthenaCredentialsValidateIn as AthenaCredentialsValidateIn
 from pycarlo2.models.auth_headers_credentials_in import AuthHeadersCredentialsIn as AuthHeadersCredentialsIn
 from pycarlo2.models.authentication_type import AuthenticationType as AuthenticationType
 from pycarlo2.models.aws_collection_agent_in import AwsCollectionAgentIn as AwsCollectionAgentIn
@@ -499,6 +514,11 @@ from pycarlo2.models.generic_collection_agent_patch import GenericCollectionAgen
 from pycarlo2.models.generic_collection_agent_token_created_out import GenericCollectionAgentTokenCreatedOut as GenericCollectionAgentTokenCreatedOut
 from pycarlo2.models.generic_collection_agent_token_in import GenericCollectionAgentTokenIn as GenericCollectionAgentTokenIn
 from pycarlo2.models.generic_collection_agent_token_out import GenericCollectionAgentTokenOut as GenericCollectionAgentTokenOut
+from pycarlo2.models.glue_credentials_change_validate_in import GlueCredentialsChangeValidateIn as GlueCredentialsChangeValidateIn
+from pycarlo2.models.glue_credentials_in import GlueCredentialsIn as GlueCredentialsIn
+from pycarlo2.models.glue_credentials_out import GlueCredentialsOut as GlueCredentialsOut
+from pycarlo2.models.glue_credentials_patch import GlueCredentialsPatch as GlueCredentialsPatch
+from pycarlo2.models.glue_credentials_validate_in import GlueCredentialsValidateIn as GlueCredentialsValidateIn
 from pycarlo2.models.hosting_domains_out import HostingDomainsOut as HostingDomainsOut
 from pycarlo2.models.hosting_network_out import HostingNetworkOut as HostingNetworkOut
 from pycarlo2.models.hosting_private_link_out import HostingPrivateLinkOut as HostingPrivateLinkOut

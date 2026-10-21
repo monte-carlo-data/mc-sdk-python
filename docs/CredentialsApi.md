@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_airflow_credentials**](CredentialsApi.md#create_airflow_credentials) | **POST** /api/v2/credentials/airflow | Create Airflow credentials
+[**create_athena_credentials**](CredentialsApi.md#create_athena_credentials) | **POST** /api/v2/credentials/athena | Create Athena credentials
 [**create_aws_secrets_manager_credentials**](CredentialsApi.md#create_aws_secrets_manager_credentials) | **POST** /api/v2/credentials/self-hosted/aws | Create AWS Secrets Manager credentials
 [**create_azure_data_factory_credentials**](CredentialsApi.md#create_azure_data_factory_credentials) | **POST** /api/v2/credentials/azure-data-factory | Create Azure Data Factory credentials
 [**create_azure_dedicated_sql_pool_credentials**](CredentialsApi.md#create_azure_dedicated_sql_pool_credentials) | **POST** /api/v2/credentials/azure-dedicated-sql-pool | Create Azure Dedicated SQL Pool credentials
@@ -21,6 +22,7 @@ Method | HTTP request | Description
 [**create_fivetran_credentials**](CredentialsApi.md#create_fivetran_credentials) | **POST** /api/v2/credentials/fivetran | Create Fivetran credentials
 [**create_gcp_dataform_credentials**](CredentialsApi.md#create_gcp_dataform_credentials) | **POST** /api/v2/credentials/gcp-dataform | Create GCP Dataform credentials
 [**create_gcp_secret_manager_credentials**](CredentialsApi.md#create_gcp_secret_manager_credentials) | **POST** /api/v2/credentials/self-hosted/gcp | Create GCP Secret Manager credentials
+[**create_glue_credentials**](CredentialsApi.md#create_glue_credentials) | **POST** /api/v2/credentials/glue | Create Glue credentials
 [**create_informatica_v2_credentials**](CredentialsApi.md#create_informatica_v2_credentials) | **POST** /api/v2/credentials/informatica-v2 | Create Informatica credentials
 [**create_looker_credentials**](CredentialsApi.md#create_looker_credentials) | **POST** /api/v2/credentials/looker | Create Looker credentials
 [**create_looker_git_clone_credentials**](CredentialsApi.md#create_looker_git_clone_credentials) | **POST** /api/v2/credentials/looker-git-clone | Create LookML repository credentials
@@ -39,6 +41,7 @@ Method | HTTP request | Description
 [**create_tableau_credentials**](CredentialsApi.md#create_tableau_credentials) | **POST** /api/v2/credentials/tableau | Create Tableau credentials
 [**create_teradata_credentials**](CredentialsApi.md#create_teradata_credentials) | **POST** /api/v2/credentials/teradata | Create Teradata credentials
 [**delete_airflow_credentials**](CredentialsApi.md#delete_airflow_credentials) | **DELETE** /api/v2/credentials/airflow/{credentials_id} | Delete Airflow credentials
+[**delete_athena_credentials**](CredentialsApi.md#delete_athena_credentials) | **DELETE** /api/v2/credentials/athena/{credentials_id} | Delete Athena credentials
 [**delete_aws_secrets_manager_credentials**](CredentialsApi.md#delete_aws_secrets_manager_credentials) | **DELETE** /api/v2/credentials/self-hosted/aws/{credentials_id} | Delete AWS Secrets Manager credentials
 [**delete_azure_data_factory_credentials**](CredentialsApi.md#delete_azure_data_factory_credentials) | **DELETE** /api/v2/credentials/azure-data-factory/{credentials_id} | Delete Azure Data Factory credentials
 [**delete_azure_dedicated_sql_pool_credentials**](CredentialsApi.md#delete_azure_dedicated_sql_pool_credentials) | **DELETE** /api/v2/credentials/azure-dedicated-sql-pool/{credentials_id} | Delete Azure Dedicated SQL Pool credentials
@@ -56,6 +59,7 @@ Method | HTTP request | Description
 [**delete_fivetran_credentials**](CredentialsApi.md#delete_fivetran_credentials) | **DELETE** /api/v2/credentials/fivetran/{credentials_id} | Delete Fivetran credentials
 [**delete_gcp_dataform_credentials**](CredentialsApi.md#delete_gcp_dataform_credentials) | **DELETE** /api/v2/credentials/gcp-dataform/{credentials_id} | Delete GCP Dataform credentials
 [**delete_gcp_secret_manager_credentials**](CredentialsApi.md#delete_gcp_secret_manager_credentials) | **DELETE** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Delete GCP Secret Manager credentials
+[**delete_glue_credentials**](CredentialsApi.md#delete_glue_credentials) | **DELETE** /api/v2/credentials/glue/{credentials_id} | Delete Glue credentials
 [**delete_informatica_v2_credentials**](CredentialsApi.md#delete_informatica_v2_credentials) | **DELETE** /api/v2/credentials/informatica-v2/{credentials_id} | Delete Informatica credentials
 [**delete_looker_credentials**](CredentialsApi.md#delete_looker_credentials) | **DELETE** /api/v2/credentials/looker/{credentials_id} | Delete Looker credentials
 [**delete_looker_git_clone_credentials**](CredentialsApi.md#delete_looker_git_clone_credentials) | **DELETE** /api/v2/credentials/looker-git-clone/{credentials_id} | Delete LookML repository credentials
@@ -74,6 +78,7 @@ Method | HTTP request | Description
 [**delete_tableau_credentials**](CredentialsApi.md#delete_tableau_credentials) | **DELETE** /api/v2/credentials/tableau/{credentials_id} | Delete Tableau credentials
 [**delete_teradata_credentials**](CredentialsApi.md#delete_teradata_credentials) | **DELETE** /api/v2/credentials/teradata/{credentials_id} | Delete Teradata credentials
 [**get_airflow_credentials**](CredentialsApi.md#get_airflow_credentials) | **GET** /api/v2/credentials/airflow/{credentials_id} | Get Airflow credentials
+[**get_athena_credentials**](CredentialsApi.md#get_athena_credentials) | **GET** /api/v2/credentials/athena/{credentials_id} | Get Athena credentials
 [**get_aws_secrets_manager_credentials**](CredentialsApi.md#get_aws_secrets_manager_credentials) | **GET** /api/v2/credentials/self-hosted/aws/{credentials_id} | Get AWS Secrets Manager credentials
 [**get_azure_data_factory_credentials**](CredentialsApi.md#get_azure_data_factory_credentials) | **GET** /api/v2/credentials/azure-data-factory/{credentials_id} | Get Azure Data Factory credentials
 [**get_azure_dedicated_sql_pool_credentials**](CredentialsApi.md#get_azure_dedicated_sql_pool_credentials) | **GET** /api/v2/credentials/azure-dedicated-sql-pool/{credentials_id} | Get Azure Dedicated SQL Pool credentials
@@ -90,6 +95,7 @@ Method | HTTP request | Description
 [**get_fivetran_credentials**](CredentialsApi.md#get_fivetran_credentials) | **GET** /api/v2/credentials/fivetran/{credentials_id} | Get Fivetran credentials
 [**get_gcp_dataform_credentials**](CredentialsApi.md#get_gcp_dataform_credentials) | **GET** /api/v2/credentials/gcp-dataform/{credentials_id} | Get GCP Dataform credentials
 [**get_gcp_secret_manager_credentials**](CredentialsApi.md#get_gcp_secret_manager_credentials) | **GET** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Get GCP Secret Manager credentials
+[**get_glue_credentials**](CredentialsApi.md#get_glue_credentials) | **GET** /api/v2/credentials/glue/{credentials_id} | Get Glue credentials
 [**get_informatica_v2_credentials**](CredentialsApi.md#get_informatica_v2_credentials) | **GET** /api/v2/credentials/informatica-v2/{credentials_id} | Get Informatica credentials
 [**get_looker_credentials**](CredentialsApi.md#get_looker_credentials) | **GET** /api/v2/credentials/looker/{credentials_id} | Get Looker credentials
 [**get_looker_git_clone_credentials**](CredentialsApi.md#get_looker_git_clone_credentials) | **GET** /api/v2/credentials/looker-git-clone/{credentials_id} | Get LookML repository credentials
@@ -109,6 +115,7 @@ Method | HTTP request | Description
 [**get_teradata_credentials**](CredentialsApi.md#get_teradata_credentials) | **GET** /api/v2/credentials/teradata/{credentials_id} | Get Teradata credentials
 [**list_credentials**](CredentialsApi.md#list_credentials) | **GET** /api/v2/credentials | List credentials
 [**update_airflow_credentials**](CredentialsApi.md#update_airflow_credentials) | **PATCH** /api/v2/credentials/airflow/{credentials_id} | Update Airflow credentials
+[**update_athena_credentials**](CredentialsApi.md#update_athena_credentials) | **PATCH** /api/v2/credentials/athena/{credentials_id} | Update Athena credentials
 [**update_aws_secrets_manager_credentials**](CredentialsApi.md#update_aws_secrets_manager_credentials) | **PATCH** /api/v2/credentials/self-hosted/aws/{credentials_id} | Update AWS Secrets Manager credentials
 [**update_azure_data_factory_credentials**](CredentialsApi.md#update_azure_data_factory_credentials) | **PATCH** /api/v2/credentials/azure-data-factory/{credentials_id} | Update Azure Data Factory credentials
 [**update_azure_dedicated_sql_pool_credentials**](CredentialsApi.md#update_azure_dedicated_sql_pool_credentials) | **PATCH** /api/v2/credentials/azure-dedicated-sql-pool/{credentials_id} | Update Azure Dedicated SQL Pool credentials
@@ -125,6 +132,7 @@ Method | HTTP request | Description
 [**update_fivetran_credentials**](CredentialsApi.md#update_fivetran_credentials) | **PATCH** /api/v2/credentials/fivetran/{credentials_id} | Update Fivetran credentials
 [**update_gcp_dataform_credentials**](CredentialsApi.md#update_gcp_dataform_credentials) | **PATCH** /api/v2/credentials/gcp-dataform/{credentials_id} | Update GCP Dataform credentials
 [**update_gcp_secret_manager_credentials**](CredentialsApi.md#update_gcp_secret_manager_credentials) | **PATCH** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Update GCP Secret Manager credentials
+[**update_glue_credentials**](CredentialsApi.md#update_glue_credentials) | **PATCH** /api/v2/credentials/glue/{credentials_id} | Update Glue credentials
 [**update_informatica_v2_credentials**](CredentialsApi.md#update_informatica_v2_credentials) | **PATCH** /api/v2/credentials/informatica-v2/{credentials_id} | Update Informatica credentials
 [**update_looker_credentials**](CredentialsApi.md#update_looker_credentials) | **PATCH** /api/v2/credentials/looker/{credentials_id} | Update Looker credentials
 [**update_looker_git_clone_credentials**](CredentialsApi.md#update_looker_git_clone_credentials) | **PATCH** /api/v2/credentials/looker-git-clone/{credentials_id} | Update LookML repository credentials
@@ -142,6 +150,8 @@ Method | HTTP request | Description
 [**update_starburst_galaxy_credentials**](CredentialsApi.md#update_starburst_galaxy_credentials) | **PATCH** /api/v2/credentials/starburst-galaxy/{credentials_id} | Update Starburst Galaxy credentials
 [**update_tableau_credentials**](CredentialsApi.md#update_tableau_credentials) | **PATCH** /api/v2/credentials/tableau/{credentials_id} | Update Tableau credentials
 [**update_teradata_credentials**](CredentialsApi.md#update_teradata_credentials) | **PATCH** /api/v2/credentials/teradata/{credentials_id} | Update Teradata credentials
+[**validate_athena_credentials**](CredentialsApi.md#validate_athena_credentials) | **POST** /api/v2/credentials/athena/validate | Validate Athena credentials
+[**validate_athena_credentials_change**](CredentialsApi.md#validate_athena_credentials_change) | **POST** /api/v2/credentials/athena/{credentials_id}/validate | Validate a change to Athena credentials
 [**validate_aws_secrets_manager_credentials**](CredentialsApi.md#validate_aws_secrets_manager_credentials) | **POST** /api/v2/credentials/self-hosted/aws/validate | Validate AWS Secrets Manager credentials
 [**validate_aws_secrets_manager_credentials_change**](CredentialsApi.md#validate_aws_secrets_manager_credentials_change) | **POST** /api/v2/credentials/self-hosted/aws/{credentials_id}/validate | Validate a change to AWS Secrets Manager credentials
 [**validate_azure_data_factory_credentials**](CredentialsApi.md#validate_azure_data_factory_credentials) | **POST** /api/v2/credentials/azure-data-factory/validate | Validate Azure Data Factory credentials
@@ -174,6 +184,8 @@ Method | HTTP request | Description
 [**validate_gcp_dataform_credentials_change**](CredentialsApi.md#validate_gcp_dataform_credentials_change) | **POST** /api/v2/credentials/gcp-dataform/{credentials_id}/validate | Validate a change to GCP Dataform credentials
 [**validate_gcp_secret_manager_credentials**](CredentialsApi.md#validate_gcp_secret_manager_credentials) | **POST** /api/v2/credentials/self-hosted/gcp/validate | Validate GCP Secret Manager credentials
 [**validate_gcp_secret_manager_credentials_change**](CredentialsApi.md#validate_gcp_secret_manager_credentials_change) | **POST** /api/v2/credentials/self-hosted/gcp/{credentials_id}/validate | Validate a change to GCP Secret Manager credentials
+[**validate_glue_credentials**](CredentialsApi.md#validate_glue_credentials) | **POST** /api/v2/credentials/glue/validate | Validate Glue credentials
+[**validate_glue_credentials_change**](CredentialsApi.md#validate_glue_credentials_change) | **POST** /api/v2/credentials/glue/{credentials_id}/validate | Validate a change to Glue credentials
 [**validate_informatica_v2_credentials**](CredentialsApi.md#validate_informatica_v2_credentials) | **POST** /api/v2/credentials/informatica-v2/validate | Validate Informatica credentials
 [**validate_informatica_v2_credentials_change**](CredentialsApi.md#validate_informatica_v2_credentials_change) | **POST** /api/v2/credentials/informatica-v2/{credentials_id}/validate | Validate a change to Informatica credentials
 [**validate_looker_credentials**](CredentialsApi.md#validate_looker_credentials) | **POST** /api/v2/credentials/looker/validate | Validate Looker credentials
@@ -274,6 +286,97 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AirflowCredentialsOut**](AirflowCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_athena_credentials**
+> AthenaCredentialsOut create_athena_credentials(athena_credentials_in)
+
+Create Athena credentials
+
+Store the IAM role Monte Carlo assumes to run Athena queries.
+
+Athena needs no secret. Create the credentials first, then create a connection that
+references them on a `data-lake` warehouse. Nothing is checked against AWS here.
+
+An account holds a limited number of credentials. Past that, the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.athena_credentials_in import AthenaCredentialsIn
+from pycarlo2.models.athena_credentials_out import AthenaCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    athena_credentials_in = pycarlo2.AthenaCredentialsIn() # AthenaCredentialsIn | 
+
+    try:
+        # Create Athena credentials
+        api_response = api_instance.create_athena_credentials(athena_credentials_in)
+        print("The response of CredentialsApi->create_athena_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_athena_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **athena_credentials_in** | [**AthenaCredentialsIn**](AthenaCredentialsIn.md)|  | 
+
+### Return type
+
+[**AthenaCredentialsOut**](AthenaCredentialsOut.md)
 
 ### Authorization
 
@@ -1754,6 +1857,97 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GcpSecretManagerCredentialsOut**](GcpSecretManagerCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_glue_credentials**
+> GlueCredentialsOut create_glue_credentials(glue_credentials_in)
+
+Create Glue credentials
+
+Store the IAM role Monte Carlo assumes to read your Glue catalog.
+
+Glue needs no secret. Create the credentials first, then create a connection that
+references them on a `data-lake` warehouse. Nothing is checked against AWS here.
+
+An account holds a limited number of credentials. Past that, the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.glue_credentials_in import GlueCredentialsIn
+from pycarlo2.models.glue_credentials_out import GlueCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    glue_credentials_in = pycarlo2.GlueCredentialsIn() # GlueCredentialsIn | 
+
+    try:
+        # Create Glue credentials
+        api_response = api_instance.create_glue_credentials(glue_credentials_in)
+        print("The response of CredentialsApi->create_glue_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_glue_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **glue_credentials_in** | [**GlueCredentialsIn**](GlueCredentialsIn.md)|  | 
+
+### Return type
+
+[**GlueCredentialsOut**](GlueCredentialsOut.md)
 
 ### Authorization
 
@@ -3436,6 +3630,90 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_athena_credentials**
+> delete_athena_credentials(credentials_id)
+
+Delete Athena credentials
+
+Delete Athena credentials.
+
+Refused while a connection still uses them. Delete the connection first. The role in your
+AWS account is left as it is.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Delete Athena credentials
+        api_instance.delete_athena_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_athena_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_aws_secrets_manager_credentials**
 > delete_aws_secrets_manager_credentials(credentials_id)
 
@@ -4831,6 +5109,90 @@ with pycarlo2.ApiClient(configuration) as api_client:
         api_instance.delete_gcp_secret_manager_credentials(credentials_id)
     except Exception as e:
         print("Exception when calling CredentialsApi->delete_gcp_secret_manager_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_glue_credentials**
+> delete_glue_credentials(credentials_id)
+
+Delete Glue credentials
+
+Delete Glue credentials.
+
+Refused while a connection still uses them. Delete the connection first. The role in your
+AWS account is left as it is.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Delete Glue credentials
+        api_instance.delete_glue_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_glue_credentials: %s\n" % e)
 ```
 
 
@@ -6390,6 +6752,92 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_athena_credentials**
+> AthenaCredentialsOut get_athena_credentials(credentials_id)
+
+Get Athena credentials
+
+Get one set of Athena credentials.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.athena_credentials_out import AthenaCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Get Athena credentials
+        api_response = api_instance.get_athena_credentials(credentials_id)
+        print("The response of CredentialsApi->get_athena_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_athena_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+[**AthenaCredentialsOut**](AthenaCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_aws_secrets_manager_credentials**
 > AwsSecretsManagerCredentialsOut get_aws_secrets_manager_credentials(credentials_id)
 
@@ -7744,6 +8192,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GcpSecretManagerCredentialsOut**](GcpSecretManagerCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_glue_credentials**
+> GlueCredentialsOut get_glue_credentials(credentials_id)
+
+Get Glue credentials
+
+Get one set of Glue credentials.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.glue_credentials_out import GlueCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Get Glue credentials
+        api_response = api_instance.get_glue_credentials(credentials_id)
+        print("The response of CredentialsApi->get_glue_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_glue_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+[**GlueCredentialsOut**](GlueCredentialsOut.md)
 
 ### Authorization
 
@@ -9409,6 +9943,97 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_athena_credentials**
+> AthenaCredentialsOut update_athena_credentials(credentials_id, athena_credentials_patch)
+
+Update Athena credentials
+
+Change Athena credentials in place.
+
+Every connection using the credentials picks up the change. Sending an empty body returns
+the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.athena_credentials_out import AthenaCredentialsOut
+from pycarlo2.models.athena_credentials_patch import AthenaCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    athena_credentials_patch = pycarlo2.AthenaCredentialsPatch() # AthenaCredentialsPatch | 
+
+    try:
+        # Update Athena credentials
+        api_response = api_instance.update_athena_credentials(credentials_id, athena_credentials_patch)
+        print("The response of CredentialsApi->update_athena_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_athena_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **athena_credentials_patch** | [**AthenaCredentialsPatch**](AthenaCredentialsPatch.md)|  | 
+
+### Return type
+
+[**AthenaCredentialsOut**](AthenaCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_aws_secrets_manager_credentials**
 > AwsSecretsManagerCredentialsOut update_aws_secrets_manager_credentials(credentials_id, aws_secrets_manager_credentials_patch)
 
@@ -10859,6 +11484,97 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GcpSecretManagerCredentialsOut**](GcpSecretManagerCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_glue_credentials**
+> GlueCredentialsOut update_glue_credentials(credentials_id, glue_credentials_patch)
+
+Update Glue credentials
+
+Change Glue credentials in place.
+
+Every connection using the credentials picks up the change. Sending an empty body returns
+the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.glue_credentials_out import GlueCredentialsOut
+from pycarlo2.models.glue_credentials_patch import GlueCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    glue_credentials_patch = pycarlo2.GlueCredentialsPatch() # GlueCredentialsPatch | 
+
+    try:
+        # Update Glue credentials
+        api_response = api_instance.update_glue_credentials(credentials_id, glue_credentials_patch)
+        print("The response of CredentialsApi->update_glue_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_glue_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **glue_credentials_patch** | [**GlueCredentialsPatch**](GlueCredentialsPatch.md)|  | 
+
+### Return type
+
+[**GlueCredentialsOut**](GlueCredentialsOut.md)
 
 ### Authorization
 
@@ -12443,6 +13159,198 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_athena_credentials**
+> ValidationRunOut validate_athena_credentials(athena_credentials_validate_in)
+
+Validate Athena credentials
+
+Check candidate Athena credentials against your AWS account.
+
+No credentials are created. Send the fields you would create the credentials with, and a
+deployment to run them from, and the checks run against Athena.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`. Each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.athena_credentials_validate_in import AthenaCredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    athena_credentials_validate_in = pycarlo2.AthenaCredentialsValidateIn() # AthenaCredentialsValidateIn | 
+
+    try:
+        # Validate Athena credentials
+        api_response = api_instance.validate_athena_credentials(athena_credentials_validate_in)
+        print("The response of CredentialsApi->validate_athena_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_athena_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **athena_credentials_validate_in** | [**AthenaCredentialsValidateIn**](AthenaCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_athena_credentials_change**
+> ValidationRunOut validate_athena_credentials_change(credentials_id, athena_credentials_change_validate_in)
+
+Validate a change to Athena credentials
+
+Check a change to Athena credentials before making it.
+
+Send the fields you would update the credentials with, and a deployment to run them from.
+The change is applied to a copy of the stored credentials, and the checks run against
+that copy. The credentials and the connections using them are left as they are.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`. Each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.athena_credentials_change_validate_in import AthenaCredentialsChangeValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    athena_credentials_change_validate_in = pycarlo2.AthenaCredentialsChangeValidateIn() # AthenaCredentialsChangeValidateIn | 
+
+    try:
+        # Validate a change to Athena credentials
+        api_response = api_instance.validate_athena_credentials_change(credentials_id, athena_credentials_change_validate_in)
+        print("The response of CredentialsApi->validate_athena_credentials_change:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_athena_credentials_change: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **athena_credentials_change_validate_in** | [**AthenaCredentialsChangeValidateIn**](AthenaCredentialsChangeValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **429** | Too Many Requests |  -  |
 **503** | Service Unavailable |  -  |
@@ -15494,6 +16402,198 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **gcp_secret_manager_credentials_change_validate_in** | [**GcpSecretManagerCredentialsChangeValidateIn**](GcpSecretManagerCredentialsChangeValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_glue_credentials**
+> ValidationRunOut validate_glue_credentials(glue_credentials_validate_in)
+
+Validate Glue credentials
+
+Check candidate Glue credentials against your AWS account.
+
+No credentials are created. Send the fields you would create the credentials with, and a
+deployment to run them from, and the checks run against your Glue catalog.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`. Each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.glue_credentials_validate_in import GlueCredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    glue_credentials_validate_in = pycarlo2.GlueCredentialsValidateIn() # GlueCredentialsValidateIn | 
+
+    try:
+        # Validate Glue credentials
+        api_response = api_instance.validate_glue_credentials(glue_credentials_validate_in)
+        print("The response of CredentialsApi->validate_glue_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_glue_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **glue_credentials_validate_in** | [**GlueCredentialsValidateIn**](GlueCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_glue_credentials_change**
+> ValidationRunOut validate_glue_credentials_change(credentials_id, glue_credentials_change_validate_in)
+
+Validate a change to Glue credentials
+
+Check a change to Glue credentials before making it.
+
+Send the fields you would update the credentials with, and a deployment to run them from.
+The change is applied to a copy of the stored credentials, and the checks run against
+that copy. The credentials and the connections using them are left as they are.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`. Each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.glue_credentials_change_validate_in import GlueCredentialsChangeValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    glue_credentials_change_validate_in = pycarlo2.GlueCredentialsChangeValidateIn() # GlueCredentialsChangeValidateIn | 
+
+    try:
+        # Validate a change to Glue credentials
+        api_response = api_instance.validate_glue_credentials_change(credentials_id, glue_credentials_change_validate_in)
+        print("The response of CredentialsApi->validate_glue_credentials_change:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_glue_credentials_change: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **glue_credentials_change_validate_in** | [**GlueCredentialsChangeValidateIn**](GlueCredentialsChangeValidateIn.md)|  | 
 
 ### Return type
 

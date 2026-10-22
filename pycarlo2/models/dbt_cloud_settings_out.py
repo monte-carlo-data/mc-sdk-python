@@ -22,10 +22,11 @@ class DbtCloudSettingsOut(BaseModel):
     Which dbt Cloud runs a dbt Cloud webhook connection processes.
     """ # noqa: E501
     connection_match: ConnectionMatch = Field(description="How a run is matched to the connection's warehouse. `off`, the default, drops no run for its dbt connection.")
-    allowed_connections: List[StrictStr] = Field(description="The dbt connections, by id or name, whose runs are kept. At least one for `allow_list`. Empty otherwise.")
+    allowed_connection_fields: List[StrictStr] = Field(description="The dbt connection fields to compare, such as `account` for Snowflake. `name` and `id` match a dbt connection by its own name or id. At least one for `allow_list`. Empty otherwise.")
+    allowed_connection_values: List[StrictStr] = Field(description="The values to match, exactly as they appear in dbt Cloud. A run is kept when one of `allowed_connection_fields` on its dbt connection equals one of them. At least one for `allow_list`. Empty otherwise.")
     allowed_environments: List[StrictStr] = Field(description="The dbt environments, by name and ignoring case, whose runs are kept. Empty keeps runs from every environment.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["connection_match", "allowed_connections", "allowed_environments"]
+    __properties: ClassVar[List[str]] = ["connection_match", "allowed_connection_fields", "allowed_connection_values", "allowed_environments"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,7 +87,8 @@ class DbtCloudSettingsOut(BaseModel):
 
         _obj = cls.model_validate({
             "connection_match": obj.get("connection_match"),
-            "allowed_connections": obj.get("allowed_connections"),
+            "allowed_connection_fields": obj.get("allowed_connection_fields"),
+            "allowed_connection_values": obj.get("allowed_connection_values"),
             "allowed_environments": obj.get("allowed_environments")
         })
         # store additional fields in additional_properties

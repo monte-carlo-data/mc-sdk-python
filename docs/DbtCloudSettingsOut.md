@@ -7,7 +7,8 @@ Which dbt Cloud runs a dbt Cloud webhook connection processes.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **connection_match** | [**ConnectionMatch**](ConnectionMatch.md) | How a run is matched to the connection&#39;s warehouse. &#x60;off&#x60;, the default, drops no run for its dbt connection. | 
-**allowed_connections** | **List[str]** | The dbt connections, by id or name, whose runs are kept. At least one for &#x60;allow_list&#x60;. Empty otherwise. | 
+**allowed_connection_fields** | **List[str]** | The dbt connection fields to compare, such as &#x60;account&#x60; for Snowflake. &#x60;name&#x60; and &#x60;id&#x60; match a dbt connection by its own name or id. At least one for &#x60;allow_list&#x60;. Empty otherwise. | 
+**allowed_connection_values** | **List[str]** | The values to match, exactly as they appear in dbt Cloud. A run is kept when one of &#x60;allowed_connection_fields&#x60; on its dbt connection equals one of them. At least one for &#x60;allow_list&#x60;. Empty otherwise. | 
 **allowed_environments** | **List[str]** | The dbt environments, by name and ignoring case, whose runs are kept. Empty keeps runs from every environment. | 
 
 ## Example

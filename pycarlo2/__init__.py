@@ -274,6 +274,12 @@ __all__ = [
     "RedshiftCredentialsValidateIn",
     "RunStatus",
     "RuntimePlatform",
+    "SalesforceCrmAuthMode",
+    "SalesforceCrmCredentialsChangeValidateIn",
+    "SalesforceCrmCredentialsIn",
+    "SalesforceCrmCredentialsOut",
+    "SalesforceCrmCredentialsPatch",
+    "SalesforceCrmCredentialsValidateIn",
     "SapHanaCredentialsChangeValidateIn",
     "SapHanaCredentialsIn",
     "SapHanaCredentialsOut",
@@ -592,6 +598,12 @@ from pycarlo2.models.redshift_credentials_patch import RedshiftCredentialsPatch 
 from pycarlo2.models.redshift_credentials_validate_in import RedshiftCredentialsValidateIn as RedshiftCredentialsValidateIn
 from pycarlo2.models.run_status import RunStatus as RunStatus
 from pycarlo2.models.runtime_platform import RuntimePlatform as RuntimePlatform
+from pycarlo2.models.salesforce_crm_auth_mode import SalesforceCrmAuthMode as SalesforceCrmAuthMode
+from pycarlo2.models.salesforce_crm_credentials_change_validate_in import SalesforceCrmCredentialsChangeValidateIn as SalesforceCrmCredentialsChangeValidateIn
+from pycarlo2.models.salesforce_crm_credentials_in import SalesforceCrmCredentialsIn as SalesforceCrmCredentialsIn
+from pycarlo2.models.salesforce_crm_credentials_out import SalesforceCrmCredentialsOut as SalesforceCrmCredentialsOut
+from pycarlo2.models.salesforce_crm_credentials_patch import SalesforceCrmCredentialsPatch as SalesforceCrmCredentialsPatch
+from pycarlo2.models.salesforce_crm_credentials_validate_in import SalesforceCrmCredentialsValidateIn as SalesforceCrmCredentialsValidateIn
 from pycarlo2.models.sap_hana_credentials_change_validate_in import SapHanaCredentialsChangeValidateIn as SapHanaCredentialsChangeValidateIn
 from pycarlo2.models.sap_hana_credentials_in import SapHanaCredentialsIn as SapHanaCredentialsIn
 from pycarlo2.models.sap_hana_credentials_out import SapHanaCredentialsOut as SapHanaCredentialsOut

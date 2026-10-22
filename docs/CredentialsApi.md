@@ -34,6 +34,7 @@ Method | HTTP request | Description
 [**create_power_bi_credentials**](CredentialsApi.md#create_power_bi_credentials) | **POST** /api/v2/credentials/power-bi | Create Power BI credentials
 [**create_redshift_credentials**](CredentialsApi.md#create_redshift_credentials) | **POST** /api/v2/credentials/redshift | Create Redshift credentials
 [**create_salesforce_crm_credentials**](CredentialsApi.md#create_salesforce_crm_credentials) | **POST** /api/v2/credentials/salesforce-crm | Create Salesforce CRM credentials
+[**create_salesforce_data_cloud_credentials**](CredentialsApi.md#create_salesforce_data_cloud_credentials) | **POST** /api/v2/credentials/salesforce-data-cloud | Create Salesforce Data Cloud credentials
 [**create_sap_hana_credentials**](CredentialsApi.md#create_sap_hana_credentials) | **POST** /api/v2/credentials/sap-hana | Create SAP HANA credentials
 [**create_snowflake_credentials**](CredentialsApi.md#create_snowflake_credentials) | **POST** /api/v2/credentials/snowflake | Create Snowflake credentials
 [**create_sql_server_credentials**](CredentialsApi.md#create_sql_server_credentials) | **POST** /api/v2/credentials/sql-server | Create SQL Server credentials
@@ -72,6 +73,7 @@ Method | HTTP request | Description
 [**delete_power_bi_credentials**](CredentialsApi.md#delete_power_bi_credentials) | **DELETE** /api/v2/credentials/power-bi/{credentials_id} | Delete Power BI credentials
 [**delete_redshift_credentials**](CredentialsApi.md#delete_redshift_credentials) | **DELETE** /api/v2/credentials/redshift/{credentials_id} | Delete Redshift credentials
 [**delete_salesforce_crm_credentials**](CredentialsApi.md#delete_salesforce_crm_credentials) | **DELETE** /api/v2/credentials/salesforce-crm/{credentials_id} | Delete Salesforce CRM credentials
+[**delete_salesforce_data_cloud_credentials**](CredentialsApi.md#delete_salesforce_data_cloud_credentials) | **DELETE** /api/v2/credentials/salesforce-data-cloud/{credentials_id} | Delete Salesforce Data Cloud credentials
 [**delete_sap_hana_credentials**](CredentialsApi.md#delete_sap_hana_credentials) | **DELETE** /api/v2/credentials/sap-hana/{credentials_id} | Delete SAP HANA credentials
 [**delete_snowflake_credentials**](CredentialsApi.md#delete_snowflake_credentials) | **DELETE** /api/v2/credentials/snowflake/{credentials_id} | Delete Snowflake credentials
 [**delete_sql_server_credentials**](CredentialsApi.md#delete_sql_server_credentials) | **DELETE** /api/v2/credentials/sql-server/{credentials_id} | Delete SQL Server credentials
@@ -109,6 +111,7 @@ Method | HTTP request | Description
 [**get_power_bi_credentials**](CredentialsApi.md#get_power_bi_credentials) | **GET** /api/v2/credentials/power-bi/{credentials_id} | Get Power BI credentials
 [**get_redshift_credentials**](CredentialsApi.md#get_redshift_credentials) | **GET** /api/v2/credentials/redshift/{credentials_id} | Get Redshift credentials
 [**get_salesforce_crm_credentials**](CredentialsApi.md#get_salesforce_crm_credentials) | **GET** /api/v2/credentials/salesforce-crm/{credentials_id} | Get Salesforce CRM credentials
+[**get_salesforce_data_cloud_credentials**](CredentialsApi.md#get_salesforce_data_cloud_credentials) | **GET** /api/v2/credentials/salesforce-data-cloud/{credentials_id} | Get Salesforce Data Cloud credentials
 [**get_sap_hana_credentials**](CredentialsApi.md#get_sap_hana_credentials) | **GET** /api/v2/credentials/sap-hana/{credentials_id} | Get SAP HANA credentials
 [**get_snowflake_credentials**](CredentialsApi.md#get_snowflake_credentials) | **GET** /api/v2/credentials/snowflake/{credentials_id} | Get Snowflake credentials
 [**get_sql_server_credentials**](CredentialsApi.md#get_sql_server_credentials) | **GET** /api/v2/credentials/sql-server/{credentials_id} | Get SQL Server credentials
@@ -147,6 +150,7 @@ Method | HTTP request | Description
 [**update_power_bi_credentials**](CredentialsApi.md#update_power_bi_credentials) | **PATCH** /api/v2/credentials/power-bi/{credentials_id} | Update Power BI credentials
 [**update_redshift_credentials**](CredentialsApi.md#update_redshift_credentials) | **PATCH** /api/v2/credentials/redshift/{credentials_id} | Update Redshift credentials
 [**update_salesforce_crm_credentials**](CredentialsApi.md#update_salesforce_crm_credentials) | **PATCH** /api/v2/credentials/salesforce-crm/{credentials_id} | Update Salesforce CRM credentials
+[**update_salesforce_data_cloud_credentials**](CredentialsApi.md#update_salesforce_data_cloud_credentials) | **PATCH** /api/v2/credentials/salesforce-data-cloud/{credentials_id} | Update Salesforce Data Cloud credentials
 [**update_sap_hana_credentials**](CredentialsApi.md#update_sap_hana_credentials) | **PATCH** /api/v2/credentials/sap-hana/{credentials_id} | Update SAP HANA credentials
 [**update_snowflake_credentials**](CredentialsApi.md#update_snowflake_credentials) | **PATCH** /api/v2/credentials/snowflake/{credentials_id} | Update Snowflake credentials
 [**update_sql_server_credentials**](CredentialsApi.md#update_sql_server_credentials) | **PATCH** /api/v2/credentials/sql-server/{credentials_id} | Update SQL Server credentials
@@ -212,6 +216,8 @@ Method | HTTP request | Description
 [**validate_redshift_credentials_change**](CredentialsApi.md#validate_redshift_credentials_change) | **POST** /api/v2/credentials/redshift/{credentials_id}/validate | Validate a change to Redshift credentials
 [**validate_salesforce_crm_credentials**](CredentialsApi.md#validate_salesforce_crm_credentials) | **POST** /api/v2/credentials/salesforce-crm/validate | Validate Salesforce CRM credentials
 [**validate_salesforce_crm_credentials_change**](CredentialsApi.md#validate_salesforce_crm_credentials_change) | **POST** /api/v2/credentials/salesforce-crm/{credentials_id}/validate | Validate a change to Salesforce CRM credentials
+[**validate_salesforce_data_cloud_credentials**](CredentialsApi.md#validate_salesforce_data_cloud_credentials) | **POST** /api/v2/credentials/salesforce-data-cloud/validate | Validate Salesforce Data Cloud credentials
+[**validate_salesforce_data_cloud_credentials_change**](CredentialsApi.md#validate_salesforce_data_cloud_credentials_change) | **POST** /api/v2/credentials/salesforce-data-cloud/{credentials_id}/validate | Validate a change to Salesforce Data Cloud credentials
 [**validate_sap_hana_credentials**](CredentialsApi.md#validate_sap_hana_credentials) | **POST** /api/v2/credentials/sap-hana/validate | Validate SAP HANA credentials
 [**validate_sap_hana_credentials_change**](CredentialsApi.md#validate_sap_hana_credentials_change) | **POST** /api/v2/credentials/sap-hana/{credentials_id}/validate | Validate a change to SAP HANA credentials
 [**validate_snowflake_credentials**](CredentialsApi.md#validate_snowflake_credentials) | **POST** /api/v2/credentials/snowflake/validate | Validate Snowflake credentials
@@ -2974,6 +2980,100 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SalesforceCrmCredentialsOut**](SalesforceCrmCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_salesforce_data_cloud_credentials**
+> SalesforceDataCloudCredentialsOut create_salesforce_data_cloud_credentials(salesforce_data_cloud_credentials_in)
+
+Create Salesforce Data Cloud credentials
+
+Store a Salesforce Data Cloud sign-in for connections to use.
+
+Monte Carlo keeps the consumer secret or the private key and returns everything else.
+Create the credentials first, then create a connection that references them. Nothing is
+checked against Salesforce here.
+
+`auth_mode` decides what else to send: `consumer_secret` for `oauth_client_credentials`,
+or `username` and `private_key` for `jwt_bearer`. An account holds a limited number of
+credentials. Past that, the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.salesforce_data_cloud_credentials_in import SalesforceDataCloudCredentialsIn
+from pycarlo2.models.salesforce_data_cloud_credentials_out import SalesforceDataCloudCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    salesforce_data_cloud_credentials_in = pycarlo2.SalesforceDataCloudCredentialsIn() # SalesforceDataCloudCredentialsIn | 
+
+    try:
+        # Create Salesforce Data Cloud credentials
+        api_response = api_instance.create_salesforce_data_cloud_credentials(salesforce_data_cloud_credentials_in)
+        print("The response of CredentialsApi->create_salesforce_data_cloud_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_salesforce_data_cloud_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **salesforce_data_cloud_credentials_in** | [**SalesforceDataCloudCredentialsIn**](SalesforceDataCloudCredentialsIn.md)|  | 
+
+### Return type
+
+[**SalesforceDataCloudCredentialsOut**](SalesforceDataCloudCredentialsOut.md)
 
 ### Authorization
 
@@ -6260,6 +6360,91 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_salesforce_data_cloud_credentials**
+> delete_salesforce_data_cloud_credentials(credentials_id)
+
+Delete Salesforce Data Cloud credentials
+
+Delete Salesforce Data Cloud credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+using the stored consumer secret or private key. Rotate the consumer secret, or remove the
+key's certificate from the connected app, if they must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Delete Salesforce Data Cloud credentials
+        api_instance.delete_salesforce_data_cloud_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_salesforce_data_cloud_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_sap_hana_credentials**
 > delete_sap_hana_credentials(credentials_id)
 
@@ -9411,6 +9596,93 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SalesforceCrmCredentialsOut**](SalesforceCrmCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_salesforce_data_cloud_credentials**
+> SalesforceDataCloudCredentialsOut get_salesforce_data_cloud_credentials(credentials_id)
+
+Get Salesforce Data Cloud credentials
+
+Get one set of Salesforce Data Cloud credentials, without the consumer secret or the
+private key.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.salesforce_data_cloud_credentials_out import SalesforceDataCloudCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Get Salesforce Data Cloud credentials
+        api_response = api_instance.get_salesforce_data_cloud_credentials(credentials_id)
+        print("The response of CredentialsApi->get_salesforce_data_cloud_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_salesforce_data_cloud_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+[**SalesforceDataCloudCredentialsOut**](SalesforceDataCloudCredentialsOut.md)
 
 ### Authorization
 
@@ -12859,6 +13131,98 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SalesforceCrmCredentialsOut**](SalesforceCrmCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_salesforce_data_cloud_credentials**
+> SalesforceDataCloudCredentialsOut update_salesforce_data_cloud_credentials(credentials_id, salesforce_data_cloud_credentials_patch)
+
+Update Salesforce Data Cloud credentials
+
+Change Salesforce Data Cloud credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to change.
+A new `auth_mode` drops the fields and the secret of the old one. Send all of the new mode's
+fields with it. Sending an empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.salesforce_data_cloud_credentials_out import SalesforceDataCloudCredentialsOut
+from pycarlo2.models.salesforce_data_cloud_credentials_patch import SalesforceDataCloudCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    salesforce_data_cloud_credentials_patch = pycarlo2.SalesforceDataCloudCredentialsPatch() # SalesforceDataCloudCredentialsPatch | 
+
+    try:
+        # Update Salesforce Data Cloud credentials
+        api_response = api_instance.update_salesforce_data_cloud_credentials(credentials_id, salesforce_data_cloud_credentials_patch)
+        print("The response of CredentialsApi->update_salesforce_data_cloud_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_salesforce_data_cloud_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **salesforce_data_cloud_credentials_patch** | [**SalesforceDataCloudCredentialsPatch**](SalesforceDataCloudCredentialsPatch.md)|  | 
+
+### Return type
+
+[**SalesforceDataCloudCredentialsOut**](SalesforceDataCloudCredentialsOut.md)
 
 ### Authorization
 
@@ -19071,6 +19435,198 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **salesforce_crm_credentials_change_validate_in** | [**SalesforceCrmCredentialsChangeValidateIn**](SalesforceCrmCredentialsChangeValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_salesforce_data_cloud_credentials**
+> ValidationRunOut validate_salesforce_data_cloud_credentials(salesforce_data_cloud_credentials_validate_in)
+
+Validate Salesforce Data Cloud credentials
+
+Check a candidate Salesforce Data Cloud sign-in against Salesforce.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your Salesforce org.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`. Each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.salesforce_data_cloud_credentials_validate_in import SalesforceDataCloudCredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    salesforce_data_cloud_credentials_validate_in = pycarlo2.SalesforceDataCloudCredentialsValidateIn() # SalesforceDataCloudCredentialsValidateIn | 
+
+    try:
+        # Validate Salesforce Data Cloud credentials
+        api_response = api_instance.validate_salesforce_data_cloud_credentials(salesforce_data_cloud_credentials_validate_in)
+        print("The response of CredentialsApi->validate_salesforce_data_cloud_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_salesforce_data_cloud_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **salesforce_data_cloud_credentials_validate_in** | [**SalesforceDataCloudCredentialsValidateIn**](SalesforceDataCloudCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_salesforce_data_cloud_credentials_change**
+> ValidationRunOut validate_salesforce_data_cloud_credentials_change(credentials_id, salesforce_data_cloud_credentials_change_validate_in)
+
+Validate a change to Salesforce Data Cloud credentials
+
+Check a change to Salesforce Data Cloud credentials before making it.
+
+Send the fields you would update the credentials with, and a deployment to run them from.
+The change is applied to a copy of the stored credentials, and the checks run against
+that copy. The credentials and the connections using them are left as they are.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`. Each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.salesforce_data_cloud_credentials_change_validate_in import SalesforceDataCloudCredentialsChangeValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    salesforce_data_cloud_credentials_change_validate_in = pycarlo2.SalesforceDataCloudCredentialsChangeValidateIn() # SalesforceDataCloudCredentialsChangeValidateIn | 
+
+    try:
+        # Validate a change to Salesforce Data Cloud credentials
+        api_response = api_instance.validate_salesforce_data_cloud_credentials_change(credentials_id, salesforce_data_cloud_credentials_change_validate_in)
+        print("The response of CredentialsApi->validate_salesforce_data_cloud_credentials_change:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_salesforce_data_cloud_credentials_change: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **salesforce_data_cloud_credentials_change_validate_in** | [**SalesforceDataCloudCredentialsChangeValidateIn**](SalesforceDataCloudCredentialsChangeValidateIn.md)|  | 
 
 ### Return type
 

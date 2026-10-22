@@ -252,6 +252,12 @@ docs/SalesforceCrmCredentialsIn.md
 docs/SalesforceCrmCredentialsOut.md
 docs/SalesforceCrmCredentialsPatch.md
 docs/SalesforceCrmCredentialsValidateIn.md
+docs/SalesforceDataCloudAuthMode.md
+docs/SalesforceDataCloudCredentialsChangeValidateIn.md
+docs/SalesforceDataCloudCredentialsIn.md
+docs/SalesforceDataCloudCredentialsOut.md
+docs/SalesforceDataCloudCredentialsPatch.md
+docs/SalesforceDataCloudCredentialsValidateIn.md
 docs/SapHanaCredentialsChangeValidateIn.md
 docs/SapHanaCredentialsIn.md
 docs/SapHanaCredentialsOut.md
@@ -570,6 +576,12 @@ pycarlo2/models/salesforce_crm_credentials_in.py
 pycarlo2/models/salesforce_crm_credentials_out.py
 pycarlo2/models/salesforce_crm_credentials_patch.py
 pycarlo2/models/salesforce_crm_credentials_validate_in.py
+pycarlo2/models/salesforce_data_cloud_auth_mode.py
+pycarlo2/models/salesforce_data_cloud_credentials_change_validate_in.py
+pycarlo2/models/salesforce_data_cloud_credentials_in.py
+pycarlo2/models/salesforce_data_cloud_credentials_out.py
+pycarlo2/models/salesforce_data_cloud_credentials_patch.py
+pycarlo2/models/salesforce_data_cloud_credentials_validate_in.py
 pycarlo2/models/sap_hana_credentials_change_validate_in.py
 pycarlo2/models/sap_hana_credentials_in.py
 pycarlo2/models/sap_hana_credentials_out.py

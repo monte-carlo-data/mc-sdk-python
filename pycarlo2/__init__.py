@@ -280,6 +280,12 @@ __all__ = [
     "SalesforceCrmCredentialsOut",
     "SalesforceCrmCredentialsPatch",
     "SalesforceCrmCredentialsValidateIn",
+    "SalesforceDataCloudAuthMode",
+    "SalesforceDataCloudCredentialsChangeValidateIn",
+    "SalesforceDataCloudCredentialsIn",
+    "SalesforceDataCloudCredentialsOut",
+    "SalesforceDataCloudCredentialsPatch",
+    "SalesforceDataCloudCredentialsValidateIn",
     "SapHanaCredentialsChangeValidateIn",
     "SapHanaCredentialsIn",
     "SapHanaCredentialsOut",
@@ -604,6 +610,12 @@ from pycarlo2.models.salesforce_crm_credentials_in import SalesforceCrmCredentia
 from pycarlo2.models.salesforce_crm_credentials_out import SalesforceCrmCredentialsOut as SalesforceCrmCredentialsOut
 from pycarlo2.models.salesforce_crm_credentials_patch import SalesforceCrmCredentialsPatch as SalesforceCrmCredentialsPatch
 from pycarlo2.models.salesforce_crm_credentials_validate_in import SalesforceCrmCredentialsValidateIn as SalesforceCrmCredentialsValidateIn
+from pycarlo2.models.salesforce_data_cloud_auth_mode import SalesforceDataCloudAuthMode as SalesforceDataCloudAuthMode
+from pycarlo2.models.salesforce_data_cloud_credentials_change_validate_in import SalesforceDataCloudCredentialsChangeValidateIn as SalesforceDataCloudCredentialsChangeValidateIn
+from pycarlo2.models.salesforce_data_cloud_credentials_in import SalesforceDataCloudCredentialsIn as SalesforceDataCloudCredentialsIn
+from pycarlo2.models.salesforce_data_cloud_credentials_out import SalesforceDataCloudCredentialsOut as SalesforceDataCloudCredentialsOut
+from pycarlo2.models.salesforce_data_cloud_credentials_patch import SalesforceDataCloudCredentialsPatch as SalesforceDataCloudCredentialsPatch
+from pycarlo2.models.salesforce_data_cloud_credentials_validate_in import SalesforceDataCloudCredentialsValidateIn as SalesforceDataCloudCredentialsValidateIn
 from pycarlo2.models.sap_hana_credentials_change_validate_in import SapHanaCredentialsChangeValidateIn as SapHanaCredentialsChangeValidateIn
 from pycarlo2.models.sap_hana_credentials_in import SapHanaCredentialsIn as SapHanaCredentialsIn
 from pycarlo2.models.sap_hana_credentials_out import SapHanaCredentialsOut as SapHanaCredentialsOut

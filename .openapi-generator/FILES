@@ -246,6 +246,12 @@ docs/RedshiftCredentialsPatch.md
 docs/RedshiftCredentialsValidateIn.md
 docs/RunStatus.md
 docs/RuntimePlatform.md
+docs/SalesforceCrmAuthMode.md
+docs/SalesforceCrmCredentialsChangeValidateIn.md
+docs/SalesforceCrmCredentialsIn.md
+docs/SalesforceCrmCredentialsOut.md
+docs/SalesforceCrmCredentialsPatch.md
+docs/SalesforceCrmCredentialsValidateIn.md
 docs/SapHanaCredentialsChangeValidateIn.md
 docs/SapHanaCredentialsIn.md
 docs/SapHanaCredentialsOut.md
@@ -558,6 +564,12 @@ pycarlo2/models/redshift_credentials_patch.py
 pycarlo2/models/redshift_credentials_validate_in.py
 pycarlo2/models/run_status.py
 pycarlo2/models/runtime_platform.py
+pycarlo2/models/salesforce_crm_auth_mode.py
+pycarlo2/models/salesforce_crm_credentials_change_validate_in.py
+pycarlo2/models/salesforce_crm_credentials_in.py
+pycarlo2/models/salesforce_crm_credentials_out.py
+pycarlo2/models/salesforce_crm_credentials_patch.py
+pycarlo2/models/salesforce_crm_credentials_validate_in.py
 pycarlo2/models/sap_hana_credentials_change_validate_in.py
 pycarlo2/models/sap_hana_credentials_in.py
 pycarlo2/models/sap_hana_credentials_out.py

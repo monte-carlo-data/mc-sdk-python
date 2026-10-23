@@ -39,7 +39,7 @@ class ConnectionOut(BaseModel):
     etl_container_name: Optional[StrictStr] = Field(description="Display name of that ETL container. Null when there is no ETL container.")
     deployment_id: Optional[UUID] = Field(description="The deployment the connection runs through, taken from its warehouse, BI container or ETL container. Null when that has no deployment, as an Airflow ETL container has none. The id may name a deployment on Monte Carlo's older collection platform, which the deployments endpoints do not list.")
     deployment_name: Optional[StrictStr] = Field(description="Display name of that deployment. Null when there is no deployment to name.")
-    credentials_id: Optional[UUID] = Field(description="The credentials the connection reads with. Null for a connection created before credentials became their own resource, and for one created outside this API.")
+    credentials_id: Optional[UUID] = Field(description="The credentials the connection reads with. Null for a connection created before credentials became their own resource, and for one created outside this API until an update sets `credentials_id`.")
     credentials_storage_type: Optional[CredentialsStorageType] = Field(description="Where that secret lives. Null when there are no credentials to describe.")
     job_types: List[StrictStr] = Field(description="The jobs Monte Carlo runs on this connection, such as `metadata`.")
     created_time: datetime = Field(description="When the connection was created.")

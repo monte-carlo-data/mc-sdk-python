@@ -13,6 +13,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from uuid import UUID
 from pycarlo2.models.dbt_cloud_settings_in import DbtCloudSettingsIn
 from typing import Optional, Set
 from typing_extensions import Self
@@ -20,13 +21,14 @@ from pydantic_core import to_jsonable_python
 
 class ConnectionPatch(BaseModel):
     """
-    A change to an existing connection: a new name, ETL turned on or off, or new dbt Cloud
-    settings.
+    A change to an existing connection: a new name, ETL turned on or off, new dbt Cloud
+    settings, or other credentials.
     """ # noqa: E501
     name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="New display name for the connection. Omit it to leave the name unchanged. An explicit null is ignored, the same as omitting the field.")
     job_types: Optional[Annotated[List[StrictStr], Field(min_length=1)]] = Field(default=None, description="The connection's job types with `etl` added or removed. Adding `etl` turns on ETL collection for a Snowflake (Snowflake Tasks), Power BI (dataflows) or Salesforce Data Cloud connection, and creates the ETL container that `etl_container_id` then names. Removing it deletes that container. No other job can be added or removed. Omit it to leave the job types unchanged.")
     dbt_cloud: Optional[DbtCloudSettingsIn] = Field(default=None, description="Which dbt Cloud runs a dbt Cloud webhook connection processes. A dbt Cloud webhook reports runs from every environment in the dbt account. These settings decide which of them Monte Carlo processes for the connection's warehouse. Only a dbt Cloud webhook connection takes it. An object replaces the settings whole. Null resets them to the defaults. Omit it to leave them unchanged.")
-    __properties: ClassVar[List[str]] = ["name", "job_types", "dbt_cloud"]
+    credentials_id: Optional[UUID] = Field(default=None, description="Credentials for the connection to read with from now on. They must be for the connection's own type, and may be stored by Monte Carlo or self-hosted. The previous credentials are kept, and can be deleted once nothing uses them. Omit it to keep the current credentials. An explicit null is ignored, the same as omitting the field.")
+    __properties: ClassVar[List[str]] = ["name", "job_types", "dbt_cloud", "credentials_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,6 +87,11 @@ class ConnectionPatch(BaseModel):
         if self.dbt_cloud is None and "dbt_cloud" in self.model_fields_set:
             _dict['dbt_cloud'] = None
 
+        # set to None if credentials_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.credentials_id is None and "credentials_id" in self.model_fields_set:
+            _dict['credentials_id'] = None
+
         return _dict
 
     @classmethod
@@ -99,7 +106,8 @@ class ConnectionPatch(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "job_types": obj.get("job_types"),
-            "dbt_cloud": DbtCloudSettingsIn.from_dict(obj["dbt_cloud"]) if obj.get("dbt_cloud") is not None else None
+            "dbt_cloud": DbtCloudSettingsIn.from_dict(obj["dbt_cloud"]) if obj.get("dbt_cloud") is not None else None,
+            "credentials_id": obj.get("credentials_id")
         })
         return _obj
 

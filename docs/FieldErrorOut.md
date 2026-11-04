@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **code** | **str** | Machine-readable code identifying the kind of validation failure. | 
 **message** | **str** | Human-readable explanation of why this field failed validation. | 
 **extra** | **Dict[str, str]** | Values that parameterize &#x60;message&#x60;, for a client that renders its own text instead of showing &#x60;message&#x60; directly. Absent when there is nothing to report. | [optional] 
+**user_message** | **str** | Position to continue from, as returned in &#x60;next_cursor&#x60; by the previous page. Omit it to start from the first page. The value is opaque; do not build or modify one. | [optional] 
 
 ## Example
 

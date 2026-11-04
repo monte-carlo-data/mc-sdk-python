@@ -25,8 +25,9 @@ A time dimension lists its grains: `metric_time` with `week` is queried as
 once in each domain it belongs to, so the domains do not add up to the account total.
 Metrics can be grouped only by dimensions they share: ask with `metrics` first.
 
-`search` keeps only the names that contain a text, ignoring case. The unfiltered list of
-metrics is long. Fields without a value, such as `type` for a metric, are left out.
+`search` keeps only the items whose name, label or description contains a text, ignoring
+case. The unfiltered list of metrics is long. Fields without a value, such as `type` for a
+metric, are left out.
 
 An unknown metric is refused with a 422 that says why. Requires dashboard access.
 
@@ -61,7 +62,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.AccountAnalyticsApi(api_client)
     metrics = 'metrics_example' # str | Comma-separated metric names, such as `coverage_rate,covered_assets`. With them, the answer lists the dimensions all of them can be grouped and filtered by. Without them, it lists every metric. Send the names in one parameter: only the last of a repeated parameter is read. (optional)
-    search = 'search_example' # str | Keeps the metrics, or the dimensions, whose name contains this text, ignoring case, such as `incident`. (optional)
+    search = 'search_example' # str | Keeps the metrics, or the dimensions, whose name, label or description contains this text, ignoring case, such as `incident`. (optional)
 
     try:
         # List metrics, or the dimensions that work with chosen metrics
@@ -80,7 +81,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **metrics** | **str**| Comma-separated metric names, such as &#x60;coverage_rate,covered_assets&#x60;. With them, the answer lists the dimensions all of them can be grouped and filtered by. Without them, it lists every metric. Send the names in one parameter: only the last of a repeated parameter is read. | [optional] 
- **search** | **str**| Keeps the metrics, or the dimensions, whose name contains this text, ignoring case, such as &#x60;incident&#x60;. | [optional] 
+ **search** | **str**| Keeps the metrics, or the dimensions, whose name, label or description contains this text, ignoring case, such as &#x60;incident&#x60;. | [optional] 
 
 ### Return type
 

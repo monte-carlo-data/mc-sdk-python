@@ -1,3 +1,4 @@
+docs/AccountAnalyticsApi.md
 docs/AirflowCallbacksKeyCreatedOut.md
 docs/AirflowCallbacksKeyIn.md
 docs/AirflowCallbacksKeyOut.md
@@ -62,6 +63,9 @@ docs/BigQueryCredentialsIn.md
 docs/BigQueryCredentialsOut.md
 docs/BigQueryCredentialsPatch.md
 docs/BigQueryCredentialsValidateIn.md
+docs/CatalogDimensionType.md
+docs/CatalogItemOut.md
+docs/CatalogOut.md
 docs/ClickHouseCredentialsChangeValidateIn.md
 docs/ClickHouseCredentialsIn.md
 docs/ClickHouseCredentialsOut.md
@@ -205,6 +209,11 @@ docs/MariaDbCredentialsIn.md
 docs/MariaDbCredentialsOut.md
 docs/MariaDbCredentialsPatch.md
 docs/MariaDbCredentialsValidateIn.md
+docs/MetricsFilter.md
+docs/MetricsFilterOperator.md
+docs/MetricsOrderBy.md
+docs/MetricsQuery.md
+docs/MetricsQueryOut.md
 docs/MulesoftCredentialsChangeValidateIn.md
 docs/MulesoftCredentialsIn.md
 docs/MulesoftCredentialsOut.md
@@ -314,6 +323,7 @@ docs/WarehouseType.md
 docs/WarehousesApi.md
 pycarlo2/__init__.py
 pycarlo2/api/__init__.py
+pycarlo2/api/account_analytics_api.py
 pycarlo2/api/bi_containers_api.py
 pycarlo2/api/collection_agents_api.py
 pycarlo2/api/collection_data_stores_api.py
@@ -396,6 +406,9 @@ pycarlo2/models/big_query_credentials_in.py
 pycarlo2/models/big_query_credentials_out.py
 pycarlo2/models/big_query_credentials_patch.py
 pycarlo2/models/big_query_credentials_validate_in.py
+pycarlo2/models/catalog_dimension_type.py
+pycarlo2/models/catalog_item_out.py
+pycarlo2/models/catalog_out.py
 pycarlo2/models/click_house_credentials_change_validate_in.py
 pycarlo2/models/click_house_credentials_in.py
 pycarlo2/models/click_house_credentials_out.py
@@ -529,6 +542,11 @@ pycarlo2/models/maria_db_credentials_in.py
 pycarlo2/models/maria_db_credentials_out.py
 pycarlo2/models/maria_db_credentials_patch.py
 pycarlo2/models/maria_db_credentials_validate_in.py
+pycarlo2/models/metrics_filter.py
+pycarlo2/models/metrics_filter_operator.py
+pycarlo2/models/metrics_order_by.py
+pycarlo2/models/metrics_query.py
+pycarlo2/models/metrics_query_out.py
 pycarlo2/models/mulesoft_credentials_change_validate_in.py
 pycarlo2/models/mulesoft_credentials_in.py
 pycarlo2/models/mulesoft_credentials_out.py

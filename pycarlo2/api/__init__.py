@@ -1,6 +1,7 @@
 # flake8: noqa
 
 # import apis into api package
+from pycarlo2.api.account_analytics_api import AccountAnalyticsApi
 from pycarlo2.api.bi_containers_api import BiContainersApi
 from pycarlo2.api.collection_agents_api import CollectionAgentsApi
 from pycarlo2.api.collection_data_stores_api import CollectionDataStoresApi

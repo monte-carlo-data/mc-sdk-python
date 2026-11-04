@@ -28,7 +28,7 @@ class AccountAnalyticsApi:
     def get_account_analytics_catalog(
         self,
         metrics: Annotated[Optional[StrictStr], Field(description="Comma-separated metric names, such as `coverage_rate,covered_assets`. With them, the answer lists the dimensions all of them can be grouped and filtered by. Without them, it lists every metric. Send the names in one parameter: only the last of a repeated parameter is read.")] = None,
-        search: Annotated[Optional[StrictStr], Field(description="Keeps the metrics, or the dimensions, whose name contains this text, ignoring case, such as `incident`.")] = None,
+        search: Annotated[Optional[StrictStr], Field(description="Keeps the metrics, or the dimensions, whose name, label or description contains this text, ignoring case, such as `incident`.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -56,14 +56,15 @@ class AccountAnalyticsApi:
         once in each domain it belongs to, so the domains do not add up to the account total.
         Metrics can be grouped only by dimensions they share: ask with `metrics` first.
         
-        `search` keeps only the names that contain a text, ignoring case. The unfiltered list of
-        metrics is long. Fields without a value, such as `type` for a metric, are left out.
+        `search` keeps only the items whose name, label or description contains a text, ignoring
+        case. The unfiltered list of metrics is long. Fields without a value, such as `type` for a
+        metric, are left out.
         
         An unknown metric is refused with a 422 that says why. Requires dashboard access.
 
         :param metrics: Comma-separated metric names, such as `coverage_rate,covered_assets`. With them, the answer lists the dimensions all of them can be grouped and filtered by. Without them, it lists every metric. Send the names in one parameter: only the last of a repeated parameter is read.
         :type metrics: str
-        :param search: Keeps the metrics, or the dimensions, whose name contains this text, ignoring case, such as `incident`.
+        :param search: Keeps the metrics, or the dimensions, whose name, label or description contains this text, ignoring case, such as `incident`.
         :type search: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

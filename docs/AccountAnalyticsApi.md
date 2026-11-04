@@ -29,7 +29,8 @@ Metrics can be grouped only by dimensions they share: ask with `metrics` first.
 case. The unfiltered list of metrics is long. Fields without a value, such as `type` for a
 metric, are left out.
 
-An unknown metric is refused with a 422 that says why. Requires dashboard access.
+An unknown metric is refused with a 422 that says why. Its `detail` names metrics and
+fields; `extra.user_message` says it in words to show a person. Requires dashboard access.
 
 ### Example
 
@@ -120,7 +121,8 @@ Answer one question about your account: metrics, grouped by dimensions, with fil
 
 Names come from `get_account_analytics_catalog`. A dimension a metric cannot reach is
 refused with a 422, and the message lists the dimensions that work. So is a metric that
-needs `metric_time` in `group_by` when the query has none.
+needs `metric_time` in `group_by` when the query has none. A refusal's `detail` names
+metrics and fields; `extra.user_message` says it in words to show a person.
 
 The answer has one row per combination of `group_by` values, at most `limit` rows. `limit`
 defaults to 1,000 and is at most 10,000. `rows_returned` counts the rows in the answer and

@@ -24,8 +24,9 @@ class FieldErrorOut(BaseModel):
     code: StrictStr = Field(description="Machine-readable code identifying the kind of validation failure.")
     message: StrictStr = Field(description="Human-readable explanation of why this field failed validation.")
     extra: Optional[Dict[str, StrictStr]] = Field(default=None, description="Values that parameterize `message`, for a client that renders its own text instead of showing `message` directly. Absent when there is nothing to report.")
+    user_message: Optional[StrictStr] = Field(default=None, description="Position to continue from, as returned in `next_cursor` by the previous page. Omit it to start from the first page. The value is opaque; do not build or modify one.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["field", "code", "message", "extra"]
+    __properties: ClassVar[List[str]] = ["field", "code", "message", "extra", "user_message"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -78,6 +79,11 @@ class FieldErrorOut(BaseModel):
         if self.extra is None and "extra" in self.model_fields_set:
             _dict['extra'] = None
 
+        # set to None if user_message (nullable) is None
+        # and model_fields_set contains the field
+        if self.user_message is None and "user_message" in self.model_fields_set:
+            _dict['user_message'] = None
+
         return _dict
 
     @classmethod
@@ -93,7 +99,8 @@ class FieldErrorOut(BaseModel):
             "field": obj.get("field"),
             "code": obj.get("code"),
             "message": obj.get("message"),
-            "extra": obj.get("extra")
+            "extra": obj.get("extra"),
+            "user_message": obj.get("user_message")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

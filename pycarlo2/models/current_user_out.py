@@ -31,8 +31,9 @@ class CurrentUserOut(BaseModel):
     account_name: Optional[StrictStr] = Field(default=None, description="Display name of the account. Null when the account has no name.")
     account_frozen: StrictBool = Field(description="Whether the account is paused. While it is, this endpoint still answers but every other one returns 403 with the code `account_frozen`.")
     auth_groups: Optional[List[StrictStr]] = Field(default=None, description="Names of the authorization groups this user belongs to. They determine what the user is permitted to do.")
+    features: Optional[List[StrictStr]] = Field(default=None, description="Features in early access that are on for the account. Every operation of a resource in early access answers 404 until its feature is on.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["user_id", "email", "first_name", "last_name", "identity_type", "account_id", "account_name", "account_frozen", "auth_groups"]
+    __properties: ClassVar[List[str]] = ["user_id", "email", "first_name", "last_name", "identity_type", "account_id", "account_name", "account_frozen", "auth_groups", "features"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -115,7 +116,8 @@ class CurrentUserOut(BaseModel):
             "account_id": obj.get("account_id"),
             "account_name": obj.get("account_name"),
             "account_frozen": obj.get("account_frozen"),
-            "auth_groups": obj.get("auth_groups")
+            "auth_groups": obj.get("auth_groups"),
+            "features": obj.get("features")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

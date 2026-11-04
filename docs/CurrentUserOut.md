@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **account_name** | **str** | Display name of the account. Null when the account has no name. | [optional] 
 **account_frozen** | **bool** | Whether the account is paused. While it is, this endpoint still answers but every other one returns 403 with the code &#x60;account_frozen&#x60;. | 
 **auth_groups** | **List[str]** | Names of the authorization groups this user belongs to. They determine what the user is permitted to do. | [optional] 
+**features** | **List[str]** | Features in early access that are on for the account. Every operation of a resource in early access answers 404 until its feature is on. | [optional] 
 
 ## Example
 

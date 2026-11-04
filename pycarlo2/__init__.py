@@ -11,6 +11,7 @@ __version__ = "0.0.0"
 
 # Define package exports
 __all__ = [
+    "AccountAnalyticsApi",
     "BiContainersApi",
     "CollectionAgentsApi",
     "CollectionDataStoresApi",
@@ -100,6 +101,9 @@ __all__ = [
     "BigQueryCredentialsOut",
     "BigQueryCredentialsPatch",
     "BigQueryCredentialsValidateIn",
+    "CatalogDimensionType",
+    "CatalogItemOut",
+    "CatalogOut",
     "ClickHouseCredentialsChangeValidateIn",
     "ClickHouseCredentialsIn",
     "ClickHouseCredentialsOut",
@@ -233,6 +237,11 @@ __all__ = [
     "MariaDbCredentialsOut",
     "MariaDbCredentialsPatch",
     "MariaDbCredentialsValidateIn",
+    "MetricsFilter",
+    "MetricsFilterOperator",
+    "MetricsOrderBy",
+    "MetricsQuery",
+    "MetricsQueryOut",
     "MulesoftCredentialsChangeValidateIn",
     "MulesoftCredentialsIn",
     "MulesoftCredentialsOut",
@@ -340,6 +349,7 @@ __all__ = [
 ]
 
 # import apis into sdk package
+from pycarlo2.api.account_analytics_api import AccountAnalyticsApi as AccountAnalyticsApi
 from pycarlo2.api.bi_containers_api import BiContainersApi as BiContainersApi
 from pycarlo2.api.collection_agents_api import CollectionAgentsApi as CollectionAgentsApi
 from pycarlo2.api.collection_data_stores_api import CollectionDataStoresApi as CollectionDataStoresApi
@@ -430,6 +440,9 @@ from pycarlo2.models.big_query_credentials_in import BigQueryCredentialsIn as Bi
 from pycarlo2.models.big_query_credentials_out import BigQueryCredentialsOut as BigQueryCredentialsOut
 from pycarlo2.models.big_query_credentials_patch import BigQueryCredentialsPatch as BigQueryCredentialsPatch
 from pycarlo2.models.big_query_credentials_validate_in import BigQueryCredentialsValidateIn as BigQueryCredentialsValidateIn
+from pycarlo2.models.catalog_dimension_type import CatalogDimensionType as CatalogDimensionType
+from pycarlo2.models.catalog_item_out import CatalogItemOut as CatalogItemOut
+from pycarlo2.models.catalog_out import CatalogOut as CatalogOut
 from pycarlo2.models.click_house_credentials_change_validate_in import ClickHouseCredentialsChangeValidateIn as ClickHouseCredentialsChangeValidateIn
 from pycarlo2.models.click_house_credentials_in import ClickHouseCredentialsIn as ClickHouseCredentialsIn
 from pycarlo2.models.click_house_credentials_out import ClickHouseCredentialsOut as ClickHouseCredentialsOut
@@ -563,6 +576,11 @@ from pycarlo2.models.maria_db_credentials_in import MariaDbCredentialsIn as Mari
 from pycarlo2.models.maria_db_credentials_out import MariaDbCredentialsOut as MariaDbCredentialsOut
 from pycarlo2.models.maria_db_credentials_patch import MariaDbCredentialsPatch as MariaDbCredentialsPatch
 from pycarlo2.models.maria_db_credentials_validate_in import MariaDbCredentialsValidateIn as MariaDbCredentialsValidateIn
+from pycarlo2.models.metrics_filter import MetricsFilter as MetricsFilter
+from pycarlo2.models.metrics_filter_operator import MetricsFilterOperator as MetricsFilterOperator
+from pycarlo2.models.metrics_order_by import MetricsOrderBy as MetricsOrderBy
+from pycarlo2.models.metrics_query import MetricsQuery as MetricsQuery
+from pycarlo2.models.metrics_query_out import MetricsQueryOut as MetricsQueryOut
 from pycarlo2.models.mulesoft_credentials_change_validate_in import MulesoftCredentialsChangeValidateIn as MulesoftCredentialsChangeValidateIn
 from pycarlo2.models.mulesoft_credentials_in import MulesoftCredentialsIn as MulesoftCredentialsIn
 from pycarlo2.models.mulesoft_credentials_out import MulesoftCredentialsOut as MulesoftCredentialsOut

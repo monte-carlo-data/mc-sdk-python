@@ -69,6 +69,9 @@ from pycarlo2.models.big_query_credentials_in import BigQueryCredentialsIn
 from pycarlo2.models.big_query_credentials_out import BigQueryCredentialsOut
 from pycarlo2.models.big_query_credentials_patch import BigQueryCredentialsPatch
 from pycarlo2.models.big_query_credentials_validate_in import BigQueryCredentialsValidateIn
+from pycarlo2.models.catalog_dimension_type import CatalogDimensionType
+from pycarlo2.models.catalog_item_out import CatalogItemOut
+from pycarlo2.models.catalog_out import CatalogOut
 from pycarlo2.models.click_house_credentials_change_validate_in import ClickHouseCredentialsChangeValidateIn
 from pycarlo2.models.click_house_credentials_in import ClickHouseCredentialsIn
 from pycarlo2.models.click_house_credentials_out import ClickHouseCredentialsOut
@@ -202,6 +205,11 @@ from pycarlo2.models.maria_db_credentials_in import MariaDbCredentialsIn
 from pycarlo2.models.maria_db_credentials_out import MariaDbCredentialsOut
 from pycarlo2.models.maria_db_credentials_patch import MariaDbCredentialsPatch
 from pycarlo2.models.maria_db_credentials_validate_in import MariaDbCredentialsValidateIn
+from pycarlo2.models.metrics_filter import MetricsFilter
+from pycarlo2.models.metrics_filter_operator import MetricsFilterOperator
+from pycarlo2.models.metrics_order_by import MetricsOrderBy
+from pycarlo2.models.metrics_query import MetricsQuery
+from pycarlo2.models.metrics_query_out import MetricsQueryOut
 from pycarlo2.models.mulesoft_credentials_change_validate_in import MulesoftCredentialsChangeValidateIn
 from pycarlo2.models.mulesoft_credentials_in import MulesoftCredentialsIn
 from pycarlo2.models.mulesoft_credentials_out import MulesoftCredentialsOut

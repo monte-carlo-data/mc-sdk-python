@@ -87,6 +87,7 @@ from pycarlo2.models.connection_parent import ConnectionParent
 from pycarlo2.models.connection_patch import ConnectionPatch
 from pycarlo2.models.connection_type_out import ConnectionTypeOut
 from pycarlo2.models.credential_type import CredentialType
+from pycarlo2.models.credentials_detail_out import CredentialsDetailOut
 from pycarlo2.models.credentials_storage_type import CredentialsStorageType
 from pycarlo2.models.credentials_summary_out import CredentialsSummaryOut
 from pycarlo2.models.current_user_out import CurrentUserOut

@@ -119,6 +119,7 @@ __all__ = [
     "ConnectionPatch",
     "ConnectionTypeOut",
     "CredentialType",
+    "CredentialsDetailOut",
     "CredentialsStorageType",
     "CredentialsSummaryOut",
     "CurrentUserOut",
@@ -460,6 +461,7 @@ from pycarlo2.models.connection_parent import ConnectionParent as ConnectionPare
 from pycarlo2.models.connection_patch import ConnectionPatch as ConnectionPatch
 from pycarlo2.models.connection_type_out import ConnectionTypeOut as ConnectionTypeOut
 from pycarlo2.models.credential_type import CredentialType as CredentialType
+from pycarlo2.models.credentials_detail_out import CredentialsDetailOut as CredentialsDetailOut
 from pycarlo2.models.credentials_storage_type import CredentialsStorageType as CredentialsStorageType
 from pycarlo2.models.credentials_summary_out import CredentialsSummaryOut as CredentialsSummaryOut
 from pycarlo2.models.current_user_out import CurrentUserOut as CurrentUserOut

@@ -90,6 +90,7 @@ Method | HTTP request | Description
 [**get_azure_sql_database_credentials**](CredentialsApi.md#get_azure_sql_database_credentials) | **GET** /api/v2/credentials/azure-sql-database/{credentials_id} | Get Azure SQL Database credentials
 [**get_bigquery_credentials**](CredentialsApi.md#get_bigquery_credentials) | **GET** /api/v2/credentials/bigquery/{credentials_id} | Get BigQuery credentials
 [**get_clickhouse_credentials**](CredentialsApi.md#get_clickhouse_credentials) | **GET** /api/v2/credentials/clickhouse/{credentials_id} | Get ClickHouse credentials
+[**get_credentials**](CredentialsApi.md#get_credentials) | **GET** /api/v2/credentials/{credentials_id} | Get credentials
 [**get_databricks_metastore_sql_warehouse_credentials**](CredentialsApi.md#get_databricks_metastore_sql_warehouse_credentials) | **GET** /api/v2/credentials/databricks-metastore-sql-warehouse/{credentials_id} | Get Databricks metadata collection credentials
 [**get_databricks_sql_warehouse_credentials**](CredentialsApi.md#get_databricks_sql_warehouse_credentials) | **GET** /api/v2/credentials/databricks-sql-warehouse/{credentials_id} | Get Databricks query credentials
 [**get_db2_credentials**](CredentialsApi.md#get_db2_credentials) | **GET** /api/v2/credentials/db2/{credentials_id} | Get Db2 credentials
@@ -4513,7 +4514,7 @@ Delete credentials of any connection type and storage.
 
 Takes the id the list or a connection returns. Refused while a connection still uses them.
 Delete the connection first. Monte Carlo stops using them. Whatever they point at is
-untouched.
+untouched. To retire a secret, rotate or revoke it where it lives.
 
 ### Example
 
@@ -7811,6 +7812,92 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_credentials**
+> CredentialsDetailOut get_credentials(credentials_id)
+
+Get credentials
+
+Get credentials of any kind by id.
+
+Takes the id the list or a connection returns. `details` holds the other fields of that
+kind. A secret is never returned.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.credentials_detail_out import CredentialsDetailOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Get credentials
+        api_response = api_instance.get_credentials(credentials_id)
+        print("The response of CredentialsApi->get_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+[**CredentialsDetailOut**](CredentialsDetailOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_databricks_metastore_sql_warehouse_credentials**
 > DatabricksMetastoreSqlWarehouseCredentialsOut get_databricks_metastore_sql_warehouse_credentials(credentials_id)
 
@@ -10316,7 +10403,7 @@ List credentials
 List the credentials in your account, of every kind, a page at a time.
 
 Credentials are returned oldest first. Each entry says what connection type it is for and
-where its secret lives; read the typed endpoint for that kind to see its other fields.
+where its secret lives. Get one by id to see the other fields of its kind.
 
 ### Example
 

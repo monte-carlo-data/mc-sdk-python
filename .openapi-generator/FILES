@@ -86,6 +86,7 @@ docs/ConnectionTypesApi.md
 docs/ConnectionsApi.md
 docs/CredentialType.md
 docs/CredentialsApi.md
+docs/CredentialsDetailOut.md
 docs/CredentialsStorageType.md
 docs/CredentialsSummaryOut.md
 docs/CurrentUserOut.md
@@ -426,6 +427,7 @@ pycarlo2/models/connection_parent.py
 pycarlo2/models/connection_patch.py
 pycarlo2/models/connection_type_out.py
 pycarlo2/models/credential_type.py
+pycarlo2/models/credentials_detail_out.py
 pycarlo2/models/credentials_storage_type.py
 pycarlo2/models/credentials_summary_out.py
 pycarlo2/models/current_user_out.py

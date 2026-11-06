@@ -54,6 +54,7 @@ from pycarlo2.models.click_house_credentials_in import ClickHouseCredentialsIn
 from pycarlo2.models.click_house_credentials_out import ClickHouseCredentialsOut
 from pycarlo2.models.click_house_credentials_patch import ClickHouseCredentialsPatch
 from pycarlo2.models.click_house_credentials_validate_in import ClickHouseCredentialsValidateIn
+from pycarlo2.models.credentials_detail_out import CredentialsDetailOut
 from pycarlo2.models.databricks_metastore_sql_warehouse_credentials_change_validate_in import DatabricksMetastoreSqlWarehouseCredentialsChangeValidateIn
 from pycarlo2.models.databricks_metastore_sql_warehouse_credentials_in import DatabricksMetastoreSqlWarehouseCredentialsIn
 from pycarlo2.models.databricks_metastore_sql_warehouse_credentials_out import DatabricksMetastoreSqlWarehouseCredentialsOut
@@ -7517,7 +7518,7 @@ class CredentialsApi:
         
         Takes the id the list or a connection returns. Refused while a connection still uses them.
         Delete the connection first. Monte Carlo stops using them. Whatever they point at is
-        untouched.
+        untouched. To retire a secret, rotate or revoke it where it lives.
 
         :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
         :type credentials_id: UUID
@@ -12968,6 +12969,146 @@ class CredentialsApi:
 
 
     @validate_call
+    def get_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CredentialsDetailOut:
+        """Get credentials
+
+        Get credentials of any kind by id.
+        
+        Takes the id the list or a connection returns. `details` holds the other fields of that
+        kind. A secret is never returned.
+
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CredentialsDetailOut",
+            '404': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _get_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/credentials/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_databricks_metastore_sql_warehouse_credentials(
         self,
         credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
@@ -17054,7 +17195,7 @@ class CredentialsApi:
         List the credentials in your account, of every kind, a page at a time.
         
         Credentials are returned oldest first. Each entry says what connection type it is for and
-        where its secret lives; read the typed endpoint for that kind to see its other fields.
+        where its secret lives. Get one by id to see the other fields of its kind.
 
         :param cursor: Position to continue from, as returned in `next_cursor` by the previous page. Omit it to start from the first page. The value is opaque; do not build or modify one.
         :type cursor: str

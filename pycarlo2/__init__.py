@@ -153,6 +153,8 @@ __all__ = [
     "DeploymentPatch",
     "DeploymentSummaryOut",
     "DeploymentType",
+    "DocPageOut",
+    "DocsOut",
     "EnvVarCredentialsChangeValidateIn",
     "EnvVarCredentialsIn",
     "EnvVarCredentialsOut",
@@ -492,6 +494,8 @@ from pycarlo2.models.deployment_out import DeploymentOut as DeploymentOut
 from pycarlo2.models.deployment_patch import DeploymentPatch as DeploymentPatch
 from pycarlo2.models.deployment_summary_out import DeploymentSummaryOut as DeploymentSummaryOut
 from pycarlo2.models.deployment_type import DeploymentType as DeploymentType
+from pycarlo2.models.doc_page_out import DocPageOut as DocPageOut
+from pycarlo2.models.docs_out import DocsOut as DocsOut
 from pycarlo2.models.env_var_credentials_change_validate_in import EnvVarCredentialsChangeValidateIn as EnvVarCredentialsChangeValidateIn
 from pycarlo2.models.env_var_credentials_in import EnvVarCredentialsIn as EnvVarCredentialsIn
 from pycarlo2.models.env_var_credentials_out import EnvVarCredentialsOut as EnvVarCredentialsOut

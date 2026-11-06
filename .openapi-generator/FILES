@@ -122,6 +122,8 @@ docs/DeploymentPatch.md
 docs/DeploymentSummaryOut.md
 docs/DeploymentType.md
 docs/DeploymentsApi.md
+docs/DocPageOut.md
+docs/DocsOut.md
 docs/EnvVarCredentialsChangeValidateIn.md
 docs/EnvVarCredentialsIn.md
 docs/EnvVarCredentialsOut.md
@@ -458,6 +460,8 @@ pycarlo2/models/deployment_out.py
 pycarlo2/models/deployment_patch.py
 pycarlo2/models/deployment_summary_out.py
 pycarlo2/models/deployment_type.py
+pycarlo2/models/doc_page_out.py
+pycarlo2/models/docs_out.py
 pycarlo2/models/env_var_credentials_change_validate_in.py
 pycarlo2/models/env_var_credentials_in.py
 pycarlo2/models/env_var_credentials_out.py

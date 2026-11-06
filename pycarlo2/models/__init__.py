@@ -121,6 +121,8 @@ from pycarlo2.models.deployment_out import DeploymentOut
 from pycarlo2.models.deployment_patch import DeploymentPatch
 from pycarlo2.models.deployment_summary_out import DeploymentSummaryOut
 from pycarlo2.models.deployment_type import DeploymentType
+from pycarlo2.models.doc_page_out import DocPageOut
+from pycarlo2.models.docs_out import DocsOut
 from pycarlo2.models.env_var_credentials_change_validate_in import EnvVarCredentialsChangeValidateIn
 from pycarlo2.models.env_var_credentials_in import EnvVarCredentialsIn
 from pycarlo2.models.env_var_credentials_out import EnvVarCredentialsOut

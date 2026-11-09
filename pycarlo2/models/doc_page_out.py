@@ -25,8 +25,9 @@ class DocPageOut(BaseModel):
     summary: Optional[StrictStr] = Field(default=None, description="One line on what the page covers.")
     parent: Optional[StrictStr] = Field(default=None, description="The slug of the page it sits under.")
     body: Optional[StrictStr] = Field(default=None, description="The page as Markdown. Set only when one page was asked for. `doc:<slug>` links name other pages.")
+    prompt: Optional[StrictStr] = Field(default=None, description="A dashboard example's prompt: send it to an agent to build that dashboard.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["slug", "title", "summary", "parent", "body"]
+    __properties: ClassVar[List[str]] = ["slug", "title", "summary", "parent", "body", "prompt"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -89,6 +90,11 @@ class DocPageOut(BaseModel):
         if self.body is None and "body" in self.model_fields_set:
             _dict['body'] = None
 
+        # set to None if prompt (nullable) is None
+        # and model_fields_set contains the field
+        if self.prompt is None and "prompt" in self.model_fields_set:
+            _dict['prompt'] = None
+
         return _dict
 
     @classmethod
@@ -105,7 +111,8 @@ class DocPageOut(BaseModel):
             "title": obj.get("title"),
             "summary": obj.get("summary"),
             "parent": obj.get("parent"),
-            "body": obj.get("body")
+            "body": obj.get("body"),
+            "prompt": obj.get("prompt")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

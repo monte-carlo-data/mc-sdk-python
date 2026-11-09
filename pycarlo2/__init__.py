@@ -156,6 +156,11 @@ __all__ = [
     "DeploymentType",
     "DocPageOut",
     "DocsOut",
+    "DremioCredentialsChangeValidateIn",
+    "DremioCredentialsIn",
+    "DremioCredentialsOut",
+    "DremioCredentialsPatch",
+    "DremioCredentialsValidateIn",
     "EnvVarCredentialsChangeValidateIn",
     "EnvVarCredentialsIn",
     "EnvVarCredentialsOut",
@@ -208,6 +213,9 @@ __all__ = [
     "GlueCredentialsOut",
     "GlueCredentialsPatch",
     "GlueCredentialsValidateIn",
+    "HiveMySqlCredentialsIn",
+    "HiveMySqlCredentialsOut",
+    "HiveMySqlCredentialsPatch",
     "HostingDomainsOut",
     "HostingNetworkOut",
     "HostingPrivateLinkOut",
@@ -245,6 +253,11 @@ __all__ = [
     "MetricsOrderBy",
     "MetricsQuery",
     "MetricsQueryOut",
+    "MotherDuckCredentialsChangeValidateIn",
+    "MotherDuckCredentialsIn",
+    "MotherDuckCredentialsOut",
+    "MotherDuckCredentialsPatch",
+    "MotherDuckCredentialsValidateIn",
     "MulesoftCredentialsChangeValidateIn",
     "MulesoftCredentialsIn",
     "MulesoftCredentialsOut",
@@ -267,6 +280,11 @@ __all__ = [
     "PagedConnectionOut",
     "PagedCredentialsSummaryOut",
     "PagedWarehouseOut",
+    "PineconeCredentialsChangeValidateIn",
+    "PineconeCredentialsIn",
+    "PineconeCredentialsOut",
+    "PineconeCredentialsPatch",
+    "PineconeCredentialsValidateIn",
     "PostgresCredentialsChangeValidateIn",
     "PostgresCredentialsIn",
     "PostgresCredentialsOut",
@@ -498,6 +516,11 @@ from pycarlo2.models.deployment_summary_out import DeploymentSummaryOut as Deplo
 from pycarlo2.models.deployment_type import DeploymentType as DeploymentType
 from pycarlo2.models.doc_page_out import DocPageOut as DocPageOut
 from pycarlo2.models.docs_out import DocsOut as DocsOut
+from pycarlo2.models.dremio_credentials_change_validate_in import DremioCredentialsChangeValidateIn as DremioCredentialsChangeValidateIn
+from pycarlo2.models.dremio_credentials_in import DremioCredentialsIn as DremioCredentialsIn
+from pycarlo2.models.dremio_credentials_out import DremioCredentialsOut as DremioCredentialsOut
+from pycarlo2.models.dremio_credentials_patch import DremioCredentialsPatch as DremioCredentialsPatch
+from pycarlo2.models.dremio_credentials_validate_in import DremioCredentialsValidateIn as DremioCredentialsValidateIn
 from pycarlo2.models.env_var_credentials_change_validate_in import EnvVarCredentialsChangeValidateIn as EnvVarCredentialsChangeValidateIn
 from pycarlo2.models.env_var_credentials_in import EnvVarCredentialsIn as EnvVarCredentialsIn
 from pycarlo2.models.env_var_credentials_out import EnvVarCredentialsOut as EnvVarCredentialsOut
@@ -550,6 +573,9 @@ from pycarlo2.models.glue_credentials_in import GlueCredentialsIn as GlueCredent
 from pycarlo2.models.glue_credentials_out import GlueCredentialsOut as GlueCredentialsOut
 from pycarlo2.models.glue_credentials_patch import GlueCredentialsPatch as GlueCredentialsPatch
 from pycarlo2.models.glue_credentials_validate_in import GlueCredentialsValidateIn as GlueCredentialsValidateIn
+from pycarlo2.models.hive_my_sql_credentials_in import HiveMySqlCredentialsIn as HiveMySqlCredentialsIn
+from pycarlo2.models.hive_my_sql_credentials_out import HiveMySqlCredentialsOut as HiveMySqlCredentialsOut
+from pycarlo2.models.hive_my_sql_credentials_patch import HiveMySqlCredentialsPatch as HiveMySqlCredentialsPatch
 from pycarlo2.models.hosting_domains_out import HostingDomainsOut as HostingDomainsOut
 from pycarlo2.models.hosting_network_out import HostingNetworkOut as HostingNetworkOut
 from pycarlo2.models.hosting_private_link_out import HostingPrivateLinkOut as HostingPrivateLinkOut
@@ -587,6 +613,11 @@ from pycarlo2.models.metrics_filter_operator import MetricsFilterOperator as Met
 from pycarlo2.models.metrics_order_by import MetricsOrderBy as MetricsOrderBy
 from pycarlo2.models.metrics_query import MetricsQuery as MetricsQuery
 from pycarlo2.models.metrics_query_out import MetricsQueryOut as MetricsQueryOut
+from pycarlo2.models.mother_duck_credentials_change_validate_in import MotherDuckCredentialsChangeValidateIn as MotherDuckCredentialsChangeValidateIn
+from pycarlo2.models.mother_duck_credentials_in import MotherDuckCredentialsIn as MotherDuckCredentialsIn
+from pycarlo2.models.mother_duck_credentials_out import MotherDuckCredentialsOut as MotherDuckCredentialsOut
+from pycarlo2.models.mother_duck_credentials_patch import MotherDuckCredentialsPatch as MotherDuckCredentialsPatch
+from pycarlo2.models.mother_duck_credentials_validate_in import MotherDuckCredentialsValidateIn as MotherDuckCredentialsValidateIn
 from pycarlo2.models.mulesoft_credentials_change_validate_in import MulesoftCredentialsChangeValidateIn as MulesoftCredentialsChangeValidateIn
 from pycarlo2.models.mulesoft_credentials_in import MulesoftCredentialsIn as MulesoftCredentialsIn
 from pycarlo2.models.mulesoft_credentials_out import MulesoftCredentialsOut as MulesoftCredentialsOut
@@ -609,6 +640,11 @@ from pycarlo2.models.oracle_credentials_validate_in import OracleCredentialsVali
 from pycarlo2.models.paged_connection_out import PagedConnectionOut as PagedConnectionOut
 from pycarlo2.models.paged_credentials_summary_out import PagedCredentialsSummaryOut as PagedCredentialsSummaryOut
 from pycarlo2.models.paged_warehouse_out import PagedWarehouseOut as PagedWarehouseOut
+from pycarlo2.models.pinecone_credentials_change_validate_in import PineconeCredentialsChangeValidateIn as PineconeCredentialsChangeValidateIn
+from pycarlo2.models.pinecone_credentials_in import PineconeCredentialsIn as PineconeCredentialsIn
+from pycarlo2.models.pinecone_credentials_out import PineconeCredentialsOut as PineconeCredentialsOut
+from pycarlo2.models.pinecone_credentials_patch import PineconeCredentialsPatch as PineconeCredentialsPatch
+from pycarlo2.models.pinecone_credentials_validate_in import PineconeCredentialsValidateIn as PineconeCredentialsValidateIn
 from pycarlo2.models.postgres_credentials_change_validate_in import PostgresCredentialsChangeValidateIn as PostgresCredentialsChangeValidateIn
 from pycarlo2.models.postgres_credentials_in import PostgresCredentialsIn as PostgresCredentialsIn
 from pycarlo2.models.postgres_credentials_out import PostgresCredentialsOut as PostgresCredentialsOut

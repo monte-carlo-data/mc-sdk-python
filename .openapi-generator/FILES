@@ -186,6 +186,9 @@ docs/GlueCredentialsValidateIn.md
 docs/HiveMySqlCredentialsIn.md
 docs/HiveMySqlCredentialsOut.md
 docs/HiveMySqlCredentialsPatch.md
+docs/HiveS3CredentialsIn.md
+docs/HiveS3CredentialsOut.md
+docs/HiveS3CredentialsPatch.md
 docs/HostingApi.md
 docs/HostingDomainsOut.md
 docs/HostingNetworkOut.md
@@ -276,6 +279,9 @@ docs/RedshiftCredentialsPatch.md
 docs/RedshiftCredentialsValidateIn.md
 docs/RunStatus.md
 docs/RuntimePlatform.md
+docs/S3CredentialsIn.md
+docs/S3CredentialsOut.md
+docs/S3CredentialsPatch.md
 docs/SalesforceCrmAuthMode.md
 docs/SalesforceCrmCredentialsChangeValidateIn.md
 docs/SalesforceCrmCredentialsIn.md
@@ -542,6 +548,9 @@ pycarlo2/models/glue_credentials_validate_in.py
 pycarlo2/models/hive_my_sql_credentials_in.py
 pycarlo2/models/hive_my_sql_credentials_out.py
 pycarlo2/models/hive_my_sql_credentials_patch.py
+pycarlo2/models/hive_s3_credentials_in.py
+pycarlo2/models/hive_s3_credentials_out.py
+pycarlo2/models/hive_s3_credentials_patch.py
 pycarlo2/models/hosting_domains_out.py
 pycarlo2/models/hosting_network_out.py
 pycarlo2/models/hosting_private_link_out.py
@@ -630,6 +639,9 @@ pycarlo2/models/redshift_credentials_patch.py
 pycarlo2/models/redshift_credentials_validate_in.py
 pycarlo2/models/run_status.py
 pycarlo2/models/runtime_platform.py
+pycarlo2/models/s3_credentials_in.py
+pycarlo2/models/s3_credentials_out.py
+pycarlo2/models/s3_credentials_patch.py
 pycarlo2/models/salesforce_crm_auth_mode.py
 pycarlo2/models/salesforce_crm_credentials_change_validate_in.py
 pycarlo2/models/salesforce_crm_credentials_in.py

@@ -184,6 +184,9 @@ from pycarlo2.models.glue_credentials_validate_in import GlueCredentialsValidate
 from pycarlo2.models.hive_my_sql_credentials_in import HiveMySqlCredentialsIn
 from pycarlo2.models.hive_my_sql_credentials_out import HiveMySqlCredentialsOut
 from pycarlo2.models.hive_my_sql_credentials_patch import HiveMySqlCredentialsPatch
+from pycarlo2.models.hive_s3_credentials_in import HiveS3CredentialsIn
+from pycarlo2.models.hive_s3_credentials_out import HiveS3CredentialsOut
+from pycarlo2.models.hive_s3_credentials_patch import HiveS3CredentialsPatch
 from pycarlo2.models.hosting_domains_out import HostingDomainsOut
 from pycarlo2.models.hosting_network_out import HostingNetworkOut
 from pycarlo2.models.hosting_private_link_out import HostingPrivateLinkOut
@@ -272,6 +275,9 @@ from pycarlo2.models.redshift_credentials_patch import RedshiftCredentialsPatch
 from pycarlo2.models.redshift_credentials_validate_in import RedshiftCredentialsValidateIn
 from pycarlo2.models.run_status import RunStatus
 from pycarlo2.models.runtime_platform import RuntimePlatform
+from pycarlo2.models.s3_credentials_in import S3CredentialsIn
+from pycarlo2.models.s3_credentials_out import S3CredentialsOut
+from pycarlo2.models.s3_credentials_patch import S3CredentialsPatch
 from pycarlo2.models.salesforce_crm_auth_mode import SalesforceCrmAuthMode
 from pycarlo2.models.salesforce_crm_credentials_change_validate_in import SalesforceCrmCredentialsChangeValidateIn
 from pycarlo2.models.salesforce_crm_credentials_in import SalesforceCrmCredentialsIn

@@ -17,19 +17,23 @@ Method | HTTP request | Description
 [**create_databricks_sql_warehouse_credentials**](CredentialsApi.md#create_databricks_sql_warehouse_credentials) | **POST** /api/v2/credentials/databricks-sql-warehouse | Create Databricks query credentials
 [**create_db2_credentials**](CredentialsApi.md#create_db2_credentials) | **POST** /api/v2/credentials/db2 | Create Db2 credentials
 [**create_dbt_cloud_webhook_credentials**](CredentialsApi.md#create_dbt_cloud_webhook_credentials) | **POST** /api/v2/credentials/dbt-cloud-webhook | Create dbt Cloud webhook credentials
+[**create_dremio_credentials**](CredentialsApi.md#create_dremio_credentials) | **POST** /api/v2/credentials/dremio | Create Dremio credentials
 [**create_env_var_credentials**](CredentialsApi.md#create_env_var_credentials) | **POST** /api/v2/credentials/self-hosted/env-var | Create environment variable credentials
 [**create_file_credentials**](CredentialsApi.md#create_file_credentials) | **POST** /api/v2/credentials/self-hosted/file | Create file credentials
 [**create_fivetran_credentials**](CredentialsApi.md#create_fivetran_credentials) | **POST** /api/v2/credentials/fivetran | Create Fivetran credentials
 [**create_gcp_dataform_credentials**](CredentialsApi.md#create_gcp_dataform_credentials) | **POST** /api/v2/credentials/gcp-dataform | Create GCP Dataform credentials
 [**create_gcp_secret_manager_credentials**](CredentialsApi.md#create_gcp_secret_manager_credentials) | **POST** /api/v2/credentials/self-hosted/gcp | Create GCP Secret Manager credentials
 [**create_glue_credentials**](CredentialsApi.md#create_glue_credentials) | **POST** /api/v2/credentials/glue | Create Glue credentials
+[**create_hive_mysql_credentials**](CredentialsApi.md#create_hive_mysql_credentials) | **POST** /api/v2/credentials/hive-mysql | Create Hive (MySQL) credentials
 [**create_informatica_v2_credentials**](CredentialsApi.md#create_informatica_v2_credentials) | **POST** /api/v2/credentials/informatica-v2 | Create Informatica credentials
 [**create_looker_credentials**](CredentialsApi.md#create_looker_credentials) | **POST** /api/v2/credentials/looker | Create Looker credentials
 [**create_looker_git_clone_credentials**](CredentialsApi.md#create_looker_git_clone_credentials) | **POST** /api/v2/credentials/looker-git-clone | Create LookML repository credentials
 [**create_mariadb_credentials**](CredentialsApi.md#create_mariadb_credentials) | **POST** /api/v2/credentials/mariadb | Create MariaDB credentials
+[**create_motherduck_credentials**](CredentialsApi.md#create_motherduck_credentials) | **POST** /api/v2/credentials/motherduck | Create MotherDuck credentials
 [**create_mulesoft_credentials**](CredentialsApi.md#create_mulesoft_credentials) | **POST** /api/v2/credentials/mulesoft | Create MuleSoft credentials
 [**create_mysql_credentials**](CredentialsApi.md#create_mysql_credentials) | **POST** /api/v2/credentials/mysql | Create MySQL credentials
 [**create_oracle_credentials**](CredentialsApi.md#create_oracle_credentials) | **POST** /api/v2/credentials/oracle | Create Oracle credentials
+[**create_pinecone_credentials**](CredentialsApi.md#create_pinecone_credentials) | **POST** /api/v2/credentials/pinecone | Create Pinecone credentials
 [**create_postgres_credentials**](CredentialsApi.md#create_postgres_credentials) | **POST** /api/v2/credentials/postgres | Create PostgreSQL credentials
 [**create_power_bi_credentials**](CredentialsApi.md#create_power_bi_credentials) | **POST** /api/v2/credentials/power-bi | Create Power BI credentials
 [**create_redshift_credentials**](CredentialsApi.md#create_redshift_credentials) | **POST** /api/v2/credentials/redshift | Create Redshift credentials
@@ -56,19 +60,23 @@ Method | HTTP request | Description
 [**delete_databricks_sql_warehouse_credentials**](CredentialsApi.md#delete_databricks_sql_warehouse_credentials) | **DELETE** /api/v2/credentials/databricks-sql-warehouse/{credentials_id} | Delete Databricks query credentials
 [**delete_db2_credentials**](CredentialsApi.md#delete_db2_credentials) | **DELETE** /api/v2/credentials/db2/{credentials_id} | Delete Db2 credentials
 [**delete_dbt_cloud_webhook_credentials**](CredentialsApi.md#delete_dbt_cloud_webhook_credentials) | **DELETE** /api/v2/credentials/dbt-cloud-webhook/{credentials_id} | Delete dbt Cloud webhook credentials
+[**delete_dremio_credentials**](CredentialsApi.md#delete_dremio_credentials) | **DELETE** /api/v2/credentials/dremio/{credentials_id} | Delete Dremio credentials
 [**delete_env_var_credentials**](CredentialsApi.md#delete_env_var_credentials) | **DELETE** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Delete environment variable credentials
 [**delete_file_credentials**](CredentialsApi.md#delete_file_credentials) | **DELETE** /api/v2/credentials/self-hosted/file/{credentials_id} | Delete file credentials
 [**delete_fivetran_credentials**](CredentialsApi.md#delete_fivetran_credentials) | **DELETE** /api/v2/credentials/fivetran/{credentials_id} | Delete Fivetran credentials
 [**delete_gcp_dataform_credentials**](CredentialsApi.md#delete_gcp_dataform_credentials) | **DELETE** /api/v2/credentials/gcp-dataform/{credentials_id} | Delete GCP Dataform credentials
 [**delete_gcp_secret_manager_credentials**](CredentialsApi.md#delete_gcp_secret_manager_credentials) | **DELETE** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Delete GCP Secret Manager credentials
 [**delete_glue_credentials**](CredentialsApi.md#delete_glue_credentials) | **DELETE** /api/v2/credentials/glue/{credentials_id} | Delete Glue credentials
+[**delete_hive_mysql_credentials**](CredentialsApi.md#delete_hive_mysql_credentials) | **DELETE** /api/v2/credentials/hive-mysql/{credentials_id} | Delete Hive (MySQL) credentials
 [**delete_informatica_v2_credentials**](CredentialsApi.md#delete_informatica_v2_credentials) | **DELETE** /api/v2/credentials/informatica-v2/{credentials_id} | Delete Informatica credentials
 [**delete_looker_credentials**](CredentialsApi.md#delete_looker_credentials) | **DELETE** /api/v2/credentials/looker/{credentials_id} | Delete Looker credentials
 [**delete_looker_git_clone_credentials**](CredentialsApi.md#delete_looker_git_clone_credentials) | **DELETE** /api/v2/credentials/looker-git-clone/{credentials_id} | Delete LookML repository credentials
 [**delete_mariadb_credentials**](CredentialsApi.md#delete_mariadb_credentials) | **DELETE** /api/v2/credentials/mariadb/{credentials_id} | Delete MariaDB credentials
+[**delete_motherduck_credentials**](CredentialsApi.md#delete_motherduck_credentials) | **DELETE** /api/v2/credentials/motherduck/{credentials_id} | Delete MotherDuck credentials
 [**delete_mulesoft_credentials**](CredentialsApi.md#delete_mulesoft_credentials) | **DELETE** /api/v2/credentials/mulesoft/{credentials_id} | Delete MuleSoft credentials
 [**delete_mysql_credentials**](CredentialsApi.md#delete_mysql_credentials) | **DELETE** /api/v2/credentials/mysql/{credentials_id} | Delete MySQL credentials
 [**delete_oracle_credentials**](CredentialsApi.md#delete_oracle_credentials) | **DELETE** /api/v2/credentials/oracle/{credentials_id} | Delete Oracle credentials
+[**delete_pinecone_credentials**](CredentialsApi.md#delete_pinecone_credentials) | **DELETE** /api/v2/credentials/pinecone/{credentials_id} | Delete Pinecone credentials
 [**delete_postgres_credentials**](CredentialsApi.md#delete_postgres_credentials) | **DELETE** /api/v2/credentials/postgres/{credentials_id} | Delete PostgreSQL credentials
 [**delete_power_bi_credentials**](CredentialsApi.md#delete_power_bi_credentials) | **DELETE** /api/v2/credentials/power-bi/{credentials_id} | Delete Power BI credentials
 [**delete_redshift_credentials**](CredentialsApi.md#delete_redshift_credentials) | **DELETE** /api/v2/credentials/redshift/{credentials_id} | Delete Redshift credentials
@@ -95,19 +103,23 @@ Method | HTTP request | Description
 [**get_databricks_sql_warehouse_credentials**](CredentialsApi.md#get_databricks_sql_warehouse_credentials) | **GET** /api/v2/credentials/databricks-sql-warehouse/{credentials_id} | Get Databricks query credentials
 [**get_db2_credentials**](CredentialsApi.md#get_db2_credentials) | **GET** /api/v2/credentials/db2/{credentials_id} | Get Db2 credentials
 [**get_dbt_cloud_webhook_credentials**](CredentialsApi.md#get_dbt_cloud_webhook_credentials) | **GET** /api/v2/credentials/dbt-cloud-webhook/{credentials_id} | Get dbt Cloud webhook credentials
+[**get_dremio_credentials**](CredentialsApi.md#get_dremio_credentials) | **GET** /api/v2/credentials/dremio/{credentials_id} | Get Dremio credentials
 [**get_env_var_credentials**](CredentialsApi.md#get_env_var_credentials) | **GET** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Get environment variable credentials
 [**get_file_credentials**](CredentialsApi.md#get_file_credentials) | **GET** /api/v2/credentials/self-hosted/file/{credentials_id} | Get file credentials
 [**get_fivetran_credentials**](CredentialsApi.md#get_fivetran_credentials) | **GET** /api/v2/credentials/fivetran/{credentials_id} | Get Fivetran credentials
 [**get_gcp_dataform_credentials**](CredentialsApi.md#get_gcp_dataform_credentials) | **GET** /api/v2/credentials/gcp-dataform/{credentials_id} | Get GCP Dataform credentials
 [**get_gcp_secret_manager_credentials**](CredentialsApi.md#get_gcp_secret_manager_credentials) | **GET** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Get GCP Secret Manager credentials
 [**get_glue_credentials**](CredentialsApi.md#get_glue_credentials) | **GET** /api/v2/credentials/glue/{credentials_id} | Get Glue credentials
+[**get_hive_mysql_credentials**](CredentialsApi.md#get_hive_mysql_credentials) | **GET** /api/v2/credentials/hive-mysql/{credentials_id} | Get Hive (MySQL) credentials
 [**get_informatica_v2_credentials**](CredentialsApi.md#get_informatica_v2_credentials) | **GET** /api/v2/credentials/informatica-v2/{credentials_id} | Get Informatica credentials
 [**get_looker_credentials**](CredentialsApi.md#get_looker_credentials) | **GET** /api/v2/credentials/looker/{credentials_id} | Get Looker credentials
 [**get_looker_git_clone_credentials**](CredentialsApi.md#get_looker_git_clone_credentials) | **GET** /api/v2/credentials/looker-git-clone/{credentials_id} | Get LookML repository credentials
 [**get_mariadb_credentials**](CredentialsApi.md#get_mariadb_credentials) | **GET** /api/v2/credentials/mariadb/{credentials_id} | Get MariaDB credentials
+[**get_motherduck_credentials**](CredentialsApi.md#get_motherduck_credentials) | **GET** /api/v2/credentials/motherduck/{credentials_id} | Get MotherDuck credentials
 [**get_mulesoft_credentials**](CredentialsApi.md#get_mulesoft_credentials) | **GET** /api/v2/credentials/mulesoft/{credentials_id} | Get MuleSoft credentials
 [**get_mysql_credentials**](CredentialsApi.md#get_mysql_credentials) | **GET** /api/v2/credentials/mysql/{credentials_id} | Get MySQL credentials
 [**get_oracle_credentials**](CredentialsApi.md#get_oracle_credentials) | **GET** /api/v2/credentials/oracle/{credentials_id} | Get Oracle credentials
+[**get_pinecone_credentials**](CredentialsApi.md#get_pinecone_credentials) | **GET** /api/v2/credentials/pinecone/{credentials_id} | Get Pinecone credentials
 [**get_postgres_credentials**](CredentialsApi.md#get_postgres_credentials) | **GET** /api/v2/credentials/postgres/{credentials_id} | Get PostgreSQL credentials
 [**get_power_bi_credentials**](CredentialsApi.md#get_power_bi_credentials) | **GET** /api/v2/credentials/power-bi/{credentials_id} | Get Power BI credentials
 [**get_redshift_credentials**](CredentialsApi.md#get_redshift_credentials) | **GET** /api/v2/credentials/redshift/{credentials_id} | Get Redshift credentials
@@ -134,19 +146,23 @@ Method | HTTP request | Description
 [**update_databricks_sql_warehouse_credentials**](CredentialsApi.md#update_databricks_sql_warehouse_credentials) | **PATCH** /api/v2/credentials/databricks-sql-warehouse/{credentials_id} | Update Databricks query credentials
 [**update_db2_credentials**](CredentialsApi.md#update_db2_credentials) | **PATCH** /api/v2/credentials/db2/{credentials_id} | Update Db2 credentials
 [**update_dbt_cloud_webhook_credentials**](CredentialsApi.md#update_dbt_cloud_webhook_credentials) | **PATCH** /api/v2/credentials/dbt-cloud-webhook/{credentials_id} | Update dbt Cloud webhook credentials
+[**update_dremio_credentials**](CredentialsApi.md#update_dremio_credentials) | **PATCH** /api/v2/credentials/dremio/{credentials_id} | Update Dremio credentials
 [**update_env_var_credentials**](CredentialsApi.md#update_env_var_credentials) | **PATCH** /api/v2/credentials/self-hosted/env-var/{credentials_id} | Update environment variable credentials
 [**update_file_credentials**](CredentialsApi.md#update_file_credentials) | **PATCH** /api/v2/credentials/self-hosted/file/{credentials_id} | Update file credentials
 [**update_fivetran_credentials**](CredentialsApi.md#update_fivetran_credentials) | **PATCH** /api/v2/credentials/fivetran/{credentials_id} | Update Fivetran credentials
 [**update_gcp_dataform_credentials**](CredentialsApi.md#update_gcp_dataform_credentials) | **PATCH** /api/v2/credentials/gcp-dataform/{credentials_id} | Update GCP Dataform credentials
 [**update_gcp_secret_manager_credentials**](CredentialsApi.md#update_gcp_secret_manager_credentials) | **PATCH** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Update GCP Secret Manager credentials
 [**update_glue_credentials**](CredentialsApi.md#update_glue_credentials) | **PATCH** /api/v2/credentials/glue/{credentials_id} | Update Glue credentials
+[**update_hive_mysql_credentials**](CredentialsApi.md#update_hive_mysql_credentials) | **PATCH** /api/v2/credentials/hive-mysql/{credentials_id} | Update Hive (MySQL) credentials
 [**update_informatica_v2_credentials**](CredentialsApi.md#update_informatica_v2_credentials) | **PATCH** /api/v2/credentials/informatica-v2/{credentials_id} | Update Informatica credentials
 [**update_looker_credentials**](CredentialsApi.md#update_looker_credentials) | **PATCH** /api/v2/credentials/looker/{credentials_id} | Update Looker credentials
 [**update_looker_git_clone_credentials**](CredentialsApi.md#update_looker_git_clone_credentials) | **PATCH** /api/v2/credentials/looker-git-clone/{credentials_id} | Update LookML repository credentials
 [**update_mariadb_credentials**](CredentialsApi.md#update_mariadb_credentials) | **PATCH** /api/v2/credentials/mariadb/{credentials_id} | Update MariaDB credentials
+[**update_motherduck_credentials**](CredentialsApi.md#update_motherduck_credentials) | **PATCH** /api/v2/credentials/motherduck/{credentials_id} | Update MotherDuck credentials
 [**update_mulesoft_credentials**](CredentialsApi.md#update_mulesoft_credentials) | **PATCH** /api/v2/credentials/mulesoft/{credentials_id} | Update MuleSoft credentials
 [**update_mysql_credentials**](CredentialsApi.md#update_mysql_credentials) | **PATCH** /api/v2/credentials/mysql/{credentials_id} | Update MySQL credentials
 [**update_oracle_credentials**](CredentialsApi.md#update_oracle_credentials) | **PATCH** /api/v2/credentials/oracle/{credentials_id} | Update Oracle credentials
+[**update_pinecone_credentials**](CredentialsApi.md#update_pinecone_credentials) | **PATCH** /api/v2/credentials/pinecone/{credentials_id} | Update Pinecone credentials
 [**update_postgres_credentials**](CredentialsApi.md#update_postgres_credentials) | **PATCH** /api/v2/credentials/postgres/{credentials_id} | Update PostgreSQL credentials
 [**update_power_bi_credentials**](CredentialsApi.md#update_power_bi_credentials) | **PATCH** /api/v2/credentials/power-bi/{credentials_id} | Update Power BI credentials
 [**update_redshift_credentials**](CredentialsApi.md#update_redshift_credentials) | **PATCH** /api/v2/credentials/redshift/{credentials_id} | Update Redshift credentials
@@ -183,6 +199,8 @@ Method | HTTP request | Description
 [**validate_db2_credentials_change**](CredentialsApi.md#validate_db2_credentials_change) | **POST** /api/v2/credentials/db2/{credentials_id}/validate | Validate a change to Db2 credentials
 [**validate_dbt_cloud_webhook_credentials**](CredentialsApi.md#validate_dbt_cloud_webhook_credentials) | **POST** /api/v2/credentials/dbt-cloud-webhook/validate | Validate dbt Cloud webhook credentials
 [**validate_dbt_cloud_webhook_credentials_change**](CredentialsApi.md#validate_dbt_cloud_webhook_credentials_change) | **POST** /api/v2/credentials/dbt-cloud-webhook/{credentials_id}/validate | Validate a change to dbt Cloud webhook credentials
+[**validate_dremio_credentials**](CredentialsApi.md#validate_dremio_credentials) | **POST** /api/v2/credentials/dremio/validate | Validate Dremio credentials
+[**validate_dremio_credentials_change**](CredentialsApi.md#validate_dremio_credentials_change) | **POST** /api/v2/credentials/dremio/{credentials_id}/validate | Validate a change to Dremio credentials
 [**validate_env_var_credentials**](CredentialsApi.md#validate_env_var_credentials) | **POST** /api/v2/credentials/self-hosted/env-var/validate | Validate environment variable credentials
 [**validate_env_var_credentials_change**](CredentialsApi.md#validate_env_var_credentials_change) | **POST** /api/v2/credentials/self-hosted/env-var/{credentials_id}/validate | Validate a change to environment variable credentials
 [**validate_file_credentials**](CredentialsApi.md#validate_file_credentials) | **POST** /api/v2/credentials/self-hosted/file/validate | Validate file credentials
@@ -203,12 +221,16 @@ Method | HTTP request | Description
 [**validate_looker_git_clone_credentials_change**](CredentialsApi.md#validate_looker_git_clone_credentials_change) | **POST** /api/v2/credentials/looker-git-clone/{credentials_id}/validate | Validate a change to LookML repository credentials
 [**validate_mariadb_credentials**](CredentialsApi.md#validate_mariadb_credentials) | **POST** /api/v2/credentials/mariadb/validate | Validate MariaDB credentials
 [**validate_mariadb_credentials_change**](CredentialsApi.md#validate_mariadb_credentials_change) | **POST** /api/v2/credentials/mariadb/{credentials_id}/validate | Validate a change to MariaDB credentials
+[**validate_motherduck_credentials**](CredentialsApi.md#validate_motherduck_credentials) | **POST** /api/v2/credentials/motherduck/validate | Validate MotherDuck credentials
+[**validate_motherduck_credentials_change**](CredentialsApi.md#validate_motherduck_credentials_change) | **POST** /api/v2/credentials/motherduck/{credentials_id}/validate | Validate a change to MotherDuck credentials
 [**validate_mulesoft_credentials**](CredentialsApi.md#validate_mulesoft_credentials) | **POST** /api/v2/credentials/mulesoft/validate | Validate MuleSoft credentials
 [**validate_mulesoft_credentials_change**](CredentialsApi.md#validate_mulesoft_credentials_change) | **POST** /api/v2/credentials/mulesoft/{credentials_id}/validate | Validate a change to MuleSoft credentials
 [**validate_mysql_credentials**](CredentialsApi.md#validate_mysql_credentials) | **POST** /api/v2/credentials/mysql/validate | Validate MySQL credentials
 [**validate_mysql_credentials_change**](CredentialsApi.md#validate_mysql_credentials_change) | **POST** /api/v2/credentials/mysql/{credentials_id}/validate | Validate a change to MySQL credentials
 [**validate_oracle_credentials**](CredentialsApi.md#validate_oracle_credentials) | **POST** /api/v2/credentials/oracle/validate | Validate Oracle credentials
 [**validate_oracle_credentials_change**](CredentialsApi.md#validate_oracle_credentials_change) | **POST** /api/v2/credentials/oracle/{credentials_id}/validate | Validate a change to Oracle credentials
+[**validate_pinecone_credentials**](CredentialsApi.md#validate_pinecone_credentials) | **POST** /api/v2/credentials/pinecone/validate | Validate Pinecone credentials
+[**validate_pinecone_credentials_change**](CredentialsApi.md#validate_pinecone_credentials_change) | **POST** /api/v2/credentials/pinecone/{credentials_id}/validate | Validate a change to Pinecone credentials
 [**validate_postgres_credentials**](CredentialsApi.md#validate_postgres_credentials) | **POST** /api/v2/credentials/postgres/validate | Validate PostgreSQL credentials
 [**validate_postgres_credentials_change**](CredentialsApi.md#validate_postgres_credentials_change) | **POST** /api/v2/credentials/postgres/{credentials_id}/validate | Validate a change to PostgreSQL credentials
 [**validate_power_bi_credentials**](CredentialsApi.md#validate_power_bi_credentials) | **POST** /api/v2/credentials/power-bi/validate | Validate Power BI credentials
@@ -1435,6 +1457,97 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_dremio_credentials**
+> DremioCredentialsOut create_dremio_credentials(dremio_credentials_in)
+
+Create Dremio credentials
+
+Store a Dremio access token for connections to use.
+
+Monte Carlo keeps the token and returns everything else. Create the credentials first, then
+create a connection that references them. Nothing is checked against Dremio here.
+
+An account holds a limited number of credentials; past that the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.dremio_credentials_in import DremioCredentialsIn
+from pycarlo2.models.dremio_credentials_out import DremioCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    dremio_credentials_in = pycarlo2.DremioCredentialsIn() # DremioCredentialsIn | 
+
+    try:
+        # Create Dremio credentials
+        api_response = api_instance.create_dremio_credentials(dremio_credentials_in)
+        print("The response of CredentialsApi->create_dremio_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_dremio_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dremio_credentials_in** | [**DremioCredentialsIn**](DremioCredentialsIn.md)|  | 
+
+### Return type
+
+[**DremioCredentialsOut**](DremioCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_env_var_credentials**
 > EnvVarCredentialsOut create_env_var_credentials(env_var_credentials_in)
 
@@ -1986,6 +2099,98 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_hive_mysql_credentials**
+> HiveMySqlCredentialsOut create_hive_mysql_credentials(hive_my_sql_credentials_in)
+
+Create Hive (MySQL) credentials
+
+Store a login to the MySQL database behind a Hive metastore, for connections to use.
+
+Monte Carlo keeps the password and returns everything else. Create the credentials first,
+then create a connection on a Data Lake warehouse that references them. Nothing is checked
+against MySQL here.
+
+An account holds a limited number of credentials; past that the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.hive_my_sql_credentials_in import HiveMySqlCredentialsIn
+from pycarlo2.models.hive_my_sql_credentials_out import HiveMySqlCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    hive_my_sql_credentials_in = pycarlo2.HiveMySqlCredentialsIn() # HiveMySqlCredentialsIn | 
+
+    try:
+        # Create Hive (MySQL) credentials
+        api_response = api_instance.create_hive_mysql_credentials(hive_my_sql_credentials_in)
+        print("The response of CredentialsApi->create_hive_mysql_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_hive_mysql_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **hive_my_sql_credentials_in** | [**HiveMySqlCredentialsIn**](HiveMySqlCredentialsIn.md)|  | 
+
+### Return type
+
+[**HiveMySqlCredentialsOut**](HiveMySqlCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_informatica_v2_credentials**
 > InformaticaV2CredentialsOut create_informatica_v2_credentials(informatica_v2_credentials_in)
 
@@ -2355,6 +2560,97 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_motherduck_credentials**
+> MotherDuckCredentialsOut create_motherduck_credentials(mother_duck_credentials_in)
+
+Create MotherDuck credentials
+
+Store a MotherDuck access token for connections to use.
+
+Monte Carlo keeps the token and returns everything else. Create the credentials first, then
+create a connection that references them. Nothing is checked against MotherDuck here.
+
+An account holds a limited number of credentials; past that the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.mother_duck_credentials_in import MotherDuckCredentialsIn
+from pycarlo2.models.mother_duck_credentials_out import MotherDuckCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    mother_duck_credentials_in = pycarlo2.MotherDuckCredentialsIn() # MotherDuckCredentialsIn | 
+
+    try:
+        # Create MotherDuck credentials
+        api_response = api_instance.create_motherduck_credentials(mother_duck_credentials_in)
+        print("The response of CredentialsApi->create_motherduck_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_motherduck_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mother_duck_credentials_in** | [**MotherDuckCredentialsIn**](MotherDuckCredentialsIn.md)|  | 
+
+### Return type
+
+[**MotherDuckCredentialsOut**](MotherDuckCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_mulesoft_credentials**
 > MulesoftCredentialsOut create_mulesoft_credentials(mulesoft_credentials_in)
 
@@ -2606,6 +2902,97 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OracleCredentialsOut**](OracleCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_pinecone_credentials**
+> PineconeCredentialsOut create_pinecone_credentials(pinecone_credentials_in)
+
+Create Pinecone credentials
+
+Store a Pinecone project API key for connections to use.
+
+Monte Carlo keeps the API key and returns everything else. Create the credentials first,
+then create a connection that references them. Nothing is checked against Pinecone here.
+
+An account holds a limited number of credentials; past that the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.pinecone_credentials_in import PineconeCredentialsIn
+from pycarlo2.models.pinecone_credentials_out import PineconeCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    pinecone_credentials_in = pycarlo2.PineconeCredentialsIn() # PineconeCredentialsIn | 
+
+    try:
+        # Create Pinecone credentials
+        api_response = api_instance.create_pinecone_credentials(pinecone_credentials_in)
+        print("The response of CredentialsApi->create_pinecone_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_pinecone_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pinecone_credentials_in** | [**PineconeCredentialsIn**](PineconeCredentialsIn.md)|  | 
+
+### Return type
+
+[**PineconeCredentialsOut**](PineconeCredentialsOut.md)
 
 ### Authorization
 
@@ -4929,6 +5316,90 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_dremio_credentials**
+> delete_dremio_credentials(credentials_id)
+
+Delete Dremio credentials
+
+Delete Dremio credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using
+the stored token. Revoke it in Dremio if the token itself must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Delete Dremio credentials
+        api_instance.delete_dremio_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_dremio_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_env_var_credentials**
 > delete_env_var_credentials(credentials_id)
 
@@ -5433,6 +5904,90 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_hive_mysql_credentials**
+> delete_hive_mysql_credentials(credentials_id)
+
+Delete Hive (MySQL) credentials
+
+Delete Hive (MySQL) credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+using the stored password. Change it in MySQL if the password itself must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Delete Hive (MySQL) credentials
+        api_instance.delete_hive_mysql_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_hive_mysql_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_informatica_v2_credentials**
 > delete_informatica_v2_credentials(credentials_id)
 
@@ -5771,6 +6326,90 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_motherduck_credentials**
+> delete_motherduck_credentials(credentials_id)
+
+Delete MotherDuck credentials
+
+Delete MotherDuck credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops using
+the stored token. Revoke it in MotherDuck if the token itself must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Delete MotherDuck credentials
+        api_instance.delete_motherduck_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_motherduck_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_mulesoft_credentials**
 > delete_mulesoft_credentials(credentials_id)
 
@@ -5985,6 +6624,90 @@ with pycarlo2.ApiClient(configuration) as api_client:
         api_instance.delete_oracle_credentials(credentials_id)
     except Exception as e:
         print("Exception when calling CredentialsApi->delete_oracle_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_pinecone_credentials**
+> delete_pinecone_credentials(credentials_id)
+
+Delete Pinecone credentials
+
+Delete Pinecone credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+using the stored API key. Delete the key in Pinecone if the key itself must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Delete Pinecone credentials
+        api_instance.delete_pinecone_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_pinecone_credentials: %s\n" % e)
 ```
 
 
@@ -8243,6 +8966,92 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_dremio_credentials**
+> DremioCredentialsOut get_dremio_credentials(credentials_id)
+
+Get Dremio credentials
+
+Get one set of Dremio credentials, without the token.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.dremio_credentials_out import DremioCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Get Dremio credentials
+        api_response = api_instance.get_dremio_credentials(credentials_id)
+        print("The response of CredentialsApi->get_dremio_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_dremio_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+[**DremioCredentialsOut**](DremioCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_env_var_credentials**
 > EnvVarCredentialsOut get_env_var_credentials(credentials_id)
 
@@ -8759,6 +9568,92 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_hive_mysql_credentials**
+> HiveMySqlCredentialsOut get_hive_mysql_credentials(credentials_id)
+
+Get Hive (MySQL) credentials
+
+Get one set of Hive (MySQL) credentials, without the password.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.hive_my_sql_credentials_out import HiveMySqlCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Get Hive (MySQL) credentials
+        api_response = api_instance.get_hive_mysql_credentials(credentials_id)
+        print("The response of CredentialsApi->get_hive_mysql_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_hive_mysql_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+[**HiveMySqlCredentialsOut**](HiveMySqlCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_informatica_v2_credentials**
 > InformaticaV2CredentialsOut get_informatica_v2_credentials(credentials_id)
 
@@ -9103,6 +9998,92 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_motherduck_credentials**
+> MotherDuckCredentialsOut get_motherduck_credentials(credentials_id)
+
+Get MotherDuck credentials
+
+Get one set of MotherDuck credentials, without the token.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.mother_duck_credentials_out import MotherDuckCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Get MotherDuck credentials
+        api_response = api_instance.get_motherduck_credentials(credentials_id)
+        print("The response of CredentialsApi->get_motherduck_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_motherduck_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+[**MotherDuckCredentialsOut**](MotherDuckCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_mulesoft_credentials**
 > MulesoftCredentialsOut get_mulesoft_credentials(credentials_id)
 
@@ -9338,6 +10319,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OracleCredentialsOut**](OracleCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_pinecone_credentials**
+> PineconeCredentialsOut get_pinecone_credentials(credentials_id)
+
+Get Pinecone credentials
+
+Get one set of Pinecone credentials, without the API key.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.pinecone_credentials_out import PineconeCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Get Pinecone credentials
+        api_response = api_instance.get_pinecone_credentials(credentials_id)
+        print("The response of CredentialsApi->get_pinecone_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_pinecone_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+[**PineconeCredentialsOut**](PineconeCredentialsOut.md)
 
 ### Authorization
 
@@ -11683,6 +12750,98 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_dremio_credentials**
+> DremioCredentialsOut update_dremio_credentials(credentials_id, dremio_credentials_patch)
+
+Update Dremio credentials
+
+Change Dremio credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to change: a
+field left out is unchanged, `db_name` or `tls` set to null is cleared, and `token` set to null
+is unchanged. Sending an empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.dremio_credentials_out import DremioCredentialsOut
+from pycarlo2.models.dremio_credentials_patch import DremioCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    dremio_credentials_patch = pycarlo2.DremioCredentialsPatch() # DremioCredentialsPatch | 
+
+    try:
+        # Update Dremio credentials
+        api_response = api_instance.update_dremio_credentials(credentials_id, dremio_credentials_patch)
+        print("The response of CredentialsApi->update_dremio_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_dremio_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **dremio_credentials_patch** | [**DremioCredentialsPatch**](DremioCredentialsPatch.md)|  | 
+
+### Return type
+
+[**DremioCredentialsOut**](DremioCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_env_var_credentials**
 > EnvVarCredentialsOut update_env_var_credentials(credentials_id, env_var_credentials_patch)
 
@@ -12232,6 +13391,98 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_hive_mysql_credentials**
+> HiveMySqlCredentialsOut update_hive_mysql_credentials(credentials_id, hive_my_sql_credentials_patch)
+
+Update Hive (MySQL) credentials
+
+Change Hive (MySQL) credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to
+change: a field left out is unchanged, and `password` set to null is unchanged. Sending an
+empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.hive_my_sql_credentials_out import HiveMySqlCredentialsOut
+from pycarlo2.models.hive_my_sql_credentials_patch import HiveMySqlCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    hive_my_sql_credentials_patch = pycarlo2.HiveMySqlCredentialsPatch() # HiveMySqlCredentialsPatch | 
+
+    try:
+        # Update Hive (MySQL) credentials
+        api_response = api_instance.update_hive_mysql_credentials(credentials_id, hive_my_sql_credentials_patch)
+        print("The response of CredentialsApi->update_hive_mysql_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_hive_mysql_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **hive_my_sql_credentials_patch** | [**HiveMySqlCredentialsPatch**](HiveMySqlCredentialsPatch.md)|  | 
+
+### Return type
+
+[**HiveMySqlCredentialsOut**](HiveMySqlCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_informatica_v2_credentials**
 > InformaticaV2CredentialsOut update_informatica_v2_credentials(credentials_id, informatica_v2_credentials_patch)
 
@@ -12598,6 +13849,98 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_motherduck_credentials**
+> MotherDuckCredentialsOut update_motherduck_credentials(credentials_id, mother_duck_credentials_patch)
+
+Update MotherDuck credentials
+
+Change MotherDuck credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to change: a
+field left out is unchanged, and `token` set to null is unchanged. Sending an
+empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.mother_duck_credentials_out import MotherDuckCredentialsOut
+from pycarlo2.models.mother_duck_credentials_patch import MotherDuckCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    mother_duck_credentials_patch = pycarlo2.MotherDuckCredentialsPatch() # MotherDuckCredentialsPatch | 
+
+    try:
+        # Update MotherDuck credentials
+        api_response = api_instance.update_motherduck_credentials(credentials_id, mother_duck_credentials_patch)
+        print("The response of CredentialsApi->update_motherduck_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_motherduck_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **mother_duck_credentials_patch** | [**MotherDuckCredentialsPatch**](MotherDuckCredentialsPatch.md)|  | 
+
+### Return type
+
+[**MotherDuckCredentialsOut**](MotherDuckCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_mulesoft_credentials**
 > MulesoftCredentialsOut update_mulesoft_credentials(credentials_id, mulesoft_credentials_patch)
 
@@ -12849,6 +14192,98 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OracleCredentialsOut**](OracleCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_pinecone_credentials**
+> PineconeCredentialsOut update_pinecone_credentials(credentials_id, pinecone_credentials_patch)
+
+Update Pinecone credentials
+
+Change Pinecone credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to
+change: a field left out is unchanged, and `api_key` set to null is unchanged. Sending an
+empty body returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.pinecone_credentials_out import PineconeCredentialsOut
+from pycarlo2.models.pinecone_credentials_patch import PineconeCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    pinecone_credentials_patch = pycarlo2.PineconeCredentialsPatch() # PineconeCredentialsPatch | 
+
+    try:
+        # Update Pinecone credentials
+        api_response = api_instance.update_pinecone_credentials(credentials_id, pinecone_credentials_patch)
+        print("The response of CredentialsApi->update_pinecone_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_pinecone_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **pinecone_credentials_patch** | [**PineconeCredentialsPatch**](PineconeCredentialsPatch.md)|  | 
+
+### Return type
+
+[**PineconeCredentialsOut**](PineconeCredentialsOut.md)
 
 ### Authorization
 
@@ -16288,6 +17723,198 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **validate_dremio_credentials**
+> ValidationRunOut validate_dremio_credentials(dremio_credentials_validate_in)
+
+Validate Dremio credentials
+
+Check a candidate Dremio access token against Dremio.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your Dremio endpoint.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.dremio_credentials_validate_in import DremioCredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    dremio_credentials_validate_in = pycarlo2.DremioCredentialsValidateIn() # DremioCredentialsValidateIn | 
+
+    try:
+        # Validate Dremio credentials
+        api_response = api_instance.validate_dremio_credentials(dremio_credentials_validate_in)
+        print("The response of CredentialsApi->validate_dremio_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_dremio_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dremio_credentials_validate_in** | [**DremioCredentialsValidateIn**](DremioCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_dremio_credentials_change**
+> ValidationRunOut validate_dremio_credentials_change(credentials_id, dremio_credentials_change_validate_in)
+
+Validate a change to Dremio credentials
+
+Check a change to Dremio credentials before making it.
+
+Send the fields you would update the credentials with, and a deployment to run them from.
+The change is applied to a copy of the stored credentials, and the checks run against
+that copy. The credentials and the connections using them are left as they are.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.dremio_credentials_change_validate_in import DremioCredentialsChangeValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    dremio_credentials_change_validate_in = pycarlo2.DremioCredentialsChangeValidateIn() # DremioCredentialsChangeValidateIn | 
+
+    try:
+        # Validate a change to Dremio credentials
+        api_response = api_instance.validate_dremio_credentials_change(credentials_id, dremio_credentials_change_validate_in)
+        print("The response of CredentialsApi->validate_dremio_credentials_change:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_dremio_credentials_change: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **dremio_credentials_change_validate_in** | [**DremioCredentialsChangeValidateIn**](DremioCredentialsChangeValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **validate_env_var_credentials**
 > ValidationRunOut validate_env_var_credentials(env_var_credentials_validate_in)
 
@@ -18208,6 +19835,198 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **validate_motherduck_credentials**
+> ValidationRunOut validate_motherduck_credentials(mother_duck_credentials_validate_in)
+
+Validate MotherDuck credentials
+
+Check a candidate MotherDuck access token against MotherDuck.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your MotherDuck database.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.mother_duck_credentials_validate_in import MotherDuckCredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    mother_duck_credentials_validate_in = pycarlo2.MotherDuckCredentialsValidateIn() # MotherDuckCredentialsValidateIn | 
+
+    try:
+        # Validate MotherDuck credentials
+        api_response = api_instance.validate_motherduck_credentials(mother_duck_credentials_validate_in)
+        print("The response of CredentialsApi->validate_motherduck_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_motherduck_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mother_duck_credentials_validate_in** | [**MotherDuckCredentialsValidateIn**](MotherDuckCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_motherduck_credentials_change**
+> ValidationRunOut validate_motherduck_credentials_change(credentials_id, mother_duck_credentials_change_validate_in)
+
+Validate a change to MotherDuck credentials
+
+Check a change to MotherDuck credentials before making it.
+
+Send the fields you would update the credentials with, and a deployment to run them from.
+The change is applied to a copy of the stored credentials, and the checks run against
+that copy. The credentials and the connections using them are left as they are.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.mother_duck_credentials_change_validate_in import MotherDuckCredentialsChangeValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    mother_duck_credentials_change_validate_in = pycarlo2.MotherDuckCredentialsChangeValidateIn() # MotherDuckCredentialsChangeValidateIn | 
+
+    try:
+        # Validate a change to MotherDuck credentials
+        api_response = api_instance.validate_motherduck_credentials_change(credentials_id, mother_duck_credentials_change_validate_in)
+        print("The response of CredentialsApi->validate_motherduck_credentials_change:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_motherduck_credentials_change: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **mother_duck_credentials_change_validate_in** | [**MotherDuckCredentialsChangeValidateIn**](MotherDuckCredentialsChangeValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **validate_mulesoft_credentials**
 > ValidationRunOut validate_mulesoft_credentials(mulesoft_credentials_validate_in)
 
@@ -18754,6 +20573,198 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **oracle_credentials_change_validate_in** | [**OracleCredentialsChangeValidateIn**](OracleCredentialsChangeValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_pinecone_credentials**
+> ValidationRunOut validate_pinecone_credentials(pinecone_credentials_validate_in)
+
+Validate Pinecone credentials
+
+Check a candidate Pinecone API key against Pinecone.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your Pinecone project.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.pinecone_credentials_validate_in import PineconeCredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    pinecone_credentials_validate_in = pycarlo2.PineconeCredentialsValidateIn() # PineconeCredentialsValidateIn | 
+
+    try:
+        # Validate Pinecone credentials
+        api_response = api_instance.validate_pinecone_credentials(pinecone_credentials_validate_in)
+        print("The response of CredentialsApi->validate_pinecone_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_pinecone_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pinecone_credentials_validate_in** | [**PineconeCredentialsValidateIn**](PineconeCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_pinecone_credentials_change**
+> ValidationRunOut validate_pinecone_credentials_change(credentials_id, pinecone_credentials_change_validate_in)
+
+Validate a change to Pinecone credentials
+
+Check a change to Pinecone credentials before making it.
+
+Send the fields you would update the credentials with, and a deployment to run them from.
+The change is applied to a copy of the stored credentials, and the checks run against
+that copy. The credentials and the connections using them are left as they are.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.pinecone_credentials_change_validate_in import PineconeCredentialsChangeValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    pinecone_credentials_change_validate_in = pycarlo2.PineconeCredentialsChangeValidateIn() # PineconeCredentialsChangeValidateIn | 
+
+    try:
+        # Validate a change to Pinecone credentials
+        api_response = api_instance.validate_pinecone_credentials_change(credentials_id, pinecone_credentials_change_validate_in)
+        print("The response of CredentialsApi->validate_pinecone_credentials_change:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_pinecone_credentials_change: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **pinecone_credentials_change_validate_in** | [**PineconeCredentialsChangeValidateIn**](PineconeCredentialsChangeValidateIn.md)|  | 
 
 ### Return type
 

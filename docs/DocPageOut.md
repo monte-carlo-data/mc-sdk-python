@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **summary** | **str** | One line on what the page covers. | [optional] 
 **parent** | **str** | The slug of the page it sits under. | [optional] 
 **body** | **str** | The page as Markdown. Set only when one page was asked for. &#x60;doc:&lt;slug&gt;&#x60; links name other pages. | [optional] 
+**prompt** | **str** | A dashboard example&#39;s prompt: send it to an agent to build that dashboard. | [optional] 
 
 ## Example
 

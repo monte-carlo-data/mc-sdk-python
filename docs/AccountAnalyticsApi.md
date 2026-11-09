@@ -120,7 +120,8 @@ List the Analytics API docs, or read one page
 
 List the pages of the Analytics API docs, or read one.
 
-Without `slug`, the answer lists every page with its slug, title, summary and parent page.
+Without `slug`, the answer lists every page with its slug, title, summary and parent page,
+and the prompt of each dashboard example.
 With `slug`, it returns that page with its body as Markdown. The pages are the ones
 published at docs.getmontecarlo.com: how to query, the data catalog, the dashboard examples
 and the dashboard style. `doc:<slug>` links in a body name other pages.

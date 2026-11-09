@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**create_gcp_secret_manager_credentials**](CredentialsApi.md#create_gcp_secret_manager_credentials) | **POST** /api/v2/credentials/self-hosted/gcp | Create GCP Secret Manager credentials
 [**create_glue_credentials**](CredentialsApi.md#create_glue_credentials) | **POST** /api/v2/credentials/glue | Create Glue credentials
 [**create_hive_mysql_credentials**](CredentialsApi.md#create_hive_mysql_credentials) | **POST** /api/v2/credentials/hive-mysql | Create Hive (MySQL) credentials
+[**create_hive_s3_credentials**](CredentialsApi.md#create_hive_s3_credentials) | **POST** /api/v2/credentials/hive-s3 | Create Hive (S3) credentials
 [**create_informatica_v2_credentials**](CredentialsApi.md#create_informatica_v2_credentials) | **POST** /api/v2/credentials/informatica-v2 | Create Informatica credentials
 [**create_looker_credentials**](CredentialsApi.md#create_looker_credentials) | **POST** /api/v2/credentials/looker | Create Looker credentials
 [**create_looker_git_clone_credentials**](CredentialsApi.md#create_looker_git_clone_credentials) | **POST** /api/v2/credentials/looker-git-clone | Create LookML repository credentials
@@ -37,6 +38,7 @@ Method | HTTP request | Description
 [**create_postgres_credentials**](CredentialsApi.md#create_postgres_credentials) | **POST** /api/v2/credentials/postgres | Create PostgreSQL credentials
 [**create_power_bi_credentials**](CredentialsApi.md#create_power_bi_credentials) | **POST** /api/v2/credentials/power-bi | Create Power BI credentials
 [**create_redshift_credentials**](CredentialsApi.md#create_redshift_credentials) | **POST** /api/v2/credentials/redshift | Create Redshift credentials
+[**create_s3_credentials**](CredentialsApi.md#create_s3_credentials) | **POST** /api/v2/credentials/s3 | Create S3 credentials
 [**create_salesforce_crm_credentials**](CredentialsApi.md#create_salesforce_crm_credentials) | **POST** /api/v2/credentials/salesforce-crm | Create Salesforce CRM credentials
 [**create_salesforce_data_cloud_credentials**](CredentialsApi.md#create_salesforce_data_cloud_credentials) | **POST** /api/v2/credentials/salesforce-data-cloud | Create Salesforce Data Cloud credentials
 [**create_sap_hana_credentials**](CredentialsApi.md#create_sap_hana_credentials) | **POST** /api/v2/credentials/sap-hana | Create SAP HANA credentials
@@ -68,6 +70,7 @@ Method | HTTP request | Description
 [**delete_gcp_secret_manager_credentials**](CredentialsApi.md#delete_gcp_secret_manager_credentials) | **DELETE** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Delete GCP Secret Manager credentials
 [**delete_glue_credentials**](CredentialsApi.md#delete_glue_credentials) | **DELETE** /api/v2/credentials/glue/{credentials_id} | Delete Glue credentials
 [**delete_hive_mysql_credentials**](CredentialsApi.md#delete_hive_mysql_credentials) | **DELETE** /api/v2/credentials/hive-mysql/{credentials_id} | Delete Hive (MySQL) credentials
+[**delete_hive_s3_credentials**](CredentialsApi.md#delete_hive_s3_credentials) | **DELETE** /api/v2/credentials/hive-s3/{credentials_id} | Delete Hive (S3) credentials
 [**delete_informatica_v2_credentials**](CredentialsApi.md#delete_informatica_v2_credentials) | **DELETE** /api/v2/credentials/informatica-v2/{credentials_id} | Delete Informatica credentials
 [**delete_looker_credentials**](CredentialsApi.md#delete_looker_credentials) | **DELETE** /api/v2/credentials/looker/{credentials_id} | Delete Looker credentials
 [**delete_looker_git_clone_credentials**](CredentialsApi.md#delete_looker_git_clone_credentials) | **DELETE** /api/v2/credentials/looker-git-clone/{credentials_id} | Delete LookML repository credentials
@@ -80,6 +83,7 @@ Method | HTTP request | Description
 [**delete_postgres_credentials**](CredentialsApi.md#delete_postgres_credentials) | **DELETE** /api/v2/credentials/postgres/{credentials_id} | Delete PostgreSQL credentials
 [**delete_power_bi_credentials**](CredentialsApi.md#delete_power_bi_credentials) | **DELETE** /api/v2/credentials/power-bi/{credentials_id} | Delete Power BI credentials
 [**delete_redshift_credentials**](CredentialsApi.md#delete_redshift_credentials) | **DELETE** /api/v2/credentials/redshift/{credentials_id} | Delete Redshift credentials
+[**delete_s3_credentials**](CredentialsApi.md#delete_s3_credentials) | **DELETE** /api/v2/credentials/s3/{credentials_id} | Delete S3 credentials
 [**delete_salesforce_crm_credentials**](CredentialsApi.md#delete_salesforce_crm_credentials) | **DELETE** /api/v2/credentials/salesforce-crm/{credentials_id} | Delete Salesforce CRM credentials
 [**delete_salesforce_data_cloud_credentials**](CredentialsApi.md#delete_salesforce_data_cloud_credentials) | **DELETE** /api/v2/credentials/salesforce-data-cloud/{credentials_id} | Delete Salesforce Data Cloud credentials
 [**delete_sap_hana_credentials**](CredentialsApi.md#delete_sap_hana_credentials) | **DELETE** /api/v2/credentials/sap-hana/{credentials_id} | Delete SAP HANA credentials
@@ -111,6 +115,7 @@ Method | HTTP request | Description
 [**get_gcp_secret_manager_credentials**](CredentialsApi.md#get_gcp_secret_manager_credentials) | **GET** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Get GCP Secret Manager credentials
 [**get_glue_credentials**](CredentialsApi.md#get_glue_credentials) | **GET** /api/v2/credentials/glue/{credentials_id} | Get Glue credentials
 [**get_hive_mysql_credentials**](CredentialsApi.md#get_hive_mysql_credentials) | **GET** /api/v2/credentials/hive-mysql/{credentials_id} | Get Hive (MySQL) credentials
+[**get_hive_s3_credentials**](CredentialsApi.md#get_hive_s3_credentials) | **GET** /api/v2/credentials/hive-s3/{credentials_id} | Get Hive (S3) credentials
 [**get_informatica_v2_credentials**](CredentialsApi.md#get_informatica_v2_credentials) | **GET** /api/v2/credentials/informatica-v2/{credentials_id} | Get Informatica credentials
 [**get_looker_credentials**](CredentialsApi.md#get_looker_credentials) | **GET** /api/v2/credentials/looker/{credentials_id} | Get Looker credentials
 [**get_looker_git_clone_credentials**](CredentialsApi.md#get_looker_git_clone_credentials) | **GET** /api/v2/credentials/looker-git-clone/{credentials_id} | Get LookML repository credentials
@@ -123,6 +128,7 @@ Method | HTTP request | Description
 [**get_postgres_credentials**](CredentialsApi.md#get_postgres_credentials) | **GET** /api/v2/credentials/postgres/{credentials_id} | Get PostgreSQL credentials
 [**get_power_bi_credentials**](CredentialsApi.md#get_power_bi_credentials) | **GET** /api/v2/credentials/power-bi/{credentials_id} | Get Power BI credentials
 [**get_redshift_credentials**](CredentialsApi.md#get_redshift_credentials) | **GET** /api/v2/credentials/redshift/{credentials_id} | Get Redshift credentials
+[**get_s3_credentials**](CredentialsApi.md#get_s3_credentials) | **GET** /api/v2/credentials/s3/{credentials_id} | Get S3 credentials
 [**get_salesforce_crm_credentials**](CredentialsApi.md#get_salesforce_crm_credentials) | **GET** /api/v2/credentials/salesforce-crm/{credentials_id} | Get Salesforce CRM credentials
 [**get_salesforce_data_cloud_credentials**](CredentialsApi.md#get_salesforce_data_cloud_credentials) | **GET** /api/v2/credentials/salesforce-data-cloud/{credentials_id} | Get Salesforce Data Cloud credentials
 [**get_sap_hana_credentials**](CredentialsApi.md#get_sap_hana_credentials) | **GET** /api/v2/credentials/sap-hana/{credentials_id} | Get SAP HANA credentials
@@ -154,6 +160,7 @@ Method | HTTP request | Description
 [**update_gcp_secret_manager_credentials**](CredentialsApi.md#update_gcp_secret_manager_credentials) | **PATCH** /api/v2/credentials/self-hosted/gcp/{credentials_id} | Update GCP Secret Manager credentials
 [**update_glue_credentials**](CredentialsApi.md#update_glue_credentials) | **PATCH** /api/v2/credentials/glue/{credentials_id} | Update Glue credentials
 [**update_hive_mysql_credentials**](CredentialsApi.md#update_hive_mysql_credentials) | **PATCH** /api/v2/credentials/hive-mysql/{credentials_id} | Update Hive (MySQL) credentials
+[**update_hive_s3_credentials**](CredentialsApi.md#update_hive_s3_credentials) | **PATCH** /api/v2/credentials/hive-s3/{credentials_id} | Update Hive (S3) credentials
 [**update_informatica_v2_credentials**](CredentialsApi.md#update_informatica_v2_credentials) | **PATCH** /api/v2/credentials/informatica-v2/{credentials_id} | Update Informatica credentials
 [**update_looker_credentials**](CredentialsApi.md#update_looker_credentials) | **PATCH** /api/v2/credentials/looker/{credentials_id} | Update Looker credentials
 [**update_looker_git_clone_credentials**](CredentialsApi.md#update_looker_git_clone_credentials) | **PATCH** /api/v2/credentials/looker-git-clone/{credentials_id} | Update LookML repository credentials
@@ -166,6 +173,7 @@ Method | HTTP request | Description
 [**update_postgres_credentials**](CredentialsApi.md#update_postgres_credentials) | **PATCH** /api/v2/credentials/postgres/{credentials_id} | Update PostgreSQL credentials
 [**update_power_bi_credentials**](CredentialsApi.md#update_power_bi_credentials) | **PATCH** /api/v2/credentials/power-bi/{credentials_id} | Update Power BI credentials
 [**update_redshift_credentials**](CredentialsApi.md#update_redshift_credentials) | **PATCH** /api/v2/credentials/redshift/{credentials_id} | Update Redshift credentials
+[**update_s3_credentials**](CredentialsApi.md#update_s3_credentials) | **PATCH** /api/v2/credentials/s3/{credentials_id} | Update S3 credentials
 [**update_salesforce_crm_credentials**](CredentialsApi.md#update_salesforce_crm_credentials) | **PATCH** /api/v2/credentials/salesforce-crm/{credentials_id} | Update Salesforce CRM credentials
 [**update_salesforce_data_cloud_credentials**](CredentialsApi.md#update_salesforce_data_cloud_credentials) | **PATCH** /api/v2/credentials/salesforce-data-cloud/{credentials_id} | Update Salesforce Data Cloud credentials
 [**update_sap_hana_credentials**](CredentialsApi.md#update_sap_hana_credentials) | **PATCH** /api/v2/credentials/sap-hana/{credentials_id} | Update SAP HANA credentials
@@ -2191,6 +2199,98 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_hive_s3_credentials**
+> HiveS3CredentialsOut create_hive_s3_credentials(hive_s3_credentials_in)
+
+Create Hive (S3) credentials
+
+Store the S3 location of your Hive query logs and the IAM role Monte Carlo assumes
+to read them.
+
+Hive (S3) needs no secret. Create the credentials first, then create a connection that
+references them on a `data-lake` warehouse. Nothing is checked against AWS here.
+
+An account holds a limited number of credentials. Past that, the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.hive_s3_credentials_in import HiveS3CredentialsIn
+from pycarlo2.models.hive_s3_credentials_out import HiveS3CredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    hive_s3_credentials_in = pycarlo2.HiveS3CredentialsIn() # HiveS3CredentialsIn | 
+
+    try:
+        # Create Hive (S3) credentials
+        api_response = api_instance.create_hive_s3_credentials(hive_s3_credentials_in)
+        print("The response of CredentialsApi->create_hive_s3_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_hive_s3_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **hive_s3_credentials_in** | [**HiveS3CredentialsIn**](HiveS3CredentialsIn.md)|  | 
+
+### Return type
+
+[**HiveS3CredentialsOut**](HiveS3CredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_informatica_v2_credentials**
 > InformaticaV2CredentialsOut create_informatica_v2_credentials(informatica_v2_credentials_in)
 
@@ -3273,6 +3373,97 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RedshiftCredentialsOut**](RedshiftCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_s3_credentials**
+> S3CredentialsOut create_s3_credentials(s3_credentials_in)
+
+Create S3 credentials
+
+Store an S3 location and the IAM role Monte Carlo assumes to read it.
+
+S3 needs no secret. Create the credentials first, then create a connection that
+references them on a `data-lake` warehouse. Nothing is checked against AWS here.
+
+An account holds a limited number of credentials. Past that, the create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.s3_credentials_in import S3CredentialsIn
+from pycarlo2.models.s3_credentials_out import S3CredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    s3_credentials_in = pycarlo2.S3CredentialsIn() # S3CredentialsIn | 
+
+    try:
+        # Create S3 credentials
+        api_response = api_instance.create_s3_credentials(s3_credentials_in)
+        print("The response of CredentialsApi->create_s3_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_s3_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **s3_credentials_in** | [**S3CredentialsIn**](S3CredentialsIn.md)|  | 
+
+### Return type
+
+[**S3CredentialsOut**](S3CredentialsOut.md)
 
 ### Authorization
 
@@ -5988,6 +6179,90 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_hive_s3_credentials**
+> delete_hive_s3_credentials(credentials_id)
+
+Delete Hive (S3) credentials
+
+Delete Hive (S3) credentials.
+
+Refused while a connection still uses them. Delete the connection first. The bucket and
+the role in your AWS account are left as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Delete Hive (S3) credentials
+        api_instance.delete_hive_s3_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_hive_s3_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_informatica_v2_credentials**
 > delete_informatica_v2_credentials(credentials_id)
 
@@ -6961,6 +7236,90 @@ with pycarlo2.ApiClient(configuration) as api_client:
         api_instance.delete_redshift_credentials(credentials_id)
     except Exception as e:
         print("Exception when calling CredentialsApi->delete_redshift_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_s3_credentials**
+> delete_s3_credentials(credentials_id)
+
+Delete S3 credentials
+
+Delete S3 credentials.
+
+Refused while a connection still uses them. Delete the connection first. The bucket and
+the role in your AWS account are left as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Delete S3 credentials
+        api_instance.delete_s3_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_s3_credentials: %s\n" % e)
 ```
 
 
@@ -9654,6 +10013,92 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_hive_s3_credentials**
+> HiveS3CredentialsOut get_hive_s3_credentials(credentials_id)
+
+Get Hive (S3) credentials
+
+Get one set of Hive (S3) credentials.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.hive_s3_credentials_out import HiveS3CredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Get Hive (S3) credentials
+        api_response = api_instance.get_hive_s3_credentials(credentials_id)
+        print("The response of CredentialsApi->get_hive_s3_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_hive_s3_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+[**HiveS3CredentialsOut**](HiveS3CredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_informatica_v2_credentials**
 > InformaticaV2CredentialsOut get_informatica_v2_credentials(credentials_id)
 
@@ -10663,6 +11108,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RedshiftCredentialsOut**](RedshiftCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_s3_credentials**
+> S3CredentialsOut get_s3_credentials(credentials_id)
+
+Get S3 credentials
+
+Get one set of S3 credentials.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.s3_credentials_out import S3CredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Get S3 credentials
+        api_response = api_instance.get_s3_credentials(credentials_id)
+        print("The response of CredentialsApi->get_s3_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_s3_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+[**S3CredentialsOut**](S3CredentialsOut.md)
 
 ### Authorization
 
@@ -13483,6 +14014,97 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_hive_s3_credentials**
+> HiveS3CredentialsOut update_hive_s3_credentials(credentials_id, hive_s3_credentials_patch)
+
+Update Hive (S3) credentials
+
+Change Hive (S3) credentials in place.
+
+Every connection using the credentials picks up the change. Sending an empty body returns
+the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.hive_s3_credentials_out import HiveS3CredentialsOut
+from pycarlo2.models.hive_s3_credentials_patch import HiveS3CredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    hive_s3_credentials_patch = pycarlo2.HiveS3CredentialsPatch() # HiveS3CredentialsPatch | 
+
+    try:
+        # Update Hive (S3) credentials
+        api_response = api_instance.update_hive_s3_credentials(credentials_id, hive_s3_credentials_patch)
+        print("The response of CredentialsApi->update_hive_s3_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_hive_s3_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **hive_s3_credentials_patch** | [**HiveS3CredentialsPatch**](HiveS3CredentialsPatch.md)|  | 
+
+### Return type
+
+[**HiveS3CredentialsOut**](HiveS3CredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_informatica_v2_credentials**
 > InformaticaV2CredentialsOut update_informatica_v2_credentials(credentials_id, informatica_v2_credentials_patch)
 
@@ -14561,6 +15183,97 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RedshiftCredentialsOut**](RedshiftCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_s3_credentials**
+> S3CredentialsOut update_s3_credentials(credentials_id, s3_credentials_patch)
+
+Update S3 credentials
+
+Change S3 credentials in place.
+
+Every connection using the credentials picks up the change. Sending an empty body returns
+the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.s3_credentials_out import S3CredentialsOut
+from pycarlo2.models.s3_credentials_patch import S3CredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    s3_credentials_patch = pycarlo2.S3CredentialsPatch() # S3CredentialsPatch | 
+
+    try:
+        # Update S3 credentials
+        api_response = api_instance.update_s3_credentials(credentials_id, s3_credentials_patch)
+        print("The response of CredentialsApi->update_s3_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_s3_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **s3_credentials_patch** | [**S3CredentialsPatch**](S3CredentialsPatch.md)|  | 
+
+### Return type
+
+[**S3CredentialsOut**](S3CredentialsOut.md)
 
 ### Authorization
 

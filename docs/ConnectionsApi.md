@@ -537,7 +537,8 @@ The response is the run as it starts, and `Location` names where to read it. Pol
 until the run's status is `completed`; each validation carries its own verdict.
 
 An id that does not exist or belongs to another account returns 404. A connection that
-runs on no deployment, as an Airflow or push-only custom BI one does, returns 409.
+runs on no deployment, as an Airflow or push-only custom BI one does, returns 409. So does a
+connection whose type has no checks to run, such as S3 or Hive (S3).
 
 ### Example
 

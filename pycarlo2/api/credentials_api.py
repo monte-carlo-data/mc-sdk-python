@@ -113,6 +113,9 @@ from pycarlo2.models.glue_credentials_validate_in import GlueCredentialsValidate
 from pycarlo2.models.hive_my_sql_credentials_in import HiveMySqlCredentialsIn
 from pycarlo2.models.hive_my_sql_credentials_out import HiveMySqlCredentialsOut
 from pycarlo2.models.hive_my_sql_credentials_patch import HiveMySqlCredentialsPatch
+from pycarlo2.models.hive_s3_credentials_in import HiveS3CredentialsIn
+from pycarlo2.models.hive_s3_credentials_out import HiveS3CredentialsOut
+from pycarlo2.models.hive_s3_credentials_patch import HiveS3CredentialsPatch
 from pycarlo2.models.informatica_v2_credentials_change_validate_in import InformaticaV2CredentialsChangeValidateIn
 from pycarlo2.models.informatica_v2_credentials_in import InformaticaV2CredentialsIn
 from pycarlo2.models.informatica_v2_credentials_out import InformaticaV2CredentialsOut
@@ -174,6 +177,9 @@ from pycarlo2.models.redshift_credentials_in import RedshiftCredentialsIn
 from pycarlo2.models.redshift_credentials_out import RedshiftCredentialsOut
 from pycarlo2.models.redshift_credentials_patch import RedshiftCredentialsPatch
 from pycarlo2.models.redshift_credentials_validate_in import RedshiftCredentialsValidateIn
+from pycarlo2.models.s3_credentials_in import S3CredentialsIn
+from pycarlo2.models.s3_credentials_out import S3CredentialsOut
+from pycarlo2.models.s3_credentials_patch import S3CredentialsPatch
 from pycarlo2.models.salesforce_crm_credentials_change_validate_in import SalesforceCrmCredentialsChangeValidateIn
 from pycarlo2.models.salesforce_crm_credentials_in import SalesforceCrmCredentialsIn
 from pycarlo2.models.salesforce_crm_credentials_out import SalesforceCrmCredentialsOut
@@ -3552,6 +3558,164 @@ class CredentialsApi:
 
 
     @validate_call
+    def create_hive_s3_credentials(
+        self,
+        hive_s3_credentials_in: HiveS3CredentialsIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> HiveS3CredentialsOut:
+        """Create Hive (S3) credentials
+
+        Store the S3 location of your Hive query logs and the IAM role Monte Carlo assumes
+        to read them.
+        
+        Hive (S3) needs no secret. Create the credentials first, then create a connection that
+        references them on a `data-lake` warehouse. Nothing is checked against AWS here.
+        
+        An account holds a limited number of credentials. Past that, the create is refused.
+
+        :param hive_s3_credentials_in: (required)
+        :type hive_s3_credentials_in: HiveS3CredentialsIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_hive_s3_credentials_serialize(
+            hive_s3_credentials_in=hive_s3_credentials_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "HiveS3CredentialsOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _create_hive_s3_credentials_serialize(
+        self,
+        hive_s3_credentials_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if hive_s3_credentials_in is not None:
+            _body_params = hive_s3_credentials_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/hive-s3',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def create_informatica_v2_credentials(
         self,
         informatica_v2_credentials_in: InformaticaV2CredentialsIn,
@@ -5435,6 +5599,163 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/api/v2/credentials/redshift',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def create_s3_credentials(
+        self,
+        s3_credentials_in: S3CredentialsIn,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> S3CredentialsOut:
+        """Create S3 credentials
+
+        Store an S3 location and the IAM role Monte Carlo assumes to read it.
+        
+        S3 needs no secret. Create the credentials first, then create a connection that
+        references them on a `data-lake` warehouse. Nothing is checked against AWS here.
+        
+        An account holds a limited number of credentials. Past that, the create is refused.
+
+        :param s3_credentials_in: (required)
+        :type s3_credentials_in: S3CredentialsIn
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_s3_credentials_serialize(
+            s3_credentials_in=s3_credentials_in,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "S3CredentialsOut",
+            '409': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _create_s3_credentials_serialize(
+        self,
+        s3_credentials_in,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if s3_credentials_in is not None:
+            _body_params = s3_credentials_in
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/api/v2/credentials/s3',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -9967,6 +10288,146 @@ class CredentialsApi:
 
 
     @validate_call
+    def delete_hive_s3_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete Hive (S3) credentials
+
+        Delete Hive (S3) credentials.
+        
+        Refused while a connection still uses them. Delete the connection first. The bucket and
+        the role in your AWS account are left as they are.
+
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_hive_s3_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _delete_hive_s3_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/api/v2/credentials/hive-s3/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def delete_informatica_v2_credentials(
         self,
         credentials_id: UUID,
@@ -11634,6 +12095,146 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='DELETE',
             resource_path='/api/v2/credentials/redshift/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_s3_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete S3 credentials
+
+        Delete S3 credentials.
+        
+        Refused while a connection still uses them. Delete the connection first. The bucket and
+        the role in your AWS account are left as they are.
+
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_s3_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _delete_s3_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/api/v2/credentials/s3/{credentials_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -15997,6 +16598,146 @@ class CredentialsApi:
 
 
     @validate_call
+    def get_hive_s3_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> HiveS3CredentialsOut:
+        """Get Hive (S3) credentials
+
+        Get one set of Hive (S3) credentials.
+        
+        An id that does not exist, belongs to another account, or names credentials of another
+        kind returns 404.
+
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_hive_s3_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "HiveS3CredentialsOut",
+            '404': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _get_hive_s3_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/credentials/hive-s3/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_informatica_v2_credentials(
         self,
         credentials_id: UUID,
@@ -17661,6 +18402,146 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/api/v2/credentials/redshift/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_s3_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> S3CredentialsOut:
+        """Get S3 credentials
+
+        Get one set of S3 credentials.
+        
+        An id that does not exist, belongs to another account, or names credentials of another
+        kind returns 404.
+
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
+        :type credentials_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_s3_credentials_serialize(
+            credentials_id=credentials_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "S3CredentialsOut",
+            '404': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _get_s3_credentials_serialize(
+        self,
+        credentials_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/credentials/s3/{credentials_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -22521,6 +23402,168 @@ class CredentialsApi:
 
 
     @validate_call
+    def update_hive_s3_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
+        hive_s3_credentials_patch: HiveS3CredentialsPatch,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> HiveS3CredentialsOut:
+        """Update Hive (S3) credentials
+
+        Change Hive (S3) credentials in place.
+        
+        Every connection using the credentials picks up the change. Sending an empty body returns
+        the credentials as they are.
+
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
+        :type credentials_id: UUID
+        :param hive_s3_credentials_patch: (required)
+        :type hive_s3_credentials_patch: HiveS3CredentialsPatch
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_hive_s3_credentials_serialize(
+            credentials_id=credentials_id,
+            hive_s3_credentials_patch=hive_s3_credentials_patch,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "HiveS3CredentialsOut",
+            '404': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _update_hive_s3_credentials_serialize(
+        self,
+        credentials_id,
+        hive_s3_credentials_patch,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if hive_s3_credentials_patch is not None:
+            _body_params = hive_s3_credentials_patch
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/api/v2/credentials/hive-s3/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def update_informatica_v2_credentials(
         self,
         credentials_id: UUID,
@@ -24460,6 +25503,168 @@ class CredentialsApi:
         return self.api_client.param_serialize(
             method='PATCH',
             resource_path='/api/v2/credentials/redshift/{credentials_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_s3_credentials(
+        self,
+        credentials_id: Annotated[UUID, Field(description="Id of the credentials, as returned when they are created or listed.")],
+        s3_credentials_patch: S3CredentialsPatch,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> S3CredentialsOut:
+        """Update S3 credentials
+
+        Change S3 credentials in place.
+        
+        Every connection using the credentials picks up the change. Sending an empty body returns
+        the credentials as they are.
+
+        :param credentials_id: Id of the credentials, as returned when they are created or listed. (required)
+        :type credentials_id: UUID
+        :param s3_credentials_patch: (required)
+        :type s3_credentials_patch: S3CredentialsPatch
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_s3_credentials_serialize(
+            credentials_id=credentials_id,
+            s3_credentials_patch=s3_credentials_patch,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "S3CredentialsOut",
+            '404': "ProblemOut",
+            '422': "ProblemOut",
+            '429': "ProblemOut",
+            '503': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _update_s3_credentials_serialize(
+        self,
+        credentials_id,
+        s3_credentials_patch,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if credentials_id is not None:
+            _path_params['credentials_id'] = credentials_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if s3_credentials_patch is not None:
+            _body_params = s3_credentials_patch
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/api/v2/credentials/s3/{credentials_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

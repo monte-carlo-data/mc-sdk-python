@@ -195,7 +195,7 @@ class AccountAnalyticsApi:
     @validate_call
     def get_account_analytics_docs(
         self,
-        slug: Annotated[Optional[Annotated[str, Field(strict=True, max_length=128)]], Field(description="The page to read, such as `analytics-api-dashboard-style`. Without it, the answer lists every page without its body.")] = None,
+        slug: Annotated[Optional[Annotated[str, Field(strict=True, max_length=1290)]], Field(description="The pages to read: one slug, or up to 10 comma-separated, such as `analytics-api-dashboard-style,analytics-api-dimensions`. The answer has them in that order. Without it, the answer lists every page without its body.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -209,19 +209,20 @@ class AccountAnalyticsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DocsOut:
-        """List the Analytics API docs, or read one page
+        """List the Analytics API docs, or read pages
 
-        List the pages of the Analytics API docs, or read one.
+        List the pages of the Analytics API docs, or read some.
         
         Without `slug`, the answer lists every page with its slug, title, summary and parent page,
         and the prompt of each dashboard example.
-        With `slug`, it returns that page with its body as Markdown. The pages are the ones
+        With `slug`, one slug or several comma-separated, it returns those pages with their bodies
+        as Markdown, in that order. The pages are the ones
         published at docs.getmontecarlo.com: how to query, the data catalog, the dashboard examples
         and the dashboard style. `doc:<slug>` links in a body name other pages.
         
         An unknown slug is refused with a 422 `docs_page_not_found`. Requires dashboard access.
 
-        :param slug: The page to read, such as `analytics-api-dashboard-style`. Without it, the answer lists every page without its body.
+        :param slug: The pages to read: one slug, or up to 10 comma-separated, such as `analytics-api-dashboard-style,analytics-api-dimensions`. The answer has them in that order. Without it, the answer lists every page without its body.
         :type slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

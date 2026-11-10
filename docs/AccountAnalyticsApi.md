@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_account_analytics_catalog**](AccountAnalyticsApi.md#get_account_analytics_catalog) | **GET** /api/v2/account-analytics/catalog | List metrics, or the dimensions that work with chosen metrics
-[**get_account_analytics_docs**](AccountAnalyticsApi.md#get_account_analytics_docs) | **GET** /api/v2/account-analytics/docs | List the Analytics API docs, or read one page
+[**get_account_analytics_docs**](AccountAnalyticsApi.md#get_account_analytics_docs) | **GET** /api/v2/account-analytics/docs | List the Analytics API docs, or read pages
 [**query_account_analytics**](AccountAnalyticsApi.md#query_account_analytics) | **POST** /api/v2/account-analytics/query | Query metrics
 
 
@@ -116,13 +116,14 @@ Name | Type | Description  | Notes
 # **get_account_analytics_docs**
 > DocsOut get_account_analytics_docs(slug=slug)
 
-List the Analytics API docs, or read one page
+List the Analytics API docs, or read pages
 
-List the pages of the Analytics API docs, or read one.
+List the pages of the Analytics API docs, or read some.
 
 Without `slug`, the answer lists every page with its slug, title, summary and parent page,
 and the prompt of each dashboard example.
-With `slug`, it returns that page with its body as Markdown. The pages are the ones
+With `slug`, one slug or several comma-separated, it returns those pages with their bodies
+as Markdown, in that order. The pages are the ones
 published at docs.getmontecarlo.com: how to query, the data catalog, the dashboard examples
 and the dashboard style. `doc:<slug>` links in a body name other pages.
 
@@ -158,10 +159,10 @@ configuration = pycarlo2.Configuration(
 with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.AccountAnalyticsApi(api_client)
-    slug = 'slug_example' # str | The page to read, such as `analytics-api-dashboard-style`. Without it, the answer lists every page without its body. (optional)
+    slug = 'slug_example' # str | The pages to read: one slug, or up to 10 comma-separated, such as `analytics-api-dashboard-style,analytics-api-dimensions`. The answer has them in that order. Without it, the answer lists every page without its body. (optional)
 
     try:
-        # List the Analytics API docs, or read one page
+        # List the Analytics API docs, or read pages
         api_response = api_instance.get_account_analytics_docs(slug=slug)
         print("The response of AccountAnalyticsApi->get_account_analytics_docs:\n")
         pprint(api_response)
@@ -176,7 +177,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **slug** | **str**| The page to read, such as &#x60;analytics-api-dashboard-style&#x60;. Without it, the answer lists every page without its body. | [optional] 
+ **slug** | **str**| The pages to read: one slug, or up to 10 comma-separated, such as &#x60;analytics-api-dashboard-style,analytics-api-dimensions&#x60;. The answer has them in that order. Without it, the answer lists every page without its body. | [optional] 
 
 ### Return type
 

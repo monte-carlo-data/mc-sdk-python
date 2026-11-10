@@ -1,9 +1,9 @@
 {
-  "api_codegen_commit": "cb41d16ed40ec463a824282de2938b50b55ebebf",
-  "api_codegen_run_id": 42695156984,
-  "generated_at": "2026-11-09T20:40:46Z",
+  "api_codegen_commit": "819e52c2cb679478ae41708c29d2bfed800fe325",
+  "api_codegen_run_id": 42816790716,
+  "generated_at": "2026-11-10T12:34:08Z",
   "generator_version": "7.23.0",
-  "monolith_commit": "df1aded5834428eab6e1f4fbbdbb581ac2558853",
-  "monolith_run_id": 42694188877,
-  "exported_at": "2026-11-09T20:37:13Z"
+  "monolith_commit": "bf1cd0df8f83f9af3697db18091048d98ea948d9",
+  "monolith_run_id": 42815785520,
+  "exported_at": "2026-11-10T12:29:49Z"
 }

@@ -71,6 +71,7 @@ from pycarlo2.models.big_query_credentials_patch import BigQueryCredentialsPatch
 from pycarlo2.models.big_query_credentials_validate_in import BigQueryCredentialsValidateIn
 from pycarlo2.models.catalog_dimension_type import CatalogDimensionType
 from pycarlo2.models.catalog_item_out import CatalogItemOut
+from pycarlo2.models.catalog_metric_format import CatalogMetricFormat
 from pycarlo2.models.catalog_out import CatalogOut
 from pycarlo2.models.click_house_credentials_change_validate_in import ClickHouseCredentialsChangeValidateIn
 from pycarlo2.models.click_house_credentials_in import ClickHouseCredentialsIn

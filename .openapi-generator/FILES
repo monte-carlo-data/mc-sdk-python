@@ -65,6 +65,7 @@ docs/BigQueryCredentialsPatch.md
 docs/BigQueryCredentialsValidateIn.md
 docs/CatalogDimensionType.md
 docs/CatalogItemOut.md
+docs/CatalogMetricFormat.md
 docs/CatalogOut.md
 docs/ClickHouseCredentialsChangeValidateIn.md
 docs/ClickHouseCredentialsIn.md
@@ -435,6 +436,7 @@ pycarlo2/models/big_query_credentials_patch.py
 pycarlo2/models/big_query_credentials_validate_in.py
 pycarlo2/models/catalog_dimension_type.py
 pycarlo2/models/catalog_item_out.py
+pycarlo2/models/catalog_metric_format.py
 pycarlo2/models/catalog_out.py
 pycarlo2/models/click_house_credentials_change_validate_in.py
 pycarlo2/models/click_house_credentials_in.py

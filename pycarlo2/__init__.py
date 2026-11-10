@@ -103,6 +103,7 @@ __all__ = [
     "BigQueryCredentialsValidateIn",
     "CatalogDimensionType",
     "CatalogItemOut",
+    "CatalogMetricFormat",
     "CatalogOut",
     "ClickHouseCredentialsChangeValidateIn",
     "ClickHouseCredentialsIn",
@@ -469,6 +470,7 @@ from pycarlo2.models.big_query_credentials_patch import BigQueryCredentialsPatch
 from pycarlo2.models.big_query_credentials_validate_in import BigQueryCredentialsValidateIn as BigQueryCredentialsValidateIn
 from pycarlo2.models.catalog_dimension_type import CatalogDimensionType as CatalogDimensionType
 from pycarlo2.models.catalog_item_out import CatalogItemOut as CatalogItemOut
+from pycarlo2.models.catalog_metric_format import CatalogMetricFormat as CatalogMetricFormat
 from pycarlo2.models.catalog_out import CatalogOut as CatalogOut
 from pycarlo2.models.click_house_credentials_change_validate_in import ClickHouseCredentialsChangeValidateIn as ClickHouseCredentialsChangeValidateIn
 from pycarlo2.models.click_house_credentials_in import ClickHouseCredentialsIn as ClickHouseCredentialsIn

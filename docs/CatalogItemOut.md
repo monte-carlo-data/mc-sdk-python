@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **requires_metric_time** | **bool** | Metrics only. True when the metric answers only grouped by &#x60;metric_time&#x60;, for example a month-to-date total. Left out for a dimension. | [optional] 
 **history_start** | **date** | Metrics only. The first date the metric keeps. A query that filters &#x60;metric_time&#x60; before it is refused, so start a window on or after it. Left out for a metric that keeps all its history. | [optional] 
 **longer_history** | **str** | Metrics only. A metric that keeps dates before &#x60;history_start&#x60;. Left out when there is none. | [optional] 
+**format** | [**CatalogMetricFormat**](CatalogMetricFormat.md) | Metrics only. How to show the value: &#x60;percent&#x60; for a share from 0 to 1 (0.16 is 16%), &#x60;credits&#x60; or &#x60;hours&#x60;. Left out for a plain number. | [optional] 
 **type** | [**CatalogDimensionType**](CatalogDimensionType.md) | Dimensions only. Left out for a metric. | [optional] 
 **time_grains** | **List[str]** | Time dimensions only. The grains a query can append to the name, such as &#x60;metric_time__week&#x60; for &#x60;week&#x60;. Left out otherwise. | [optional] 
 

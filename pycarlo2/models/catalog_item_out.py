@@ -14,6 +14,7 @@ from datetime import date
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from pycarlo2.models.catalog_dimension_type import CatalogDimensionType
+from pycarlo2.models.catalog_metric_format import CatalogMetricFormat
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -28,10 +29,11 @@ class CatalogItemOut(BaseModel):
     requires_metric_time: Optional[StrictBool] = Field(default=None, description="Metrics only. True when the metric answers only grouped by `metric_time`, for example a month-to-date total. Left out for a dimension.")
     history_start: Optional[date] = Field(default=None, description="Metrics only. The first date the metric keeps. A query that filters `metric_time` before it is refused, so start a window on or after it. Left out for a metric that keeps all its history.")
     longer_history: Optional[StrictStr] = Field(default=None, description="Metrics only. A metric that keeps dates before `history_start`. Left out when there is none.")
+    format: Optional[CatalogMetricFormat] = Field(default=None, description="Metrics only. How to show the value: `percent` for a share from 0 to 1 (0.16 is 16%), `credits` or `hours`. Left out for a plain number.")
     type: Optional[CatalogDimensionType] = Field(default=None, description="Dimensions only. Left out for a metric.")
     time_grains: Optional[List[StrictStr]] = Field(default=None, description="Time dimensions only. The grains a query can append to the name, such as `metric_time__week` for `week`. Left out otherwise.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "label", "description", "requires_metric_time", "history_start", "longer_history", "type", "time_grains"]
+    __properties: ClassVar[List[str]] = ["name", "label", "description", "requires_metric_time", "history_start", "longer_history", "format", "type", "time_grains"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -104,6 +106,11 @@ class CatalogItemOut(BaseModel):
         if self.longer_history is None and "longer_history" in self.model_fields_set:
             _dict['longer_history'] = None
 
+        # set to None if format (nullable) is None
+        # and model_fields_set contains the field
+        if self.format is None and "format" in self.model_fields_set:
+            _dict['format'] = None
+
         # set to None if type (nullable) is None
         # and model_fields_set contains the field
         if self.type is None and "type" in self.model_fields_set:
@@ -132,6 +139,7 @@ class CatalogItemOut(BaseModel):
             "requires_metric_time": obj.get("requires_metric_time"),
             "history_start": obj.get("history_start"),
             "longer_history": obj.get("longer_history"),
+            "format": obj.get("format"),
             "type": obj.get("type"),
             "time_grains": obj.get("time_grains")
         })

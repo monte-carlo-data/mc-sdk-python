@@ -306,6 +306,12 @@ docs/SnowflakeCredentialsIn.md
 docs/SnowflakeCredentialsOut.md
 docs/SnowflakeCredentialsPatch.md
 docs/SnowflakeCredentialsValidateIn.md
+docs/SparkCredentialsChangeValidateIn.md
+docs/SparkCredentialsIn.md
+docs/SparkCredentialsOut.md
+docs/SparkCredentialsPatch.md
+docs/SparkCredentialsValidateIn.md
+docs/SparkMode.md
 docs/SqlServerAuthMode.md
 docs/SqlServerCredentialsChangeValidateIn.md
 docs/SqlServerCredentialsIn.md
@@ -667,6 +673,12 @@ pycarlo2/models/snowflake_credentials_in.py
 pycarlo2/models/snowflake_credentials_out.py
 pycarlo2/models/snowflake_credentials_patch.py
 pycarlo2/models/snowflake_credentials_validate_in.py
+pycarlo2/models/spark_credentials_change_validate_in.py
+pycarlo2/models/spark_credentials_in.py
+pycarlo2/models/spark_credentials_out.py
+pycarlo2/models/spark_credentials_patch.py
+pycarlo2/models/spark_credentials_validate_in.py
+pycarlo2/models/spark_mode.py
 pycarlo2/models/sql_server_auth_mode.py
 pycarlo2/models/sql_server_credentials_change_validate_in.py
 pycarlo2/models/sql_server_credentials_in.py

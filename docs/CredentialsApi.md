@@ -43,6 +43,7 @@ Method | HTTP request | Description
 [**create_salesforce_data_cloud_credentials**](CredentialsApi.md#create_salesforce_data_cloud_credentials) | **POST** /api/v2/credentials/salesforce-data-cloud | Create Salesforce Data Cloud credentials
 [**create_sap_hana_credentials**](CredentialsApi.md#create_sap_hana_credentials) | **POST** /api/v2/credentials/sap-hana | Create SAP HANA credentials
 [**create_snowflake_credentials**](CredentialsApi.md#create_snowflake_credentials) | **POST** /api/v2/credentials/snowflake | Create Snowflake credentials
+[**create_spark_credentials**](CredentialsApi.md#create_spark_credentials) | **POST** /api/v2/credentials/spark | Create Spark credentials
 [**create_sql_server_credentials**](CredentialsApi.md#create_sql_server_credentials) | **POST** /api/v2/credentials/sql-server | Create SQL Server credentials
 [**create_starburst_enterprise_credentials**](CredentialsApi.md#create_starburst_enterprise_credentials) | **POST** /api/v2/credentials/starburst-enterprise | Create Starburst Enterprise credentials
 [**create_starburst_galaxy_credentials**](CredentialsApi.md#create_starburst_galaxy_credentials) | **POST** /api/v2/credentials/starburst-galaxy | Create Starburst Galaxy credentials
@@ -88,6 +89,7 @@ Method | HTTP request | Description
 [**delete_salesforce_data_cloud_credentials**](CredentialsApi.md#delete_salesforce_data_cloud_credentials) | **DELETE** /api/v2/credentials/salesforce-data-cloud/{credentials_id} | Delete Salesforce Data Cloud credentials
 [**delete_sap_hana_credentials**](CredentialsApi.md#delete_sap_hana_credentials) | **DELETE** /api/v2/credentials/sap-hana/{credentials_id} | Delete SAP HANA credentials
 [**delete_snowflake_credentials**](CredentialsApi.md#delete_snowflake_credentials) | **DELETE** /api/v2/credentials/snowflake/{credentials_id} | Delete Snowflake credentials
+[**delete_spark_credentials**](CredentialsApi.md#delete_spark_credentials) | **DELETE** /api/v2/credentials/spark/{credentials_id} | Delete Spark credentials
 [**delete_sql_server_credentials**](CredentialsApi.md#delete_sql_server_credentials) | **DELETE** /api/v2/credentials/sql-server/{credentials_id} | Delete SQL Server credentials
 [**delete_starburst_enterprise_credentials**](CredentialsApi.md#delete_starburst_enterprise_credentials) | **DELETE** /api/v2/credentials/starburst-enterprise/{credentials_id} | Delete Starburst Enterprise credentials
 [**delete_starburst_galaxy_credentials**](CredentialsApi.md#delete_starburst_galaxy_credentials) | **DELETE** /api/v2/credentials/starburst-galaxy/{credentials_id} | Delete Starburst Galaxy credentials
@@ -133,6 +135,7 @@ Method | HTTP request | Description
 [**get_salesforce_data_cloud_credentials**](CredentialsApi.md#get_salesforce_data_cloud_credentials) | **GET** /api/v2/credentials/salesforce-data-cloud/{credentials_id} | Get Salesforce Data Cloud credentials
 [**get_sap_hana_credentials**](CredentialsApi.md#get_sap_hana_credentials) | **GET** /api/v2/credentials/sap-hana/{credentials_id} | Get SAP HANA credentials
 [**get_snowflake_credentials**](CredentialsApi.md#get_snowflake_credentials) | **GET** /api/v2/credentials/snowflake/{credentials_id} | Get Snowflake credentials
+[**get_spark_credentials**](CredentialsApi.md#get_spark_credentials) | **GET** /api/v2/credentials/spark/{credentials_id} | Get Spark credentials
 [**get_sql_server_credentials**](CredentialsApi.md#get_sql_server_credentials) | **GET** /api/v2/credentials/sql-server/{credentials_id} | Get SQL Server credentials
 [**get_starburst_enterprise_credentials**](CredentialsApi.md#get_starburst_enterprise_credentials) | **GET** /api/v2/credentials/starburst-enterprise/{credentials_id} | Get Starburst Enterprise credentials
 [**get_starburst_galaxy_credentials**](CredentialsApi.md#get_starburst_galaxy_credentials) | **GET** /api/v2/credentials/starburst-galaxy/{credentials_id} | Get Starburst Galaxy credentials
@@ -178,6 +181,7 @@ Method | HTTP request | Description
 [**update_salesforce_data_cloud_credentials**](CredentialsApi.md#update_salesforce_data_cloud_credentials) | **PATCH** /api/v2/credentials/salesforce-data-cloud/{credentials_id} | Update Salesforce Data Cloud credentials
 [**update_sap_hana_credentials**](CredentialsApi.md#update_sap_hana_credentials) | **PATCH** /api/v2/credentials/sap-hana/{credentials_id} | Update SAP HANA credentials
 [**update_snowflake_credentials**](CredentialsApi.md#update_snowflake_credentials) | **PATCH** /api/v2/credentials/snowflake/{credentials_id} | Update Snowflake credentials
+[**update_spark_credentials**](CredentialsApi.md#update_spark_credentials) | **PATCH** /api/v2/credentials/spark/{credentials_id} | Update Spark credentials
 [**update_sql_server_credentials**](CredentialsApi.md#update_sql_server_credentials) | **PATCH** /api/v2/credentials/sql-server/{credentials_id} | Update SQL Server credentials
 [**update_starburst_enterprise_credentials**](CredentialsApi.md#update_starburst_enterprise_credentials) | **PATCH** /api/v2/credentials/starburst-enterprise/{credentials_id} | Update Starburst Enterprise credentials
 [**update_starburst_galaxy_credentials**](CredentialsApi.md#update_starburst_galaxy_credentials) | **PATCH** /api/v2/credentials/starburst-galaxy/{credentials_id} | Update Starburst Galaxy credentials
@@ -253,6 +257,8 @@ Method | HTTP request | Description
 [**validate_sap_hana_credentials_change**](CredentialsApi.md#validate_sap_hana_credentials_change) | **POST** /api/v2/credentials/sap-hana/{credentials_id}/validate | Validate a change to SAP HANA credentials
 [**validate_snowflake_credentials**](CredentialsApi.md#validate_snowflake_credentials) | **POST** /api/v2/credentials/snowflake/validate | Validate Snowflake credentials
 [**validate_snowflake_credentials_change**](CredentialsApi.md#validate_snowflake_credentials_change) | **POST** /api/v2/credentials/snowflake/{credentials_id}/validate | Validate a change to Snowflake credentials
+[**validate_spark_credentials**](CredentialsApi.md#validate_spark_credentials) | **POST** /api/v2/credentials/spark/validate | Validate Spark credentials
+[**validate_spark_credentials_change**](CredentialsApi.md#validate_spark_credentials_change) | **POST** /api/v2/credentials/spark/{credentials_id}/validate | Validate a change to Spark credentials
 [**validate_sql_server_credentials**](CredentialsApi.md#validate_sql_server_credentials) | **POST** /api/v2/credentials/sql-server/validate | Validate SQL Server credentials
 [**validate_sql_server_credentials_change**](CredentialsApi.md#validate_sql_server_credentials_change) | **POST** /api/v2/credentials/sql-server/{credentials_id}/validate | Validate a change to SQL Server credentials
 [**validate_starburst_enterprise_credentials**](CredentialsApi.md#validate_starburst_enterprise_credentials) | **POST** /api/v2/credentials/starburst-enterprise/validate | Validate Starburst Enterprise credentials
@@ -3836,6 +3842,99 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SnowflakeCredentialsOut**](SnowflakeCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_spark_credentials**
+> SparkCredentialsOut create_spark_credentials(spark_credentials_in)
+
+Create Spark credentials
+
+Store a Spark Thrift server sign-in for connections to use.
+
+Monte Carlo keeps the password and returns everything else. Create the credentials first,
+then create a connection that references them. Nothing is checked against the server here.
+
+`mode` decides what else to send: `host`, `port` and `db_name` for `binary`, or `url` and
+`password` for `http`. An account holds a limited number of credentials. Past that, the
+create is refused.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.spark_credentials_in import SparkCredentialsIn
+from pycarlo2.models.spark_credentials_out import SparkCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    spark_credentials_in = pycarlo2.SparkCredentialsIn() # SparkCredentialsIn | 
+
+    try:
+        # Create Spark credentials
+        api_response = api_instance.create_spark_credentials(spark_credentials_in)
+        print("The response of CredentialsApi->create_spark_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->create_spark_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **spark_credentials_in** | [**SparkCredentialsIn**](SparkCredentialsIn.md)|  | 
+
+### Return type
+
+[**SparkCredentialsOut**](SparkCredentialsOut.md)
 
 ### Authorization
 
@@ -7659,6 +7758,90 @@ with pycarlo2.ApiClient(configuration) as api_client:
         api_instance.delete_snowflake_credentials(credentials_id)
     except Exception as e:
         print("Exception when calling CredentialsApi->delete_snowflake_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_spark_credentials**
+> delete_spark_credentials(credentials_id)
+
+Delete Spark credentials
+
+Delete Spark credentials.
+
+Refused while a connection still uses them. Delete the connection first. Monte Carlo stops
+using the stored password, if any. Change the password on the server if it must be retired.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Delete Spark credentials
+        api_instance.delete_spark_credentials(credentials_id)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->delete_spark_credentials: %s\n" % e)
 ```
 
 
@@ -11540,6 +11723,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SnowflakeCredentialsOut**](SnowflakeCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_spark_credentials**
+> SparkCredentialsOut get_spark_credentials(credentials_id)
+
+Get Spark credentials
+
+Get one set of Spark credentials, without the password.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.spark_credentials_out import SparkCredentialsOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+
+    try:
+        # Get Spark credentials
+        api_response = api_instance.get_spark_credentials(credentials_id)
+        print("The response of CredentialsApi->get_spark_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->get_spark_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+
+### Return type
+
+[**SparkCredentialsOut**](SparkCredentialsOut.md)
 
 ### Authorization
 
@@ -15643,6 +15912,100 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SnowflakeCredentialsOut**](SnowflakeCredentialsOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_spark_credentials**
+> SparkCredentialsOut update_spark_credentials(credentials_id, spark_credentials_patch)
+
+Update Spark credentials
+
+Change Spark credentials in place.
+
+Every connection using the credentials picks up the change. Send only the fields to change.
+A new `mode` drops the fields of the old one, so send all of the new mode's fields with it.
+A switch to `binary` also drops the password unless the change sends one. A new `host` or
+`url` needs `password` sent again when the credentials hold one. Sending an empty body
+returns the credentials as they are.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.spark_credentials_out import SparkCredentialsOut
+from pycarlo2.models.spark_credentials_patch import SparkCredentialsPatch
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    spark_credentials_patch = pycarlo2.SparkCredentialsPatch() # SparkCredentialsPatch | 
+
+    try:
+        # Update Spark credentials
+        api_response = api_instance.update_spark_credentials(credentials_id, spark_credentials_patch)
+        print("The response of CredentialsApi->update_spark_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->update_spark_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **spark_credentials_patch** | [**SparkCredentialsPatch**](SparkCredentialsPatch.md)|  | 
+
+### Return type
+
+[**SparkCredentialsOut**](SparkCredentialsOut.md)
 
 ### Authorization
 
@@ -22822,6 +23185,198 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
  **snowflake_credentials_change_validate_in** | [**SnowflakeCredentialsChangeValidateIn**](SnowflakeCredentialsChangeValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_spark_credentials**
+> ValidationRunOut validate_spark_credentials(spark_credentials_validate_in)
+
+Validate Spark credentials
+
+Check candidate Spark credentials against the Thrift server.
+
+No credentials are created. Send the values you would create the credentials with, and a
+deployment to run them from, and the checks run against your Thrift server.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.spark_credentials_validate_in import SparkCredentialsValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    spark_credentials_validate_in = pycarlo2.SparkCredentialsValidateIn() # SparkCredentialsValidateIn | 
+
+    try:
+        # Validate Spark credentials
+        api_response = api_instance.validate_spark_credentials(spark_credentials_validate_in)
+        print("The response of CredentialsApi->validate_spark_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_spark_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **spark_credentials_validate_in** | [**SparkCredentialsValidateIn**](SparkCredentialsValidateIn.md)|  | 
+
+### Return type
+
+[**ValidationRunOut**](ValidationRunOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_spark_credentials_change**
+> ValidationRunOut validate_spark_credentials_change(credentials_id, spark_credentials_change_validate_in)
+
+Validate a change to Spark credentials
+
+Check a change to Spark credentials before making it.
+
+Send the fields you would update the credentials with, and a deployment to run them from.
+The change is applied to a copy of the stored credentials, and the checks run against
+that copy. The credentials and the connections using them are left as they are.
+
+An id that does not exist, belongs to another account, or names credentials of another
+kind returns 404.
+
+The response is the run as it starts, and `Location` names where to read it. Poll that
+until the run's status is `completed`; each validation carries its own verdict.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.spark_credentials_change_validate_in import SparkCredentialsChangeValidateIn
+from pycarlo2.models.validation_run_out import ValidationRunOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CredentialsApi(api_client)
+    credentials_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the credentials, as returned when they are created or listed.
+    spark_credentials_change_validate_in = pycarlo2.SparkCredentialsChangeValidateIn() # SparkCredentialsChangeValidateIn | 
+
+    try:
+        # Validate a change to Spark credentials
+        api_response = api_instance.validate_spark_credentials_change(credentials_id, spark_credentials_change_validate_in)
+        print("The response of CredentialsApi->validate_spark_credentials_change:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialsApi->validate_spark_credentials_change: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credentials_id** | **UUID**| Id of the credentials, as returned when they are created or listed. | 
+ **spark_credentials_change_validate_in** | [**SparkCredentialsChangeValidateIn**](SparkCredentialsChangeValidateIn.md)|  | 
 
 ### Return type
 

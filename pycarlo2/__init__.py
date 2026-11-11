@@ -334,6 +334,12 @@ __all__ = [
     "SnowflakeCredentialsOut",
     "SnowflakeCredentialsPatch",
     "SnowflakeCredentialsValidateIn",
+    "SparkCredentialsChangeValidateIn",
+    "SparkCredentialsIn",
+    "SparkCredentialsOut",
+    "SparkCredentialsPatch",
+    "SparkCredentialsValidateIn",
+    "SparkMode",
     "SqlServerAuthMode",
     "SqlServerCredentialsChangeValidateIn",
     "SqlServerCredentialsIn",
@@ -701,6 +707,12 @@ from pycarlo2.models.snowflake_credentials_in import SnowflakeCredentialsIn as S
 from pycarlo2.models.snowflake_credentials_out import SnowflakeCredentialsOut as SnowflakeCredentialsOut
 from pycarlo2.models.snowflake_credentials_patch import SnowflakeCredentialsPatch as SnowflakeCredentialsPatch
 from pycarlo2.models.snowflake_credentials_validate_in import SnowflakeCredentialsValidateIn as SnowflakeCredentialsValidateIn
+from pycarlo2.models.spark_credentials_change_validate_in import SparkCredentialsChangeValidateIn as SparkCredentialsChangeValidateIn
+from pycarlo2.models.spark_credentials_in import SparkCredentialsIn as SparkCredentialsIn
+from pycarlo2.models.spark_credentials_out import SparkCredentialsOut as SparkCredentialsOut
+from pycarlo2.models.spark_credentials_patch import SparkCredentialsPatch as SparkCredentialsPatch
+from pycarlo2.models.spark_credentials_validate_in import SparkCredentialsValidateIn as SparkCredentialsValidateIn
+from pycarlo2.models.spark_mode import SparkMode as SparkMode
 from pycarlo2.models.sql_server_auth_mode import SqlServerAuthMode as SqlServerAuthMode
 from pycarlo2.models.sql_server_credentials_change_validate_in import SqlServerCredentialsChangeValidateIn as SqlServerCredentialsChangeValidateIn
 from pycarlo2.models.sql_server_credentials_in import SqlServerCredentialsIn as SqlServerCredentialsIn

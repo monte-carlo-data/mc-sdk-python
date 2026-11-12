@@ -214,6 +214,10 @@ __all__ = [
     "GlueCredentialsOut",
     "GlueCredentialsPatch",
     "GlueCredentialsValidateIn",
+    "HiveAuthMode",
+    "HiveCredentialsIn",
+    "HiveCredentialsOut",
+    "HiveCredentialsPatch",
     "HiveMySqlCredentialsIn",
     "HiveMySqlCredentialsOut",
     "HiveMySqlCredentialsPatch",
@@ -257,6 +261,11 @@ __all__ = [
     "MetricsOrderBy",
     "MetricsQuery",
     "MetricsQueryOut",
+    "MicrosoftFabricCredentialsChangeValidateIn",
+    "MicrosoftFabricCredentialsIn",
+    "MicrosoftFabricCredentialsOut",
+    "MicrosoftFabricCredentialsPatch",
+    "MicrosoftFabricCredentialsValidateIn",
     "MotherDuckCredentialsChangeValidateIn",
     "MotherDuckCredentialsIn",
     "MotherDuckCredentialsOut",
@@ -300,6 +309,9 @@ __all__ = [
     "PowerBiCredentialsOut",
     "PowerBiCredentialsPatch",
     "PowerBiCredentialsValidateIn",
+    "PrestoCredentialsIn",
+    "PrestoCredentialsOut",
+    "PrestoCredentialsPatch",
     "ProblemOut",
     "RedshiftCredentialsChangeValidateIn",
     "RedshiftCredentialsIn",
@@ -587,6 +599,10 @@ from pycarlo2.models.glue_credentials_in import GlueCredentialsIn as GlueCredent
 from pycarlo2.models.glue_credentials_out import GlueCredentialsOut as GlueCredentialsOut
 from pycarlo2.models.glue_credentials_patch import GlueCredentialsPatch as GlueCredentialsPatch
 from pycarlo2.models.glue_credentials_validate_in import GlueCredentialsValidateIn as GlueCredentialsValidateIn
+from pycarlo2.models.hive_auth_mode import HiveAuthMode as HiveAuthMode
+from pycarlo2.models.hive_credentials_in import HiveCredentialsIn as HiveCredentialsIn
+from pycarlo2.models.hive_credentials_out import HiveCredentialsOut as HiveCredentialsOut
+from pycarlo2.models.hive_credentials_patch import HiveCredentialsPatch as HiveCredentialsPatch
 from pycarlo2.models.hive_my_sql_credentials_in import HiveMySqlCredentialsIn as HiveMySqlCredentialsIn
 from pycarlo2.models.hive_my_sql_credentials_out import HiveMySqlCredentialsOut as HiveMySqlCredentialsOut
 from pycarlo2.models.hive_my_sql_credentials_patch import HiveMySqlCredentialsPatch as HiveMySqlCredentialsPatch
@@ -630,6 +646,11 @@ from pycarlo2.models.metrics_filter_operator import MetricsFilterOperator as Met
 from pycarlo2.models.metrics_order_by import MetricsOrderBy as MetricsOrderBy
 from pycarlo2.models.metrics_query import MetricsQuery as MetricsQuery
 from pycarlo2.models.metrics_query_out import MetricsQueryOut as MetricsQueryOut
+from pycarlo2.models.microsoft_fabric_credentials_change_validate_in import MicrosoftFabricCredentialsChangeValidateIn as MicrosoftFabricCredentialsChangeValidateIn
+from pycarlo2.models.microsoft_fabric_credentials_in import MicrosoftFabricCredentialsIn as MicrosoftFabricCredentialsIn
+from pycarlo2.models.microsoft_fabric_credentials_out import MicrosoftFabricCredentialsOut as MicrosoftFabricCredentialsOut
+from pycarlo2.models.microsoft_fabric_credentials_patch import MicrosoftFabricCredentialsPatch as MicrosoftFabricCredentialsPatch
+from pycarlo2.models.microsoft_fabric_credentials_validate_in import MicrosoftFabricCredentialsValidateIn as MicrosoftFabricCredentialsValidateIn
 from pycarlo2.models.mother_duck_credentials_change_validate_in import MotherDuckCredentialsChangeValidateIn as MotherDuckCredentialsChangeValidateIn
 from pycarlo2.models.mother_duck_credentials_in import MotherDuckCredentialsIn as MotherDuckCredentialsIn
 from pycarlo2.models.mother_duck_credentials_out import MotherDuckCredentialsOut as MotherDuckCredentialsOut
@@ -673,6 +694,9 @@ from pycarlo2.models.power_bi_credentials_in import PowerBiCredentialsIn as Powe
 from pycarlo2.models.power_bi_credentials_out import PowerBiCredentialsOut as PowerBiCredentialsOut
 from pycarlo2.models.power_bi_credentials_patch import PowerBiCredentialsPatch as PowerBiCredentialsPatch
 from pycarlo2.models.power_bi_credentials_validate_in import PowerBiCredentialsValidateIn as PowerBiCredentialsValidateIn
+from pycarlo2.models.presto_credentials_in import PrestoCredentialsIn as PrestoCredentialsIn
+from pycarlo2.models.presto_credentials_out import PrestoCredentialsOut as PrestoCredentialsOut
+from pycarlo2.models.presto_credentials_patch import PrestoCredentialsPatch as PrestoCredentialsPatch
 from pycarlo2.models.problem_out import ProblemOut as ProblemOut
 from pycarlo2.models.redshift_credentials_change_validate_in import RedshiftCredentialsChangeValidateIn as RedshiftCredentialsChangeValidateIn
 from pycarlo2.models.redshift_credentials_in import RedshiftCredentialsIn as RedshiftCredentialsIn

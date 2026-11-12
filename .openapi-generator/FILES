@@ -184,6 +184,10 @@ docs/GlueCredentialsIn.md
 docs/GlueCredentialsOut.md
 docs/GlueCredentialsPatch.md
 docs/GlueCredentialsValidateIn.md
+docs/HiveAuthMode.md
+docs/HiveCredentialsIn.md
+docs/HiveCredentialsOut.md
+docs/HiveCredentialsPatch.md
 docs/HiveMySqlCredentialsIn.md
 docs/HiveMySqlCredentialsOut.md
 docs/HiveMySqlCredentialsPatch.md
@@ -229,6 +233,11 @@ docs/MetricsFilterOperator.md
 docs/MetricsOrderBy.md
 docs/MetricsQuery.md
 docs/MetricsQueryOut.md
+docs/MicrosoftFabricCredentialsChangeValidateIn.md
+docs/MicrosoftFabricCredentialsIn.md
+docs/MicrosoftFabricCredentialsOut.md
+docs/MicrosoftFabricCredentialsPatch.md
+docs/MicrosoftFabricCredentialsValidateIn.md
 docs/MotherDuckCredentialsChangeValidateIn.md
 docs/MotherDuckCredentialsIn.md
 docs/MotherDuckCredentialsOut.md
@@ -272,6 +281,9 @@ docs/PowerBiCredentialsIn.md
 docs/PowerBiCredentialsOut.md
 docs/PowerBiCredentialsPatch.md
 docs/PowerBiCredentialsValidateIn.md
+docs/PrestoCredentialsIn.md
+docs/PrestoCredentialsOut.md
+docs/PrestoCredentialsPatch.md
 docs/ProblemOut.md
 docs/RedshiftCredentialsChangeValidateIn.md
 docs/RedshiftCredentialsIn.md
@@ -553,6 +565,10 @@ pycarlo2/models/glue_credentials_in.py
 pycarlo2/models/glue_credentials_out.py
 pycarlo2/models/glue_credentials_patch.py
 pycarlo2/models/glue_credentials_validate_in.py
+pycarlo2/models/hive_auth_mode.py
+pycarlo2/models/hive_credentials_in.py
+pycarlo2/models/hive_credentials_out.py
+pycarlo2/models/hive_credentials_patch.py
 pycarlo2/models/hive_my_sql_credentials_in.py
 pycarlo2/models/hive_my_sql_credentials_out.py
 pycarlo2/models/hive_my_sql_credentials_patch.py
@@ -596,6 +612,11 @@ pycarlo2/models/metrics_filter_operator.py
 pycarlo2/models/metrics_order_by.py
 pycarlo2/models/metrics_query.py
 pycarlo2/models/metrics_query_out.py
+pycarlo2/models/microsoft_fabric_credentials_change_validate_in.py
+pycarlo2/models/microsoft_fabric_credentials_in.py
+pycarlo2/models/microsoft_fabric_credentials_out.py
+pycarlo2/models/microsoft_fabric_credentials_patch.py
+pycarlo2/models/microsoft_fabric_credentials_validate_in.py
 pycarlo2/models/mother_duck_credentials_change_validate_in.py
 pycarlo2/models/mother_duck_credentials_in.py
 pycarlo2/models/mother_duck_credentials_out.py
@@ -639,6 +660,9 @@ pycarlo2/models/power_bi_credentials_in.py
 pycarlo2/models/power_bi_credentials_out.py
 pycarlo2/models/power_bi_credentials_patch.py
 pycarlo2/models/power_bi_credentials_validate_in.py
+pycarlo2/models/presto_credentials_in.py
+pycarlo2/models/presto_credentials_out.py
+pycarlo2/models/presto_credentials_patch.py
 pycarlo2/models/problem_out.py
 pycarlo2/models/redshift_credentials_change_validate_in.py
 pycarlo2/models/redshift_credentials_in.py

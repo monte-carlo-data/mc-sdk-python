@@ -15088,8 +15088,9 @@ Update Hive (MySQL) credentials
 Change Hive (MySQL) credentials in place.
 
 Every connection using the credentials picks up the change. Send only the fields to
-change: a field left out is unchanged, and `password` set to null is unchanged. Sending an
-empty body returns the credentials as they are.
+change: a field left out is unchanged, and `password` set to null is unchanged. A new
+`host`, or a new or cleared `ssl_ca_url`, needs `password` sent again. Sending an empty
+body returns the credentials as they are.
 
 ### Example
 

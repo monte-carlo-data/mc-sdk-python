@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **user** | **str** | Database user Monte Carlo logs in as. | 
 **password** | **str** | Password of the database user. Stored by Monte Carlo and never returned. | 
 **db_name** | **str** | MySQL database that holds the Hive metastore. | 
+**ssl_ca_url** | **str** | https URL of the PEM bundle of certificate authorities the MySQL server&#39;s certificate is checked against. Monte Carlo downloads it at each connection and connects over TLS. For Amazon RDS, use https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem. Leave it out and the server&#39;s certificate is not checked. | [optional] 
 
 ## Example
 

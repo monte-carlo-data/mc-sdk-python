@@ -1,6 +1,6 @@
 # HiveMySqlCredentialsPatch
 
-A change to existing credentials for a Hive metastore on MySQL.  A field left out is unchanged. `password` set to null is unchanged. `host`, `port`, `db_name` and `user` cannot be cleared. Sending an empty body returns the credentials as they are.
+A change to existing credentials for a Hive metastore on MySQL.  A field left out is unchanged. `password` set to null is unchanged. `host`, `port`, `db_name` and `user` cannot be cleared. `ssl_ca_url` set to null removes the CA and needs `password` sent again. Sending an empty body returns the credentials as they are.
 
 ## Properties
 
@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **db_name** | **str** | Database to connect to. | [optional] 
 **user** | **str** | Database user Monte Carlo logs in as. | [optional] 
 **password** | **str** | New password of the database user. | [optional] 
+**ssl_ca_url** | **str** | https URL of the PEM bundle of certificate authorities the MySQL server&#39;s certificate is checked against. Monte Carlo downloads it at each connection and connects over TLS. For Amazon RDS, use https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem. A value replaces any setup that read the CA from Monte Carlo storage or skipped the check. Null removes it. Changing it requires sending the credentials&#39; secrets again. | [optional] 
 
 ## Example
 

@@ -10,8 +10,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict
+from pydantic import BaseModel, ConfigDict, Field, field_validator
+from typing import Any, ClassVar, Dict, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
@@ -26,7 +26,21 @@ class HiveMySqlCredentialsIn(BaseModel):
     user: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="Database user Monte Carlo logs in as.")
     password: Annotated[str, Field(min_length=1, strict=True, max_length=1024)] = Field(description="Password of the database user. Stored by Monte Carlo and never returned.")
     db_name: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="MySQL database that holds the Hive metastore.")
-    __properties: ClassVar[List[str]] = ["host", "port", "user", "password", "db_name"]
+    ssl_ca_url: Optional[Annotated[str, Field(strict=True, max_length=2048)]] = Field(default=None, description="https URL of the PEM bundle of certificate authorities the MySQL server's certificate is checked against. Monte Carlo downloads it at each connection and connects over TLS. For Amazon RDS, use https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem. Leave it out and the server's certificate is not checked.")
+    __properties: ClassVar[List[str]] = ["host", "port", "user", "password", "db_name", "ssl_ca_url"]
+
+    @field_validator('ssl_ca_url')
+    def ssl_ca_url_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(r"^https:\/\/[^\s\/?#]+\S*$", value):
+            raise ValueError(r"must validate the regular expression /^https:\/\/[^\s\/?#]+\S*$/")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -67,6 +81,11 @@ class HiveMySqlCredentialsIn(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if ssl_ca_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.ssl_ca_url is None and "ssl_ca_url" in self.model_fields_set:
+            _dict['ssl_ca_url'] = None
+
         return _dict
 
     @classmethod
@@ -83,7 +102,8 @@ class HiveMySqlCredentialsIn(BaseModel):
             "port": obj.get("port"),
             "user": obj.get("user"),
             "password": obj.get("password"),
-            "db_name": obj.get("db_name")
+            "db_name": obj.get("db_name"),
+            "ssl_ca_url": obj.get("ssl_ca_url")
         })
         return _obj
 

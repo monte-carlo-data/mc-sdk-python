@@ -12,7 +12,7 @@ import json
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from uuid import UUID
 from pycarlo2.models.credentials_storage_type import CredentialsStorageType
 from typing import Optional, Set
@@ -32,8 +32,9 @@ class HiveMySqlCredentialsOut(BaseModel):
     port: StrictInt = Field(description="Port the database listens on.")
     db_name: StrictStr = Field(description="MySQL database that holds the Hive metastore.")
     user: StrictStr = Field(description="Database user Monte Carlo logs in as.")
+    ssl_ca_url: Optional[StrictStr] = Field(description="https URL of the PEM bundle of certificate authorities the MySQL server's certificate is checked against. Monte Carlo downloads it at each connection and connects over TLS. For Amazon RDS, use https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem. Null when none is set, or when the stored CA is not fetched from a URL and checked, as when it was set up to read from Monte Carlo storage or to skip the check. Setting `ssl_ca_url` replaces such a setup.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "host", "port", "db_name", "user"]
+    __properties: ClassVar[List[str]] = ["id", "connection_type", "storage_type", "created_time", "host", "port", "db_name", "user", "ssl_ca_url"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -81,6 +82,11 @@ class HiveMySqlCredentialsOut(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if ssl_ca_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.ssl_ca_url is None and "ssl_ca_url" in self.model_fields_set:
+            _dict['ssl_ca_url'] = None
+
         return _dict
 
     @classmethod
@@ -100,7 +106,8 @@ class HiveMySqlCredentialsOut(BaseModel):
             "host": obj.get("host"),
             "port": obj.get("port"),
             "db_name": obj.get("db_name"),
-            "user": obj.get("user")
+            "user": obj.get("user"),
+            "ssl_ca_url": obj.get("ssl_ca_url")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

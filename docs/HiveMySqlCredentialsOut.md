@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **port** | **int** | Port the database listens on. | 
 **db_name** | **str** | MySQL database that holds the Hive metastore. | 
 **user** | **str** | Database user Monte Carlo logs in as. | 
+**ssl_ca_url** | **str** | https URL of the PEM bundle of certificate authorities the MySQL server&#39;s certificate is checked against. Monte Carlo downloads it at each connection and connects over TLS. For Amazon RDS, use https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem. Null when none is set, or when the stored CA is not fetched from a URL and checked, as when it was set up to read from Monte Carlo storage or to skip the check. Setting &#x60;ssl_ca_url&#x60; replaces such a setup. | 
 
 ## Example
 

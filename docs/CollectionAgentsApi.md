@@ -8,12 +8,14 @@ Method | HTTP request | Description
 [**create_generic_collection_agent_token**](CollectionAgentsApi.md#create_generic_collection_agent_token) | **POST** /api/v2/collection-agents/generic/credentials/token | Create a token for a generic collection agent
 [**delete_aws_collection_agent**](CollectionAgentsApi.md#delete_aws_collection_agent) | **DELETE** /api/v2/collection-agents/aws/{collection_agent_id} | Delete an AWS collection agent
 [**delete_azure_collection_agent**](CollectionAgentsApi.md#delete_azure_collection_agent) | **DELETE** /api/v2/collection-agents/azure/{collection_agent_id} | Delete an Azure collection agent
+[**delete_collection_agent**](CollectionAgentsApi.md#delete_collection_agent) | **DELETE** /api/v2/collection-agents/{collection_agent_id} | Delete a collection agent
 [**delete_gcp_collection_agent**](CollectionAgentsApi.md#delete_gcp_collection_agent) | **DELETE** /api/v2/collection-agents/gcp/{collection_agent_id} | Delete a GCP collection agent
 [**delete_generic_collection_agent**](CollectionAgentsApi.md#delete_generic_collection_agent) | **DELETE** /api/v2/collection-agents/generic/{collection_agent_id} | Delete a generic collection agent
 [**delete_generic_collection_agent_oauth_client**](CollectionAgentsApi.md#delete_generic_collection_agent_oauth_client) | **DELETE** /api/v2/collection-agents/generic/credentials/oauth/{credential_id} | Delete a generic collection agent OAuth client
 [**delete_generic_collection_agent_token**](CollectionAgentsApi.md#delete_generic_collection_agent_token) | **DELETE** /api/v2/collection-agents/generic/credentials/token/{credential_id} | Delete a generic collection agent token
 [**get_aws_collection_agent**](CollectionAgentsApi.md#get_aws_collection_agent) | **GET** /api/v2/collection-agents/aws/{collection_agent_id} | Get an AWS collection agent
 [**get_azure_collection_agent**](CollectionAgentsApi.md#get_azure_collection_agent) | **GET** /api/v2/collection-agents/azure/{collection_agent_id} | Get an Azure collection agent
+[**get_collection_agent**](CollectionAgentsApi.md#get_collection_agent) | **GET** /api/v2/collection-agents/{collection_agent_id} | Get a collection agent
 [**get_gcp_collection_agent**](CollectionAgentsApi.md#get_gcp_collection_agent) | **GET** /api/v2/collection-agents/gcp/{collection_agent_id} | Get a GCP collection agent
 [**get_generic_collection_agent**](CollectionAgentsApi.md#get_generic_collection_agent) | **GET** /api/v2/collection-agents/generic/{collection_agent_id} | Get a generic collection agent
 [**get_generic_collection_agent_oauth_client**](CollectionAgentsApi.md#get_generic_collection_agent_oauth_client) | **GET** /api/v2/collection-agents/generic/credentials/oauth/{credential_id} | Get a generic collection agent OAuth client
@@ -395,6 +397,99 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_collection_agent**
+> delete_collection_agent(collection_agent_id)
+
+Delete a collection agent
+
+Deregister a collection agent, on any platform.
+
+Does what the delete on the agent's own platform path does. Its deployment is left without
+an agent. Reprovision that deployment before registering another agent on it. Every token
+created for a generic agent's deployment is deleted with it, so a running agent stops being
+able to connect. Its OAuth clients are deleted on a best-effort basis: one that fails to
+delete is not reported and keeps working.
+
+An agent cannot be deleted while its deployment still has a connection running through it.
+Delete or move those connections first.
+
+An id that names no agent in your account returns 404. So does an agent on a platform with
+no path of its own here, such as a Snowflake agent.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CollectionAgentsApi(api_client)
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
+
+    try:
+        # Delete a collection agent
+        api_instance.delete_collection_agent(collection_agent_id)
+    except Exception as e:
+        print("Exception when calling CollectionAgentsApi->delete_collection_agent: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_gcp_collection_agent**
 > delete_gcp_collection_agent(collection_agent_id)
 
@@ -491,9 +586,10 @@ Delete a generic collection agent
 
 Deregister a generic collection agent.
 
-Every credential created for its deployment is deleted with it, so a running agent stops
-being able to connect. Its deployment is left without an agent. Reprovision that deployment
-before registering another agent on it.
+Every token created for its deployment is deleted with it, so a running agent stops being
+able to connect. Its OAuth clients are deleted on a best-effort basis: one that fails to
+delete is not reported and keeps working. Its deployment is left without an agent.
+Reprovision that deployment before registering another agent on it.
 
 An agent cannot be deleted while its deployment still has a connection running through it.
 Delete or move those connections first.
@@ -885,6 +981,94 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AzureCollectionAgentOut**](AzureCollectionAgentOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_collection_agent**
+> CollectionAgentDetailOut get_collection_agent(collection_agent_id)
+
+Get a collection agent
+
+Get one collection agent, on any platform.
+
+Takes the id the list returns. `details` holds the fields of that platform's own read, such
+as the external id of an AWS agent. A secret is never returned.
+
+An id that names no agent in your account returns 404. So does an agent on a platform with
+no path of its own here, such as a Snowflake agent.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.collection_agent_detail_out import CollectionAgentDetailOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CollectionAgentsApi(api_client)
+    collection_agent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection agent, as returned when it is registered or listed.
+
+    try:
+        # Get a collection agent
+        api_response = api_instance.get_collection_agent(collection_agent_id)
+        print("The response of CollectionAgentsApi->get_collection_agent:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CollectionAgentsApi->get_collection_agent: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_agent_id** | **UUID**| Id of the collection agent, as returned when it is registered or listed. | 
+
+### Return type
+
+[**CollectionAgentDetailOut**](CollectionAgentDetailOut.md)
 
 ### Authorization
 

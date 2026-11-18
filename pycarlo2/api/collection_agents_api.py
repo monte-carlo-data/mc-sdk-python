@@ -18,6 +18,7 @@ from pycarlo2.models.azure_collection_agent_in import AzureCollectionAgentIn
 from pycarlo2.models.azure_collection_agent_out import AzureCollectionAgentOut
 from pycarlo2.models.azure_collection_agent_patch import AzureCollectionAgentPatch
 from pycarlo2.models.collection_agent_credential_out import CollectionAgentCredentialOut
+from pycarlo2.models.collection_agent_detail_out import CollectionAgentDetailOut
 from pycarlo2.models.collection_agent_out import CollectionAgentOut
 from pycarlo2.models.gcp_collection_agent_in import GcpCollectionAgentIn
 from pycarlo2.models.gcp_collection_agent_out import GcpCollectionAgentOut
@@ -652,6 +653,155 @@ class CollectionAgentsApi:
 
 
     @validate_call
+    def delete_collection_agent(
+        self,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete a collection agent
+
+        Deregister a collection agent, on any platform.
+        
+        Does what the delete on the agent's own platform path does. Its deployment is left without
+        an agent. Reprovision that deployment before registering another agent on it. Every token
+        created for a generic agent's deployment is deleted with it, so a running agent stops being
+        able to connect. Its OAuth clients are deleted on a best-effort basis: one that fails to
+        delete is not reported and keeps working.
+        
+        An agent cannot be deleted while its deployment still has a connection running through it.
+        Delete or move those connections first.
+        
+        An id that names no agent in your account returns 404. So does an agent on a platform with
+        no path of its own here, such as a Snowflake agent.
+
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
+        :type collection_agent_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_collection_agent_serialize(
+            collection_agent_id=collection_agent_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '404': "ProblemOut",
+            '409': "ProblemOut",
+            '429': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _delete_collection_agent_serialize(
+        self,
+        collection_agent_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if collection_agent_id is not None:
+            _path_params['collection_agent_id'] = collection_agent_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/api/v2/collection-agents/{collection_agent_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def delete_gcp_collection_agent(
         self,
         collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
@@ -817,9 +967,10 @@ class CollectionAgentsApi:
 
         Deregister a generic collection agent.
         
-        Every credential created for its deployment is deleted with it, so a running agent stops
-        being able to connect. Its deployment is left without an agent. Reprovision that deployment
-        before registering another agent on it.
+        Every token created for its deployment is deleted with it, so a running agent stops being
+        able to connect. Its OAuth clients are deleted on a best-effort basis: one that fails to
+        delete is not reported and keeps working. Its deployment is left without an agent.
+        Reprovision that deployment before registering another agent on it.
         
         An agent cannot be deleted while its deployment still has a connection running through it.
         Delete or move those connections first.
@@ -1480,6 +1631,148 @@ class CollectionAgentsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/api/v2/collection-agents/azure/{collection_agent_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_collection_agent(
+        self,
+        collection_agent_id: Annotated[UUID, Field(description="Id of the collection agent, as returned when it is registered or listed.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CollectionAgentDetailOut:
+        """Get a collection agent
+
+        Get one collection agent, on any platform.
+        
+        Takes the id the list returns. `details` holds the fields of that platform's own read, such
+        as the external id of an AWS agent. A secret is never returned.
+        
+        An id that names no agent in your account returns 404. So does an agent on a platform with
+        no path of its own here, such as a Snowflake agent.
+
+        :param collection_agent_id: Id of the collection agent, as returned when it is registered or listed. (required)
+        :type collection_agent_id: UUID
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_collection_agent_serialize(
+            collection_agent_id=collection_agent_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CollectionAgentDetailOut",
+            '404': "ProblemOut",
+            '401': "ProblemOut",
+            '403': "ProblemOut",
+            '500': "ProblemOut",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    def _get_collection_agent_serialize(
+        self,
+        collection_agent_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if collection_agent_id is not None:
+            _path_params['collection_agent_id'] = collection_agent_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'GatewayAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/api/v2/collection-agents/{collection_agent_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

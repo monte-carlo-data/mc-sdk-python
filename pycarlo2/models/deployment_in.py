@@ -10,7 +10,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, Optional
 from typing_extensions import Annotated
 from pycarlo2.models.deployment_type import DeploymentType
@@ -21,12 +21,13 @@ from pydantic_core import to_jsonable_python
 
 class DeploymentIn(BaseModel):
     """
-    What to provision a deployment for. Sent both when creating one and when reprovisioning.
+    What to create a deployment for.
     """ # noqa: E501
-    type: DeploymentType = Field(description="What the deployment will host. Only `COLLECTION_AGENT` and `COLLECTION_DATA_STORE` can be provisioned today. Any other value is rejected.")
-    runtime_platform: RuntimePlatform = Field(description="Where the deployment's collection agent or data store will run. Either can be provisioned on `AWS`, `AZURE` or `GCP`, and a collection agent also on `GENERIC`. Any other combination is rejected.")
+    type: DeploymentType = Field(description="What the deployment will host. `COLLECTION_AGENT` and `COLLECTION_DATA_STORE` can be provisioned, and an `AGENT_OBSERVABILITY` deployment can be created when your account has Monte Carlo hosted Agent Observability. Any other value is rejected.")
+    runtime_platform: Optional[RuntimePlatform] = Field(default=None, description="Where the deployment's collection agent or data store will run. Either can be provisioned on `AWS`, `AZURE` or `GCP`, and a collection agent also on `GENERIC`. Any other combination is rejected. Required for a collection agent or data store. Leave it out for `AGENT_OBSERVABILITY`, which Monte Carlo hosts.")
     name: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Display name for the deployment. Monte Carlo generates one if you leave it out.")
-    __properties: ClassVar[List[str]] = ["type", "runtime_platform", "name"]
+    deletion_protection: Optional[StrictBool] = Field(default=None, description="Whether deleting the deployment is refused once it has been ready. Only an `AGENT_OBSERVABILITY` deployment can be protected, and it is protected unless you send `false`. Any other type accepts only `false`.")
+    __properties: ClassVar[List[str]] = ["type", "runtime_platform", "name", "deletion_protection"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -67,10 +68,20 @@ class DeploymentIn(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if runtime_platform (nullable) is None
+        # and model_fields_set contains the field
+        if self.runtime_platform is None and "runtime_platform" in self.model_fields_set:
+            _dict['runtime_platform'] = None
+
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
             _dict['name'] = None
+
+        # set to None if deletion_protection (nullable) is None
+        # and model_fields_set contains the field
+        if self.deletion_protection is None and "deletion_protection" in self.model_fields_set:
+            _dict['deletion_protection'] = None
 
         return _dict
 
@@ -86,7 +97,8 @@ class DeploymentIn(BaseModel):
         _obj = cls.model_validate({
             "type": obj.get("type"),
             "runtime_platform": obj.get("runtime_platform"),
-            "name": obj.get("name")
+            "name": obj.get("name"),
+            "deletion_protection": obj.get("deletion_protection")
         })
         return _obj
 

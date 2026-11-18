@@ -26,7 +26,7 @@ class WarehouseIn(BaseModel):
     name: Annotated[str, Field(min_length=1, strict=True, max_length=200)] = Field(description="Display name for the warehouse. Unique among your warehouses of the same type.")
     type: Optional[WarehouseType] = Field(default=None, description="The kind of data platform the warehouse represents. Every connection added to it has to fit. Cannot be changed after the warehouse is created. Send this or `connection_type`, not both.")
     connection_type: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="The type of the first connection you plan to add. The warehouse type is taken from it and returned as `type`. Send this or `type`, not both. A connection type no warehouse type can be taken from is refused, custom connectors included. So is one this account does not have.")
-    deployment_id: UUID = Field(description="The deployment the warehouse's connections will run through. Pick one from the deployments list. Only a deployment on Monte Carlo's current collection platform is accepted.")
+    deployment_id: UUID = Field(description="The deployment the warehouse's connections will run through. Pick one from the deployments list. Only a deployment on Monte Carlo's current collection platform is accepted. An `AGENT_OBSERVABILITY` deployment is not.")
     __properties: ClassVar[List[str]] = ["name", "type", "connection_type", "deployment_id"]
 
     model_config = ConfigDict(

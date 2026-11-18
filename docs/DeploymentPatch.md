@@ -1,12 +1,13 @@
 # DeploymentPatch
 
-A change to an existing deployment. Sent when renaming one.
+A change to an existing deployment. Sent when renaming one or changing its protection.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | New display name for the deployment. Left out, the name is unchanged. | [optional] 
+**deletion_protection** | **bool** | Whether deleting the deployment is refused once it has been &#x60;READY&#x60;. Left out, it is unchanged. Only an &#x60;AGENT_OBSERVABILITY&#x60; deployment can be protected. Any other type accepts only &#x60;false&#x60;. | [optional] 
 
 ## Example
 

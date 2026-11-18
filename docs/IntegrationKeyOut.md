@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **warehouse_id** | **UUID** | The warehouse the key is scoped to, if it is scoped to one. | [optional] 
 **bi_container_id** | **UUID** | The BI container the key is scoped to, if it is scoped to one. | [optional] 
 **etl_container_id** | **UUID** | The ETL container the key is scoped to, if it is scoped to one. | [optional] 
+**deployment_id** | **UUID** | The Agent Observability deployment the key is scoped to, if it is scoped to one. | [optional] 
 
 ## Example
 

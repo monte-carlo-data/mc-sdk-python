@@ -34,11 +34,14 @@ CURRENT_USER = {
 DEPLOYMENT = {
     "aws_external_id": None,
     "created_time": None,
+    "deletion_protection": False,
     "enabled": True,
     "id": "00000000-0000-4000-8000-000000000002",
     "last_updated_time": None,
     "name": "prod",
     "runtime_platform": "AWS",
+    "status": "READY",
+    "status_detail": None,
     "type": "COLLECTION_AGENT",
 }
 

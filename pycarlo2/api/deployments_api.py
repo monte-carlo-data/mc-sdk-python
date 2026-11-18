@@ -14,6 +14,7 @@ from uuid import UUID
 from pycarlo2.models.deployment_in import DeploymentIn
 from pycarlo2.models.deployment_out import DeploymentOut
 from pycarlo2.models.deployment_patch import DeploymentPatch
+from pycarlo2.models.deployment_reprovision_in import DeploymentReprovisionIn
 from pycarlo2.models.deployment_summary_out import DeploymentSummaryOut
 
 from pycarlo2.api_client import ApiClient, RequestSerialized
@@ -45,15 +46,25 @@ class DeploymentsApi:
     ) -> DeploymentOut:
         """Create a deployment
 
-        Provision a deployment for a collection agent or a data store to be registered on.
+        Provision a deployment for a collection agent or a data store, or create an Agent
+        Observability deployment.
         
-        Connecting either one takes two calls, and this is the first. Monte Carlo allocates the
-        deployment, and returns an external id for a deployment it will reach by assuming a role.
-        Registering on the deployment is the second call, and that is what enables it.
+        Connecting a collection agent or a data store takes two calls, and this is the first.
+        Monte Carlo allocates the deployment, and returns an external id for a deployment it will
+        reach by assuming a role. Registering on the deployment is the second call, and that is
+        what enables it. The new deployment is not enabled and serves no connections until
+        something is registered on it. It counts against your account's deployment limit as soon
+        as it is created, whether or not anything ever is.
         
-        The new deployment is not enabled and serves no connections until something is registered
-        on it. It counts against your account's deployment limit as soon as it is created, whether
-        or not anything ever is.
+        An `AGENT_OBSERVABILITY` deployment is hosted by Monte Carlo and stores your agents'
+        traces. Send no `runtime_platform`. It comes back with `status` `PROVISIONING`, and Monte
+        Carlo sets it up after the call returns. Read it until its `status` is `READY` or
+        `FAILED`. A `FAILED` deployment can be deleted and created again. It is protected from
+        deletion once it has been `READY`, unless you send `deletion_protection` as `false`.
+        
+        Creating one answers 422 when your account cannot have Monte Carlo hosted Agent
+        Observability, 409 when it already holds as many as it may, and 429 with `Retry-After`
+        when it has created as many as a day allows.
 
         :param deployment_in: (required)
         :type deployment_in: DeploymentIn
@@ -214,6 +225,11 @@ class DeploymentsApi:
         
         Deleting reaches several systems and can stop partway through. Repeating the request
         picks up where it stopped, so clear whatever a refusal named and send it again.
+        
+        An `AGENT_OBSERVABILITY` deployment that has been `READY` is refused with 409 while
+        `deletion_protection` is on. Turn protection off with an update, then delete it. One that
+        never became `READY` can always be deleted. The agent traces it stores are removed after
+        the call returns.
 
         :param deployment_id: Id of the deployment, as returned when it is created or listed. (required)
         :type deployment_id: UUID
@@ -491,7 +507,8 @@ class DeploymentsApi:
         List the deployments in your account.
         
         A deployment is the infrastructure that connects Monte Carlo to your environment. Each
-        one hosts a collection agent or a data store, or is hosted by Monte Carlo itself.
+        one hosts a collection agent or a data store, or is hosted by Monte Carlo itself. An
+        `AGENT_OBSERVABILITY` deployment is hosted by Monte Carlo and stores your agents' traces.
         
         Only deployments on Monte Carlo's current collection platform are listed. Deployments on
         the older platform are managed separately and do not appear here.
@@ -612,7 +629,7 @@ class DeploymentsApi:
     def reprovision_deployment(
         self,
         deployment_id: Annotated[UUID, Field(description="Id of the deployment, as returned when it is created or listed.")],
-        deployment_in: DeploymentIn,
+        deployment_reprovision_in: DeploymentReprovisionIn,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -638,12 +655,13 @@ class DeploymentsApi:
         
         A deployment whose collection agent or data store is enabled cannot be reprovisioned;
         delete that first. Neither can one hosted by Monte Carlo, which this API does not
-        provision.
+        provision. An `AGENT_OBSERVABILITY` deployment answers 409: delete it and create a new
+        one.
 
         :param deployment_id: Id of the deployment, as returned when it is created or listed. (required)
         :type deployment_id: UUID
-        :param deployment_in: (required)
-        :type deployment_in: DeploymentIn
+        :param deployment_reprovision_in: (required)
+        :type deployment_reprovision_in: DeploymentReprovisionIn
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -668,7 +686,7 @@ class DeploymentsApi:
 
         _param = self._reprovision_deployment_serialize(
             deployment_id=deployment_id,
-            deployment_in=deployment_in,
+            deployment_reprovision_in=deployment_reprovision_in,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -700,7 +718,7 @@ class DeploymentsApi:
     def _reprovision_deployment_serialize(
         self,
         deployment_id,
-        deployment_in,
+        deployment_reprovision_in,
         _request_auth,
         _content_type,
         _headers,
@@ -728,8 +746,8 @@ class DeploymentsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if deployment_in is not None:
-            _body_params = deployment_in
+        if deployment_reprovision_in is not None:
+            _body_params = deployment_reprovision_in
 
 
         # set the HTTP header `Accept`
@@ -798,14 +816,18 @@ class DeploymentsApi:
     ) -> DeploymentOut:
         """Update a deployment
 
-        Rename a deployment.
+        Rename a deployment, or change an Agent Observability deployment's deletion protection.
         
-        The name is the only thing you can change here. What a deployment hosts and where it runs
-        are settled when it is provisioned, so use reprovision to change either.
+        What a deployment hosts and where it runs are settled when it is provisioned, so use
+        reprovision to change either.
         
         Renaming changes nothing about the infrastructure behind the deployment. Every deployment
         can be renamed, including one hosted by Monte Carlo. Sending an empty body leaves the
         deployment as it is and returns it.
+        
+        Only an `AGENT_OBSERVABILITY` deployment can be protected from deletion. Turn protection
+        off here before deleting one that is protected. Any other deployment accepts
+        `deletion_protection` only as `false`, which changes nothing.
 
         :param deployment_id: Id of the deployment, as returned when it is created or listed. (required)
         :type deployment_id: UUID

@@ -19,6 +19,8 @@ class IntegrationKeyScope(str, Enum):
     `INGESTION` pushes metadata, lineage, query logs, ETL jobs and runs, or BI assets to the
     warehouse or container the key is scoped to. `AIRFLOW_CALLBACKS` reports an Airflow
     environment's DAG and task runs to the Airflow ETL container the key is scoped to.
+    `OPEN_TELEMETRY` sends your agents' OpenTelemetry traces to the Agent Observability
+    deployment the key is scoped to.
     """
 
     """
@@ -26,6 +28,7 @@ class IntegrationKeyScope(str, Enum):
     """
     INGESTION = 'INGESTION'
     AIRFLOW_CALLBACKS = 'AIRFLOW_CALLBACKS'
+    OPEN_TELEMETRY = 'OPEN_TELEMETRY'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

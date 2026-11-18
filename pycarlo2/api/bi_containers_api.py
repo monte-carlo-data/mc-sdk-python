@@ -47,11 +47,12 @@ class BiContainersApi:
         The container holds no connections until you add some. Its type is fixed at creation and
         decides which connections it accepts. A `looker` container takes both the Looker API
         connection and the LookML git connection. The deployment has to be one the deployments
-        list returns; any other id returns 404. A deployment that does not support the BI tool,
-        or needs an upgrade first, returns 409. A `custom-bi-connector` container goes on the
-        deployment of the agent that registered the connector, or on none for a push-only
-        connector. Every other type requires a deployment. A push-only connector's assets are
-        pushed with an ingestion key scoped to the container, created with
+        list returns; any other id returns 404. An `AGENT_OBSERVABILITY` deployment returns 404
+        too, because it stores agent traces and hosts no BI container. A deployment that does not
+        support the BI tool, or needs an upgrade first, returns 409. A `custom-bi-connector`
+        container goes on the deployment of the agent that registered the connector, or on none
+        for a push-only connector. Every other type requires a deployment. A push-only
+        connector's assets are pushed with an ingestion key scoped to the container, created with
         `POST /integration-keys/ingestion`.
 
         :param bi_container_in: (required)

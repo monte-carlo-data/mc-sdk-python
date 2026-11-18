@@ -6,10 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_airflow_callbacks_key**](IntegrationKeysApi.md#create_airflow_callbacks_key) | **POST** /api/v2/integration-keys/airflow-callbacks | Create an Airflow callbacks key
 [**create_ingestion_key**](IntegrationKeysApi.md#create_ingestion_key) | **POST** /api/v2/integration-keys/ingestion | Create an ingestion key
+[**create_open_telemetry_key**](IntegrationKeysApi.md#create_open_telemetry_key) | **POST** /api/v2/integration-keys/open-telemetry | Create an OpenTelemetry key
 [**delete_airflow_callbacks_key**](IntegrationKeysApi.md#delete_airflow_callbacks_key) | **DELETE** /api/v2/integration-keys/airflow-callbacks/{key_id} | Delete an Airflow callbacks key
 [**delete_ingestion_key**](IntegrationKeysApi.md#delete_ingestion_key) | **DELETE** /api/v2/integration-keys/ingestion/{key_id} | Delete an ingestion key
+[**delete_open_telemetry_key**](IntegrationKeysApi.md#delete_open_telemetry_key) | **DELETE** /api/v2/integration-keys/open-telemetry/{key_id} | Delete an OpenTelemetry key
 [**get_airflow_callbacks_key**](IntegrationKeysApi.md#get_airflow_callbacks_key) | **GET** /api/v2/integration-keys/airflow-callbacks/{key_id} | Get an Airflow callbacks key
 [**get_ingestion_key**](IntegrationKeysApi.md#get_ingestion_key) | **GET** /api/v2/integration-keys/ingestion/{key_id} | Get an ingestion key
+[**get_open_telemetry_key**](IntegrationKeysApi.md#get_open_telemetry_key) | **GET** /api/v2/integration-keys/open-telemetry/{key_id} | Get an OpenTelemetry key
 [**list_integration_keys**](IntegrationKeysApi.md#list_integration_keys) | **GET** /api/v2/integration-keys | List integration keys
 
 
@@ -197,6 +200,98 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_open_telemetry_key**
+> OpenTelemetryKeyCreatedOut create_open_telemetry_key(open_telemetry_key_in)
+
+Create an OpenTelemetry key
+
+Create a key your agents send OpenTelemetry traces with.
+
+The key is scoped to one `AGENT_OBSERVABILITY` deployment, which may still be
+`PROVISIONING`. An id your account does not hold returns 404. Deleting the deployment
+deletes its keys.
+
+The secret is returned by this call and never again. A deployment can hold any number of
+keys, so create the next one before deleting the last when rotating.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.open_telemetry_key_created_out import OpenTelemetryKeyCreatedOut
+from pycarlo2.models.open_telemetry_key_in import OpenTelemetryKeyIn
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.IntegrationKeysApi(api_client)
+    open_telemetry_key_in = pycarlo2.OpenTelemetryKeyIn() # OpenTelemetryKeyIn | 
+
+    try:
+        # Create an OpenTelemetry key
+        api_response = api_instance.create_open_telemetry_key(open_telemetry_key_in)
+        print("The response of IntegrationKeysApi->create_open_telemetry_key:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IntegrationKeysApi->create_open_telemetry_key: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **open_telemetry_key_in** | [**OpenTelemetryKeyIn**](OpenTelemetryKeyIn.md)|  | 
+
+### Return type
+
+[**OpenTelemetryKeyCreatedOut**](OpenTelemetryKeyCreatedOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_airflow_callbacks_key**
 > delete_airflow_callbacks_key(key_id)
 
@@ -324,6 +419,87 @@ with pycarlo2.ApiClient(configuration) as api_client:
         api_instance.delete_ingestion_key(key_id)
     except Exception as e:
         print("Exception when calling IntegrationKeysApi->delete_ingestion_key: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **key_id** | **str**| Id of the integration key, as returned when it is created or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_open_telemetry_key**
+> delete_open_telemetry_key(key_id)
+
+Delete an OpenTelemetry key
+
+Delete an OpenTelemetry key. Traces sent with it are refused from then on.
+
+Deleting an id your account does not hold, or has already deleted, also returns 204.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.IntegrationKeysApi(api_client)
+    key_id = 'key_id_example' # str | Id of the integration key, as returned when it is created or listed.
+
+    try:
+        # Delete an OpenTelemetry key
+        api_instance.delete_open_telemetry_key(key_id)
+    except Exception as e:
+        print("Exception when calling IntegrationKeysApi->delete_open_telemetry_key: %s\n" % e)
 ```
 
 
@@ -528,16 +704,101 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_open_telemetry_key**
+> OpenTelemetryKeyOut get_open_telemetry_key(key_id)
+
+Get an OpenTelemetry key
+
+Get one OpenTelemetry key. The secret is not part of it.
+
+An id that names a key of another scope, or no key in your account, returns 404.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.open_telemetry_key_out import OpenTelemetryKeyOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.IntegrationKeysApi(api_client)
+    key_id = 'key_id_example' # str | Id of the integration key, as returned when it is created or listed.
+
+    try:
+        # Get an OpenTelemetry key
+        api_response = api_instance.get_open_telemetry_key(key_id)
+        print("The response of IntegrationKeysApi->get_open_telemetry_key:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IntegrationKeysApi->get_open_telemetry_key: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **key_id** | **str**| Id of the integration key, as returned when it is created or listed. | 
+
+### Return type
+
+[**OpenTelemetryKeyOut**](OpenTelemetryKeyOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_integration_keys**
 > List[IntegrationKeyOut] list_integration_keys(scope=scope, parent_id=parent_id)
 
 List integration keys
 
-List your account's ingestion and Airflow callbacks keys.
+List your account's ingestion, Airflow callbacks and OpenTelemetry keys.
 
 No secret is part of the list. Keys are sorted oldest first.
 
-The list is not paged. A warehouse or container holds a key or two in normal use.
+The list is not paged. A warehouse, container or deployment holds a key or two in normal
+use.
 
 ### Example
 
@@ -570,7 +831,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.IntegrationKeysApi(api_client)
     scope = pycarlo2.IntegrationKeyScope() # IntegrationKeyScope | Only keys of this scope. (optional)
-    parent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Only keys scoped to this warehouse, BI container or ETL container. (optional)
+    parent_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Only keys scoped to this warehouse, BI container, ETL container or Agent Observability deployment. (optional)
 
     try:
         # List integration keys
@@ -589,7 +850,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | [**IntegrationKeyScope**](.md)| Only keys of this scope. | [optional] 
- **parent_id** | **UUID**| Only keys scoped to this warehouse, BI container or ETL container. | [optional] 
+ **parent_id** | **UUID**| Only keys scoped to this warehouse, BI container, ETL container or Agent Observability deployment. | [optional] 
 
 ### Return type
 

@@ -40,7 +40,8 @@ class UsersApi:
         Return the identity this request was authenticated as, along with its account.
         
         Use it to confirm that a set of credentials works, to find out which account they belong
-        to, and to read the authorization groups that decide what the caller may do.
+        to, and to read the authorization groups and permissions that decide what the caller may
+        do.
         
         Any authenticated caller may call this operation, and it keeps answering while an account
         is paused. A client can therefore learn that the account is paused, rather than only

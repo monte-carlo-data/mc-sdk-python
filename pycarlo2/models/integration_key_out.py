@@ -35,8 +35,9 @@ class IntegrationKeyOut(BaseModel):
     warehouse_id: Optional[UUID] = Field(default=None, description="The warehouse the key is scoped to, if it is scoped to one.")
     bi_container_id: Optional[UUID] = Field(default=None, description="The BI container the key is scoped to, if it is scoped to one.")
     etl_container_id: Optional[UUID] = Field(default=None, description="The ETL container the key is scoped to, if it is scoped to one.")
+    deployment_id: Optional[UUID] = Field(default=None, description="The Agent Observability deployment the key is scoped to, if it is scoped to one.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "description", "created_time", "scope", "warehouse_id", "bi_container_id", "etl_container_id"]
+    __properties: ClassVar[List[str]] = ["id", "description", "created_time", "scope", "warehouse_id", "bi_container_id", "etl_container_id", "deployment_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -99,6 +100,11 @@ class IntegrationKeyOut(BaseModel):
         if self.etl_container_id is None and "etl_container_id" in self.model_fields_set:
             _dict['etl_container_id'] = None
 
+        # set to None if deployment_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.deployment_id is None and "deployment_id" in self.model_fields_set:
+            _dict['deployment_id'] = None
+
         return _dict
 
     @classmethod
@@ -117,7 +123,8 @@ class IntegrationKeyOut(BaseModel):
             "scope": obj.get("scope"),
             "warehouse_id": obj.get("warehouse_id"),
             "bi_container_id": obj.get("bi_container_id"),
-            "etl_container_id": obj.get("etl_container_id")
+            "etl_container_id": obj.get("etl_container_id"),
+            "deployment_id": obj.get("deployment_id")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

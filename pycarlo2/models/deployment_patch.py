@@ -10,7 +10,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -19,10 +19,11 @@ from pydantic_core import to_jsonable_python
 
 class DeploymentPatch(BaseModel):
     """
-    A change to an existing deployment. Sent when renaming one.
+    A change to an existing deployment. Sent when renaming one or changing its protection.
     """ # noqa: E501
     name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=200)]] = Field(default=None, description="New display name for the deployment. Left out, the name is unchanged.")
-    __properties: ClassVar[List[str]] = ["name"]
+    deletion_protection: Optional[StrictBool] = Field(default=None, description="Whether deleting the deployment is refused once it has been `READY`. Left out, it is unchanged. Only an `AGENT_OBSERVABILITY` deployment can be protected. Any other type accepts only `false`.")
+    __properties: ClassVar[List[str]] = ["name", "deletion_protection"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -68,6 +69,11 @@ class DeploymentPatch(BaseModel):
         if self.name is None and "name" in self.model_fields_set:
             _dict['name'] = None
 
+        # set to None if deletion_protection (nullable) is None
+        # and model_fields_set contains the field
+        if self.deletion_protection is None and "deletion_protection" in self.model_fields_set:
+            _dict['deletion_protection'] = None
+
         return _dict
 
     @classmethod
@@ -80,7 +86,8 @@ class DeploymentPatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name")
+            "name": obj.get("name"),
+            "deletion_protection": obj.get("deletion_protection")
         })
         return _obj
 

@@ -14,6 +14,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from uuid import UUID
+from pycarlo2.models.deployment_status import DeploymentStatus
 from pycarlo2.models.deployment_type import DeploymentType
 from pycarlo2.models.runtime_platform import RuntimePlatform
 from typing import Optional, Set
@@ -24,18 +25,22 @@ class DeploymentSummaryOut(BaseModel):
     """
     A deployment: the infrastructure that connects Monte Carlo to your environment.
     
-    A deployment hosts a collection agent or a data store, or is hosted by Monte Carlo. This
-    is the shape the list returns; reading a single deployment returns more.
+    A deployment hosts a collection agent or a data store, or is hosted by Monte Carlo. An
+    `AGENT_OBSERVABILITY` deployment is hosted by Monte Carlo and stores your agents' traces.
+    This is the shape the list returns; reading a single deployment returns more.
     """ # noqa: E501
     id: UUID = Field(description="Unique identifier of the deployment.")
     name: StrictStr = Field(description="Display name of the deployment.")
     type: Optional[DeploymentType] = Field(default=None, description="What the deployment hosts. Null when nothing is provisioned on it, in which case it has to be provisioned before it can be used.")
-    runtime_platform: Optional[RuntimePlatform] = Field(default=None, description="Where the deployment's collection agent or data store runs. Null for a Monte Carlo hosted deployment, which runs neither, for one with nothing provisioned on it, and for one whose platform Monte Carlo has not recorded.")
-    enabled: StrictBool = Field(description="Whether the deployment can serve connections. A deployment still waiting for its collection agent or data store to be registered, or with nothing provisioned on it, is not enabled.")
-    created_time: Optional[datetime] = Field(default=None, description="When the deployment was assigned to your account. Null when Monte Carlo has no record of that.")
+    runtime_platform: Optional[RuntimePlatform] = Field(default=None, description="Where the deployment's collection agent or data store runs. Null for a Monte Carlo hosted deployment, `AGENT_OBSERVABILITY` included, which runs neither. Also null for one with nothing provisioned on it, and for one whose platform Monte Carlo has not recorded.")
+    enabled: StrictBool = Field(description="Whether the deployment can serve connections. A deployment still waiting for its collection agent or data store to be registered, or with nothing provisioned on it, is not enabled. An `AGENT_OBSERVABILITY` deployment is enabled only while its `status` is `READY`.")
+    created_time: Optional[datetime] = Field(default=None, description="When the deployment was assigned to your account, or for an `AGENT_OBSERVABILITY` deployment, when it was created. Null when Monte Carlo has no record of that.")
     last_updated_time: Optional[datetime] = Field(default=None, description="When Monte Carlo last updated the infrastructure behind the deployment. Null when Monte Carlo has no record of an update.")
+    status: DeploymentStatus = Field(description="How far Monte Carlo has got with setting the deployment up. An `AGENT_OBSERVABILITY` deployment is `PROVISIONING` while Monte Carlo sets it up, then `READY` or `FAILED`. Every other deployment is `READY`. `enabled` says whether the deployment can serve connections.")
+    status_detail: Optional[StrictStr] = Field(default=None, description="More about the status, such as why setting up the deployment failed. Null when there is nothing to add.")
+    deletion_protection: StrictBool = Field(description="Whether deleting the deployment is refused once it has been `READY`. Only an `AGENT_OBSERVABILITY` deployment can be protected. Every other deployment is `false`. Turn it off with an update before deleting a protected deployment.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "name", "type", "runtime_platform", "enabled", "created_time", "last_updated_time"]
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "runtime_platform", "enabled", "created_time", "last_updated_time", "status", "status_detail", "deletion_protection"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -103,6 +108,11 @@ class DeploymentSummaryOut(BaseModel):
         if self.last_updated_time is None and "last_updated_time" in self.model_fields_set:
             _dict['last_updated_time'] = None
 
+        # set to None if status_detail (nullable) is None
+        # and model_fields_set contains the field
+        if self.status_detail is None and "status_detail" in self.model_fields_set:
+            _dict['status_detail'] = None
+
         return _dict
 
     @classmethod
@@ -121,7 +131,10 @@ class DeploymentSummaryOut(BaseModel):
             "runtime_platform": obj.get("runtime_platform"),
             "enabled": obj.get("enabled"),
             "created_time": obj.get("created_time"),
-            "last_updated_time": obj.get("last_updated_time")
+            "last_updated_time": obj.get("last_updated_time"),
+            "status": obj.get("status"),
+            "status_detail": obj.get("status_detail"),
+            "deletion_protection": obj.get("deletion_protection")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

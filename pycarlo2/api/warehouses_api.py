@@ -49,7 +49,8 @@ class WarehousesApi:
         
         The warehouse holds no connections until you add some. Its type is fixed at creation and
         decides which connections it accepts. The deployment has to be one the deployments list
-        returns; any other id returns 404.
+        returns; any other id returns 404. An `AGENT_OBSERVABILITY` deployment returns 404 too,
+        because it stores agent traces and hosts no warehouse.
         
         Name the type one of two ways, and send exactly one of them. Use `type` when you know
         which kind of warehouse you want. Use `connection_type` when you know what you are

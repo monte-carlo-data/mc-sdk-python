@@ -17,7 +17,8 @@ class DeploymentType(str, Enum):
     What a deployment hosts.
     
     `CLOUD` is a deployment Monte Carlo hosts and runs for you, rather than one you run in
-    your own environment.
+    your own environment. `AGENT_OBSERVABILITY` is a deployment Monte Carlo hosts to store
+    your agents' traces.
     """
 
     """
@@ -26,6 +27,7 @@ class DeploymentType(str, Enum):
     COLLECTION_AGENT = 'COLLECTION_AGENT'
     COLLECTION_DATA_STORE = 'COLLECTION_DATA_STORE'
     CLOUD = 'CLOUD'
+    AGENT_OBSERVABILITY = 'AGENT_OBSERVABILITY'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

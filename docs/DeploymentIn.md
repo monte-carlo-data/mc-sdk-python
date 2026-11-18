@@ -1,14 +1,15 @@
 # DeploymentIn
 
-What to provision a deployment for. Sent both when creating one and when reprovisioning.
+What to create a deployment for.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**DeploymentType**](DeploymentType.md) | What the deployment will host. Only &#x60;COLLECTION_AGENT&#x60; and &#x60;COLLECTION_DATA_STORE&#x60; can be provisioned today. Any other value is rejected. | 
-**runtime_platform** | [**RuntimePlatform**](RuntimePlatform.md) | Where the deployment&#39;s collection agent or data store will run. Either can be provisioned on &#x60;AWS&#x60;, &#x60;AZURE&#x60; or &#x60;GCP&#x60;, and a collection agent also on &#x60;GENERIC&#x60;. Any other combination is rejected. | 
+**type** | [**DeploymentType**](DeploymentType.md) | What the deployment will host. &#x60;COLLECTION_AGENT&#x60; and &#x60;COLLECTION_DATA_STORE&#x60; can be provisioned, and an &#x60;AGENT_OBSERVABILITY&#x60; deployment can be created when your account has Monte Carlo hosted Agent Observability. Any other value is rejected. | 
+**runtime_platform** | [**RuntimePlatform**](RuntimePlatform.md) | Where the deployment&#39;s collection agent or data store will run. Either can be provisioned on &#x60;AWS&#x60;, &#x60;AZURE&#x60; or &#x60;GCP&#x60;, and a collection agent also on &#x60;GENERIC&#x60;. Any other combination is rejected. Required for a collection agent or data store. Leave it out for &#x60;AGENT_OBSERVABILITY&#x60;, which Monte Carlo hosts. | [optional] 
 **name** | **str** | Display name for the deployment. Monte Carlo generates one if you leave it out. | [optional] 
+**deletion_protection** | **bool** | Whether deleting the deployment is refused once it has been ready. Only an &#x60;AGENT_OBSERVABILITY&#x60; deployment can be protected, and it is protected unless you send &#x60;false&#x60;. Any other type accepts only &#x60;false&#x60;. | [optional] 
 
 ## Example
 

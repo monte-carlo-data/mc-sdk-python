@@ -17,15 +17,25 @@ Method | HTTP request | Description
 
 Create a deployment
 
-Provision a deployment for a collection agent or a data store to be registered on.
+Provision a deployment for a collection agent or a data store, or create an Agent
+Observability deployment.
 
-Connecting either one takes two calls, and this is the first. Monte Carlo allocates the
-deployment, and returns an external id for a deployment it will reach by assuming a role.
-Registering on the deployment is the second call, and that is what enables it.
+Connecting a collection agent or a data store takes two calls, and this is the first.
+Monte Carlo allocates the deployment, and returns an external id for a deployment it will
+reach by assuming a role. Registering on the deployment is the second call, and that is
+what enables it. The new deployment is not enabled and serves no connections until
+something is registered on it. It counts against your account's deployment limit as soon
+as it is created, whether or not anything ever is.
 
-The new deployment is not enabled and serves no connections until something is registered
-on it. It counts against your account's deployment limit as soon as it is created, whether
-or not anything ever is.
+An `AGENT_OBSERVABILITY` deployment is hosted by Monte Carlo and stores your agents'
+traces. Send no `runtime_platform`. It comes back with `status` `PROVISIONING`, and Monte
+Carlo sets it up after the call returns. Read it until its `status` is `READY` or
+`FAILED`. A `FAILED` deployment can be deleted and created again. It is protected from
+deletion once it has been `READY`, unless you send `deletion_protection` as `false`.
+
+Creating one answers 422 when your account cannot have Monte Carlo hosted Agent
+Observability, 409 when it already holds as many as it may, and 429 with `Retry-After`
+when it has created as many as a day allows.
 
 ### Example
 
@@ -120,6 +130,11 @@ API does not provision. One that is not enabled is deleted along with the deploy
 
 Deleting reaches several systems and can stop partway through. Repeating the request
 picks up where it stopped, so clear whatever a refusal named and send it again.
+
+An `AGENT_OBSERVABILITY` deployment that has been `READY` is refused with 409 while
+`deletion_protection` is on. Turn protection off with an update, then delete it. One that
+never became `READY` can always be deleted. The agent traces it stores are removed after
+the call returns.
 
 ### Example
 
@@ -288,7 +303,8 @@ List deployments
 List the deployments in your account.
 
 A deployment is the infrastructure that connects Monte Carlo to your environment. Each
-one hosts a collection agent or a data store, or is hosted by Monte Carlo itself.
+one hosts a collection agent or a data store, or is hosted by Monte Carlo itself. An
+`AGENT_OBSERVABILITY` deployment is hosted by Monte Carlo and stores your agents' traces.
 
 Only deployments on Monte Carlo's current collection platform are listed. Deployments on
 the older platform are managed separately and do not appear here.
@@ -368,7 +384,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reprovision_deployment**
-> DeploymentOut reprovision_deployment(deployment_id, deployment_in)
+> DeploymentOut reprovision_deployment(deployment_id, deployment_reprovision_in)
 
 Reprovision a deployment
 
@@ -382,7 +398,8 @@ updated.
 
 A deployment whose collection agent or data store is enabled cannot be reprovisioned;
 delete that first. Neither can one hosted by Monte Carlo, which this API does not
-provision.
+provision. An `AGENT_OBSERVABILITY` deployment answers 409: delete it and create a new
+one.
 
 ### Example
 
@@ -390,8 +407,8 @@ provision.
 
 ```python
 import pycarlo2
-from pycarlo2.models.deployment_in import DeploymentIn
 from pycarlo2.models.deployment_out import DeploymentOut
+from pycarlo2.models.deployment_reprovision_in import DeploymentReprovisionIn
 from pycarlo2.rest import ApiException
 from pprint import pprint
 
@@ -416,11 +433,11 @@ with pycarlo2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pycarlo2.DeploymentsApi(api_client)
     deployment_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the deployment, as returned when it is created or listed.
-    deployment_in = pycarlo2.DeploymentIn() # DeploymentIn | 
+    deployment_reprovision_in = pycarlo2.DeploymentReprovisionIn() # DeploymentReprovisionIn | 
 
     try:
         # Reprovision a deployment
-        api_response = api_instance.reprovision_deployment(deployment_id, deployment_in)
+        api_response = api_instance.reprovision_deployment(deployment_id, deployment_reprovision_in)
         print("The response of DeploymentsApi->reprovision_deployment:\n")
         pprint(api_response)
     except Exception as e:
@@ -435,7 +452,7 @@ with pycarlo2.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **UUID**| Id of the deployment, as returned when it is created or listed. | 
- **deployment_in** | [**DeploymentIn**](DeploymentIn.md)|  | 
+ **deployment_reprovision_in** | [**DeploymentReprovisionIn**](DeploymentReprovisionIn.md)|  | 
 
 ### Return type
 
@@ -471,14 +488,18 @@ Name | Type | Description  | Notes
 
 Update a deployment
 
-Rename a deployment.
+Rename a deployment, or change an Agent Observability deployment's deletion protection.
 
-The name is the only thing you can change here. What a deployment hosts and where it runs
-are settled when it is provisioned, so use reprovision to change either.
+What a deployment hosts and where it runs are settled when it is provisioned, so use
+reprovision to change either.
 
 Renaming changes nothing about the infrastructure behind the deployment. Every deployment
 can be renamed, including one hosted by Monte Carlo. Sending an empty body leaves the
 deployment as it is and returns it.
+
+Only an `AGENT_OBSERVABILITY` deployment can be protected from deletion. Turn protection
+off here before deleting one that is protected. Any other deployment accepts
+`deletion_protection` only as `false`, which changes nothing.
 
 ### Example
 

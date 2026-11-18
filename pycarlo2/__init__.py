@@ -155,6 +155,8 @@ __all__ = [
     "DeploymentIn",
     "DeploymentOut",
     "DeploymentPatch",
+    "DeploymentReprovisionIn",
+    "DeploymentStatus",
     "DeploymentSummaryOut",
     "DeploymentType",
     "DocPageOut",
@@ -287,6 +289,9 @@ __all__ = [
     "NewBiContainerType",
     "NewEtlContainerType",
     "OAuthGrantType",
+    "OpenTelemetryKeyCreatedOut",
+    "OpenTelemetryKeyIn",
+    "OpenTelemetryKeyOut",
     "OracleCredentialsChangeValidateIn",
     "OracleCredentialsIn",
     "OracleCredentialsOut",
@@ -542,6 +547,8 @@ from pycarlo2.models.dbt_cloud_webhook_credentials_validate_in import DbtCloudWe
 from pycarlo2.models.deployment_in import DeploymentIn as DeploymentIn
 from pycarlo2.models.deployment_out import DeploymentOut as DeploymentOut
 from pycarlo2.models.deployment_patch import DeploymentPatch as DeploymentPatch
+from pycarlo2.models.deployment_reprovision_in import DeploymentReprovisionIn as DeploymentReprovisionIn
+from pycarlo2.models.deployment_status import DeploymentStatus as DeploymentStatus
 from pycarlo2.models.deployment_summary_out import DeploymentSummaryOut as DeploymentSummaryOut
 from pycarlo2.models.deployment_type import DeploymentType as DeploymentType
 from pycarlo2.models.doc_page_out import DocPageOut as DocPageOut
@@ -674,6 +681,9 @@ from pycarlo2.models.my_sql_credentials_validate_in import MySqlCredentialsValid
 from pycarlo2.models.new_bi_container_type import NewBiContainerType as NewBiContainerType
 from pycarlo2.models.new_etl_container_type import NewEtlContainerType as NewEtlContainerType
 from pycarlo2.models.o_auth_grant_type import OAuthGrantType as OAuthGrantType
+from pycarlo2.models.open_telemetry_key_created_out import OpenTelemetryKeyCreatedOut as OpenTelemetryKeyCreatedOut
+from pycarlo2.models.open_telemetry_key_in import OpenTelemetryKeyIn as OpenTelemetryKeyIn
+from pycarlo2.models.open_telemetry_key_out import OpenTelemetryKeyOut as OpenTelemetryKeyOut
 from pycarlo2.models.oracle_credentials_change_validate_in import OracleCredentialsChangeValidateIn as OracleCredentialsChangeValidateIn
 from pycarlo2.models.oracle_credentials_in import OracleCredentialsIn as OracleCredentialsIn
 from pycarlo2.models.oracle_credentials_out import OracleCredentialsOut as OracleCredentialsOut

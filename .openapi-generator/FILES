@@ -123,6 +123,8 @@ docs/DbtCloudWebhookCredentialsValidateIn.md
 docs/DeploymentIn.md
 docs/DeploymentOut.md
 docs/DeploymentPatch.md
+docs/DeploymentReprovisionIn.md
+docs/DeploymentStatus.md
 docs/DeploymentSummaryOut.md
 docs/DeploymentType.md
 docs/DeploymentsApi.md
@@ -259,6 +261,9 @@ docs/MySqlCredentialsValidateIn.md
 docs/NewBiContainerType.md
 docs/NewEtlContainerType.md
 docs/OAuthGrantType.md
+docs/OpenTelemetryKeyCreatedOut.md
+docs/OpenTelemetryKeyIn.md
+docs/OpenTelemetryKeyOut.md
 docs/OracleCredentialsChangeValidateIn.md
 docs/OracleCredentialsIn.md
 docs/OracleCredentialsOut.md
@@ -508,6 +513,8 @@ pycarlo2/models/dbt_cloud_webhook_credentials_validate_in.py
 pycarlo2/models/deployment_in.py
 pycarlo2/models/deployment_out.py
 pycarlo2/models/deployment_patch.py
+pycarlo2/models/deployment_reprovision_in.py
+pycarlo2/models/deployment_status.py
 pycarlo2/models/deployment_summary_out.py
 pycarlo2/models/deployment_type.py
 pycarlo2/models/doc_page_out.py
@@ -640,6 +647,9 @@ pycarlo2/models/my_sql_credentials_validate_in.py
 pycarlo2/models/new_bi_container_type.py
 pycarlo2/models/new_etl_container_type.py
 pycarlo2/models/o_auth_grant_type.py
+pycarlo2/models/open_telemetry_key_created_out.py
+pycarlo2/models/open_telemetry_key_in.py
+pycarlo2/models/open_telemetry_key_out.py
 pycarlo2/models/oracle_credentials_change_validate_in.py
 pycarlo2/models/oracle_credentials_in.py
 pycarlo2/models/oracle_credentials_out.py

@@ -123,6 +123,8 @@ from pycarlo2.models.dbt_cloud_webhook_credentials_validate_in import DbtCloudWe
 from pycarlo2.models.deployment_in import DeploymentIn
 from pycarlo2.models.deployment_out import DeploymentOut
 from pycarlo2.models.deployment_patch import DeploymentPatch
+from pycarlo2.models.deployment_reprovision_in import DeploymentReprovisionIn
+from pycarlo2.models.deployment_status import DeploymentStatus
 from pycarlo2.models.deployment_summary_out import DeploymentSummaryOut
 from pycarlo2.models.deployment_type import DeploymentType
 from pycarlo2.models.doc_page_out import DocPageOut
@@ -255,6 +257,9 @@ from pycarlo2.models.my_sql_credentials_validate_in import MySqlCredentialsValid
 from pycarlo2.models.new_bi_container_type import NewBiContainerType
 from pycarlo2.models.new_etl_container_type import NewEtlContainerType
 from pycarlo2.models.o_auth_grant_type import OAuthGrantType
+from pycarlo2.models.open_telemetry_key_created_out import OpenTelemetryKeyCreatedOut
+from pycarlo2.models.open_telemetry_key_in import OpenTelemetryKeyIn
+from pycarlo2.models.open_telemetry_key_out import OpenTelemetryKeyOut
 from pycarlo2.models.oracle_credentials_change_validate_in import OracleCredentialsChangeValidateIn
 from pycarlo2.models.oracle_credentials_in import OracleCredentialsIn
 from pycarlo2.models.oracle_credentials_out import OracleCredentialsOut

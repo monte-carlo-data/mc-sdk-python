@@ -111,7 +111,9 @@ __all__ = [
     "ClickHouseCredentialsPatch",
     "ClickHouseCredentialsValidateIn",
     "CollectionAgentCredentialOut",
+    "CollectionAgentDetailOut",
     "CollectionAgentOut",
+    "CollectionDataStoreDetailOut",
     "CollectionDataStoreOut",
     "ConnectionIn",
     "ConnectionMatch",
@@ -496,7 +498,9 @@ from pycarlo2.models.click_house_credentials_out import ClickHouseCredentialsOut
 from pycarlo2.models.click_house_credentials_patch import ClickHouseCredentialsPatch as ClickHouseCredentialsPatch
 from pycarlo2.models.click_house_credentials_validate_in import ClickHouseCredentialsValidateIn as ClickHouseCredentialsValidateIn
 from pycarlo2.models.collection_agent_credential_out import CollectionAgentCredentialOut as CollectionAgentCredentialOut
+from pycarlo2.models.collection_agent_detail_out import CollectionAgentDetailOut as CollectionAgentDetailOut
 from pycarlo2.models.collection_agent_out import CollectionAgentOut as CollectionAgentOut
+from pycarlo2.models.collection_data_store_detail_out import CollectionDataStoreDetailOut as CollectionDataStoreDetailOut
 from pycarlo2.models.collection_data_store_out import CollectionDataStoreOut as CollectionDataStoreOut
 from pycarlo2.models.connection_in import ConnectionIn as ConnectionIn
 from pycarlo2.models.connection_match import ConnectionMatch as ConnectionMatch

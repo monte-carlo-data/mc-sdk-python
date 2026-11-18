@@ -73,8 +73,10 @@ docs/ClickHouseCredentialsOut.md
 docs/ClickHouseCredentialsPatch.md
 docs/ClickHouseCredentialsValidateIn.md
 docs/CollectionAgentCredentialOut.md
+docs/CollectionAgentDetailOut.md
 docs/CollectionAgentOut.md
 docs/CollectionAgentsApi.md
+docs/CollectionDataStoreDetailOut.md
 docs/CollectionDataStoreOut.md
 docs/CollectionDataStoresApi.md
 docs/ConnectionIn.md
@@ -462,7 +464,9 @@ pycarlo2/models/click_house_credentials_out.py
 pycarlo2/models/click_house_credentials_patch.py
 pycarlo2/models/click_house_credentials_validate_in.py
 pycarlo2/models/collection_agent_credential_out.py
+pycarlo2/models/collection_agent_detail_out.py
 pycarlo2/models/collection_agent_out.py
+pycarlo2/models/collection_data_store_detail_out.py
 pycarlo2/models/collection_data_store_out.py
 pycarlo2/models/connection_in.py
 pycarlo2/models/connection_match.py

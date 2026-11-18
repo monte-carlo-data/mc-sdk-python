@@ -6,9 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_aws_collection_data_store**](CollectionDataStoresApi.md#delete_aws_collection_data_store) | **DELETE** /api/v2/collection-data-stores/aws/{collection_data_store_id} | Delete an AWS collection data store
 [**delete_azure_collection_data_store**](CollectionDataStoresApi.md#delete_azure_collection_data_store) | **DELETE** /api/v2/collection-data-stores/azure/{collection_data_store_id} | Delete an Azure collection data store
+[**delete_collection_data_store**](CollectionDataStoresApi.md#delete_collection_data_store) | **DELETE** /api/v2/collection-data-stores/{collection_data_store_id} | Delete a collection data store
 [**delete_gcp_collection_data_store**](CollectionDataStoresApi.md#delete_gcp_collection_data_store) | **DELETE** /api/v2/collection-data-stores/gcp/{collection_data_store_id} | Delete a GCP collection data store
 [**get_aws_collection_data_store**](CollectionDataStoresApi.md#get_aws_collection_data_store) | **GET** /api/v2/collection-data-stores/aws/{collection_data_store_id} | Get an AWS collection data store
 [**get_azure_collection_data_store**](CollectionDataStoresApi.md#get_azure_collection_data_store) | **GET** /api/v2/collection-data-stores/azure/{collection_data_store_id} | Get an Azure collection data store
+[**get_collection_data_store**](CollectionDataStoresApi.md#get_collection_data_store) | **GET** /api/v2/collection-data-stores/{collection_data_store_id} | Get a collection data store
 [**get_gcp_collection_data_store**](CollectionDataStoresApi.md#get_gcp_collection_data_store) | **GET** /api/v2/collection-data-stores/gcp/{collection_data_store_id} | Get a GCP collection data store
 [**list_collection_data_stores**](CollectionDataStoresApi.md#list_collection_data_stores) | **GET** /api/v2/collection-data-stores | List collection data stores
 [**register_aws_collection_data_store**](CollectionDataStoresApi.md#register_aws_collection_data_store) | **POST** /api/v2/collection-data-stores/aws | Register an AWS collection data store
@@ -163,6 +165,98 @@ with pycarlo2.ApiClient(configuration) as api_client:
         api_instance.delete_azure_collection_data_store(collection_data_store_id)
     except Exception as e:
         print("Exception when calling CollectionDataStoresApi->delete_azure_collection_data_store: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_data_store_id** | **UUID**| Id of the collection data store, as returned when it is registered or listed. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**429** | Too Many Requests |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_collection_data_store**
+> delete_collection_data_store(collection_data_store_id)
+
+Delete a collection data store
+
+Deregister a data store, on any platform.
+
+Does what the delete on the data store's own platform path does. Its deployment is left
+without one. Reprovision that deployment before registering another.
+
+The bucket or container itself is yours and is not deleted.
+
+A data store cannot be deleted while its deployment still has a connection running through
+it. Delete or move those connections first.
+
+An id that names no data store in your account returns 404. So does a data store on a
+platform with no path of its own here.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
+    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection data store, as returned when it is registered or listed.
+
+    try:
+        # Delete a collection data store
+        api_instance.delete_collection_data_store(collection_data_store_id)
+    except Exception as e:
+        print("Exception when calling CollectionDataStoresApi->delete_collection_data_store: %s\n" % e)
 ```
 
 
@@ -440,6 +534,94 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AzureCollectionDataStoreOut**](AzureCollectionDataStoreOut.md)
+
+### Authorization
+
+[GatewayAuth](../README.md#GatewayAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**401** | Authentication credentials are missing or invalid. |  -  |
+**403** | The request was authenticated, but the caller is not allowed to perform this operation. Read &#x60;code&#x60; to tell the reasons apart: &#x60;account_frozen&#x60; means the account is paused, rather than that the caller lacks permission. |  -  |
+**500** | An unexpected error prevented the request from being processed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_collection_data_store**
+> CollectionDataStoreDetailOut get_collection_data_store(collection_data_store_id)
+
+Get a collection data store
+
+Get one data store, on any platform.
+
+Takes the id the list returns. `details` holds the fields of that platform's own read, such
+as the external id of an S3 data store. A secret is never returned.
+
+An id that names no data store in your account returns 404. So does a data store on a
+platform with no path of its own here.
+
+### Example
+
+* Bearer Authentication (GatewayAuth):
+
+```python
+import pycarlo2
+from pycarlo2.models.collection_data_store_detail_out import CollectionDataStoreDetailOut
+from pycarlo2.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pycarlo2.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: GatewayAuth
+configuration = pycarlo2.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with pycarlo2.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pycarlo2.CollectionDataStoresApi(api_client)
+    collection_data_store_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Id of the collection data store, as returned when it is registered or listed.
+
+    try:
+        # Get a collection data store
+        api_response = api_instance.get_collection_data_store(collection_data_store_id)
+        print("The response of CollectionDataStoresApi->get_collection_data_store:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CollectionDataStoresApi->get_collection_data_store: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_data_store_id** | **UUID**| Id of the collection data store, as returned when it is registered or listed. | 
+
+### Return type
+
+[**CollectionDataStoreDetailOut**](CollectionDataStoreDetailOut.md)
 
 ### Authorization
 

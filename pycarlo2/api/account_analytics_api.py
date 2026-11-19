@@ -101,7 +101,6 @@ class AccountAnalyticsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CatalogOut",
-            '404': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
             '503': "ProblemOut",
@@ -256,7 +255,6 @@ class AccountAnalyticsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DocsOut",
-            '404': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
             '503': "ProblemOut",
@@ -431,7 +429,6 @@ class AccountAnalyticsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MetricsQueryOut",
-            '404': "ProblemOut",
             '422': "ProblemOut",
             '429': "ProblemOut",
             '503': "ProblemOut",

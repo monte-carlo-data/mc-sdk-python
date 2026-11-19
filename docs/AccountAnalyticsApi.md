@@ -103,7 +103,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
-**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **429** | Too Many Requests |  -  |
 **503** | Service Unavailable |  -  |
@@ -197,7 +196,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
-**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **429** | Too Many Requests |  -  |
 **503** | Service Unavailable |  -  |
@@ -317,7 +315,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
-**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **429** | Too Many Requests |  -  |
 **503** | Service Unavailable |  -  |

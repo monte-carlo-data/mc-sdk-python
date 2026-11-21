@@ -325,7 +325,7 @@ connections of warehouses holding assets in those domains, and every BI and ETL
 connection.
 
 Filtering by an ETL container also returns a warehouse or BI connection that collects ETL
-jobs through it, such as a Snowflake Tasks or Power BI dataflows connection.
+jobs through it, such as a Snowflake Tasks or Power BI ETL connection.
 
 ### Example
 
@@ -432,7 +432,7 @@ agent, cannot be changed. The previous credentials are kept. Once a connection h
 credentials, change its secret through those credentials, not in the app.
 
 `job_types` takes one change: `etl` added or removed. Adding it to a Snowflake, Power BI
-or Salesforce Data Cloud connection turns on Snowflake Tasks, Power BI dataflows or Data
+or Salesforce Data Cloud connection turns on Snowflake Tasks, Power BI ETL or Data
 Cloud ETL. That creates an ETL container, returned in `etl_container_id`. Removing `etl`
 deletes the container, and `etl_container_id` goes back to null. Sending the current job
 types, or an empty body, leaves the connection as it is and returns it.
